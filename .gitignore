@@ -1,0 +1,7 @@
+node_modules/
+.next/
+*.log
+.next-*.log
+devserver.log
+__pycache__/
+*.pyc

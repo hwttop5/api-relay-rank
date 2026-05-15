@@ -1,0 +1,35 @@
+{
+  "timezone": "Asia/Shanghai",
+  "jobs": [
+    {
+      "id": "daily-announcements",
+      "name": "每日公告抓取",
+      "enabled": true,
+      "autoRun": true,
+      "schedule": "每天 03:10",
+      "command": ["python", "scripts/fetch_public_content.py", "--announcements", "--skip-build"],
+      "description": "从公开接口或首页快照抓取最新公告内容。",
+      "notes": "优先抓取 New API 与类 New API 站点的公开公告接口。"
+    },
+    {
+      "id": "daily-multiplier-snapshots",
+      "name": "每日倍率快照更新",
+      "enabled": true,
+      "autoRun": true,
+      "schedule": "每天 03:25",
+      "command": ["python", "scripts/fetch_public_content.py", "--multiplier-snapshots"],
+      "description": "刷新公开倍率相关快照，并重建前端 JSON 数据。",
+      "notes": "登录依赖的档位继续沿用人工核验输入与浏览器探针结果，不主动消耗测试账号余额。"
+    },
+    {
+      "id": "ranking-quality-refresh",
+      "name": "排名与质量刷新",
+      "enabled": false,
+      "autoRun": false,
+      "schedule": "默认关闭，仅手动触发",
+      "command": ["python", "scripts/refresh_quality_rankings.py"],
+      "description": "重新读取 Codex Manager 聚合日志，生成最新质量指标、CSV 排名和 Markdown 汇总。",
+      "notes": "考虑到部分测试账号余额不足，该任务当前仅保留实现，不自动执行。"
+    }
+  ]
+}
