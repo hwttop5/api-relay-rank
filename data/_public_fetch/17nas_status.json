@@ -1,0 +1,230 @@
+{
+  "data": {
+    "HeaderNavModules": "{\n  \"home\": true,\n  \"console\": true,\n  \"pricing\": {\n    \"enabled\": true,\n    \"requireAuth\": true\n  },\n  \"docs\": true,\n  \"about\": true\n}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "VIP分组Claude逆向，价格倍率继续下调为0.5。支持原生message格式,cc平替,有思维链,有缓存,高智商\n可以跑opus,有claude-opus-4-6,claude-opus-4-7",
+        "extra": "claude-opus-4-7优惠",
+        "id": 28,
+        "publishDate": "2026-05-09T16:30:39.544Z",
+        "type": "default"
+      },
+      {
+        "content": "# 国产模型支持 Claude Code / Codex\n\n  镜核 AI 已支持 MiMo、DeepSeek、Kimi、GLM 等国产模型接入 Claude Code 与 Codex。\n\n  教程：\n  https://ai.17nas.com/tools/cn-coding-install/",
+        "extra": "国产模型支持 Claude Code / Codex",
+        "id": 27,
+        "publishDate": "2026-05-09T10:18:16.167Z",
+        "type": "default"
+      },
+      {
+        "content": "codex使用过程提示Selected model is at capacity. Please try a different model.是官方问题，继续尝试就可以。",
+        "extra": "继续尝试",
+        "id": 26,
+        "publishDate": "2026-05-05T12:19:36.236Z",
+        "type": "default"
+      },
+      {
+        "content": "系统升级完毕，default分组以添加小米大模型mimo-v2-pro，mimo-v2.5-pro，mimo-v2.5，mimo-v2-omni支持平台openclaw一键脚本使用。",
+        "extra": "小米大模型",
+        "id": 25,
+        "publishDate": "2026-05-02T07:05:11.506Z",
+        "type": "default"
+      },
+      {
+        "content": "以上架deepseek-v4-pro 和 deepseek-v4-flash模型，OpenClaw一件脚本以支持快速配置，default分组",
+        "extra": "deepseek-v4优惠",
+        "id": 23,
+        "publishDate": "2026-04-28T00:22:04.607Z",
+        "type": "default"
+      },
+      {
+        "content": "default分组倍率调整0.3，继续优惠使用GPT-5.5，gpt-5.4，性价比最高gpt-5.4-mini",
+        "extra": "",
+        "id": 22,
+        "publishDate": "2026-04-25T16:00:46.756Z",
+        "type": "default"
+      },
+      {
+        "content": "## 新增上线：Grok 生图生视频\n\n已支持 Grok 图片、视频生成，失败不扣费。\n\nGrok 在线生图：\nhttps://grok.17nas.com/\n\nChatBox 教程：\nhttps://www.notion.so/ChatBox-32245440159080ebb044f4980d9adad8?source=copy_link",
+        "extra": "Grok 生图生视频",
+        "id": 18,
+        "publishDate": "2026-04-21T11:28:09.072924Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "Claude Code / Claude API",
+        "id": 1,
+        "route": "Claude模型专用（Base URL，不加 /v1）",
+        "url": "https://api.17nas.com"
+      },
+      {
+        "color": "green",
+        "description": "OpenAI SDK / ChatBox / LobeChat 等客户端",
+        "id": 2,
+        "route": "GPT/国产模型专用（完整 URL）",
+        "url": "https://api.17nas.com/v1"
+      },
+      {
+        "color": "green",
+        "description": "OpenClaw 用 GPT/国产模型时选这条；示例模型：nas-ai/gpt-5.5",
+        "id": 4,
+        "route": "OpenClaw（GPT/国产路径）",
+        "url": "https://api.17nas.com/v1"
+      },
+      {
+        "color": "orange",
+        "description": "图片生成专用；适合 /v1/images/generations 与 /v1/images/edits",
+        "id": 5,
+        "route": "图片接口直连（不走 CF，长请求更稳）",
+        "url": "https://api-pic.17nas.com/v1"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": true,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://ai.17nas.com/tools/opencode-install/",
+    "email_verification": true,
+    "enable_batch_update": false,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "https://ai.17nas.com/tools/opencode-install/",
+        "id": 1,
+        "question": "OpenCode 小白安装指南"
+      },
+      {
+        "answer": "https://ai.17nas.com/tools/claude-code-install/",
+        "id": 2,
+        "question": "Claude Code 安装教程（macOS/Linux）"
+      },
+      {
+        "answer": "https://ai.17nas.com/tools/claude-code-install-windows/",
+        "id": 3,
+        "question": "Claude Code 安装教程（Windows）"
+      },
+      {
+        "answer": "https://ai.17nas.com/tools/openclaw-install/",
+        "id": 4,
+        "question": "OpenClaw 安装教程"
+      },
+      {
+        "answer": "https://ai.17nas.com/tools/cline-install/",
+        "id": 5,
+        "question": "Cline 安装教程"
+      },
+      {
+        "answer": "https://ai.17nas.com/tools/cherrystudio-install/",
+        "id": 6,
+        "question": "CherryStudio 安装教程"
+      },
+      {
+        "answer": "https://ai.17nas.com/tools/key-check/",
+        "id": 7,
+        "question": "API Key 检测工具"
+      },
+      {
+        "answer": "https://ai.17nas.com/tools/pricing/",
+        "id": 8,
+        "question": "可用模型与价格说明"
+      },
+      {
+        "answer": "请把 Claude 路径改成：provider=17nas-claude，api=anthropic-messages，baseUrl=https://api.17nas.com；不要用 nas-ai/claude-*。也可直接执行一键脚本重配： https://ai.17nas.com/tools/openclaw-install/",
+        "id": 9,
+        "question": "OpenClaw 报错 custom.input_schema: JSON schema is invalid 怎么办？"
+      },
+      {
+        "answer": "不要让机器人内部切换，直接执行切换脚本：Windows：& ([ScriptBlock]::Create((irm https://ai.17nas.com/tools/openclaw-install/set-model.ps1))) -Interactive；macOS/Linux：curl -fsSL https://ai.17nas.com/tools/openclaw-install/set-model.sh -o /tmp/claw-model.sh && bash /tmp/claw-model.sh --interactive",
+        "id": 10,
+        "question": "OpenClaw 如何稳定切换模型？"
+      },
+      {
+        "answer": "https://ai.17nas.com/tools/openclaw-install/",
+        "id": 11,
+        "question": "OpenClaw 一键修复 / 快速接入教程"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "<style>\n  /* 隐藏 new-api 默认 footer 元素 */\n  footer.footer, .footer-container, [class^=\"footer\"]:not(.semi-modal-footer) { display: none !important; }\n  /* 隐藏「设计与开发由 New API」浮动条（右下角 / 底部）*/\n  a[href*=\"github.com/QuantumNous/new-api\"] { display: none !important; }\n  div:has(> a[href*=\"github.com/QuantumNous/new-api\"]),\n  span:has(+ a[href*=\"github.com/QuantumNous/new-api\"]) { display: none !important; }\n  /* 自定义法律小字栏 */\n  .nas17-legal-footer {\n    max-width: 1100px; margin: 32px auto 20px; padding: 16px 24px;\n    text-align: center; font-size: 13px; color: #9ca3af;\n    border-top: 1px solid rgba(0,0,0,0.06); line-height: 1.8;\n  }\n  .nas17-legal-footer a {\n    color: #9ca3af; text-decoration: none; margin: 0 4px;\n    transition: color 0.2s, border-bottom-color 0.2s;\n    border-bottom: 1px solid transparent;\n  }\n  .nas17-legal-footer a:hover { color: #2563eb; border-bottom-color: rgba(37,99,235,0.3); }\n  .nas17-legal-footer .sep { color: #e5e7eb; margin: 0 6px; }\n  .nas17-legal-footer .copy { margin-left: 8px; color: #9ca3af; }\n  @media (max-width: 640px) {\n    .nas17-legal-footer { padding: 14px 16px; font-size: 12px; }\n    .nas17-legal-footer .sep { margin: 0 3px; }\n  }\n</style>\n<div class=\"nas17-legal-footer\">\n  <a href=\"/tools/legal/terms/\">服务条款</a><span class=\"sep\">·</span>\n  <a href=\"/tools/legal/privacy/\">隐私政策</a><span class=\"sep\">·</span>\n  <a href=\"/tools/legal/disclaimer/\">免责声明</a>\n  <span class=\"sep\">·</span>\n  <span class=\"copy\">© 2026 镜核 AI</span>\n</div>\n",
+    "github_client_id": "Ov23liD6oaIBjAknfnjx",
+    "github_oauth": true,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "/static/logo.png",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "镜核 AI 企业级中转服务",
+    "passkey_login": false,
+    "passkey_origins": "https://ai.17nas.com",
+    "passkey_rp_id": "ai.17nas.com",
+    "passkey_user_verification": "preferred",
+    "price": 1,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://ai.17nas.com",
+    "setup": true,
+    "start_time": 1778946884,
+    "stripe_unit_price": 8,
+    "system_name": "镜核 AI",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "classic",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": false,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": false,
+    "version": "v1.0.0-rc.4",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

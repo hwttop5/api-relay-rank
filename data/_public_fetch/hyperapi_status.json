@@ -1,0 +1,117 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "邀请用户和被邀请用户都可以增加 2 刀额度，每天签到领取最大 10 万 token 。\n",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-05-14T15:22:26.005Z",
+        "type": "default"
+      },
+      {
+        "content": "进入控制台，点击钱包管理，即可开始额度充值：\n\n100刀额度 ---- 40元\n\n200刀额度 ---- 78元\n\n300刀额度 ---- 105元\n\n400刀额度 ---- 136元\n\n500刀额度 ---- 150元\n\n600刀额度 ---- 168元\n\n700刀额度 ---- 189元\n\n800刀额度 ---- 200元",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-05-13T17:33:02.484Z",
+        "type": "default"
+      },
+      {
+        "content": "\n订阅套餐上线了🎺🎺，进入控制台，点击钱包管理，即可开始订阅\n\n月卡套餐(plus)\n59.90元\n有效期：1 个月\n总额度：$480.00\n\n月卡套餐(lite)\n39.90元\n有效期：1 个月\n总额度：$240.00\n\n周卡套餐(适合短周期项目)\n15.90元\n有效期:：7 天\n总额度：$120.00\n\n日卡套餐(灵活轻量)\n2.90元\n有效期：1天\n总额度: $20.00\n\n售后群：\n- Telegram: [https://t.me/hyperapiai](https://t.me/hyperapiai)\n- QQ 群：`1095326876`",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-04-30T16:59:30.000Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": true,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": " https://hyperapi.cc/docs",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "Iv23li3dpnwx0GU1qDxE",
+    "github_oauth": true,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "Hyper API",
+    "passkey_login": true,
+    "passkey_origins": "https://hyperapi.cc",
+    "passkey_rp_id": "hyperapi.cc",
+    "passkey_user_verification": "preferred",
+    "price": 1,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://hyperapi.cc",
+    "setup": true,
+    "start_time": 1777916498,
+    "stripe_unit_price": 8,
+    "system_name": "Hyper API",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "top_up_link": "",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": false,
+    "version": "v0.13.2",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

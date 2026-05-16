@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 import re
 from copy import deepcopy
 from pathlib import Path
@@ -16,7 +17,8 @@ WORKSPACE_ROOT = SCRIPT_PATH.parents[2]
 SOURCE_ROOTS = [APP_ROOT, WORKSPACE_ROOT]
 DATA_DIR = APP_ROOT / "data"
 SITE_DATA_PATH = DATA_DIR / "site-data.json"
-PUBLIC_FETCH_DIRS = [root / "_public_fetch" for root in SOURCE_ROOTS]
+PUBLIC_FETCH_DIR = Path(os.environ.get("PUBLIC_FETCH_DIR", DATA_DIR / "_public_fetch"))
+PUBLIC_FETCH_DIRS = [PUBLIC_FETCH_DIR]
 STATION_PRICING_OVERRIDES_PATH = APP_ROOT / "config" / "station_pricing_overrides.json"
 
 SHORT_TYPE_LABELS = {

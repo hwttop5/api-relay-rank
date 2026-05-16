@@ -1,0 +1,373 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":false}}",
+    "announcements": [
+      {
+        "content": "由于近期多次风控, codex分组将于今天(5月8日 20:00 UTC+8)调整分组价格为 0.2 倍率, 目前号池调整为 plus/pro 混合号池(无free账户)，后期大家如有需要可以单独开一个pro号池。",
+        "extra": "",
+        "id": 34,
+        "publishDate": "2026-05-08T02:17:27.669Z",
+        "type": "warning"
+      },
+      {
+        "content": "由于风控因素，明天(5月7日)会对codex进行分组/价格调整",
+        "extra": "",
+        "id": 33,
+        "publishDate": "2026-05-06T09:12:55.064Z",
+        "type": "warning"
+      },
+      {
+        "content": "GPT 5.5 终端启动命令:\n1. codex -m gpt-5.5\n2. 或者指定推理强度\n3. codex -m gpt-5.5 -c 'model_reasoning_effort=\"xhigh\"' ",
+        "extra": "",
+        "id": 32,
+        "publishDate": "2026-04-24T01:57:21.612Z",
+        "type": "success"
+      },
+      {
+        "content": "cc-max-stable 价格由 1.95 上调到 2.35 , 请留意使用.",
+        "extra": "",
+        "id": 31,
+        "publishDate": "2026-04-16T15:57:25.472Z",
+        "type": "warning"
+      },
+      {
+        "content": "官方今日下架了这些模型：\n1. gpt-5\n2. gpt-5-codex\n3. gpt-5.1\n4. gpt-5.1-codex\n5. gpt-5.1-codex-mini\n6. gpt-5.1-codex-max\n7. gpt-5.2-codex",
+        "extra": "",
+        "id": 30,
+        "publishDate": "2026-04-15T12:51:09.437Z",
+        "type": "default"
+      },
+      {
+        "content": "codex分组, 本周限时优惠(截止到本周天 4月19日)：\n1. cc-codex-to-claude 分组(codex转Claude, 可以直接在Claude使用)。0.12 倍率\n2. codex 分组, 都是 plus / pro 账户号池(响应快, 缓存高), 无free账户。 0.18 倍率\n3. 全部都是 plus / pro 账户号池, 可使用 gpt-5.3-codex-spark 模型, 终端启动命令：codex -m gpt-5.3-codex-spark",
+        "extra": "",
+        "id": 29,
+        "publishDate": "2026-04-13T01:52:04.902Z",
+        "type": "success"
+      },
+      {
+        "content": "新增Claude code分组\n1. cc-antigravity 分组, 反重力渠道.\n2. cc-codex-to-claude 分组, codex转claude模型。选这个分组可以直接接入Claude code使用, 无需任何调整.",
+        "extra": "",
+        "id": 28,
+        "publishDate": "2026-04-12T01:22:47.999Z",
+        "type": "success"
+      },
+      {
+        "content": "https://status.vbcode.io\n请根据各分组实时健康状态检测，合理选择可用分组",
+        "extra": "",
+        "id": 27,
+        "publishDate": "2026-04-11T08:35:39.539Z",
+        "type": "warning"
+      },
+      {
+        "content": "尽量使用 200K 模型，注意力集中也比较省token, \n使用下面命令切换到对应200K模型：\n\n/model claude-opus-4-6\n\n/model claude-sonnet-4-6",
+        "extra": "",
+        "id": 26,
+        "publishDate": "2026-04-05T04:27:50.659Z",
+        "type": "default"
+      },
+      {
+        "content": "cc-max 分组暂不可用，正在处理中。\n\n建议可以尝试 cc-vip-1 分组，能力与官方 key 无异， 缺点就是高峰期较慢。\n\ncc-max-stable 【不建议使用】，切号较快，缓存创建成本较高。\n\ncodex / gpt 分组稳定运行中。\n\n 服务状态监控:  https://status.vbcode.io",
+        "extra": "",
+        "id": 25,
+        "publishDate": "2026-03-31T02:52:49.160Z",
+        "type": "default"
+      },
+      {
+        "content": "## 📢 价格调整公告\n\n由于 Claude 风控策略调整，现对部分服务价格进行如下变更：\n\n- **cc-aws（cc 逆向渠道）**\n  - 原价格：0.35  \n  - 调整后：0.45  \n\n- **cc-max（max 官方订阅渠道）**\n  - 原价格：1.2  \n  - 调整后：1.45  \n\n请各位用户根据实际需求合理安排使用，感谢理解与支持！",
+        "extra": "",
+        "id": 24,
+        "publishDate": "2026-03-27T14:07:29.108Z",
+        "type": "default"
+      },
+      {
+        "content": "由于Claude风控原因，成本上涨。近期（周五, 2026-03-27 18:00 UTC+8）会进行分组/价格调整，请大家留意公告通知，随用随充。",
+        "extra": "",
+        "id": 23,
+        "publishDate": "2026-03-25T02:09:49.884Z",
+        "type": "default"
+      },
+      {
+        "content": "claude code 2.1.81版本存在缓存创建异常问题，建议暂时使用79及以下版本。\n版本切换命令:\nnpm i -g @anthropic-ai/claude-code@2.1.79\n, 停止自动更新配置(settings.json, env中配置):\nCLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: true\n, 降级后，原有配置文件、记忆全保留，可正常使用",
+        "extra": "",
+        "id": 22,
+        "publishDate": "2026-03-24T02:33:25.542Z",
+        "type": "default"
+      },
+      {
+        "content": "目前cc-aws逆向分组相对比较稳定了。cc-max分组少量可用。建议优先使用cc逆向分组 或者 codex分组。",
+        "extra": "",
+        "id": 21,
+        "publishDate": "2026-03-22T05:38:22.729Z",
+        "type": "default"
+      },
+      {
+        "content": "目前cc逆向组暂时恢复, opus4.6 速度较慢。cc-max不可用，需要再观察一段时间。",
+        "extra": "",
+        "id": 20,
+        "publishDate": "2026-03-21T00:48:07.743Z",
+        "type": "default"
+      },
+      {
+        "content": "cc-max官渠和cc逆向都大封号, 正在处理中。\n请各位先用codex过渡一下吧,感谢理解",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-03-20T06:13:25.233Z",
+        "type": "default"
+      },
+      {
+        "content": "cc逆向渠道已恢复，max (1.2倍率)渠道少量可用。",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-03-20T05:02:56.549Z",
+        "type": "default"
+      },
+      {
+        "content": "各位比较着急的可以先用cc-max少量余号，或者codex。",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-03-20T02:17:17.232Z",
+        "type": "default"
+      },
+      {
+        "content": "目前AWS分组逆向渠道异常，正在处理中。\nhttps://status.vbcode.io",
+        "extra": "",
+        "id": 16,
+        "publishDate": "2026-03-20T01:24:10.702Z",
+        "type": "default"
+      },
+      {
+        "content": "近期cc-max官渠分组封号严重, 若3月20日情况没有好转的话, 预计在北京时间 2026年3月20日 12:00 时上调倍率至 1.2",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2026-03-19T09:40:46.546Z",
+        "type": "default"
+      },
+      {
+        "content": "cc-max_ex 外接分组目前没号了，这两天封号严重，等缓解一下上号。\n\ncc-max 号池还有号可用。\n\nhttps://status.claude.com\n目前官方Opus 4.6 错误增多 部分故障，status_code=500, Overloaded 报错就是目前官方负载了。",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-03-18T13:11:28.652Z",
+        "type": "default"
+      },
+      {
+        "content": "https://claude.com/blog/1m-context-ga\n目前cc客户端升级到 v2.1.76,  使用 cc-max 分组(官方max订阅号池） , Opus 4.6 和 Sonnet 4.6 默认都是 1M上下文。",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2026-03-14T03:15:36.464Z",
+        "type": "default"
+      },
+      {
+        "content": "建议Claude Code 升级到最新版本2.1.72. CC已新增 Tool Search 域名限制仅BASE_URL=api.anthropic.com 时启用,使用第三方中转地址会被静默禁用。启用后可减少 Token 占用(MCP较多时)、提升模型表现、增加对话轮次。配置方法：编辑 ~/.claude/settings.json 添加 { \"env\": { \"ENABLE_TOOL_SEARCH\": \"auto\" } }。验证: 输入：你可以使用 ToolSearch 工具吗？配前：回复\"没有 ToolSearch 工具,配后：回复\"有 ToolSearch 工具可用",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-03-11T04:56:15.871Z",
+        "type": "default"
+      },
+      {
+        "content": "cc-max分组 (官方max号池), 价格下调到 1.0 , 仅限claude code官方客户端使用, 谢谢大家支持。",
+        "extra": "",
+        "id": 11,
+        "publishDate": "2026-03-10T03:31:35.808Z",
+        "type": "default"
+      },
+      {
+        "content": "gpt-5.4 已上线,  终端输入 codex -m gpt-5.4 启动",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-03-06T01:42:27.502Z",
+        "type": "default"
+      },
+      {
+        "content": "aws 渠道压力大, opus 4.5/4.6 资源有限, 请优先使用 aws 分组的  sonnet 4.6 。 或者切换 cc-max 分组",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-03-03T07:00:39.986Z",
+        "type": "default"
+      },
+      {
+        "content": "若遇到 status_code=504, bad response status code 504，API\n更换端点：https://www.vbcode.io<br>然后尝试<b>直连</b>或<b>换节点</b>使用. 尝试ESC重新发送, 或尝试新开终端使用<br><br>AWS 分组不支持一次性输出过长内容<br>若遇到 <b>Error writing file</b>，请让 Claude Code\n少量多次编辑文件，避免一次性写入过多内容。<br>建议在 <b>claude.md</b> 中增加约束说明，要求分段输出、分批修改文件。",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-03-03T03:51:33.304Z",
+        "type": "default"
+      },
+      {
+        "content": "- 🔹 **codex 分组价格** 下调至 **0.25**\n- 🔹 新增支持模型：**gpt-5.3-codex-spark**\n",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-02-28T03:25:51.524Z",
+        "type": "default"
+      },
+      {
+        "content": "## 🚀 直连 API 优选地址上线\n为进一步提升访问速度与稳定性，现已提供直连 API 端点优选地址：\n👉 https://www.vbcode.io\n相较于 https://vbcode.io ，直连地址整体响应更快，建议优先使用。",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-02-24T06:05:22.990Z",
+        "type": "default"
+      },
+      {
+        "content": "### ✅ 本次更新内容\n- 🔹 cc-aws（0.35 倍率）已同步上线 Sonnet 4.6  \n- 🔹 cc-max（官方渠道）已支持 Sonnet 4.6（仅限 Claude Code 客户端使用）",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-02-18T00:45:20.000Z",
+        "type": "default"
+      },
+      {
+        "content": "## ✅ 系统维护完成通知\n系统已顺利完成从 **CN2 GIA 机房** 升级至 **99.99% SLA 高可用机房架构** 的全部维护工作。",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-02-15T15:50:42.000Z",
+        "type": "default"
+      },
+      {
+        "content": "## 📢 系统公告｜模型更新通知\n### 🚀 **Claude Opus 4.6** 已上线\n### 🤖 **GPT-5.3-Codex** 已上线\n如有任何使用问题，欢迎反馈 🙌  , 感谢大家的支持，祝 Coding 顺利 ✨\n",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-02-06T02:06:36.544Z",
+        "type": "default"
+      },
+      {
+        "content": "## 📢 系统公告\n\n本站现已上线 **自助充值功能** 🎉  \n\n**充值入口：**  \n控制台 → 钱包管理  \n\n**使用说明：**  \n- 建议 **小额充值**，**最低充值金额 10 元**  \n- **RMB 与美元按 1:1 充值**  \n- 即用即付（Pay as you go）  \n- 账户 **余额不过期**  \n- **所有模型均为按量计费**，用多少算多少  \n- 可在 **控制台 → 使用日志** 中查看 **详细计费日志**\n\n如有任何问题，欢迎随时反馈 🙌",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-02-03T10:42:44.899Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "全球加速通用API端点",
+        "id": 1,
+        "route": "通用API端点-通用",
+        "url": "https://www.vbcode.io"
+      },
+      {
+        "color": "green",
+        "description": "专为亚太地区访问优化的香港节点，163pp / 4837 / 58453 三网直连加持",
+        "id": 2,
+        "route": "香港节点-亚太地区访问优化",
+        "url": "https://hk.vbcode.io"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://docs.vbcode.io",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "API端点使用 https://www.vbcode.io , 然后直连或者换节点使用. 尝试ESC重新发送, 或新开终端试一下.",
+        "id": 1,
+        "question": "报错status_code=504, bad response status code 504"
+      },
+      {
+        "answer": "若遇到 **Error writing file**，请让 Claude Code 少量多次编辑文件，避免一次性写入过多内容。\n建议在 `claude.md` 中增加约束说明，要求分段输出、分批修改文件。",
+        "id": 2,
+        "question": "AWS 分组不支持一次性输出过长内容"
+      },
+      {
+        "answer": " claude, codex, OpenClaw 配置问题都可以下载CC SWITCH管理, https://github.com/farion1231/cc-switch/releases , 然后在控制台-令牌管理进行一键导入( https://vbcode.io/console/token ).\n或查看文档: https://docs.vbcode.io",
+        "id": 3,
+        "question": "claude, codex, OpenClaw 配置问题"
+      },
+      {
+        "answer": "错误代码: 503. 报错内容: No available channel for model  或 model_not_found\n解决办法: 令牌管理-编辑-令牌分组下拉选必填。 Claude Code 选 cc- 开头的分组， codex 选 codex分组。令牌分组不要留空，必填。",
+        "id": 4,
+        "question": "报错API Error: 503 {\"error\": {\"code\":\"model_not_found\" "
+      },
+      {
+        "answer": "同一会话中请不要混用渠道, 使用 CC SWITCH 设置-代理-整流器 修复 或 重开终端。",
+        "id": 5,
+        "question": "报错status_code=400, {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"***.***.content.0: Invalid `signature` in `thinking` block\"}"
+      },
+      {
+        "answer": "问题原因: 是使用的IP地址被识别为机器人流量了, 请使用 https://iplark.com 用这个看看IP干净程度, 鼠标移动到右边ASN 可以看到 human / bot 比例。\n解决办法: 1. 不使用代理直连使用; 2. 代理换个干净IP的节点。",
+        "id": 6,
+        "question": "报错expected status 403 Forbidden"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://i.mji.rip/2026/01/31/fa624f9decf94dde907311d2f8ea661e.th.jpeg",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "vbcode.io",
+    "passkey_login": false,
+    "passkey_origins": "https://vbcode.io",
+    "passkey_rp_id": "vbcode.io",
+    "passkey_user_verification": "preferred",
+    "price": 1,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://vbcode.io",
+    "setup": true,
+    "start_time": 1778603092,
+    "stripe_unit_price": 8,
+    "system_name": "VBCode.io",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "top_up_link": "",
+    "turnstile_check": false,
+    "turnstile_site_key": "0x4AAAAAACWAbz4UHQC_cDnE",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": false,
+    "version": "v0.13.1",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

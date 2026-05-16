@@ -7,6 +7,12 @@ from scripts import build_site_data as build_site_data
 
 
 class BuildSiteDataTests(unittest.TestCase):
+    def test_public_fetch_dir_defaults_to_repo_local_data_directory(self) -> None:
+        self.assertEqual(
+            build_site_data.PUBLIC_FETCH_DIR,
+            build_site_data.APP_ROOT / "data" / "_public_fetch",
+        )
+
     def test_apply_station_pricing_overrides_corrects_52mx_tiers(self) -> None:
         overrides = build_site_data.load_station_pricing_overrides()
         stations = {

@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import re
 import subprocess
 from pathlib import Path
@@ -18,7 +19,7 @@ APP_ROOT = SCRIPT_PATH.parents[1]
 WORKSPACE_ROOT = SCRIPT_PATH.parents[2]
 SOURCE_ROOTS = [APP_ROOT, WORKSPACE_ROOT]
 SITE_DATA_PATH = APP_ROOT / "data" / "site-data.json"
-PUBLIC_FETCH_DIR = WORKSPACE_ROOT / "_public_fetch"
+PUBLIC_FETCH_DIR = Path(os.environ.get("PUBLIC_FETCH_DIR", APP_ROOT / "data" / "_public_fetch"))
 TIMEOUT = 15
 USER_AGENT = "api-relay-rank/0.1 (+https://local.codex)"
 

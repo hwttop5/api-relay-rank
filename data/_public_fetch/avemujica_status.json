@@ -1,0 +1,153 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "为统一多提供商的接入与管理，我们近期会对额度/订阅充值进行简化，统一为1:1充值，并调整目前分组为0.15倍率分组，订阅额度也会进行调整以匹配之前的0.1倍率，预计这几天内自动完成，您的额度和分组会被自动更新，以避免阻断现有服务运行",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-05-16T13:05:37.836Z",
+        "type": "default"
+      },
+      {
+        "content": "有的朋友可能还在使用一些传统的chatweb/chatapp，我们很推荐各位尝试一下openai官方的codex-app：https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi（当然，写代码的可能觉得codex-cli就很好了），站内也有一份文档做配置参考：https://docs.avemujica.moe/cli/3-codex 安装完成后，打开app，codex/gpt就可以直接在你的电脑上为你完成你的工作😊",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-05-13T18:43:51.853Z",
+        "type": "default"
+      },
+      {
+        "content": "已调整日卡订阅购买限制，现在允许同时持有5张日卡，但天数并不会叠加，而是获取新的独立额度，每个订阅仍然需要1天内用完，本意是不希望您囤积太多额度，而是在需要时购买使用",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-05-11T15:12:09.666Z",
+        "type": "default"
+      },
+      {
+        "content": "openai官方会对会话内容进行网络安全检查，一旦会话被标记为网络安全问题，就会持续报错，无法继续使用，这并非本站可以控制的，如确有网络安全需求，请联系商务邮箱：business@avemujica.moe",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-05-11T14:36:11.520Z",
+        "type": "default"
+      },
+      {
+        "content": "gpt-image-2 的图像生成任务可能需要较长处理时间，并可能受 Cloudflare 基础设施限制影响而出现超时或请求中断。因此，我们暂不承诺该模型的稳定供应能力。如果确实需要生成图片，可以使用https://api-cn.avemujica.moe做为baseurl",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-05-10T09:47:27.404Z",
+        "type": "default"
+      },
+      {
+        "content": "联系方式\nabuse@avemujica.moe 滥用\nsupport@avemujica.moe 工单\nbusiness@avemujica.moe 商业合作",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-05-10T01:19:48.305Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "CN",
+        "id": 1,
+        "route": "CN",
+        "url": "https://api-cn.avemujica.moe"
+      },
+      {
+        "color": "green",
+        "description": "默认",
+        "id": 2,
+        "route": "默认",
+        "url": "https://api.avemujica.moe"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://docs.avemujica.moe",
+    "email_verification": true,
+    "enable_batch_update": false,
+    "enable_data_export": true,
+    "enable_drawing": false,
+    "enable_task": true,
+    "faq": [],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://cd.avemujica.moe/favicon.svg",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "Avemujica API",
+    "passkey_login": false,
+    "passkey_origins": "https://api.avemujica.moe",
+    "passkey_rp_id": "api.avemujica.moe",
+    "passkey_user_verification": "preferred",
+    "price": 0.15,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://api.avemujica.moe",
+    "setup": true,
+    "start_time": 1778350361,
+    "stripe_unit_price": 0.15,
+    "system_name": "Avemujica API",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "top_up_link": "",
+    "turnstile_check": true,
+    "turnstile_site_key": "0x4AAAAAADHy1VSlRMT-U2oD",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": true,
+    "version": "v0.13.2",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

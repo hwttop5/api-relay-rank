@@ -1,0 +1,148 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":false,\"user\":true,\"setting\":true}}",
+    "_qn": "new-api",
+    "announcements": [
+      {
+        "content": "openai gpt5.5,gpt-image-2开通上线",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-04-24T23:15:55.540Z",
+        "type": "default"
+      },
+      {
+        "content": "模型上线：gpt-5.4-mini，gpt-5.4-high,gpt-5.4-low,gpt-5.4-medium,gpt-5.4-xhigh",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-03-20T06:56:07.558Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "大宽带支持高并发",
+        "id": 1,
+        "route": "全球负载均衡线路",
+        "url": "https://cn.chrouter.com:8443"
+      },
+      {
+        "color": "blue",
+        "description": "大宽带支持高并发",
+        "id": 2,
+        "route": "全球负载均衡线路",
+        "url": "https://api.chrouter.com"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": true,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "￥",
+    "data_export_default_time": "day",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://cnrouter.apifox.cn",
+    "email_verification": true,
+    "enable_batch_update": false,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "1.提供多种计费模式：按请求次数、按token数量等 2.实时显示用户的API使用情况和费用.",
+        "id": 1,
+        "question": "AI资源的计费模式是怎样的？"
+      },
+      {
+        "answer": "只需将原API请求地址替换为我们的中转地址，其余参数保持不变。例如：\n\n// 原地址 https://api.openai.com/v1/chat/completions\n\n// 替换为 https://我们的域名/v1/chat/completions 大部分客户端库只需修改baseURL和APIKEY即可无缝切换。",
+        "id": 2,
+        "question": "如何将现有代码迁移？"
+      },
+      {
+        "answer": "常见的API请求失败原因及解决方案：\n\n1.认证错误：检查API密钥是否正确 2.余额不足：请及时充值账户 3.参数错误：参考文档检查请求参数 4.模型不可用：尝试切换到其他可用模型 5.请求超时：可能是网络问题或服务压力大，请稍后重试\n\n如果无法解决，可联系在线客服",
+        "id": 3,
+        "question": "API请求失败怎么办？"
+      },
+      {
+        "answer": "我们承诺99.9%的服务可用性，通过全球分布式部署和负载均衡确保服务稳定。对企业用户提供服务级别协议(SLA)保障。",
+        "id": 4,
+        "question": "服务可用性保障？"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "QUNL API",
+    "passkey_login": false,
+    "passkey_origins": "https://api.chrouter.com",
+    "passkey_rp_id": "api.chrouter.com",
+    "passkey_user_verification": "preferred",
+    "price": 6.8,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "register_default_group": "default",
+    "self_use_mode_enabled": false,
+    "server_address": "https://api.chrouter.com",
+    "setup": true,
+    "start_time": 1778194112,
+    "stripe_unit_price": 8,
+    "system_name": "QUNL API",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "top_up_link": "https://cn.chrouter.com:8443",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": false,
+    "version": "v0.0.0",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

@@ -1,0 +1,68 @@
+name: Refresh Site Data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "10 19 * * *"
+    - cron: "25 19 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-site-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Python dependencies
+        run: python -m pip install requests
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Refresh public announcements and pricing snapshots
+        run: python scripts/fetch_public_content.py --announcements --multiplier-snapshots
+
+      - name: Detect changes
+        id: changes
+        shell: bash
+        run: |
+          if git diff --quiet -- data/site-data.json data/_public_fetch; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit refreshed data
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/site-data.json data/_public_fetch
+          git commit -m "chore(data): refresh public site snapshots"
+
+      - name: Push refreshed data
+        if: steps.changes.outputs.changed == 'true'
+        run: git push origin HEAD:master

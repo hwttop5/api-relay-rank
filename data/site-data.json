@@ -3538,6 +3538,14 @@
         {
           "groupName": "gpt-image-2",
           "groupMultiplier": 1.0
+        },
+        {
+          "groupName": "aws官key",
+          "groupMultiplier": 0.8
+        },
+        {
+          "groupName": "claude-kiro企业",
+          "groupMultiplier": 0.7
         }
       ],
       "rechargeTiers": [
@@ -4242,6 +4250,14 @@
         {
           "groupName": "test2",
           "groupMultiplier": 1.7
+        },
+        {
+          "groupName": "AwsClaude",
+          "groupMultiplier": 1.0
+        },
+        {
+          "groupName": "GptPro-Fast",
+          "groupMultiplier": 1.2
         }
       ],
       "rechargeTiers": [
@@ -4639,6 +4655,14 @@
         "vip分组"
       ],
       "announcements": [
+        {
+          "id": "6",
+          "publishedAt": "2026-05-16T13:05:37.836Z",
+          "type": "default",
+          "extra": "",
+          "content": "为统一多提供商的接入与管理，我们近期会对额度/订阅充值进行简化，统一为1:1充值，并调整目前分组为0.15倍率分组，订阅额度也会进行调整以匹配之前的0.1倍率，预计这几天内自动完成，您的额度和分组会被自动更新，以避免阻断现有服务运行",
+          "sourceUrl": "https://api.avemujica.moe"
+        },
         {
           "id": "5",
           "publishedAt": "2026-05-13T18:43:51.853Z",
@@ -5579,6 +5603,10 @@
         {
           "groupName": "svip",
           "groupMultiplier": 0.1
+        },
+        {
+          "groupName": "codex-stable",
+          "groupMultiplier": 0.5
         }
       ],
       "rechargeTiers": [
@@ -5832,6 +5860,14 @@
         {
           "groupName": "codex-vip",
           "groupMultiplier": 0.1
+        },
+        {
+          "groupName": "codex-vip",
+          "groupMultiplier": 0.155
+        },
+        {
+          "groupName": "vip-福利分组",
+          "groupMultiplier": 0.085
         }
       ],
       "rechargeTiers": [
@@ -6323,6 +6359,14 @@
         {
           "groupName": "codex",
           "groupMultiplier": 0.1
+        },
+        {
+          "groupName": "claude_kiro",
+          "groupMultiplier": 0.01
+        },
+        {
+          "groupName": "codex",
+          "groupMultiplier": 0.2
         }
       ],
       "rechargeTiers": [
@@ -7629,6 +7673,18 @@
         {
           "groupName": "default",
           "groupMultiplier": 1.0
+        },
+        {
+          "groupName": "Claude",
+          "groupMultiplier": 10.0
+        },
+        {
+          "groupName": "codex-cheap",
+          "groupMultiplier": 0.8
+        },
+        {
+          "groupName": "codex-pro-cheap",
+          "groupMultiplier": 0.8
         }
       ],
       "rechargeTiers": [
@@ -8806,6 +8862,14 @@
         {
           "groupName": "满血cc max",
           "groupMultiplier": 2.4
+        },
+        {
+          "groupName": "Codex Pro",
+          "groupMultiplier": 0.6
+        },
+        {
+          "groupName": "Codex Pro/ Team",
+          "groupMultiplier": 0.6
         }
       ],
       "rechargeTiers": [
@@ -9564,6 +9628,10 @@
         {
           "groupName": "测试分组",
           "groupMultiplier": 5.0
+        },
+        {
+          "groupName": "Claude Code专用-逆向",
+          "groupMultiplier": 0.8
         }
       ],
       "rechargeTiers": [
@@ -11527,6 +11595,22 @@
         {
           "groupName": "nano-banana",
           "groupMultiplier": 1.0
+        },
+        {
+          "groupName": "cc-anthropic",
+          "groupMultiplier": 3.0
+        },
+        {
+          "groupName": "cc-aws-bedrock",
+          "groupMultiplier": 2.0
+        },
+        {
+          "groupName": "cc-mix",
+          "groupMultiplier": 2.2
+        },
+        {
+          "groupName": "default",
+          "groupMultiplier": 666666.0
         }
       ],
       "rechargeTiers": [

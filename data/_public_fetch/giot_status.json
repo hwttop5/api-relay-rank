@@ -1,0 +1,319 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "#### gpt5.5已上架【codex】分组\n#### gpt-image-2已上架【codex】【codex-特价】分组，按次计费，【codex】分组0.2/次(合0.08/次)，【codex-特价】分组0.032/次(合0.0128/次)。支持cherry studio使用，请求路径： /v1/images/generations\n\n#### 即日起，【codex-特价】分组恢复，每日限量供应",
+        "extra": "",
+        "id": 28,
+        "publishDate": "2026-04-24T01:58:00.974Z",
+        "type": "default"
+      },
+      {
+        "content": "#### opus4.7已上线【高速】、【逆向】分组，更新最新ClaudeCode即可使用\n#### 【逆向】分组高智商渠道恢复，倍率恢复至3.25",
+        "extra": "",
+        "id": 27,
+        "publishDate": "2026-04-16T15:45:48.414Z",
+        "type": "success"
+      },
+      {
+        "content": "上架【free】分组，倍率0，以开源小模型居多，不限制并发，适合做翻译",
+        "extra": "",
+        "id": 26,
+        "publishDate": "2026-04-10T16:43:55.936Z",
+        "type": "success"
+      },
+      {
+        "content": "上架【claude-逆向】分组，倍率3.25(合1.3/刀)，5min缓存，支持1M上下文",
+        "extra": "",
+        "id": 25,
+        "publishDate": "2026-04-08T12:02:07.482Z",
+        "type": "success"
+      },
+      {
+        "content": "模型可用性监测：https://check.huizhicode.com\n技术交流QQ群：543293255",
+        "extra": "",
+        "id": 24,
+        "publishDate": "2026-04-08T02:08:53.176Z",
+        "type": "success"
+      },
+      {
+        "content": "#### 分组倍率调整公告，以下分组已恢复\n#### 【高速】分组倍率调整为4.5(合1.8/刀)\n#### 【AmazonQ】分组倍率调整为1.5(合0.6/刀)\n#### 近期Claude系列模型稳定性差，请谅解",
+        "extra": "",
+        "id": 23,
+        "publishDate": "2026-03-26T08:54:36.637Z",
+        "type": "success"
+      },
+      {
+        "content": "#### 新增【codex-特价】分组,倍率0.08，模型保真\n#### 新增【claude-codex转换】分组,倍率0.1，支持思考、工具调用\n#### 转换关系\n#### haiku4.5-->gpt-5.2-codex\n#### sonnet4.6-->gpt-5.3-codex\n#### opus4.6-->gpt-5.4",
+        "extra": "",
+        "id": 22,
+        "publishDate": "2026-03-13T15:12:53.316Z",
+        "type": "success"
+      },
+      {
+        "content": "【claude-kiro无缓存】分组已恢复，支持opus4.6，稳定性未知",
+        "extra": "",
+        "id": 21,
+        "publishDate": "2026-03-12T11:30:44.763Z",
+        "type": "success"
+      },
+      {
+        "content": "AmazonQ渠道的opus系列模型恢复，稳定性未知",
+        "extra": "",
+        "id": 20,
+        "publishDate": "2026-03-11T02:43:42.380Z",
+        "type": "success"
+      },
+      {
+        "content": "因今日Amazon大规模风控影响，【AmazonQ】分组的opus系列模型替换为其他逆向渠道(1h缓存无1m上下文)，【kiro无缓存】分组暂停，恢复时间待定",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-03-03T08:48:40.365Z",
+        "type": "error"
+      },
+      {
+        "content": "**claude-opus-4-6**已上架【高速】分组，价格与opus4.5一致",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-02-06T00:57:43.301Z",
+        "type": "success"
+      },
+      {
+        "content": "【给大家拜个早年】近期收到了大量用户反馈AmazonQ分组在长上下文表现不佳，特此上架了【claude-kiro无缓存】分组，倍率0.09(合0.036/刀)，相比与缓存命中(0.1倍)价格更低",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-02-04T18:18:29.733Z",
+        "type": "success"
+      },
+      {
+        "content": "#### 【分组价格调整公告】Anthropic风控已经持续一周，期间封禁了大量max账号且无退款。为了保障可用性，决定自2026年1月22日23:59将【高速】分组倍率调整为2.8(合1.12/刀)；【AmazonQ】分组倍率调整为0.8(0.32/刀)",
+        "extra": "",
+        "id": 16,
+        "publishDate": "2026-01-22T09:57:44.738Z",
+        "type": "warning"
+      },
+      {
+        "content": "#### 【模型上架公告】特价分组上线了opus4.5模型，下午高峰期号池压力较大，建议避开13:00-19:00使用",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2026-01-20T12:52:05.905Z",
+        "type": "default"
+      },
+      {
+        "content": "#### 【模型服务恢复通知】由于Amazon官方下架了opus4.5模型，现接入其他逆向渠道的opus4.5模型，AmazonQ分组倍率保持不变\n\n#### 特价分组已经恢复，无opus模型",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-01-18T06:18:11.240Z",
+        "type": "success"
+      },
+      {
+        "content": "#### 受Anthropic风控影响，自2026年1月15日23:59起，对分组做出如下调整：\n#### 下架**claude-code-慢速**\n#### 上调**claude-code-高速**分组倍率为1.8(0.72/刀)",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2026-01-15T06:12:46.664Z",
+        "type": "warning"
+      },
+      {
+        "content": "因近日Anthropic大规模风控影响，目前claude会不太稳定，受影响的渠道：[慢速]、[高速]，正在想办法解决。请您及时关注！",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-01-08T03:53:12.889Z",
+        "type": "default"
+      },
+      {
+        "content": "## 分组价格公示\n\n| 分组类型 | 消耗倍率 | 折合单价 |\n| :--- | :---: | :---: |\n| Azure分组(官方满血1H缓存) | `2.4x` | `0.9552元 / 刀` |\n| AmazonQ分组(5min缓存) | `0.7x` | `0.2786元 / 刀` |\n| 慢速分组(5min缓存) | `1x` | `0.398元 / 刀` |\n| 无限制分组(可酒馆可NSFW) | `1.5x` | `0.597元 / 刀` |\n| 高速分组(MAX号池5min缓存) | `1.7x` | `0.6766元 / 刀` |\n| 特价分组(5min缓存) | `0.1x` | `0.0398元 / 刀` |",
+        "extra": "",
+        "id": 11,
+        "publishDate": "2025-12-27T18:04:34.989Z",
+        "type": "default"
+      },
+      {
+        "content": "#### 服务停机公告\n#### 计划于12月28日01:00进行服务升级&分组调整，持续时间1小时。\n#### 分组变更通知\n#### 由于Claude-Code-Azure分组成本上涨，倍率由0.7调整为2.4，支持1H缓存，1M上下文，不限制使用场景。避免过度扣费，分组名称改为：Claude-Azure\n#### 为保障低倍率分组可用性，上架Claude-AmazonQ分组，倍率0.7，5min缓存\n#### Claude-code-高速分组缓存时间变更为5min",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2025-12-27T08:16:08.462Z",
+        "type": "warning"
+      },
+      {
+        "content": "#### gpt-5.2-codex已上线，模型：gpt-5.2-codex",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2025-12-19T02:31:34.943Z",
+        "type": "success"
+      },
+      {
+        "content": "#### 新增Gemini分组，倍率1，包括问答和生图模型\n#### 生图模型按次计费",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2025-12-18T10:03:29.018Z",
+        "type": "success"
+      },
+      {
+        "content": "#### 新增claude-code-Azure分组，倍率0.7，不限制使用场景，速度快！1H缓存，支持1M上下文，支持思考",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2025-12-17T05:41:15.348Z",
+        "type": "success"
+      },
+      {
+        "content": "#### 线路升级公告\n#### 已上线：2000M香港、100M洛杉矶线路。请参阅【API信息】",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2025-12-15T07:37:00.813Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "#### 新增CodeX分组，倍率1.0，支持gpt5.1\n#### 以上新增分组您可前往【令牌管理】查看",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2025-12-03T06:25:55.925Z",
+        "type": "success"
+      },
+      {
+        "content": "技术交流QQ群：543293255",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2025-11-30T05:00:46.974Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "国外推荐使用",
+        "id": 1,
+        "route": "欧洲节点",
+        "url": "https://code.giot.edu.kg"
+      },
+      {
+        "color": "green",
+        "description": "国内推荐",
+        "id": 2,
+        "route": "香港节点",
+        "url": "https://code.huizhicode.com"
+      },
+      {
+        "color": "cyan",
+        "description": "实时更新",
+        "id": 4,
+        "route": "模型可用性检测",
+        "url": "https://check.huizhicode.com/"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": true,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://docs.newapi.pro",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "#### 报错问题API Error: 400 {\"error\":{\"type\":\"<nil>\"\"message\"：****,***是Claude code的bug，重开新对话即可解决。\n#### 报错：Unable to connect to Anthropic services。找到用户文件夹下的.claude.json文件，在json的最外层添加\"hasCompletedOnboarding\": true",
+        "id": 1,
+        "question": "常见API报错"
+      },
+      {
+        "answer": "/model sonnet[1m]",
+        "id": 2,
+        "question": "1M上下文模型切换命令"
+      },
+      {
+        "answer": "#### 1H缓存适合两次使用间隔大于5分钟的场景。\n#### 5min缓存适合持续高强度使用，只要5分钟内有缓存命中则自动续期。\n",
+        "id": 3,
+        "question": "1H和5min缓存的区别"
+      },
+      {
+        "answer": "#### 在\"你的用户/.claude/settings.json\"文件的env中加入下面内容：\n#### \"CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC\": \"1\", \"DISABLE_TELEMETRY\": \"1\"",
+        "id": 4,
+        "question": "报错520"
+      },
+      {
+        "answer": "上下文自动压缩有bug，重开对话，不要使用/resume恢复",
+        "id": 5,
+        "question": "claude-AmazonQ分组出现422"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "Iv23liIor1uvcQUIit4a",
+    "github_oauth": true,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://s41.ax1x.com/2025/12/24/pZG5Zzq.png",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "New API",
+    "passkey_login": false,
+    "passkey_origins": "https://code.giot.edu.kg",
+    "passkey_rp_id": "code.giot.edu.kg",
+    "passkey_user_verification": "preferred",
+    "price": 1,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "CNY",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://code.giot.edu.kg",
+    "setup": true,
+    "start_time": 1778683343,
+    "stripe_unit_price": 8,
+    "system_name": "慧智AI",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "classic",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": true,
+    "version": "v1.0.0-rc.4",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}
