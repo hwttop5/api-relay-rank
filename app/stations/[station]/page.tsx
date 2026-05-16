@@ -2,34 +2,12 @@ import Link from "next/link";
 import { ArrowLeft, ExternalLink, ShieldCheck } from "lucide-react";
 
 import { AnnouncementFeed } from "@/components/announcement-feed";
+import { ThemeControls } from "@/components/theme-toggle";
 import { TierOverview } from "@/components/tier-overview";
 import { formatDateTime, formatMultiplier, formatPercent, formatScore, formatSeconds } from "@/lib/format";
 import { getStationRecord } from "@/lib/site-data";
 
 export const dynamic = "force-dynamic";
-
-function getOfficialUrl(href: string) {
-  try {
-    return new URL(href).origin;
-  } catch {
-    return href;
-  }
-}
-
-function StationUrlLink({ href }: { href: string }) {
-  if (!href) {
-    return <span className="subtle">未记录</span>;
-  }
-
-  const resolvedHref = getOfficialUrl(href);
-
-  return (
-    <a href={resolvedHref} target="_blank" rel="noreferrer" className="station-link inline-actions">
-      <span>{resolvedHref}</span>
-      <ExternalLink size={14} />
-    </a>
-  );
-}
 
 export default async function StationPage({ params }: { params: Promise<{ station: string }> }) {
   const resolvedParams = await params;
@@ -42,7 +20,7 @@ export default async function StationPage({ params }: { params: Promise<{ statio
   return (
     <main className="app-shell">
       <div className="page-shell">
-        <header className="topbar">
+        <header className="topbar station-topbar">
           <div className="brand">
             <div className="brand-title">
               <ShieldCheck size={18} />
@@ -52,21 +30,24 @@ export default async function StationPage({ params }: { params: Promise<{ statio
               {station.stationTypeShortLabel} · {station.platformGuess || "平台未识别"} · {siteData.projectName}
             </div>
           </div>
-          <div className="topbar-meta">
-            <Link href="/" className="tiny-button">
-              <ArrowLeft size={14} />
-              返回排名
-            </Link>
-            {station.url ? (
-              <a href={station.url} target="_blank" rel="noreferrer" className="tiny-button">
-                <ExternalLink size={14} />
-                打开官网
-              </a>
-            ) : null}
+          <div className="topbar-meta station-topbar-meta">
+            <div className="station-topbar-links">
+              <Link href="/" className="tiny-button detail-topbar-button">
+                <ArrowLeft size={13} />
+                返回排名
+              </Link>
+              {station.url ? (
+                <a href={station.url} target="_blank" rel="noreferrer" className="tiny-button detail-topbar-button">
+                  <ExternalLink size={13} />
+                  打开官网
+                </a>
+              ) : null}
+            </div>
+            <ThemeControls />
           </div>
         </header>
 
-        <section className="section">
+        <section className="section station-hero">
           <div className="section-head">
             <div>
               <h1 className="section-title">站点详情</h1>
@@ -77,18 +58,16 @@ export default async function StationPage({ params }: { params: Promise<{ statio
           <div className="section-body">
             <div className="detail-grid">
               <div className="detail-card">
-                <h3>网址</h3>
-                <p>
-                  <StationUrlLink href={station.url} />
-                </p>
-              </div>
-              <div className="detail-card">
                 <h3>工作时段排名</h3>
                 <p>{work ? `#${work.rank} · ${formatScore(work.totalScore)} · ${formatPercent(work.correctRate)}` : "暂无正式排名数据"}</p>
               </div>
               <div className="detail-card">
                 <h3>非工作时段排名</h3>
                 <p>{off ? `#${off.rank} · ${formatScore(off.totalScore)} · ${formatPercent(off.correctRate)}` : "暂无正式排名数据"}</p>
+              </div>
+              <div className="detail-card">
+                <h3>平台判断</h3>
+                <p>{station.platformGuess || "平台未识别"}</p>
               </div>
               <div className="detail-card">
                 <h3>公告数量</h3>
@@ -101,7 +80,7 @@ export default async function StationPage({ params }: { params: Promise<{ statio
           </div>
         </section>
 
-        <section className="section">
+        <section className="section tier-section">
           <div className="section-head">
             <div>
               <h2 className="section-title">全部档位倍率表</h2>
@@ -113,7 +92,7 @@ export default async function StationPage({ params }: { params: Promise<{ statio
           </div>
         </section>
 
-        <section className="section">
+        <section className="section announcement-section">
           <div className="section-head">
             <div>
               <h2 className="section-title">最新公告</h2>
@@ -125,7 +104,7 @@ export default async function StationPage({ params }: { params: Promise<{ statio
           </div>
         </section>
 
-        <section className="section">
+        <section className="section snapshot-section">
           <div className="section-head">
             <div>
               <h2 className="section-title">排名快照</h2>

@@ -1,0 +1,16 @@
+{
+  "52mx": {
+    "groupMultipliers": [
+      {
+        "groupName": "default",
+        "groupMultiplier": 1
+      }
+    ],
+    "rechargeMode": "linear_rmb_to_usd",
+    "usdPerRmb": 10,
+    "rechargeNamePattern": "wallet topup (\\d+(?:\\.\\d+)?) RMB",
+    "forcedAdoptedTier": "default | wallet topup 10 RMB",
+    "assumptionText": "人工核验：默认分组倍率 1；1 RMB = 10 USD 额度；钱包接口未注明有效期",
+    "authoritative": true
+  }
+}

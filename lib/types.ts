@@ -5,8 +5,10 @@ export type StationType = "subscription" | "non_subscription" | "mixed" | "unkno
 export interface DeclarationPayload {
   title: string;
   subtitle: string;
+  conclusion?: string[];
   items: string[];
   environment: string;
+  coreItems?: string[];
   formula: string;
   adoptedMultiplierRule: string;
   scoring: string;

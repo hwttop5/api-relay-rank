@@ -1,5 +1,7 @@
 node_modules/
 .next/
+.next-dev/
+.playwright-mcp/
 *.log
 .next-*.log
 devserver.log
