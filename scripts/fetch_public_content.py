@@ -22,6 +22,8 @@ SITE_DATA_PATH = APP_ROOT / "data" / "site-data.json"
 PUBLIC_FETCH_DIR = Path(os.environ.get("PUBLIC_FETCH_DIR", APP_ROOT / "data" / "_public_fetch"))
 TIMEOUT = 15
 USER_AGENT = "api-relay-rank/0.1 (+https://local.codex)"
+EMAIL_PATTERN = re.compile(r"\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}\b")
+LOCALHOST_PATTERN = re.compile(r"^(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$", re.IGNORECASE)
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -41,6 +43,23 @@ def split_urls(value: str | None) -> list[str]:
     if not value:
         return []
     return [item.strip() for item in str(value).split(";") if item.strip()]
+
+
+def is_public_station_key(station_key: Any) -> bool:
+    text = str(station_key or "").strip()
+    if not text:
+        return False
+    if EMAIL_PATTERN.search(text):
+        return False
+    if "printcap.ai-" in text.lower():
+        return False
+    return True
+
+
+def is_public_base_url(value: Any) -> bool:
+    parsed = urlparse(str(value or "").strip())
+    host = parsed.netloc.lower()
+    return not LOCALHOST_PATTERN.fullmatch(host)
 
 
 def normalize_base_url(value: str) -> str:
@@ -70,15 +89,22 @@ def load_stations() -> list[dict[str, Any]]:
         rows = read_csv(checklist_path)
         stations: list[dict[str, Any]] = []
         for row in rows:
+            station_key = row.get("station", "")
+            if not is_public_station_key(station_key):
+                continue
             urls = split_urls(row.get("urls"))
             if not urls:
                 continue
-            normalized_urls = [normalized for normalized in (normalize_base_url(url) for url in urls) if normalized]
+            normalized_urls = [
+                normalized
+                for normalized in (normalize_base_url(url) for url in urls)
+                if normalized and is_public_base_url(normalized)
+            ]
             if not normalized_urls:
                 continue
             stations.append(
                 {
-                    "station": row.get("station", ""),
+                    "station": station_key,
                     "platform_guess": row.get("platform_guess", ""),
                     "urls": normalized_urls,
                 }
@@ -91,13 +117,16 @@ def load_stations() -> list[dict[str, Any]]:
     site_data = json.loads(SITE_DATA_PATH.read_text(encoding="utf-8"))
     stations = []
     for station in site_data.get("stations", []):
+        station_key = station.get("key", "")
+        if not is_public_station_key(station_key):
+            continue
         url = str(station.get("url") or "").strip()
         normalized_url = normalize_base_url(url)
-        if not normalized_url:
+        if not normalized_url or not is_public_base_url(normalized_url):
             continue
         stations.append(
             {
-                "station": station.get("key", ""),
+                "station": station_key,
                 "platform_guess": station.get("platformGuess", ""),
                 "urls": [normalized_url],
             }

@@ -20,6 +20,13 @@ class BuildSiteDataTests(unittest.TestCase):
             build_site_data.APP_ROOT / "data" / "_public_fetch",
         )
 
+    def test_private_station_identifiers_are_not_public(self) -> None:
+        self.assertFalse(build_site_data.is_public_station_key("printcap.ai-ttop5@qq.com"))
+        self.assertFalse(build_site_data.is_public_station_key("printcap.ai-2026-05-17-01"))
+        self.assertFalse(build_site_data.is_public_station_url("http://127.0.0.1:50124"))
+        self.assertTrue(build_site_data.is_public_station_key("nexus"))
+        self.assertTrue(build_site_data.is_public_station_url("https://nexus.1982video.cn"))
+
     def test_apply_station_pricing_overrides_corrects_52mx_tiers(self) -> None:
         overrides = build_site_data.load_station_pricing_overrides()
         stations = {

@@ -56,6 +56,7 @@ HIGHLIGHT_PHRASE = "所以本排名更关注各中转站的服务下限。"
 DISCLAIMER_EMPHASIS = "本排名无任何利益相关，仅供参考。"
 EMAIL_PATTERN = re.compile(r"\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}\b")
 PATH_PATTERN = re.compile(r"([A-Za-z]:\\Users\\)([^\\`]+)")
+LOCALHOST_PATTERN = re.compile(r"^(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$", re.IGNORECASE)
 TOPUP_NAME_PATTERN = re.compile(r"wallet topup (\d+(?:\.\d+)?) RMB", re.IGNORECASE)
 TOPUP_HTML_PATTERN = re.compile(
     r"(wallet\s*topup\s*(\d+(?:\.\d+)?)\s*RMB).*?(\d+(?:\.\d+)?)\s*(?:USD|\$)",
@@ -122,6 +123,23 @@ def sanitize_public_text(value: Any) -> str:
     text = EMAIL_PATTERN.sub("xxx", text)
     text = re.sub(r"(?i)ttop5", "xxx", text)
     return text
+
+
+def is_public_station_key(station_key: Any) -> bool:
+    text = str(station_key or "").strip()
+    if not text:
+        return False
+    if EMAIL_PATTERN.search(text):
+        return False
+    if "printcap.ai-" in text.lower():
+        return False
+    return True
+
+
+def is_public_station_url(value: Any) -> bool:
+    parsed = urlparse(str(value or "").strip())
+    host = parsed.netloc.lower()
+    return not LOCALHOST_PATTERN.fullmatch(host)
 
 
 def normalize_public_text(value: Any) -> str:
@@ -453,6 +471,8 @@ def load_status_payloads() -> dict[str, dict[str, Any]]:
     for fetch_dir in fetch_dirs:
         for path in sorted(fetch_dir.glob("*_status.json")):
             station_key = path.stem.replace("_status", "")
+            if not is_public_station_key(station_key):
+                continue
             try:
                 payload = json.loads(path.read_text(encoding="utf-8"))
             except json.JSONDecodeError:
@@ -744,6 +764,8 @@ def load_public_pricing_snapshots() -> dict[str, dict[str, Any]]:
     for fetch_dir in fetch_dirs:
         for path in sorted(fetch_dir.glob("*_pricing.*")):
             station_key = path.stem.replace("_pricing", "")
+            if not is_public_station_key(station_key):
+                continue
             parsed = {
                 "groupMultipliers": [],
                 "rechargeTiers": [],
@@ -800,7 +822,7 @@ def load_station_audit_targets() -> dict[str, dict[str, Any]]:
         if not isinstance(item, dict):
             continue
         station_key = str(item.get("station") or "").strip()
-        if not station_key:
+        if not is_public_station_key(station_key):
             continue
         models = [sanitize_public_text(model) for model in item.get("models", []) if sanitize_public_text(model)]
         default_model = sanitize_public_text(item.get("defaultModel")) or (models[0] if models else "")
@@ -829,6 +851,8 @@ def load_latest_station_audits() -> dict[str, list[dict[str, Any]]]:
         if len(parts) < 4:
             continue
         station_key = parts[0]
+        if not is_public_station_key(station_key):
+            continue
         model_bucket = grouped.setdefault(station_key, {})
         executed_at = parse_iso_datetime(summary["executedAt"])
         existing = model_bucket.get(summary["model"])
@@ -1103,7 +1127,10 @@ def main() -> int:
         for row in checklist_rows:
             urls = [sanitize_public_text(url) for url in split_list(row.get("urls"))]
             station_key = row.get("station", "")
-            if not station_key:
+            if not is_public_station_key(station_key):
+                continue
+            urls = [url for url in urls if is_public_station_url(url)]
+            if not urls:
                 continue
             ensure_station(
                 stations,
@@ -1129,6 +1156,8 @@ def main() -> int:
             station["quality"] = {}
         quality_rows = [quality_row(row) for row in read_csv(resolved_inputs["quality_metrics.csv"])]
         for row in quality_rows:
+            if not is_public_station_key(row["station"]):
+                continue
             station = ensure_station(
                 stations,
                 row["station"],
@@ -1145,7 +1174,7 @@ def main() -> int:
         tier_rows = read_csv(resolved_inputs["multiplier_tiers.csv"])
         for row in tier_rows:
             station_key = row.get("station", "")
-            if not station_key:
+            if not is_public_station_key(station_key):
                 continue
 
             station = ensure_station(
@@ -1185,6 +1214,8 @@ def main() -> int:
     status_payloads = load_status_payloads()
     announcements = load_announcements(status_payloads)
     for station_key, payload in status_payloads.items():
+        if not is_public_station_key(station_key):
+            continue
         data = payload.get("data") if isinstance(payload, dict) else {}
         if isinstance(data, dict):
             source_url = sanitize_public_text(data.get("server_address"))
@@ -1202,13 +1233,19 @@ def main() -> int:
     apply_audit_only_station_records(stations, station_urls, latest_audits)
 
     for station_key, rows in announcements.items():
+        if not is_public_station_key(station_key):
+            continue
         station = ensure_station(stations, station_key)
         station["announcements"] = rows
 
     apply_authoritative_ranking_overrides(stations, rankings, overrides)
 
     station_list = sorted(
-        stations.values(),
+        [
+            station
+            for station in stations.values()
+            if is_public_station_key(station.get("key")) and is_public_station_url(station.get("url"))
+        ],
         key=lambda item: (
             item.get("rankings", {}).get("work_hours", {}).get("rank", 10**9),
             item.get("label", "").lower(),
