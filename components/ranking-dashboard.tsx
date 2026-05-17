@@ -1,16 +1,15 @@
 "use client";
 
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
-import { ChevronDown, ChevronRight, ChevronUp, ExternalLink, ShieldCheck } from "lucide-react";
+import { ChevronDown, ChevronRight, ExternalLink } from "lucide-react";
 
-import { formatDateTime, formatMultiplier, formatPercent, formatScore, formatSeconds } from "@/lib/format";
+import { formatMultiplier, formatPercent, formatScore, formatSeconds } from "@/lib/format";
 import type { RankingRow, SiteData, SortMode, TimeWindow } from "@/lib/types";
-import { ThemeControls } from "@/components/theme-toggle";
+import { AppShell, StatusChip } from "@/components/app-shell";
 
 const HIGHLIGHT_PHRASE = "所以本排名更关注各中转站的服务下限。";
 const DISCLAIMER_EMPHASIS = "本排名无任何利益相关，仅供参考。";
-const DECLARATION_STORAGE_KEY = "api-relay-rank-declaration-open";
 
 const TIME_WINDOW_OPTIONS: Array<{ value: TimeWindow; label: string }> = [
   { value: "all_hours", label: "全部时段" },
@@ -45,11 +44,6 @@ function compareByMode(rowA: RankingRow, rowB: RankingRow, mode: SortMode): numb
     return rowA.effectiveMultiplier - rowB.effectiveMultiplier || rowB.totalScore - rowA.totalScore || rowA.rank - rowB.rank;
   }
   return rowB.totalScore - rowA.totalScore || rowA.rank - rowB.rank;
-}
-
-function StatusChip({ label, tone = "default" }: { label: string; tone?: "default" | "accent" | "blue" | "warn" }) {
-  const cls = tone === "accent" ? "chip chip-accent" : tone === "blue" ? "chip chip-blue" : tone === "warn" ? "chip chip-warn" : "chip";
-  return <span className={cls}>{label}</span>;
 }
 
 function getOfficialUrl(href: string) {
@@ -281,7 +275,7 @@ function BulletTextList({ items }: { items: string[] }) {
   );
 }
 
-function DeclarationPanels({ data }: { data: SiteData }) {
+export function DeclarationPanels({ data }: { data: SiteData }) {
   const coreItems =
     data.declaration.coreItems && data.declaration.coreItems.length
       ? data.declaration.coreItems
@@ -294,13 +288,6 @@ function DeclarationPanels({ data }: { data: SiteData }) {
 
   return (
     <div className="declaration-layout">
-      {conclusionItems.length ? (
-        <div className="notice-panel notice-panel-primary declaration-hero">
-          <p className="notice-title">最终结论</p>
-          <BulletTextList items={conclusionItems} />
-        </div>
-      ) : null}
-
       <div className="declaration-columns">
         <div className="declaration-side">
           <div className="notice-panel declaration-copy-panel declaration-copy-full">
@@ -320,6 +307,13 @@ function DeclarationPanels({ data }: { data: SiteData }) {
           </div>
         </div>
       </div>
+
+      {conclusionItems.length ? (
+        <div className="notice-panel notice-panel-primary declaration-hero">
+          <p className="notice-title">最终结论</p>
+          <BulletTextList items={conclusionItems} />
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -328,25 +322,6 @@ export function RankingDashboard({ data }: { data: SiteData }) {
   const [timeWindow, setTimeWindow] = useState<TimeWindow>(data.defaultTimeWindow);
   const [sortMode, setSortMode] = useState<SortMode>(data.defaultSort);
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("all");
-  const [declarationOpen, setDeclarationOpen] = useState(() => {
-    if (typeof window === "undefined") {
-      return true;
-    }
-
-    const stored = window.localStorage.getItem(DECLARATION_STORAGE_KEY);
-    return stored === null ? true : stored === "true";
-  });
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const stored = window.localStorage.getItem(DECLARATION_STORAGE_KEY);
-    if (stored === null) {
-      window.localStorage.setItem(DECLARATION_STORAGE_KEY, "false");
-    }
-  }, []);
 
   const stationMap = useMemo(() => new Map(data.stations.map((station) => [station.key, station])), [data.stations]);
   const unrankedStations = useMemo(() => {
@@ -370,56 +345,21 @@ export function RankingDashboard({ data }: { data: SiteData }) {
   const selectedTimeWindow = data.timeWindows[timeWindow];
 
   return (
-    <main className="app-shell">
-      <div className="page-shell">
-        <header className="topbar">
-          <div className="brand">
-            <div className="brand-title">
-              <ShieldCheck size={18} />
-              <span>{data.siteName}</span>
-            </div>
-            <div className="brand-subtitle">
-              {data.projectName} · 数据生成于 {formatDateTime(data.generatedAt)}
-            </div>
-          </div>
-          <div className="topbar-meta">
-            <StatusChip label={`收录站点 ${data.stations.length}`} tone="accent" />
-            <StatusChip label={`当前时段 ${selectedTimeWindow.label}`} tone="blue" />
-            <StatusChip label={`正式排名 ${rankedCount} 站`} tone="warn" />
-            <ThemeControls />
-          </div>
-        </header>
-
-        <section className="section declaration-section">
-          <div className="section-head ranking-head">
-            <div>
-              <h1 className="section-title">{data.declaration.title}</h1>
-              <p className="section-desc">{data.declaration.subtitle}</p>
-            </div>
-            <div className="section-head-actions">
-              <StatusChip label={`采集时间 ${data.generatedAt || "未知"}`} tone="accent" />
-              <button
-                type="button"
-                className="tiny-button declaration-toggle"
-                aria-expanded={declarationOpen}
-                onClick={() => setDeclarationOpen((current) => !current)}
-              >
-                {declarationOpen ? "收起" : "展开"}
-                {declarationOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-              </button>
-            </div>
-          </div>
-          {declarationOpen ? (
-            <div className="section-body">
-              <DeclarationPanels data={data} />
-            </div>
-          ) : null}
-        </section>
-
+    <AppShell
+      active="ranking"
+      data={data}
+      actions={
+        <>
+          <StatusChip label={`收录站点 ${data.stations.length}`} tone="accent" />
+          <StatusChip label={`当前时段 ${selectedTimeWindow.label}`} tone="blue" />
+          <StatusChip label={`正式排名 ${rankedCount} 站`} tone="warn" />
+        </>
+      }
+    >
         <section className="section ranking-section">
           <div className="section-head">
             <div>
-              <h2 className="section-title">正式综合排名</h2>
+              <h1 className="section-title">正式综合排名</h1>
               <p className="section-desc">支持工作时段与非工作时段切换，并按站点类型、排序方式重新排列。</p>
             </div>
             <div className="controls">
@@ -466,6 +406,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                       <th>站点</th>
                       <th className="col-url">网址</th>
                       <th className="col-type">类型</th>
+                      <th className="col-platform">平台判断</th>
                       <th>总分</th>
                       <th>正确率</th>
                       <th>平均响应时间（秒）</th>
@@ -487,13 +428,13 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                               <Link href={`/stations/${row.station}`} className="station-link">
                                 {row.label}
                               </Link>
-                              <span className="subtle">{stationMeta?.platformGuess || "-"}</span>
                             </div>
                           </td>
                           <td className="table-url-cell">
                             <StationUrlLink href={row.stationUrl} compact />
                           </td>
                           <td className="table-type-cell">{row.stationTypeShortLabel}</td>
+                          <td className="table-platform-cell">{stationMeta?.platformGuess || "-"}</td>
                           <td className="mono">{formatScore(row.totalScore)}</td>
                           <td className="mono">{formatPercent(row.correctRate)}</td>
                           <td className="mono">{formatSeconds(row.avgSeconds)}</td>
@@ -592,7 +533,6 @@ export function RankingDashboard({ data }: { data: SiteData }) {
             </div>
           </div>
         </section>
-      </div>
-    </main>
+    </AppShell>
   );
 }

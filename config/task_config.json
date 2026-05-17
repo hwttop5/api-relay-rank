@@ -30,6 +30,16 @@
       "command": ["python", "scripts/refresh_quality_rankings.py"],
       "description": "重新读取 Codex Manager 聚合日志，生成最新质量指标、CSV 排名和 Markdown 汇总。",
       "notes": "考虑到部分测试账号余额不足，该任务当前仅保留实现，不自动执行。"
+    },
+    {
+      "id": "station-audit-manual",
+      "name": "中转站安全审计（手动）",
+      "enabled": false,
+      "autoRun": false,
+      "schedule": "默认关闭，仅手动指定站点与模型触发",
+      "command": ["python", "scripts/run_station_audit.py", "--station", "<station>", "--model", "<model>"],
+      "description": "使用本地固定版本 api-relay-audit 引擎执行单站单模型主动黑盒审计，并归档 report.md 与 summary.json。",
+      "notes": "密钥只从 config/station_audit_targets.json 中声明的环境变量读取；该任务模板需要替换 <station> 和 <model> 后再手动执行。"
     }
   ]
 }

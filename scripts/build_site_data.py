@@ -6,6 +6,7 @@ import json
 import os
 import re
 from copy import deepcopy
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
@@ -18,8 +19,10 @@ SOURCE_ROOTS = [APP_ROOT, WORKSPACE_ROOT]
 DATA_DIR = APP_ROOT / "data"
 SITE_DATA_PATH = DATA_DIR / "site-data.json"
 PUBLIC_FETCH_DIR = Path(os.environ.get("PUBLIC_FETCH_DIR", DATA_DIR / "_public_fetch"))
+AUDIT_RUNS_DIR = DATA_DIR / "_audit_runs"
 PUBLIC_FETCH_DIRS = [PUBLIC_FETCH_DIR]
 STATION_PRICING_OVERRIDES_PATH = APP_ROOT / "config" / "station_pricing_overrides.json"
+STATION_AUDIT_TARGETS_PATH = APP_ROOT / "config" / "station_audit_targets.json"
 
 SHORT_TYPE_LABELS = {
     "subscription": "包月型",
@@ -310,6 +313,87 @@ def quality_row(row: dict[str, str]) -> dict[str, Any]:
     }
 
 
+def parse_iso_datetime(value: Any) -> datetime | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    normalized = text.replace("Z", "+00:00")
+    try:
+        return datetime.fromisoformat(normalized)
+    except ValueError:
+        return None
+
+
+def audit_sort_datetime(value: Any) -> datetime:
+    return parse_iso_datetime(value) or datetime.min.replace(tzinfo=UTC)
+
+
+def normalize_audit_step_summary(item: Any) -> dict[str, str] | None:
+    if not isinstance(item, dict):
+        return None
+    title = sanitize_public_text(item.get("title"))
+    summary = normalize_public_text(item.get("summary"))
+    if not title or not summary:
+        return None
+    return {"title": title, "summary": summary}
+
+
+def normalize_audit_summary(item: Any) -> dict[str, Any] | None:
+    if not isinstance(item, dict):
+        return None
+    profile = str(item.get("profile") or "").strip()
+    model = sanitize_public_text(item.get("model"))
+    executed_at = str(item.get("executedAt") or "").strip()
+    report_path = sanitize_public_text(item.get("reportPath"))
+    run_status = str(item.get("runStatus") or "success").strip()
+    if profile != "general" or not model or not executed_at or not report_path:
+        return None
+    if run_status != "success":
+        return None
+    overall_verdict = str(item.get("overallVerdict") or "").strip().lower()
+    if overall_verdict not in {"low", "medium", "high", "inconclusive"}:
+        overall_verdict = "inconclusive"
+    highlights = [normalize_public_text(value) for value in item.get("highlights", []) if normalize_public_text(value)]
+    steps = []
+    for raw_step in item.get("stepSummaries", []):
+        step = normalize_audit_step_summary(raw_step)
+        if step:
+            steps.append(step)
+    payload = {
+        "profile": "general",
+        "model": model,
+        "auditedBaseUrl": sanitize_public_text(item.get("auditedBaseUrl")),
+        "executedAt": executed_at,
+        "overallVerdict": overall_verdict,
+        "overallSummary": normalize_public_text(item.get("overallSummary")),
+        "highlights": highlights,
+        "stepSummaries": steps,
+        "reportPath": report_path,
+        "toolVersion": sanitize_public_text(item.get("toolVersion")),
+    }
+    duration_ms = parse_int(item.get("durationMs")) if item.get("durationMs") is not None else None
+    if duration_ms is not None:
+        payload["durationMs"] = duration_ms
+    engine_commit = sanitize_public_text(item.get("engineCommit"))
+    if engine_commit:
+        payload["engineCommit"] = engine_commit
+    effective_options = item.get("effectiveOptions")
+    if isinstance(effective_options, dict):
+        payload["effectiveOptions"] = effective_options
+    return payload
+
+
+def audit_run_status_for_summary(path: Path) -> str:
+    run_path = path.with_name("run.json")
+    if not run_path.exists():
+        return "success"
+    try:
+        payload = json.loads(run_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return "failed"
+    return str(payload.get("status") or "failed").strip()
+
+
 def ensure_station(container: dict[str, dict[str, Any]], station_key: str, **overrides: Any) -> dict[str, Any]:
     station_type = overrides.get("station_type") or "unknown_pending"
     record = container.setdefault(
@@ -504,6 +588,7 @@ def load_base_site_snapshot() -> tuple[dict[str, list[dict[str, Any]]], dict[str
         station.setdefault("quality", {})
         station.setdefault("rankings", {})
         station.setdefault("verifiedTierCount", 0)
+        station.setdefault("audits", None)
         if station.get("url"):
             station_urls.setdefault(station_key, set()).add(sanitize_public_text(station["url"]))
         for announcement in station.get("announcements", []):
@@ -701,6 +786,99 @@ def load_public_pricing_snapshots() -> dict[str, dict[str, Any]]:
                 if note and note not in bucket["tierNotes"]:
                     bucket["tierNotes"].append(note)
     return grouped
+
+
+def load_station_audit_targets() -> dict[str, dict[str, Any]]:
+    if not STATION_AUDIT_TARGETS_PATH.exists():
+        return {}
+    payload = json.loads(STATION_AUDIT_TARGETS_PATH.read_text(encoding="utf-8"))
+    targets = payload.get("targets") if isinstance(payload, dict) else None
+    if not isinstance(targets, list):
+        return {}
+    result: dict[str, dict[str, Any]] = {}
+    for item in targets:
+        if not isinstance(item, dict):
+            continue
+        station_key = str(item.get("station") or "").strip()
+        if not station_key:
+            continue
+        models = [sanitize_public_text(model) for model in item.get("models", []) if sanitize_public_text(model)]
+        default_model = sanitize_public_text(item.get("defaultModel")) or (models[0] if models else "")
+        result[station_key] = {
+            "defaultModel": default_model,
+            "availableModels": models,
+        }
+    return result
+
+
+def load_latest_station_audits() -> dict[str, list[dict[str, Any]]]:
+    grouped: dict[str, dict[str, tuple[datetime | None, dict[str, Any]]]] = {}
+    if not AUDIT_RUNS_DIR.exists():
+        return {}
+    for path in AUDIT_RUNS_DIR.glob("*/*/*/summary.json"):
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if audit_run_status_for_summary(path) != "success":
+            continue
+        summary = normalize_audit_summary(payload)
+        if not summary:
+            continue
+        parts = path.relative_to(AUDIT_RUNS_DIR).parts
+        if len(parts) < 4:
+            continue
+        station_key = parts[0]
+        model_bucket = grouped.setdefault(station_key, {})
+        executed_at = parse_iso_datetime(summary["executedAt"])
+        existing = model_bucket.get(summary["model"])
+        if existing:
+            existing_time = existing[0] or datetime.min.replace(tzinfo=UTC)
+            next_time = executed_at or datetime.min.replace(tzinfo=UTC)
+            if existing_time >= next_time:
+                continue
+        if existing and existing[0] and not executed_at:
+            continue
+        model_bucket[summary["model"]] = (executed_at, summary)
+
+    latest: dict[str, list[dict[str, Any]]] = {}
+    for station_key, by_model in grouped.items():
+        rows = [summary for _dt, summary in by_model.values()]
+        rows.sort(key=lambda item: audit_sort_datetime(item.get("executedAt")), reverse=True)
+        latest[station_key] = rows
+    return latest
+
+
+def audit_station_label_from_base_url(value: Any, fallback: str) -> str:
+    parsed = urlparse(sanitize_public_text(value))
+    host = parsed.netloc.lower().removeprefix("www.")
+    return host or fallback
+
+
+def apply_audit_only_station_records(
+    stations: dict[str, dict[str, Any]],
+    station_urls: dict[str, set[str]],
+    latest_audits: dict[str, list[dict[str, Any]]],
+) -> None:
+    for station_key, audit_rows in latest_audits.items():
+        if not audit_rows:
+            continue
+
+        audited_base_url = sanitize_public_text(audit_rows[0].get("auditedBaseUrl"))
+        if station_key in stations:
+            station = ensure_station(stations, station_key)
+            if audited_base_url and not station.get("url"):
+                station["url"] = audited_base_url
+        else:
+            station = ensure_station(
+                stations,
+                station_key,
+                label=audit_station_label_from_base_url(audited_base_url, station_key),
+                url=audited_base_url,
+            )
+
+        if audited_base_url:
+            station_urls.setdefault(station_key, set()).add(audited_base_url)
 
 
 def load_station_pricing_overrides() -> dict[str, dict[str, Any]]:
@@ -1019,6 +1197,10 @@ def main() -> int:
     overrides = load_station_pricing_overrides()
     apply_station_pricing_overrides(stations, overrides)
 
+    audit_targets = load_station_audit_targets()
+    latest_audits = load_latest_station_audits()
+    apply_audit_only_station_records(stations, station_urls, latest_audits)
+
     for station_key, rows in announcements.items():
         station = ensure_station(stations, station_key)
         station["announcements"] = rows
@@ -1037,6 +1219,23 @@ def main() -> int:
         station["rechargeTiers"] = sort_recharge_tiers(station.get("rechargeTiers", []))
         url_choices = dedupe_strings(list(station_urls.get(station["key"], set())) + [station.get("url", "")])
         station["url"] = choose_best_url(url_choices)
+        audit_rows = latest_audits.get(station["key"], [])
+        audit_target = audit_targets.get(station["key"], {})
+        if audit_rows or audit_target:
+            available_models = dedupe_strings(
+                list(audit_target.get("availableModels", [])) + [row.get("model", "") for row in audit_rows if row.get("model")]
+            )
+            latest_audit_at = ""
+            if audit_rows:
+                latest_audit_at = max((row.get("executedAt", "") for row in audit_rows), default="")
+            station["audits"] = {
+                "defaultModel": sanitize_public_text(audit_target.get("defaultModel")) or (audit_rows[0]["model"] if audit_rows else ""),
+                "availableModels": available_models,
+                "latestByModel": audit_rows,
+                "latestAuditAt": latest_audit_at or None,
+            }
+        else:
+            station.pop("audits", None)
 
     site_data = {
         "siteName": "中转站监视者",

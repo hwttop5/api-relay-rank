@@ -1,6 +1,8 @@
 export type TimeWindow = "work_hours" | "off_hours" | "all_hours";
 export type SortMode = "composite" | "correct_rate" | "avg_seconds" | "effective_multiplier";
 export type StationType = "subscription" | "non_subscription" | "mixed" | "unknown_pending";
+export type AuditProfile = "general";
+export type AuditVerdict = "low" | "medium" | "high" | "inconclusive";
 
 export interface DeclarationPayload {
   title: string;
@@ -96,6 +98,55 @@ export interface AnnouncementRow {
   sourceUrl: string;
 }
 
+export interface StationAuditStepSummary {
+  title: string;
+  summary: string;
+}
+
+export interface StationAuditSummary {
+  profile: AuditProfile;
+  model: string;
+  auditedBaseUrl: string;
+  executedAt: string;
+  overallVerdict: AuditVerdict;
+  overallSummary: string;
+  highlights: string[];
+  stepSummaries: StationAuditStepSummary[];
+  reportPath: string;
+  toolVersion: string;
+  runStatus?: "success";
+  durationMs?: number;
+  engineCommit?: string;
+  effectiveOptions?: Record<string, unknown>;
+}
+
+export interface StationAudits {
+  defaultModel: string;
+  availableModels: string[];
+  latestByModel: StationAuditSummary[];
+  latestAuditAt: string | null;
+}
+
+export interface AuditModelOption {
+  label: string;
+  value: string;
+  badge?: string;
+}
+
+export interface HomeAuditRunRequest {
+  apiBaseUrl: string;
+  apiKey: string;
+  model: string;
+}
+
+export interface HomeAuditRunResponse {
+  station: string;
+  model: string;
+  summary: StationAuditSummary;
+  stationUrl: string;
+  reportUrl: string;
+}
+
 export interface StationRecord {
   key: string;
   label: string;
@@ -111,6 +162,7 @@ export interface StationRecord {
   announcements: AnnouncementRow[];
   rankings: Partial<Record<TimeWindow, RankingRow>>;
   quality: Partial<Record<TimeWindow, QualityRow>>;
+  audits?: StationAudits;
 }
 
 export interface SiteData {

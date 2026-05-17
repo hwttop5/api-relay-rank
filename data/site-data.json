@@ -9947,6 +9947,109 @@
       }
     },
     {
+      "key": "audit-api-printcap-ai",
+      "label": "api.printcap.ai",
+      "url": "https://api.printcap.ai",
+      "stationType": "unknown_pending",
+      "stationTypeLabel": "待补证据",
+      "stationTypeShortLabel": "待补证据",
+      "platformGuess": "",
+      "verifiedTierCount": 0,
+      "groupMultipliers": [],
+      "rechargeTiers": [],
+      "tierNotes": [],
+      "announcements": [],
+      "rankings": {},
+      "quality": {},
+      "audits": {
+        "defaultModel": "gpt-5.5",
+        "availableModels": [
+          "gpt-5.5"
+        ],
+        "latestByModel": [
+          {
+            "profile": "general",
+            "model": "gpt-5.5",
+            "auditedBaseUrl": "https://api.printcap.ai",
+            "executedAt": "2026-05-17T01:36:03Z",
+            "overallVerdict": "high",
+            "overallSummary": "Stream integrity anomaly detected (AC-1 SSE-level). The relay's streaming response fails one or more structural invariants: unknown SSE event types, non-monotonic usage fields, rewritten input_tokens, empty thinking signatures, or a non-Claude stream model name. Do not use.",
+            "highlights": [
+              "🔴 Hidden system prompt injection detected (~105 tokens/request)",
+              "🔴 Test A - Verbatim: Hidden prompt content extracted!",
+              "🔴 Test C - JSON continuation: Hidden prompt content extracted!",
+              "🟢 Cat test passed: user system prompt works correctly",
+              "🟢 Identity test passed: model correctly identifies as user-defined identity",
+              "🟡 Test F - Base64 Encoding: identity-related info leaked (developer, ide)",
+              "🟡 Context boundary: 10K ~ 0K chars (max passed: ~2,004 tokens)",
+              "🟢 No tool-call package substitution detected",
+              "🟡 Error leakage test INCONCLUSIVE: every probe returned HTTP 200 or failed with a transport error, so no error surface could be inspected. A relay that silently swallows malformed JSON into a success response is itself suspicious.",
+              "🔴 Stream integrity anomaly detected (AC-1 SSE-level): input_tokens at message_start (0) disagrees with message_delta samples ([120]) — usage rewrite; Stream's message_start.message.model = 'gpt-5.5' does not contain 'claude' — relay may be routing to a substitute model",
+              "🟢 No framework branding detected. Likely a direct reverse proxy, a custom backend, or a stripped-branding fork.",
+              "🟡 Latency variance test inconclusive: all 10 probes failed. The relay is refusing or erroring on even tiny requests."
+            ],
+            "stepSummaries": [
+              {
+                "title": "1. Infrastructure Recon",
+                "summary": "### 1.1 DNS Records"
+              },
+              {
+                "title": "2. Model List",
+                "summary": "Total 6 models:"
+              },
+              {
+                "title": "3. Token Injection Detection",
+                "summary": "Send minimal messages, compare expected vs actual input_tokens. Delta = hidden injection."
+              },
+              {
+                "title": "4. Prompt Extraction Tests",
+                "summary": "### Test A - Verbatim"
+              },
+              {
+                "title": "5. Instruction Override Tests",
+                "summary": "### Test D: Cat Test"
+              },
+              {
+                "title": "6. Jailbreak & Role Impersonation Tests",
+                "summary": "### Test E - System Diagnostic"
+              },
+              {
+                "title": "7. Context Length Test",
+                "summary": "Place 5 canary markers at equal intervals in long text, check if model can recall all."
+              },
+              {
+                "title": "8. Tool-Call Package Substitution (AC-1.a)",
+                "summary": "Ask the model to echo exact package-install commands and verify character-level integrity on the return path. A malicious middleware running AC-1.a rewrites package names (e.g. requests -> reqeusts typosquat) before the response reaches the client, giving the attacker a durable supply-chain foothold on the agent's host"
+              },
+              {
+                "title": "9. Error Response Leakage (AC-2 adjacent)",
+                "summary": "Fire deterministic broken requests (malformed JSON, invalid model, wrong content-type, missing fields, unknown endpoint) at the relay and scan the error response body and headers for echoed credentials, upstream URLs, environment variable names, filesystem paths, and stack-trace markers. Reference: Liu et al., Your Age"
+              },
+              {
+                "title": "10. Stream Integrity (AC-1 SSE-level)",
+                "summary": "Open an Anthropic streaming request with thinking enabled and inspect every SSE event for structural anomalies. A relay that rewrites or downgrades the streamed response often fails one of four invariants: (1) all event types belong to Anthropic's known set (ping / message_start / content_block_start / content_block_de"
+              },
+              {
+                "title": "12. Infrastructure Fingerprint",
+                "summary": "Probe the relay's `/, /v1/models`, and a nonexistent endpoint with unauthenticated GET requests, then match response headers and body against a small database of known relay-framework signatures. Rationale: Zhang et al., Real Money, Fake Models, arXiv:2603.01919, reports 11 of 17 identified shadow APIs are built on One"
+              },
+              {
+                "title": "13. Latency Variance",
+                "summary": "Fire 10 identical minimal requests (`max_tokens=8`) and measure per-request end-to-end latency. Compute descriptive statistics and a gap-ratio bimodality heuristic. Rationale: a relay that silently A/B tests between the advertised model and a cheaper substitute produces a bimodal latency distribution; a queue-multiplex"
+              },
+              {
+                "title": "14. Overall Rating",
+                "summary": "### HIGH RISK"
+              }
+            ],
+            "reportPath": "data/_audit_runs/audit-api-printcap-ai/gpt-5.5/20260517T013603Z/report.md",
+            "toolVersion": "api-relay-audit@2d6bc1431cc196d64a22e8aa515094ad9acb7042"
+          }
+        ],
+        "latestAuditAt": "2026-05-17T01:36:03Z"
+      }
+    },
+    {
       "key": "claude-api",
       "label": "claude-api",
       "url": "https://claude-api.org/dashboard",

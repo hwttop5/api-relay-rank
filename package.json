@@ -11,6 +11,7 @@
     "site:data": "python scripts/build_site_data.py",
     "site:announcements": "python scripts/fetch_public_content.py --announcements",
     "site:tiers": "python scripts/fetch_public_content.py --multiplier-snapshots",
+    "site:audit": "python scripts/run_station_audit.py",
     "site:refresh-manual": "python scripts/refresh_quality_rankings.py",
     "site:jobs": "python scripts/run_tasks.py"
   },

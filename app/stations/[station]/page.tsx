@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 
+import { AppShell, StatusChip } from "@/components/app-shell";
 import { AnnouncementFeed } from "@/components/announcement-feed";
-import { ThemeControls } from "@/components/theme-toggle";
+import { StationAuditSummaryPanel } from "@/components/station-audit-summary";
 import { TierOverview } from "@/components/tier-overview";
 import { formatDateTime, formatMultiplier, formatPercent, formatScore, formatSeconds } from "@/lib/format";
 import { getStationRecord } from "@/lib/site-data";
@@ -18,35 +19,29 @@ export default async function StationPage({ params }: { params: Promise<{ statio
   const latestAnnouncements = [...station.announcements].sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1)).slice(0, 5);
 
   return (
-    <main className="app-shell">
-      <div className="page-shell">
-        <header className="topbar station-topbar">
-          <div className="brand">
-            <div className="brand-title">
-              <ShieldCheck size={18} />
-              <span>{station.label}</span>
-            </div>
-            <div className="brand-subtitle">
-              {station.stationTypeShortLabel} · {station.platformGuess || "平台未识别"} · {siteData.projectName}
-            </div>
+    <AppShell
+      active="station"
+      data={siteData}
+      title={station.label}
+      subtitle={`${station.stationTypeShortLabel} · ${station.platformGuess || "平台未识别"} · ${siteData.projectName}`}
+      actions={
+        <>
+          <StatusChip label={station.stationTypeLabel} tone="accent" />
+          <div className="station-topbar-links">
+            <Link href="/ranking" className="tiny-button detail-topbar-button">
+              <ArrowLeft size={13} />
+              返回排名
+            </Link>
+            {station.url ? (
+              <a href={station.url} target="_blank" rel="noreferrer" className="tiny-button detail-topbar-button">
+                <ExternalLink size={13} />
+                打开官网
+              </a>
+            ) : null}
           </div>
-          <div className="topbar-meta station-topbar-meta">
-            <div className="station-topbar-links">
-              <Link href="/" className="tiny-button detail-topbar-button">
-                <ArrowLeft size={13} />
-                返回排名
-              </Link>
-              {station.url ? (
-                <a href={station.url} target="_blank" rel="noreferrer" className="tiny-button detail-topbar-button">
-                  <ExternalLink size={13} />
-                  打开官网
-                </a>
-              ) : null}
-            </div>
-            <ThemeControls />
-          </div>
-        </header>
-
+        </>
+      }
+    >
         <section className="section station-hero">
           <div className="section-head">
             <div>
@@ -58,14 +53,6 @@ export default async function StationPage({ params }: { params: Promise<{ statio
           <div className="section-body">
             <div className="detail-grid">
               <div className="detail-card">
-                <h3>工作时段排名</h3>
-                <p>{work ? `#${work.rank} · ${formatScore(work.totalScore)} · ${formatPercent(work.correctRate)}` : "暂无正式排名数据"}</p>
-              </div>
-              <div className="detail-card">
-                <h3>非工作时段排名</h3>
-                <p>{off ? `#${off.rank} · ${formatScore(off.totalScore)} · ${formatPercent(off.correctRate)}` : "暂无正式排名数据"}</p>
-              </div>
-              <div className="detail-card">
                 <h3>平台判断</h3>
                 <p>{station.platformGuess || "平台未识别"}</p>
               </div>
@@ -73,12 +60,22 @@ export default async function StationPage({ params }: { params: Promise<{ statio
                 <h3>公告数量</h3>
                 <p>{station.announcements.length}</p>
               </div>
+              <div className="detail-card">
+                <h3>工作时段排名</h3>
+                <p>{work ? `#${work.rank} · ${formatScore(work.totalScore)} · ${formatPercent(work.correctRate)}` : "暂无正式排名数据"}</p>
+              </div>
+              <div className="detail-card">
+                <h3>非工作时段排名</h3>
+                <p>{off ? `#${off.rank} · ${formatScore(off.totalScore)} · ${formatPercent(off.correctRate)}` : "暂无正式排名数据"}</p>
+              </div>
             </div>
             <div className="footer-note">
               站点代号：{station.key} · 数据生成于 {formatDateTime(siteData.generatedAt)} · 已核验档位数：{station.verifiedTierCount}
             </div>
           </div>
         </section>
+
+        <StationAuditSummaryPanel station={station} />
 
         <section className="section tier-section">
           <div className="section-head">
@@ -136,7 +133,6 @@ export default async function StationPage({ params }: { params: Promise<{ statio
             </div>
           </div>
         </section>
-      </div>
-    </main>
+    </AppShell>
   );
 }

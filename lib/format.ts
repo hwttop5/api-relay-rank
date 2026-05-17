@@ -43,3 +43,16 @@ export function formatDateTime(value: string): string {
     timeStyle: "short"
   }).format(date);
 }
+
+export function formatAuditVerdict(value: string): string {
+  if (value === "high") {
+    return "高风险";
+  }
+  if (value === "medium") {
+    return "中风险";
+  }
+  if (value === "low") {
+    return "低风险";
+  }
+  return "结果未定";
+}
