@@ -31,7 +31,7 @@
 
 ```powershell
 npm install
-pip install requests
+pip install -r requirements.txt
 npm run dev
 ```
 
