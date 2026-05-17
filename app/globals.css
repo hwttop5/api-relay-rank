@@ -261,6 +261,10 @@ select:focus-visible {
   display: none;
 }
 
+.mobile-topbar-actions {
+  display: none;
+}
+
 .desktop-theme-controls {
   display: contents;
 }
@@ -1608,10 +1612,16 @@ select:focus-visible {
     display: none;
   }
 
+  .mobile-topbar-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+  }
+
   .mobile-nav {
     position: relative;
     display: block;
-    flex: 0 0 auto;
   }
 
   .topbar-meta,
@@ -1662,8 +1672,7 @@ select:focus-visible {
   }
 
   .mobile-nav-link,
-  .mobile-nav-tool,
-  .mobile-theme-row {
+  .mobile-nav-tool {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -1697,14 +1706,6 @@ select:focus-visible {
   .mobile-nav-tools {
     border-top: 1px solid rgba(74, 88, 97, 0.56);
     padding-top: 8px;
-  }
-
-  .mobile-theme-row {
-    justify-content: space-between;
-  }
-
-  .mobile-theme-row .theme-toggle {
-    flex: 0 0 auto;
   }
 
   .station-topbar-links {

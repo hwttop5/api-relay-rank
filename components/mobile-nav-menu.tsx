@@ -5,7 +5,6 @@ import { Github, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 import { NAV_ITEMS, type AppNavKey } from "@/components/nav-items";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 const REPO_URL = "https://github.com/hwttop5/api-relay-rank";
 
@@ -49,10 +48,6 @@ export function MobileNavMenu({ active }: { active: AppNavKey }) {
               <Github size={16} aria-hidden="true" />
               <span>GitHub 仓库</span>
             </a>
-            <div className="mobile-theme-row">
-              <span>主题色</span>
-              <ThemeToggle />
-            </div>
           </div>
         </div>
       ) : null}

@@ -6,7 +6,7 @@ import { formatDateTime } from "@/lib/format";
 import type { SiteData } from "@/lib/types";
 import { MobileNavMenu } from "@/components/mobile-nav-menu";
 import { NAV_ITEMS, type AppNavKey } from "@/components/nav-items";
-import { ThemeControls } from "@/components/theme-toggle";
+import { ThemeControls, ThemeToggle } from "@/components/theme-toggle";
 
 export function StatusChip({ label, tone = "default" }: { label: string; tone?: "default" | "accent" | "blue" | "warn" | "danger" }) {
   const cls =
@@ -48,9 +48,12 @@ export function AppShell({
                   <Radar size={18} aria-hidden="true" />
                   <span>{title ?? data.siteName}</span>
                 </div>
-                <div className="brand-subtitle">{subtitle ?? `${data.projectName} · 数据生成于 ${formatDateTime(data.generatedAt)}`}</div>
+                <div className="brand-subtitle">{subtitle ?? `数据生成于 ${formatDateTime(data.generatedAt)}`}</div>
               </div>
-              <MobileNavMenu active={active} />
+              <div className="mobile-topbar-actions">
+                <ThemeToggle />
+                <MobileNavMenu active={active} />
+              </div>
             </div>
             <nav className="main-nav" aria-label="主导航">
               {NAV_ITEMS.map((item) => {
