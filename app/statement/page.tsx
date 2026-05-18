@@ -6,14 +6,16 @@ export const dynamic = "force-dynamic";
 
 export default async function StatementPage() {
   const siteData = await getSiteData();
+  const generatedAtLabel = siteData.generatedAt.replace(/\s+[+-]\d{4}$/, "").trim() || "未知";
 
   return (
     <AppShell
       active="statement"
       data={siteData}
+      topbarMetaClassName="topbar-meta-inline-mobile"
       actions={
         <>
-          <StatusChip label={`采集时间 ${siteData.generatedAt || "未知"}`} tone="accent" />
+          <StatusChip label={`采集时间 ${generatedAtLabel}`} tone="accent" />
           <StatusChip label="排名口径说明" tone="warn" />
         </>
       }

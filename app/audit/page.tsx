@@ -14,6 +14,7 @@ export default async function AuditPage() {
     <AppShell
       active="audit"
       data={siteData}
+      topbarMetaClassName="topbar-meta-inline-mobile"
       actions={
         <>
           <StatusChip label={`收录站点 ${siteData.stations.length}`} tone="accent" />

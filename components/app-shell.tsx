@@ -28,7 +28,8 @@ export function AppShell({
   data,
   subtitle,
   title,
-  actions
+  actions,
+  topbarMetaClassName
 }: {
   active: AppNavKey;
   children: ReactNode;
@@ -36,7 +37,10 @@ export function AppShell({
   subtitle?: ReactNode;
   title?: ReactNode;
   actions?: ReactNode;
+  topbarMetaClassName?: string;
 }) {
+  const topbarMetaClasses = ["topbar-meta", topbarMetaClassName].filter(Boolean).join(" ");
+
   return (
     <main className="app-shell">
       <div className="page-shell">
@@ -67,7 +71,7 @@ export function AppShell({
               })}
             </nav>
           </div>
-          <div className="topbar-meta">
+          <div className={topbarMetaClasses}>
             {actions}
             <div className="desktop-theme-controls">
               <ThemeControls />

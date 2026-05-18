@@ -63,8 +63,8 @@ export function ThemeControls() {
         target="_blank"
         rel="noreferrer"
         className="icon-button icon-button-github"
-        aria-label="打开 GitHub 仓库"
-        title="打开 GitHub 仓库"
+        aria-label="打开项目仓库"
+        title="打开项目仓库"
       >
         <Github size={15} />
       </a>

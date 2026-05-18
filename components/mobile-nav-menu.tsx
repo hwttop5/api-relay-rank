@@ -46,7 +46,7 @@ export function MobileNavMenu({ active }: { active: AppNavKey }) {
           <div className="mobile-nav-tools">
             <a href={REPO_URL} target="_blank" rel="noreferrer" className="mobile-nav-tool">
               <Github size={16} aria-hidden="true" />
-              <span>GitHub 仓库</span>
+              <span>项目仓库</span>
             </a>
           </div>
         </div>

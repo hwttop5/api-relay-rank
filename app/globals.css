@@ -2174,6 +2174,29 @@ select:focus-visible {
     white-space: normal;
   }
 
+  .topbar-meta.topbar-meta-inline-mobile {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .topbar-meta.topbar-meta-inline-mobile::-webkit-scrollbar {
+    display: none;
+  }
+
+  .topbar-meta.topbar-meta-inline-mobile .chip {
+    width: auto;
+    max-width: none;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
   .section {
     margin-top: 12px;
   }

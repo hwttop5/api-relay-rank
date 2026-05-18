@@ -348,6 +348,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
     <AppShell
       active="ranking"
       data={data}
+      topbarMetaClassName="topbar-meta-inline-mobile"
       actions={
         <>
           <StatusChip label={`收录站点 ${data.stations.length}`} tone="accent" />
