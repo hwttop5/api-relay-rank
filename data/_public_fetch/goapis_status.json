@@ -150,7 +150,7 @@
     "password_register_enabled": false,
     "price": 1,
     "privacy_policy_enabled": false,
-    "quota_display_type": "CUSTOM",
+    "quota_display_type": "USD",
     "quota_per_unit": 500000,
     "register_enabled": false,
     "self_use_mode_enabled": false,

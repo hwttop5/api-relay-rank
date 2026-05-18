@@ -9,7 +9,7 @@ from copy import deepcopy
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
-from urllib.parse import urlparse
+from urllib.parse import quote, urlparse
 
 
 SCRIPT_PATH = Path(__file__).resolve()
@@ -21,6 +21,7 @@ SITE_DATA_PATH = DATA_DIR / "site-data.json"
 PUBLIC_FETCH_DIR = Path(os.environ.get("PUBLIC_FETCH_DIR", DATA_DIR / "_public_fetch"))
 AUDIT_RUNS_DIR = DATA_DIR / "_audit_runs"
 PUBLIC_FETCH_DIRS = [PUBLIC_FETCH_DIR]
+LIVE_AUTH_PROBE_DIR = WORKSPACE_ROOT / "tabbit-audit-profile"
 STATION_PRICING_OVERRIDES_PATH = APP_ROOT / "config" / "station_pricing_overrides.json"
 STATION_AUDIT_TARGETS_PATH = APP_ROOT / "config" / "station_audit_targets.json"
 
@@ -47,8 +48,8 @@ BILLING_LABELS = {
 }
 
 TIME_WINDOWS = {
-    "work_hours": {"key": "work_hours", "label": "工作时段", "range": "09:00:00-18:00:00"},
-    "off_hours": {"key": "off_hours", "label": "非工作时段", "range": "18:00:01-次日08:59:59"},
+    "work_hours": {"key": "work_hours", "label": "工作时段", "range": "工作日09:00:00-18:00:00"},
+    "off_hours": {"key": "off_hours", "label": "非工作时段", "range": "工作日18:00:01-次日08:59:59；周末全天"},
     "all_hours": {"key": "all_hours", "label": "全时段", "range": "00:00:00-23:59:59"},
 }
 
@@ -60,6 +61,10 @@ LOCALHOST_PATTERN = re.compile(r"^(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$",
 TOPUP_NAME_PATTERN = re.compile(r"wallet topup (\d+(?:\.\d+)?) RMB", re.IGNORECASE)
 TOPUP_HTML_PATTERN = re.compile(
     r"(wallet\s*topup\s*(\d+(?:\.\d+)?)\s*RMB).*?(\d+(?:\.\d+)?)\s*(?:USD|\$)",
+    re.IGNORECASE | re.DOTALL,
+)
+APP_CONFIG_PATTERN = re.compile(
+    r"window\.__APP_CONFIG__\s*=\s*(\{.*?\})\s*;?\s*</script>",
     re.IGNORECASE | re.DOTALL,
 )
 
@@ -137,8 +142,15 @@ def is_public_station_key(station_key: Any) -> bool:
 
 
 def is_public_station_url(value: Any) -> bool:
-    parsed = urlparse(str(value or "").strip())
+    text = str(value or "").strip()
+    if not text:
+        return False
+    parsed = urlparse(text)
+    if parsed.scheme not in {"http", "https"}:
+        return False
     host = parsed.netloc.lower()
+    if not host:
+        return False
     return not LOCALHOST_PATTERN.fullmatch(host)
 
 
@@ -240,27 +252,30 @@ def load_summary_intro() -> dict[str, Any]:
                 "中转站还存在模型质量不稳定、计费不清晰、数据安全风险较高，以及随时关停或跑路的风险。如确需使用，建议少量多次充值，控制损失风险。",
             ],
             "items": [
-                "工作时段：每日 09:00:00-18:00:00。",
-                "非工作时段：每日 18:00:01-次日 08:59:59。",
+                "工作时段：周一至周五 09:00:00-18:00:00。",
+                "非工作时段：工作日 18:00:01-次日 08:59:59；周末全天计入非工作时段。",
                 "正式综合排名仅使用高置信度或人工核验的费用证据；0 倍率分组不参与排名。",
+                "正式采用倍率优先使用 Codex 口径分组（`codex` / `openai` / `gpt` / `default`）中的最小非 0 倍率；若缺失，再回退到最低非 Claude 分组。",
+                "sub2api 站点的公告、分组倍率、订阅和充值计划通常需要登录后查看；公开抓取只作为首页配置、文档链接和菜单项补充。",
                 DISCLAIMER_EMPHASIS,
             ],
             "environment": "\n\n".join(
                 [
                     "本次数据来自本人电脑上 Codex Manager 对多家中转站 Codex API Key 的聚合调用日志，使用场景为 Codex 接入开发。",
                     "由于所有请求均先经过 Codex Manager，再转发至各中转站，相比直连会天然增加一层延迟。",
-                    f"费用口径统一按各站当前可核验的最低倍率档位计算。该档位通常价格最低，但也往往延迟更高、稳定性更差，{HIGHLIGHT_PHRASE}",
+                    f"费用口径统一按各站当前可核验的 Codex 口径最小非 0 分组倍率计算，`default` 分组视为 Codex 可用分组；若站点未显式区分 Codex，则回退到最低非 Claude 分组。该档位通常价格最低，但也往往延迟更高、稳定性更差，{HIGHLIGHT_PHRASE}",
                     "日志样本来自本人实际开发个人小项目期间的调用记录，网络环境为昆明广电宽带。以下排名仅反映本人使用时间点、当时账号状态与当时网络环境下的观测结果。",
                 ]
             ),
             "coreItems": [
                 "综合评分权重 = 正确响应率 40% + 响应时间 35% + 实际倍率 25%。",
                 "实际倍率 = 分组倍率 × 实付人民币 ÷ 到账美元额度。",
-                "正式采用倍率：该站点所有已核验、非 0、可参与排名档位中的最低实际倍率。",
+                "正式采用倍率 = Codex 口径分组倍率（最小非 0 倍率） × 实付人民币 ÷ 到账美元额度。",
+                "Codex 口径分组：分组名包含 `codex`、`openai`、`gpt`，或分组名为 `default`；若缺失，再回退到最低非 Claude 分组。",
                 "正确响应定义：HTTP 2xx 且 error IS NULL；HTTP 200 但 error 非空也计为错误响应；因欠费、充值解锁、手机号验证等账户前置条件导致的错误样本，已从正确响应率统计中剔除。",
             ],
             "formula": "实际倍率 = 分组倍率 × 实付人民币 ÷ 到账美元额度。",
-            "adoptedMultiplierRule": "正式采用倍率：该站点所有已核验、非 0、可参与排名档位中的最低实际倍率。",
+            "adoptedMultiplierRule": "正式采用倍率：优先取 Codex 口径分组中的最小非 0 实际倍率；若无明确 Codex/default 分组，再回退到最低非 Claude 分组。",
             "scoring": "综合评分权重 = 正确响应率 40% + 响应时间 35% + 实际倍率 25%。",
         },
     }
@@ -512,6 +527,349 @@ def load_announcements(status_payloads: dict[str, dict[str, Any]]) -> dict[str, 
     return grouped
 
 
+def load_live_auth_probes() -> dict[str, dict[str, Any]]:
+    grouped: dict[str, dict[str, Any]] = {}
+    if not LIVE_AUTH_PROBE_DIR.exists():
+        return grouped
+    for path in sorted(LIVE_AUTH_PROBE_DIR.glob("*-live-auth-probe.json")):
+        station_key = path.name.removesuffix("-live-auth-probe.json")
+        if not is_public_station_key(station_key):
+            continue
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if isinstance(payload, dict):
+            payload["_probePath"] = str(path)
+            grouped[station_key] = payload
+    return grouped
+
+
+def probe_location(probe: dict[str, Any]) -> str:
+    return sanitize_public_text(probe.get("location") or probe.get("url") or "")
+
+
+def probe_source_url(probe: dict[str, Any], api_path: str) -> str:
+    location = probe_location(probe)
+    parsed = urlparse(location)
+    if parsed.scheme and parsed.netloc:
+        return f"{parsed.scheme}://{parsed.netloc}{api_path}"
+    return location
+
+
+def find_probe_result(probe: dict[str, Any], api_path: str) -> dict[str, Any] | None:
+    results = probe.get("results")
+    if not isinstance(results, dict):
+        return None
+    direct = results.get(api_path)
+    if isinstance(direct, dict):
+        return direct
+    for bucket in results.values():
+        if not isinstance(bucket, dict):
+            continue
+        nested = bucket.get(api_path)
+        if isinstance(nested, dict):
+            return nested
+    return None
+
+
+def probe_result_body_from_entry(entry: dict[str, Any] | None) -> Any:
+    if not isinstance(entry, dict):
+        return None
+    return entry.get("body")
+
+
+def probe_result_data_from_entry(entry: dict[str, Any] | None) -> Any:
+    body = probe_result_body_from_entry(entry)
+    if isinstance(body, dict):
+        return body.get("data")
+    return None
+
+
+def looks_like_notice_text(value: str) -> bool:
+    text = normalize_public_text(value)
+    if not text:
+        return False
+    lowered = text[:300].lower()
+    if lowered.startswith("<!doctype") or lowered.startswith("<html") or "<script" in lowered:
+        return False
+    return True
+
+
+def extract_collection(raw: Any, *, allow_text_item: bool = False) -> tuple[list[Any], bool]:
+    if isinstance(raw, list):
+        return raw, True
+    if allow_text_item and isinstance(raw, str) and looks_like_notice_text(raw):
+        return [{"content": raw}], True
+    if not isinstance(raw, dict):
+        return [], False
+    for key in ("announcements", "items", "list", "records", "rows", "data"):
+        if key not in raw:
+            continue
+        rows, found = extract_collection(raw.get(key), allow_text_item=allow_text_item)
+        if found:
+            return rows, True
+    return [], False
+
+
+def normalize_live_announcement(station_key: str, item: dict[str, Any], index: int, source_url: str) -> dict[str, Any] | None:
+    title = normalize_public_text(item.get("title") or item.get("name") or item.get("subject"))
+    content = normalize_public_text(
+        item.get("content")
+        or item.get("message")
+        or item.get("body")
+        or item.get("description")
+        or item.get("text")
+        or title
+    )
+    if not content:
+        return None
+    published_at = sanitize_public_text(
+        item.get("publishDate")
+        or item.get("publishedAt")
+        or item.get("published_at")
+        or item.get("createdAt")
+        or item.get("created_at")
+        or item.get("updatedAt")
+        or item.get("updated_at")
+    )
+    extra = normalize_public_text(item.get("extra") or item.get("summary") or "")
+    if title and title != content:
+        extra = title if not extra else f"{title} | {extra}"
+    return {
+        "id": str(item.get("id") or item.get("uuid") or f"{station_key}-live-{index}"),
+        "publishedAt": published_at,
+        "type": sanitize_public_text(item.get("type") or item.get("category") or item.get("level") or "login_probe"),
+        "extra": extra,
+        "content": content,
+        "sourceUrl": source_url,
+    }
+
+
+def live_probe_announcements_and_status(station_key: str, probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]]:
+    first_failure: dict[str, str] | None = None
+    first_empty: dict[str, str] | None = None
+    for api_path in ("/api/v1/announcements", "/api/announcements", "/api/status", "/api/notice", "/api/notices"):
+        entry = find_probe_result(probe, api_path)
+        if entry is None:
+            continue
+        status = int(entry.get("status") or 0)
+        ok = bool(entry.get("ok"))
+        body = probe_result_body_from_entry(entry)
+        rows, found = extract_collection(body, allow_text_item="notice" in api_path.lower())
+        source_url = probe_source_url(probe, api_path)
+        if status and not ok and status >= 400:
+            if first_failure is None:
+                first_failure = {
+                    "status": "failed",
+                    "source": source_url,
+                    "message": f"登录态公告接口返回 HTTP {status}",
+                }
+            continue
+            return [], {
+                "status": "failed",
+                "source": source_url,
+                "message": f"登录态公告接口返回 HTTP {status}",
+            }
+        if not found:
+            if first_empty is None:
+                first_empty = {
+                    "status": "empty",
+                    "source": source_url,
+                    "message": "公告接口已访问，但响应中没有标准公告列表",
+                }
+            continue
+            return [], {
+                "status": "empty",
+                "source": source_url,
+                "message": "登录态公告接口已访问，但响应中没有标准公告列表",
+            }
+        announcements = [
+            row
+            for index, item in enumerate(rows, start=1)
+            if isinstance(item, dict)
+            for row in [normalize_live_announcement(station_key, item, index, source_url)]
+            if row
+        ]
+        if announcements:
+            return announcements, {
+                "status": "captured",
+                "source": source_url,
+                "message": f"登录态公告接口抓取到 {len(announcements)} 条",
+            }
+        if first_empty is None:
+            first_empty = {
+                "status": "empty",
+                "source": source_url,
+                "message": "登录态公告接口返回空列表",
+            }
+    if first_empty is not None:
+        return [], first_empty
+    if first_failure is not None:
+        return [], first_failure
+    return [], {
+        "status": "missing",
+        "source": sanitize_public_text(probe.get("_probePath") or probe_location(probe)),
+        "message": "live auth probe 尚未包含公告接口",
+    }
+
+
+def live_probe_group_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]]:
+    entry = find_probe_result(probe, "/api/v1/groups/available")
+    data = probe_result_data_from_entry(entry)
+    rows = data if isinstance(data, list) else []
+    groups: list[dict[str, Any]] = []
+    for item in rows:
+        if not isinstance(item, dict):
+            continue
+        if str(item.get("status") or "active").strip().lower() not in {"", "active"}:
+            continue
+        group = normalize_group_row(
+            {
+                "groupName": item.get("name") or item.get("groupName") or item.get("group_name"),
+                "groupMultiplier": item.get("rate_multiplier")
+                if "rate_multiplier" in item
+                else item.get("groupMultiplier", item.get("group_multiplier", item.get("ratio"))),
+            }
+        )
+        if group:
+            groups.append(group)
+    source = probe_source_url(probe, "/api/v1/groups/available")
+    if groups:
+        return groups, {"status": "captured", "source": source, "message": f"登录态分组接口抓取到 {len(groups)} 条"}
+    if entry is not None:
+        status = int(entry.get("status") or 0)
+        message = f"登录态分组接口返回 HTTP {status}" if status >= 400 else "登录态分组接口返回空列表"
+        return [], {"status": "empty" if status < 400 else "failed", "source": source, "message": message}
+    return [], {"status": "missing", "source": sanitize_public_text(probe.get("_probePath") or probe_location(probe)), "message": "live auth probe 尚未包含分组接口"}
+
+
+def duration_unit_to_billing_type(unit: Any) -> str:
+    text = str(unit or "").strip().lower()
+    if text in {"month", "monthly"}:
+        return "monthly"
+    if text in {"week", "weekly"}:
+        return "weekly"
+    if text in {"day", "daily"}:
+        return "daily"
+    if text in {"year", "yearly"}:
+        return "monthly"
+    return "permanent"
+
+
+def convert_quota_to_usd(quota_value: Any) -> float | None:
+    raw = parse_float(quota_value)
+    if raw is None:
+        return None
+    return raw / 500000.0
+
+
+def live_probe_recharge_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]]:
+    tiers: list[dict[str, Any]] = []
+    plan_entry = find_probe_result(probe, "/api/v1/payment/plans")
+    plan_rows, _found_plans = extract_collection(probe_result_data_from_entry(plan_entry))
+    for item in plan_rows:
+        if not isinstance(item, dict):
+            continue
+        plan = item.get("plan") if isinstance(item.get("plan"), dict) else item
+        title = sanitize_public_text(plan.get("title") or plan.get("name") or "subscription plan")
+        price = parse_float(plan.get("price") or plan.get("amount") or plan.get("rmbAmount") or plan.get("rmb_amount"))
+        usd_amount = parse_float(plan.get("usdAmount") or plan.get("usd_amount") or plan.get("usd"))
+        if usd_amount is None:
+            usd_amount = convert_quota_to_usd(plan.get("total_amount") or plan.get("quota"))
+        row = normalize_recharge_row(
+            {
+                "rechargeName": title,
+                "billingType": duration_unit_to_billing_type(plan.get("duration_unit") or plan.get("billing_type")),
+                "rmbAmount": price,
+                "usdAmount": usd_amount,
+                "rechargeLocation": "login probe payment plans API",
+                "expiresRule": sanitize_public_text(plan.get("subtitle") or plan.get("description") or plan.get("desc")),
+            }
+        )
+        if row:
+            tiers.append(row)
+
+    config_entry = find_probe_result(probe, "/api/v1/payment/config")
+    checkout_entry = find_probe_result(probe, "/api/v1/payment/checkout-info")
+    payment_config = probe_result_data_from_entry(config_entry)
+    checkout_info = probe_result_data_from_entry(checkout_entry)
+    payment_config = payment_config if isinstance(payment_config, dict) else {}
+    checkout_info = checkout_info if isinstance(checkout_info, dict) else {}
+    recharge_multiplier = (
+        parse_float(checkout_info.get("balance_recharge_multiplier"))
+        or parse_float(payment_config.get("balance_recharge_multiplier"))
+        or 0.0
+    )
+    balance_disabled = bool(checkout_info.get("balance_disabled", payment_config.get("balance_disabled")))
+    quick_amounts = probe.get("quick_amounts") if isinstance(probe.get("quick_amounts"), list) else []
+    if recharge_multiplier > 0 and not balance_disabled and quick_amounts:
+        methods = checkout_info.get("methods") if isinstance(checkout_info.get("methods"), dict) else {}
+        method_text = ", ".join(sorted(str(name) for name in methods)) or "login probe"
+        fee_rate = parse_float(checkout_info.get("recharge_fee_rate") or payment_config.get("recharge_fee_rate")) or 0.0
+        for raw_amount in quick_amounts:
+            rmb_amount = parse_float(raw_amount)
+            if rmb_amount is None or rmb_amount <= 0:
+                continue
+            paid_rmb = rmb_amount * (1 + fee_rate / 100)
+            usd_amount = rmb_amount * recharge_multiplier
+            row = normalize_recharge_row(
+                {
+                    "rechargeName": f"wallet topup {format_plain_number(rmb_amount)} RMB",
+                    "billingType": "permanent",
+                    "rmbAmount": paid_rmb,
+                    "usdAmount": usd_amount,
+                    "rechargeLocation": f"login probe payment config API ({method_text})",
+                    "expiresRule": f"No expiry stated; balance top-up; recharge fee {format_plain_number(fee_rate)}%",
+                }
+            )
+            if row:
+                tiers.append(row)
+
+    source = probe_source_url(probe, "/api/v1/payment/checkout-info")
+    if tiers:
+        return tiers, {"status": "captured", "source": source, "message": f"登录态充值接口抓取到 {len(tiers)} 条"}
+    if config_entry is not None or checkout_entry is not None or plan_entry is not None:
+        return [], {"status": "empty", "source": source, "message": "登录态支付接口可访问，但没有可结构化的充值档位"}
+    return [], {"status": "missing", "source": sanitize_public_text(probe.get("_probePath") or probe_location(probe)), "message": "live auth probe 尚未包含支付接口"}
+
+
+def merge_announcements(existing: list[dict[str, Any]], incoming: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    merged: list[dict[str, Any]] = []
+    seen: set[tuple[str, str, str]] = set()
+    for item in existing + incoming:
+        key = (
+            str(item.get("id") or ""),
+            str(item.get("publishedAt") or ""),
+            str(item.get("content") or ""),
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        merged.append(item)
+    return merged
+
+
+def load_live_probe_snapshots() -> dict[str, dict[str, Any]]:
+    snapshots: dict[str, dict[str, Any]] = {}
+    for station_key, probe in load_live_auth_probes().items():
+        announcements, announcement_status = live_probe_announcements_and_status(station_key, probe)
+        groups, group_status = live_probe_group_rows(probe)
+        recharges, recharge_status = live_probe_recharge_rows(probe)
+        snapshots[station_key] = {
+            "announcements": announcements,
+            "groupMultipliers": groups,
+            "rechargeTiers": recharges,
+            "evidenceStatus": {
+                "announcements": announcement_status,
+                "groupMultipliers": group_status,
+                "rechargeTiers": recharge_status,
+            },
+            "sourceUrl": probe_location(probe),
+        }
+    return snapshots
+
+
 def normalize_group_row(item: dict[str, Any]) -> dict[str, Any] | None:
     group_name = sanitize_public_text(item.get("groupName") or item.get("group_name"))
     group_multiplier = parse_float(item.get("groupMultiplier") if "groupMultiplier" in item else item.get("group_multiplier"))
@@ -725,11 +1083,62 @@ def parse_public_pricing_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "rechargeTiers": recharge_tiers,
         "tierNotes": tier_notes,
         "sourceUrl": source_url,
+        "stationTypeHint": "",
     }
+
+
+def truthy_public_flag(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        return value.strip().lower() == "true"
+    return False
+
+
+def parse_app_config_from_html(content: str) -> dict[str, Any] | None:
+    match = APP_CONFIG_PATTERN.search(content)
+    if not match:
+        return None
+    try:
+        payload = json.loads(match.group(1))
+    except json.JSONDecodeError:
+        return None
+    return payload if isinstance(payload, dict) else None
+
+
+def infer_station_type_from_app_config(app_config: dict[str, Any]) -> str:
+    payment_enabled = truthy_public_flag(app_config.get("payment_enabled"))
+    subscription_enabled = truthy_public_flag(app_config.get("purchase_subscription_enabled"))
+    if payment_enabled and subscription_enabled:
+        return "mixed"
+    if payment_enabled:
+        return "non_subscription"
+    if subscription_enabled:
+        return "subscription"
+    return ""
 
 
 def parse_public_pricing_html(content: str) -> dict[str, Any]:
     recharge_tiers: list[dict[str, Any]] = []
+    tier_notes: list[str] = []
+    source_url = ""
+    station_type_hint = ""
+
+    app_config = parse_app_config_from_html(content)
+    if app_config:
+        station_type_hint = infer_station_type_from_app_config(app_config)
+        source_url = sanitize_public_text(app_config.get("api_base_url") or "")
+        if truthy_public_flag(app_config.get("payment_enabled")):
+            recharge_url = sanitize_public_text(
+                app_config.get("balance_low_notify_recharge_url") or app_config.get("purchase_subscription_url")
+            )
+            note = "公开配置显示已开启余额充值，但具体档位金额仍需登录/核验。"
+            if recharge_url:
+                note = f"{note} 充值入口：{recharge_url}"
+            tier_notes.append(note)
+        if truthy_public_flag(app_config.get("purchase_subscription_enabled")):
+            tier_notes.append("公开配置显示已开启订阅购买，但具体套餐仍需登录/核验。")
+
     for match in TOPUP_HTML_PATTERN.finditer(content):
         recharge_name = sanitize_public_text(match.group(1))
         rmb_amount = parse_float(match.group(2))
@@ -750,8 +1159,9 @@ def parse_public_pricing_html(content: str) -> dict[str, Any]:
     return {
         "groupMultipliers": [],
         "rechargeTiers": recharge_tiers,
-        "tierNotes": [],
-        "sourceUrl": "",
+        "tierNotes": tier_notes,
+        "sourceUrl": source_url,
+        "stationTypeHint": station_type_hint,
     }
 
 
@@ -771,6 +1181,7 @@ def load_public_pricing_snapshots() -> dict[str, dict[str, Any]]:
                 "rechargeTiers": [],
                 "tierNotes": [],
                 "sourceUrl": "",
+                "stationTypeHint": "",
             }
             try:
                 content = path.read_text(encoding="utf-8")
@@ -783,15 +1194,28 @@ def load_public_pricing_snapshots() -> dict[str, dict[str, Any]]:
             except (OSError, json.JSONDecodeError):
                 continue
 
-            if not parsed["groupMultipliers"] and not parsed["rechargeTiers"] and not parsed["tierNotes"]:
+            if (
+                not parsed["groupMultipliers"]
+                and not parsed["rechargeTiers"]
+                and not parsed["tierNotes"]
+                and not parsed.get("stationTypeHint")
+            ):
                 continue
 
             bucket = grouped.setdefault(
                 station_key,
-                {"groupMultipliers": [], "rechargeTiers": [], "tierNotes": [], "sourceUrl": parsed["sourceUrl"]},
+                {
+                    "groupMultipliers": [],
+                    "rechargeTiers": [],
+                    "tierNotes": [],
+                    "sourceUrl": parsed["sourceUrl"],
+                    "stationTypeHint": "",
+                },
             )
             if parsed["sourceUrl"]:
                 bucket["sourceUrl"] = parsed["sourceUrl"]
+            if parsed.get("stationTypeHint") and not bucket.get("stationTypeHint"):
+                bucket["stationTypeHint"] = parsed["stationTypeHint"]
             existing_groups = {group_row_key(item) for item in bucket["groupMultipliers"]}
             for group in parsed["groupMultipliers"]:
                 key = group_row_key(group)
@@ -879,6 +1303,50 @@ def audit_station_label_from_base_url(value: Any, fallback: str) -> str:
     return host or fallback
 
 
+def load_station_audit_history(station_records: dict[str, dict[str, Any]] | None = None) -> list[dict[str, Any]]:
+    station_records = station_records or {}
+    rows: list[dict[str, Any]] = []
+    if not AUDIT_RUNS_DIR.exists():
+        return rows
+
+    for path in AUDIT_RUNS_DIR.glob("*/*/*/summary.json"):
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if audit_run_status_for_summary(path) != "success":
+            continue
+        summary = normalize_audit_summary(payload)
+        if not summary:
+            continue
+        parts = path.relative_to(AUDIT_RUNS_DIR).parts
+        if len(parts) < 4:
+            continue
+        station_key, model_dir, run_id = parts[:3]
+        if not is_public_station_key(station_key):
+            continue
+
+        station = station_records.get(station_key, {})
+        row = dict(summary)
+        row.update(
+            {
+                "stationKey": station_key,
+                "stationLabel": sanitize_public_text(station.get("label")) or audit_station_label_from_base_url(summary.get("auditedBaseUrl"), station_key),
+                "stationUrl": sanitize_public_text(station.get("url")) or sanitize_public_text(summary.get("auditedBaseUrl")),
+                "runId": run_id,
+                "reportUrl": (
+                    f"/api/audit-report?station={quote(station_key)}"
+                    f"&model={quote(model_dir)}"
+                    f"&run={quote(run_id)}"
+                ),
+            }
+        )
+        rows.append(row)
+
+    rows.sort(key=lambda item: audit_sort_datetime(item.get("executedAt")), reverse=True)
+    return rows
+
+
 def apply_audit_only_station_records(
     stations: dict[str, dict[str, Any]],
     station_urls: dict[str, set[str]],
@@ -921,6 +1389,15 @@ def apply_public_pricing_snapshots(
 ) -> None:
     for station_key, snapshot in pricing_snapshots.items():
         station = ensure_station(stations, station_key)
+        station_type_hint = sanitize_public_text(snapshot.get("stationTypeHint"))
+        if (
+            station.get("stationType") == "unknown_pending"
+            and station_type_hint in FULL_TYPE_LABELS
+            and station_type_hint != "unknown_pending"
+        ):
+            station["stationType"] = station_type_hint
+            station["stationTypeLabel"] = FULL_TYPE_LABELS.get(station_type_hint, station_type_hint)
+            station["stationTypeShortLabel"] = SHORT_TYPE_LABELS.get(station_type_hint, station_type_hint)
         source_url = sanitize_public_text(snapshot.get("sourceUrl"))
         if source_url:
             station_urls.setdefault(station_key, set()).add(source_url)
@@ -932,6 +1409,124 @@ def apply_public_pricing_snapshots(
             normalized = normalize_public_text(note)
             if normalized and normalized not in station["tierNotes"]:
                 station["tierNotes"].append(normalized)
+
+
+def apply_live_probe_snapshots(
+    stations: dict[str, dict[str, Any]],
+    station_urls: dict[str, set[str]],
+    live_snapshots: dict[str, dict[str, Any]],
+) -> None:
+    for station_key, snapshot in live_snapshots.items():
+        station = ensure_station(stations, station_key)
+        source_url = sanitize_public_text(snapshot.get("sourceUrl"))
+        if source_url:
+            station_urls.setdefault(station_key, set()).add(source_url)
+        for group in snapshot.get("groupMultipliers", []):
+            append_group_row(station, group)
+        for tier in snapshot.get("rechargeTiers", []):
+            append_recharge_row(station, tier)
+        if snapshot.get("announcements"):
+            station["announcements"] = merge_announcements(station.get("announcements", []), snapshot["announcements"])
+
+
+def evidence_item(
+    *,
+    key: str,
+    label: str,
+    count: int,
+    fallback_status: str,
+    fallback_message: str,
+    live_status: dict[str, str] | None,
+) -> dict[str, Any]:
+    if count > 0:
+        return {
+            "key": key,
+            "label": label,
+            "count": count,
+            "status": "captured",
+            "statusLabel": "已抓取",
+            "message": f"已归档 {count} 条，可在本详情页查看。",
+            "source": sanitize_public_text((live_status or {}).get("source")),
+        }
+
+    status = sanitize_public_text((live_status or {}).get("status")) or fallback_status
+    message = normalize_public_text((live_status or {}).get("message")) or fallback_message
+    source = sanitize_public_text((live_status or {}).get("source"))
+    status_labels = {
+        "captured": "已抓取",
+        "empty": "接口返回空",
+        "failed": "抓取失败",
+        "missing": "未抓到",
+        "login_required": "需要登录",
+        "public_missing": "未发现公开接口",
+    }
+    return {
+        "key": key,
+        "label": label,
+        "count": 0,
+        "status": status,
+        "statusLabel": status_labels.get(status, status or "未抓到"),
+        "message": message,
+        "source": source,
+    }
+
+
+def build_station_evidence_status(station: dict[str, Any], live_snapshot: dict[str, Any] | None) -> list[dict[str, Any]]:
+    live_statuses = (live_snapshot or {}).get("evidenceStatus") if isinstance(live_snapshot, dict) else {}
+    live_statuses = live_statuses if isinstance(live_statuses, dict) else {}
+    platform = str(station.get("platformGuess") or "").strip().lower()
+    sub2api_login_message = "sub2api 的该类接口通常需要登录态；当前公开快照或已归档 probe 没有可用结构化数据。"
+    announcement_message = (
+        "sub2api 公告通常位于登录态 /api/v1/announcements；当前没有抓到可展示内容。"
+        if platform == "sub2api"
+        else "未发现标准公开公告接口或接口未返回公告内容。"
+    )
+    return [
+        evidence_item(
+            key="groupMultipliers",
+            label="分组倍率",
+            count=len(station.get("groupMultipliers", [])),
+            fallback_status="login_required" if platform == "sub2api" else "missing",
+            fallback_message=sub2api_login_message if platform == "sub2api" else "当前未抓到结构化分组倍率。",
+            live_status=live_statuses.get("groupMultipliers") if isinstance(live_statuses.get("groupMultipliers"), dict) else None,
+        ),
+        evidence_item(
+            key="rechargeTiers",
+            label="充值档位",
+            count=len(station.get("rechargeTiers", [])),
+            fallback_status="login_required" if platform == "sub2api" else "missing",
+            fallback_message=sub2api_login_message if platform == "sub2api" else "当前未抓到结构化充值档位。",
+            live_status=live_statuses.get("rechargeTiers") if isinstance(live_statuses.get("rechargeTiers"), dict) else None,
+        ),
+        evidence_item(
+            key="announcements",
+            label="公告",
+            count=len(station.get("announcements", [])),
+            fallback_status="login_required" if platform == "sub2api" else "public_missing",
+            fallback_message=announcement_message,
+            live_status=live_statuses.get("announcements") if isinstance(live_statuses.get("announcements"), dict) else None,
+        ),
+    ]
+
+
+def data_gap_summary(stations: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    gaps: list[dict[str, Any]] = []
+    for station in stations:
+        evidence = station.get("dataEvidence")
+        if not isinstance(evidence, list):
+            continue
+        missing = [
+            {
+                "key": item.get("key"),
+                "status": item.get("status"),
+                "message": item.get("message"),
+            }
+            for item in evidence
+            if isinstance(item, dict) and int(item.get("count") or 0) == 0
+        ]
+        if missing:
+            gaps.append({"station": station.get("key"), "label": station.get("label"), "missing": missing})
+    return gaps
 
 
 def sort_recharge_tiers(recharge_tiers: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -1154,20 +1749,25 @@ def main() -> int:
     if resolved_inputs.get("quality_metrics.csv"):
         for station in stations.values():
             station["quality"] = {}
-        quality_rows = [quality_row(row) for row in read_csv(resolved_inputs["quality_metrics.csv"])]
-        for row in quality_rows:
-            if not is_public_station_key(row["station"]):
+        quality_rows = read_csv(resolved_inputs["quality_metrics.csv"])
+        for raw_row in quality_rows:
+            row = quality_row(raw_row)
+            station_key = row["station"]
+            if not is_public_station_key(station_key):
+                continue
+            configured_urls = [sanitize_public_text(url) for url in split_list(raw_row.get("configured_urls"))]
+            public_configured_urls = [url for url in configured_urls if is_public_station_url(url)]
+            if station_key not in stations and not public_configured_urls:
                 continue
             station = ensure_station(
                 stations,
-                row["station"],
+                station_key,
                 label=row["label"],
                 platform_guess=row["platformGuess"],
             )
             station["quality"][row["timeWindow"]] = row
-            configured_url = station_url(row.get("configured_urls"))
-            if configured_url:
-                station_urls.setdefault(row["station"], set()).add(configured_url)
+            if public_configured_urls:
+                station_urls.setdefault(station_key, set()).update(public_configured_urls)
 
     if resolved_inputs.get("multiplier_tiers.csv"):
         reset_station_tiers(stations)
@@ -1225,18 +1825,21 @@ def main() -> int:
     pricing_snapshots = load_public_pricing_snapshots()
     apply_public_pricing_snapshots(stations, station_urls, pricing_snapshots)
 
+    for station_key, rows in announcements.items():
+        if not is_public_station_key(station_key):
+            continue
+        station = ensure_station(stations, station_key)
+        station["announcements"] = merge_announcements(station.get("announcements", []), rows)
+
+    live_snapshots = load_live_probe_snapshots()
+    apply_live_probe_snapshots(stations, station_urls, live_snapshots)
+
     overrides = load_station_pricing_overrides()
     apply_station_pricing_overrides(stations, overrides)
 
     audit_targets = load_station_audit_targets()
     latest_audits = load_latest_station_audits()
     apply_audit_only_station_records(stations, station_urls, latest_audits)
-
-    for station_key, rows in announcements.items():
-        if not is_public_station_key(station_key):
-            continue
-        station = ensure_station(stations, station_key)
-        station["announcements"] = rows
 
     apply_authoritative_ranking_overrides(stations, rankings, overrides)
 
@@ -1256,6 +1859,7 @@ def main() -> int:
         station["rechargeTiers"] = sort_recharge_tiers(station.get("rechargeTiers", []))
         url_choices = dedupe_strings(list(station_urls.get(station["key"], set())) + [station.get("url", "")])
         station["url"] = choose_best_url(url_choices)
+        station["dataEvidence"] = build_station_evidence_status(station, live_snapshots.get(station["key"]))
         audit_rows = latest_audits.get(station["key"], [])
         audit_target = audit_targets.get(station["key"], {})
         if audit_rows or audit_target:
@@ -1299,6 +1903,7 @@ def main() -> int:
                 "off_hours_ranked": len(rankings["off_hours"]),
                 "reused_existing": use_existing_base,
                 "missing_sources": missing_inputs,
+                "data_gaps": data_gap_summary(station_list),
             },
             ensure_ascii=False,
             indent=2,

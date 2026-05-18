@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 import copy
+import io
+import importlib.util
 import json
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -13,7 +16,85 @@ from scripts import build_site_data as build_site_data
 from scripts import run_station_audit as run_station_audit
 
 
+AUDIT_SCRIPT_PATH = Path(r"C:\Users\ttop5\Documents\projects\audit_proxy_multipliers.py")
+AUDIT_SPEC = importlib.util.spec_from_file_location("audit_proxy_multipliers", AUDIT_SCRIPT_PATH)
+assert AUDIT_SPEC and AUDIT_SPEC.loader
+audit_proxy_multipliers = importlib.util.module_from_spec(AUDIT_SPEC)
+sys.modules[AUDIT_SPEC.name] = audit_proxy_multipliers
+AUDIT_SPEC.loader.exec_module(audit_proxy_multipliers)
+
+
 class BuildSiteDataTests(unittest.TestCase):
+    def make_fee_tier(self, **overrides: object) -> object:
+        payload = {
+            "station": "demo",
+            "label": "Demo",
+            "station_type": "non_subscription",
+            "group_name": "default",
+            "group_multiplier": 1.0,
+            "recharge_name": "wallet topup 10 RMB",
+            "billing_type": "permanent",
+            "rmb_amount": 10.0,
+            "usd_amount": 100.0,
+            "effective_multiplier": 0.1,
+            "recharge_location": "wallet API",
+            "expires_rule": "No expiry stated",
+            "verified": True,
+            "confidence": "high_tabbit_logged_in",
+            "source": "test",
+            "evidence_url": "https://example.com",
+            "participates_in_verified_ranking": True,
+            "notes": "",
+        }
+        payload.update(overrides)
+        return audit_proxy_multipliers.FeeTier(**payload)
+
+    def test_choose_verified_fee_prefers_lowest_nonzero_codex_group(self) -> None:
+        tiers = [
+            self.make_fee_tier(group_name="claude-code", group_multiplier=0.05, effective_multiplier=0.05),
+            self.make_fee_tier(group_name="OpenAI", group_multiplier=0.4, effective_multiplier=0.4),
+            self.make_fee_tier(group_name="codex-pro", group_multiplier=0.2, effective_multiplier=0.2),
+            self.make_fee_tier(group_name="default", group_multiplier=0.3, effective_multiplier=0.3),
+        ]
+
+        chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
+
+        self.assertEqual(chosen["demo"].group_name, "codex-pro")
+        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.2)
+
+    def test_choose_verified_fee_falls_back_to_lowest_non_claude_group(self) -> None:
+        tiers = [
+            self.make_fee_tier(group_name="claude-max", group_multiplier=0.05, effective_multiplier=0.05),
+            self.make_fee_tier(group_name="GeminiAnti", group_multiplier=0.9, effective_multiplier=0.9),
+            self.make_fee_tier(group_name="image-relay", group_multiplier=0.7, effective_multiplier=0.7),
+        ]
+
+        chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
+
+        self.assertEqual(chosen["demo"].group_name, "image-relay")
+        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.7)
+
+    def test_choose_verified_fee_skips_station_with_only_claude_groups(self) -> None:
+        tiers = [
+            self.make_fee_tier(group_name="claude-code", group_multiplier=0.05, effective_multiplier=0.05),
+            self.make_fee_tier(group_name="cc-aws", group_multiplier=0.3, effective_multiplier=0.3),
+        ]
+
+        chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
+
+        self.assertNotIn("demo", chosen)
+
+    def test_choose_verified_fee_excludes_mixed_claude_gpt_group(self) -> None:
+        tiers = [
+            self.make_fee_tier(group_name="claude-gpt", group_multiplier=0.05, effective_multiplier=0.05),
+            self.make_fee_tier(group_name="codex", group_multiplier=0.2, effective_multiplier=0.2),
+        ]
+
+        chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
+
+        self.assertEqual(chosen["demo"].group_name, "codex")
+        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.2)
+
     def test_public_fetch_dir_defaults_to_repo_local_data_directory(self) -> None:
         self.assertEqual(
             build_site_data.PUBLIC_FETCH_DIR,
@@ -23,9 +104,285 @@ class BuildSiteDataTests(unittest.TestCase):
     def test_private_station_identifiers_are_not_public(self) -> None:
         self.assertFalse(build_site_data.is_public_station_key("printcap.ai-ttop5@qq.com"))
         self.assertFalse(build_site_data.is_public_station_key("printcap.ai-2026-05-17-01"))
+        self.assertFalse(build_site_data.is_public_station_url(""))
         self.assertFalse(build_site_data.is_public_station_url("http://127.0.0.1:50124"))
+        self.assertFalse(build_site_data.is_public_station_url("tabit2api.local"))
         self.assertTrue(build_site_data.is_public_station_key("nexus"))
         self.assertTrue(build_site_data.is_public_station_url("https://nexus.1982video.cn"))
+
+    def test_sub2api_app_config_type_hint_does_not_create_recharge_tiers(self) -> None:
+        html = (
+            '<script>window.__APP_CONFIG__={"payment_enabled":true,'
+            '"purchase_subscription_enabled":false,'
+            '"balance_low_notify_recharge_url":"https://printcap.ai/purchase",'
+            '"api_base_url":"https://api.printcap.ai"};</script>'
+        )
+
+        parsed = build_site_data.parse_public_pricing_html(html)
+
+        self.assertEqual(parsed["stationTypeHint"], "non_subscription")
+        self.assertEqual(parsed["sourceUrl"], "https://api.printcap.ai")
+        self.assertEqual(parsed["rechargeTiers"], [])
+
+        stations: dict[str, dict[str, object]] = {}
+        station_urls: dict[str, set[str]] = {}
+        build_site_data.apply_public_pricing_snapshots(stations, station_urls, {"audit-api-printcap-ai": parsed})
+
+        station = stations["audit-api-printcap-ai"]
+        self.assertEqual(station["stationType"], "non_subscription")
+        self.assertEqual(station["rechargeTiers"], [])
+        self.assertIn("公开配置显示已开启余额充值", station["tierNotes"][0])
+
+    def test_sub2api_app_config_type_hint_does_not_override_known_type(self) -> None:
+        stations: dict[str, dict[str, object]] = {}
+        build_site_data.ensure_station(stations, "known", station_type="mixed")
+
+        build_site_data.apply_public_pricing_snapshots(
+            stations,
+            {},
+            {
+                "known": {
+                    "groupMultipliers": [],
+                    "rechargeTiers": [],
+                    "tierNotes": [],
+                    "sourceUrl": "",
+                    "stationTypeHint": "non_subscription",
+                }
+            },
+        )
+
+        self.assertEqual(stations["known"]["stationType"], "mixed")
+
+    def test_live_auth_probe_parses_sub2api_announcements(self) -> None:
+        probe = {
+            "location": "https://demo.example",
+            "results": {
+                "/api/v1/announcements": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {
+                        "code": 0,
+                        "data": [
+                            {
+                                "id": 7,
+                                "title": "维护通知",
+                                "content": "今晚维护",
+                                "created_at": "2026-05-18T12:00:00+08:00",
+                                "type": "notice",
+                            }
+                        ],
+                    },
+                }
+            },
+        }
+
+        rows, status = build_site_data.live_probe_announcements_and_status("demo", probe)
+
+        self.assertEqual(status["status"], "captured")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["id"], "7")
+        self.assertEqual(rows[0]["content"], "今晚维护")
+        self.assertEqual(rows[0]["extra"], "维护通知")
+        self.assertEqual(rows[0]["sourceUrl"], "https://demo.example/api/v1/announcements")
+
+    def test_live_auth_probe_empty_announcements_are_evidence_not_content(self) -> None:
+        probe = {
+            "location": "https://demo.example",
+            "results": {
+                "/api/v1/announcements": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"code": 0, "data": []},
+                }
+            },
+        }
+
+        rows, status = build_site_data.live_probe_announcements_and_status("demo", probe)
+
+        self.assertEqual(rows, [])
+        self.assertEqual(status["status"], "empty")
+        self.assertIn("返回空列表", status["message"])
+
+    def test_live_auth_probe_status_announcements_are_evidence(self) -> None:
+        probe = {
+            "location": "https://demo.example",
+            "results": {
+                "/api/status": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": {"announcements": []}},
+                }
+            },
+        }
+
+        rows, status = build_site_data.live_probe_announcements_and_status("demo", probe)
+
+        self.assertEqual(rows, [])
+        self.assertEqual(status["status"], "empty")
+        self.assertEqual(status["source"], "https://demo.example/api/status")
+
+    def test_live_auth_probe_notice_string_creates_announcement(self) -> None:
+        probe = {
+            "location": "https://demo.example",
+            "results": {
+                "/api/notice": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {
+                        "success": True,
+                        "data": "[鐐瑰嚮鎴戞煡鐪嬩娇鐢ㄦ枃妗(https://example.com/docs)\n",
+                    },
+                }
+            },
+        }
+
+        rows, status = build_site_data.live_probe_announcements_and_status("demo", probe)
+
+        self.assertEqual(status["status"], "captured")
+        self.assertEqual(status["source"], "https://demo.example/api/notice")
+        self.assertEqual(len(rows), 1)
+        self.assertIn("https://example.com/docs", rows[0]["content"])
+
+    def test_live_auth_probe_notice_html_shell_is_not_announcement(self) -> None:
+        probe = {
+            "location": "https://demo.example",
+            "results": {
+                "/api/notice": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {
+                        "success": True,
+                        "data": "<!doctype html><html><head><script src=\"/assets/app.js\"></script></head></html>",
+                    },
+                }
+            },
+        }
+
+        rows, status = build_site_data.live_probe_announcements_and_status("demo", probe)
+
+        self.assertEqual(rows, [])
+        self.assertEqual(status["status"], "empty")
+
+    def test_live_auth_probe_payment_config_needs_amounts_before_tiers(self) -> None:
+        probe = {
+            "location": "https://api.printcap.ai",
+            "results": {
+                "/api/v1/payment/config": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": {"balance_disabled": False, "balance_recharge_multiplier": 1.0}},
+                },
+                "/api/v1/payment/checkout-info": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": {"methods": {"alipay": {}}, "balance_disabled": False, "balance_recharge_multiplier": 1.0}},
+                },
+                "/api/v1/payment/plans": {"status": 200, "ok": True, "body": {"data": []}},
+            },
+        }
+
+        rows, status = build_site_data.live_probe_recharge_rows(probe)
+
+        self.assertEqual(rows, [])
+        self.assertEqual(status["status"], "empty")
+
+    def test_live_auth_probe_payment_config_with_quick_amounts_creates_tiers(self) -> None:
+        probe = {
+            "location": "https://api.printcap.ai",
+            "quick_amounts": [10],
+            "results": {
+                "/api/v1/payment/config": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": {"balance_disabled": False, "balance_recharge_multiplier": 2.0, "recharge_fee_rate": 1.0}},
+                },
+                "/api/v1/payment/checkout-info": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {
+                        "data": {
+                            "methods": {"alipay": {}},
+                            "balance_disabled": False,
+                            "balance_recharge_multiplier": 2.0,
+                            "recharge_fee_rate": 1.0,
+                        }
+                    },
+                },
+            },
+        }
+
+        rows, status = build_site_data.live_probe_recharge_rows(probe)
+
+        self.assertEqual(status["status"], "captured")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["rechargeName"], "wallet topup 10 RMB")
+        self.assertAlmostEqual(rows[0]["rmbAmount"], 10.1)
+        self.assertAlmostEqual(rows[0]["usdAmount"], 20.0)
+
+    def test_station_evidence_status_distinguishes_empty_announcements(self) -> None:
+        station = {
+            "platformGuess": "sub2api",
+            "groupMultipliers": [],
+            "rechargeTiers": [],
+            "announcements": [],
+        }
+        live_snapshot = {
+            "evidenceStatus": {
+                "announcements": {
+                    "status": "empty",
+                    "source": "https://demo.example/api/v1/announcements",
+                    "message": "登录态公告接口返回空列表",
+                }
+            }
+        }
+
+        evidence = build_site_data.build_station_evidence_status(station, live_snapshot)
+        announcement = next(item for item in evidence if item["key"] == "announcements")
+
+        self.assertEqual(announcement["status"], "empty")
+        self.assertEqual(announcement["statusLabel"], "接口返回空")
+
+    def test_quality_only_local_station_is_not_published(self) -> None:
+        required_inputs = [
+            "composite_ranking_formal_workhours.csv",
+            "composite_ranking_formal_offhours.csv",
+            "composite_ranking_formal_all_hours.csv",
+            "quality_metrics.csv",
+            "login_verification_checklist.csv",
+            "multiplier_tiers.csv",
+        ]
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            source_root = root / "source"
+            data_dir = root / "data"
+            source_root.mkdir()
+            for filename in required_inputs:
+                (source_root / filename).write_text("", encoding="utf-8")
+            (source_root / "quality_metrics.csv").write_text(
+                "station,label,platform_guess,time_window,time_window_label,request_samples,correct,failures,"
+                "correct_rate,http_2xx,http_200_with_error,nonnull_error,excluded_billing_errors,"
+                "avg_seconds,median_seconds,p95_seconds,avg_first_response_seconds,first_at,last_at,"
+                "configured_urls,configured_suppliers\n"
+                "tabit2api,Tabit2api,unknown,work_hours,工作时段,0,0,0,,0,0,0,0,,,,,,,http://127.0.0.1:50124,Tabit2api\n",
+                encoding="utf-8",
+            )
+
+            with (
+                mock.patch.object(build_site_data, "SOURCE_ROOTS", [source_root]),
+                mock.patch.object(build_site_data, "DATA_DIR", data_dir),
+                mock.patch.object(build_site_data, "SITE_DATA_PATH", data_dir / "site-data.json"),
+                mock.patch.object(build_site_data, "PUBLIC_FETCH_DIRS", [root / "missing_fetch"]),
+                mock.patch.object(build_site_data, "AUDIT_RUNS_DIR", root / "missing_audits"),
+                mock.patch.object(build_site_data, "STATION_PRICING_OVERRIDES_PATH", root / "missing_overrides.json"),
+                mock.patch.object(build_site_data, "STATION_AUDIT_TARGETS_PATH", root / "missing_targets.json"),
+                mock.patch("sys.stdout", new=io.StringIO()),
+            ):
+                self.assertEqual(build_site_data.main(), 0)
+
+            payload = json.loads((data_dir / "site-data.json").read_text(encoding="utf-8"))
+            self.assertNotIn("tabit2api", {station["key"] for station in payload["stations"]})
+            self.assertEqual(payload["rankedStationCount"], {"work_hours": 0, "off_hours": 0, "all_hours": 0})
 
     def test_apply_station_pricing_overrides_corrects_52mx_tiers(self) -> None:
         overrides = build_site_data.load_station_pricing_overrides()
@@ -421,6 +778,49 @@ class BuildSiteDataTests(unittest.TestCase):
                 audits = build_site_data.load_latest_station_audits()
 
         self.assertEqual(audits["demo"][0]["overallVerdict"], "low")
+
+    def test_load_station_audit_history_keeps_all_runs_sorted_by_time(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            audit_root = Path(tmp_dir) / "_audit_runs"
+            first_dir = audit_root / "demo" / "claude-sonnet" / "20260101T000000Z"
+            second_dir = audit_root / "demo" / "claude-sonnet" / "20260103T000000Z"
+            failed_dir = audit_root / "demo" / "claude-sonnet" / "20260104T000000Z"
+            for folder in (first_dir, second_dir, failed_dir):
+                folder.mkdir(parents=True)
+
+            base_summary = {
+                "profile": "general",
+                "model": "claude-sonnet",
+                "auditedBaseUrl": "https://relay.example/v1",
+                "overallVerdict": "low",
+                "overallSummary": "clean",
+                "highlights": ["ok"],
+                "stepSummaries": [{"title": "1. Infrastructure", "summary": "ok"}],
+                "reportPath": "data/_audit_runs/demo/claude-sonnet/20260101T000000Z/report.md",
+                "toolVersion": "api-relay-audit@test",
+            }
+            (first_dir / "summary.json").write_text(json.dumps(base_summary | {"executedAt": "2026-01-01T00:00:00Z"}), encoding="utf-8")
+            (second_dir / "summary.json").write_text(
+                json.dumps(
+                    base_summary
+                    | {
+                        "executedAt": "2026-01-03T00:00:00Z",
+                        "overallVerdict": "medium",
+                        "reportPath": "data/_audit_runs/demo/claude-sonnet/20260103T000000Z/report.md",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (failed_dir / "summary.json").write_text(json.dumps(base_summary | {"executedAt": "2026-01-04T00:00:00Z"}), encoding="utf-8")
+            (failed_dir / "run.json").write_text(json.dumps({"status": "failed"}), encoding="utf-8")
+
+            with mock.patch.object(build_site_data, "AUDIT_RUNS_DIR", audit_root):
+                history = build_site_data.load_station_audit_history({"demo": {"label": "Demo Relay", "url": "https://relay.example"}})
+
+        self.assertEqual([row["runId"] for row in history], ["20260103T000000Z", "20260101T000000Z"])
+        self.assertEqual({row["model"] for row in history}, {"claude-sonnet"})
+        self.assertEqual(history[0]["stationLabel"], "Demo Relay")
+        self.assertEqual(history[0]["reportUrl"], "/api/audit-report?station=demo&model=claude-sonnet&run=20260103T000000Z")
 
     def test_apply_audit_only_station_records_adds_unlisted_station(self) -> None:
         stations: dict[str, dict[str, object]] = {}

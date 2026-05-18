@@ -98,6 +98,16 @@ export interface AnnouncementRow {
   sourceUrl: string;
 }
 
+export interface DataEvidenceRow {
+  key: "groupMultipliers" | "rechargeTiers" | "announcements";
+  label: string;
+  count: number;
+  status: "captured" | "empty" | "failed" | "missing" | "login_required" | "public_missing";
+  statusLabel: string;
+  message: string;
+  source: string;
+}
+
 export interface StationAuditStepSummary {
   title: string;
   summary: string;
@@ -119,6 +129,18 @@ export interface StationAuditSummary {
   engineCommit?: string;
   effectiveOptions?: Record<string, unknown>;
 }
+
+export interface StationAuditHistoryItem extends StationAuditSummary {
+  stationKey: string;
+  stationLabel: string;
+  stationUrl: string;
+  runId: string;
+  reportUrl: string;
+}
+
+export type AuditHistoryTimeRange = "all" | "24h" | "7d" | "30d" | "90d";
+export type AuditHistorySortKey = "executedAt" | "station" | "model" | "verdict";
+export type AuditHistorySortDirection = "asc" | "desc";
 
 export interface StationAudits {
   defaultModel: string;
@@ -160,6 +182,7 @@ export interface StationRecord {
   rechargeTiers: RechargeTierRow[];
   tierNotes: string[];
   announcements: AnnouncementRow[];
+  dataEvidence?: DataEvidenceRow[];
   rankings: Partial<Record<TimeWindow, RankingRow>>;
   quality: Partial<Record<TimeWindow, QualityRow>>;
   audits?: StationAudits;

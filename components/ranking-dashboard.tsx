@@ -360,7 +360,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
           <div className="section-head">
             <div>
               <h1 className="section-title">正式综合排名</h1>
-              <p className="section-desc">支持工作时段与非工作时段切换，并按站点类型、排序方式重新排列。</p>
+              <p className="section-desc">支持工作时段与非工作时段切换；周末样本统一计入非工作时段。采用倍率按 Codex 口径最小非 0 分组倍率 × 实付人民币 ÷ 到账美元额度计算，`default` 分组也按 Codex 可用分组处理。</p>
             </div>
             <div className="controls">
               <label className="control-group">
@@ -489,6 +489,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                       <th>工作时段样本</th>
                       <th>非工作时段样本</th>
                       <th>总样本数</th>
+                      <th>核验档位</th>
                       <th>公告数</th>
                       <th className="col-action">详情</th>
                     </tr>
@@ -512,6 +513,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                           <td className="mono">{station.rankings.work_hours?.requests ?? "-"}</td>
                           <td className="mono">{station.rankings.off_hours?.requests ?? "-"}</td>
                           <td className="mono">{totalRequests ?? "-"}</td>
+                          <td className="mono">{station.verifiedTierCount}</td>
                           <td className="mono">{station.announcements.length}</td>
                           <td className="table-action-cell">
                             <Link href={`/stations/${station.key}`} className="tiny-button">

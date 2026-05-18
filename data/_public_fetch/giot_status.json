@@ -218,6 +218,9 @@
         "CC Switch": "ccswitch"
       },
       {
+        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+      },
+      {
         "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
       },
       {
@@ -299,7 +302,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://code.giot.edu.kg",
     "setup": true,
-    "start_time": 1778683343,
+    "start_time": 1779029926,
     "stripe_unit_price": 8,
     "system_name": "慧智AI",
     "telegram_bot_name": "",
@@ -310,7 +313,7 @@
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 1,
     "user_agreement_enabled": true,
-    "version": "v1.0.0-rc.4",
+    "version": "v1.0.0-rc.6",
     "wechat_login": false,
     "wechat_qrcode": ""
   },

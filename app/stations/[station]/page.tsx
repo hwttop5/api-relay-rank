@@ -17,6 +17,10 @@ export default async function StationPage({ params }: { params: Promise<{ statio
   const work = station.rankings.work_hours;
   const off = station.rankings.off_hours;
   const latestAnnouncements = [...station.announcements].sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1)).slice(0, 5);
+  const announcementEvidence = station.dataEvidence?.find((item) => item.key === "announcements");
+  const announcementEmptyText = announcementEvidence
+    ? `${announcementEvidence.statusLabel}：${announcementEvidence.message}`
+    : "暂未抓到可展示公告内容。";
 
   return (
     <AppShell
@@ -93,11 +97,11 @@ export default async function StationPage({ params }: { params: Promise<{ statio
           <div className="section-head">
             <div>
               <h2 className="section-title">最新公告</h2>
-              <p className="section-desc">按公开页面抓取并保留最新 5 条。</p>
+              <p className="section-desc">按公开页面或登录态 probe 抓取并保留最新 5 条。</p>
             </div>
           </div>
           <div className="section-body">
-            <AnnouncementFeed announcements={latestAnnouncements} />
+            <AnnouncementFeed announcements={latestAnnouncements} emptyText={announcementEmptyText} />
           </div>
         </section>
 
@@ -111,8 +115,8 @@ export default async function StationPage({ params }: { params: Promise<{ statio
           <div className="section-body">
             <div className="grid-2">
               {([
-                ["work_hours", work, "工作时段（09:00:00-18:00:00）"],
-                ["off_hours", off, "非工作时段（18:00:01-次日08:59:59）"]
+                ["work_hours", work, "工作时段（工作日09:00:00-18:00:00）"],
+                ["off_hours", off, "非工作时段（工作日18:00:01-次日08:59:59，周末全天）"]
               ] as const).map(([key, row, title]) => (
                 <div className="detail-card" key={key}>
                   <h3>{title}</h3>
@@ -124,6 +128,7 @@ export default async function StationPage({ params }: { params: Promise<{ statio
                       <p>平均响应时间（秒）：{formatSeconds(row.avgSeconds)}</p>
                       <p>采用倍率：{formatMultiplier(row.effectiveMultiplier)}</p>
                       <p>采用档位：{row.adoptedTier}</p>
+                      <p>倍率口径：{row.multiplierFullUseAssumption}</p>
                     </div>
                   ) : (
                     <p>暂无正式排名数据。</p>
