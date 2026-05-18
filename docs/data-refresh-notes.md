@@ -72,3 +72,12 @@ git diff --stat -- data/site-data.json data/_public_fetch
 - PrintCap 当前公开配置只能确认 `payment_enabled=true` 且 `purchase_subscription_enabled=false`，可用于修正类型为非包月型；分组倍率、充值档位和公告仍以登录态 probe 或人工核验为准。
 - 如果登录被 Turnstile/腾讯验证码等风控挡住，但用户提供了可辨认截图，可把截图作为 `verified_multiplier_inputs.csv` 的 `manual_verified` 来源；本次 PrintCap 完整充值图确认唯一分组为 `GPT-MIX 1x`，快捷充值档位为 `10/20/50/100/200/500/1000/2000/5000 RMB`，自定义金额与快捷档位均按 `1 CNY = 2 USD` 到账，因此采用倍率按 Codex 口径计算为 `1 × RMB ÷ (RMB × 2) = 0.5`。公告仍不能由截图推断，继续标为需要登录。
 - 公告补抓 helper `scripts/scrape_missing_announcements.py` 只记录登录尝试状态和接口响应，不保存密码或 token；写入 probe 前会脱敏 token 类字段。运行时通过 `API_RELAY_SCRAPE_EMAIL` / `API_RELAY_SCRAPE_PASSWORD` 传入账号密码，不要把凭据写进脚本。
+
+## 近期排查补充（2026-05-18）
+
+- 排查排名异常时，先按 `Codex Manager DB -> quality_metrics.csv -> formal ranking CSV -> data/site-data.json` 四层对账，再看页面。只盯着页面或只看某一个 CSV，很容易把“分类遗漏”误判成“站点消失”。
+- 时间窗口径必须先确认再改脚本。之前把请求样本误加了“最近三天”截断，直接把 `nexus` 这类旧日志站点从正式排名里清空了；这类改动必须先用独立 SQL 核对样本时间分布。
+- 新站点分类要补全到脚本里的 `classify_station()`，否则会出现“DB 里有请求、费用证据也有，但质量 CSV 里是 0”的假缺失。`opentk` 就是这类遗漏，补分类后才重新进入正式排名。
+- 私有账号键、本地代理地址和临时站点不能进入公开站点池。像 `ttop5`、`127.0.0.1:8787`、`tabit2api` 这类条目只能留在内部排查链路，不能写进公开站点列表或前端 JSON。
+- 新站点是否收录和是否进入正式排名要分开处理。`clawto` 已按独立站点收录，但授权接口仍只拿到 `login_required`，因此只能留在站点列表，不能伪造倍率、充值档位或公告。
+- 只要改了采样、分类或过滤规则，必须马上做三步验证：重新生成父级 CSV、重建 `site-data.json`、再跑 `python -m unittest tests/test_build_site_data` 和 `npm run build`。最后还要强刷本地页面，确认页面读到的是新生成的数据而不是旧缓存。

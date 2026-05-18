@@ -24,6 +24,7 @@ USER_AGENT = "api-relay-rank/0.1 live-announcement-capture"
 
 BASE_OVERRIDES = {
     "aicodelink": "https://aicodelink.top",
+    "clawto": "https://api.clawto.link",
     "coolplay": "https://cp.coolplay-api.fun:55555",
     "flymux": "https://api.flymux.com",
     "freemodel": "https://freemodel.dev",

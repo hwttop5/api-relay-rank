@@ -104,6 +104,7 @@ class BuildSiteDataTests(unittest.TestCase):
     def test_private_station_identifiers_are_not_public(self) -> None:
         self.assertFalse(build_site_data.is_public_station_key("printcap.ai-ttop5@qq.com"))
         self.assertFalse(build_site_data.is_public_station_key("printcap.ai-2026-05-17-01"))
+        self.assertFalse(build_site_data.is_public_station_key("atomflow-hw693ttop5-1"))
         self.assertFalse(build_site_data.is_public_station_url(""))
         self.assertFalse(build_site_data.is_public_station_url("http://127.0.0.1:50124"))
         self.assertFalse(build_site_data.is_public_station_url("tabit2api.local"))

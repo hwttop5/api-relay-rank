@@ -136,7 +136,10 @@ def is_public_station_key(station_key: Any) -> bool:
         return False
     if EMAIL_PATTERN.search(text):
         return False
-    if "printcap.ai-" in text.lower():
+    lowered = text.lower()
+    if "ttop5" in lowered:
+        return False
+    if "printcap.ai-" in lowered:
         return False
     return True
 
@@ -829,6 +832,22 @@ def live_probe_recharge_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]
     source = probe_source_url(probe, "/api/v1/payment/checkout-info")
     if tiers:
         return tiers, {"status": "captured", "source": source, "message": f"登录态充值接口抓取到 {len(tiers)} 条"}
+    payment_entries = [
+        entry
+        for entry in (config_entry, checkout_entry, plan_entry)
+        if isinstance(entry, dict)
+    ]
+    payment_statuses = [
+        int(entry.get("status") or 0)
+        for entry in payment_entries
+        if int(entry.get("status") or 0) > 0
+    ]
+    if payment_statuses and all(status >= 400 for status in payment_statuses):
+        return [], {
+            "status": "failed",
+            "source": source,
+            "message": f"login probe payment APIs returned HTTP {payment_statuses[0]}",
+        }
     if config_entry is not None or checkout_entry is not None or plan_entry is not None:
         return [], {"status": "empty", "source": source, "message": "登录态支付接口可访问，但没有可结构化的充值档位"}
     return [], {"status": "missing", "source": sanitize_public_text(probe.get("_probePath") or probe_location(probe)), "message": "live auth probe 尚未包含支付接口"}
@@ -850,12 +869,27 @@ def merge_announcements(existing: list[dict[str, Any]], incoming: list[dict[str,
     return merged
 
 
+def normalize_live_probe_status(status: dict[str, str]) -> dict[str, str]:
+    if not isinstance(status, dict):
+        return status
+    message = str(status.get("message") or "")
+    if status.get("status") == "failed" and "HTTP 401" in message:
+        normalized = dict(status)
+        normalized["status"] = "login_required"
+        normalized["message"] = "需要登录或权限不足 (HTTP 401)"
+        return normalized
+    return status
+
+
 def load_live_probe_snapshots() -> dict[str, dict[str, Any]]:
     snapshots: dict[str, dict[str, Any]] = {}
     for station_key, probe in load_live_auth_probes().items():
         announcements, announcement_status = live_probe_announcements_and_status(station_key, probe)
         groups, group_status = live_probe_group_rows(probe)
         recharges, recharge_status = live_probe_recharge_rows(probe)
+        announcement_status = normalize_live_probe_status(announcement_status)
+        group_status = normalize_live_probe_status(group_status)
+        recharge_status = normalize_live_probe_status(recharge_status)
         snapshots[station_key] = {
             "announcements": announcements,
             "groupMultipliers": groups,
