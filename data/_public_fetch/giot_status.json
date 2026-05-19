@@ -4,6 +4,13 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "#### 限时特惠【Claude-code-高速】分组降价至1.5(合0.6/刀)仅限Claudecode工具内使用，数量有限",
+        "extra": "",
+        "id": 29,
+        "publishDate": "2026-05-18T10:56:30.416Z",
+        "type": "success"
+      },
+      {
         "content": "#### gpt5.5已上架【codex】分组\n#### gpt-image-2已上架【codex】【codex-特价】分组，按次计费，【codex】分组0.2/次(合0.08/次)，【codex-特价】分组0.032/次(合0.0128/次)。支持cherry studio使用，请求路径： /v1/images/generations\n\n#### 即日起，【codex-特价】分组恢复，每日限量供应",
         "extra": "",
         "id": 28,

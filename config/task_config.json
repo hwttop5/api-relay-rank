@@ -6,20 +6,20 @@
       "name": "每日公告抓取",
       "enabled": true,
       "autoRun": true,
-      "schedule": "每天 03:10",
+      "schedule": "每天 04:00（北京时间，线上全站刷新批次）",
       "command": ["python", "scripts/fetch_public_content.py", "--announcements", "--skip-build"],
-      "description": "从公开接口或首页快照抓取最新公告内容。",
-      "notes": "优先抓取 New API 与类 New API 站点的公开公告接口。"
+      "description": "从公开接口或首页快照抓取最新公告内容，作为线上 04:00 全站展示数据刷新第一步。",
+      "notes": "线上 GitHub Actions 会先抓公开快照，再抓登录态 probe，最后统一重建 data/site-data.json。"
     },
     {
       "id": "daily-multiplier-snapshots",
       "name": "每日倍率快照更新",
       "enabled": true,
       "autoRun": true,
-      "schedule": "每天 03:25",
+      "schedule": "每天 04:00（北京时间，线上全站刷新批次）",
       "command": ["python", "scripts/fetch_public_content.py", "--multiplier-snapshots"],
-      "description": "刷新公开倍率相关快照，并重建前端 JSON 数据。",
-      "notes": "登录依赖的档位继续沿用人工核验输入与浏览器探针结果，不主动消耗测试账号余额。"
+      "description": "刷新公开倍率相关快照；线上批次会同时刷新所有可登录站点的分组倍率、充值档位和公告证据。",
+      "notes": "登录态证据由 GitHub Actions Secrets 中的 API_RELAY_SCRAPE_EMAIL/API_RELAY_SCRAPE_PASSWORD 提供；正式排名质量日志仍保持手动刷新。"
     },
     {
       "id": "ranking-quality-refresh",

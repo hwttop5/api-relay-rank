@@ -101,6 +101,12 @@ class BuildSiteDataTests(unittest.TestCase):
             build_site_data.APP_ROOT / "data" / "_public_fetch",
         )
 
+    def test_canonical_station_key_resolves_alias_chain(self) -> None:
+        aliases = {"clawto": "gettoken"}
+
+        self.assertEqual(build_site_data.canonical_station_key("clawto", aliases), "gettoken")
+        self.assertEqual(build_site_data.canonical_station_key("gettoken", aliases), "gettoken")
+
     def test_private_station_identifiers_are_not_public(self) -> None:
         self.assertFalse(build_site_data.is_public_station_key("printcap.ai-ttop5@qq.com"))
         self.assertFalse(build_site_data.is_public_station_key("printcap.ai-2026-05-17-01"))
@@ -342,6 +348,29 @@ class BuildSiteDataTests(unittest.TestCase):
 
         self.assertEqual(announcement["status"], "empty")
         self.assertEqual(announcement["statusLabel"], "接口返回空")
+
+    def test_station_evidence_status_distinguishes_blocked_live_probe(self) -> None:
+        station = {
+            "platformGuess": "sub2api",
+            "groupMultipliers": [],
+            "rechargeTiers": [],
+            "announcements": [],
+        }
+        live_snapshot = {
+            "evidenceStatus": {
+                "groupMultipliers": {
+                    "status": "blocked",
+                    "source": "https://demo.example/api/v1/groups/available",
+                    "message": "登录态分组接口被验证码或风控阻断",
+                }
+            }
+        }
+
+        evidence = build_site_data.build_station_evidence_status(station, live_snapshot)
+        groups = next(item for item in evidence if item["key"] == "groupMultipliers")
+
+        self.assertEqual(groups["status"], "blocked")
+        self.assertEqual(groups["statusLabel"], "风控阻断")
 
     def test_quality_only_local_station_is_not_published(self) -> None:
         required_inputs = [
@@ -780,6 +809,39 @@ class BuildSiteDataTests(unittest.TestCase):
 
         self.assertEqual(audits["demo"][0]["overallVerdict"], "low")
 
+    def test_load_station_audit_history_keeps_report_path_for_alias_station(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            audit_root = Path(tmp_dir) / "_audit_runs"
+            run_dir = audit_root / "clawto" / "demo-model" / "20260101T000000Z"
+            run_dir.mkdir(parents=True)
+            summary = {
+                "profile": "general",
+                "model": "demo-model",
+                "auditedBaseUrl": "https://api.clawto.link",
+                "executedAt": "2026-01-01T00:00:00Z",
+                "overallVerdict": "low",
+                "overallSummary": "ok",
+                "highlights": [],
+                "stepSummaries": [],
+                "reportPath": "data/_audit_runs/clawto/demo-model/20260101T000000Z/report.md",
+                "toolVersion": "test",
+            }
+            (run_dir / "summary.json").write_text(json.dumps(summary), encoding="utf-8")
+            (run_dir / "run.json").write_text(json.dumps({"status": "success"}), encoding="utf-8")
+            stations = {
+                "gettoken": {
+                    "label": "GetToken",
+                    "url": "https://gettoken.dev",
+                }
+            }
+
+            with mock.patch.object(build_site_data, "AUDIT_RUNS_DIR", audit_root):
+                history = build_site_data.load_station_audit_history(stations, {"clawto": "gettoken"})
+
+        self.assertEqual(history[0]["stationKey"], "gettoken")
+        self.assertEqual(history[0]["stationLabel"], "GetToken")
+        self.assertEqual(history[0]["reportUrl"], "/api/audit-report?station=clawto&model=demo-model&run=20260101T000000Z")
+
     def test_load_station_audit_history_keeps_all_runs_sorted_by_time(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
             audit_root = Path(tmp_dir) / "_audit_runs"
@@ -849,6 +911,115 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(station["label"], "relay.example.com")
         self.assertEqual(station["url"], "https://relay.example.com/v1")
         self.assertEqual(station_urls["audit-relay-example-com"], {"https://relay.example.com/v1"})
+
+    def test_alias_station_data_merges_into_gettoken(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            source_root = root / "source"
+            data_dir = root / "data"
+            fetch_dir = data_dir / "_public_fetch"
+            audit_root = data_dir / "_audit_runs"
+            source_root.mkdir()
+            fetch_dir.mkdir(parents=True)
+            (fetch_dir / "clawto_pricing.json").write_text(
+                json.dumps(
+                    {
+                        "base_url": "https://api.clawto.link",
+                        "group_ratio": {"default": 1},
+                        "recharge_tiers": [
+                            {
+                                "name": "wallet topup 10 RMB",
+                                "billing_type": "permanent",
+                                "rmb_amount": 10,
+                                "usd_amount": 100,
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (fetch_dir / "clawto_status.json").write_text(
+                json.dumps({"data": {"server_address": "https://api.clawto.link", "announcements": []}}),
+                encoding="utf-8",
+            )
+            (fetch_dir / "clawto_public_probe.json").write_text(
+                json.dumps(
+                    {
+                        "station": "clawto",
+                        "baseUrl": "https://api.clawto.link",
+                        "results": {
+                            "/api/v1/settings/public": {
+                                "url": "https://api.clawto.link/api/v1/settings/public",
+                                "status": 200,
+                                "ok": True,
+                                "body": {
+                                    "data": {
+                                        "custom_menu_items": [
+                                            {"url": "https://gettoken.dev"}
+                                        ],
+                                        "balance_low_notify_recharge_url": "https://api.gettoken.dev",
+                                    }
+                                },
+                            }
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (source_root / "composite_ranking_formal_workhours.csv").write_text(
+                "rank,ranking_basis,time_window,time_window_label,station,label,station_url,station_type,station_type_label,station_type_short_label,total_score,success_score,latency_score,cost_score,correct_rate,avg_seconds,median_seconds,p95_seconds,effective_multiplier,fee_verified,adopted_tier,adopted_group,adopted_recharge_name,billing_type,billing_type_label,multiplier_full_use_assumption,requests,correct,failures,http_2xx,http_200_with_error,first_at,last_at\n"
+                "1,formal_high_confidence,work_hours,工作时段,clawto,clawto,https://api.clawto.link,unknown_pending,待补证据,待补证据,1,1,1,1,1,1,1,1,1,false,,, ,,,,1,1,0,1,0,,\n",
+                encoding="utf-8",
+            )
+            for filename in ("composite_ranking_formal_offhours.csv", "composite_ranking_formal_all_hours.csv", "quality_metrics.csv", "login_verification_checklist.csv", "multiplier_tiers.csv"):
+                (source_root / filename).write_text("", encoding="utf-8")
+            (data_dir / "_audit_runs" / "clawto" / "demo-model" / "20260101T000000Z").mkdir(parents=True)
+            (data_dir / "_audit_runs" / "clawto" / "demo-model" / "20260101T000000Z" / "summary.json").write_text(
+                json.dumps(
+                    {
+                        "profile": "general",
+                        "model": "demo-model",
+                        "auditedBaseUrl": "https://api.clawto.link",
+                        "executedAt": "2026-01-01T00:00:00Z",
+                        "overallVerdict": "low",
+                        "overallSummary": "ok",
+                        "highlights": [],
+                        "stepSummaries": [],
+                        "reportPath": "data/_audit_runs/clawto/demo-model/20260101T000000Z/report.md",
+                        "toolVersion": "test",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (data_dir / "_audit_runs" / "clawto" / "demo-model" / "20260101T000000Z" / "run.json").write_text(
+                json.dumps({"status": "success"}),
+                encoding="utf-8",
+            )
+            (root / "config").mkdir()
+            (root / "config" / "station_aliases.json").write_text(json.dumps({"clawto": "gettoken"}), encoding="utf-8")
+
+            with (
+                mock.patch.object(build_site_data, "APP_ROOT", root),
+                mock.patch.object(build_site_data, "DATA_DIR", data_dir),
+                mock.patch.object(build_site_data, "SITE_DATA_PATH", data_dir / "site-data.json"),
+                mock.patch.object(build_site_data, "PUBLIC_FETCH_DIR", fetch_dir),
+                mock.patch.object(build_site_data, "PUBLIC_FETCH_DIRS", [fetch_dir]),
+                mock.patch.object(build_site_data, "AUDIT_RUNS_DIR", audit_root),
+                mock.patch.object(build_site_data, "STATION_ALIASES_PATH", root / "config" / "station_aliases.json"),
+                mock.patch.object(build_site_data, "STATION_PRICING_OVERRIDES_PATH", root / "missing_overrides.json"),
+                mock.patch.object(build_site_data, "STATION_AUDIT_TARGETS_PATH", root / "missing_targets.json"),
+                mock.patch("sys.stdout", new=io.StringIO()),
+            ):
+                self.assertEqual(build_site_data.main(), 0)
+
+            payload = json.loads((data_dir / "site-data.json").read_text(encoding="utf-8"))
+            station_keys = [station["key"] for station in payload["stations"]]
+            self.assertIn("gettoken", station_keys)
+            self.assertNotIn("clawto", station_keys)
+            gettoken = next(station for station in payload["stations"] if station["key"] == "gettoken")
+            self.assertEqual(gettoken["url"], "https://gettoken.dev")
+            self.assertTrue(any(row["station"] == "gettoken" for row in payload["rankings"]["work_hours"]))
+            self.assertTrue(any(item.get("key") == "publicProbe" and item.get("status") == "captured" for item in gettoken.get("dataEvidence", [])))
 
     def test_run_station_audit_requires_secret_env(self) -> None:
         target = {

@@ -17,6 +17,7 @@ SCRIPT_PATH = Path(__file__).resolve()
 APP_ROOT = SCRIPT_PATH.parents[1]
 WORKSPACE_ROOT = SCRIPT_PATH.parents[2]
 SITE_DATA_PATH = APP_ROOT / "data" / "site-data.json"
+STATION_ALIASES_PATH = APP_ROOT / "config" / "station_aliases.json"
 LIVE_AUTH_PROBE_DIR = WORKSPACE_ROOT / "tabbit-audit-profile"
 
 TIMEOUT = 20
@@ -24,11 +25,11 @@ USER_AGENT = "api-relay-rank/0.1 live-announcement-capture"
 
 BASE_OVERRIDES = {
     "aicodelink": "https://aicodelink.top",
-    "clawto": "https://api.clawto.link",
     "coolplay": "https://cp.coolplay-api.fun:55555",
     "flymux": "https://api.flymux.com",
     "freemodel": "https://freemodel.dev",
     "gettoken": "https://gettoken.dev",
+    "gettoken-clawto": "https://api.clawto.link",
     "hongmacc": "https://hongmacc.com",
     "muskai": "https://aiapi.muskpay.top",
     "printcap": "https://printcap.ai",
@@ -36,6 +37,8 @@ BASE_OVERRIDES = {
 }
 
 TOKEN_KEYS = ("token", "password", "secret", "authorization", "cookie")
+EMAIL_PATTERN = re.compile(r"\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}\b")
+LOCALHOST_PATTERN = re.compile(r"^(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$", re.IGNORECASE)
 
 
 def parse_args() -> argparse.Namespace:
@@ -44,12 +47,45 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--password", default=os.environ.get("API_RELAY_SCRAPE_PASSWORD", ""))
     parser.add_argument("--stations", default="", help="Comma-separated station keys; default = stations with empty announcements.")
     parser.add_argument("--skip", default="", help="Comma-separated station keys to skip.")
+    parser.add_argument("--all-stations", action="store_true", help="Capture every public station instead of only stations with missing announcements.")
     parser.add_argument("--write-probes", action="store_true", help="Merge captured endpoint results into tabbit-audit-profile probes.")
     return parser.parse_args()
 
 
 def read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_station_aliases() -> dict[str, str]:
+    if not STATION_ALIASES_PATH.exists():
+        return {}
+    try:
+        payload = read_json(STATION_ALIASES_PATH)
+    except (OSError, json.JSONDecodeError):
+        return {}
+    if not isinstance(payload, dict):
+        return {}
+
+    aliases: dict[str, str] = {}
+    for alias, canonical in payload.items():
+        alias_key = str(alias or "").strip()
+        canonical_key = str(canonical or "").strip()
+        if alias_key and canonical_key and alias_key != canonical_key:
+            aliases[alias_key] = canonical_key
+    return aliases
+
+
+def canonical_station_key(station_key: str, station_aliases: dict[str, str] | None = None) -> str:
+    key = str(station_key or "").strip()
+    aliases = station_aliases or {}
+    seen: set[str] = set()
+    while key in aliases and key not in seen:
+        seen.add(key)
+        next_key = str(aliases[key] or "").strip()
+        if not next_key or next_key == key:
+            break
+        key = next_key
+    return key
 
 
 def normalize_base_url(value: Any) -> str:
@@ -67,20 +103,54 @@ def normalize_base_url(value: Any) -> str:
     return ""
 
 
-def station_rows(selected: set[str] | None, skipped: set[str]) -> list[dict[str, Any]]:
+def is_public_station_key(station_key: Any) -> bool:
+    text = str(station_key or "").strip()
+    if not text:
+        return False
+    if EMAIL_PATTERN.search(text):
+        return False
+    lowered = text.lower()
+    if "ttop5" in lowered:
+        return False
+    if "printcap.ai-" in lowered:
+        return False
+    return True
+
+
+def is_public_base_url(value: Any) -> bool:
+    parsed = urlparse(str(value or "").strip())
+    host = parsed.netloc.lower()
+    if not host:
+        return False
+    return not LOCALHOST_PATTERN.fullmatch(host)
+
+
+def station_rows(
+    selected: set[str] | None,
+    skipped: set[str],
+    station_aliases: dict[str, str] | None = None,
+    *,
+    include_all: bool = False,
+) -> list[dict[str, Any]]:
     site_data = read_json(SITE_DATA_PATH)
     rows: list[dict[str, Any]] = []
+    seen: set[str] = set()
     for station in site_data.get("stations", []):
-        key = str(station.get("key") or "")
+        key = canonical_station_key(str(station.get("key") or ""), station_aliases)
         if not key or key in skipped:
+            continue
+        if not is_public_station_key(key):
             continue
         if selected is not None and key not in selected:
             continue
-        if selected is None and station.get("announcements"):
+        if selected is None and not include_all and station.get("announcements"):
             continue
         base = BASE_OVERRIDES.get(key) or normalize_base_url(station.get("url"))
-        if not base:
+        if not base or not is_public_base_url(base):
             continue
+        if key in seen:
+            continue
+        seen.add(key)
         rows.append(
             {
                 "key": key,
@@ -405,10 +475,11 @@ def main() -> int:
     if not args.email or not args.password:
         raise SystemExit("Missing --email/--password or API_RELAY_SCRAPE_EMAIL/API_RELAY_SCRAPE_PASSWORD.")
 
+    station_aliases = load_station_aliases()
     selected = {item.strip() for item in args.stations.split(",") if item.strip()} or None
     skipped = {item.strip() for item in args.skip.split(",") if item.strip()}
     captures = []
-    for station in station_rows(selected, skipped):
+    for station in station_rows(selected, skipped, station_aliases, include_all=args.all_stations):
         capture = fetch_station(station, args.email, args.password)
         capture["capturedAt"] = os.environ.get("API_RELAY_CAPTURED_AT", "")
         if args.write_probes:

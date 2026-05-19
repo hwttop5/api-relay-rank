@@ -11,6 +11,13 @@
         "type": "default"
       },
       {
+        "content": "GoAPIs 目前暂未面向中国大陆地区提供服务，如后续开放将另行通知。",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-04-30T09:23:15.000Z",
+        "type": "default"
+      },
+      {
         "content": "GoAPIs 正式接入 GPT Image 2 生图！\n支持 2K / 4K 超清画质",
         "extra": "",
         "id": 2,
@@ -156,7 +163,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://goapis.vip",
     "setup": true,
-    "start_time": 1778818975,
+    "start_time": 1779084399,
     "stripe_unit_price": 8,
     "system_name": "Go APIs",
     "telegram_bot_name": "",

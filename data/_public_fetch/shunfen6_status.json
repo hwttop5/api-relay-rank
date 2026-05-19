@@ -1,8 +1,15 @@
 {
   "data": {
-    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":false}",
-    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
     "announcements": [
+      {
+        "content": "今日狂飙名额告急，仅剩少量席位，有需要的老板抓紧上车！\n\n福利加码✅\n\n截止今日晚上9点（5.18），我们将从所有付费金额超 20 元的用户中，抽 1 人直接到账 10 刀的账户余额！\n\n⚠️ 需进入 QQ 群参与，不在群内视为无效，名额将顺延。\n\n虽然这次数额不大，但我们会长期不定期推出各类福利活动，持续回馈大家。感谢大家一路信任与陪伴～",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-05-18T05:14:53.636Z",
+        "type": "ongoing"
+      },
       {
         "content": "由于GPT相关政策调整，额度现已收紧，为保障已注册用户的正常使用，新注册和未及时领取体验金的用户将不再获赠免费体验额度。\n\n为持续提供优质服务，我们已推出“体验金订阅”方案。若您希望继续体验我们的产品与服务，欢迎考虑订阅。\n\n感谢您的理解与支持！",
         "extra": "",
@@ -79,7 +86,7 @@
     "enable_task": true,
     "faq": [],
     "faq_enabled": true,
-    "footer_html": " ",
+    "footer_html": "",
     "github_client_id": "",
     "github_oauth": false,
     "linuxdo_client_id": "",

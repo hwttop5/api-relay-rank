@@ -4,6 +4,13 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "由于即将关闭月卡和周卡，现决定将倍率进行调整变更，回馈所有用户\nCodeX专用-Pro号池-稳定 分组倍率调整： 1倍率 下调至 0.8倍率\nCodeX专用-Plus号池 分组倍率调整： 1倍率 下调至 0.8倍率",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-05-19T04:11:19.207Z",
+        "type": "default"
+      },
+      {
         "content": "已重新上架Claude Code，现支持Claude全系模型",
         "extra": "",
         "id": 8,
@@ -168,7 +175,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://qiuqiutoken.com",
     "setup": true,
-    "start_time": 1779006754,
+    "start_time": 1779004050,
     "stripe_unit_price": 8,
     "system_name": "球球Token - AI中转服务站",
     "telegram_bot_name": "",

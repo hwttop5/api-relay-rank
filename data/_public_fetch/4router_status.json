@@ -5,6 +5,13 @@
     "_qn": "4router-core",
     "announcements": [
       {
+        "content": "加群1094738104 可以领取2刀额度",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-05-18T09:39:47.672Z",
+        "type": "ongoing"
+      },
+      {
         "content": "cheapCCApi升级为满血1M claude模型，无提示词污染",
         "extra": "",
         "id": 5,
@@ -126,7 +133,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://4router.net",
     "setup": true,
-    "start_time": 1779076713,
+    "start_time": 1779106417,
     "stripe_unit_price": 8,
     "system_name": "4Router",
     "top_up_link": "",

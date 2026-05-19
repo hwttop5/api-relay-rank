@@ -9,7 +9,7 @@ from copy import deepcopy
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
-from urllib.parse import quote, urlparse
+from urllib.parse import quote, urlparse, urlunparse
 
 
 SCRIPT_PATH = Path(__file__).resolve()
@@ -24,6 +24,7 @@ PUBLIC_FETCH_DIRS = [PUBLIC_FETCH_DIR]
 LIVE_AUTH_PROBE_DIR = WORKSPACE_ROOT / "tabbit-audit-profile"
 STATION_PRICING_OVERRIDES_PATH = APP_ROOT / "config" / "station_pricing_overrides.json"
 STATION_AUDIT_TARGETS_PATH = APP_ROOT / "config" / "station_audit_targets.json"
+STATION_ALIASES_PATH = APP_ROOT / "config" / "station_aliases.json"
 
 SHORT_TYPE_LABELS = {
     "subscription": "包月型",
@@ -67,6 +68,9 @@ APP_CONFIG_PATTERN = re.compile(
     r"window\.__APP_CONFIG__\s*=\s*(\{.*?\})\s*;?\s*</script>",
     re.IGNORECASE | re.DOTALL,
 )
+URL_PATTERN = re.compile(r"https?://[^\s\"'<>]+")
+TRAILING_UI_SEGMENTS = {"console", "dashboard", "wallet", "keys", "purchase", "pricing", "plans", "api-keys"}
+LOCALE_SEGMENT_PATTERN = re.compile(r"^[A-Za-z]{2}(?:-[A-Za-z]{2})?$")
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -163,18 +167,124 @@ def normalize_public_text(value: Any) -> str:
     return text
 
 
+def load_station_aliases() -> dict[str, str]:
+    if not STATION_ALIASES_PATH.exists():
+        return {}
+    try:
+        payload = json.loads(STATION_ALIASES_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    if not isinstance(payload, dict):
+        return {}
+
+    aliases: dict[str, str] = {}
+    for raw_alias, raw_canonical in payload.items():
+        alias = sanitize_public_text(raw_alias).strip()
+        canonical = sanitize_public_text(raw_canonical).strip()
+        if not alias or not canonical or alias == canonical:
+            continue
+        aliases[alias] = canonical
+    return aliases
+
+
+def canonical_station_key(station_key: Any, station_aliases: dict[str, str] | None = None) -> str:
+    key = sanitize_public_text(station_key).strip()
+    if not key:
+        return ""
+    aliases = station_aliases or {}
+    seen: set[str] = set()
+    while key in aliases and key not in seen:
+        seen.add(key)
+        next_key = sanitize_public_text(aliases[key]).strip()
+        if not next_key or next_key == key:
+            break
+        key = next_key
+    return key
+
+
+def add_station_url(
+    station_urls: dict[str, set[str]],
+    station_key: Any,
+    url: Any,
+    station_aliases: dict[str, str] | None = None,
+) -> None:
+    canonical_key = canonical_station_key(station_key, station_aliases)
+    if not canonical_key:
+        return
+    for normalized_url in extract_public_url_candidates(url):
+        station_urls.setdefault(canonical_key, set()).add(normalized_url)
+
+
+def add_exact_station_url(
+    station_urls: dict[str, set[str]],
+    station_key: Any,
+    url: Any,
+    station_aliases: dict[str, str] | None = None,
+) -> None:
+    canonical_key = canonical_station_key(station_key, station_aliases)
+    normalized_url = sanitize_public_text(url)
+    if canonical_key and normalized_url and is_public_station_url(normalized_url):
+        station_urls.setdefault(canonical_key, set()).add(normalized_url)
+
+
 def station_url(value: Any) -> str:
     urls = split_list(value)
     return sanitize_public_text(urls[0]) if urls else ""
 
 
+def extract_public_url_candidates(value: Any) -> list[str]:
+    text = sanitize_public_text(value)
+    if not text:
+        return []
+
+    candidates: list[str] = []
+    for raw_url in URL_PATTERN.findall(text):
+        parsed = urlparse(raw_url)
+        if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+            continue
+        root_url = f"{parsed.scheme}://{parsed.netloc}"
+        candidates.append(raw_url.rstrip("/"))
+        candidates.append(root_url)
+        segments = [segment for segment in parsed.path.split("/") if segment]
+        while segments and segments[-1].lower() in TRAILING_UI_SEGMENTS:
+            segments.pop()
+        if len(segments) == 1 and LOCALE_SEGMENT_PATTERN.fullmatch(segments[0]):
+            segments.pop()
+        if segments:
+            candidates.append(urlunparse((parsed.scheme, parsed.netloc, "/" + "/".join(segments), "", "", "")).rstrip("/"))
+    return [candidate for candidate in dedupe_strings(candidates) if is_public_station_url(candidate)]
+
+
+def collect_public_urls(value: Any) -> list[str]:
+    if isinstance(value, dict):
+        urls: list[str] = []
+        for item in value.values():
+            urls.extend(collect_public_urls(item))
+        return dedupe_strings(urls)
+    if isinstance(value, list):
+        urls: list[str] = []
+        for item in value:
+            urls.extend(collect_public_urls(item))
+        return dedupe_strings(urls)
+    if isinstance(value, str):
+        return extract_public_url_candidates(value)
+    return []
+
+
 def choose_best_url(urls: list[str]) -> str:
+    expanded = dedupe_strings(
+        candidate
+        for url in urls
+        for candidate in extract_public_url_candidates(url)
+    )
+
     def score(url: str) -> tuple[int, int, str]:
         if not url:
             return (-10**6, 0, "")
         parsed = urlparse(url)
         host = parsed.netloc.lower()
         base_score = 0
+        path = parsed.path.rstrip("/")
         if parsed.scheme == "https":
             base_score += 20
         if not re.fullmatch(r"\d+\.\d+\.\d+\.\d+(?::\d+)?", host):
@@ -191,9 +301,13 @@ def choose_best_url(urls: list[str]) -> str:
             base_score += 4
         if parsed.port:
             base_score -= 2
+        if path in {"", "/"}:
+            base_score += 12
+        else:
+            base_score -= min(len(path), 10)
         return (base_score, -len(host), url)
 
-    candidates = [candidate for candidate in urls if candidate]
+    candidates = [candidate for candidate in expanded if candidate]
     if not candidates:
         return ""
     return max(candidates, key=score)
@@ -275,7 +389,7 @@ def load_summary_intro() -> dict[str, Any]:
                 "实际倍率 = 分组倍率 × 实付人民币 ÷ 到账美元额度。",
                 "正式采用倍率 = Codex 口径分组倍率（最小非 0 倍率） × 实付人民币 ÷ 到账美元额度。",
                 "Codex 口径分组：分组名包含 `codex`、`openai`、`gpt`，或分组名为 `default`；若缺失，再回退到最低非 Claude 分组。",
-                "正确响应定义：HTTP 2xx 且 error IS NULL；HTTP 200 但 error 非空也计为错误响应；因欠费、充值解锁、手机号验证等账户前置条件导致的错误样本，已从正确响应率统计中剔除。",
+                "正确响应定义：HTTP 2xx 且 error IS NULL；HTTP 200 但 error 非空也计为错误响应；因欠费、充值解锁、手机号验证等账户前置条件导致的错误样本，已从正确响应率统计中剔除。部分请求报错（如502）但能正常使用时，也计为错误响应。",
             ],
             "formula": "实际倍率 = 分组倍率 × 实付人民币 ÷ 到账美元额度。",
             "adoptedMultiplierRule": "正式采用倍率：优先取 Codex 口径分组中的最小非 0 实际倍率；若无明确 Codex/default 分组，再回退到最低非 Claude 分组。",
@@ -347,6 +461,140 @@ def quality_row(row: dict[str, str]) -> dict[str, Any]:
         "firstAt": row.get("first_at", ""),
         "lastAt": row.get("last_at", ""),
     }
+
+
+def earlier_timestamp_text(left: Any, right: Any) -> str:
+    candidates = [str(value or "").strip() for value in (left, right) if str(value or "").strip()]
+    if not candidates:
+        return ""
+    dated = [(parse_iso_datetime(value), value) for value in candidates]
+    valid = [(dt, value) for dt, value in dated if dt is not None]
+    if valid:
+        return min(valid, key=lambda item: item[0])[1]
+    return min(candidates)
+
+
+def later_timestamp_text(left: Any, right: Any) -> str:
+    candidates = [str(value or "").strip() for value in (left, right) if str(value or "").strip()]
+    if not candidates:
+        return ""
+    dated = [(parse_iso_datetime(value), value) for value in candidates]
+    valid = [(dt, value) for dt, value in dated if dt is not None]
+    if valid:
+        return max(valid, key=lambda item: item[0])[1]
+    return max(candidates)
+
+
+def weighted_average(left_value: Any, left_weight: int, right_value: Any, right_weight: int) -> float | None:
+    left = parse_float(left_value)
+    right = parse_float(right_value)
+    if left is None and right is None:
+        return None
+    if left is None:
+        return right
+    if right is None:
+        return left
+    total_weight = max(left_weight, 0) + max(right_weight, 0)
+    if total_weight <= 0:
+        return (left + right) / 2
+    return (left * max(left_weight, 0) + right * max(right_weight, 0)) / total_weight
+
+
+def ranking_row_preference(row: dict[str, Any]) -> tuple[int, int, int]:
+    return (
+        1 if parse_bool(row.get("feeVerified")) else 0,
+        parse_int(row.get("requests")),
+        1 if sanitize_public_text(row.get("adoptedTier")) else 0,
+    )
+
+
+def quality_row_preference(row: dict[str, Any]) -> tuple[int, int]:
+    return (
+        parse_int(row.get("requestSamples")),
+        1 if sanitize_public_text(row.get("platformGuess")) else 0,
+    )
+
+
+def merge_ranking_rows(existing: dict[str, Any], incoming: dict[str, Any]) -> dict[str, Any]:
+    existing_requests = parse_int(existing.get("requests"))
+    incoming_requests = parse_int(incoming.get("requests"))
+    preferred = incoming if ranking_row_preference(incoming) > ranking_row_preference(existing) else existing
+    merged = deepcopy(preferred)
+    total_requests = existing_requests + incoming_requests
+    total_correct = parse_int(existing.get("correct")) + parse_int(incoming.get("correct"))
+    total_failures = parse_int(existing.get("failures")) + parse_int(incoming.get("failures"))
+    total_http2xx = parse_int(existing.get("http2xx")) + parse_int(incoming.get("http2xx"))
+    total_http200_with_error = parse_int(existing.get("http200WithError")) + parse_int(incoming.get("http200WithError"))
+    merged["requests"] = total_requests
+    merged["correct"] = total_correct
+    merged["failures"] = total_failures
+    merged["http2xx"] = total_http2xx
+    merged["http200WithError"] = total_http200_with_error
+    merged["correctRate"] = (total_correct / total_requests) if total_requests else 0.0
+    merged["successScore"] = 100.0 * merged["correctRate"]
+    merged["avgSeconds"] = weighted_average(existing.get("avgSeconds"), existing_requests, incoming.get("avgSeconds"), incoming_requests) or 0.0
+    merged["medianSeconds"] = weighted_average(existing.get("medianSeconds"), existing_requests, incoming.get("medianSeconds"), incoming_requests)
+    p95_values = [parse_float(existing.get("p95Seconds")), parse_float(incoming.get("p95Seconds"))]
+    merged["p95Seconds"] = max((value for value in p95_values if value is not None), default=None)
+    merged["latencyScore"] = weighted_average(existing.get("latencyScore"), existing_requests, incoming.get("latencyScore"), incoming_requests) or 0.0
+    merged["firstAt"] = earlier_timestamp_text(existing.get("firstAt"), incoming.get("firstAt"))
+    merged["lastAt"] = later_timestamp_text(existing.get("lastAt"), incoming.get("lastAt"))
+    return merged
+
+
+def merge_quality_rows(existing: dict[str, Any], incoming: dict[str, Any]) -> dict[str, Any]:
+    existing_samples = parse_int(existing.get("requestSamples"))
+    incoming_samples = parse_int(incoming.get("requestSamples"))
+    preferred = incoming if quality_row_preference(incoming) > quality_row_preference(existing) else existing
+    merged = deepcopy(preferred)
+    total_samples = existing_samples + incoming_samples
+    total_correct = parse_int(existing.get("correct")) + parse_int(incoming.get("correct"))
+    total_failures = parse_int(existing.get("failures")) + parse_int(incoming.get("failures"))
+    total_http2xx = parse_int(existing.get("http2xx")) + parse_int(incoming.get("http2xx"))
+    total_http200_with_error = parse_int(existing.get("http200WithError")) + parse_int(incoming.get("http200WithError"))
+    total_nonnull_error = parse_int(existing.get("nonnullError")) + parse_int(incoming.get("nonnullError"))
+    total_excluded = parse_int(existing.get("excludedBillingErrors")) + parse_int(incoming.get("excludedBillingErrors"))
+    merged["requestSamples"] = total_samples
+    merged["correct"] = total_correct
+    merged["failures"] = total_failures
+    merged["correctRate"] = (total_correct / total_samples) if total_samples else 0.0
+    merged["http2xx"] = total_http2xx
+    merged["http200WithError"] = total_http200_with_error
+    merged["nonnullError"] = total_nonnull_error
+    merged["excludedBillingErrors"] = total_excluded
+    merged["avgSeconds"] = weighted_average(existing.get("avgSeconds"), existing_samples, incoming.get("avgSeconds"), incoming_samples)
+    merged["medianSeconds"] = weighted_average(existing.get("medianSeconds"), existing_samples, incoming.get("medianSeconds"), incoming_samples)
+    p95_values = [parse_float(existing.get("p95Seconds")), parse_float(incoming.get("p95Seconds"))]
+    merged["p95Seconds"] = max((value for value in p95_values if value is not None), default=None)
+    merged["avgFirstResponseSeconds"] = weighted_average(
+        existing.get("avgFirstResponseSeconds"),
+        existing_samples,
+        incoming.get("avgFirstResponseSeconds"),
+        incoming_samples,
+    )
+    merged["firstAt"] = earlier_timestamp_text(existing.get("firstAt"), incoming.get("firstAt"))
+    merged["lastAt"] = later_timestamp_text(existing.get("lastAt"), incoming.get("lastAt"))
+    return merged
+
+
+def merge_ranking_rows_by_station(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], bool]:
+    merged_by_station: dict[str, dict[str, Any]] = {}
+    order: list[str] = []
+    merged_any = False
+    for row in rows:
+        station_key = canonical_station_key(row.get("station"))
+        if not station_key:
+            continue
+        next_row = deepcopy(row)
+        next_row["station"] = station_key
+        existing = merged_by_station.get(station_key)
+        if existing is None:
+            merged_by_station[station_key] = next_row
+            order.append(station_key)
+            continue
+        merged_by_station[station_key] = merge_ranking_rows(existing, next_row)
+        merged_any = True
+    return [merged_by_station[station_key] for station_key in order], merged_any
 
 
 def parse_iso_datetime(value: Any) -> datetime | None:
@@ -430,14 +678,22 @@ def audit_run_status_for_summary(path: Path) -> str:
     return str(payload.get("status") or "failed").strip()
 
 
-def ensure_station(container: dict[str, dict[str, Any]], station_key: str, **overrides: Any) -> dict[str, Any]:
+def ensure_station(
+    container: dict[str, dict[str, Any]],
+    station_key: str,
+    *,
+    station_aliases: dict[str, str] | None = None,
+    **overrides: Any,
+) -> dict[str, Any]:
+    raw_station_key = sanitize_public_text(station_key).strip()
+    station_key = canonical_station_key(raw_station_key, station_aliases)
     station_type = overrides.get("station_type") or "unknown_pending"
     record = container.setdefault(
         station_key,
         {
             "key": station_key,
-            "label": sanitize_public_text(overrides.get("label")) or station_key,
-            "url": sanitize_public_text(overrides.get("url")),
+            "label": sanitize_public_text(overrides.get("label")) if raw_station_key == station_key else station_key,
+            "url": sanitize_public_text(overrides.get("url")) if raw_station_key == station_key else "",
             "stationType": station_type,
             "stationTypeLabel": FULL_TYPE_LABELS.get(station_type, "待补证据"),
             "stationTypeShortLabel": SHORT_TYPE_LABELS.get(station_type, "待补证据"),
@@ -452,9 +708,9 @@ def ensure_station(container: dict[str, dict[str, Any]], station_key: str, **ove
         },
     )
 
-    if overrides.get("label"):
+    if raw_station_key == station_key and overrides.get("label"):
         record["label"] = sanitize_public_text(overrides["label"])
-    if overrides.get("url"):
+    if raw_station_key == station_key and overrides.get("url"):
         record["url"] = sanitize_public_text(overrides["url"])
 
     station_type = overrides.get("station_type")
@@ -480,7 +736,7 @@ def empty_rankings() -> dict[str, list[dict[str, Any]]]:
     return {window_key: [] for window_key in TIME_WINDOWS}
 
 
-def load_status_payloads() -> dict[str, dict[str, Any]]:
+def load_status_payloads(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
     grouped: dict[str, dict[str, Any]] = {}
     fetch_dirs = [path for path in PUBLIC_FETCH_DIRS if path.exists()]
     if not fetch_dirs:
@@ -488,7 +744,7 @@ def load_status_payloads() -> dict[str, dict[str, Any]]:
 
     for fetch_dir in fetch_dirs:
         for path in sorted(fetch_dir.glob("*_status.json")):
-            station_key = path.stem.replace("_status", "")
+            station_key = canonical_station_key(path.stem.replace("_status", ""), station_aliases)
             if not is_public_station_key(station_key):
                 continue
             try:
@@ -530,12 +786,12 @@ def load_announcements(status_payloads: dict[str, dict[str, Any]]) -> dict[str, 
     return grouped
 
 
-def load_live_auth_probes() -> dict[str, dict[str, Any]]:
+def load_live_auth_probes(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
     grouped: dict[str, dict[str, Any]] = {}
     if not LIVE_AUTH_PROBE_DIR.exists():
         return grouped
     for path in sorted(LIVE_AUTH_PROBE_DIR.glob("*-live-auth-probe.json")):
-        station_key = path.name.removesuffix("-live-auth-probe.json")
+        station_key = canonical_station_key(path.name.removesuffix("-live-auth-probe.json"), station_aliases)
         if not is_public_station_key(station_key):
             continue
         try:
@@ -662,6 +918,12 @@ def live_probe_announcements_and_status(station_key: str, probe: dict[str, Any])
         rows, found = extract_collection(body, allow_text_item="notice" in api_path.lower())
         source_url = probe_source_url(probe, api_path)
         if status and not ok and status >= 400:
+            if entry_is_blocked(entry):
+                return [], {
+                    "status": "blocked",
+                    "source": source_url,
+                    "message": "登录态公告接口被验证码或风控阻断",
+                }
             if first_failure is None:
                 first_failure = {
                     "status": "failed",
@@ -717,6 +979,15 @@ def live_probe_announcements_and_status(station_key: str, probe: dict[str, Any])
     }
 
 
+def entry_is_blocked(entry: dict[str, Any] | None) -> bool:
+    if not isinstance(entry, dict):
+        return False
+    if int(entry.get("status") or 0) in {403, 429}:
+        return True
+    text = json.dumps(entry.get("body", entry), ensure_ascii=False).lower()
+    return any(marker in text for marker in ("turnstile", "captcha", "验证码", "人机验证", "风控"))
+
+
 def live_probe_group_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]]:
     entry = find_probe_result(probe, "/api/v1/groups/available")
     data = probe_result_data_from_entry(entry)
@@ -741,6 +1012,8 @@ def live_probe_group_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], 
     if groups:
         return groups, {"status": "captured", "source": source, "message": f"登录态分组接口抓取到 {len(groups)} 条"}
     if entry is not None:
+        if entry_is_blocked(entry):
+            return [], {"status": "blocked", "source": source, "message": "登录态分组接口被验证码或风控阻断"}
         status = int(entry.get("status") or 0)
         message = f"登录态分组接口返回 HTTP {status}" if status >= 400 else "登录态分组接口返回空列表"
         return [], {"status": "empty" if status < 400 else "failed", "source": source, "message": message}
@@ -843,6 +1116,12 @@ def live_probe_recharge_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]
         if int(entry.get("status") or 0) > 0
     ]
     if payment_statuses and all(status >= 400 for status in payment_statuses):
+        if any(entry_is_blocked(entry) for entry in payment_entries):
+            return [], {
+                "status": "blocked",
+                "source": source,
+                "message": "登录态支付接口被验证码或风控阻断",
+            }
         return [], {
             "status": "failed",
             "source": source,
@@ -878,12 +1157,17 @@ def normalize_live_probe_status(status: dict[str, str]) -> dict[str, str]:
         normalized["status"] = "login_required"
         normalized["message"] = "需要登录或权限不足 (HTTP 401)"
         return normalized
+    if status.get("status") == "failed" and any(marker in message.lower() for marker in ("turnstile", "captcha", "验证码", "人机验证", "风控")):
+        normalized = dict(status)
+        normalized["status"] = "blocked"
+        normalized["message"] = "接口被验证码或风控阻断"
+        return normalized
     return status
 
 
-def load_live_probe_snapshots() -> dict[str, dict[str, Any]]:
+def load_live_probe_snapshots(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
     snapshots: dict[str, dict[str, Any]] = {}
-    for station_key, probe in load_live_auth_probes().items():
+    for station_key, probe in load_live_auth_probes(station_aliases).items():
         announcements, announcement_status = live_probe_announcements_and_status(station_key, probe)
         groups, group_status = live_probe_group_rows(probe)
         recharges, recharge_status = live_probe_recharge_rows(probe)
@@ -972,43 +1256,82 @@ def append_recharge_row(station: dict[str, Any], row: dict[str, Any]) -> None:
         station["rechargeTiers"].append(row)
 
 
-def load_base_site_snapshot() -> tuple[dict[str, list[dict[str, Any]]], dict[str, dict[str, Any]], dict[str, set[str]]]:
+def load_base_site_snapshot(
+    station_aliases: dict[str, str] | None = None,
+) -> tuple[dict[str, list[dict[str, Any]]], dict[str, dict[str, Any]], dict[str, set[str]]]:
     existing = read_existing_site_data()
     rankings = empty_rankings()
     for window_key in TIME_WINDOWS:
-        rankings[window_key] = [deepcopy(row) for row in existing.get("rankings", {}).get(window_key, [])]
+        rows = []
+        for raw_row in existing.get("rankings", {}).get(window_key, []):
+            row = deepcopy(raw_row)
+            row["station"] = canonical_station_key(row.get("station"), station_aliases)
+            rows.append(row)
+        rankings[window_key], _ = merge_ranking_rows_by_station(rows)
 
     stations: dict[str, dict[str, Any]] = {}
     station_urls: dict[str, set[str]] = {}
     for raw_station in existing.get("stations", []):
-        station_key = str(raw_station.get("key") or "").strip()
+        raw_station_key = sanitize_public_text(raw_station.get("key")).strip()
+        station_key = canonical_station_key(raw_station.get("key"), station_aliases)
         if not station_key:
             continue
         station = ensure_station(
             stations,
-            station_key,
+            raw_station_key,
+            station_aliases=station_aliases,
             label=raw_station.get("label", ""),
             url=raw_station.get("url", ""),
             station_type=raw_station.get("stationType", ""),
             platform_guess=raw_station.get("platformGuess", ""),
         )
-        station.update(deepcopy(raw_station))
-        station.setdefault("groupMultipliers", [])
-        station.setdefault("rechargeTiers", [])
-        station.setdefault("tierNotes", [])
-        station.setdefault("announcements", [])
-        station.setdefault("quality", {})
-        station.setdefault("rankings", {})
-        station.setdefault("verifiedTierCount", 0)
-        station.setdefault("audits", None)
+        raw_label = sanitize_public_text(raw_station.get("label"))
+        raw_url = sanitize_public_text(raw_station.get("url"))
+        raw_station_type = raw_station.get("stationType", "")
+        raw_station_type_label = sanitize_public_text(raw_station.get("stationTypeLabel"))
+        raw_station_type_short = sanitize_public_text(raw_station.get("stationTypeShortLabel"))
+        raw_platform = sanitize_public_text(raw_station.get("platformGuess"))
+        if raw_label and (raw_station_key == station_key or station.get("label") == station_key):
+            station["label"] = raw_label
+        if raw_url and (raw_station_key == station_key or not station.get("url")):
+            station["url"] = raw_url
+        if raw_station_type and (raw_station_key == station_key or station.get("stationType") == "unknown_pending"):
+            station["stationType"] = raw_station_type
+            station["stationTypeLabel"] = raw_station_type_label or station["stationTypeLabel"]
+            station["stationTypeShortLabel"] = raw_station_type_short or station["stationTypeShortLabel"]
+        if raw_platform and (raw_station_key == station_key or not station.get("platformGuess")):
+            station["platformGuess"] = raw_platform
+        station["verifiedTierCount"] = max(parse_int(station.get("verifiedTierCount")), parse_int(raw_station.get("verifiedTierCount")))
+        for group in raw_station.get("groupMultipliers", []):
+            if isinstance(group, dict):
+                normalized_group = normalize_group_row(group)
+                if normalized_group:
+                    append_group_row(station, normalized_group)
+        for tier in raw_station.get("rechargeTiers", []):
+            if isinstance(tier, dict):
+                normalized_tier = normalize_recharge_row(tier)
+                if normalized_tier:
+                    append_recharge_row(station, normalized_tier)
+        for note in raw_station.get("tierNotes", []):
+            normalized_note = normalize_public_text(note)
+            if normalized_note and normalized_note not in station["tierNotes"]:
+                station["tierNotes"].append(normalized_note)
+        station["announcements"] = merge_announcements(station.get("announcements", []), raw_station.get("announcements", []))
+        for window_key, quality_payload in (raw_station.get("quality") or {}).items():
+            if not isinstance(quality_payload, dict):
+                continue
+            existing_quality = station["quality"].get(window_key)
+            station["quality"][window_key] = merge_quality_rows(existing_quality, quality_payload) if isinstance(existing_quality, dict) else deepcopy(quality_payload)
+        if raw_station.get("audits") and not station.get("audits"):
+            station["audits"] = deepcopy(raw_station["audits"])
         if station.get("url"):
-            station_urls.setdefault(station_key, set()).add(sanitize_public_text(station["url"]))
+            add_station_url(station_urls, station_key, station["url"], station_aliases)
         for announcement in station.get("announcements", []):
             source_url = sanitize_public_text(announcement.get("sourceUrl"))
             if source_url:
-                station_urls.setdefault(station_key, set()).add(source_url)
+                add_station_url(station_urls, station_key, source_url, station_aliases)
 
-    sync_station_rankings_from_rankings(stations, rankings)
+    sync_station_rankings_from_rankings(stations, rankings, station_aliases=station_aliases)
     return rankings, stations, station_urls
 
 
@@ -1020,7 +1343,12 @@ def reset_station_tiers(stations: dict[str, dict[str, Any]]) -> None:
         station["tierNotes"] = []
 
 
-def sync_station_rankings_from_rankings(stations: dict[str, dict[str, Any]], rankings: dict[str, list[dict[str, Any]]]) -> None:
+def sync_station_rankings_from_rankings(
+    stations: dict[str, dict[str, Any]],
+    rankings: dict[str, list[dict[str, Any]]],
+    *,
+    station_aliases: dict[str, str] | None = None,
+) -> None:
     for station in stations.values():
         station["rankings"] = {}
 
@@ -1029,11 +1357,36 @@ def sync_station_rankings_from_rankings(stations: dict[str, dict[str, Any]], ran
             station = ensure_station(
                 stations,
                 row.get("station", ""),
+                station_aliases=station_aliases,
                 label=row.get("label", ""),
                 url=row.get("stationUrl", ""),
                 station_type=row.get("stationType", ""),
             )
             station["rankings"][window_key] = row
+
+
+def sync_station_metadata_into_rows(
+    stations: dict[str, dict[str, Any]],
+    rankings: dict[str, list[dict[str, Any]]],
+) -> None:
+    for rows in rankings.values():
+        for row in rows:
+            station = stations.get(str(row.get("station") or "").strip())
+            if not station:
+                continue
+            row["label"] = sanitize_public_text(station.get("label"))
+            row["stationUrl"] = sanitize_public_text(station.get("url"))
+            row["stationType"] = station.get("stationType", "")
+            row["stationTypeLabel"] = station.get("stationTypeLabel", "")
+            row["stationTypeShortLabel"] = station.get("stationTypeShortLabel", "")
+
+    for station in stations.values():
+        for row in station.get("quality", {}).values():
+            if not isinstance(row, dict):
+                continue
+            row["station"] = station["key"]
+            row["label"] = sanitize_public_text(station.get("label"))
+            row["platformGuess"] = sanitize_public_text(station.get("platformGuess"))
 
 
 def maybe_parse_group_ratio(group_name: str, raw_value: Any) -> dict[str, Any] | None:
@@ -1199,7 +1552,7 @@ def parse_public_pricing_html(content: str) -> dict[str, Any]:
     }
 
 
-def load_public_pricing_snapshots() -> dict[str, dict[str, Any]]:
+def load_public_pricing_snapshots(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
     grouped: dict[str, dict[str, Any]] = {}
     fetch_dirs = [path for path in PUBLIC_FETCH_DIRS if path.exists()]
     if not fetch_dirs:
@@ -1207,7 +1560,7 @@ def load_public_pricing_snapshots() -> dict[str, dict[str, Any]]:
 
     for fetch_dir in fetch_dirs:
         for path in sorted(fetch_dir.glob("*_pricing.*")):
-            station_key = path.stem.replace("_pricing", "")
+            station_key = canonical_station_key(path.stem.replace("_pricing", ""), station_aliases)
             if not is_public_station_key(station_key):
                 continue
             parsed = {
@@ -1268,7 +1621,46 @@ def load_public_pricing_snapshots() -> dict[str, dict[str, Any]]:
     return grouped
 
 
-def load_station_audit_targets() -> dict[str, dict[str, Any]]:
+def load_public_probe_snapshots(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
+    grouped: dict[str, dict[str, Any]] = {}
+    fetch_dirs = [path for path in PUBLIC_FETCH_DIRS if path.exists()]
+    if not fetch_dirs:
+        return grouped
+
+    for fetch_dir in fetch_dirs:
+        probe_paths = sorted(fetch_dir.glob("*_public_probe.json")) + sorted(fetch_dir.glob("*_api_base_probe.json"))
+        for path in probe_paths:
+            station_key = canonical_station_key(
+                path.stem.replace("_public_probe", "").replace("_api_base_probe", ""),
+                station_aliases,
+            )
+            if not is_public_station_key(station_key):
+                continue
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            if not isinstance(payload, dict):
+                continue
+            bucket = grouped.setdefault(
+                station_key,
+                {
+                    "urls": [],
+                    "evidenceStatus": {},
+                },
+            )
+            bucket["urls"].extend(collect_public_urls(payload))
+            source = sanitize_public_text(payload.get("baseUrl") or payload.get("base_url") or payload.get("location"))
+            if source:
+                bucket["evidenceStatus"]["publicProbe"] = {
+                    "status": "captured",
+                    "source": source,
+                    "message": "公开探针已归档，可用于主站地址与证据合并。",
+                }
+    return grouped
+
+
+def load_station_audit_targets(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
     if not STATION_AUDIT_TARGETS_PATH.exists():
         return {}
     payload = json.loads(STATION_AUDIT_TARGETS_PATH.read_text(encoding="utf-8"))
@@ -1279,7 +1671,7 @@ def load_station_audit_targets() -> dict[str, dict[str, Any]]:
     for item in targets:
         if not isinstance(item, dict):
             continue
-        station_key = str(item.get("station") or "").strip()
+        station_key = canonical_station_key(item.get("station"), station_aliases)
         if not is_public_station_key(station_key):
             continue
         models = [sanitize_public_text(model) for model in item.get("models", []) if sanitize_public_text(model)]
@@ -1291,7 +1683,7 @@ def load_station_audit_targets() -> dict[str, dict[str, Any]]:
     return result
 
 
-def load_latest_station_audits() -> dict[str, list[dict[str, Any]]]:
+def load_latest_station_audits(station_aliases: dict[str, str] | None = None) -> dict[str, list[dict[str, Any]]]:
     grouped: dict[str, dict[str, tuple[datetime | None, dict[str, Any]]]] = {}
     if not AUDIT_RUNS_DIR.exists():
         return {}
@@ -1308,7 +1700,7 @@ def load_latest_station_audits() -> dict[str, list[dict[str, Any]]]:
         parts = path.relative_to(AUDIT_RUNS_DIR).parts
         if len(parts) < 4:
             continue
-        station_key = parts[0]
+        station_key = canonical_station_key(parts[0], station_aliases)
         if not is_public_station_key(station_key):
             continue
         model_bucket = grouped.setdefault(station_key, {})
@@ -1337,7 +1729,10 @@ def audit_station_label_from_base_url(value: Any, fallback: str) -> str:
     return host or fallback
 
 
-def load_station_audit_history(station_records: dict[str, dict[str, Any]] | None = None) -> list[dict[str, Any]]:
+def load_station_audit_history(
+    station_records: dict[str, dict[str, Any]] | None = None,
+    station_aliases: dict[str, str] | None = None,
+) -> list[dict[str, Any]]:
     station_records = station_records or {}
     rows: list[dict[str, Any]] = []
     if not AUDIT_RUNS_DIR.exists():
@@ -1357,15 +1752,16 @@ def load_station_audit_history(station_records: dict[str, dict[str, Any]] | None
         if len(parts) < 4:
             continue
         station_key, model_dir, run_id = parts[:3]
+        canonical_key = canonical_station_key(station_key, station_aliases)
         if not is_public_station_key(station_key):
             continue
 
-        station = station_records.get(station_key, {})
+        station = station_records.get(canonical_key, {})
         row = dict(summary)
         row.update(
             {
-                "stationKey": station_key,
-                "stationLabel": sanitize_public_text(station.get("label")) or audit_station_label_from_base_url(summary.get("auditedBaseUrl"), station_key),
+                "stationKey": canonical_key,
+                "stationLabel": sanitize_public_text(station.get("label")) or audit_station_label_from_base_url(summary.get("auditedBaseUrl"), canonical_key),
                 "stationUrl": sanitize_public_text(station.get("url")) or sanitize_public_text(summary.get("auditedBaseUrl")),
                 "runId": run_id,
                 "reportUrl": (
@@ -1385,6 +1781,8 @@ def apply_audit_only_station_records(
     stations: dict[str, dict[str, Any]],
     station_urls: dict[str, set[str]],
     latest_audits: dict[str, list[dict[str, Any]]],
+    *,
+    station_aliases: dict[str, str] | None = None,
 ) -> None:
     for station_key, audit_rows in latest_audits.items():
         if not audit_rows:
@@ -1392,37 +1790,48 @@ def apply_audit_only_station_records(
 
         audited_base_url = sanitize_public_text(audit_rows[0].get("auditedBaseUrl"))
         if station_key in stations:
-            station = ensure_station(stations, station_key)
+            station = ensure_station(stations, station_key, station_aliases=station_aliases)
             if audited_base_url and not station.get("url"):
                 station["url"] = audited_base_url
         else:
             station = ensure_station(
                 stations,
                 station_key,
+                station_aliases=station_aliases,
                 label=audit_station_label_from_base_url(audited_base_url, station_key),
                 url=audited_base_url,
             )
 
         if audited_base_url:
-            station_urls.setdefault(station_key, set()).add(audited_base_url)
+            add_exact_station_url(station_urls, station_key, audited_base_url, station_aliases)
 
 
-def load_station_pricing_overrides() -> dict[str, dict[str, Any]]:
+def load_station_pricing_overrides(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
     if not STATION_PRICING_OVERRIDES_PATH.exists():
         return {}
     payload = json.loads(STATION_PRICING_OVERRIDES_PATH.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
         return {}
-    return {str(station_key): value for station_key, value in payload.items() if isinstance(value, dict)}
+    overrides: dict[str, dict[str, Any]] = {}
+    for station_key, value in payload.items():
+        if not isinstance(value, dict):
+            continue
+        canonical_key = canonical_station_key(station_key, station_aliases)
+        if not canonical_key:
+            continue
+        overrides[canonical_key] = value
+    return overrides
 
 
 def apply_public_pricing_snapshots(
     stations: dict[str, dict[str, Any]],
     station_urls: dict[str, set[str]],
     pricing_snapshots: dict[str, dict[str, Any]],
+    *,
+    station_aliases: dict[str, str] | None = None,
 ) -> None:
     for station_key, snapshot in pricing_snapshots.items():
-        station = ensure_station(stations, station_key)
+        station = ensure_station(stations, station_key, station_aliases=station_aliases)
         station_type_hint = sanitize_public_text(snapshot.get("stationTypeHint"))
         if (
             station.get("stationType") == "unknown_pending"
@@ -1434,7 +1843,7 @@ def apply_public_pricing_snapshots(
             station["stationTypeShortLabel"] = SHORT_TYPE_LABELS.get(station_type_hint, station_type_hint)
         source_url = sanitize_public_text(snapshot.get("sourceUrl"))
         if source_url:
-            station_urls.setdefault(station_key, set()).add(source_url)
+            add_station_url(station_urls, station_key, source_url, station_aliases)
         for group in snapshot.get("groupMultipliers", []):
             append_group_row(station, group)
         for tier in snapshot.get("rechargeTiers", []):
@@ -1449,12 +1858,14 @@ def apply_live_probe_snapshots(
     stations: dict[str, dict[str, Any]],
     station_urls: dict[str, set[str]],
     live_snapshots: dict[str, dict[str, Any]],
+    *,
+    station_aliases: dict[str, str] | None = None,
 ) -> None:
     for station_key, snapshot in live_snapshots.items():
-        station = ensure_station(stations, station_key)
+        station = ensure_station(stations, station_key, station_aliases=station_aliases)
         source_url = sanitize_public_text(snapshot.get("sourceUrl"))
         if source_url:
-            station_urls.setdefault(station_key, set()).add(source_url)
+            add_station_url(station_urls, station_key, source_url, station_aliases)
         for group in snapshot.get("groupMultipliers", []):
             append_group_row(station, group)
         for tier in snapshot.get("rechargeTiers", []):
@@ -1492,6 +1903,7 @@ def evidence_item(
         "failed": "抓取失败",
         "missing": "未抓到",
         "login_required": "需要登录",
+        "blocked": "风控阻断",
         "public_missing": "未发现公开接口",
     }
     return {
@@ -1515,7 +1927,7 @@ def build_station_evidence_status(station: dict[str, Any], live_snapshot: dict[s
         if platform == "sub2api"
         else "未发现标准公开公告接口或接口未返回公告内容。"
     )
-    return [
+    evidence_rows = [
         evidence_item(
             key="groupMultipliers",
             label="分组倍率",
@@ -1541,6 +1953,18 @@ def build_station_evidence_status(station: dict[str, Any], live_snapshot: dict[s
             live_status=live_statuses.get("announcements") if isinstance(live_statuses.get("announcements"), dict) else None,
         ),
     ]
+    if station.get("_publicProbeCaptured") or isinstance(live_statuses.get("publicProbe"), dict):
+        evidence_rows.append(
+            evidence_item(
+                key="publicProbe",
+                label="公开探针",
+                count=1 if station.get("_publicProbeCaptured") else 0,
+                fallback_status="missing",
+                fallback_message="未抓到公开探针证据。",
+                live_status=live_statuses.get("publicProbe") if isinstance(live_statuses.get("publicProbe"), dict) else None,
+            )
+        )
+    return evidence_rows
 
 
 def data_gap_summary(stations: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -1577,9 +2001,11 @@ def sort_recharge_tiers(recharge_tiers: list[dict[str, Any]]) -> list[dict[str, 
 def apply_station_pricing_overrides(
     stations: dict[str, dict[str, Any]],
     overrides: dict[str, dict[str, Any]],
+    *,
+    station_aliases: dict[str, str] | None = None,
 ) -> None:
     for station_key, override in overrides.items():
-        station = ensure_station(stations, station_key)
+        station = ensure_station(stations, station_key, station_aliases=station_aliases)
 
         group_rows = []
         for item in override.get("groupMultipliers", []):
@@ -1717,6 +2143,7 @@ def apply_authoritative_ranking_overrides(
 
 def main() -> int:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
+    station_aliases = load_station_aliases()
 
     intro = load_summary_intro()
     required_inputs = [
@@ -1735,7 +2162,7 @@ def main() -> int:
         if not SITE_DATA_PATH.exists():
             missing = ", ".join(missing_inputs)
             raise FileNotFoundError(f"Missing required source files and no existing site-data.json to reuse: {missing}")
-        rankings, stations, station_urls = load_base_site_snapshot()
+        rankings, stations, station_urls = load_base_site_snapshot(station_aliases)
     else:
         rankings = empty_rankings()
         stations = {}
@@ -1749,13 +2176,18 @@ def main() -> int:
     for window_key, input_path in ranking_inputs.items():
         if not input_path:
             continue
-        rankings[window_key] = [ranking_row(row) for row in read_csv(input_path)]
+        rows = []
+        for raw_row in read_csv(input_path):
+            row = ranking_row(raw_row)
+            row["station"] = canonical_station_key(row.get("station"), station_aliases)
+            rows.append(row)
+        rankings[window_key], _ = merge_ranking_rows_by_station(rows)
 
     if resolved_inputs.get("login_verification_checklist.csv"):
         checklist_rows = read_csv(resolved_inputs["login_verification_checklist.csv"])
         for row in checklist_rows:
             urls = [sanitize_public_text(url) for url in split_list(row.get("urls"))]
-            station_key = row.get("station", "")
+            station_key = canonical_station_key(row.get("station", ""), station_aliases)
             if not is_public_station_key(station_key):
                 continue
             urls = [url for url in urls if is_public_station_url(url)]
@@ -1764,21 +2196,23 @@ def main() -> int:
             ensure_station(
                 stations,
                 station_key,
+                station_aliases=station_aliases,
                 label=row.get("label", ""),
                 url=urls[0] if urls else "",
                 station_type=row.get("station_type", ""),
                 platform_guess=row.get("platform_guess", ""),
             )
-            station_urls.setdefault(station_key, set()).update(urls)
+            for url in urls:
+                add_station_url(station_urls, station_key, url, station_aliases)
             probe_final_url = sanitize_public_text(row.get("probe_final_url"))
             if probe_final_url:
-                station_urls.setdefault(station_key, set()).add(probe_final_url)
+                add_station_url(station_urls, station_key, probe_final_url, station_aliases)
 
-    sync_station_rankings_from_rankings(stations, rankings)
+    sync_station_rankings_from_rankings(stations, rankings, station_aliases=station_aliases)
     for window_rows in rankings.values():
         for row in window_rows:
             if row.get("stationUrl"):
-                station_urls.setdefault(row["station"], set()).add(row["stationUrl"])
+                add_station_url(station_urls, row["station"], row["stationUrl"], station_aliases)
 
     if resolved_inputs.get("quality_metrics.csv"):
         for station in stations.values():
@@ -1786,9 +2220,10 @@ def main() -> int:
         quality_rows = read_csv(resolved_inputs["quality_metrics.csv"])
         for raw_row in quality_rows:
             row = quality_row(raw_row)
-            station_key = row["station"]
+            station_key = canonical_station_key(row["station"], station_aliases)
             if not is_public_station_key(station_key):
                 continue
+            row["station"] = station_key
             configured_urls = [sanitize_public_text(url) for url in split_list(raw_row.get("configured_urls"))]
             public_configured_urls = [url for url in configured_urls if is_public_station_url(url)]
             if station_key not in stations and not public_configured_urls:
@@ -1796,24 +2231,28 @@ def main() -> int:
             station = ensure_station(
                 stations,
                 station_key,
+                station_aliases=station_aliases,
                 label=row["label"],
                 platform_guess=row["platformGuess"],
             )
-            station["quality"][row["timeWindow"]] = row
+            existing_quality = station["quality"].get(row["timeWindow"])
+            station["quality"][row["timeWindow"]] = merge_quality_rows(existing_quality, row) if isinstance(existing_quality, dict) else row
             if public_configured_urls:
-                station_urls.setdefault(station_key, set()).update(public_configured_urls)
+                for url in public_configured_urls:
+                    add_station_url(station_urls, station_key, url, station_aliases)
 
     if resolved_inputs.get("multiplier_tiers.csv"):
         reset_station_tiers(stations)
         tier_rows = read_csv(resolved_inputs["multiplier_tiers.csv"])
         for row in tier_rows:
-            station_key = row.get("station", "")
+            station_key = canonical_station_key(row.get("station", ""), station_aliases)
             if not is_public_station_key(station_key):
                 continue
 
             station = ensure_station(
                 stations,
                 station_key,
+                station_aliases=station_aliases,
                 label=row.get("label", ""),
                 station_type=row.get("station_type", ""),
             )
@@ -1843,9 +2282,9 @@ def main() -> int:
 
             evidence_url = sanitize_public_text(row.get("evidence_url"))
             if evidence_url:
-                station_urls.setdefault(station_key, set()).add(evidence_url)
+                add_station_url(station_urls, station_key, evidence_url, station_aliases)
 
-    status_payloads = load_status_payloads()
+    status_payloads = load_status_payloads(station_aliases)
     announcements = load_announcements(status_payloads)
     for station_key, payload in status_payloads.items():
         if not is_public_station_key(station_key):
@@ -1854,26 +2293,36 @@ def main() -> int:
         if isinstance(data, dict):
             source_url = sanitize_public_text(data.get("server_address"))
             if source_url:
-                station_urls.setdefault(station_key, set()).add(source_url)
+                add_station_url(station_urls, station_key, source_url, station_aliases)
 
-    pricing_snapshots = load_public_pricing_snapshots()
-    apply_public_pricing_snapshots(stations, station_urls, pricing_snapshots)
+    pricing_snapshots = load_public_pricing_snapshots(station_aliases)
+    apply_public_pricing_snapshots(stations, station_urls, pricing_snapshots, station_aliases=station_aliases)
+
+    public_probes = load_public_probe_snapshots(station_aliases)
+    for station_key, snapshot in public_probes.items():
+        for url in snapshot.get("urls", []):
+            add_station_url(station_urls, station_key, url, station_aliases)
+        if station_key in stations:
+            stations[station_key]["_publicProbeCaptured"] = True
+            if snapshot.get("evidenceStatus", {}).get("publicProbe"):
+                stations[station_key].setdefault("_publicEvidenceStatus", {})
+                stations[station_key]["_publicEvidenceStatus"]["publicProbe"] = snapshot["evidenceStatus"]["publicProbe"]
 
     for station_key, rows in announcements.items():
         if not is_public_station_key(station_key):
             continue
-        station = ensure_station(stations, station_key)
+        station = ensure_station(stations, station_key, station_aliases=station_aliases)
         station["announcements"] = merge_announcements(station.get("announcements", []), rows)
 
-    live_snapshots = load_live_probe_snapshots()
-    apply_live_probe_snapshots(stations, station_urls, live_snapshots)
+    live_snapshots = load_live_probe_snapshots(station_aliases)
+    apply_live_probe_snapshots(stations, station_urls, live_snapshots, station_aliases=station_aliases)
 
-    overrides = load_station_pricing_overrides()
-    apply_station_pricing_overrides(stations, overrides)
+    overrides = load_station_pricing_overrides(station_aliases)
+    apply_station_pricing_overrides(stations, overrides, station_aliases=station_aliases)
 
-    audit_targets = load_station_audit_targets()
-    latest_audits = load_latest_station_audits()
-    apply_audit_only_station_records(stations, station_urls, latest_audits)
+    audit_targets = load_station_audit_targets(station_aliases)
+    latest_audits = load_latest_station_audits(station_aliases)
+    apply_audit_only_station_records(stations, station_urls, latest_audits, station_aliases=station_aliases)
 
     apply_authoritative_ranking_overrides(stations, rankings, overrides)
 
@@ -1894,6 +2343,10 @@ def main() -> int:
         url_choices = dedupe_strings(list(station_urls.get(station["key"], set())) + [station.get("url", "")])
         station["url"] = choose_best_url(url_choices)
         station["dataEvidence"] = build_station_evidence_status(station, live_snapshots.get(station["key"]))
+        if station.get("_publicEvidenceStatus"):
+            for item in station["dataEvidence"]:
+                if item["key"] == "publicProbe":
+                    item.update(station["_publicEvidenceStatus"]["publicProbe"])
         audit_rows = latest_audits.get(station["key"], [])
         audit_target = audit_targets.get(station["key"], {})
         if audit_rows or audit_target:
@@ -1911,6 +2364,10 @@ def main() -> int:
             }
         else:
             station.pop("audits", None)
+        station.pop("_publicProbeCaptured", None)
+        station.pop("_publicEvidenceStatus", None)
+
+    sync_station_metadata_into_rows(stations, rankings)
 
     site_data = {
         "siteName": "中转站监视者",

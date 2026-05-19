@@ -65,7 +65,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://coaiwork.com",
     "setup": true,
-    "start_time": 1778858320,
+    "start_time": 1778858304,
     "stripe_unit_price": 7,
     "system_name": "CoAI Work",
     "telegram_bot_name": "",

@@ -4,6 +4,27 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "为方便多渠道管理，新用户赠送额度已转为等值订阅额度包，现有用户不受影响，新用户请注意在钱包修改使用方式为优先订阅",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-05-18T16:21:38.373Z",
+        "type": "default"
+      },
+      {
+        "content": "已上线阿里云百炼官方6折渠道，支持K2.6，GLM5.1等主流旗舰国产模型，创建令牌时选择百炼分组即可使用",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2026-05-18T15:22:56.519Z",
+        "type": "default"
+      },
+      {
+        "content": "网站即将进行维护升级，预计几分钟内完成，中间可能出现短暂连接断开，敬请谅解",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-05-18T14:49:06.960Z",
+        "type": "default"
+      },
+      {
         "content": "生图渠道已调整，现支持4k出图，生图时建议使用api-cn节点，主节点暂时无法保证连接稳定",
         "extra": "",
         "id": 11,
@@ -144,7 +165,18 @@
     "enable_data_export": true,
     "enable_drawing": false,
     "enable_task": true,
-    "faq": [],
+    "faq": [
+      {
+        "answer": "## 价格说明\n\n本站采用 **1:1 充值** 规则，模型的基础价格均按官方价格配置。\n\n因此，不同模型的实际折扣计算方式如下：\n\n- **国际模型**：实际折扣约为 `倍率 ÷ 7`，具体结果会受汇率波动影响。\n- **国产模型**：实际折扣即为后台设置的倍率。\n\n示例：\n\n```text\n国际模型倍率 3.5 ≈ 实际 5 折\n国产模型倍率 0.5 = 实际 5 折\n",
+        "id": 1,
+        "question": "折扣如何计算?"
+      },
+      {
+        "answer": "我们推荐在 **Codex** 中使用，以获得最完整、最顺畅的体验。\n\n配置方法可参考：[Codex 配置教程](https://docs.avemujica.moe/cli/3-codex)\n\n日常使用场景下，推荐安装 **Codex App**：\n\n[下载 Codex App](https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi)\n\n如果你主要用于写代码，也可以使用 **Codex CLI**：\n\n```bash\nnpm install -g @openai/codex\n```\n\n如果你习惯使用 **Claude Code**，也可以根据客户端支持情况配置本站的接口使用。\n\n对于同时使用 Codex、Claude Code、Gemini CLI 等多个工具或是不想手动维护配置文件的用户，推荐使用 **CC Switch** 进行统一管理。CC Switch 支持统一管理 Provider、MCP、Skills、Prompt 等配置，也可以更方便地在不同模型服务之间切换。\n\nCC Switch 可参考：[CC Switch 官网](https://cc-switch.cc)",
+        "id": 2,
+        "question": "如何使用？"
+      }
+    ],
     "faq_enabled": true,
     "footer_html": "",
     "github_client_id": "",
@@ -171,7 +203,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://api.avemujica.moe",
     "setup": true,
-    "start_time": 1779031530,
+    "start_time": 1779156163,
     "stripe_unit_price": 1,
     "system_name": "AveMujica API",
     "telegram_bot_name": "",

@@ -4,13 +4,6 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
-        "content": "codex渠道且用且珍惜，plus试用计划没了，kiro-claude已加号，建议使用claude-kiro渠道！",
-        "extra": "",
-        "id": 8,
-        "publishDate": "2026-05-15T02:53:01.473Z",
-        "type": "ongoing"
-      },
-      {
         "content": "算了下成本0.1倍率的codex站主直接亏本，我们承诺不打折，不掺水，将尽力维持0.2的倍率！",
         "extra": "",
         "id": 7,
@@ -46,7 +39,7 @@
         "type": "ongoing"
       },
       {
-        "content": "可通过小铺购买token： https://pay.ldxp.cn/shop/WE9ZBUQG",
+        "content": "可通过小铺兑换token： https://pay.ldxp.cn/shop/WE9ZBUQG",
         "extra": "",
         "id": 2,
         "publishDate": "2026-04-30T08:48:15.821Z",

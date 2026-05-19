@@ -27,11 +27,31 @@ npm run site:tiers
 npm run site:data
 ```
 
+## 线上每日刷新
+
+- 线上自动刷新由 GitHub Actions 的 `.github/workflows/refresh-site-data.yml` 执行，Vercel 只在 Actions 提交 `data/site-data.json` 后自动部署，不负责定时抓取。
+- 定时为北京时间每天 04:00，对应 GitHub Actions cron `0 20 * * *`。
+- 线上批次顺序为：公开公告/价格快照抓取 -> 全站登录态 probe 抓取 -> `scripts/build_site_data.py` 重建 `data/site-data.json` -> `scripts/validate_refresh_outputs.py` 校验 -> 提交数据变更。
+- 登录态抓取使用 GitHub Actions Secrets：`API_RELAY_SCRAPE_EMAIL` 和 `API_RELAY_SCRAPE_PASSWORD`。凭据只注入 `scripts/scrape_missing_announcements.py --all-stations --write-probes` 这一步，不写入仓库，也不应出现在日志或 JSON 输出中。
+- 登录态 probe 在 CI 中作为同一次 job 的临时输入，默认写到 checkout 父目录的 `tabbit-audit-profile/`，供随后重建读取；不提交 probe 文件、token、cookie 或密码。
+- 单站登录失败、接口返回空、需要登录、Turnstile/验证码/风控阻断时，只记录对应证据状态，不能用失败结果覆盖已有成功的结构化分组倍率或充值档位。
+- 本次线上自动化只覆盖全站展示数据：公开快照、可登录站点的分组倍率/充值档位/公告证据和 `data/site-data.json`。Codex Manager 本地 SQLite 日志、`quality_metrics.csv` 与 formal ranking CSV 仍保持手动刷新，不放到 GitHub 托管 runner 每日任务中。
+
+## 增量日志刷新规则
+
+- 最新一次全量数据基线为 `2026-05-19 00:12:25 +0800`，对应 `data/site-data.json` 的 `generatedAt`。
+- 后续普通刷新不再全量分析 Codex Manager 历史日志；`npm run site:refresh-manual` 默认只分析 Codex Manager `request_logs` 中 `/v1/responses` 的增量日志。
+- 增量水位线和累计日志指标写入 `data/codex-log-refresh-state.json`。刷新后必须确认该文件存在，并检查 `cursor.createdAt` / `cursor.id` 是否随新增日志推进。
+- 只有规则变更、状态文件损坏或需要纠正历史数据时，才显式执行全量重建：`npm run site:refresh-manual -- --full-log-rebuild`。
+- 公告、倍率快照和登录态 probe 仍按现有脚本刷新，不归入 Codex Manager 日志增量水位线。
+
 本地确认前不要执行 `git add`、提交或推送。需要上线时再单独检查差异并提交数据文件。
 
 ## 刷新后检查
 
 ```powershell
+Test-Path data/codex-log-refresh-state.json
+Get-Content data/codex-log-refresh-state.json | ConvertFrom-Json | Select-Object -ExpandProperty cursor
 python -m unittest tests/test_build_site_data.py
 npm run build
 rg -n "Tabit2api|tabit2api|127\.0\.0\.1:50124" data/site-data.json
@@ -42,6 +62,7 @@ git diff --stat -- data/site-data.json data/_public_fetch
 重点确认：
 
 - `generatedAt` 已更新。
+- `data/codex-log-refresh-state.json` 已更新，且 `cursor.createdAt` / `cursor.id` 与本次新增日志一致。
 - `rankedStationCount` 与三个 formal CSV 行数一致。
 - `timeWindows` 和特别声明仍明确写着周末全天计入非工作时段。
 - `multiplier_tiers.csv` 中有大量 `high_tabbit_logged_in`，并保留 `manual_verified` 样本。
@@ -79,5 +100,8 @@ git diff --stat -- data/site-data.json data/_public_fetch
 - 时间窗口径必须先确认再改脚本。之前把请求样本误加了“最近三天”截断，直接把 `nexus` 这类旧日志站点从正式排名里清空了；这类改动必须先用独立 SQL 核对样本时间分布。
 - 新站点分类要补全到脚本里的 `classify_station()`，否则会出现“DB 里有请求、费用证据也有，但质量 CSV 里是 0”的假缺失。`opentk` 就是这类遗漏，补分类后才重新进入正式排名。
 - 私有账号键、本地代理地址和临时站点不能进入公开站点池。像 `ttop5`、`127.0.0.1:8787`、`tabit2api` 这类条目只能留在内部排查链路，不能写进公开站点列表或前端 JSON。
-- 新站点是否收录和是否进入正式排名要分开处理。`clawto` 已按独立站点收录，但授权接口仍只拿到 `login_required`，因此只能留在站点列表，不能伪造倍率、充值档位或公告。
+- 同一中转站如果存在多个 API 域名，必须先做 canonical 归并再进入收录、排行和证据合并。`clawto` / `api.clawto.link` 这次应并回 `gettoken` / `gettoken.dev`，否则会把同一站点拆成两个记录，污染排行和审计历史。
+- 本次归并依据：`clawto_public_probe.json` 的公开配置里已经指向 `https://gettoken.dev`，而 `clawto_api_base_probe.json` 的 `supplier_name` 也落在 `gettoken.dev-*`；这说明 `api.clawto.link` 只是同一家中转站的另一个入口，不应作为独立站点展示。
+- 普通补数只分析增量日志，不再全量扫描 Codex Manager 历史 `request_logs`。全量重算只用于时段规则、站点分类、错误过滤、评分逻辑、别名归并或历史 DB 数据被修正的情况。
+- 如果触发全量重算，必须用 `npm run site:refresh-manual -- --full-log-rebuild` 明确表达意图，并重新核对 `data/codex-log-refresh-state.json` 的基线与 cursor。
 - 只要改了采样、分类或过滤规则，必须马上做三步验证：重新生成父级 CSV、重建 `site-data.json`、再跑 `python -m unittest tests/test_build_site_data` 和 `npm run build`。最后还要强刷本地页面，确认页面读到的是新生成的数据而不是旧缓存。

@@ -5,6 +5,13 @@
     "_qn": "new-api",
     "announcements": [
       {
+        "content": "【重要通知】openai 、windsurf分组已经升级为纯 Pro 号池， 在能力、速度、稳定性上均有明显提升，但成本也有显著上升，分组定价将于今日调整，影响分组：\n1.openai(x0.5)  0.5 -> 0.65\n2.cc-sale       0.6 -> 0.65\n3.cc-windsurf   0.5 -> 0.65\n为了感谢各位用户朋友们长期以来的支持，我们为大家提供非常有竞争力的灵活订阅套餐，购卡消费更优惠！",
+        "extra": "",
+        "id": 23,
+        "publishDate": "2026-05-19T01:58:39.912Z",
+        "type": "ongoing"
+      },
+      {
         "content": "上架两款claude 系列模型特权订阅套餐:\n\n1.周卡cc-windsurf 分组享受倍率特权 0.5 -> 0.4，降费 20%\n\n2.月卡cc-windsurf 分组享受倍率特权 0.5 -> 0.3，降费 40%\n\n订阅额度用完后只要没过期使用余额仍可享受特权倍率，用的越多省的越多～\n\n                                                 --OneXModel 运营团队 2026.5.8",
         "extra": "在「订阅套餐」中选购<a href=\"https://1xm.ai/console/subscription-plans\" target=\"_blank\" rel=\"noopener noreferrer\">  【传送门】</a>",
         "id": 22,
@@ -241,7 +248,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://1xm.ai",
     "setup": true,
-    "start_time": 1778686036,
+    "start_time": 1779152965,
     "stripe_unit_price": 8,
     "system_name": "OneXModel",
     "telegram_bot_name": "",
