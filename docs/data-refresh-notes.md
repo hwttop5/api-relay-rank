@@ -37,12 +37,11 @@ npm run site:data
 - 单站登录失败、接口返回空、需要登录、Turnstile/验证码/风控阻断时，只记录对应证据状态，不能用失败结果覆盖已有成功的结构化分组倍率或充值档位。
 - 本次线上自动化只覆盖全站展示数据：公开快照、可登录站点的分组倍率/充值档位/公告证据和 `data/site-data.json`。Codex Manager 本地 SQLite 日志、`quality_metrics.csv` 与 formal ranking CSV 仍保持手动刷新，不放到 GitHub 托管 runner 每日任务中。
 
-## 增量日志刷新规则
+## 手动日志刷新规则
 
-- 最新一次全量数据基线为 `2026-05-19 00:12:25 +0800`，对应 `data/site-data.json` 的 `generatedAt`。
-- 后续普通刷新不再全量分析 Codex Manager 历史日志；`npm run site:refresh-manual` 默认只分析 Codex Manager `request_logs` 中 `/v1/responses` 的增量日志。
-- 增量水位线和累计日志指标写入 `data/codex-log-refresh-state.json`。刷新后必须确认该文件存在，并检查 `cursor.createdAt` / `cursor.id` 是否随新增日志推进。
-- 只有规则变更、状态文件损坏或需要纠正历史数据时，才显式执行全量重建：`npm run site:refresh-manual -- --full-log-rebuild`。
+- 最新一次全量数据基线以 `data/site-data.json` 的 `generatedAt` 为准；刷新后请同步核对该字段。
+- 当前 `npm run site:refresh-manual` 会调用父目录的 `audit_proxy_multipliers.py` 重算质量与排名数据，然后执行 `scripts/build_site_data.py` 重建前端 JSON。
+- 可选参数只有 `--capture-live-probes`，用于刷新前先调用父目录的 `capture_tabbit_live_probes.py` 抓取当前已登录浏览器页的 live auth probe。
 - 公告、倍率快照和登录态 probe 仍按现有脚本刷新，不归入 Codex Manager 日志增量水位线。
 
 本地确认前不要执行 `git add`、提交或推送。需要上线时再单独检查差异并提交数据文件。
@@ -50,8 +49,6 @@ npm run site:data
 ## 刷新后检查
 
 ```powershell
-Test-Path data/codex-log-refresh-state.json
-Get-Content data/codex-log-refresh-state.json | ConvertFrom-Json | Select-Object -ExpandProperty cursor
 python -m unittest tests/test_build_site_data.py
 npm run build
 rg -n "Tabit2api|tabit2api|127\.0\.0\.1:50124" data/site-data.json
@@ -62,13 +59,14 @@ git diff --stat -- data/site-data.json data/_public_fetch
 重点确认：
 
 - `generatedAt` 已更新。
-- `data/codex-log-refresh-state.json` 已更新，且 `cursor.createdAt` / `cursor.id` 与本次新增日志一致。
 - `rankedStationCount` 与三个 formal CSV 行数一致。
 - `timeWindows` 和特别声明仍明确写着周末全天计入非工作时段。
 - `multiplier_tiers.csv` 中有大量 `high_tabbit_logged_in`，并保留 `manual_verified` 样本。
 - 公开 `data/site-data.json` 不包含本地地址、私人账号标识或只存在于本地代理项目中的站点。
 
 ## 站点收费信息补抓经验
+
+以下记录近期补抓分组倍率、充值档位和公告证据时形成的判断规则。
 
 ## sub2api 平台判断与登录边界
 
@@ -102,6 +100,6 @@ git diff --stat -- data/site-data.json data/_public_fetch
 - 私有账号键、本地代理地址和临时站点不能进入公开站点池。像 `ttop5`、`127.0.0.1:8787`、`tabit2api` 这类条目只能留在内部排查链路，不能写进公开站点列表或前端 JSON。
 - 同一中转站如果存在多个 API 域名，必须先做 canonical 归并再进入收录、排行和证据合并。`clawto` / `api.clawto.link` 这次应并回 `gettoken` / `gettoken.dev`，否则会把同一站点拆成两个记录，污染排行和审计历史。
 - 本次归并依据：`clawto_public_probe.json` 的公开配置里已经指向 `https://gettoken.dev`，而 `clawto_api_base_probe.json` 的 `supplier_name` 也落在 `gettoken.dev-*`；这说明 `api.clawto.link` 只是同一家中转站的另一个入口，不应作为独立站点展示。
-- 普通补数只分析增量日志，不再全量扫描 Codex Manager 历史 `request_logs`。全量重算只用于时段规则、站点分类、错误过滤、评分逻辑、别名归并或历史 DB 数据被修正的情况。
-- 如果触发全量重算，必须用 `npm run site:refresh-manual -- --full-log-rebuild` 明确表达意图，并重新核对 `data/codex-log-refresh-state.json` 的基线与 cursor。
+- 普通补数使用 `npm run site:refresh-manual` 重新生成质量与排名数据。全量历史扫描是否发生取决于父目录 `audit_proxy_multipliers.py` 的当前实现，执行前需要先检查该脚本口径。
+- 如果需要纠正时段规则、站点分类、错误过滤、评分逻辑、别名归并或历史 DB 数据，应先确认父目录刷新脚本支持对应重算口径，再执行刷新。
 - 只要改了采样、分类或过滤规则，必须马上做三步验证：重新生成父级 CSV、重建 `site-data.json`、再跑 `python -m unittest tests/test_build_site_data` 和 `npm run build`。最后还要强刷本地页面，确认页面读到的是新生成的数据而不是旧缓存。

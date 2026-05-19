@@ -630,6 +630,35 @@ select:focus-visible {
   background: rgba(255, 253, 247, 0.72);
 }
 
+:root[data-theme="light"] .home-audit-model-card.is-active {
+  border-color: rgba(0, 137, 113, 0.95);
+  background:
+    linear-gradient(135deg, rgba(20, 184, 166, 0.18), rgba(255, 253, 247, 0.9)),
+    rgba(235, 255, 249, 0.94);
+  box-shadow:
+    0 0 0 2px rgba(20, 184, 166, 0.2),
+    0 12px 24px rgba(15, 118, 110, 0.14);
+}
+
+:root[data-theme="light"] .home-audit-model-card.is-active strong {
+  color: #064e3b;
+}
+
+:root[data-theme="light"] .home-audit-model-card.is-active span {
+  color: #0f766e;
+}
+
+:root[data-theme="light"] .home-audit-model-card.is-active .home-audit-model-badge {
+  background: #0f766e;
+  color: #f0fdfa !important;
+}
+
+:root[data-theme="light"] .home-audit-submit:not(:disabled):hover {
+  border-color: rgba(0, 137, 113, 0.8);
+  background: rgba(20, 184, 166, 0.18);
+  color: #064e3b;
+}
+
 .nested-section {
   margin-top: 0;
   background: var(--section-bg);

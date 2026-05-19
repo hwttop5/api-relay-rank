@@ -288,6 +288,13 @@ export function DeclarationPanels({ data }: { data: SiteData }) {
 
   return (
     <div className="declaration-layout">
+      {conclusionItems.length ? (
+        <div className="notice-panel notice-panel-primary declaration-hero">
+          <p className="notice-title">最终结论</p>
+          <BulletTextList items={conclusionItems} />
+        </div>
+      ) : null}
+
       <div className="declaration-columns">
         <div className="declaration-side">
           <div className="notice-panel declaration-copy-panel declaration-copy-full">
@@ -307,13 +314,6 @@ export function DeclarationPanels({ data }: { data: SiteData }) {
           </div>
         </div>
       </div>
-
-      {conclusionItems.length ? (
-        <div className="notice-panel notice-panel-primary declaration-hero">
-          <p className="notice-title">最终结论</p>
-          <BulletTextList items={conclusionItems} />
-        </div>
-      ) : null}
     </div>
   );
 }

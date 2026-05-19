@@ -33,7 +33,7 @@ def run_job(job: dict[str, Any]) -> dict[str, Any]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="查看或执行中转站监视者任务配置。")
+    parser = argparse.ArgumentParser(description="查看或执行AI中转站监视者任务配置。")
     parser.add_argument("--run-enabled", action="store_true", help="执行所有 enabled=true 的任务。")
     parser.add_argument("--job", help="执行指定任务 id。")
     parser.add_argument("--force-disabled", action="store_true", help="允许执行被禁用的任务。")
