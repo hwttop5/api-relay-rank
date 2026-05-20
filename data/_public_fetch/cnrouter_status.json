@@ -128,7 +128,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://api.chrouter.com",
     "setup": true,
-    "start_time": 1778194112,
+    "start_time": 1779246246,
     "stripe_unit_price": 8,
     "system_name": "QUNL API",
     "telegram_bot_name": "",

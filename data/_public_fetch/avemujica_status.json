@@ -4,6 +4,20 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "由于openai停止了gpt-5.3-codex的供应，我们目前对gpt-5.3-codex进行了重定向，以避免阻塞服务，使用到该模型的用户建议尽快迁移",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-05-21T20:11:19.580Z",
+        "type": "default"
+      },
+      {
+        "content": "为庆祝站内注册用户过千，我们开启了签到活动，每日签到最高可得2刀额度，访问个人资料页：https://api.avemujica.moe/profile 进行签到领取，领取后会自动得到一个签到额度订阅包，钱包页面设置优先订阅即可使用",
+        "extra": "",
+        "id": 16,
+        "publishDate": "2026-05-20T09:51:22.922Z",
+        "type": "ongoing"
+      },
+      {
         "content": "图片接口已支持webp格式返回，可以有效提高响应速度，调用时指定对应返回格式参数为webp即可，目前不传入格式也默认返回webp。\n对于使用cherry-studio或类似软件的用户，请不要直接在chat接口使用图片模型，请打开绘图功能选择绘图模型进行使用",
         "extra": "",
         "id": 15,
@@ -156,7 +170,7 @@
         "OpenCat": "opencat://team/join?domain={address}&token={key}"
       }
     ],
-    "checkin_enabled": false,
+    "checkin_enabled": true,
     "custom_currency_exchange_rate": 1,
     "custom_currency_symbol": "¤",
     "data_export_default_time": "hour",
@@ -182,6 +196,11 @@
         "answer": "我们推荐在 **Codex** 中使用，以获得最完整、最顺畅的体验。\n\n配置方法可参考：[Codex 配置教程](https://docs.avemujica.moe/cli/3-codex)\n\n日常使用场景下，推荐安装 **Codex App**：\n\n[下载 Codex App](https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi)\n\n如果你主要用于写代码，也可以使用 **Codex CLI**：\n\n```bash\nnpm install -g @openai/codex\n```\n\n如果你习惯使用 **Claude Code**，也可以根据客户端支持情况配置本站的接口使用。\n\n对于同时使用 Codex、Claude Code、Gemini CLI 等多个工具或是不想手动维护配置文件的用户，推荐使用 **CC Switch** 进行统一管理。CC Switch 支持统一管理 Provider、MCP、Skills、Prompt 等配置，也可以更方便地在不同模型服务之间切换。\n\nCC Switch 可参考：[CC Switch 官网](https://cc-switch.cc)",
         "id": 2,
         "question": "如何使用？"
+      },
+      {
+        "answer": "我们目前优先保证gpt以及阿里云百炼渠道的稳定供应，其他渠道暂不做可用性保证",
+        "id": 3,
+        "question": "渠道供应问题"
       }
     ],
     "faq_enabled": true,

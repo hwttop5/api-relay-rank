@@ -4,17 +4,10 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
     "announcements": [
       {
-        "content": "昨日活动中奖用户：2849209973因未在群内且未及时私聊领取，\n\n名额已顺延至：krzover\n\n请该用户于今日内私聊我领取 10 刀账户余额，逾期将视为自动放弃，继续顺延重新抽奖哦。",
+        "content": "🔥 消耗王活动・每日群内更新排名活动时间：本周三（5.20）～下周二（5.26）\n奖励规则：\n\n第 1 名：返还本周消耗额度的 60% 最高返还 40 刀\n\n第 2 名：返还30% 消耗额度\n\n第 3 名：返还10% 消耗额度\n\n第 4～5 名：每人送5 刀额度\n\n我会每天晚上在群里更新一次前 10 名，欢迎冲榜！\n\n下周二晚统一开奖并发放奖励！！！\n\n⚠️ 注：获奖人员如果不在QQ交流群，则获奖资格无效～\n",
         "extra": "",
-        "id": 6,
-        "publishDate": "2026-05-19T05:43:07.728Z",
-        "type": "ongoing"
-      },
-      {
-        "content": "今日狂飙名额告急，仅剩少量席位，有需要的老板抓紧上车！\n\n福利加码✅\n\n截止今日晚上9点（5.18），我们将从所有付费金额超 20 元的用户中，抽 1 人直接到账 10 刀的账户余额！\n\n⚠️ 需进入 QQ 群参与，不在群内视为无效，名额将顺延。\n\n虽然这次数额不大，但我们会长期不定期推出各类福利活动，持续回馈大家。感谢大家一路信任与陪伴～",
-        "extra": "",
-        "id": 5,
-        "publishDate": "2026-05-18T05:14:53.636Z",
+        "id": 7,
+        "publishDate": "2026-05-20T06:46:27.707Z",
         "type": "ongoing"
       },
       {
@@ -23,24 +16,18 @@
         "id": 4,
         "publishDate": "2026-05-12T05:23:37.599Z",
         "type": "default"
-      },
-      {
-        "content": "体验额度将于今日（2026.5.12）上午后调整为 $5，还请各位知悉。\n\n目前平台用户量较大，GPT‑5.5 算力与账号成本持续走高，平台现阶段一直处于亏本运营状态，压力较大。\n\n后续我们会尽力维持稳定可用、算力不缩水的服务，也感谢大家一路理解与支持。",
-        "extra": "",
-        "id": 3,
-        "publishDate": "2026-05-12T01:25:42.435Z",
-        "type": "default"
-      },
-      {
-        "content": "新用户赠送体验额度的活动已经结束。目前进入QQ群可领取体验额度",
-        "extra": "",
-        "id": 2,
-        "publishDate": "2026-05-11T12:54:18.533Z",
-        "type": "default"
       }
     ],
     "announcements_enabled": true,
-    "api_info": [],
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "全球加速线路",
+        "id": 1,
+        "route": "全球加速线路",
+        "url": "https://shunfen6.win"
+      }
+    ],
     "api_info_enabled": true,
     "chats": [
       {

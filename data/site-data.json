@@ -3435,19 +3435,19 @@
         },
         {
           "groupName": "claude_code(官转）",
-          "groupMultiplier": 13.0
+          "groupMultiplier": 1.6
         },
         {
           "groupName": "claude(逆向）",
-          "groupMultiplier": 0.45
+          "groupMultiplier": 0.35
         },
         {
-          "groupName": "claude（活动0.1）",
-          "groupMultiplier": 1.0
+          "groupName": "claude（活动2）",
+          "groupMultiplier": 0.1
         },
         {
-          "groupName": "cladeu(活动0.2)",
-          "groupMultiplier": 0.2
+          "groupName": "cladeu(活动0.1)",
+          "groupMultiplier": 0.1
         },
         {
           "groupName": "gpt-image-2",
@@ -3726,18 +3726,6 @@
       "verifiedTierCount": 102,
       "groupMultipliers": [
         {
-          "groupName": "aws官key",
-          "groupMultiplier": 0.4
-        },
-        {
-          "groupName": "cc企业",
-          "groupMultiplier": 2.7
-        },
-        {
-          "groupName": "cc官key",
-          "groupMultiplier": 3.0
-        },
-        {
           "groupName": "claude code",
           "groupMultiplier": 2.2
         },
@@ -3746,24 +3734,8 @@
           "groupMultiplier": 0.5
         },
         {
-          "groupName": "claude code特价",
-          "groupMultiplier": 0.1
-        },
-        {
-          "groupName": "claude code第三方key",
-          "groupMultiplier": 0.5
-        },
-        {
-          "groupName": "claude 混合",
-          "groupMultiplier": 1.7
-        },
-        {
           "groupName": "claude 福利",
           "groupMultiplier": 0.8
-        },
-        {
-          "groupName": "claude 福利-sonnet",
-          "groupMultiplier": 0.5
         },
         {
           "groupName": "claude-kiro",
@@ -3775,7 +3747,7 @@
         },
         {
           "groupName": "codex",
-          "groupMultiplier": 0.15
+          "groupMultiplier": 0.06
         },
         {
           "groupName": "codex-福利",
@@ -3792,10 +3764,6 @@
         {
           "groupName": "gemini",
           "groupMultiplier": 0.6
-        },
-        {
-          "groupName": "gemini 生图",
-          "groupMultiplier": 1.0
         },
         {
           "groupName": "gpt-image-2",
@@ -4105,11 +4073,11 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 19,
+          "count": 11,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 19 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\aicodelink-live-auth-probe.json"
+          "message": "已归档 11 条，可在本详情页查看。",
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/aicodelink-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -4118,7 +4086,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 6 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\aicodelink-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/aicodelink-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -4127,7 +4095,7 @@
           "status": "empty",
           "statusLabel": "接口返回空",
           "message": "公告接口已访问，但响应中没有标准公告列表",
-          "source": "https://www.aicodelink.top/api/status"
+          "source": "https://aicodelink.top/api/status"
         }
       ]
     },
@@ -4155,7 +4123,7 @@
         },
         {
           "groupName": "aws",
-          "groupMultiplier": 100.0
+          "groupMultiplier": 0.6
         },
         {
           "groupName": "image",
@@ -4502,7 +4470,7 @@
       "groupMultipliers": [
         {
           "groupName": "余额用户（专用分组）",
-          "groupMultiplier": 1.3
+          "groupMultiplier": 1.0
         }
       ],
       "rechargeTiers": [
@@ -5063,7 +5031,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 1 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\opentk-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/opentk-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -5072,7 +5040,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 9 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\opentk-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/opentk-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -5081,7 +5049,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 4 条，可在本详情页查看。",
-          "source": "https://opentk.ai/api/v1/announcements"
+          "source": "https://opentk.ai/api/v1/auth/login"
         }
       ]
     },
@@ -5095,10 +5063,6 @@
       "platformGuess": "special",
       "verifiedTierCount": 88,
       "groupMultipliers": [
-        {
-          "groupName": "AwsClaude",
-          "groupMultiplier": 1.0
-        },
         {
           "groupName": "ClaudeApi",
           "groupMultiplier": 2.2
@@ -5304,6 +5268,14 @@
           "extra": "",
           "content": "4Router试运营开启",
           "sourceUrl": "https://4router.net"
+        },
+        {
+          "id": "4router-live-1",
+          "publishedAt": "",
+          "type": "login_probe",
+          "extra": "",
+          "content": "初次使用务必阅读文档(点击此处查看) https://docs.4router.net\n有问题请加群1094738104",
+          "sourceUrl": "https://4Router.net/api/notice"
         }
       ],
       "rankings": {
@@ -5482,11 +5454,11 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 12,
+          "count": 11,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 12 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\4router-live-auth-probe.json"
+          "message": "已归档 11 条，可在本详情页查看。",
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/4router-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -5495,16 +5467,16 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 8 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\4router-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/4router-live-auth-probe.json"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 5,
+          "count": 6,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 5 条，可在本详情页查看。",
-          "source": "https://4router.net/api/status"
+          "message": "已归档 6 条，可在本详情页查看。",
+          "source": "https://4Router.net/api/status"
         }
       ]
     },
@@ -5845,6 +5817,14 @@
           "extra": "",
           "content": "技术交流QQ群：543293255",
           "sourceUrl": "https://code.giot.edu.kg"
+        },
+        {
+          "id": "giot-live-1",
+          "publishedAt": "",
+          "type": "login_probe",
+          "extra": "",
+          "content": "***\n\n# 📢 充值倍率调整公告\n\n---\n\n> 自 **2025年11月30日** 起，充值最低倍率将调整为 **0.398折**。\n>\n> 届时，您仅需支付 **199元** 即可购买 **$500** 额度。\n\n## 额度换算详情\n\n| 分组类型 | 消耗倍率 | 折合单价 |\n| :--- | :---: | :---: |\n| AmazonQ分组(5min缓存) | `1.5x` | `0.6元 / 刀` |\n| claude-逆向 | `3.25x` | `1.3元 / 刀` |\n| 高速分组(MAX号池) | `4.5x` | `1.8元 / 刀` |\n| codex | `0.5x` | `0.2元 / 刀` |\n| codex特价 | `0.06x` | `0.024元 / 刀` |\n\n#### 模型可用性监测：https://check.huizhicode.com \n#### 技术交流QQ群：543293255",
+          "sourceUrl": "https://code.giot.edu.kg/api/notice"
         }
       ],
       "rankings": {
@@ -6027,7 +6007,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 7 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\giot-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/giot-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -6036,15 +6016,15 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 7 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\giot-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/giot-live-auth-probe.json"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 26,
+          "count": 27,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 26 条，可在本详情页查看。",
+          "message": "已归档 27 条，可在本详情页查看。",
           "source": "https://code.giot.edu.kg/api/status"
         }
       ]
@@ -6286,6 +6266,22 @@
           "extra": "",
           "content": "联系方式\nxxx 滥用\nxxx 工单\nxxx 商业合作",
           "sourceUrl": "https://api.avemujica.moe"
+        },
+        {
+          "id": "16",
+          "publishedAt": "2026-05-20T09:51:22.922Z",
+          "type": "ongoing",
+          "extra": "",
+          "content": "为庆祝站内注册用户过千，我们开启了签到活动，每日签到最高可得2刀额度，访问个人资料页：https://api.avemujica.moe/profile 进行签到领取，领取后会自动得到一个签到额度订阅包，钱包页面设置优先订阅即可使用",
+          "sourceUrl": "https://api.avemujica.moe"
+        },
+        {
+          "id": "17",
+          "publishedAt": "2026-05-21T20:11:19.580Z",
+          "type": "default",
+          "extra": "",
+          "content": "由于openai停止了gpt-5.3-codex的供应，我们目前对gpt-5.3-codex进行了重定向，以避免阻塞服务，使用到该模型的用户建议尽快迁移",
+          "sourceUrl": "https://api.avemujica.moe"
         }
       ],
       "rankings": {
@@ -6468,7 +6464,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 4 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\avemujica-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/avemujica-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -6477,15 +6473,15 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 9 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\avemujica-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/avemujica-live-auth-probe.json"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 15,
+          "count": 17,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 15 条，可在本详情页查看。",
+          "message": "已归档 17 条，可在本详情页查看。",
           "source": "https://api.avemujica.moe/api/status"
         }
       ]
@@ -6736,7 +6732,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 1 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\gettoken-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/gettoken-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -6745,7 +6741,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 5 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\gettoken-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/gettoken-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -6771,6 +6767,10 @@
         {
           "groupName": "余额",
           "groupMultiplier": 1.5
+        },
+        {
+          "groupName": "gpt-image",
+          "groupMultiplier": 1.0
         }
       ],
       "rechargeTiers": [
@@ -6811,6 +6811,14 @@
           "type": "login_probe",
           "extra": "gpt-5.5和gpt-image2 已上线",
           "content": "gpt-5.5和gpt-image2 、1.5、 1等模型以上线    \n- 5.5价格是5.4的2倍，目前价格做不下来，不建议作为日常开发使用，土豪随意\n- 5.5可以直接生成图片，这种按照5.5token用量计费，大家可以尝试一下，偶尔会超时，多试几次即可  \n- 调用image模型的计费方式，按照2、1.5、1等模型的token消费计费，大家使用时注意下实际消费  \n- image生图官方文档教程：\tImage Generation Guide https://developers.openai.com/api/docs/guides/image-generation  \n\n快速上手\n```\nexport SUB2API_BASE='https://cp.coolplay-api.fun:55555'\nexport SUB2API_KEY='sk-apikey'\n\ncurl -sS \"$SUB2API_BASE/v1/images/generations\" \\\n  -H \"Authorization: Bearer $SUB2API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  --data '{\n    \"model\": \"gpt-image-2\",\n    \"prompt\": \"Generate a tiny flat blue cat face icon, minimalist vector style\"\n  }' | tee ./images.json\n\n```",
+          "sourceUrl": "https://cp.coolplay-api.fun:55555/api/v1/announcements"
+        },
+        {
+          "id": "14",
+          "publishedAt": "2026-05-20T22:34:33.12979+08:00",
+          "type": "login_probe",
+          "extra": "新增gpt-image分组",
+          "content": "### 群友反馈现有的分组中很多情况出不了图    \n\n1.  新增一个gpt-image 公开分组\n\n      - 支持余额的套餐调用，订阅分组不好支持，先不支持了  \n      - 支持gpt-image-2，gpt-image-1.5，gpt-image-1\n      - 之前的分组不再支持 gpt-image模型  \n\n2. 分组倍率1倍  \n      - 固定计费标准 1k 2刀，2k 3刀 4k 4刀",
           "sourceUrl": "https://cp.coolplay-api.fun:55555/api/v1/announcements"
         }
       ],
@@ -6990,10 +6998,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 1,
+          "count": 2,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
+          "message": "已归档 2 条，可在本详情页查看。",
           "source": "https://cp.coolplay-api.fun:55555/api/v1/groups/available"
         },
         {
@@ -7008,10 +7016,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 2,
+          "count": 3,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 2 条，可在本详情页查看。",
+          "message": "已归档 3 条，可在本详情页查看。",
           "source": "https://cp.coolplay-api.fun:55555/api/v1/announcements"
         }
       ]
@@ -7565,6 +7573,14 @@
           "extra": "",
           "content": "aws逆向分组\n由于成本翻倍，将于3/19/22.00调整到0.3倍率\n待成本降低后下调价格",
           "sourceUrl": "https://business.newcli.com"
+        },
+        {
+          "id": "newcli-live-1",
+          "publishedAt": "",
+          "type": "login_probe",
+          "extra": "",
+          "content": "📢\n企业专业版\nAPI\n\n本站价格通知 TG 群：\n\n点击加入 →\nhttps://t.me/+vTHGWhW8rqw3MWNl\n\n特价codex 0.03一刀，已开放",
+          "sourceUrl": "https://business.newcli.com/api/notice"
         }
       ],
       "rankings": {
@@ -7747,7 +7763,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 16 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\newcli-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/newcli-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -7756,15 +7772,15 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 7 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\newcli-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/newcli-live-auth-probe.json"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 7,
+          "count": 8,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 7 条，可在本详情页查看。",
+          "message": "已归档 8 条，可在本详情页查看。",
           "source": "https://business.newcli.com/api/status"
         }
       ]
@@ -7786,10 +7802,6 @@
         {
           "groupName": "codex-vip",
           "groupMultiplier": 0.1
-        },
-        {
-          "groupName": "福利分组",
-          "groupMultiplier": 0.085
         }
       ],
       "rechargeTiers": [
@@ -7912,6 +7924,22 @@
           "extra": "",
           "content": "哈喽各位，新注册赠送10🔪额度，放心使用",
           "sourceUrl": "https://shunfen6.win/api/status"
+        },
+        {
+          "id": "7",
+          "publishedAt": "2026-05-20T06:46:27.707Z",
+          "type": "ongoing",
+          "extra": "",
+          "content": "🔥 消耗王活动・每日群内更新排名活动时间：本周三（5.20）～下周二（5.26）\n奖励规则：\n\n第 1 名：返还本周消耗额度的 60% 最高返还 40 刀\n\n第 2 名：返还30% 消耗额度\n\n第 3 名：返还10% 消耗额度\n\n第 4～5 名：每人送5 刀额度\n\n我会每天晚上在群里更新一次前 10 名，欢迎冲榜！\n\n下周二晚统一开奖并发放奖励！！！\n\n⚠️ 注：获奖人员如果不在QQ交流群，则获奖资格无效～",
+          "sourceUrl": "https://shunfen6.win"
+        },
+        {
+          "id": "shunfen6-live-1",
+          "publishedAt": "",
+          "type": "login_probe",
+          "extra": "",
+          "content": "售后沟通QQ交流群：1087973785\n\n客服在线时间9:00—22:00\n\n各位5.20快乐，codex-vip 分组今晚将下调到0.052倍率，明早恢复~\n\n福利订阅套餐：充值6.6送10刀",
+          "sourceUrl": "https://shunfen6.win/api/notice"
         }
       ],
       "rankings": {
@@ -8090,11 +8118,11 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 3,
+          "count": 2,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 3 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\shunfen6-live-auth-probe.json"
+          "message": "已归档 2 条，可在本详情页查看。",
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/shunfen6-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -8103,15 +8131,15 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 7 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\shunfen6-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/shunfen6-live-auth-probe.json"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 6,
+          "count": 8,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 6 条，可在本详情页查看。",
+          "message": "已归档 8 条，可在本详情页查看。",
           "source": "https://shunfen6.win/api/status"
         }
       ]
@@ -8356,7 +8384,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 1 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\freemodel-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/freemodel-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -8365,16 +8393,16 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 4 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\freemodel-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/freemodel-live-auth-probe.json"
         },
         {
           "key": "announcements",
           "label": "公告",
           "count": 0,
-          "status": "empty",
-          "statusLabel": "接口返回空",
-          "message": "公告接口已访问，但响应中没有标准公告列表",
-          "source": "https://freemodel.dev/api/announcements"
+          "status": "login_required",
+          "statusLabel": "需要登录",
+          "message": "需要登录或权限不足 (HTTP 401)",
+          "source": "https://freemodel.dev/api/v1/announcements"
         }
       ]
     },
@@ -8389,24 +8417,12 @@
       "verifiedTierCount": 30,
       "groupMultipliers": [
         {
-          "groupName": "MadeInChina",
-          "groupMultiplier": 0.08
-        },
-        {
-          "groupName": "claude_ant",
-          "groupMultiplier": 0.8
-        },
-        {
           "groupName": "claude_kiro",
           "groupMultiplier": 0.1
         },
         {
-          "groupName": "claude_max",
-          "groupMultiplier": 1.7
-        },
-        {
           "groupName": "codex",
-          "groupMultiplier": 0.2
+          "groupMultiplier": 0.15
         }
       ],
       "rechargeTiers": [
@@ -8519,6 +8535,38 @@
           "type": "ongoing",
           "extra": "",
           "content": "可通过小铺兑换token： https://pay.ldxp.cn/shop/WE9ZBUQG",
+          "sourceUrl": "https://lumibest.store"
+        },
+        {
+          "id": "3",
+          "publishedAt": "2026-05-08T02:51:39.443Z",
+          "type": "ongoing",
+          "extra": "充值活动",
+          "content": "lumi开启限时兑换活动，兑换50送10元，可通过钱包管理-在线购买兑换码进行充值！",
+          "sourceUrl": "https://lumibest.store"
+        },
+        {
+          "id": "lumibest-live-1",
+          "publishedAt": "",
+          "type": "login_probe",
+          "extra": "",
+          "content": "Lumi API，欢迎各位加入官方QQ群：1016571018\n\n可通过小铺兑换token： https://pay.ldxp.cn/shop/WE9ZBUQG\n\nLumi nb best!",
+          "sourceUrl": "https://lumibest.store/api/notice"
+        },
+        {
+          "id": "8",
+          "publishedAt": "2026-05-21T07:34:59.661Z",
+          "type": "ongoing",
+          "extra": "使用文档",
+          "content": "使用文档已上线！enjoy！",
+          "sourceUrl": "https://lumibest.store"
+        },
+        {
+          "id": "7",
+          "publishedAt": "2026-05-21T02:36:05.497Z",
+          "type": "ongoing",
+          "extra": "",
+          "content": "codex分组降至0.15，enjoy！",
           "sourceUrl": "https://lumibest.store"
         }
       ],
@@ -8698,11 +8746,11 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 5,
+          "count": 2,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 5 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\lumibest-live-auth-probe.json"
+          "message": "已归档 2 条，可在本详情页查看。",
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/lumibest-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -8711,15 +8759,15 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 6 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\lumibest-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/lumibest-live-auth-probe.json"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 6,
+          "count": 10,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 6 条，可在本详情页查看。",
+          "message": "已归档 10 条，可在本详情页查看。",
           "source": "https://lumibest.store/api/status"
         }
       ]
@@ -9036,7 +9084,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 5 条，可在本详情页查看。",
-          "source": "https://api.flymux.com/api/v1/groups/available"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/flymux-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -9045,7 +9093,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 9 条，可在本详情页查看。",
-          "source": "https://api.flymux.com/api/v1/payment/checkout-info"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/flymux-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -9054,7 +9102,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 1 条，可在本详情页查看。",
-          "source": "https://api.flymux.com/api/v1/announcements"
+          "source": "https://api.flymux.com/api/v1/auth/login"
         }
       ]
     },
@@ -9070,19 +9118,11 @@
       "groupMultipliers": [
         {
           "groupName": "codex-plus",
-          "groupMultiplier": 0.11
+          "groupMultiplier": 0.1
         },
         {
           "groupName": "codex-pro",
-          "groupMultiplier": 0.27
-        },
-        {
-          "groupName": "kiro-power",
           "groupMultiplier": 0.25
-        },
-        {
-          "groupName": "claude-max",
-          "groupMultiplier": 1.7
         }
       ],
       "rechargeTiers": [
@@ -9243,6 +9283,22 @@
           "type": "login_probe",
           "extra": "Codex中转使用说明",
           "content": "基本信息\n● 分组类型：纯Codex Plus号池\n● 并发数：10\n● 缓存：与官方保持一致\n\n计费规则\n● 按量计费，无多充多送活动，不建议囤余额，用多少充多少\n● 汇率固定为1人民币 = 1美元\n● 实际消耗取决于当前倍率，当前倍率为 0.15\n\n接入配置\nBase Url 和 API Key 请前往菜单栏 API 密钥页面获取\n\n特惠活动\n进群领福利，QQ群在文档中查看",
+          "sourceUrl": "http://hello-code.cn/api/v1/announcements"
+        },
+        {
+          "id": "11",
+          "publishedAt": "2026-05-19T16:07:21.404006+08:00",
+          "type": "login_probe",
+          "extra": "通知",
+          "content": "plus号池不稳+限流，可以多试几次，pro分组倍率从0.27降到0.25，需要的可以使用",
+          "sourceUrl": "http://hello-code.cn/api/v1/announcements"
+        },
+        {
+          "id": "12",
+          "publishedAt": "2026-05-21T16:37:59.015828+08:00",
+          "type": "login_probe",
+          "extra": "通知",
+          "content": "gpt-plus调整为0.1倍率",
           "sourceUrl": "http://hello-code.cn/api/v1/announcements"
         }
       ],
@@ -9422,10 +9478,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 4,
+          "count": 2,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 4 条，可在本详情页查看。",
+          "message": "已归档 2 条，可在本详情页查看。",
           "source": "http://hello-code.cn/api/v1/groups/available"
         },
         {
@@ -9440,10 +9496,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 9,
+          "count": 11,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 9 条，可在本详情页查看。",
+          "message": "已归档 11 条，可在本详情页查看。",
           "source": "http://hello-code.cn/api/v1/announcements"
         }
       ]
@@ -9648,6 +9704,54 @@
           "extra": "",
           "content": "订阅套餐上线了🎺🎺，进入控制台，点击钱包管理，即可开始订阅\n\n月卡套餐(plus)\n59.90元\n有效期：1 个月\n总额度：$480.00\n\n月卡套餐(lite)\n39.90元\n有效期：1 个月\n总额度：$240.00\n\n周卡套餐(适合短周期项目)\n15.90元\n有效期:：7 天\n总额度：$120.00\n\n日卡套餐(灵活轻量)\n2.90元\n有效期：1天\n总额度: $20.00\n\n售后群：\n- Telegram: https://t.me/hyperapiai https://t.me/hyperapiai\n- QQ 群：`1095326876`",
           "sourceUrl": "https://hyperapi.cc"
+        },
+        {
+          "id": "hyperapi-live-1",
+          "publishedAt": "",
+          "type": "login_probe",
+          "extra": "",
+          "content": "进入控制台，点击钱包管理，即可开始订阅和额度充值\n\n\n月卡套餐(plus)\n59.90元\n有效期：1 个月\n总额度：$480.00\n\n\n月卡套餐(lite)\n39.90元\n有效期：1 个月\n总额度：$240.00\n\n\n周卡套餐(适合短周期项目)\n15.90元\n有效期:：7 天\n总额度：$120.00\n\n\n日卡套餐(灵活轻量)\n2.90元\n有效期：1天\n总额度: $20.00\n\n\n额度充值(不限时)：\n\n100刀额度 ---- 40元\n\n200刀额度 ---- 78元\n\n300刀额度 ---- 105元\n\n400刀额度 ---- 136元\n\n500刀额度 ---- 150元\n\n600刀额度 ---- 168元\n\n700刀额度 ---- 189元\n\n800刀额度 ---- 200元\n\n- QQ售后群：`1095326876`",
+          "sourceUrl": "https://hyperapi.cc/api/notice"
+        },
+        {
+          "id": "5",
+          "publishedAt": "2026-05-21T17:42:54.301Z",
+          "type": "default",
+          "extra": "",
+          "content": "售后群：\n- QQ 群：`1095326876`\n- Telegram: https://t.me/hyperapiai https://t.me/hyperapiai",
+          "sourceUrl": "https://hyperapi.cc"
+        },
+        {
+          "id": "4",
+          "publishedAt": "2026-05-21T17:24:30.161Z",
+          "type": "default",
+          "extra": "",
+          "content": "新套餐上线🎺🎺\n\n每日$50 月卡：  ¥59.9\n\n每日$150 月卡： ¥169.9\n\n每日$300 月卡： ¥299.9",
+          "sourceUrl": "https://hyperapi.cc"
+        },
+        {
+          "id": "2",
+          "publishedAt": "2026-05-13T17:33:02.484Z",
+          "type": "default",
+          "extra": "",
+          "content": "进入控制台，点击钱包管理，即可开始额度充值：\n\n100刀额度 ---- 30元\n\n200刀额度 ---- 58元\n\n300刀额度 ---- 84元\n\n400刀额度 ---- 108元\n\n500刀额度 ---- 125元\n\n600刀额度 ---- 144元\n\n700刀额度 ---- 161元\n\n800刀额度 ---- 176元",
+          "sourceUrl": "https://hyperapi.cc"
+        },
+        {
+          "id": "1",
+          "publishedAt": "2026-04-30T16:59:30.000Z",
+          "type": "default",
+          "extra": "",
+          "content": "月卡套餐 Plus：69.90元\n\n有效期：1 个月\n\n总额度：$480.00\n\n- \n\n\n月卡套餐 Lite：39.90元\n\n有效期：1 个月\n\n总额度：$240.00\n\n\n- \n\n\n周卡套餐：15.90元\n\n有效期:：7 天\n\n总额度：$120.00\n\n\n- \n\n\n日卡套餐：2.90元\n\n有效期：1天\n\n总额度: $20.00",
+          "sourceUrl": "https://hyperapi.cc"
+        },
+        {
+          "id": "hyperapi-live-1",
+          "publishedAt": "",
+          "type": "login_probe",
+          "extra": "",
+          "content": "进入控制台，点击钱包管理，即可开始订阅和额度充值\n\n每日$50 月卡：  ¥59.9\n\n每日$150 月卡： ¥169.9\n\n每日$300 月卡： ¥299.9",
+          "sourceUrl": "https://hyperapi.cc/api/notice"
         }
       ],
       "rankings": {
@@ -9830,7 +9934,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 1 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\hyperapi-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/hyperapi-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -9839,15 +9943,15 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 16 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\hyperapi-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/hyperapi-live-auth-probe.json"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 3,
+          "count": 9,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 3 条，可在本详情页查看。",
+          "message": "已归档 9 条，可在本详情页查看。",
           "source": "https://hyperapi.cc/api/status"
         }
       ]
@@ -9873,10 +9977,6 @@
         {
           "groupName": "aws-官key",
           "groupMultiplier": 4.0
-        },
-        {
-          "groupName": "aws官转",
-          "groupMultiplier": 0.5
         },
         {
           "groupName": "cc-anthropic",
@@ -9915,10 +10015,6 @@
           "groupMultiplier": 2.5
         },
         {
-          "groupName": "image",
-          "groupMultiplier": 1.5
-        },
-        {
           "groupName": "kiro",
           "groupMultiplier": 0.2
         },
@@ -9940,10 +10036,6 @@
         },
         {
           "groupName": "windsurf",
-          "groupMultiplier": 0.4
-        },
-        {
-          "groupName": "国产模型",
           "groupMultiplier": 0.4
         },
         {
@@ -10086,6 +10178,14 @@
           "extra": "",
           "content": "本站接口不允许对接沉浸式翻译，酒馆等违法违规，极限高并发服务，如被检测到会进行临时封停处理，多次违规会被永久封禁。",
           "sourceUrl": "https://www.bytecatcode.org"
+        },
+        {
+          "id": "bytecat-live-1",
+          "publishedAt": "",
+          "type": "login_probe",
+          "extra": "",
+          "content": "🐱\n\nByteCatcode 公告\n我们致力于提供最具性价比的 AI 中转服务 — 让每一分钱都花在刀刃上。\n\n🚀 本站服务特点\n\n- 模型全面覆盖：Claude、GPT、Gemini 及国产前沿大模型一站式接入，无需多平台切换\n\n- 稳定性优先：服务可用性始终放在第一位，全链路监控保障业务连续性\n\n- 价格实惠，计费透明：按量计费，无隐藏费用，用多少花多少，账单明细随时可查\n\n🔴 内容合规使用公告\n\n- 严禁违规内容：平台严禁涉及低俗色情、暴力血腥、网络诈骗、政治敏感及其他违反法律法规的对话或请求。\n\n- 敏感词拦截：系统已启用内容安全审计功能，自动拦截不当言论及有害信息。\n\n-\n违规严厉处置：针对违规账号，将视情节严重程度依次采取：\n\n警告\n→\n限制功能\n→\n临时封禁\n→\n永久销号\n→\n移送公安。\n\n✅ 服务定位：本平台大模型服务面向正常聊天、办公提效、学习辅助、创意写作等合法合规使用场景。\n\n💬 体验用户 QQ 群\n\n群名称\n群号\n\n1 群\nhttps://t.me/+9vp_dMD0iI9mYWJh\n\n⚠️ 注册提醒：验证邮件可能被拦截，请务必检查 垃圾箱 / 广告邮件 文件夹。\n\n💰 充值说明\n\n- 支付渠道已全面开放，最低 10 元起充\n\n- 支付成功后 自动解锁 SVIP 分组，立即解锁全部付费用户权益\n\n👑 付费用户专属权益（十元即可享有）\n\n权益\n说明\n\n每周福利抽奖\n群内不定时发放 额度兑换码 和 福利 Key\n\n1 对 1 客服\n专属客服及时响应，有问必答\n\n专属付费群\n付费用户专属交流群：https://t.me/+9vp_dMD0iI9mYWJh\n\n💡 加入付费群时，请在验证信息中附上您的订单号，否则将无法通过审核。\nByteCatcode 全体成员祝大家在本站都能用上便宜好用的前沿模型 —\n🎉 蹬得开心，用得放心！",
+          "sourceUrl": "https://codecdn.bytecatcode.org/api/notice"
         }
       ],
       "rankings": {
@@ -10264,11 +10364,11 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 24,
+          "count": 21,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 24 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\bytecat-live-auth-probe.json"
+          "message": "已归档 21 条，可在本详情页查看。",
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/bytecat-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -10277,15 +10377,15 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 9 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\bytecat-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/bytecat-live-auth-probe.json"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 2,
+          "count": 3,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 2 条，可在本详情页查看。",
+          "message": "已归档 3 条，可在本详情页查看。",
           "source": "https://codecdn.bytecatcode.org/api/status"
         }
       ]
@@ -10560,7 +10660,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 4 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\zerofra-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/zerofra-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -10569,7 +10669,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 4 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\zerofra-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/zerofra-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -10578,7 +10678,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 2 条，可在本详情页查看。",
-          "source": "https://api.zerofra.me/api/status"
+          "source": "https://api.zerofra.me/api/v1/announcements"
         }
       ]
     },
@@ -10702,6 +10802,14 @@
           "extra": "",
           "content": "为了防止注册机，52模型网只开放了QQ邮箱注册，请使用QQ邮箱注册。",
           "sourceUrl": "https://52mx.net"
+        },
+        {
+          "id": "52mx-live-1",
+          "publishedAt": "",
+          "type": "login_probe",
+          "extra": "",
+          "content": "# 重要公告：\n⚠️ ** 账号清理重要通知 **⚠️\n⚠️**已于2026年5月18日00:00 统一批量清理异常账号664个**⚠️\n🤝官方交流群\n🤝现在推出轻量卡和标准卡订阅，最低1元起。\n🤝用量少选轻量，用量多选标准卡，轻量卡和标准卡标准是一样的，\n🤝唯一不同是额度，欢迎尝鲜。\nClaude系列模型开启公测\n目前对所有分组开放使用\n测试效果怎么样，该系列模型由kiro提供。\nclaude-haiku-4.5\nclaude-opus-4.5\nclaude-opus-4.6\nclaude-opus-4.7\nclaude-sonnet-4\nclaude-sonnet-4.5\nclaude-sonnet-4.6\n👥QQ群：1073214011",
+          "sourceUrl": "https://52mx.net/api/notice"
         }
       ],
       "rankings": {
@@ -10884,7 +10992,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 1 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\52mx-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/52mx-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -10893,15 +11001,15 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 10 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\52mx-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/52mx-live-auth-probe.json"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 1,
+          "count": 2,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
+          "message": "已归档 2 条，可在本详情页查看。",
           "source": "https://52mx.net/api/status"
         }
       ]
@@ -10927,10 +11035,6 @@
         {
           "groupName": "grok",
           "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "max",
-          "groupMultiplier": 1.8
         },
         {
           "groupName": "vip",
@@ -11115,6 +11219,14 @@
           "extra": "Grok 生图生视频",
           "content": "## 新增上线：Grok 生图生视频\n\n已支持 Grok 图片、视频生成，失败不扣费。\n\nGrok 在线生图：\nhttps://grok.17nas.com/\n\nChatBox 教程：\nhttps://www.notion.so/ChatBox-32245440159080ebb044f4980d9adad8?source=copy_link",
           "sourceUrl": "https://ai.17nas.com"
+        },
+        {
+          "id": "17nas-live-1",
+          "publishedAt": "",
+          "type": "login_probe",
+          "extra": "",
+          "content": "## 🎉 欢迎来到镜核 AI\n\n中文专属 AI 编程助手——无需编程基础，仅依靠自然语言就能将想法变为现实。\n\n---\n\n### 🤖 当前可用模型\n\n**Claude 系列（vip / max 分组）**\n- claude-sonnet-4-6 · claude-opus-4-6 · claude-opus-4-7\n- claude-haiku-4-5-20251001（vip / max 都可用）\n\n**GPT 系列（default / gpt 分组）**\n- gpt-5.5 · gpt-5.4 · gpt-5.4-mini · gpt-5.3-codex · gpt-5.2\n- gpt-image-2（图像生成，详见教程）\n\n**Grok 系列（grok 分组）**\n- grok-4.20-auto / fast / expert · grok-4.3-beta\n- grok-imagine-image / -lite / -pro / -edit · grok-imagine-video\n\n**国产模型（cn 分组）**\n- 智谱 GLM-5 / 5.1 · DeepSeek V3.2 / V4-Pro / V4-Flash\n- 通义 Qwen3 / Qwen3.5 · 月之暗面 Kimi K2.5 · MiniMax M2.5\n- 百度文心 4.5 Turbo · 小米 MiMo V2.5 / Pro\n\n---\n\n### 💡 分组对照\n\n| 分组 | 主营 | 推荐场景 |\n|---|---|---|\n| `default` | GPT 系列 + 图像 | 新用户默认 |\n| `gpt` | GPT 系列 + 图像 | GPT 订阅优惠 |\n| `cn` | 国产全套 | 国产优惠分组 |\n| `grok` | Grok 系列（含图/视频） | X / Grok 优惠 |\n| `vip` | Claude 全系（含 Haiku） | Claude 会员 |\n| `max` | Claude 全系 | Claude 高级 |\n\n---\n\n### 📚 教程入口\n\n**编程类**\n- Claude Code (macOS / Linux) https://ai.17nas.com/tools/claude-code-install/\n- Claude Code (Windows) https://ai.17nas.com/tools/claude-code-install-windows/\n- Codex 配置 https://ai.17nas.com/tools/codex-install/\n- OpenCode https://ai.17nas.com/tools/opencode-install/\n- Cline (VSCode 插件) https://ai.17nas.com/tools/cline-install/\n\n**桌面 / 客户端**\n- CherryStudio (含 GPT/Claude/国产/Grok 全模型) https://ai.17nas.com/tools/cherrystudio-install/\n- OpenClaw https://ai.17nas.com/tools/openclaw-install/\n- Hermes-agent (微信接入) https://ai.17nas.com/tools/hermes-install/\n\n**图像 / 国产**\n- gpt-image-2 画质档位 API https://ai.17nas.com/tools/gpt-image-2/\n- 国产模型一键接入 https://ai.17nas.com/tools/cn-coding-install/\n\n**其他**\n- Key 余额检测 https://ai.17nas.com/tools/key-check/\n- 会员套餐 https://ai.17nas.com/tools/pricing/\n\n---\n\n📖 控制台 → FAQ 进入完整教程  \n💬 右上角「微信客服」联系",
+          "sourceUrl": "https://api.17nas.com/api/notice"
         }
       ],
       "rankings": {
@@ -11293,11 +11405,11 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 5,
+          "count": 4,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 5 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\17nas-live-auth-probe.json"
+          "message": "已归档 4 条，可在本详情页查看。",
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/17nas-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -11306,15 +11418,15 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 11 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\17nas-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/17nas-live-auth-probe.json"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 8,
+          "count": 9,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 8 条，可在本详情页查看。",
+          "message": "已归档 9 条，可在本详情页查看。",
           "source": "https://api.17nas.com/api/status"
         }
       ]
@@ -11718,7 +11830,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 6 条，可在本详情页查看。",
-          "source": "https://hongmacc.com/api/v1/groups/available"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/hongmacc-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -11727,7 +11839,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 8 条，可在本详情页查看。",
-          "source": "https://hongmacc.com/api/v1/payment/checkout-info"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/hongmacc-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -12032,7 +12144,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 1 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\audit-api-printcap-ai-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/audit-api-printcap-ai-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -12041,7 +12153,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 9 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\audit-api-printcap-ai-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/audit-api-printcap-ai-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -12050,7 +12162,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 1 条，可在本详情页查看。",
-          "source": "https://printcap.ai/api/v1/announcements"
+          "source": "https://printcap.ai/api/v1/auth/login"
         }
       ]
     },
@@ -12278,7 +12390,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 2 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\voapi-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/voapi-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -12287,7 +12399,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 1 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\voapi-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/voapi-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -12714,7 +12826,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 7 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\goapis-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/goapis-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -12723,7 +12835,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 13 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\goapis-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/goapis-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -12987,7 +13099,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 2 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\cnrouter-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/cnrouter-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -12996,7 +13108,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 3 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\cnrouter-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/cnrouter-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -13375,6 +13487,10 @@
           "groupMultiplier": 3.0
         },
         {
+          "groupName": "group_1",
+          "groupMultiplier": 1.0
+        },
+        {
           "groupName": "测试分组",
           "groupMultiplier": 5.0
         }
@@ -13744,11 +13860,11 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 5,
+          "count": 6,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 5 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\qiuqiutoken-live-auth-probe.json"
+          "message": "已归档 6 条，可在本详情页查看。",
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/qiuqiutoken-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -13757,7 +13873,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 9 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\qiuqiutoken-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/qiuqiutoken-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -14076,7 +14192,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 6 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\claude-api-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/claude-api-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -14085,7 +14201,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 9 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\claude-api-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/claude-api-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -14094,7 +14210,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 4 条，可在本详情页查看。",
-          "source": "https://claude-api.org/api/v1/announcements"
+          "source": "https://claude-api.org/api/v1/auth/login"
         }
       ]
     },
@@ -14253,7 +14369,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 2 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\coai-work-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/coai-work-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -14262,7 +14378,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 6 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\coai-work-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/coai-work-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -14404,6 +14520,14 @@
           "extra": "除完成模型调用、余额结算、支付处理、安全风控和故障排查等必要场景外，系统不会主动留存、窃取或挪用您的请求内容；本地工具产生的配置与使用数据仍以用户本地保存为主。",
           "content": "服务与隐私说明\nEuzhi API 中转站、优智图及相关服务均由 Euzhi 自有账号池、自有上游资源与自建服务链路 统一调度。\n您的请求不会被转售给任何平台，也不会被用于与当前服务无关的用途。",
           "sourceUrl": "https://api.euzhi.com"
+        },
+        {
+          "id": "euzhi-live-1",
+          "publishedAt": "",
+          "type": "login_probe",
+          "extra": "",
+          "content": "新人注册赠送2美元额度，为了大家的友好体验，本站保障不参假任何free账号\n注册登录后即可直接体验 Open AI 全家桶，优智图 https://app.euzhi.com/ image2 衍生产品。\n亲爱的用户，大家好！我们会持续根据大家的反馈不断优化产品体验，为您提供更稳定、更高效的 AI 服务。\n3 分钟快速接入 GPT-5.5\n点击 文档入口 https://api.euzhi.com/docs，按文档步骤执行脚本，即可完成部署并开始体验 GPT-5.5。\n新用户使用流程\n1. 注册并登录，领取 2 美元体验额度；\n2. 如需继续使用，可前往充值页面充值；\n3. 在「控制台 - 令牌」中新建 API Key；\n4. 接入时 Base URL 使用 https://api.euzhi.com/v1\n检测报告\n禾维认证：点击查看检测报告 https://www.hvoy.ai/report/HUyyog9D9UI\n问题反馈与交流\n加入 Euzhi QQ 交流群 https://qm.qq.com/cgi-bin/qm/qr?k=VL4-d7wLvVNOpRx9qxMdU8dVbJU9v4Ir&jump_from=webapi&authKey=QEuinF8e+YC7qiJtEnYCR2kukkOm0GJuZDRtcKTtT1QVRgY1DbmJnk/JTLn6kcjE，如有配置、接入或使用问题，欢迎进群交流反馈。",
+          "sourceUrl": "https://admin.euzhi.com/api/notice"
         }
       ],
       "rankings": {
@@ -14551,7 +14675,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 2 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\euzhi-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/euzhi-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -14560,16 +14684,16 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 10 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\euzhi-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/euzhi-live-auth-probe.json"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 1,
+          "count": 2,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
-          "source": "https://api.euzhi.com/api/status"
+          "message": "已归档 2 条，可在本详情页查看。",
+          "source": "https://admin.euzhi.com/api/status"
         }
       ]
     },
@@ -14642,6 +14766,22 @@
           "type": "login_probe",
           "extra": "兑换码购买",
           "content": "$10   https://pay.ldxp.cn/item/t1muqm\n$50   https://pay.ldxp.cn/item/k5gwof\n$100 https://pay.ldxp.cn/item/zluss1\n有需要的可以支付宝扫码支付，支付成功后兑换即可。",
+          "sourceUrl": "https://guodongapi.site/api/v1/announcements"
+        },
+        {
+          "id": "8",
+          "publishedAt": "2026-05-21T23:51:41.737924+08:00",
+          "type": "login_probe",
+          "extra": "果冻API限时双倍福利活动开启！",
+          "content": "为了感谢大家的支持，果冻API推出限时充值奖励活动！\n\n📅 活动时间\n2026/05/22 00:30 — 2026/05/23 00:30\n\n🔥 活动内容\n活动期间，充值可触发双倍奖励！\n\n💰 福利规则\n• 每位用户仅限前 10 元充值享受双倍福利\n• 即：充值 10 元可获得 200 刀额度\n• 超出 10 元的充值部分，将按正常比例到账，不再享受双倍奖励\n\n⚠ 注意事项\n• 每位用户仅可参与一次双倍福利额度\n• 活动仅持续 24 小时\n\n感谢大家一直以来对果冻API的支持 ❤️",
+          "sourceUrl": "https://guodongapi.site/api/v1/announcements"
+        },
+        {
+          "id": "7",
+          "publishedAt": "2026-05-21T22:44:32.080995+08:00",
+          "type": "login_probe",
+          "extra": "果冻 API 订阅套餐正式上线！",
+          "content": "📢 果冻 API 订阅套餐正式上线！\n\n为了满足不同用户的使用需求，果冻 API 现已推出全新月度订阅套餐，共分为三档：\n\n💎 套餐详情\n🟢 Coding Lite\n售价：¥19 / 月\n可用额度：$250\n每月全站限量：50 份\n🔵 Coding Pro\n售价：¥49 / 月\n可用额度：$750\n每月全站限量：20 份\n🟣 Coding Max\n售价：¥99 / 月\n可用额度：$1800\n每月全站限量：10 份\n📌 抢购规则\n所有套餐均为限量抢购模式\n每月固定数量开放\n抢完即止，下月重新开放\n套餐额度按月发放，当月套餐余额未使用完，次月将清空套餐余额\n适用于 Coding / API / AI 开发等场景\n\n感谢大家一直以来对果冻 API 的支持，我们会持续优化线路、模型与稳定性，为大家提供更好的体验 🚀",
           "sourceUrl": "https://guodongapi.site/api/v1/announcements"
         }
       ],
@@ -14804,10 +14944,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 5,
+          "count": 7,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 5 条，可在本详情页查看。",
+          "message": "已归档 7 条，可在本详情页查看。",
           "source": "https://guodongapi.site/api/v1/announcements"
         }
       ]
@@ -15069,8 +15209,8 @@
       "verifiedTierCount": 12,
       "groupMultipliers": [
         {
-          "groupName": "codex渠道2（0.12x）",
-          "groupMultiplier": 0.12
+          "groupName": "codex-plus高速渠道（0.1x）",
+          "groupMultiplier": 0.1
         },
         {
           "groupName": "codex福利（0.08x）",
@@ -15155,6 +15295,14 @@
           "type": "login_probe",
           "extra": "codex福利（0.08x）",
           "content": "充值1$ = 1￥ ，倍率0.08，相当于官方100刀只需要8元人民币。",
+          "sourceUrl": "https://www.loomex.top/api/v1/announcements"
+        },
+        {
+          "id": "6",
+          "publishedAt": "2026-05-20T15:04:42.809393+08:00",
+          "type": "login_probe",
+          "extra": "充值未到账请看",
+          "content": "充值未到账的，取消下订单自动到账，这是一个bug。",
           "sourceUrl": "https://www.loomex.top/api/v1/announcements"
         }
       ],
@@ -15246,10 +15394,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 2,
+          "count": 3,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 2 条，可在本详情页查看。",
+          "message": "已归档 3 条，可在本详情页查看。",
           "source": "https://www.loomex.top/api/v1/announcements"
         }
       ]
@@ -15286,7 +15434,7 @@
         },
         {
           "groupName": "Claude-官转",
-          "groupMultiplier": 4.1
+          "groupMultiplier": 3.5
         },
         {
           "groupName": "Claude-AZ&AWS",
@@ -15301,16 +15449,16 @@
           "groupMultiplier": 3.5
         },
         {
-          "groupName": "Claude-大厂蒸馏福利",
-          "groupMultiplier": 0.6
-        },
-        {
           "groupName": "Codex-企业级",
           "groupMultiplier": 0.35
         },
         {
           "groupName": "Claude-AWS",
           "groupMultiplier": 2.8
+        },
+        {
+          "groupName": "Grok-福利",
+          "groupMultiplier": 0.1
         },
         {
           "groupName": "智谱套餐",
@@ -15417,6 +15565,22 @@
           "type": "login_probe",
           "extra": "疑难处理",
           "content": "# 本站充值 ￥1 = $1\n\n# 一切问题先看这里\n- 1、看文档，用一键脚本重装\n    https://ganf4k76umx.feishu.cn/wiki/SQ6awdmkkir1LtkD8IKcKkssnM3\n- 2、如果可以用codex或者claude code，让它在本地处理问题，如果用不了，问deepseek，免费无限量的老师：https://chat.deepseek.com/\n- 3、如果用了代理，检查代理节点是否通畅，可以尝试关闭\n- 4、重启电脑 重启路由器\n- 5、实在是没办法了，群里红包问群友。",
+          "sourceUrl": "https://aiapi.muskpay.top/api/v1/announcements"
+        },
+        {
+          "id": "10",
+          "publishedAt": "2026-05-21T01:07:11.651156+08:00",
+          "type": "login_probe",
+          "extra": "模型更新",
+          "content": "Gemini-3.5-flash、Grok-4.2 已上线\nClaude，Codex 官转分组上线",
+          "sourceUrl": "https://aiapi.muskpay.top/api/v1/announcements"
+        },
+        {
+          "id": "10",
+          "publishedAt": "2026-05-21T01:07:11.651156+08:00",
+          "type": "login_probe",
+          "extra": "模型更新",
+          "content": "Gemini-3.5-flash 已上线\nClaude 官转分组上线",
           "sourceUrl": "https://aiapi.muskpay.top/api/v1/announcements"
         }
       ],
@@ -15579,10 +15743,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 1,
+          "count": 3,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
+          "message": "已归档 3 条，可在本详情页查看。",
           "source": "https://aiapi.muskpay.top/api/v1/announcements"
         }
       ]
@@ -15745,7 +15909,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 1 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\nbtoken.ai567.asia-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/nbtoken.ai567.asia-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -15754,7 +15918,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 6 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\nbtoken.ai567.asia-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/nbtoken.ai567.asia-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -15780,6 +15944,10 @@
         {
           "groupName": "cc-aws",
           "groupMultiplier": 3.5
+        },
+        {
+          "groupName": "cc-max",
+          "groupMultiplier": 2.0
         },
         {
           "groupName": "cc-officially",
@@ -16120,6 +16288,14 @@
           "extra": "",
           "content": "📢 计费与倍率通知\n汇率：1 RMB = 1 USD | 1 USD = 50W Tokens\n⚙️ 消耗倍率：Claude=2, Gemini(通用)=0.5, Gemini(生图)=1, GPT=0.2\n*最终消耗 = 实际 Token × 倍率\n🎨 Gemini生图按次收费：\nNano Banana Pro (gemini-3-pro-image-preview)：$0.3/张\nNano Banana 2 (gemini-3.1-flash-image-preview)：$0.1/张",
           "sourceUrl": "https://1xm.ai"
+        },
+        {
+          "id": "24",
+          "publishedAt": "2026-05-20T13:02:49.792Z",
+          "type": "ongoing",
+          "extra": "",
+          "content": "cc-max 满血复活，定价 x2，纯血版 claude 最具性价比的选择，欢迎品鉴！",
+          "sourceUrl": "https://1xm.ai"
         }
       ],
       "rankings": {},
@@ -16192,11 +16368,11 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 10,
+          "count": 11,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 10 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\onexmodel-live-auth-probe.json"
+          "message": "已归档 11 条，可在本详情页查看。",
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/onexmodel-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -16205,15 +16381,15 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 8 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\onexmodel-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/onexmodel-live-auth-probe.json"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 22,
+          "count": 23,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 22 条，可在本详情页查看。",
+          "message": "已归档 23 条，可在本详情页查看。",
           "source": "https://1xm.ai/api/status"
         }
       ]
@@ -16717,7 +16893,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 15 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\vbcode-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/vbcode-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
@@ -16726,7 +16902,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 8 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\vbcode-live-auth-probe.json"
+          "source": "/home/runner/work/api-relay-rank/tabbit-audit-profile/vbcode-live-auth-probe.json"
         },
         {
           "key": "announcements",
@@ -16735,7 +16911,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 33 条，可在本详情页查看。",
-          "source": "https://vbcode.io/api/status"
+          "source": "https://vbcode.io/api/v1/announcements"
         }
       ]
     }
