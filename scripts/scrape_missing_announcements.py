@@ -319,6 +319,110 @@ def announcement_count(entry: dict[str, Any] | None, *, allow_text_item: bool = 
     return len(rows) if found else None
 
 
+def announcement_api_path(api_path: str) -> bool:
+    lowered = api_path.lower()
+    return any(marker in lowered for marker in ("announcement", "notice", "/api/status"))
+
+
+def source_url(base_url: str, api_path: str) -> str:
+    return base_url.rstrip("/") + api_path if api_path.startswith("/") else base_url.rstrip("/")
+
+
+def normalize_probe_announcement(station_key: str, item: dict[str, Any], index: int, source: str) -> dict[str, Any] | None:
+    content = str(
+        item.get("content")
+        or item.get("message")
+        or item.get("body")
+        or item.get("description")
+        or item.get("text")
+        or item.get("title")
+        or item.get("name")
+        or ""
+    ).strip()
+    if not content:
+        return None
+    title = str(item.get("title") or item.get("name") or item.get("subject") or "").strip()
+    extra = str(item.get("extra") or item.get("summary") or "").strip()
+    if title and title != content:
+        extra = title if not extra else f"{title} | {extra}"
+    return {
+        "id": str(item.get("id") or item.get("uuid") or f"{station_key}-live-{index}"),
+        "publishedAt": str(
+            item.get("publishDate")
+            or item.get("publishedAt")
+            or item.get("published_at")
+            or item.get("createdAt")
+            or item.get("created_at")
+            or item.get("updatedAt")
+            or item.get("updated_at")
+            or ""
+        ),
+        "type": str(item.get("type") or item.get("category") or item.get("level") or "login_probe"),
+        "extra": extra,
+        "content": content,
+        "sourceUrl": source,
+    }
+
+
+def announcement_rows_from_entry(station_key: str, base_url: str, api_path: str, entry: dict[str, Any] | None) -> list[dict[str, Any]]:
+    rows, found = collection_from((entry or {}).get("body"), allow_text_item="notice" in api_path.lower())
+    if not found:
+        return []
+    return [
+        row
+        for index, item in enumerate(rows, start=1)
+        if isinstance(item, dict)
+        for row in [normalize_probe_announcement(station_key, item, index, source_url(base_url, api_path))]
+        if row
+    ]
+
+
+def merge_probe_announcements(existing: Any, incoming: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    merged: list[dict[str, Any]] = []
+    seen: set[tuple[str, str, str]] = set()
+    existing_rows = existing if isinstance(existing, list) else []
+    for item in existing_rows + incoming:
+        if not isinstance(item, dict):
+            continue
+        key = (str(item.get("id") or ""), str(item.get("publishedAt") or ""), str(item.get("content") or ""))
+        if key in seen:
+            continue
+        seen.add(key)
+        merged.append(item)
+    return merged
+
+
+def positive_number(value: Any) -> bool:
+    try:
+        return float(str(value).replace(",", "").strip()) > 0
+    except (TypeError, ValueError):
+        return False
+
+
+def payment_config_can_describe_topups(data: dict[str, Any]) -> bool:
+    if bool(data.get("balance_disabled")):
+        return False
+    return positive_number(data.get("balance_recharge_multiplier"))
+
+
+def useful_probe_result(api_path: str, result: dict[str, Any]) -> bool:
+    if result.get("ok") is not True:
+        return False
+    if announcement_api_path(api_path):
+        return (announcement_count(result, allow_text_item="notice" in api_path.lower()) or 0) > 0
+    data = result.get("body", {}).get("data") if isinstance(result.get("body"), dict) else None
+    lowered = api_path.lower()
+    if "groups" in lowered:
+        return isinstance(data, list) and bool(data)
+    if "payment" in lowered:
+        if isinstance(data, list):
+            return bool(data)
+        if isinstance(data, dict):
+            return payment_config_can_describe_topups(data)
+        return False
+    return True
+
+
 def token_from(value: Any) -> str:
     if not isinstance(value, dict):
         return ""
@@ -611,12 +715,25 @@ def merge_probe(capture: dict[str, Any]) -> Path:
     if not isinstance(results, dict):
         results = {}
         payload["results"] = results
+    merged_announcements = payload.get("mergedAnnouncements")
+    existing_announcement_rows: list[dict[str, Any]] = []
+    for existing_path, existing in results.items():
+        if announcement_api_path(existing_path):
+            existing_announcement_rows.extend(announcement_rows_from_entry(key, base_url, existing_path, existing))
+    if existing_announcement_rows:
+        merged_announcements = merge_probe_announcements(merged_announcements, existing_announcement_rows)
     for api_path, result in capture["results"].items():
         existing = results.get(api_path)
-        # Keep old successful structured tier evidence unless this run has a useful response.
-        if existing and api_path != "/api/v1/announcements" and result.get("ok") is not True:
+        is_useful = useful_probe_result(api_path, result)
+        if announcement_api_path(api_path) and is_useful:
+            incoming = announcement_rows_from_entry(key, base_url, api_path, result)
+            merged_announcements = merge_probe_announcements(merged_announcements, incoming)
+        # Keep old successful structured evidence unless this run has useful non-empty data.
+        if existing and not is_useful:
             continue
         results[api_path] = result
+    if isinstance(merged_announcements, list) and merged_announcements:
+        payload["mergedAnnouncements"] = merged_announcements
     payload["announcementCapture"] = {
         "capturedAt": capture.get("capturedAt"),
         "loginSuccess": capture.get("loginSuccess"),

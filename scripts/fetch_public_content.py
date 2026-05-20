@@ -7,6 +7,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 from urllib.parse import urljoin, urlparse, urlunparse
@@ -16,6 +17,11 @@ import requests
 
 SCRIPT_PATH = Path(__file__).resolve()
 APP_ROOT = SCRIPT_PATH.parents[1]
+if str(APP_ROOT) not in sys.path:
+    sys.path.insert(0, str(APP_ROOT))
+
+from scripts import build_site_data
+
 SOURCE_ROOTS = [APP_ROOT]
 SITE_DATA_PATH = APP_ROOT / "data" / "site-data.json"
 PUBLIC_FETCH_DIR = Path(os.environ.get("PUBLIC_FETCH_DIR", APP_ROOT / "data" / "_public_fetch"))
@@ -174,19 +180,31 @@ def pricing_candidates(base_url: str) -> list[str]:
     ]
 
 
-def pricing_payload_is_empty(payload: dict[str, Any]) -> bool:
+def status_payload_announcements(payload: dict[str, Any]) -> list[dict[str, Any]]:
     if not isinstance(payload, dict):
-        return False
-    group_ratio = payload.get("group_ratio")
-    if isinstance(group_ratio, dict) and group_ratio:
-        return False
-    for key in ("data", "recharge_tiers", "topup_tiers", "topups", "wallet_topups", "pricing_tiers"):
-        value = payload.get(key)
-        if isinstance(value, list) and value:
-            return False
-        if isinstance(value, dict) and value:
-            return False
-    return True
+        return []
+    data = payload.get("data") if isinstance(payload.get("data"), dict) else {}
+    announcements = data.get("announcements")
+    if not isinstance(announcements, list):
+        return []
+    return [item for item in announcements if isinstance(item, dict) and str(item.get("content") or "").strip()]
+
+
+def parse_pricing_snapshot_content(content: str, suffix: str) -> dict[str, Any]:
+    try:
+        if suffix == ".json":
+            payload = json.loads(content)
+            if isinstance(payload, dict):
+                return build_site_data.parse_public_pricing_payload(payload)
+            return {"groupMultipliers": [], "rechargeTiers": [], "tierNotes": [], "sourceUrl": "", "stationTypeHint": ""}
+        return build_site_data.parse_public_pricing_html(content)
+    except json.JSONDecodeError:
+        return {"groupMultipliers": [], "rechargeTiers": [], "tierNotes": [], "sourceUrl": "", "stationTypeHint": ""}
+
+
+def pricing_snapshot_has_structured_data(content: str, suffix: str) -> bool:
+    parsed = parse_pricing_snapshot_content(content, suffix)
+    return bool(parsed.get("groupMultipliers") or parsed.get("rechargeTiers"))
 
 
 def refresh_status_snapshot(client: requests.Session, station_key: str, base_url: str) -> dict[str, Any]:
@@ -197,12 +215,72 @@ def refresh_status_snapshot(client: requests.Session, station_key: str, base_url
         except Exception as exc:  # noqa: BLE001
             status_report.append({"url": candidate, "ok": False, "error": repr(exc)})
             continue
-        if payload:
-            snapshot_path = PUBLIC_FETCH_DIR / f"{station_key}_status.json"
-            write_snapshot(snapshot_path, json.dumps(payload, ensure_ascii=False, indent=2))
-            status_report.append({"url": candidate, "ok": True, "path": str(snapshot_path)})
-            break
+        if payload is None:
+            status_report.append(
+                {
+                    "url": candidate,
+                    "ok": True,
+                    "empty": True,
+                    "skipped": True,
+                    "preserved_existing": True,
+                    "reason": "no_json_status_payload",
+                }
+            )
+            continue
+        announcement_count = len(status_payload_announcements(payload))
+        if announcement_count == 0:
+            status_report.append(
+                {
+                    "url": candidate,
+                    "ok": True,
+                    "empty": True,
+                    "skipped": True,
+                    "preserved_existing": True,
+                    "reason": "no_standard_announcements",
+                }
+            )
+            continue
+        snapshot_path = PUBLIC_FETCH_DIR / f"{station_key}_status.json"
+        write_snapshot(snapshot_path, json.dumps(payload, ensure_ascii=False, indent=2))
+        status_report.append({"url": candidate, "ok": True, "path": str(snapshot_path), "announcement_count": announcement_count})
+        break
     return {"status_snapshots": status_report}
+
+
+def refresh_pricing_snapshots(client: requests.Session, station_key: str, base_url: str) -> dict[str, Any]:
+    multiplier_report: list[dict[str, Any]] = []
+    for candidate in pricing_candidates(base_url):
+        try:
+            text, content_type = fetch_text(client, candidate)
+        except Exception as exc:  # noqa: BLE001
+            multiplier_report.append({"url": candidate, "ok": False, "error": repr(exc)})
+            continue
+
+        suffix = ".json" if "json" in content_type or text.lstrip().startswith("{") else ".html"
+        snapshot_path = PUBLIC_FETCH_DIR / f"{station_key}_pricing{suffix}"
+        if not pricing_snapshot_has_structured_data(text, suffix):
+            multiplier_report.append(
+                {
+                    "url": candidate,
+                    "ok": True,
+                    "empty": True,
+                    "skipped": True,
+                    "preserved_existing": True,
+                }
+            )
+            continue
+
+        write_snapshot(snapshot_path, text)
+        multiplier_report.append(
+            {
+                "url": candidate,
+                "ok": True,
+                "path": str(snapshot_path),
+                "empty": False,
+            }
+        )
+        break
+    return {"multiplier_snapshots": multiplier_report}
 
 
 def run_build_site_data() -> None:
@@ -237,36 +315,7 @@ def main() -> int:
             if "status_snapshots" not in row_report:
                 row_report.update(refresh_status_snapshot(client, station_key, base_url))
 
-            row_report["multiplier_snapshots"] = []
-            for candidate in pricing_candidates(base_url):
-                try:
-                    text, content_type = fetch_text(client, candidate)
-                except Exception as exc:  # noqa: BLE001
-                    row_report["multiplier_snapshots"].append({"url": candidate, "ok": False, "error": repr(exc)})
-                    continue
-
-                suffix = ".json" if "json" in content_type or text.lstrip().startswith("{") else ".html"
-                snapshot_path = PUBLIC_FETCH_DIR / f"{station_key}_pricing{suffix}"
-                write_snapshot(snapshot_path, text)
-
-                empty_pricing = False
-                if suffix == ".json":
-                    try:
-                        payload = json.loads(text)
-                    except json.JSONDecodeError:
-                        payload = None
-                    if isinstance(payload, dict):
-                        empty_pricing = pricing_payload_is_empty(payload)
-
-                row_report["multiplier_snapshots"].append(
-                    {
-                        "url": candidate,
-                        "ok": True,
-                        "path": str(snapshot_path),
-                        "empty": empty_pricing,
-                    }
-                )
-                break
+            row_report.update(refresh_pricing_snapshots(client, station_key, base_url))
 
         report.append(row_report)
 

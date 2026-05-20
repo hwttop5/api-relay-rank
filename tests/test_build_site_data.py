@@ -13,6 +13,7 @@ from pathlib import Path
 from unittest import mock
 
 from scripts import build_site_data as build_site_data
+from scripts import fetch_public_content as fetch_public_content
 from scripts import run_station_audit as run_station_audit
 from scripts import scrape_missing_announcements as scrape_missing_announcements
 
@@ -520,6 +521,264 @@ class BuildSiteDataTests(unittest.TestCase):
             merged = json.loads(output_path.read_text(encoding="utf-8"))
             self.assertEqual(merged["results"]["/api/v1/groups/available"]["status"], 200)
             self.assertTrue(merged["announcementCapture"]["loginBlocked"])
+
+    def test_scrape_merge_probe_keeps_old_group_probe_when_refresh_is_empty(self) -> None:
+        capture = {
+            "station": {
+                "key": "coolplay",
+                "label": "Coolplay API",
+                "platform": "sub2api",
+                "base": "https://cp.coolplay-api.fun:55555",
+            },
+            "capturedAt": "2026-05-20T00:00:00+08:00",
+            "loginSuccess": True,
+            "loginBlocked": False,
+            "results": {
+                "/api/v1/groups/available": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"code": 0, "data": []},
+                },
+            },
+        }
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            probe_dir = Path(tmp_dir)
+            existing_path = probe_dir / "coolplay-live-auth-probe.json"
+            existing_path.write_text(
+                json.dumps(
+                    {
+                        "results": {
+                            "/api/v1/groups/available": {
+                                "status": 200,
+                                "ok": True,
+                                "body": {"code": 0, "data": [{"name": "default", "rate_multiplier": 1.5}]},
+                            }
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with mock.patch.object(scrape_missing_announcements, "LIVE_AUTH_PROBE_DIR", probe_dir):
+                output_path = scrape_missing_announcements.merge_probe(capture)
+
+            merged = json.loads(output_path.read_text(encoding="utf-8"))
+            rows = merged["results"]["/api/v1/groups/available"]["body"]["data"]
+            self.assertEqual(rows[0]["rate_multiplier"], 1.5)
+
+    def test_scrape_merge_probe_keeps_old_payment_probe_when_refresh_is_empty(self) -> None:
+        capture = {
+            "station": {
+                "key": "coolplay",
+                "label": "Coolplay API",
+                "platform": "sub2api",
+                "base": "https://cp.coolplay-api.fun:55555",
+            },
+            "capturedAt": "2026-05-20T00:00:00+08:00",
+            "loginSuccess": True,
+            "loginBlocked": False,
+            "results": {
+                "/api/v1/payment/plans": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"code": 0, "data": []},
+                },
+            },
+        }
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            probe_dir = Path(tmp_dir)
+            existing_path = probe_dir / "coolplay-live-auth-probe.json"
+            existing_path.write_text(
+                json.dumps(
+                    {
+                        "results": {
+                            "/api/v1/payment/plans": {
+                                "status": 200,
+                                "ok": True,
+                                "body": {"code": 0, "data": [{"plan": {"title": "monthly", "price": 10, "quota": 500000}}]},
+                            }
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with mock.patch.object(scrape_missing_announcements, "LIVE_AUTH_PROBE_DIR", probe_dir):
+                output_path = scrape_missing_announcements.merge_probe(capture)
+
+            merged = json.loads(output_path.read_text(encoding="utf-8"))
+            rows = merged["results"]["/api/v1/payment/plans"]["body"]["data"]
+            self.assertEqual(rows[0]["plan"]["title"], "monthly")
+
+    def test_scrape_merge_probe_keeps_old_payment_config_when_refresh_has_no_usable_tiers(self) -> None:
+        capture = {
+            "station": {
+                "key": "coolplay",
+                "label": "Coolplay API",
+                "platform": "sub2api",
+                "base": "https://cp.coolplay-api.fun:55555",
+            },
+            "capturedAt": "2026-05-20T00:00:00+08:00",
+            "loginSuccess": True,
+            "loginBlocked": False,
+            "results": {
+                "/api/v1/payment/config": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"code": 0, "data": {"balance_disabled": True, "balance_recharge_multiplier": 1.0}},
+                },
+            },
+        }
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            probe_dir = Path(tmp_dir)
+            existing_path = probe_dir / "coolplay-live-auth-probe.json"
+            existing_path.write_text(
+                json.dumps(
+                    {
+                        "quick_amounts": [10],
+                        "results": {
+                            "/api/v1/payment/config": {
+                                "status": 200,
+                                "ok": True,
+                                "body": {"code": 0, "data": {"balance_disabled": False, "balance_recharge_multiplier": 2.0}},
+                            }
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with mock.patch.object(scrape_missing_announcements, "LIVE_AUTH_PROBE_DIR", probe_dir):
+                output_path = scrape_missing_announcements.merge_probe(capture)
+
+            merged = json.loads(output_path.read_text(encoding="utf-8"))
+            data = merged["results"]["/api/v1/payment/config"]["body"]["data"]
+            self.assertFalse(data["balance_disabled"])
+            rows, status = build_site_data.live_probe_recharge_rows(merged)
+            self.assertEqual(status["status"], "captured")
+            self.assertEqual(rows[0]["usdAmount"], 20.0)
+
+    def test_scrape_merge_probe_merges_announcements_and_preserves_on_empty(self) -> None:
+        base_capture = {
+            "station": {
+                "key": "coolplay",
+                "label": "Coolplay API",
+                "platform": "sub2api",
+                "base": "https://cp.coolplay-api.fun:55555",
+            },
+            "capturedAt": "2026-05-20T00:00:00+08:00",
+            "loginSuccess": True,
+            "loginBlocked": False,
+            "results": {
+                "/api/v1/announcements": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"code": 0, "data": [{"id": 2, "content": "new notice"}]},
+                },
+            },
+        }
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            probe_dir = Path(tmp_dir)
+            existing_path = probe_dir / "coolplay-live-auth-probe.json"
+            existing_path.write_text(
+                json.dumps(
+                    {
+                        "mergedAnnouncements": [
+                            {
+                                "id": "1",
+                                "publishedAt": "",
+                                "type": "login_probe",
+                                "extra": "",
+                                "content": "old notice",
+                                "sourceUrl": "https://cp.coolplay-api.fun:55555/api/v1/announcements",
+                            }
+                        ],
+                        "results": {
+                            "/api/v1/announcements": {
+                                "status": 200,
+                                "ok": True,
+                                "body": {"code": 0, "data": [{"id": 1, "content": "old notice"}]},
+                            }
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with mock.patch.object(scrape_missing_announcements, "LIVE_AUTH_PROBE_DIR", probe_dir):
+                output_path = scrape_missing_announcements.merge_probe(base_capture)
+
+            merged = json.loads(output_path.read_text(encoding="utf-8"))
+            self.assertEqual([item["content"] for item in merged["mergedAnnouncements"]], ["old notice", "new notice"])
+
+            empty_capture = copy.deepcopy(base_capture)
+            empty_capture["results"]["/api/v1/announcements"] = {"status": 200, "ok": True, "body": {"code": 0, "data": []}}
+            with mock.patch.object(scrape_missing_announcements, "LIVE_AUTH_PROBE_DIR", probe_dir):
+                output_path = scrape_missing_announcements.merge_probe(empty_capture)
+
+            merged = json.loads(output_path.read_text(encoding="utf-8"))
+            self.assertEqual([item["content"] for item in merged["mergedAnnouncements"]], ["old notice", "new notice"])
+
+    def test_public_status_empty_announcements_do_not_overwrite_snapshot(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            fetch_dir = Path(tmp_dir)
+            existing_path = fetch_dir / "demo_status.json"
+            existing_path.write_text(
+                json.dumps({"data": {"announcements": [{"id": 1, "content": "old notice"}]}}),
+                encoding="utf-8",
+            )
+
+            with (
+                mock.patch.object(fetch_public_content, "PUBLIC_FETCH_DIR", fetch_dir),
+                mock.patch.object(fetch_public_content, "fetch_json", return_value={"data": {"announcements": []}}),
+            ):
+                report = fetch_public_content.refresh_status_snapshot(mock.Mock(), "demo", "https://demo.example")
+
+            self.assertTrue(report["status_snapshots"][0]["skipped"])
+            payload = json.loads(existing_path.read_text(encoding="utf-8"))
+            self.assertEqual(payload["data"]["announcements"][0]["content"], "old notice")
+
+    def test_public_status_missing_standard_announcements_do_not_overwrite_snapshot(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            fetch_dir = Path(tmp_dir)
+            existing_path = fetch_dir / "demo_status.json"
+            existing_path.write_text(
+                json.dumps({"data": {"announcements": [{"id": 1, "content": "old notice"}]}}),
+                encoding="utf-8",
+            )
+
+            with (
+                mock.patch.object(fetch_public_content, "PUBLIC_FETCH_DIR", fetch_dir),
+                mock.patch.object(fetch_public_content, "fetch_json", return_value={"data": {"server_address": "https://demo.example"}}),
+            ):
+                report = fetch_public_content.refresh_status_snapshot(mock.Mock(), "demo", "https://demo.example")
+
+            self.assertTrue(report["status_snapshots"][0]["skipped"])
+            self.assertEqual(report["status_snapshots"][0]["reason"], "no_standard_announcements")
+            payload = json.loads(existing_path.read_text(encoding="utf-8"))
+            self.assertEqual(payload["data"]["announcements"][0]["content"], "old notice")
+
+    def test_public_pricing_empty_json_and_html_do_not_overwrite_snapshots(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            fetch_dir = Path(tmp_dir)
+            json_path = fetch_dir / "demo_pricing.json"
+            html_path = fetch_dir / "demo_pricing.html"
+            json_path.write_text(json.dumps({"group_ratio": {"default": 1}}), encoding="utf-8")
+            html_path.write_text("old html pricing", encoding="utf-8")
+
+            with (
+                mock.patch.object(fetch_public_content, "PUBLIC_FETCH_DIR", fetch_dir),
+                mock.patch.object(fetch_public_content, "fetch_text", side_effect=[("{}", "application/json"), ("<html></html>", "text/html")]),
+            ):
+                report = fetch_public_content.refresh_pricing_snapshots(mock.Mock(), "demo", "https://demo.example")
+
+            self.assertTrue(all(item["skipped"] for item in report["multiplier_snapshots"]))
+            self.assertEqual(json.loads(json_path.read_text(encoding="utf-8"))["group_ratio"]["default"], 1)
+            self.assertEqual(html_path.read_text(encoding="utf-8"), "old html pricing")
 
     def test_live_auth_probe_payment_config_needs_amounts_before_tiers(self) -> None:
         probe = {
@@ -1349,6 +1608,161 @@ class BuildSiteDataTests(unittest.TestCase):
             payload = json.loads((data_dir / "site-data.json").read_text(encoding="utf-8"))
             station_keys = [station["key"] for station in payload["stations"]]
             self.assertNotIn("cngpt.net", station_keys)
+
+    def test_build_preserves_existing_details_when_refresh_inputs_are_empty(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            source_root = root / "source"
+            data_dir = root / "data"
+            fetch_dir = data_dir / "_public_fetch"
+            source_root.mkdir()
+            fetch_dir.mkdir(parents=True)
+            (data_dir / "site-data.json").write_text(
+                json.dumps(
+                    {
+                        "rankings": {},
+                        "stations": [
+                            {
+                                "key": "demo",
+                                "label": "Demo",
+                                "url": "https://relay.example",
+                                "stationType": "non_subscription",
+                                "platformGuess": "sub2api",
+                                "verifiedTierCount": 1,
+                                "groupMultipliers": [{"groupName": "old", "groupMultiplier": 2}],
+                                "rechargeTiers": [
+                                    {
+                                        "rechargeName": "old tier",
+                                        "billingType": "permanent",
+                                        "rmbAmount": 20,
+                                        "usdAmount": 40,
+                                        "rechargeLocation": "old",
+                                        "expiresRule": "",
+                                    }
+                                ],
+                                "tierNotes": ["old note"],
+                                "announcements": [{"id": "old", "publishedAt": "", "type": "default", "extra": "", "content": "old notice", "sourceUrl": "https://relay.example/api/status"}],
+                                "rankings": {},
+                                "quality": {},
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (fetch_dir / "demo_status.json").write_text(json.dumps({"data": {"announcements": []}}), encoding="utf-8")
+            (fetch_dir / "demo_pricing.json").write_text(json.dumps({}), encoding="utf-8")
+            (source_root / "composite_ranking_formal_workhours.csv").write_text(
+                "rank,ranking_basis,time_window,time_window_label,station,label,station_url,station_type,station_type_label,station_type_short_label,total_score,success_score,latency_score,cost_score,correct_rate,avg_seconds,median_seconds,p95_seconds,effective_multiplier,fee_verified,adopted_tier,adopted_group,adopted_recharge_name,billing_type,billing_type_label,multiplier_full_use_assumption,requests,correct,failures,http_2xx,http_200_with_error,first_at,last_at\n"
+                "1,formal_high_confidence,work_hours,work,demo,Demo,https://relay.example,non_subscription,non_subscription,non_subscription,1,1,1,1,1,1,1,1,1,false,,,,,,,1,1,0,1,0,,\n",
+                encoding="utf-8",
+            )
+            for filename in ("composite_ranking_formal_offhours.csv", "composite_ranking_formal_all_hours.csv", "quality_metrics.csv", "login_verification_checklist.csv", "multiplier_tiers.csv"):
+                (source_root / filename).write_text("", encoding="utf-8")
+
+            with (
+                mock.patch.object(build_site_data, "APP_ROOT", root),
+                mock.patch.object(build_site_data, "SOURCE_ROOTS", [source_root]),
+                mock.patch.object(build_site_data, "DATA_DIR", data_dir),
+                mock.patch.object(build_site_data, "SITE_DATA_PATH", data_dir / "site-data.json"),
+                mock.patch.object(build_site_data, "PUBLIC_FETCH_DIR", fetch_dir),
+                mock.patch.object(build_site_data, "PUBLIC_FETCH_DIRS", [fetch_dir]),
+                mock.patch.object(build_site_data, "AUDIT_RUNS_DIR", data_dir / "_audit_runs"),
+                mock.patch.object(build_site_data, "LIVE_AUTH_PROBE_DIR", root / "missing_live_probes"),
+                mock.patch.object(build_site_data, "STATION_ALIASES_PATH", root / "config" / "station_aliases.json"),
+                mock.patch.object(build_site_data, "STATION_PRICING_OVERRIDES_PATH", root / "missing_overrides.json"),
+                mock.patch.object(build_site_data, "STATION_URL_OVERRIDES_PATH", root / "missing_url_overrides.json"),
+                mock.patch.object(build_site_data, "STATION_AUDIT_TARGETS_PATH", root / "missing_targets.json"),
+                mock.patch("sys.stdout", new=io.StringIO()),
+            ):
+                self.assertEqual(build_site_data.main(), 0)
+
+            payload = json.loads((data_dir / "site-data.json").read_text(encoding="utf-8"))
+            station = next(item for item in payload["stations"] if item["key"] == "demo")
+            self.assertEqual(station["groupMultipliers"][0]["groupName"], "old")
+            self.assertEqual(station["rechargeTiers"][0]["rechargeName"], "old tier")
+            self.assertEqual(station["announcements"][0]["content"], "old notice")
+
+    def test_build_replaces_nonempty_tiers_and_merges_announcements(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            source_root = root / "source"
+            data_dir = root / "data"
+            fetch_dir = data_dir / "_public_fetch"
+            source_root.mkdir()
+            fetch_dir.mkdir(parents=True)
+            (data_dir / "site-data.json").write_text(
+                json.dumps(
+                    {
+                        "rankings": {},
+                        "stations": [
+                            {
+                                "key": "demo",
+                                "label": "Demo",
+                                "url": "https://relay.example",
+                                "stationType": "non_subscription",
+                                "platformGuess": "sub2api",
+                                "verifiedTierCount": 1,
+                                "groupMultipliers": [{"groupName": "old", "groupMultiplier": 2}],
+                                "rechargeTiers": [
+                                    {
+                                        "rechargeName": "old tier",
+                                        "billingType": "permanent",
+                                        "rmbAmount": 20,
+                                        "usdAmount": 40,
+                                        "rechargeLocation": "old",
+                                        "expiresRule": "",
+                                    }
+                                ],
+                                "tierNotes": [],
+                                "announcements": [{"id": "old", "publishedAt": "", "type": "default", "extra": "", "content": "old notice", "sourceUrl": "https://relay.example/api/status"}],
+                                "rankings": {},
+                                "quality": {},
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (fetch_dir / "demo_status.json").write_text(
+                json.dumps({"data": {"server_address": "https://relay.example", "announcements": [{"id": "new", "content": "new notice"}]}}),
+                encoding="utf-8",
+            )
+            (source_root / "composite_ranking_formal_workhours.csv").write_text(
+                "rank,ranking_basis,time_window,time_window_label,station,label,station_url,station_type,station_type_label,station_type_short_label,total_score,success_score,latency_score,cost_score,correct_rate,avg_seconds,median_seconds,p95_seconds,effective_multiplier,fee_verified,adopted_tier,adopted_group,adopted_recharge_name,billing_type,billing_type_label,multiplier_full_use_assumption,requests,correct,failures,http_2xx,http_200_with_error,first_at,last_at\n"
+                "1,formal_high_confidence,work_hours,work,demo,Demo,https://relay.example,non_subscription,non_subscription,non_subscription,1,1,1,1,1,1,1,1,1,false,,,,,,,1,1,0,1,0,,\n",
+                encoding="utf-8",
+            )
+            (source_root / "multiplier_tiers.csv").write_text(
+                "station,label,station_type,group_name,group_multiplier,recharge_name,billing_type,rmb_amount,usd_amount,recharge_location,expires_rule,notes,evidence_url\n"
+                "demo,Demo,non_subscription,codex,1,new tier,permanent,10,100,manual,,new note,https://relay.example/pricing\n",
+                encoding="utf-8",
+            )
+            for filename in ("composite_ranking_formal_offhours.csv", "composite_ranking_formal_all_hours.csv", "quality_metrics.csv", "login_verification_checklist.csv"):
+                (source_root / filename).write_text("", encoding="utf-8")
+
+            with (
+                mock.patch.object(build_site_data, "APP_ROOT", root),
+                mock.patch.object(build_site_data, "SOURCE_ROOTS", [source_root]),
+                mock.patch.object(build_site_data, "DATA_DIR", data_dir),
+                mock.patch.object(build_site_data, "SITE_DATA_PATH", data_dir / "site-data.json"),
+                mock.patch.object(build_site_data, "PUBLIC_FETCH_DIR", fetch_dir),
+                mock.patch.object(build_site_data, "PUBLIC_FETCH_DIRS", [fetch_dir]),
+                mock.patch.object(build_site_data, "AUDIT_RUNS_DIR", data_dir / "_audit_runs"),
+                mock.patch.object(build_site_data, "LIVE_AUTH_PROBE_DIR", root / "missing_live_probes"),
+                mock.patch.object(build_site_data, "STATION_ALIASES_PATH", root / "config" / "station_aliases.json"),
+                mock.patch.object(build_site_data, "STATION_PRICING_OVERRIDES_PATH", root / "missing_overrides.json"),
+                mock.patch.object(build_site_data, "STATION_URL_OVERRIDES_PATH", root / "missing_url_overrides.json"),
+                mock.patch.object(build_site_data, "STATION_AUDIT_TARGETS_PATH", root / "missing_targets.json"),
+                mock.patch("sys.stdout", new=io.StringIO()),
+            ):
+                self.assertEqual(build_site_data.main(), 0)
+
+            payload = json.loads((data_dir / "site-data.json").read_text(encoding="utf-8"))
+            station = next(item for item in payload["stations"] if item["key"] == "demo")
+            self.assertEqual([item["groupName"] for item in station["groupMultipliers"]], ["codex"])
+            self.assertEqual([item["rechargeName"] for item in station["rechargeTiers"]], ["new tier"])
+            self.assertEqual([item["content"] for item in station["announcements"]], ["old notice", "new notice"])
 
     def test_run_station_audit_requires_secret_env(self) -> None:
         target = {

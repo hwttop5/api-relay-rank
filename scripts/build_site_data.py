@@ -1393,7 +1393,12 @@ def public_probe_root_status(public_probe: dict[str, Any] | None) -> dict[str, s
 def load_live_probe_snapshots(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
     snapshots: dict[str, dict[str, Any]] = {}
     for station_key, probe in load_live_auth_probes(station_aliases).items():
+        stored_announcements = normalized_announcement_rows(probe.get("mergedAnnouncements"))
         announcements, announcement_status = live_probe_announcements_and_status(station_key, probe)
+        if announcements:
+            announcements = merge_announcements(stored_announcements, announcements)
+        elif stored_announcements:
+            announcements = stored_announcements
         groups, group_status = live_probe_group_rows(probe)
         recharges, recharge_status = live_probe_recharge_rows(probe)
         announcement_status = normalize_live_probe_status(announcement_status)
@@ -1482,6 +1487,133 @@ def append_recharge_row(station: dict[str, Any], row: dict[str, Any]) -> None:
         station["rechargeTiers"].append(row)
 
 
+def normalized_group_rows(rows: Any) -> list[dict[str, Any]]:
+    normalized: list[dict[str, Any]] = []
+    seen: set[tuple[str, float]] = set()
+    if not isinstance(rows, list):
+        return normalized
+    for item in rows:
+        if not isinstance(item, dict):
+            continue
+        group = normalize_group_row(item)
+        if not group:
+            continue
+        key = group_row_key(group)
+        if key in seen:
+            continue
+        seen.add(key)
+        normalized.append(group)
+    return normalized
+
+
+def normalized_recharge_rows(rows: Any) -> list[dict[str, Any]]:
+    normalized: list[dict[str, Any]] = []
+    seen: set[tuple[Any, ...]] = set()
+    if not isinstance(rows, list):
+        return normalized
+    for item in rows:
+        if not isinstance(item, dict):
+            continue
+        row = normalize_recharge_row(item)
+        if not row:
+            continue
+        key = recharge_row_key(row)
+        if key in seen:
+            continue
+        seen.add(key)
+        normalized.append(row)
+    return normalized
+
+
+def normalized_tier_notes(rows: Any) -> list[str]:
+    normalized: list[str] = []
+    if not isinstance(rows, list):
+        return normalized
+    for item in rows:
+        note = normalize_public_text(item)
+        if note and note not in normalized:
+            normalized.append(note)
+    return normalized
+
+
+def normalized_announcement_rows(rows: Any) -> list[dict[str, Any]]:
+    normalized: list[dict[str, Any]] = []
+    if not isinstance(rows, list):
+        return normalized
+    for item in rows:
+        if not isinstance(item, dict):
+            continue
+        content = normalize_announcement_text(item.get("content"))
+        if not content:
+            continue
+        normalized.append(
+            {
+                "id": str(item.get("id") or f"existing-{len(normalized) + 1}"),
+                "publishedAt": str(item.get("publishedAt") or ""),
+                "type": normalize_announcement_text(item.get("type") or "default"),
+                "extra": normalize_announcement_text(item.get("extra") or ""),
+                "content": content,
+                "sourceUrl": sanitize_public_text(item.get("sourceUrl")),
+            }
+        )
+    return normalized
+
+
+def merge_tier_notes(station: dict[str, Any], notes: Any) -> None:
+    for note in normalized_tier_notes(notes):
+        if note not in station["tierNotes"]:
+            station["tierNotes"].append(note)
+
+
+def load_existing_detail_baseline(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
+    if not SITE_DATA_PATH.exists():
+        return {}
+    try:
+        existing = read_existing_site_data()
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+    baseline: dict[str, dict[str, Any]] = {}
+    for raw_station in existing.get("stations", []):
+        if not isinstance(raw_station, dict):
+            continue
+        station_key = canonical_station_key(raw_station.get("key"), station_aliases)
+        if not station_key or not is_public_station_key(station_key):
+            continue
+        baseline[station_key] = {
+            "groupMultipliers": normalized_group_rows(raw_station.get("groupMultipliers")),
+            "rechargeTiers": normalized_recharge_rows(raw_station.get("rechargeTiers")),
+            "tierNotes": normalized_tier_notes(raw_station.get("tierNotes")),
+            "announcements": normalized_announcement_rows(raw_station.get("announcements")),
+        }
+    return baseline
+
+
+def apply_existing_detail_baseline(
+    stations: dict[str, dict[str, Any]],
+    station_urls: dict[str, set[str]],
+    baseline: dict[str, dict[str, Any]],
+    *,
+    station_aliases: dict[str, str] | None = None,
+) -> None:
+    for station_key, station in stations.items():
+        existing = baseline.get(station_key)
+        if not existing:
+            continue
+        if not station.get("groupMultipliers") and existing.get("groupMultipliers"):
+            station["groupMultipliers"] = deepcopy(existing["groupMultipliers"])
+        if not station.get("rechargeTiers") and existing.get("rechargeTiers"):
+            station["rechargeTiers"] = deepcopy(existing["rechargeTiers"])
+        if not station.get("tierNotes") and existing.get("tierNotes"):
+            station["tierNotes"] = list(existing["tierNotes"])
+        if existing.get("announcements"):
+            station["announcements"] = merge_announcements(existing["announcements"], station.get("announcements", []))
+            for announcement in station["announcements"]:
+                source_url = sanitize_public_text(announcement.get("sourceUrl"))
+                if source_url:
+                    add_station_url(station_urls, station_key, source_url, station_aliases)
+
+
 def load_base_site_snapshot(
     station_aliases: dict[str, str] | None = None,
 ) -> tuple[dict[str, list[dict[str, Any]]], dict[str, dict[str, Any]], dict[str, set[str]]]:
@@ -1567,6 +1699,42 @@ def reset_station_tiers(stations: dict[str, dict[str, Any]]) -> None:
         station["groupMultipliers"] = []
         station["rechargeTiers"] = []
         station["tierNotes"] = []
+
+
+def multiplier_tier_row_groups(
+    rows: list[dict[str, str]],
+    *,
+    station_aliases: dict[str, str] | None = None,
+) -> dict[str, dict[str, Any]]:
+    grouped: dict[str, dict[str, Any]] = {}
+    for row in rows:
+        station_key = canonical_station_key(row.get("station", ""), station_aliases)
+        if not is_public_station_key(station_key):
+            continue
+        bucket = grouped.setdefault(
+            station_key,
+            {
+                "groupMultipliers": [],
+                "rechargeTiers": [],
+            },
+        )
+        group = normalize_group_row({"group_name": row.get("group_name"), "group_multiplier": row.get("group_multiplier")})
+        if group:
+            bucket["groupMultipliers"].append(group)
+        recharge = normalize_recharge_row(
+            {
+                "recharge_name": row.get("recharge_name"),
+                "billing_type": row.get("billing_type"),
+                "billing_type_label": BILLING_LABELS.get(row.get("billing_type", ""), sanitize_public_text(row.get("billing_type") or "鏈煡")),
+                "rmb_amount": row.get("rmb_amount"),
+                "usd_amount": row.get("usd_amount"),
+                "recharge_location": row.get("recharge_location"),
+                "expires_rule": row.get("expires_rule"),
+            }
+        )
+        if recharge:
+            bucket["rechargeTiers"].append(recharge)
+    return grouped
 
 
 def sync_station_rankings_from_rankings(
@@ -2088,14 +2256,15 @@ def apply_public_pricing_snapshots(
         source_url = sanitize_public_text(snapshot.get("sourceUrl"))
         if source_url:
             add_station_url(station_urls, station_key, source_url, station_aliases)
+        if normalized_group_rows(snapshot.get("groupMultipliers")):
+            station["groupMultipliers"] = []
+        if normalized_recharge_rows(snapshot.get("rechargeTiers")):
+            station["rechargeTiers"] = []
         for group in snapshot.get("groupMultipliers", []):
             append_group_row(station, group)
         for tier in snapshot.get("rechargeTiers", []):
             append_recharge_row(station, tier)
-        for note in snapshot.get("tierNotes", []):
-            normalized = normalize_public_text(note)
-            if normalized and normalized not in station["tierNotes"]:
-                station["tierNotes"].append(normalized)
+        merge_tier_notes(station, snapshot.get("tierNotes", []))
 
 
 def apply_live_probe_snapshots(
@@ -2110,6 +2279,10 @@ def apply_live_probe_snapshots(
         source_url = sanitize_public_text(snapshot.get("sourceUrl"))
         if source_url:
             add_station_url(station_urls, station_key, source_url, station_aliases)
+        if normalized_group_rows(snapshot.get("groupMultipliers")):
+            station["groupMultipliers"] = []
+        if normalized_recharge_rows(snapshot.get("rechargeTiers")):
+            station["rechargeTiers"] = []
         for group in snapshot.get("groupMultipliers", []):
             append_group_row(station, group)
         for tier in snapshot.get("rechargeTiers", []):
@@ -2417,6 +2590,7 @@ def apply_authoritative_ranking_overrides(
 def main() -> int:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     station_aliases = load_station_aliases()
+    existing_detail_baseline = load_existing_detail_baseline(station_aliases)
 
     intro = load_summary_intro()
     required_inputs = [
@@ -2515,8 +2689,17 @@ def main() -> int:
                     add_station_url(station_urls, station_key, url, station_aliases)
 
     if resolved_inputs.get("multiplier_tiers.csv"):
-        reset_station_tiers(stations)
         tier_rows = read_csv(resolved_inputs["multiplier_tiers.csv"])
+        tier_groups = multiplier_tier_row_groups(tier_rows, station_aliases=station_aliases)
+        for station_key, payload in tier_groups.items():
+            station = stations.get(station_key)
+            if not station:
+                continue
+            station["verifiedTierCount"] = 0
+            if payload.get("groupMultipliers"):
+                station["groupMultipliers"] = []
+            if payload.get("rechargeTiers"):
+                station["rechargeTiers"] = []
         for row in tier_rows:
             station_key = canonical_station_key(row.get("station", ""), station_aliases)
             if not is_public_station_key(station_key):
@@ -2556,6 +2739,8 @@ def main() -> int:
             evidence_url = sanitize_public_text(row.get("evidence_url"))
             if evidence_url:
                 add_station_url(station_urls, station_key, evidence_url, station_aliases)
+
+    apply_existing_detail_baseline(stations, station_urls, existing_detail_baseline, station_aliases=station_aliases)
 
     status_payloads = load_status_payloads(station_aliases)
     announcements = load_announcements(status_payloads)
@@ -2615,6 +2800,7 @@ def main() -> int:
     audit_targets = load_station_audit_targets(station_aliases)
     latest_audits = load_latest_station_audits(station_aliases)
     apply_audit_only_station_records(stations, station_urls, latest_audits, station_aliases=station_aliases)
+    apply_existing_detail_baseline(stations, station_urls, existing_detail_baseline, station_aliases=station_aliases)
 
     apply_authoritative_ranking_overrides(stations, rankings, overrides)
 

@@ -3726,6 +3726,10 @@
       "verifiedTierCount": 102,
       "groupMultipliers": [
         {
+          "groupName": "aws官key",
+          "groupMultiplier": 0.4
+        },
+        {
           "groupName": "cc企业",
           "groupMultiplier": 2.7
         },
@@ -3755,7 +3759,7 @@
         },
         {
           "groupName": "claude 福利",
-          "groupMultiplier": 1.6
+          "groupMultiplier": 0.8
         },
         {
           "groupName": "claude 福利-sonnet",
@@ -3763,7 +3767,11 @@
         },
         {
           "groupName": "claude-kiro",
-          "groupMultiplier": 0.45
+          "groupMultiplier": 0.2
+        },
+        {
+          "groupName": "claude-kiro企业",
+          "groupMultiplier": 0.7
         },
         {
           "groupName": "codex",
@@ -3792,22 +3800,6 @@
         {
           "groupName": "gpt-image-2",
           "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "aws官key",
-          "groupMultiplier": 0.4
-        },
-        {
-          "groupName": "claude 福利",
-          "groupMultiplier": 0.8
-        },
-        {
-          "groupName": "claude-kiro",
-          "groupMultiplier": 0.2
-        },
-        {
-          "groupName": "claude-kiro企业",
-          "groupMultiplier": 0.7
         }
       ],
       "rechargeTiers": [
@@ -4113,10 +4105,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 21,
+          "count": 19,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 21 条，可在本详情页查看。",
+          "message": "已归档 19 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\aicodelink-live-auth-probe.json"
         },
         {
@@ -4541,6 +4533,14 @@
           "publishedAt": "2026-05-10T14:26:36.293841+08:00",
           "type": "login_probe",
           "extra": "套餐上新！",
+          "content": "# 📢 新套餐上新公告\n\n为了让大家有更多选择，这次我们补充上新了新的套餐档位，覆盖轻度体验、短期使用、长期稳定使用以及高频重度使用等不同需求。\n\n!XINX 套餐商品图 https://api.xiaoxin.best/static/announcements/goods-20260510.png https://pay.ldxp.cn/shop/JZ9CUHL0\n\n> 点击上方商品图可直接跳转店铺购买。\n\n## ✅ 新套餐现已上线\n\n当前可选套餐如下：\n\n- `日卡`：`3元 / 50万`\n- `周卡`：`19元 / 400万`\n- `月卡`：`49元 / 1200万`\n- `月卡（大杯）`：`89元 / 3000万`\n- `月卡（超大杯）`：`199元 / 8888万`\n\n## 💰 套餐价格与汇率参考\n\n!XINX 套餐价格对比图 https://api.xiaoxin.best/static/announcements/prices-20260510.png https://pay.ldxp.cn/shop/JZ9CUHL0\n\n> 点击上方价格图同样可以直接进入店铺。\n\n这次新套餐上新后，整体价格依然保持在比较低的水平，尤其是大额度套餐，汇率优势会更明显。\n\n## 🚀 重点推荐\n\n### `月卡（超大杯）`\n- `199元 / 8888万`\n- 汇率低至：`0.0223`\n\n如果你本身使用频率高、任务量大，或者就是长期用户，这一档会非常划算。\n\n### `月卡（大杯）`\n- `89元 / 3000万`\n- 汇率低至：`0.03`\n\n如果你想在预算和额度之间做更平衡的选择，大杯也很值得入手。\n\n## 🔥 简单怎么选\n\n- 想先体验：可以选 `日卡`\n- 想短期连续使用：可以选 `周卡`\n- 想长期稳定使用：可以选 `月卡`\n- 想要更低汇率、更高性价比：重点推荐 `月卡（大杯）` 和 `月卡（超大杯）`\n\n## 🛒 店铺链接\n\n点击进入店铺购买 https://pay.ldxp.cn/shop/JZ9CUHL0\n\n## 📌 一句话总结\n\n这次新套餐上新，核心就是一句话：**档位更多了，汇率更低了，价格依然很便宜。**",
+          "sourceUrl": "https://api.xiaoxin.best/api/v1/announcements"
+        },
+        {
+          "id": "5",
+          "publishedAt": "2026-05-10T14:26:36.293841+08:00",
+          "type": "login_probe",
+          "extra": "套餐上新！",
           "content": "# 📢 新套餐上新公告\n\n为了让大家有更多选择，这次我们补充上新了新的套餐档位，覆盖轻度体验、短期使用、长期稳定使用以及高频重度使用等不同需求。\n\n![XINX 套餐商品图 https://api.xiaoxin.best/static/announcements/goods-20260510.png](https://pay.ldxp.cn/shop/JZ9CUHL0)\n\n> 点击上方商品图可直接跳转店铺购买。\n\n## ✅ 新套餐现已上线\n\n当前可选套餐如下：\n\n- `日卡`：`3元 / 50万`\n- `周卡`：`19元 / 400万`\n- `月卡`：`49元 / 1200万`\n- `月卡（大杯）`：`89元 / 3000万`\n- `月卡（超大杯）`：`199元 / 8888万`\n\n## 💰 套餐价格与汇率参考\n\n![XINX 套餐价格对比图 https://api.xiaoxin.best/static/announcements/prices-20260510.png](https://pay.ldxp.cn/shop/JZ9CUHL0)\n\n> 点击上方价格图同样可以直接进入店铺。\n\n这次新套餐上新后，整体价格依然保持在比较低的水平，尤其是大额度套餐，汇率优势会更明显。\n\n## 🚀 重点推荐\n\n### `月卡（超大杯）`\n- `199元 / 8888万`\n- 汇率低至：`0.0223`\n\n如果你本身使用频率高、任务量大，或者就是长期用户，这一档会非常划算。\n\n### `月卡（大杯）`\n- `89元 / 3000万`\n- 汇率低至：`0.03`\n\n如果你想在预算和额度之间做更平衡的选择，大杯也很值得入手。\n\n## 🔥 简单怎么选\n\n- 想先体验：可以选 `日卡`\n- 想短期连续使用：可以选 `周卡`\n- 想长期稳定使用：可以选 `月卡`\n- 想要更低汇率、更高性价比：重点推荐 `月卡（大杯）` 和 `月卡（超大杯）`\n\n## 🛒 店铺链接\n\n点击进入店铺购买 https://pay.ldxp.cn/shop/JZ9CUHL0\n\n## 📌 一句话总结\n\n这次新套餐上新，核心就是一句话：**档位更多了，汇率更低了，价格依然很便宜。**",
           "sourceUrl": "https://api.xiaoxin.best/api/v1/announcements"
         }
@@ -4739,10 +4739,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 2,
+          "count": 3,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 2 条，可在本详情页查看。",
+          "message": "已归档 3 条，可在本详情页查看。",
           "source": "https://api.xiaoxin.best/api/v1/announcements"
         }
       ]
@@ -5096,6 +5096,10 @@
       "verifiedTierCount": 88,
       "groupMultipliers": [
         {
+          "groupName": "AwsClaude",
+          "groupMultiplier": 1.0
+        },
+        {
           "groupName": "ClaudeApi",
           "groupMultiplier": 2.2
         },
@@ -5113,15 +5117,15 @@
         },
         {
           "groupName": "GptApi",
-          "groupMultiplier": 2.0
+          "groupMultiplier": 0.35
         },
         {
           "groupName": "GptPro",
           "groupMultiplier": 0.6
         },
         {
-          "groupName": "OfficialClaude",
-          "groupMultiplier": 3.3
+          "groupName": "GptPro-Fast",
+          "groupMultiplier": 1.2
         },
         {
           "groupName": "cheapCCApi",
@@ -5133,27 +5137,11 @@
         },
         {
           "groupName": "test",
-          "groupMultiplier": 2.0
+          "groupMultiplier": 2.2
         },
         {
           "groupName": "test2",
           "groupMultiplier": 1.7
-        },
-        {
-          "groupName": "AwsClaude",
-          "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "GptApi",
-          "groupMultiplier": 0.35
-        },
-        {
-          "groupName": "GptPro-Fast",
-          "groupMultiplier": 1.2
-        },
-        {
-          "groupName": "test",
-          "groupMultiplier": 2.2
         }
       ],
       "rechargeTiers": [
@@ -5494,10 +5482,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 15,
+          "count": 12,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 15 条，可在本详情页查看。",
+          "message": "已归档 12 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\4router-live-auth-probe.json"
         },
         {
@@ -5540,7 +5528,7 @@
         },
         {
           "groupName": "claude-code-高速",
-          "groupMultiplier": 4.5
+          "groupMultiplier": 1.5
         },
         {
           "groupName": "claude-逆向",
@@ -5557,26 +5545,6 @@
         {
           "groupName": "gemini",
           "groupMultiplier": 2.0
-        },
-        {
-          "groupName": "AmazonQ 5min cache",
-          "groupMultiplier": 1.5
-        },
-        {
-          "groupName": "claude reverse",
-          "groupMultiplier": 3.25
-        },
-        {
-          "groupName": "MAX account pool",
-          "groupMultiplier": 4.5
-        },
-        {
-          "groupName": "codex special",
-          "groupMultiplier": 0.08
-        },
-        {
-          "groupName": "claude-code-高速",
-          "groupMultiplier": 1.5
         }
       ],
       "rechargeTiers": [
@@ -6055,10 +6023,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 12,
+          "count": 7,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 12 条，可在本详情页查看。",
+          "message": "已归档 7 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\giot-live-auth-probe.json"
         },
         {
@@ -6091,14 +6059,6 @@
       "platformGuess": "special",
       "verifiedTierCount": 18,
       "groupMultipliers": [
-        {
-          "groupName": "default",
-          "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "vip",
-          "groupMultiplier": 1.0
-        },
         {
           "groupName": "aws",
           "groupMultiplier": 0.7
@@ -6504,10 +6464,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 6,
+          "count": 4,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 6 条，可在本详情页查看。",
+          "message": "已归档 4 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\avemujica-live-auth-probe.json"
         },
         {
@@ -7405,6 +7365,10 @@
       "verifiedTierCount": 85,
       "groupMultipliers": [
         {
+          "groupName": "CC-Azure",
+          "groupMultiplier": 1.0
+        },
+        {
           "groupName": "CC-aws-high",
           "groupMultiplier": 0.3
         },
@@ -7426,7 +7390,7 @@
         },
         {
           "groupName": "claude-cx",
-          "groupMultiplier": 0.1
+          "groupMultiplier": 0.03
         },
         {
           "groupName": "claude-max",
@@ -7446,7 +7410,11 @@
         },
         {
           "groupName": "codex",
-          "groupMultiplier": 0.1
+          "groupMultiplier": 0.03
+        },
+        {
+          "groupName": "codex-stable",
+          "groupMultiplier": 0.5
         },
         {
           "groupName": "default",
@@ -7459,22 +7427,6 @@
         {
           "groupName": "svip",
           "groupMultiplier": 0.1
-        },
-        {
-          "groupName": "CC-Azure",
-          "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "claude-cx",
-          "groupMultiplier": 0.03
-        },
-        {
-          "groupName": "codex",
-          "groupMultiplier": 0.03
-        },
-        {
-          "groupName": "codex-stable",
-          "groupMultiplier": 0.5
         }
       ],
       "rechargeTiers": [
@@ -7791,10 +7743,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 18,
+          "count": 16,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 18 条，可在本详情页查看。",
+          "message": "已归档 16 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\newcli-live-auth-probe.json"
         },
         {
@@ -8446,19 +8398,11 @@
         },
         {
           "groupName": "claude_kiro",
-          "groupMultiplier": 0.05
+          "groupMultiplier": 0.1
         },
         {
           "groupName": "claude_max",
           "groupMultiplier": 1.7
-        },
-        {
-          "groupName": "codex",
-          "groupMultiplier": 0.1
-        },
-        {
-          "groupName": "claude_kiro",
-          "groupMultiplier": 0.1
         },
         {
           "groupName": "codex",
@@ -8754,10 +8698,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 7,
+          "count": 5,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 7 条，可在本详情页查看。",
+          "message": "已归档 5 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\lumibest-live-auth-probe.json"
         },
         {
@@ -9125,14 +9069,6 @@
       "verifiedTierCount": 18,
       "groupMultipliers": [
         {
-          "groupName": "codexplus",
-          "groupMultiplier": 0.05
-        },
-        {
-          "groupName": "image2",
-          "groupMultiplier": 1.0
-        },
-        {
           "groupName": "codex-plus",
           "groupMultiplier": 0.11
         },
@@ -9486,10 +9422,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 6,
+          "count": 4,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 6 条，可在本详情页查看。",
+          "message": "已归档 4 条，可在本详情页查看。",
           "source": "http://hello-code.cn/api/v1/groups/available"
         },
         {
@@ -9928,7 +9864,7 @@
       "groupMultipliers": [
         {
           "groupName": "DeepSeek",
-          "groupMultiplier": 0.15
+          "groupMultiplier": 0.25
         },
         {
           "groupName": "aws-q",
@@ -9939,8 +9875,8 @@
           "groupMultiplier": 4.0
         },
         {
-          "groupName": "azure",
-          "groupMultiplier": 2.5
+          "groupName": "aws官转",
+          "groupMultiplier": 0.5
         },
         {
           "groupName": "cc-anthropic",
@@ -9999,10 +9935,6 @@
           "groupMultiplier": 2.5
         },
         {
-          "groupName": "openrouter特惠",
-          "groupMultiplier": 2.5
-        },
-        {
           "groupName": "supper",
           "groupMultiplier": 0.68
         },
@@ -10025,14 +9957,6 @@
         {
           "groupName": "福利分组",
           "groupMultiplier": 0.1
-        },
-        {
-          "groupName": "DeepSeek",
-          "groupMultiplier": 0.25
-        },
-        {
-          "groupName": "aws官转",
-          "groupMultiplier": 0.5
         }
       ],
       "rechargeTiers": [
@@ -10340,10 +10264,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 27,
+          "count": 24,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 27 条，可在本详情页查看。",
+          "message": "已归档 24 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\bytecat-live-auth-probe.json"
         },
         {
@@ -10378,7 +10302,7 @@
       "groupMultipliers": [
         {
           "groupName": "Claude",
-          "groupMultiplier": 11.0
+          "groupMultiplier": 10.0
         },
         {
           "groupName": "OpenAI-Image2",
@@ -10386,23 +10310,11 @@
         },
         {
           "groupName": "codex-cheap",
-          "groupMultiplier": 0.3
-        },
-        {
-          "groupName": "codex-pro-cheap",
-          "groupMultiplier": 0.5
+          "groupMultiplier": 0.8
         },
         {
           "groupName": "default",
           "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "Claude",
-          "groupMultiplier": 10.0
-        },
-        {
-          "groupName": "codex-cheap",
-          "groupMultiplier": 0.8
         }
       ],
       "rechargeTiers": [
@@ -10644,10 +10556,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 7,
+          "count": 4,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 7 条，可在本详情页查看。",
+          "message": "已归档 4 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\zerofra-live-auth-probe.json"
         },
         {
@@ -11006,11 +10918,11 @@
       "groupMultipliers": [
         {
           "groupName": "cn",
-          "groupMultiplier": 0.3
+          "groupMultiplier": 0.38
         },
         {
           "groupName": "default",
-          "groupMultiplier": 0.3
+          "groupMultiplier": 0.38
         },
         {
           "groupName": "grok",
@@ -11023,18 +10935,6 @@
         {
           "groupName": "vip",
           "groupMultiplier": 0.55
-        },
-        {
-          "groupName": "vip",
-          "groupMultiplier": 0.5
-        },
-        {
-          "groupName": "cn",
-          "groupMultiplier": 0.38
-        },
-        {
-          "groupName": "default",
-          "groupMultiplier": 0.38
         }
       ],
       "rechargeTiers": [
@@ -11393,10 +11293,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 8,
+          "count": 5,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 8 条，可在本详情页查看。",
+          "message": "已归档 5 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\17nas-live-auth-probe.json"
         },
         {
@@ -12416,15 +12316,11 @@
         },
         {
           "groupName": "Codex Pro",
-          "groupMultiplier": 0.3
+          "groupMultiplier": 0.6
         },
         {
           "groupName": "Codex Pro/ Team",
-          "groupMultiplier": 0.3
-        },
-        {
-          "groupName": "default",
-          "groupMultiplier": 1.0
+          "groupMultiplier": 0.6
         },
         {
           "groupName": "gpt-image",
@@ -12441,14 +12337,6 @@
         {
           "groupName": "满血cc max",
           "groupMultiplier": 2.4
-        },
-        {
-          "groupName": "Codex Pro",
-          "groupMultiplier": 0.6
-        },
-        {
-          "groupName": "Codex Pro/ Team",
-          "groupMultiplier": 0.6
         }
       ],
       "rechargeTiers": [
@@ -12822,10 +12710,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 10,
+          "count": 7,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 10 条，可在本详情页查看。",
+          "message": "已归档 7 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\goapis-live-auth-probe.json"
         },
         {
@@ -13136,12 +13024,12 @@
           "groupMultiplier": 0.3
         },
         {
-          "groupName": "ChatGpt-Plus",
-          "groupMultiplier": 0.15
-        },
-        {
           "groupName": "ClaudeCode-MAX满血(限制cc)",
           "groupMultiplier": 2.0
+        },
+        {
+          "groupName": "ChatGpt-Plus",
+          "groupMultiplier": 0.15
         }
       ],
       "rechargeTiers": [
@@ -13471,34 +13359,6 @@
       "verifiedTierCount": 63,
       "groupMultipliers": [
         {
-          "groupName": "Claude Code专用-Max号池",
-          "groupMultiplier": 1.5
-        },
-        {
-          "groupName": "CodeX专用-Plus号池",
-          "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "CodeX专用-Pro号池-稳定",
-          "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "CodeX专用-企业专供",
-          "groupMultiplier": 3.0
-        },
-        {
-          "groupName": "OpenAI-官key",
-          "groupMultiplier": 10.0
-        },
-        {
-          "groupName": "default",
-          "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "测试分组",
-          "groupMultiplier": 5.0
-        },
-        {
           "groupName": "Claude Code专用-逆向",
           "groupMultiplier": 0.7
         },
@@ -13509,6 +13369,14 @@
         {
           "groupName": "CodeX专用-Pro号池-稳定",
           "groupMultiplier": 0.8
+        },
+        {
+          "groupName": "CodeX专用-企业专供",
+          "groupMultiplier": 3.0
+        },
+        {
+          "groupName": "测试分组",
+          "groupMultiplier": 5.0
         }
       ],
       "rechargeTiers": [
@@ -13876,10 +13744,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 10,
+          "count": 5,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 10 条，可在本详情页查看。",
+          "message": "已归档 5 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\qiuqiutoken-live-auth-probe.json"
         },
         {
@@ -14247,10 +14115,6 @@
         {
           "groupName": "official",
           "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "openrouter_1x",
-          "groupMultiplier": 1.0
         }
       ],
       "rechargeTiers": [
@@ -14385,10 +14249,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 3,
+          "count": 2,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 3 条，可在本详情页查看。",
+          "message": "已归档 2 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\coai-work-live-auth-probe.json"
         },
         {
@@ -14960,10 +14824,6 @@
       "groupMultipliers": [
         {
           "groupName": "codex-plus",
-          "groupMultiplier": 0.1
-        },
-        {
-          "groupName": "codex-plus",
           "groupMultiplier": 0.12
         },
         {
@@ -15172,10 +15032,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 3,
+          "count": 2,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 3 条，可在本详情页查看。",
+          "message": "已归档 2 条，可在本详情页查看。",
           "source": "https://www.hi-code.cc/api/v1/groups/available"
         },
         {
@@ -15215,10 +15075,6 @@
         {
           "groupName": "codex福利（0.08x）",
           "groupMultiplier": 0.08
-        },
-        {
-          "groupName": "记录分组--购买sub2api账号2",
-          "groupMultiplier": 1.0
         }
       ],
       "rechargeTiers": [
@@ -15372,10 +15228,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 3,
+          "count": 2,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 3 条，可在本详情页查看。",
+          "message": "已归档 2 条，可在本详情页查看。",
           "source": "https://www.loomex.top/api/v1/groups/available"
         },
         {
@@ -15409,14 +15265,6 @@
       "verifiedTierCount": 33,
       "groupMultipliers": [
         {
-          "groupName": "Codex订阅",
-          "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "codex-订阅",
-          "groupMultiplier": 1.0
-        },
-        {
           "groupName": "Codex-Pro-Fast",
           "groupMultiplier": 0.3
         },
@@ -15441,16 +15289,28 @@
           "groupMultiplier": 4.1
         },
         {
-          "groupName": "测试",
-          "groupMultiplier": 3.0
-        },
-        {
-          "groupName": "Claude-AZ&AWS渠道",
-          "groupMultiplier": 2.3
+          "groupName": "Claude-AZ&AWS",
+          "groupMultiplier": 2.6
         },
         {
           "groupName": "国产模型-企业级",
           "groupMultiplier": 0.78
+        },
+        {
+          "groupName": "Gemini-企业级",
+          "groupMultiplier": 3.5
+        },
+        {
+          "groupName": "Claude-大厂蒸馏福利",
+          "groupMultiplier": 0.6
+        },
+        {
+          "groupName": "Codex-企业级",
+          "groupMultiplier": 0.35
+        },
+        {
+          "groupName": "Claude-AWS",
+          "groupMultiplier": 2.8
         },
         {
           "groupName": "智谱套餐",
@@ -15461,15 +15321,11 @@
           "groupMultiplier": 1.0
         },
         {
-          "groupName": "国产模型",
-          "groupMultiplier": 0.38
-        },
-        {
           "groupName": "Codex-Pro-Plus",
           "groupMultiplier": 0.2
         },
         {
-          "groupName": "Claude-高性价比反代",
+          "groupName": "Claude-高性价比",
           "groupMultiplier": 0.95
         },
         {
@@ -15477,36 +15333,8 @@
           "groupMultiplier": 1.75
         },
         {
-          "groupName": "Claude-企业",
-          "groupMultiplier": 3.0
-        },
-        {
-          "groupName": "Claude-AWS",
-          "groupMultiplier": 2.8
-        },
-        {
-          "groupName": "Claude-AZ&AWS",
-          "groupMultiplier": 2.6
-        },
-        {
           "groupName": "Claude-企业级",
           "groupMultiplier": 3.0
-        },
-        {
-          "groupName": "Claude-大厂蒸馏福利",
-          "groupMultiplier": 0.6
-        },
-        {
-          "groupName": "Claude-高性价比",
-          "groupMultiplier": 0.95
-        },
-        {
-          "groupName": "Codex-企业级",
-          "groupMultiplier": 0.35
-        },
-        {
-          "groupName": "Gemini-企业级",
-          "groupMultiplier": 3.5
         }
       ],
       "rechargeTiers": [
@@ -15733,10 +15561,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 25,
+          "count": 18,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 25 条，可在本详情页查看。",
+          "message": "已归档 18 条，可在本详情页查看。",
           "source": "https://aiapi.muskpay.top/api/v1/groups/available"
         },
         {
@@ -15963,11 +15791,11 @@
         },
         {
           "groupName": "cc-sale",
-          "groupMultiplier": 0.6
+          "groupMultiplier": 0.65
         },
         {
           "groupName": "cc-windsurf",
-          "groupMultiplier": 0.5
+          "groupMultiplier": 0.65
         },
         {
           "groupName": "default",
@@ -15984,18 +15812,6 @@
         {
           "groupName": "nano-banana(x1)",
           "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "openai(x0.5)",
-          "groupMultiplier": 0.5
-        },
-        {
-          "groupName": "cc-sale",
-          "groupMultiplier": 0.65
-        },
-        {
-          "groupName": "cc-windsurf",
-          "groupMultiplier": 0.65
         },
         {
           "groupName": "openai(x0.5)",
@@ -16376,10 +16192,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 13,
+          "count": 10,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 13 条，可在本详情页查看。",
+          "message": "已归档 10 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\onexmodel-live-auth-probe.json"
         },
         {
@@ -16413,6 +16229,10 @@
       "verifiedTierCount": 96,
       "groupMultipliers": [
         {
+          "groupName": "cc-anthropic",
+          "groupMultiplier": 3.0
+        },
+        {
           "groupName": "cc-antigravity",
           "groupMultiplier": 0.67
         },
@@ -16422,7 +16242,7 @@
         },
         {
           "groupName": "cc-aws-bedrock",
-          "groupMultiplier": 3.3
+          "groupMultiplier": 0.5
         },
         {
           "groupName": "cc-azure",
@@ -16441,12 +16261,20 @@
           "groupMultiplier": 2.35
         },
         {
+          "groupName": "cc-mix",
+          "groupMultiplier": 2.2
+        },
+        {
           "groupName": "cc-windsurf",
           "groupMultiplier": 0.4
         },
         {
           "groupName": "codex",
           "groupMultiplier": 0.2
+        },
+        {
+          "groupName": "default",
+          "groupMultiplier": 666666.0
         },
         {
           "groupName": "gemini",
@@ -16459,22 +16287,6 @@
         {
           "groupName": "nano-banana",
           "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "cc-anthropic",
-          "groupMultiplier": 3.0
-        },
-        {
-          "groupName": "cc-aws-bedrock",
-          "groupMultiplier": 0.5
-        },
-        {
-          "groupName": "cc-mix",
-          "groupMultiplier": 2.2
-        },
-        {
-          "groupName": "default",
-          "groupMultiplier": 666666.0
         }
       ],
       "rechargeTiers": [
@@ -16901,10 +16713,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 16,
+          "count": 15,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 16 条，可在本详情页查看。",
+          "message": "已归档 15 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\vbcode-live-auth-probe.json"
         },
         {

@@ -36,7 +36,11 @@ npm run site:data
 - 如果单站是账号权限或账号状态问题，而不是验证码/风控问题，可以配置站点级备用账号 Secret。命名规则为 `API_RELAY_SCRAPE_<STATION>_EMAIL` 和可选的 `API_RELAY_SCRAPE_<STATION>_PASSWORD`，其中 `<STATION>` 使用大写站点 key 并把非字母数字字符替换为 `_`；未配置站点级密码时默认复用 `API_RELAY_SCRAPE_PASSWORD`。例如 BossClaw 使用 `API_RELAY_SCRAPE_BOSSCLAW_EMAIL`，脚本会先尝试主账号，失败后再尝试备用账号，但日志只记录 `primary` / `bossclaw-fallback` 这类账号标签，不记录真实账号。
 - 线上自动刷新对需要账号直登的站点，以 `scripts/scrape_missing_announcements.py` 为唯一正式入口；`capture_tabbit_live_probes.py` 只用于人工补证据，不进入 GitHub Actions 主链路。
 - 登录态 probe 在 CI 中作为同一次 job 的临时输入，默认写到 checkout 父目录的 `tabbit-audit-profile/`，供随后重建读取；不提交 probe 文件、token、cookie 或密码。
-- 单站登录失败、接口返回空、需要登录、Turnstile/验证码/风控阻断时，只记录对应证据状态，不能用失败结果覆盖已有成功的结构化分组倍率或充值档位。
+- 单站登录失败、接口返回空、需要登录、Turnstile/验证码/风控阻断时，只记录对应运行状态，不能用失败或空结果覆盖已有成功详情数据。
+- 分组倍率和充值档位采用“非空整类替换”：只有当前刷新解析出对应类别的非空结构化数据时，才替换该站已有列表；抓取失败、接口为空、响应不可解析或只返回公开配置提示时，保留 `data/site-data.json`、`data/_public_fetch/` 或 live probe 中已有的旧数据。
+- 公告采用“非空合并去重”：当前刷新抓到新公告时与历史公告按 `id + publishedAt + content` 合并；公告接口为空、失败、缺失或被风控阻断时，不删除旧公告。
+- `_public_fetch` 写盘也遵守保旧规则：公开 `_status.json` 只有解析到非空公告才覆盖，公开 `_pricing.*` 只有解析到非空分组倍率或充值档位才覆盖；空抓取只进入本次运行报告并标记 `skipped/preserved_existing`。
+- live probe 写盘同样保守：分组、充值和公告接口只有返回可用非空内容才覆盖旧成功结果；公告会额外维护 `mergedAnnouncements`，便于后续刷新失败或为空时继续保留历史公告。
 - 对于 Turnstile、腾讯验证码、人机验证或其它风控阻断，自动化脚本不得尝试绕过，也不得把公开 401/403 当作最终缺失结论。处理方式是保留旧成功 probe，证据状态标记为 `blocked`，后续由用户在浏览器中完成验证后，再用 AI 辅助人工补抓并写入脱敏 live probe 或人工核验输入。
 - 对于已确认关闭、且明确决定不再收录的站点，必须同时移除识别规则和已有输入快照，避免下次重建时被旧日志或旧探针重新带回公开站点集合。
 - 本次线上自动化只覆盖全站展示数据：公开快照、可登录站点的分组倍率/充值档位/公告证据和 `data/site-data.json`。Codex Manager 本地 SQLite 日志、`quality_metrics.csv` 与 formal ranking CSV 仍保持手动刷新，不放到 GitHub 托管 runner 每日任务中。
