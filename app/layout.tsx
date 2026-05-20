@@ -1,12 +1,34 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import { DEFAULT_DESCRIPTION, SITE_TITLE, getSiteBaseUrl } from "@/lib/seo";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AI中转站监视者",
-  description: "api-relay-rank：查看中转站正式排名、全部档位倍率表与公开公告。",
-  applicationName: "AI中转站监视者"
+  metadataBase: new URL(getSiteBaseUrl()),
+  title: {
+    default: SITE_TITLE,
+    template: `%s | ${SITE_TITLE}`,
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_TITLE,
+  alternates: {
+    canonical: "/ranking",
+  },
+  openGraph: {
+    title: SITE_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    url: "/ranking",
+    siteName: SITE_TITLE,
+    locale: "zh_CN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: DEFAULT_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

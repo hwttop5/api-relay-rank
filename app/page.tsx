@@ -1,7 +1,7 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 export default function HomePage() {
-  redirect("/ranking");
+  permanentRedirect("/ranking");
 }

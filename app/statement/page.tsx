@@ -1,8 +1,15 @@
 import { AppShell, StatusChip } from "@/components/app-shell";
 import { DeclarationPanels } from "@/components/ranking-dashboard";
+import { pageMetadata } from "@/lib/seo";
 import { getSiteData } from "@/lib/site-data";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
+
+export const metadata = pageMetadata({
+  title: "排名口径与特别声明",
+  description: "说明 AI 中转站排名的数据来源、评分权重、Codex 倍率口径、工作时段划分和使用风险提示。",
+  pathname: "/statement",
+});
 
 export default async function StatementPage() {
   const siteData = await getSiteData();

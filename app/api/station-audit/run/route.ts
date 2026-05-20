@@ -1,5 +1,6 @@
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
+import { revalidatePath } from "next/cache";
 
 import { getSiteData } from "@/lib/site-data";
 import type { SiteData, StationAuditSummary } from "@/lib/types";
@@ -163,6 +164,13 @@ export async function POST(request: Request) {
   } catch (error) {
     return jsonResponse({ error: "Failed to rebuild site data.", detail: sanitizeAuditDetail(error, [apiKey]) }, 500);
   }
+
+  revalidatePath("/");
+  revalidatePath("/ranking");
+  revalidatePath("/audit");
+  revalidatePath("/statement");
+  revalidatePath(`/stations/${encodeURIComponent(stationKey)}`);
+  revalidatePath("/sitemap.xml");
 
   const station = siteData.stations.find((item) => item.key === stationKey);
   const summary = station?.audits?.latestByModel.find((item) => item.model === model) as StationAuditSummary | undefined;
