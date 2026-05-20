@@ -50,6 +50,8 @@ jobs:
         env:
           API_RELAY_SCRAPE_EMAIL: ${{ secrets.API_RELAY_SCRAPE_EMAIL }}
           API_RELAY_SCRAPE_PASSWORD: ${{ secrets.API_RELAY_SCRAPE_PASSWORD }}
+          API_RELAY_SCRAPE_BOSSCLAW_EMAIL: ${{ secrets.API_RELAY_SCRAPE_BOSSCLAW_EMAIL }}
+          API_RELAY_SCRAPE_BOSSCLAW_PASSWORD: ${{ secrets.API_RELAY_SCRAPE_BOSSCLAW_PASSWORD }}
         run: |
           set -euo pipefail
           if [[ -z "${API_RELAY_SCRAPE_EMAIL}" || -z "${API_RELAY_SCRAPE_PASSWORD}" ]]; then

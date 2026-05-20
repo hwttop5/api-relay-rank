@@ -2,6 +2,8 @@ node_modules/
 .next/
 .next-dev/
 .playwright-mcp/
+.playwright-cli/
+*auth-capture.json
 *.log
 .next-*.log
 devserver.log
@@ -12,3 +14,19 @@ __pycache__/
 data/_audit_runs/
 
 .vercel
+
+# Local refresh inputs and generated audit/ranking outputs.
+.local-artifacts/
+composite_ranking_*.csv
+login_verification_checklist.csv
+monthly_full_use_cost_ranking.csv
+multiplier_audit_summary.md
+multiplier_tiers.csv
+package_full_use_cost_ranking.csv
+payg_cost_ranking.csv
+pending_evidence.csv
+public_fee_evidence.csv
+public_probe_results.csv
+quality_metrics.csv
+verified_multiplier_inputs.csv
+verified_multiplier_inputs.csv.*

@@ -7,6 +7,8 @@ import os
 import re
 from copy import deepcopy
 from datetime import UTC, datetime
+from html import unescape
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 from urllib.parse import quote, urlparse, urlunparse
@@ -15,7 +17,7 @@ from urllib.parse import quote, urlparse, urlunparse
 SCRIPT_PATH = Path(__file__).resolve()
 APP_ROOT = SCRIPT_PATH.parents[1]
 WORKSPACE_ROOT = SCRIPT_PATH.parents[2]
-SOURCE_ROOTS = [APP_ROOT, WORKSPACE_ROOT]
+SOURCE_ROOTS = [APP_ROOT]
 DATA_DIR = APP_ROOT / "data"
 SITE_DATA_PATH = DATA_DIR / "site-data.json"
 PUBLIC_FETCH_DIR = Path(os.environ.get("PUBLIC_FETCH_DIR", DATA_DIR / "_public_fetch"))
@@ -23,6 +25,7 @@ AUDIT_RUNS_DIR = DATA_DIR / "_audit_runs"
 PUBLIC_FETCH_DIRS = [PUBLIC_FETCH_DIR]
 LIVE_AUTH_PROBE_DIR = WORKSPACE_ROOT / "tabbit-audit-profile"
 STATION_PRICING_OVERRIDES_PATH = APP_ROOT / "config" / "station_pricing_overrides.json"
+STATION_URL_OVERRIDES_PATH = APP_ROOT / "config" / "station_url_overrides.json"
 STATION_AUDIT_TARGETS_PATH = APP_ROOT / "config" / "station_audit_targets.json"
 STATION_ALIASES_PATH = APP_ROOT / "config" / "station_aliases.json"
 
@@ -71,6 +74,7 @@ APP_CONFIG_PATTERN = re.compile(
 URL_PATTERN = re.compile(r"https?://[^\s\"'<>]+")
 TRAILING_UI_SEGMENTS = {"console", "dashboard", "wallet", "keys", "purchase", "pricing", "plans", "api-keys"}
 LOCALE_SEGMENT_PATTERN = re.compile(r"^[A-Za-z]{2}(?:-[A-Za-z]{2})?$")
+PAYMENT_URL_PATH_SEGMENTS = {"shop", "item", "pay", "checkout", "payment"}
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -145,6 +149,10 @@ def is_public_station_key(station_key: Any) -> bool:
         return False
     if "printcap.ai-" in lowered:
         return False
+    if "://" in text:
+        return False
+    if any(ch in text for ch in "（）()"):
+        return False
     return True
 
 
@@ -165,6 +173,75 @@ def normalize_public_text(value: Any) -> str:
     text = sanitize_public_text(value)
     text = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)", r"\1 \2", text)
     return text
+
+
+class AnnouncementHtmlTextParser(HTMLParser):
+    BLOCK_TAGS = {"address", "blockquote", "div", "h1", "h2", "h3", "h4", "h5", "h6", "li", "ol", "p", "section", "table", "tr", "ul"}
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.parts: list[str] = []
+        self.href_stack: list[str] = []
+
+    def append_break(self) -> None:
+        if self.parts and not self.parts[-1].endswith("\n"):
+            self.parts.append("\n")
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        lowered = tag.lower()
+        if lowered == "br" or (lowered in self.BLOCK_TAGS and lowered not in {"p", "li"}):
+            self.append_break()
+        if lowered == "li":
+            self.append_break()
+            self.parts.append("- ")
+        if lowered == "a":
+            href = ""
+            for key, value in attrs:
+                if key.lower() == "href" and value:
+                    href = value
+                    break
+            self.href_stack.append(href)
+
+    def handle_endtag(self, tag: str) -> None:
+        lowered = tag.lower()
+        if lowered == "a":
+            href = self.href_stack.pop() if self.href_stack else ""
+            if href.startswith(("http://", "https://")):
+                current_line = "".join(self.parts).split("\n")[-1]
+                if href not in current_line:
+                    self.parts.append(f" {href}")
+        if lowered in self.BLOCK_TAGS:
+            self.append_break()
+
+    def handle_data(self, data: str) -> None:
+        if data:
+            self.parts.append(data)
+
+    def text(self) -> str:
+        text = "".join(self.parts)
+        text = unescape(text)
+        text = text.replace("\xa0", " ")
+        text = re.sub(r"[ \t\f\v]+", " ", text)
+        text = re.sub(r" *\n+ *", "\n", text)
+        text = re.sub(r"\n{3,}", "\n\n", text)
+        return text.strip()
+
+
+def html_to_text(value: Any) -> str:
+    text = str(value or "")
+    if not re.search(r"<[A-Za-z][^>]*>", text):
+        return unescape(text)
+    parser = AnnouncementHtmlTextParser()
+    try:
+        parser.feed(text)
+        parser.close()
+    except Exception:  # noqa: BLE001
+        return re.sub(r"<[^>]+>", "", unescape(text))
+    return parser.text()
+
+
+def normalize_announcement_text(value: Any) -> str:
+    return normalize_public_text(html_to_text(value))
 
 
 def load_station_aliases() -> dict[str, str]:
@@ -311,6 +388,45 @@ def choose_best_url(urls: list[str]) -> str:
     if not candidates:
         return ""
     return max(candidates, key=score)
+
+
+def is_payment_evidence_url(value: Any) -> bool:
+    text = sanitize_public_text(value)
+    if not text:
+        return False
+    parsed = urlparse(text)
+    host = parsed.netloc.lower()
+    if host.startswith("pay.") or ".pay." in host:
+        return True
+    segments = [segment.lower() for segment in parsed.path.split("/") if segment]
+    return any(segment in PAYMENT_URL_PATH_SEGMENTS for segment in segments)
+
+
+def choose_display_url(
+    station_key: str,
+    urls: list[str],
+    url_overrides: dict[str, str] | None = None,
+    current_url: Any = "",
+) -> str:
+    override_url = sanitize_public_text((url_overrides or {}).get(station_key))
+    if override_url and is_public_station_url(override_url):
+        return override_url
+
+    current_candidates = [
+        url
+        for url in extract_public_url_candidates(current_url)
+        if not is_payment_evidence_url(url)
+    ]
+    if current_candidates:
+        return choose_best_url(current_candidates)
+
+    expanded_urls = dedupe_strings(
+        candidate
+        for url in urls
+        for candidate in extract_public_url_candidates(url)
+    )
+    preferred_urls = [url for url in expanded_urls if not is_payment_evidence_url(url)]
+    return choose_best_url(preferred_urls or urls)
 
 
 def format_plain_number(value: float | None) -> str:
@@ -769,15 +885,15 @@ def load_announcements(status_payloads: dict[str, dict[str, Any]]) -> dict[str, 
         for index, item in enumerate(announcements, start=1):
             if not isinstance(item, dict):
                 continue
-            content = normalize_public_text(item.get("content"))
+            content = normalize_announcement_text(item.get("content"))
             if not content:
                 continue
             rows.append(
                 {
                     "id": str(item.get("id") or index),
                     "publishedAt": str(item.get("publishDate") or ""),
-                    "type": sanitize_public_text(item.get("type") or "default"),
-                    "extra": normalize_public_text(item.get("extra")),
+                    "type": normalize_announcement_text(item.get("type") or "default"),
+                    "extra": normalize_announcement_text(item.get("extra")),
                     "content": content,
                     "sourceUrl": source_url,
                 }
@@ -852,6 +968,21 @@ def looks_like_notice_text(value: str) -> bool:
     lowered = text[:300].lower()
     if lowered.startswith("<!doctype") or lowered.startswith("<html") or "<script" in lowered:
         return False
+    if any(
+        lowered.startswith(marker)
+        for marker in (
+            "404 page not found",
+            "404 not found",
+            "not found",
+            "authorization header is required",
+            "unauthorized",
+            "invalid token",
+            "forbidden",
+        )
+    ):
+        return False
+    if re.match(r"^\d{3}\s", lowered):
+        return False
     return True
 
 
@@ -862,6 +993,18 @@ def extract_collection(raw: Any, *, allow_text_item: bool = False) -> tuple[list
         return [{"content": raw}], True
     if not isinstance(raw, dict):
         return [], False
+    for key in ("announcement", "notice"):
+        if key not in raw:
+            continue
+        item = raw.get(key)
+        if item is None:
+            return [], True
+        if isinstance(item, list):
+            return item, True
+        if isinstance(item, dict):
+            return [item], True
+        if allow_text_item and isinstance(item, str) and looks_like_notice_text(item):
+            return [{"content": item}], True
     for key in ("announcements", "items", "list", "records", "rows", "data"):
         if key not in raw:
             continue
@@ -872,8 +1015,8 @@ def extract_collection(raw: Any, *, allow_text_item: bool = False) -> tuple[list
 
 
 def normalize_live_announcement(station_key: str, item: dict[str, Any], index: int, source_url: str) -> dict[str, Any] | None:
-    title = normalize_public_text(item.get("title") or item.get("name") or item.get("subject"))
-    content = normalize_public_text(
+    title = normalize_announcement_text(item.get("title") or item.get("name") or item.get("subject"))
+    content = normalize_announcement_text(
         item.get("content")
         or item.get("message")
         or item.get("body")
@@ -892,7 +1035,7 @@ def normalize_live_announcement(station_key: str, item: dict[str, Any], index: i
         or item.get("updatedAt")
         or item.get("updated_at")
     )
-    extra = normalize_public_text(item.get("extra") or item.get("summary") or "")
+    extra = normalize_announcement_text(item.get("extra") or item.get("summary") or "")
     if title and title != content:
         extra = title if not extra else f"{title} | {extra}"
     return {
@@ -908,14 +1051,28 @@ def normalize_live_announcement(station_key: str, item: dict[str, Any], index: i
 def live_probe_announcements_and_status(station_key: str, probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]]:
     first_failure: dict[str, str] | None = None
     first_empty: dict[str, str] | None = None
-    for api_path in ("/api/v1/announcements", "/api/announcements", "/api/status", "/api/notice", "/api/notices"):
+    for api_path in (
+        "/api/v1/announcements",
+        "/api/announcements",
+        "/api/announcements/active?locale=zh-CN",
+        "/api/announcements/active?locale=en",
+        "/api/user/announcements",
+        "/api/user/announcements/unread-popup",
+        "/api/user/announcements/unread-count",
+        "/api/status",
+        "/api/notice",
+        "/api/notices",
+    ):
         entry = find_probe_result(probe, api_path)
         if entry is None:
             continue
         status = int(entry.get("status") or 0)
         ok = bool(entry.get("ok"))
         body = probe_result_body_from_entry(entry)
-        rows, found = extract_collection(body, allow_text_item="notice" in api_path.lower())
+        rows, found = extract_collection(
+            body,
+            allow_text_item="notice" in api_path.lower(),
+        )
         source_url = probe_source_url(probe, api_path)
         if status and not ok and status >= 400:
             if entry_is_blocked(entry):
@@ -1165,6 +1322,74 @@ def normalize_live_probe_status(status: dict[str, str]) -> dict[str, str]:
     return status
 
 
+def probe_login_block_status(probe: dict[str, Any], *, message: str) -> dict[str, str] | None:
+    if not isinstance(probe, dict):
+        return None
+    capture = probe.get("announcementCapture")
+    if not isinstance(capture, dict):
+        return None
+
+    if capture.get("loginBlocked") is True:
+        path = sanitize_public_text(capture.get("blockPath") or "/api/v1/auth/login")
+        source = probe_location(probe).rstrip("/") + path if path.startswith("/") else probe_location(probe)
+        return {
+            "status": "blocked",
+            "source": sanitize_public_text(source),
+            "message": message,
+        }
+
+    attempts = capture.get("loginAttempts")
+    if not isinstance(attempts, list):
+        return None
+    for attempt in attempts:
+        if not isinstance(attempt, dict):
+            continue
+        attempt_text = json.dumps(attempt, ensure_ascii=False).lower()
+        if any(marker in attempt_text for marker in ("turnstile", "captcha", "验证码", "人机验证", "风控")):
+            path = sanitize_public_text(attempt.get("path") or "/api/v1/auth/login")
+            source = probe_location(probe).rstrip("/") + path if path.startswith("/") else probe_location(probe)
+            return {
+                "status": "blocked",
+                "source": sanitize_public_text(source),
+                "message": message,
+            }
+    return None
+
+
+def public_probe_root_status(public_probe: dict[str, Any] | None) -> dict[str, str] | None:
+    if not isinstance(public_probe, dict):
+        return None
+    results = public_probe.get("results")
+    if not isinstance(results, dict):
+        return None
+    root_entry = results.get("/")
+    if not isinstance(root_entry, dict):
+        return None
+
+    source = sanitize_public_text(root_entry.get("url") or public_probe.get("baseUrl") or public_probe.get("base_url"))
+    status_code = int(root_entry.get("status") or 0)
+    if status_code == 404:
+        return {
+            "status": "failed",
+            "source": source,
+            "message": "当前站点入口返回 HTTP 404；历史样本仍保留，但当前入口已失效或不可访问。",
+        }
+    if status_code >= 500:
+        return {
+            "status": "failed",
+            "source": source,
+            "message": f"当前站点入口返回 HTTP {status_code}；历史样本仍保留，但当前入口暂不可访问。",
+        }
+    error_text = normalize_public_text(root_entry.get("error"))
+    if error_text:
+        return {
+            "status": "failed",
+            "source": source,
+            "message": f"当前站点入口探测失败：{error_text}",
+        }
+    return None
+
+
 def load_live_probe_snapshots(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
     snapshots: dict[str, dict[str, Any]] = {}
     for station_key, probe in load_live_auth_probes(station_aliases).items():
@@ -1184,6 +1409,7 @@ def load_live_probe_snapshots(station_aliases: dict[str, str] | None = None) -> 
                 "rechargeTiers": recharge_status,
             },
             "sourceUrl": probe_location(probe),
+            "rawProbe": probe,
         }
     return snapshots
 
@@ -1647,9 +1873,12 @@ def load_public_probe_snapshots(station_aliases: dict[str, str] | None = None) -
                 {
                     "urls": [],
                     "evidenceStatus": {},
+                    "rawPayload": {},
                 },
             )
             bucket["urls"].extend(collect_public_urls(payload))
+            if isinstance(payload.get("results"), dict):
+                bucket["rawPayload"] = payload
             source = sanitize_public_text(payload.get("baseUrl") or payload.get("base_url") or payload.get("location"))
             if source:
                 bucket["evidenceStatus"]["publicProbe"] = {
@@ -1823,6 +2052,21 @@ def load_station_pricing_overrides(station_aliases: dict[str, str] | None = None
     return overrides
 
 
+def load_station_url_overrides(station_aliases: dict[str, str] | None = None) -> dict[str, str]:
+    if not STATION_URL_OVERRIDES_PATH.exists():
+        return {}
+    payload = json.loads(STATION_URL_OVERRIDES_PATH.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict):
+        return {}
+    overrides: dict[str, str] = {}
+    for station_key, value in payload.items():
+        canonical_key = canonical_station_key(station_key, station_aliases)
+        override_url = sanitize_public_text(value)
+        if canonical_key and is_public_station_url(override_url):
+            overrides[canonical_key] = override_url
+    return overrides
+
+
 def apply_public_pricing_snapshots(
     stations: dict[str, dict[str, Any]],
     station_urls: dict[str, set[str]],
@@ -1921,36 +2165,65 @@ def build_station_evidence_status(station: dict[str, Any], live_snapshot: dict[s
     live_statuses = (live_snapshot or {}).get("evidenceStatus") if isinstance(live_snapshot, dict) else {}
     live_statuses = live_statuses if isinstance(live_statuses, dict) else {}
     platform = str(station.get("platformGuess") or "").strip().lower()
+    public_probe_snapshot = station.get("_publicProbeSnapshot") if isinstance(station.get("_publicProbeSnapshot"), dict) else None
+    root_unavailable_status = public_probe_root_status(public_probe_snapshot)
+    announcement_live_status = (
+        live_statuses.get("announcements")
+        if isinstance(live_statuses.get("announcements"), dict)
+        else None
+    )
+    login_block_status = None
+    if isinstance(live_snapshot, dict):
+        login_block_status = probe_login_block_status(
+            live_snapshot.get("rawProbe"),
+            message="公告接口被验证码或风控阻断",
+        )
     sub2api_login_message = "sub2api 的该类接口通常需要登录态；当前公开快照或已归档 probe 没有可用结构化数据。"
     announcement_message = (
         "sub2api 公告通常位于登录态 /api/v1/announcements；当前没有抓到可展示内容。"
         if platform == "sub2api"
         else "未发现标准公开公告接口或接口未返回公告内容。"
     )
+    group_live_status = live_statuses.get("groupMultipliers") if isinstance(live_statuses.get("groupMultipliers"), dict) else None
+    recharge_live_status = live_statuses.get("rechargeTiers") if isinstance(live_statuses.get("rechargeTiers"), dict) else None
+    if root_unavailable_status and (group_live_status or {}).get("status") == "login_required":
+        group_live_status = root_unavailable_status
+    if root_unavailable_status and (recharge_live_status or {}).get("status") == "login_required":
+        recharge_live_status = root_unavailable_status
+    if login_block_status and (
+        announcement_live_status is None
+        or (announcement_live_status or {}).get("status") in {"login_required", "failed", "missing", "public_missing", ""}
+    ):
+        announcement_live_status = login_block_status
+    if root_unavailable_status and (
+        announcement_live_status is None
+        or (announcement_live_status or {}).get("status") in {"login_required", "failed", "public_missing", ""}
+    ):
+        announcement_live_status = root_unavailable_status
     evidence_rows = [
         evidence_item(
             key="groupMultipliers",
             label="分组倍率",
             count=len(station.get("groupMultipliers", [])),
             fallback_status="login_required" if platform == "sub2api" else "missing",
-            fallback_message=sub2api_login_message if platform == "sub2api" else "当前未抓到结构化分组倍率。",
-            live_status=live_statuses.get("groupMultipliers") if isinstance(live_statuses.get("groupMultipliers"), dict) else None,
+            fallback_message=root_unavailable_status["message"] if root_unavailable_status else (sub2api_login_message if platform == "sub2api" else "当前未抓到结构化分组倍率。"),
+            live_status=group_live_status or root_unavailable_status,
         ),
         evidence_item(
             key="rechargeTiers",
             label="充值档位",
             count=len(station.get("rechargeTiers", [])),
             fallback_status="login_required" if platform == "sub2api" else "missing",
-            fallback_message=sub2api_login_message if platform == "sub2api" else "当前未抓到结构化充值档位。",
-            live_status=live_statuses.get("rechargeTiers") if isinstance(live_statuses.get("rechargeTiers"), dict) else None,
+            fallback_message=root_unavailable_status["message"] if root_unavailable_status else (sub2api_login_message if platform == "sub2api" else "当前未抓到结构化充值档位。"),
+            live_status=recharge_live_status or root_unavailable_status,
         ),
         evidence_item(
             key="announcements",
             label="公告",
             count=len(station.get("announcements", [])),
             fallback_status="login_required" if platform == "sub2api" else "public_missing",
-            fallback_message=announcement_message,
-            live_status=live_statuses.get("announcements") if isinstance(live_statuses.get("announcements"), dict) else None,
+            fallback_message=root_unavailable_status["message"] if root_unavailable_status else announcement_message,
+            live_status=announcement_live_status or root_unavailable_status,
         ),
     ]
     if station.get("_publicProbeCaptured") or isinstance(live_statuses.get("publicProbe"), dict):
@@ -2289,21 +2562,33 @@ def main() -> int:
     for station_key, payload in status_payloads.items():
         if not is_public_station_key(station_key):
             continue
+        if station_key not in stations:
+            continue
         data = payload.get("data") if isinstance(payload, dict) else {}
         if isinstance(data, dict):
             source_url = sanitize_public_text(data.get("server_address"))
             if source_url:
                 add_station_url(station_urls, station_key, source_url, station_aliases)
 
-    pricing_snapshots = load_public_pricing_snapshots(station_aliases)
+    pricing_snapshots = {
+        station_key: snapshot
+        for station_key, snapshot in load_public_pricing_snapshots(station_aliases).items()
+        if station_key in stations
+    }
     apply_public_pricing_snapshots(stations, station_urls, pricing_snapshots, station_aliases=station_aliases)
 
-    public_probes = load_public_probe_snapshots(station_aliases)
+    public_probes = {
+        station_key: snapshot
+        for station_key, snapshot in load_public_probe_snapshots(station_aliases).items()
+        if station_key in stations
+    }
     for station_key, snapshot in public_probes.items():
         for url in snapshot.get("urls", []):
             add_station_url(station_urls, station_key, url, station_aliases)
         if station_key in stations:
             stations[station_key]["_publicProbeCaptured"] = True
+            if isinstance(snapshot.get("rawPayload"), dict):
+                stations[station_key]["_publicProbeSnapshot"] = snapshot["rawPayload"]
             if snapshot.get("evidenceStatus", {}).get("publicProbe"):
                 stations[station_key].setdefault("_publicEvidenceStatus", {})
                 stations[station_key]["_publicEvidenceStatus"]["publicProbe"] = snapshot["evidenceStatus"]["publicProbe"]
@@ -2311,13 +2596,20 @@ def main() -> int:
     for station_key, rows in announcements.items():
         if not is_public_station_key(station_key):
             continue
+        if station_key not in stations:
+            continue
         station = ensure_station(stations, station_key, station_aliases=station_aliases)
         station["announcements"] = merge_announcements(station.get("announcements", []), rows)
 
-    live_snapshots = load_live_probe_snapshots(station_aliases)
+    live_snapshots = {
+        station_key: snapshot
+        for station_key, snapshot in load_live_probe_snapshots(station_aliases).items()
+        if station_key in stations
+    }
     apply_live_probe_snapshots(stations, station_urls, live_snapshots, station_aliases=station_aliases)
 
     overrides = load_station_pricing_overrides(station_aliases)
+    url_overrides = load_station_url_overrides(station_aliases)
     apply_station_pricing_overrides(stations, overrides, station_aliases=station_aliases)
 
     audit_targets = load_station_audit_targets(station_aliases)
@@ -2341,7 +2633,12 @@ def main() -> int:
     for station in station_list:
         station["rechargeTiers"] = sort_recharge_tiers(station.get("rechargeTiers", []))
         url_choices = dedupe_strings(list(station_urls.get(station["key"], set())) + [station.get("url", "")])
-        station["url"] = choose_best_url(url_choices)
+        station["url"] = choose_display_url(
+            station["key"],
+            url_choices,
+            url_overrides,
+            current_url=station.get("url", ""),
+        )
         station["dataEvidence"] = build_station_evidence_status(station, live_snapshots.get(station["key"]))
         if station.get("_publicEvidenceStatus"):
             for item in station["dataEvidence"]:
@@ -2366,6 +2663,7 @@ def main() -> int:
             station.pop("audits", None)
         station.pop("_publicProbeCaptured", None)
         station.pop("_publicEvidenceStatus", None)
+        station.pop("_publicProbeSnapshot", None)
 
     sync_station_metadata_into_rows(stations, rankings)
 

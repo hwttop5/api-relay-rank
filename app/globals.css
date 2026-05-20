@@ -1280,8 +1280,78 @@ select:focus-visible {
 .announcement-content {
   color: var(--muted-strong);
   overflow-wrap: anywhere;
-  white-space: pre-wrap;
   font-size: 13px;
+  line-height: 1.75;
+}
+
+.announcement-content p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.announcement-content p + p,
+.announcement-content p + .announcement-heading,
+.announcement-content .announcement-heading + p,
+.announcement-content .announcement-list + p,
+.announcement-content .announcement-table-wrap + p {
+  margin-top: 12px;
+}
+
+.announcement-heading {
+  margin: 14px 0 8px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.announcement-divider {
+  margin: 16px 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+.announcement-list {
+  margin: 8px 0 12px;
+  padding-left: 20px;
+}
+
+.announcement-list li + li {
+  margin-top: 4px;
+}
+
+.announcement-table-wrap {
+  margin: 10px 0 14px;
+  overflow-x: auto;
+}
+
+.announcement-table {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.announcement-table th,
+.announcement-table td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.announcement-table th {
+  color: var(--text);
+  background: var(--panel-soft);
+  font-weight: 700;
+}
+
+.announcement-content code {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 4px;
+  background: var(--panel-soft);
+  color: var(--text);
 }
 
 .announcement-content a,

@@ -1,7 +1,7 @@
 {
   "siteName": "AI中转站监视者",
   "projectName": "api-relay-rank",
-  "generatedAt": "2026-05-19 11:47:06 +0800",
+  "generatedAt": "2026-05-20 02:20:55 +0800",
   "timezone": "Asia/Shanghai",
   "defaultTimeWindow": "work_hours",
   "defaultSort": "composite",
@@ -133,14 +133,14 @@
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
-        "totalScore": 96.53008760040379,
-        "successScore": 96.2566844919786,
-        "latencyScore": 94.42755604986698,
+        "totalScore": 96.73097757939902,
+        "successScore": 95.39007092198581,
+        "latencyScore": 95.99194292698799,
         "costScore": 99.91107674463561,
-        "correctRate": 0.9625668449197861,
-        "avgSeconds": 41.67757754010695,
-        "medianSeconds": 29.273,
-        "p95Seconds": 120.51389999999995,
+        "correctRate": 0.9539007092198581,
+        "avgSeconds": 37.39778014184397,
+        "medianSeconds": 26.5425,
+        "p95Seconds": 98.09999999999988,
         "effectiveMultiplier": 0.02,
         "feeVerified": true,
         "adoptedTier": "cx_free | wallet topup 10 RMB",
@@ -149,13 +149,13 @@
         "billingType": "permanent",
         "billingTypeLabel": "永久额度",
         "multiplierFullUseAssumption": "未注明有效期；余额充值",
-        "requests": 187,
-        "correct": 180,
-        "failures": 7,
-        "http2xx": 180,
+        "requests": 282,
+        "correct": 269,
+        "failures": 13,
+        "http2xx": 269,
         "http200WithError": 0,
         "firstAt": "2026-05-13 10:31:44 +0800",
-        "lastAt": "2026-05-18 17:49:51 +0800"
+        "lastAt": "2026-05-19 17:18:05 +0800"
       },
       {
         "rank": 4,
@@ -164,7 +164,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "api.xiaoxin.best",
         "label": "api.xiaoxin.best",
-        "stationUrl": "https://pay.ldxp.cn",
+        "stationUrl": "https://api.xiaoxin.best",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -234,7 +234,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "4router",
         "label": "4Router",
-        "stationUrl": "https://4router.net",
+        "stationUrl": "https://4Router.net",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -343,14 +343,14 @@
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
-        "totalScore": 82.04668602258994,
-        "successScore": 88.12095032397409,
-        "latencyScore": 63.55396779127368,
+        "totalScore": 82.15893936162074,
+        "successScore": 87.95918367346938,
+        "latencyScore": 64.05956778908134,
         "costScore": 98.21766866421805,
-        "correctRate": 0.8812095032397408,
-        "avgSeconds": 126.14050971922246,
-        "medianSeconds": 114.844,
-        "p95Seconds": 300.007,
+        "correctRate": 0.8795918367346939,
+        "avgSeconds": 124.75730612244898,
+        "medianSeconds": 113.0775,
+        "p95Seconds": 300.00755,
         "effectiveMultiplier": 0.14,
         "feeVerified": true,
         "adoptedTier": "官方 API 1:1 | 5000美金额度",
@@ -359,13 +359,13 @@
         "billingType": "permanent",
         "billingTypeLabel": "永久额度",
         "multiplierFullUseAssumption": "永久额度；定价页说明永久有效、不清零、无日限周限月限；按官网模型价格 1:1 扣减",
-        "requests": 463,
-        "correct": 408,
-        "failures": 55,
-        "http2xx": 408,
+        "requests": 490,
+        "correct": 431,
+        "failures": 59,
+        "http2xx": 431,
         "http200WithError": 0,
         "firstAt": "2026-05-06 11:49:56 +0800",
-        "lastAt": "2026-05-15 16:26:53 +0800"
+        "lastAt": "2026-05-15 17:06:07 +0800"
       },
       {
         "rank": 10,
@@ -374,7 +374,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "coolplay",
         "label": "Coolplay API",
-        "stationUrl": "https://pay.ldxp.cn",
+        "stationUrl": "https://cp.coolplay-api.fun:55555",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -512,6 +512,41 @@
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "work_hours",
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
+        "station": "freemodel",
+        "label": "freemodel",
+        "stationUrl": "https://freemodel.dev",
+        "stationType": "mixed",
+        "stationTypeLabel": "混合型中转站",
+        "stationTypeShortLabel": "混合型",
+        "totalScore": 78.0132720890884,
+        "successScore": 60.96491228070175,
+        "latencyScore": 82.35977805297826,
+        "costScore": 99.20553943306122,
+        "correctRate": 0.6096491228070176,
+        "avgSeconds": 74.69220175438596,
+        "medianSeconds": 57.17,
+        "p95Seconds": 211.88074999999972,
+        "effectiveMultiplier": 0.06999650017499125,
+        "feeVerified": true,
+        "adoptedTier": "default | Pro 月卡",
+        "adoptedGroup": "default",
+        "adoptedRechargeName": "Pro 月卡",
+        "billingType": "monthly",
+        "billingTypeLabel": "月卡",
+        "multiplierFullUseAssumption": "按 30 天满额使用折算；7 天额度上限 66.67 美元；1 个月订阅；手动续费，不自动扣款",
+        "requests": 912,
+        "correct": 556,
+        "failures": 356,
+        "http2xx": 556,
+        "http200WithError": 0,
+        "firstAt": "2026-05-11 11:02:52 +0800",
+        "lastAt": "2026-05-19 17:59:03 +0800"
+      },
+      {
+        "rank": 15,
+        "rankingBasis": "formal_high_confidence",
+        "timeWindow": "work_hours",
+        "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "lumibest",
         "label": "lumibest",
         "stationUrl": "https://lumibest.store",
@@ -543,48 +578,13 @@
         "lastAt": "2026-05-15 15:37:03 +0800"
       },
       {
-        "rank": 15,
-        "rankingBasis": "formal_high_confidence",
-        "timeWindow": "work_hours",
-        "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
-        "station": "freemodel",
-        "label": "freemodel",
-        "stationUrl": "https://freemodel.dev",
-        "stationType": "mixed",
-        "stationTypeLabel": "混合型中转站",
-        "stationTypeShortLabel": "混合型",
-        "totalScore": 73.76483269846352,
-        "successScore": 52.71084337349398,
-        "latencyScore": 79.65460140228748,
-        "costScore": 99.20553943306122,
-        "correctRate": 0.5271084337349398,
-        "avgSeconds": 82.09293373493975,
-        "medianSeconds": 60.886,
-        "p95Seconds": 231.426,
-        "effectiveMultiplier": 0.06999650017499125,
-        "feeVerified": true,
-        "adoptedTier": "default | Pro 月卡",
-        "adoptedGroup": "default",
-        "adoptedRechargeName": "Pro 月卡",
-        "billingType": "monthly",
-        "billingTypeLabel": "月卡",
-        "multiplierFullUseAssumption": "按 30 天满额使用折算；7 天额度上限 66.67 美元；1 个月订阅；手动续费，不自动扣款",
-        "requests": 664,
-        "correct": 350,
-        "failures": 314,
-        "http2xx": 350,
-        "http200WithError": 0,
-        "firstAt": "2026-05-11 11:02:52 +0800",
-        "lastAt": "2026-05-19 11:27:47 +0800"
-      },
-      {
         "rank": 16,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "work_hours",
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "flymux",
         "label": "FlyMux",
-        "stationUrl": "https://api.flymux.com",
+        "stationUrl": "https://106.75.146.14",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -689,7 +689,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "bytecat",
         "label": "bytecat",
-        "stationUrl": "https://www.bytecatcode.org",
+        "stationUrl": "https://codecdn.bytecatcode.org",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -794,7 +794,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "17nas",
         "label": "17nas",
-        "stationUrl": "https://ai.17nas.com",
+        "stationUrl": "https://api.17nas.com",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -862,6 +862,41 @@
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "work_hours",
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
+        "station": "audit-api-printcap-ai",
+        "label": "api.printcap.ai",
+        "stationUrl": "https://api.printcap.ai",
+        "stationType": "non_subscription",
+        "stationTypeLabel": "非包月型中转站",
+        "stationTypeShortLabel": "非包月型",
+        "totalScore": 32.3254313325066,
+        "successScore": 0.0,
+        "latencyScore": 25.831629219329276,
+        "costScore": 93.1374444229654,
+        "correctRate": 0.0,
+        "avgSeconds": 229.34002439024388,
+        "medianSeconds": 269.374,
+        "p95Seconds": 300.014,
+        "effectiveMultiplier": 0.5,
+        "feeVerified": true,
+        "adoptedTier": "GPT-MIX | 截图核验充值 10 RMB -> 20 USD",
+        "adoptedGroup": "GPT-MIX",
+        "adoptedRechargeName": "截图核验充值 10 RMB -> 20 USD",
+        "billingType": "permanent",
+        "billingTypeLabel": "永久额度",
+        "multiplierFullUseAssumption": "expiry not stated",
+        "requests": 41,
+        "correct": 0,
+        "failures": 41,
+        "http2xx": 0,
+        "http200WithError": 0,
+        "firstAt": "2026-05-18 11:59:10 +0800",
+        "lastAt": "2026-05-19 17:05:46 +0800"
+      },
+      {
+        "rank": 25,
+        "rankingBasis": "formal_high_confidence",
+        "timeWindow": "work_hours",
+        "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "voapi",
         "label": "VoAPI",
         "stationUrl": "https://demo.voapi.top",
@@ -893,7 +928,7 @@
         "lastAt": "2026-05-15 17:41:12 +0800"
       },
       {
-        "rank": 25,
+        "rank": 26,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "work_hours",
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
@@ -928,7 +963,7 @@
         "lastAt": "2026-05-15 17:59:02 +0800"
       },
       {
-        "rank": 26,
+        "rank": 27,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "work_hours",
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
@@ -963,7 +998,7 @@
         "lastAt": "2026-05-15 17:16:09 +0800"
       },
       {
-        "rank": 27,
+        "rank": 28,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "work_hours",
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
@@ -998,13 +1033,13 @@
         "lastAt": "2026-05-15 16:36:02 +0800"
       },
       {
-        "rank": 28,
+        "rank": 29,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "work_hours",
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "qiuqiutoken",
         "label": "qiuqiutoken",
-        "stationUrl": "https://qiuqiutoken.com",
+        "stationUrl": "https://api.qiuqiutoken.com",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -1031,41 +1066,6 @@
         "http200WithError": 0,
         "firstAt": "2026-05-14 14:39:04 +0800",
         "lastAt": "2026-05-15 16:11:49 +0800"
-      },
-      {
-        "rank": 29,
-        "rankingBasis": "formal_high_confidence",
-        "timeWindow": "work_hours",
-        "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
-        "station": "audit-api-printcap-ai",
-        "label": "api.printcap.ai",
-        "stationUrl": "https://printcap.ai",
-        "stationType": "non_subscription",
-        "stationTypeLabel": "非包月型中转站",
-        "stationTypeShortLabel": "非包月型",
-        "totalScore": 23.284645405495667,
-        "successScore": 0.0,
-        "latencyScore": 0.0008122850123352794,
-        "costScore": 93.1374444229654,
-        "correctRate": 0.0,
-        "avgSeconds": 300.0071111111111,
-        "medianSeconds": 300.0065,
-        "p95Seconds": 300.014,
-        "effectiveMultiplier": 0.5,
-        "feeVerified": true,
-        "adoptedTier": "GPT-MIX | 截图核验充值 10 RMB -> 20 USD",
-        "adoptedGroup": "GPT-MIX",
-        "adoptedRechargeName": "截图核验充值 10 RMB -> 20 USD",
-        "billingType": "permanent",
-        "billingTypeLabel": "永久额度",
-        "multiplierFullUseAssumption": "expiry not stated",
-        "requests": 18,
-        "correct": 0,
-        "failures": 18,
-        "http2xx": 0,
-        "http200WithError": 0,
-        "firstAt": "2026-05-18 11:59:10 +0800",
-        "lastAt": "2026-05-18 17:41:22 +0800"
       }
     ],
     "off_hours": [
@@ -1146,7 +1146,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "coolplay",
         "label": "Coolplay API",
-        "stationUrl": "https://pay.ldxp.cn",
+        "stationUrl": "https://cp.coolplay-api.fun:55555",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -1181,7 +1181,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "bytecat",
         "label": "bytecat",
-        "stationUrl": "https://www.bytecatcode.org",
+        "stationUrl": "https://codecdn.bytecatcode.org",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1255,14 +1255,14 @@
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
-        "totalScore": 87.45690585381533,
-        "successScore": 81.05032822757111,
-        "latencyScore": 86.38682772720452,
+        "totalScore": 87.55336939187734,
+        "successScore": 81.45970252507783,
+        "latencyScore": 86.19458149594544,
         "costScore": 99.20553943306122,
-        "correctRate": 0.8105032822757111,
-        "avgSeconds": 61.04138118161925,
-        "medianSeconds": 38.319,
-        "p95Seconds": 177.32659999999981,
+        "correctRate": 0.8145970252507783,
+        "avgSeconds": 61.80307782774127,
+        "medianSeconds": 42.633,
+        "p95Seconds": 162.032,
         "effectiveMultiplier": 0.06999650017499125,
         "feeVerified": true,
         "adoptedTier": "default | Pro 月卡",
@@ -1271,13 +1271,13 @@
         "billingType": "monthly",
         "billingTypeLabel": "月卡",
         "multiplierFullUseAssumption": "按 30 天满额使用折算；7 天额度上限 66.67 美元；1 个月订阅；手动续费，不自动扣款",
-        "requests": 2285,
-        "correct": 1852,
-        "failures": 433,
-        "http2xx": 1852,
+        "requests": 2891,
+        "correct": 2355,
+        "failures": 536,
+        "http2xx": 2355,
         "http200WithError": 0,
         "firstAt": "2026-05-08 20:46:32 +0800",
-        "lastAt": "2026-05-19 02:44:50 +0800"
+        "lastAt": "2026-05-20 02:20:55 +0800"
       },
       {
         "rank": 7,
@@ -1356,7 +1356,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "api.xiaoxin.best",
         "label": "api.xiaoxin.best",
-        "stationUrl": "https://pay.ldxp.cn",
+        "stationUrl": "https://api.xiaoxin.best",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -1391,7 +1391,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "hi-code",
         "label": "Hi-Code",
-        "stationUrl": "https://pay.ldxp.cn",
+        "stationUrl": "https://www.hi-code.cc",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1465,14 +1465,14 @@
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
-        "totalScore": 84.04029405534584,
-        "successScore": 85.38461538461539,
-        "latencyScore": 72.3772306727005,
+        "totalScore": 84.25798276685119,
+        "successScore": 85.59556786703601,
+        "latencyScore": 72.75810986852078,
         "costScore": 98.21766866421805,
-        "correctRate": 0.8538461538461538,
-        "avgSeconds": 116.54864923076923,
-        "medianSeconds": 83.071,
-        "p95Seconds": 300.0061,
+        "correctRate": 0.8559556786703602,
+        "avgSeconds": 115.03957202216066,
+        "medianSeconds": 78.5785,
+        "p95Seconds": 300.007,
         "effectiveMultiplier": 0.14,
         "feeVerified": true,
         "adoptedTier": "官方 API 1:1 | 5000美金额度",
@@ -1481,10 +1481,10 @@
         "billingType": "permanent",
         "billingTypeLabel": "永久额度",
         "multiplierFullUseAssumption": "永久额度；定价页说明永久有效、不清零、无日限周限月限；按官网模型价格 1:1 扣减",
-        "requests": 650,
-        "correct": 555,
-        "failures": 95,
-        "http2xx": 555,
+        "requests": 722,
+        "correct": 618,
+        "failures": 104,
+        "http2xx": 618,
         "http200WithError": 0,
         "firstAt": "2026-04-30 19:26:54 +0800",
         "lastAt": "2026-05-16 23:08:11 +0800"
@@ -1566,7 +1566,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "4router",
         "label": "4Router",
-        "stationUrl": "https://4router.net",
+        "stationUrl": "https://4Router.net",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1636,7 +1636,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "flymux",
         "label": "FlyMux",
-        "stationUrl": "https://api.flymux.com",
+        "stationUrl": "https://106.75.146.14",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1671,7 +1671,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "audit-api-printcap-ai",
         "label": "api.printcap.ai",
-        "stationUrl": "https://printcap.ai",
+        "stationUrl": "https://api.printcap.ai",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1706,7 +1706,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "17nas",
         "label": "17nas",
-        "stationUrl": "https://ai.17nas.com",
+        "stationUrl": "https://api.17nas.com",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -1776,7 +1776,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "muskai",
         "label": "MuskAI/muskpay",
-        "stationUrl": "https://pay.muskpay.top",
+        "stationUrl": "https://aiapi.muskpay.top",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -2126,7 +2126,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "qiuqiutoken",
         "label": "qiuqiutoken",
-        "stationUrl": "https://qiuqiutoken.com",
+        "stationUrl": "https://api.qiuqiutoken.com",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -2196,7 +2196,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "euzhi",
         "label": "Euzhi",
-        "stationUrl": "https://api.euzhi.com",
+        "stationUrl": "https://admin.euzhi.com",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2307,14 +2307,14 @@
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
-        "totalScore": 96.78630447819924,
-        "successScore": 95.87628865979381,
-        "latencyScore": 95.59434236606519,
+        "totalScore": 96.92739218050608,
+        "successScore": 95.15570934256056,
+        "latencyScore": 96.82096930663701,
         "costScore": 99.91107674463561,
-        "correctRate": 0.9587628865979382,
-        "avgSeconds": 43.036757731958765,
-        "medianSeconds": 30.134,
-        "p95Seconds": 123.22434999999997,
+        "correctRate": 0.9515570934256056,
+        "avgSeconds": 38.413833910034604,
+        "medianSeconds": 26.579,
+        "p95Seconds": 101.27059999999997,
         "effectiveMultiplier": 0.02,
         "feeVerified": true,
         "adoptedTier": "cx_free | wallet topup 10 RMB",
@@ -2323,13 +2323,13 @@
         "billingType": "permanent",
         "billingTypeLabel": "永久额度",
         "multiplierFullUseAssumption": "未注明有效期；余额充值",
-        "requests": 194,
-        "correct": 186,
-        "failures": 8,
-        "http2xx": 186,
+        "requests": 289,
+        "correct": 275,
+        "failures": 14,
+        "http2xx": 275,
         "http200WithError": 0,
         "firstAt": "2026-05-13 10:31:44 +0800",
-        "lastAt": "2026-05-18 19:10:31 +0800"
+        "lastAt": "2026-05-19 17:18:05 +0800"
       },
       {
         "rank": 4,
@@ -2338,7 +2338,7 @@
         "timeWindowLabel": "全部时段",
         "station": "api.xiaoxin.best",
         "label": "api.xiaoxin.best",
-        "stationUrl": "https://pay.ldxp.cn",
+        "stationUrl": "https://api.xiaoxin.best",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -2373,7 +2373,7 @@
         "timeWindowLabel": "全部时段",
         "station": "coolplay",
         "label": "Coolplay API",
-        "stationUrl": "https://pay.ldxp.cn",
+        "stationUrl": "https://cp.coolplay-api.fun:55555",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -2441,6 +2441,41 @@
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "all_hours",
         "timeWindowLabel": "全部时段",
+        "station": "freemodel",
+        "label": "freemodel",
+        "stationUrl": "https://freemodel.dev",
+        "stationType": "mixed",
+        "stationTypeLabel": "混合型中转站",
+        "stationTypeShortLabel": "混合型",
+        "totalScore": 86.84750766913076,
+        "successScore": 76.54483302655798,
+        "latencyScore": 89.79482742926362,
+        "costScore": 99.20553943306122,
+        "correctRate": 0.7654483302655798,
+        "avgSeconds": 64.89402734683145,
+        "medianSeconds": 44.624,
+        "p95Seconds": 179.1031999999999,
+        "effectiveMultiplier": 0.06999650017499125,
+        "feeVerified": true,
+        "adoptedTier": "default | Pro 月卡",
+        "adoptedGroup": "default",
+        "adoptedRechargeName": "Pro 月卡",
+        "billingType": "monthly",
+        "billingTypeLabel": "月卡",
+        "multiplierFullUseAssumption": "按 30 天满额使用折算；7 天额度上限 66.67 美元；1 个月订阅；手动续费，不自动扣款",
+        "requests": 3803,
+        "correct": 2911,
+        "failures": 892,
+        "http2xx": 2911,
+        "http200WithError": 0,
+        "firstAt": "2026-05-08 20:46:32 +0800",
+        "lastAt": "2026-05-20 02:20:55 +0800"
+      },
+      {
+        "rank": 8,
+        "rankingBasis": "formal_high_confidence",
+        "timeWindow": "all_hours",
+        "timeWindowLabel": "全部时段",
         "station": "dogcoding",
         "label": "dogcoding/laodog",
         "stationUrl": "https://ai.laodog.top",
@@ -2472,13 +2507,13 @@
         "lastAt": "2026-05-16 17:13:34 +0800"
       },
       {
-        "rank": 8,
+        "rank": 9,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "all_hours",
         "timeWindowLabel": "全部时段",
         "station": "hi-code",
         "label": "Hi-Code",
-        "stationUrl": "https://pay.ldxp.cn",
+        "stationUrl": "https://www.hi-code.cc",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2507,7 +2542,7 @@
         "lastAt": "2026-05-11 21:38:12 +0800"
       },
       {
-        "rank": 9,
+        "rank": 10,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "all_hours",
         "timeWindowLabel": "全部时段",
@@ -2542,41 +2577,6 @@
         "lastAt": "2026-05-16 17:22:32 +0800"
       },
       {
-        "rank": 10,
-        "rankingBasis": "formal_high_confidence",
-        "timeWindow": "all_hours",
-        "timeWindowLabel": "全部时段",
-        "station": "freemodel",
-        "label": "freemodel",
-        "stationUrl": "https://freemodel.dev",
-        "stationType": "mixed",
-        "stationTypeLabel": "混合型中转站",
-        "stationTypeShortLabel": "混合型",
-        "totalScore": 86.01492081323673,
-        "successScore": 74.66937945066124,
-        "latencyScore": 89.55938335630552,
-        "costScore": 99.20553943306122,
-        "correctRate": 0.7466937945066124,
-        "avgSeconds": 65.78137131230926,
-        "medianSeconds": 42.54,
-        "p95Seconds": 198.32899999999995,
-        "effectiveMultiplier": 0.06999650017499125,
-        "feeVerified": true,
-        "adoptedTier": "default | Pro 月卡",
-        "adoptedGroup": "default",
-        "adoptedRechargeName": "Pro 月卡",
-        "billingType": "monthly",
-        "billingTypeLabel": "月卡",
-        "multiplierFullUseAssumption": "按 30 天满额使用折算；7 天额度上限 66.67 美元；1 个月订阅；手动续费，不自动扣款",
-        "requests": 2949,
-        "correct": 2202,
-        "failures": 747,
-        "http2xx": 2202,
-        "http200WithError": 0,
-        "firstAt": "2026-05-08 20:46:32 +0800",
-        "lastAt": "2026-05-19 11:27:47 +0800"
-      },
-      {
         "rank": 11,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "all_hours",
@@ -2587,14 +2587,14 @@
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
-        "totalScore": 85.42418018053354,
-        "successScore": 86.52291105121293,
-        "latencyScore": 75.03028169712533,
+        "totalScore": 85.58132022746878,
+        "successScore": 86.55115511551155,
+        "latencyScore": 75.44697432917044,
         "costScore": 98.21766866421805,
-        "correctRate": 0.8652291105121294,
-        "avgSeconds": 120.53879424977538,
-        "medianSeconds": 97.144,
-        "p95Seconds": 300.007,
+        "correctRate": 0.8655115511551155,
+        "avgSeconds": 118.96835891089108,
+        "medianSeconds": 93.0745,
+        "p95Seconds": 300.00745,
         "effectiveMultiplier": 0.14,
         "feeVerified": true,
         "adoptedTier": "官方 API 1:1 | 5000美金额度",
@@ -2603,10 +2603,10 @@
         "billingType": "permanent",
         "billingTypeLabel": "永久额度",
         "multiplierFullUseAssumption": "永久额度；定价页说明永久有效、不清零、无日限周限月限；按官网模型价格 1:1 扣减",
-        "requests": 1113,
-        "correct": 963,
-        "failures": 150,
-        "http2xx": 963,
+        "requests": 1212,
+        "correct": 1049,
+        "failures": 163,
+        "http2xx": 1049,
         "http200WithError": 0,
         "firstAt": "2026-04-30 19:26:54 +0800",
         "lastAt": "2026-05-16 23:08:11 +0800"
@@ -2618,7 +2618,7 @@
         "timeWindowLabel": "全部时段",
         "station": "4router",
         "label": "4Router",
-        "stationUrl": "https://4router.net",
+        "stationUrl": "https://4Router.net",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2653,7 +2653,7 @@
         "timeWindowLabel": "全部时段",
         "station": "bytecat",
         "label": "bytecat",
-        "stationUrl": "https://www.bytecatcode.org",
+        "stationUrl": "https://codecdn.bytecatcode.org",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2933,7 +2933,7 @@
         "timeWindowLabel": "全部时段",
         "station": "flymux",
         "label": "FlyMux",
-        "stationUrl": "https://api.flymux.com",
+        "stationUrl": "https://106.75.146.14",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2968,18 +2968,18 @@
         "timeWindowLabel": "全部时段",
         "station": "audit-api-printcap-ai",
         "label": "api.printcap.ai",
-        "stationUrl": "https://printcap.ai",
+        "stationUrl": "https://api.printcap.ai",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
-        "totalScore": 59.44939320115488,
-        "successScore": 4.414320472714634,
-        "latencyScore": 98.28372544665048,
+        "totalScore": 59.331438690291435,
+        "successScore": 4.379310344827586,
+        "latencyScore": 97.9867241331973,
         "costScore": 93.1374444229654,
-        "correctRate": 0.044143204727146335,
-        "avgSeconds": 32.900984011122695,
-        "medianSeconds": 24.456,
-        "p95Seconds": 82.10259999999997,
+        "correctRate": 0.04379310344827586,
+        "avgSeconds": 34.020325517241375,
+        "medianSeconds": 24.652,
+        "p95Seconds": 86.95644999999988,
         "effectiveMultiplier": 0.5,
         "feeVerified": true,
         "adoptedTier": "GPT-MIX | 截图核验充值 10 RMB -> 20 USD",
@@ -2988,13 +2988,13 @@
         "billingType": "permanent",
         "billingTypeLabel": "永久额度",
         "multiplierFullUseAssumption": "expiry not stated",
-        "requests": 2877,
+        "requests": 2900,
         "correct": 127,
-        "failures": 2750,
+        "failures": 2773,
         "http2xx": 127,
         "http200WithError": 0,
         "firstAt": "2026-05-16 23:48:59 +0800",
-        "lastAt": "2026-05-18 19:20:23 +0800"
+        "lastAt": "2026-05-19 17:05:46 +0800"
       },
       {
         "rank": 23,
@@ -3003,7 +3003,7 @@
         "timeWindowLabel": "全部时段",
         "station": "17nas",
         "label": "17nas",
-        "stationUrl": "https://ai.17nas.com",
+        "stationUrl": "https://api.17nas.com",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -3143,7 +3143,7 @@
         "timeWindowLabel": "全部时段",
         "station": "muskai",
         "label": "MuskAI/muskpay",
-        "stationUrl": "https://pay.muskpay.top",
+        "stationUrl": "https://aiapi.muskpay.top",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -3318,7 +3318,7 @@
         "timeWindowLabel": "全部时段",
         "station": "qiuqiutoken",
         "label": "qiuqiutoken",
-        "stationUrl": "https://qiuqiutoken.com",
+        "stationUrl": "https://api.qiuqiutoken.com",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -3388,7 +3388,7 @@
         "timeWindowLabel": "全部时段",
         "station": "euzhi",
         "label": "Euzhi",
-        "stationUrl": "https://api.euzhi.com",
+        "stationUrl": "https://admin.euzhi.com",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4167,11 +4167,11 @@
         },
         {
           "groupName": "image",
-          "groupMultiplier": 0.2
+          "groupMultiplier": 0.05
         },
         {
           "groupName": "cx",
-          "groupMultiplier": 0.5
+          "groupMultiplier": 0.4
         },
         {
           "groupName": "image-4k",
@@ -4179,7 +4179,7 @@
         },
         {
           "groupName": "cx-pro",
-          "groupMultiplier": 0.5
+          "groupMultiplier": 0.4
         },
         {
           "groupName": "grok",
@@ -4196,18 +4196,6 @@
         {
           "groupName": "gemini",
           "groupMultiplier": 0.6
-        },
-        {
-          "groupName": "image",
-          "groupMultiplier": 0.05
-        },
-        {
-          "groupName": "cx",
-          "groupMultiplier": 0.4
-        },
-        {
-          "groupName": "cx-pro",
-          "groupMultiplier": 0.4
         }
       ],
       "rechargeTiers": [
@@ -4320,14 +4308,14 @@
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
-          "totalScore": 96.53008760040379,
-          "successScore": 96.2566844919786,
-          "latencyScore": 94.42755604986698,
+          "totalScore": 96.73097757939902,
+          "successScore": 95.39007092198581,
+          "latencyScore": 95.99194292698799,
           "costScore": 99.91107674463561,
-          "correctRate": 0.9625668449197861,
-          "avgSeconds": 41.67757754010695,
-          "medianSeconds": 29.273,
-          "p95Seconds": 120.51389999999995,
+          "correctRate": 0.9539007092198581,
+          "avgSeconds": 37.39778014184397,
+          "medianSeconds": 26.5425,
+          "p95Seconds": 98.09999999999988,
           "effectiveMultiplier": 0.02,
           "feeVerified": true,
           "adoptedTier": "cx_free | wallet topup 10 RMB",
@@ -4336,13 +4324,13 @@
           "billingType": "permanent",
           "billingTypeLabel": "永久额度",
           "multiplierFullUseAssumption": "未注明有效期；余额充值",
-          "requests": 187,
-          "correct": 180,
-          "failures": 7,
-          "http2xx": 180,
+          "requests": 282,
+          "correct": 269,
+          "failures": 13,
+          "http2xx": 269,
           "http200WithError": 0,
           "firstAt": "2026-05-13 10:31:44 +0800",
-          "lastAt": "2026-05-18 17:49:51 +0800"
+          "lastAt": "2026-05-19 17:18:05 +0800"
         },
         "off_hours": {
           "rank": 5,
@@ -4390,14 +4378,14 @@
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
-          "totalScore": 96.78630447819924,
-          "successScore": 95.87628865979381,
-          "latencyScore": 95.59434236606519,
+          "totalScore": 96.92739218050608,
+          "successScore": 95.15570934256056,
+          "latencyScore": 96.82096930663701,
           "costScore": 99.91107674463561,
-          "correctRate": 0.9587628865979382,
-          "avgSeconds": 43.036757731958765,
-          "medianSeconds": 30.134,
-          "p95Seconds": 123.22434999999997,
+          "correctRate": 0.9515570934256056,
+          "avgSeconds": 38.413833910034604,
+          "medianSeconds": 26.579,
+          "p95Seconds": 101.27059999999997,
           "effectiveMultiplier": 0.02,
           "feeVerified": true,
           "adoptedTier": "cx_free | wallet topup 10 RMB",
@@ -4406,13 +4394,13 @@
           "billingType": "permanent",
           "billingTypeLabel": "永久额度",
           "multiplierFullUseAssumption": "未注明有效期；余额充值",
-          "requests": 194,
-          "correct": 186,
-          "failures": 8,
-          "http2xx": 186,
+          "requests": 289,
+          "correct": 275,
+          "failures": 14,
+          "http2xx": 275,
           "http200WithError": 0,
           "firstAt": "2026-05-13 10:31:44 +0800",
-          "lastAt": "2026-05-18 19:10:31 +0800"
+          "lastAt": "2026-05-19 17:18:05 +0800"
         }
       },
       "quality": {
@@ -4422,20 +4410,20 @@
           "platformGuess": "sub2api",
           "timeWindow": "work_hours",
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
-          "requestSamples": 187,
-          "correct": 180,
-          "failures": 7,
-          "correctRate": 0.9625668449197861,
-          "http2xx": 180,
+          "requestSamples": 282,
+          "correct": 269,
+          "failures": 13,
+          "correctRate": 0.9539007092198581,
+          "http2xx": 269,
           "http200WithError": 0,
-          "nonnullError": 7,
+          "nonnullError": 13,
           "excludedBillingErrors": 0,
-          "avgSeconds": 41.67757754010695,
-          "medianSeconds": 29.273,
-          "p95Seconds": 120.51389999999995,
-          "avgFirstResponseSeconds": 20.46207608695652,
+          "avgSeconds": 37.39778014184397,
+          "medianSeconds": 26.5425,
+          "p95Seconds": 98.09999999999988,
+          "avgFirstResponseSeconds": 19.33232258064516,
           "firstAt": "2026-05-13 10:31:44 +0800",
-          "lastAt": "2026-05-18 17:49:51 +0800"
+          "lastAt": "2026-05-19 17:18:05 +0800"
         },
         "off_hours": {
           "station": "zhima",
@@ -4464,30 +4452,30 @@
           "platformGuess": "sub2api",
           "timeWindow": "all_hours",
           "timeWindowLabel": "全部时段",
-          "requestSamples": 194,
-          "correct": 186,
-          "failures": 8,
-          "correctRate": 0.9587628865979382,
-          "http2xx": 186,
+          "requestSamples": 289,
+          "correct": 275,
+          "failures": 14,
+          "correctRate": 0.9515570934256056,
+          "http2xx": 275,
           "http200WithError": 0,
-          "nonnullError": 8,
+          "nonnullError": 14,
           "excludedBillingErrors": 0,
-          "avgSeconds": 43.036757731958765,
-          "medianSeconds": 30.134,
-          "p95Seconds": 123.22434999999997,
-          "avgFirstResponseSeconds": 20.452894736842108,
+          "avgSeconds": 38.413833910034604,
+          "medianSeconds": 26.579,
+          "p95Seconds": 101.27059999999997,
+          "avgFirstResponseSeconds": 19.349985964912282,
           "firstAt": "2026-05-13 10:31:44 +0800",
-          "lastAt": "2026-05-18 19:10:31 +0800"
+          "lastAt": "2026-05-19 17:18:05 +0800"
         }
       },
       "dataEvidence": [
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 15,
+          "count": 12,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 15 条，可在本详情页查看。",
+          "message": "已归档 12 条，可在本详情页查看。",
           "source": "https://next.zhima.world/api/v1/groups/available"
         },
         {
@@ -4513,7 +4501,7 @@
     {
       "key": "api.xiaoxin.best",
       "label": "api.xiaoxin.best",
-      "url": "https://pay.ldxp.cn",
+      "url": "https://api.xiaoxin.best",
       "stationType": "mixed",
       "stationTypeLabel": "混合型中转站",
       "stationTypeShortLabel": "混合型",
@@ -4523,10 +4511,6 @@
         {
           "groupName": "余额用户（专用分组）",
           "groupMultiplier": 1.3
-        },
-        {
-          "groupName": "余额用户（专用分组）",
-          "groupMultiplier": 1.5
         }
       ],
       "rechargeTiers": [
@@ -4543,7 +4527,24 @@
       "tierNotes": [
         "The shop page also lists subscription goods, but only the balance-recharge tier is mapped here because the logged-in account exposes the balance-user group only."
       ],
-      "announcements": [],
+      "announcements": [
+        {
+          "id": "6",
+          "publishedAt": "2026-05-15T11:14:21.450593+08:00",
+          "type": "login_probe",
+          "extra": "临时通知",
+          "content": "各位朋友，因特殊原因，微信群目前被风控，暂时无法正常沟通和使用。QQ群目前一切正常，如有问题、咨询或需要联系，请先到 QQ 群内沟通，避免消息遗漏。感谢大家的理解与配合。",
+          "sourceUrl": "https://api.xiaoxin.best/api/v1/announcements"
+        },
+        {
+          "id": "5",
+          "publishedAt": "2026-05-10T14:26:36.293841+08:00",
+          "type": "login_probe",
+          "extra": "套餐上新！",
+          "content": "# 📢 新套餐上新公告\n\n为了让大家有更多选择，这次我们补充上新了新的套餐档位，覆盖轻度体验、短期使用、长期稳定使用以及高频重度使用等不同需求。\n\n![XINX 套餐商品图 https://api.xiaoxin.best/static/announcements/goods-20260510.png](https://pay.ldxp.cn/shop/JZ9CUHL0)\n\n> 点击上方商品图可直接跳转店铺购买。\n\n## ✅ 新套餐现已上线\n\n当前可选套餐如下：\n\n- `日卡`：`3元 / 50万`\n- `周卡`：`19元 / 400万`\n- `月卡`：`49元 / 1200万`\n- `月卡（大杯）`：`89元 / 3000万`\n- `月卡（超大杯）`：`199元 / 8888万`\n\n## 💰 套餐价格与汇率参考\n\n![XINX 套餐价格对比图 https://api.xiaoxin.best/static/announcements/prices-20260510.png](https://pay.ldxp.cn/shop/JZ9CUHL0)\n\n> 点击上方价格图同样可以直接进入店铺。\n\n这次新套餐上新后，整体价格依然保持在比较低的水平，尤其是大额度套餐，汇率优势会更明显。\n\n## 🚀 重点推荐\n\n### `月卡（超大杯）`\n- `199元 / 8888万`\n- 汇率低至：`0.0223`\n\n如果你本身使用频率高、任务量大，或者就是长期用户，这一档会非常划算。\n\n### `月卡（大杯）`\n- `89元 / 3000万`\n- 汇率低至：`0.03`\n\n如果你想在预算和额度之间做更平衡的选择，大杯也很值得入手。\n\n## 🔥 简单怎么选\n\n- 想先体验：可以选 `日卡`\n- 想短期连续使用：可以选 `周卡`\n- 想长期稳定使用：可以选 `月卡`\n- 想要更低汇率、更高性价比：重点推荐 `月卡（大杯）` 和 `月卡（超大杯）`\n\n## 🛒 店铺链接\n\n点击进入店铺购买 https://pay.ldxp.cn/shop/JZ9CUHL0\n\n## 📌 一句话总结\n\n这次新套餐上新，核心就是一句话：**档位更多了，汇率更低了，价格依然很便宜。**",
+          "sourceUrl": "https://api.xiaoxin.best/api/v1/announcements"
+        }
+      ],
       "rankings": {
         "work_hours": {
           "rank": 4,
@@ -4552,7 +4553,7 @@
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
           "station": "api.xiaoxin.best",
           "label": "api.xiaoxin.best",
-          "stationUrl": "https://pay.ldxp.cn",
+          "stationUrl": "https://api.xiaoxin.best",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -4587,7 +4588,7 @@
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
           "station": "api.xiaoxin.best",
           "label": "api.xiaoxin.best",
-          "stationUrl": "https://pay.ldxp.cn",
+          "stationUrl": "https://api.xiaoxin.best",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -4622,7 +4623,7 @@
           "timeWindowLabel": "全部时段",
           "station": "api.xiaoxin.best",
           "label": "api.xiaoxin.best",
-          "stationUrl": "https://pay.ldxp.cn",
+          "stationUrl": "https://api.xiaoxin.best",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -4720,10 +4721,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 2,
+          "count": 1,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 2 条，可在本详情页查看。",
+          "message": "已归档 1 条，可在本详情页查看。",
           "source": "https://api.xiaoxin.best/api/v1/groups/available"
         },
         {
@@ -4738,10 +4739,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 0,
-          "status": "blocked",
-          "statusLabel": "风控阻断",
-          "message": "登录态公告接口被验证码或风控阻断",
+          "count": 2,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 2 条，可在本详情页查看。",
           "source": "https://api.xiaoxin.best/api/v1/announcements"
         }
       ]
@@ -4848,7 +4849,40 @@
         "稳定便宜的OpenAI token; custom balance top-up; min 1 RMB; checkout multiplier 1; recharge fee 0%",
         "公开配置显示已开启余额充值，但具体档位金额仍需登录/核验。 充值入口：https://opentk.ai"
       ],
-      "announcements": [],
+      "announcements": [
+        {
+          "id": "5",
+          "publishedAt": "2026-05-19T16:03:37.86757+08:00",
+          "type": "login_probe",
+          "extra": "2025/5/19 早故障补偿通知",
+          "content": "鉴于早上频繁出现了偶现的502故障， 目前本站决定对出现过502故障的用户进行10刀的额度补偿， 补偿目前都已到账。  如果有遗漏可以凭故障截图私聊客服进行补偿。\n\n异常原因是因为本站为了进行速度优化， 从CF切换到EO后发现超过10k的网络包会被EO截拦， 已经切换回CF解决。\n\n感谢各位的支持和谅解。",
+          "sourceUrl": "https://opentk.ai/api/v1/announcements"
+        },
+        {
+          "id": "4",
+          "publishedAt": "2026-05-16T16:38:02.920413+08:00",
+          "type": "login_probe",
+          "extra": "每日订阅套餐已经上线，1.5倍配额助你爽蹬",
+          "content": "目前每日订阅套餐已经上线， ¥9.9元即可获得15刀配额， 支持gpt系列模型的使用， 每天使用量多的用户可以选择， 同样的价格， 更多的token!\n##切记##\n购买订阅套餐后， 记得把apikey里的分组改成订阅分组， 否则会继续消耗余额额度!",
+          "sourceUrl": "https://opentk.ai/api/v1/announcements"
+        },
+        {
+          "id": "3",
+          "publishedAt": "2026-05-08T22:58:31.182485+08:00",
+          "type": "login_probe",
+          "extra": "邀请返利40%",
+          "content": "目前本站已经开启邀请返利活动。 你邀请进来的用户有购买行为， 会直接返40%给到你。 欢迎扩散。\n返利可以直接充值作为token余额， 也可每个月1号进行提现。 提现联系客服qq.",
+          "sourceUrl": "https://opentk.ai/api/v1/announcements"
+        },
+        {
+          "id": "2",
+          "publishedAt": "2026-05-08T18:13:04.939581+08:00",
+          "type": "login_probe",
+          "extra": "售后/问题反馈/使用建议请加群",
+          "content": "QQ群:  OpenToken售后群 https://qm.qq.com/q/wZ14xvlU66\n售后qq: 1161431181\n\n大家有任何需求可以进群和加售后qq， 第一时间帮忙解决。\n群里也会不定时赠送token。",
+          "sourceUrl": "https://opentk.ai/api/v1/announcements"
+        }
+      ],
       "rankings": {
         "work_hours": {
           "rank": 5,
@@ -4921,7 +4955,7 @@
           "lastAt": "2026-05-16 17:22:32 +0800"
         },
         "all_hours": {
-          "rank": 9,
+          "rank": 10,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "all_hours",
           "timeWindowLabel": "全部时段",
@@ -5043,10 +5077,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 0,
-          "status": "login_required",
-          "statusLabel": "需要登录",
-          "message": "需要登录或权限不足 (HTTP 401)",
+          "count": 4,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 4 条，可在本详情页查看。",
           "source": "https://opentk.ai/api/v1/announcements"
         }
       ]
@@ -5054,7 +5088,7 @@
     {
       "key": "4router",
       "label": "4Router",
-      "url": "https://4router.net",
+      "url": "https://4Router.net",
       "stationType": "non_subscription",
       "stationTypeLabel": "非包月型中转站",
       "stationTypeShortLabel": "非包月型",
@@ -5110,8 +5144,16 @@
           "groupMultiplier": 1.0
         },
         {
+          "groupName": "GptApi",
+          "groupMultiplier": 0.35
+        },
+        {
           "groupName": "GptPro-Fast",
           "groupMultiplier": 1.2
+        },
+        {
+          "groupName": "test",
+          "groupMultiplier": 2.2
         }
       ],
       "rechargeTiers": [
@@ -5284,7 +5326,7 @@
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
           "station": "4router",
           "label": "4Router",
-          "stationUrl": "https://4router.net",
+          "stationUrl": "https://4Router.net",
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
@@ -5319,7 +5361,7 @@
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
           "station": "4router",
           "label": "4Router",
-          "stationUrl": "https://4router.net",
+          "stationUrl": "https://4Router.net",
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
@@ -5354,7 +5396,7 @@
           "timeWindowLabel": "全部时段",
           "station": "4router",
           "label": "4Router",
-          "stationUrl": "https://4router.net",
+          "stationUrl": "https://4Router.net",
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
@@ -5452,10 +5494,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 13,
+          "count": 15,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 13 条，可在本详情页查看。",
+          "message": "已归档 15 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\4router-live-auth-probe.json"
         },
         {
@@ -6166,6 +6208,14 @@
       ],
       "announcements": [
         {
+          "id": "15",
+          "publishedAt": "2026-05-19T05:53:04.142Z",
+          "type": "default",
+          "extra": "",
+          "content": "图片接口已支持webp格式返回，可以有效提高响应速度，调用时指定对应返回格式参数为webp即可，目前不传入格式也默认返回webp。\n对于使用cherry-studio或类似软件的用户，请不要直接在chat接口使用图片模型，请打开绘图功能选择绘图模型进行使用",
+          "sourceUrl": "https://api.avemujica.moe"
+        },
+        {
           "id": "14",
           "publishedAt": "2026-05-18T16:21:38.373Z",
           "type": "default",
@@ -6472,10 +6522,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 14,
+          "count": 15,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 14 条，可在本详情页查看。",
+          "message": "已归档 15 条，可在本详情页查看。",
           "source": "https://api.avemujica.moe/api/status"
         }
       ]
@@ -6558,14 +6608,14 @@
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
-          "totalScore": 82.04668602258994,
-          "successScore": 88.12095032397409,
-          "latencyScore": 63.55396779127368,
+          "totalScore": 82.15893936162074,
+          "successScore": 87.95918367346938,
+          "latencyScore": 64.05956778908134,
           "costScore": 98.21766866421805,
-          "correctRate": 0.8812095032397408,
-          "avgSeconds": 126.14050971922246,
-          "medianSeconds": 114.844,
-          "p95Seconds": 300.007,
+          "correctRate": 0.8795918367346939,
+          "avgSeconds": 124.75730612244898,
+          "medianSeconds": 113.0775,
+          "p95Seconds": 300.00755,
           "effectiveMultiplier": 0.14,
           "feeVerified": true,
           "adoptedTier": "官方 API 1:1 | 5000美金额度",
@@ -6574,13 +6624,13 @@
           "billingType": "permanent",
           "billingTypeLabel": "永久额度",
           "multiplierFullUseAssumption": "永久额度；定价页说明永久有效、不清零、无日限周限月限；按官网模型价格 1:1 扣减",
-          "requests": 463,
-          "correct": 408,
-          "failures": 55,
-          "http2xx": 408,
+          "requests": 490,
+          "correct": 431,
+          "failures": 59,
+          "http2xx": 431,
           "http200WithError": 0,
           "firstAt": "2026-05-06 11:49:56 +0800",
-          "lastAt": "2026-05-15 16:26:53 +0800"
+          "lastAt": "2026-05-15 17:06:07 +0800"
         },
         "off_hours": {
           "rank": 12,
@@ -6593,14 +6643,14 @@
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
-          "totalScore": 84.04029405534584,
-          "successScore": 85.38461538461539,
-          "latencyScore": 72.3772306727005,
+          "totalScore": 84.25798276685119,
+          "successScore": 85.59556786703601,
+          "latencyScore": 72.75810986852078,
           "costScore": 98.21766866421805,
-          "correctRate": 0.8538461538461538,
-          "avgSeconds": 116.54864923076923,
-          "medianSeconds": 83.071,
-          "p95Seconds": 300.0061,
+          "correctRate": 0.8559556786703602,
+          "avgSeconds": 115.03957202216066,
+          "medianSeconds": 78.5785,
+          "p95Seconds": 300.007,
           "effectiveMultiplier": 0.14,
           "feeVerified": true,
           "adoptedTier": "官方 API 1:1 | 5000美金额度",
@@ -6609,10 +6659,10 @@
           "billingType": "permanent",
           "billingTypeLabel": "永久额度",
           "multiplierFullUseAssumption": "永久额度；定价页说明永久有效、不清零、无日限周限月限；按官网模型价格 1:1 扣减",
-          "requests": 650,
-          "correct": 555,
-          "failures": 95,
-          "http2xx": 555,
+          "requests": 722,
+          "correct": 618,
+          "failures": 104,
+          "http2xx": 618,
           "http200WithError": 0,
           "firstAt": "2026-04-30 19:26:54 +0800",
           "lastAt": "2026-05-16 23:08:11 +0800"
@@ -6628,14 +6678,14 @@
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
-          "totalScore": 85.42418018053354,
-          "successScore": 86.52291105121293,
-          "latencyScore": 75.03028169712533,
+          "totalScore": 85.58132022746878,
+          "successScore": 86.55115511551155,
+          "latencyScore": 75.44697432917044,
           "costScore": 98.21766866421805,
-          "correctRate": 0.8652291105121294,
-          "avgSeconds": 120.53879424977538,
-          "medianSeconds": 97.144,
-          "p95Seconds": 300.007,
+          "correctRate": 0.8655115511551155,
+          "avgSeconds": 118.96835891089108,
+          "medianSeconds": 93.0745,
+          "p95Seconds": 300.00745,
           "effectiveMultiplier": 0.14,
           "feeVerified": true,
           "adoptedTier": "官方 API 1:1 | 5000美金额度",
@@ -6644,10 +6694,10 @@
           "billingType": "permanent",
           "billingTypeLabel": "永久额度",
           "multiplierFullUseAssumption": "永久额度；定价页说明永久有效、不清零、无日限周限月限；按官网模型价格 1:1 扣减",
-          "requests": 1113,
-          "correct": 963,
-          "failures": 150,
-          "http2xx": 963,
+          "requests": 1212,
+          "correct": 1049,
+          "failures": 163,
+          "http2xx": 1049,
           "http200WithError": 0,
           "firstAt": "2026-04-30 19:26:54 +0800",
           "lastAt": "2026-05-16 23:08:11 +0800"
@@ -6669,9 +6719,9 @@
           "nonnullError": 59,
           "excludedBillingErrors": 0,
           "avgSeconds": 124.75730612244898,
-          "medianSeconds": 111.36044897959182,
-          "p95Seconds": 300.01340000000005,
-          "avgFirstResponseSeconds": 98.3160770987129,
+          "medianSeconds": 113.0775,
+          "p95Seconds": 300.00755,
+          "avgFirstResponseSeconds": 98.58344827586207,
           "firstAt": "2026-05-06 11:49:56 +0800",
           "lastAt": "2026-05-15 17:06:07 +0800"
         },
@@ -6690,9 +6740,9 @@
           "nonnullError": 104,
           "excludedBillingErrors": 0,
           "avgSeconds": 115.03957202216066,
-          "medianSeconds": 79.47922714681441,
-          "p95Seconds": 300.01090000000005,
-          "avgFirstResponseSeconds": 93.26540198975889,
+          "medianSeconds": 78.5785,
+          "p95Seconds": 300.007,
+          "avgFirstResponseSeconds": 93.23948343373495,
           "firstAt": "2026-04-30 19:26:54 +0800",
           "lastAt": "2026-05-16 23:08:11 +0800"
         },
@@ -6710,10 +6760,10 @@
           "http200WithError": 0,
           "nonnullError": 163,
           "excludedBillingErrors": 0,
-          "avgSeconds": 118.96835891089107,
-          "medianSeconds": 93.32294306930693,
-          "p95Seconds": 300.01219999999995,
-          "avgFirstResponseSeconds": 95.38153873547759,
+          "avgSeconds": 118.96835891089108,
+          "medianSeconds": 93.0745,
+          "p95Seconds": 300.00745,
+          "avgFirstResponseSeconds": 95.43771010638298,
           "firstAt": "2026-04-30 19:26:54 +0800",
           "lastAt": "2026-05-16 23:08:11 +0800"
         }
@@ -6741,26 +6791,17 @@
           "key": "announcements",
           "label": "公告",
           "count": 0,
-          "status": "failed",
-          "statusLabel": "抓取失败",
-          "message": "登录态公告接口返回 HTTP 404",
-          "source": "https://gettoken.dev/api/v1/announcements"
-        },
-        {
-          "key": "publicProbe",
-          "label": "公开探针",
-          "count": 1,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "公开探针已归档，可用于主站地址与证据合并。",
-          "source": "https://api.clawto.link"
+          "status": "empty",
+          "statusLabel": "接口返回空",
+          "message": "登录态公告接口返回空列表",
+          "source": "https://gettoken.dev/api/announcements/active?locale=zh-CN"
         }
       ]
     },
     {
       "key": "coolplay",
       "label": "Coolplay API",
-      "url": "https://pay.ldxp.cn",
+      "url": "https://cp.coolplay-api.fun:55555",
       "stationType": "mixed",
       "stationTypeLabel": "混合型中转站",
       "stationTypeShortLabel": "混合型",
@@ -6793,10 +6834,26 @@
         }
       ],
       "tierNotes": [
-        "The shop page also exposes a separate subscription category, but only the balance tiers are mapped here because the logged-in account API exposes the balance group only.",
-        "公开配置显示已开启订阅购买，但具体套餐仍需登录/核验。"
+        "The shop page also exposes a separate subscription category, but only the balance tiers are mapped here because the logged-in account API exposes the balance group only."
       ],
-      "announcements": [],
+      "announcements": [
+        {
+          "id": "6",
+          "publishedAt": "2026-05-01T19:39:00.694458+08:00",
+          "type": "login_probe",
+          "extra": "域名更新通知",
+          "content": "**域名更新通知:  域名于2026-5-2 已正式变更为：https://cp.coolplay-api.fun:55555/**\n\n**旧域名已弃用**\n\n**请大家及时更新codex配置中的域名信息，将base_url更新一下即可，更详细的配置已同步更新到最新的说明文档中**\n\n\n现在风控严，闲鱼已经无法正常售卖，大家有需要续费接着蹬的可以直接在网站充值/订阅入口购买\n\n祝大家bug无忧，token自由",
+          "sourceUrl": "https://cp.coolplay-api.fun:55555/api/v1/announcements"
+        },
+        {
+          "id": "5",
+          "publishedAt": "2026-04-28T08:43:48.069492+08:00",
+          "type": "login_probe",
+          "extra": "gpt-5.5和gpt-image2 已上线",
+          "content": "gpt-5.5和gpt-image2 、1.5、 1等模型以上线    \n- 5.5价格是5.4的2倍，目前价格做不下来，不建议作为日常开发使用，土豪随意\n- 5.5可以直接生成图片，这种按照5.5token用量计费，大家可以尝试一下，偶尔会超时，多试几次即可  \n- 调用image模型的计费方式，按照2、1.5、1等模型的token消费计费，大家使用时注意下实际消费  \n- image生图官方文档教程：\tImage Generation Guide https://developers.openai.com/api/docs/guides/image-generation  \n\n快速上手\n```\nexport SUB2API_BASE='https://cp.coolplay-api.fun:55555'\nexport SUB2API_KEY='sk-apikey'\n\ncurl -sS \"$SUB2API_BASE/v1/images/generations\" \\\n  -H \"Authorization: Bearer $SUB2API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  --data '{\n    \"model\": \"gpt-image-2\",\n    \"prompt\": \"Generate a tiny flat blue cat face icon, minimalist vector style\"\n  }' | tee ./images.json\n\n```",
+          "sourceUrl": "https://cp.coolplay-api.fun:55555/api/v1/announcements"
+        }
+      ],
       "rankings": {
         "work_hours": {
           "rank": 10,
@@ -6805,7 +6862,7 @@
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
           "station": "coolplay",
           "label": "Coolplay API",
-          "stationUrl": "https://pay.ldxp.cn",
+          "stationUrl": "https://cp.coolplay-api.fun:55555",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -6840,7 +6897,7 @@
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
           "station": "coolplay",
           "label": "Coolplay API",
-          "stationUrl": "https://pay.ldxp.cn",
+          "stationUrl": "https://cp.coolplay-api.fun:55555",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -6875,7 +6932,7 @@
           "timeWindowLabel": "全部时段",
           "station": "coolplay",
           "label": "Coolplay API",
-          "stationUrl": "https://pay.ldxp.cn",
+          "stationUrl": "https://cp.coolplay-api.fun:55555",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -6991,10 +7048,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 0,
-          "status": "login_required",
-          "statusLabel": "需要登录",
-          "message": "需要登录或权限不足 (HTTP 401)",
+          "count": 2,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 2 条，可在本详情页查看。",
           "source": "https://cp.coolplay-api.fun:55555/api/v1/announcements"
         }
       ]
@@ -7207,7 +7264,7 @@
           "lastAt": "2026-05-16 17:13:34 +0800"
         },
         "all_hours": {
-          "rank": 7,
+          "rank": 8,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "all_hours",
           "timeWindowLabel": "全部时段",
@@ -7406,6 +7463,14 @@
         {
           "groupName": "CC-Azure",
           "groupMultiplier": 1.0
+        },
+        {
+          "groupName": "claude-cx",
+          "groupMultiplier": 0.03
+        },
+        {
+          "groupName": "codex",
+          "groupMultiplier": 0.03
         },
         {
           "groupName": "codex-stable",
@@ -7726,10 +7791,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 16,
+          "count": 18,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 16 条，可在本详情页查看。",
+          "message": "已归档 18 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\newcli-live-auth-probe.json"
         },
         {
@@ -7771,8 +7836,8 @@
           "groupMultiplier": 0.1
         },
         {
-          "groupName": "codex-vip",
-          "groupMultiplier": 0.155
+          "groupName": "福利分组",
+          "groupMultiplier": 0.085
         }
       ],
       "rechargeTiers": [
@@ -7849,6 +7914,14 @@
       ],
       "announcements": [
         {
+          "id": "6",
+          "publishedAt": "2026-05-19T05:43:07.728Z",
+          "type": "ongoing",
+          "extra": "",
+          "content": "昨日活动中奖用户：2849209973因未在群内且未及时私聊领取，\n\n名额已顺延至：krzover\n\n请该用户于今日内私聊我领取 10 刀账户余额，逾期将视为自动放弃，继续顺延重新抽奖哦。",
+          "sourceUrl": "https://shunfen6.win"
+        },
+        {
           "id": "5",
           "publishedAt": "2026-05-18T05:14:53.636Z",
           "type": "ongoing",
@@ -7886,7 +7959,7 @@
           "type": "default",
           "extra": "",
           "content": "哈喽各位，新注册赠送10🔪额度，放心使用",
-          "sourceUrl": "https://shunfen6.win"
+          "sourceUrl": "https://shunfen6.win/api/status"
         }
       ],
       "rankings": {
@@ -8083,11 +8156,273 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 5,
+          "count": 6,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 5 条，可在本详情页查看。",
+          "message": "已归档 6 条，可在本详情页查看。",
           "source": "https://shunfen6.win/api/status"
+        }
+      ]
+    },
+    {
+      "key": "freemodel",
+      "label": "freemodel",
+      "url": "https://freemodel.dev",
+      "stationType": "mixed",
+      "stationTypeLabel": "混合型中转站",
+      "stationTypeShortLabel": "混合型",
+      "platformGuess": "special",
+      "verifiedTierCount": 4,
+      "groupMultipliers": [
+        {
+          "groupName": "default",
+          "groupMultiplier": 1.0
+        }
+      ],
+      "rechargeTiers": [
+        {
+          "rechargeName": "自定义充值（最低 10 刀；余额上限 1000 刀）",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "rmbAmount": 10.0,
+          "usdAmount": 10.0,
+          "rechargeLocation": "站内用量页 -> 立即充值 -> Stripe",
+          "expiresRule": "用户确认充值倍率=1；最低充值 10 刀解锁 VIP 线路；未注明有效期"
+        },
+        {
+          "rechargeName": "Pro 月卡",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "rmbAmount": 20.0,
+          "usdAmount": 285.72857142857146,
+          "rechargeLocation": "站内账单页 + 站内用量页",
+          "expiresRule": "按 30 天满额使用折算；7 天额度上限 66.67 美元；1 个月订阅；手动续费，不自动扣款"
+        },
+        {
+          "rechargeName": "Max 100 月卡",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "rmbAmount": 100.0,
+          "usdAmount": 1428.5571428571427,
+          "rechargeLocation": "站内账单页 + 站内用量页",
+          "expiresRule": "按 30 天满额使用折算；7 天额度上限 333.33 美元；1 个月订阅；手动续费，不自动扣款"
+        },
+        {
+          "rechargeName": "Max 200 月卡",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "rmbAmount": 200.0,
+          "usdAmount": 2857.157142857143,
+          "rechargeLocation": "站内账单页 + 站内用量页",
+          "expiresRule": "按 30 天满额使用折算；7 天额度上限 666.67 美元；1 个月订阅；手动续费，不自动扣款"
+        }
+      ],
+      "tierNotes": [
+        "用户确认 freemodel 充值倍率=1、分组倍率=1；站内账单 API 显示 Pro 方案价格 20、周额度上限 66.67 美元。",
+        "用户确认 freemodel 充值倍率=1、分组倍率=1；站内账单 API 显示 Max 100 方案价格 100、周额度上限 333.33 美元。",
+        "用户确认 freemodel 充值倍率=1、分组倍率=1；站内账单 API 显示 Max 200 方案价格 200、周额度上限 666.67 美元。",
+        "用户确认 freemodel 充值倍率=1、分组倍率=1；页面显示充值 10 刀或以上可解锁 VIP 高速线路，额外余额上限 1000 刀。"
+      ],
+      "announcements": [],
+      "rankings": {
+        "work_hours": {
+          "rank": 14,
+          "rankingBasis": "formal_high_confidence",
+          "timeWindow": "work_hours",
+          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
+          "station": "freemodel",
+          "label": "freemodel",
+          "stationUrl": "https://freemodel.dev",
+          "stationType": "mixed",
+          "stationTypeLabel": "混合型中转站",
+          "stationTypeShortLabel": "混合型",
+          "totalScore": 78.0132720890884,
+          "successScore": 60.96491228070175,
+          "latencyScore": 82.35977805297826,
+          "costScore": 99.20553943306122,
+          "correctRate": 0.6096491228070176,
+          "avgSeconds": 74.69220175438596,
+          "medianSeconds": 57.17,
+          "p95Seconds": 211.88074999999972,
+          "effectiveMultiplier": 0.06999650017499125,
+          "feeVerified": true,
+          "adoptedTier": "default | Pro 月卡",
+          "adoptedGroup": "default",
+          "adoptedRechargeName": "Pro 月卡",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "multiplierFullUseAssumption": "按 30 天满额使用折算；7 天额度上限 66.67 美元；1 个月订阅；手动续费，不自动扣款",
+          "requests": 912,
+          "correct": 556,
+          "failures": 356,
+          "http2xx": 556,
+          "http200WithError": 0,
+          "firstAt": "2026-05-11 11:02:52 +0800",
+          "lastAt": "2026-05-19 17:59:03 +0800"
+        },
+        "off_hours": {
+          "rank": 6,
+          "rankingBasis": "formal_high_confidence",
+          "timeWindow": "off_hours",
+          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
+          "station": "freemodel",
+          "label": "freemodel",
+          "stationUrl": "https://freemodel.dev",
+          "stationType": "mixed",
+          "stationTypeLabel": "混合型中转站",
+          "stationTypeShortLabel": "混合型",
+          "totalScore": 87.55336939187734,
+          "successScore": 81.45970252507783,
+          "latencyScore": 86.19458149594544,
+          "costScore": 99.20553943306122,
+          "correctRate": 0.8145970252507783,
+          "avgSeconds": 61.80307782774127,
+          "medianSeconds": 42.633,
+          "p95Seconds": 162.032,
+          "effectiveMultiplier": 0.06999650017499125,
+          "feeVerified": true,
+          "adoptedTier": "default | Pro 月卡",
+          "adoptedGroup": "default",
+          "adoptedRechargeName": "Pro 月卡",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "multiplierFullUseAssumption": "按 30 天满额使用折算；7 天额度上限 66.67 美元；1 个月订阅；手动续费，不自动扣款",
+          "requests": 2891,
+          "correct": 2355,
+          "failures": 536,
+          "http2xx": 2355,
+          "http200WithError": 0,
+          "firstAt": "2026-05-08 20:46:32 +0800",
+          "lastAt": "2026-05-20 02:20:55 +0800"
+        },
+        "all_hours": {
+          "rank": 7,
+          "rankingBasis": "formal_high_confidence",
+          "timeWindow": "all_hours",
+          "timeWindowLabel": "全部时段",
+          "station": "freemodel",
+          "label": "freemodel",
+          "stationUrl": "https://freemodel.dev",
+          "stationType": "mixed",
+          "stationTypeLabel": "混合型中转站",
+          "stationTypeShortLabel": "混合型",
+          "totalScore": 86.84750766913076,
+          "successScore": 76.54483302655798,
+          "latencyScore": 89.79482742926362,
+          "costScore": 99.20553943306122,
+          "correctRate": 0.7654483302655798,
+          "avgSeconds": 64.89402734683145,
+          "medianSeconds": 44.624,
+          "p95Seconds": 179.1031999999999,
+          "effectiveMultiplier": 0.06999650017499125,
+          "feeVerified": true,
+          "adoptedTier": "default | Pro 月卡",
+          "adoptedGroup": "default",
+          "adoptedRechargeName": "Pro 月卡",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "multiplierFullUseAssumption": "按 30 天满额使用折算；7 天额度上限 66.67 美元；1 个月订阅；手动续费，不自动扣款",
+          "requests": 3803,
+          "correct": 2911,
+          "failures": 892,
+          "http2xx": 2911,
+          "http200WithError": 0,
+          "firstAt": "2026-05-08 20:46:32 +0800",
+          "lastAt": "2026-05-20 02:20:55 +0800"
+        }
+      },
+      "quality": {
+        "work_hours": {
+          "station": "freemodel",
+          "label": "freemodel",
+          "platformGuess": "special",
+          "timeWindow": "work_hours",
+          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
+          "requestSamples": 912,
+          "correct": 556,
+          "failures": 356,
+          "correctRate": 0.6096491228070176,
+          "http2xx": 556,
+          "http200WithError": 0,
+          "nonnullError": 356,
+          "excludedBillingErrors": 0,
+          "avgSeconds": 74.69220175438596,
+          "medianSeconds": 57.17,
+          "p95Seconds": 211.88074999999972,
+          "avgFirstResponseSeconds": 41.18263565891473,
+          "firstAt": "2026-05-11 11:02:52 +0800",
+          "lastAt": "2026-05-19 17:59:03 +0800"
+        },
+        "off_hours": {
+          "station": "freemodel",
+          "label": "freemodel",
+          "platformGuess": "special",
+          "timeWindow": "off_hours",
+          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
+          "requestSamples": 2891,
+          "correct": 2355,
+          "failures": 536,
+          "correctRate": 0.8145970252507783,
+          "http2xx": 2355,
+          "http200WithError": 0,
+          "nonnullError": 536,
+          "excludedBillingErrors": 6,
+          "avgSeconds": 61.80307782774127,
+          "medianSeconds": 42.633,
+          "p95Seconds": 162.032,
+          "avgFirstResponseSeconds": 30.727833680555555,
+          "firstAt": "2026-05-08 20:46:32 +0800",
+          "lastAt": "2026-05-20 02:20:55 +0800"
+        },
+        "all_hours": {
+          "station": "freemodel",
+          "label": "freemodel",
+          "platformGuess": "special",
+          "timeWindow": "all_hours",
+          "timeWindowLabel": "全部时段",
+          "requestSamples": 3803,
+          "correct": 2911,
+          "failures": 892,
+          "correctRate": 0.7654483302655798,
+          "http2xx": 2911,
+          "http200WithError": 0,
+          "nonnullError": 892,
+          "excludedBillingErrors": 6,
+          "avgSeconds": 64.89402734683145,
+          "medianSeconds": 44.624,
+          "p95Seconds": 179.1031999999999,
+          "avgFirstResponseSeconds": 33.22338910917261,
+          "firstAt": "2026-05-08 20:46:32 +0800",
+          "lastAt": "2026-05-20 02:20:55 +0800"
+        }
+      },
+      "dataEvidence": [
+        {
+          "key": "groupMultipliers",
+          "label": "分组倍率",
+          "count": 1,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 1 条，可在本详情页查看。",
+          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\freemodel-live-auth-probe.json"
+        },
+        {
+          "key": "rechargeTiers",
+          "label": "充值档位",
+          "count": 4,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 4 条，可在本详情页查看。",
+          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\freemodel-live-auth-probe.json"
+        },
+        {
+          "key": "announcements",
+          "label": "公告",
+          "count": 0,
+          "status": "empty",
+          "statusLabel": "接口返回空",
+          "message": "公告接口已访问，但响应中没有标准公告列表",
+          "source": "https://freemodel.dev/api/announcements"
         }
       ]
     },
@@ -8245,7 +8580,7 @@
       ],
       "rankings": {
         "work_hours": {
-          "rank": 14,
+          "rank": 15,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "work_hours",
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
@@ -8446,271 +8781,9 @@
       ]
     },
     {
-      "key": "freemodel",
-      "label": "freemodel",
-      "url": "https://freemodel.dev",
-      "stationType": "mixed",
-      "stationTypeLabel": "混合型中转站",
-      "stationTypeShortLabel": "混合型",
-      "platformGuess": "special",
-      "verifiedTierCount": 4,
-      "groupMultipliers": [
-        {
-          "groupName": "default",
-          "groupMultiplier": 1.0
-        }
-      ],
-      "rechargeTiers": [
-        {
-          "rechargeName": "自定义充值（最低 10 刀；余额上限 1000 刀）",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 10.0,
-          "usdAmount": 10.0,
-          "rechargeLocation": "站内用量页 -> 立即充值 -> Stripe",
-          "expiresRule": "用户确认充值倍率=1；最低充值 10 刀解锁 VIP 线路；未注明有效期"
-        },
-        {
-          "rechargeName": "Pro 月卡",
-          "billingType": "monthly",
-          "billingTypeLabel": "月卡",
-          "rmbAmount": 20.0,
-          "usdAmount": 285.72857142857146,
-          "rechargeLocation": "站内账单页 + 站内用量页",
-          "expiresRule": "按 30 天满额使用折算；7 天额度上限 66.67 美元；1 个月订阅；手动续费，不自动扣款"
-        },
-        {
-          "rechargeName": "Max 100 月卡",
-          "billingType": "monthly",
-          "billingTypeLabel": "月卡",
-          "rmbAmount": 100.0,
-          "usdAmount": 1428.5571428571427,
-          "rechargeLocation": "站内账单页 + 站内用量页",
-          "expiresRule": "按 30 天满额使用折算；7 天额度上限 333.33 美元；1 个月订阅；手动续费，不自动扣款"
-        },
-        {
-          "rechargeName": "Max 200 月卡",
-          "billingType": "monthly",
-          "billingTypeLabel": "月卡",
-          "rmbAmount": 200.0,
-          "usdAmount": 2857.157142857143,
-          "rechargeLocation": "站内账单页 + 站内用量页",
-          "expiresRule": "按 30 天满额使用折算；7 天额度上限 666.67 美元；1 个月订阅；手动续费，不自动扣款"
-        }
-      ],
-      "tierNotes": [
-        "用户确认 freemodel 充值倍率=1、分组倍率=1；站内账单 API 显示 Pro 方案价格 20、周额度上限 66.67 美元。",
-        "用户确认 freemodel 充值倍率=1、分组倍率=1；站内账单 API 显示 Max 100 方案价格 100、周额度上限 333.33 美元。",
-        "用户确认 freemodel 充值倍率=1、分组倍率=1；站内账单 API 显示 Max 200 方案价格 200、周额度上限 666.67 美元。",
-        "用户确认 freemodel 充值倍率=1、分组倍率=1；页面显示充值 10 刀或以上可解锁 VIP 高速线路，额外余额上限 1000 刀。"
-      ],
-      "announcements": [],
-      "rankings": {
-        "work_hours": {
-          "rank": 15,
-          "rankingBasis": "formal_high_confidence",
-          "timeWindow": "work_hours",
-          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
-          "station": "freemodel",
-          "label": "freemodel",
-          "stationUrl": "https://freemodel.dev",
-          "stationType": "mixed",
-          "stationTypeLabel": "混合型中转站",
-          "stationTypeShortLabel": "混合型",
-          "totalScore": 73.76483269846352,
-          "successScore": 52.71084337349398,
-          "latencyScore": 79.65460140228748,
-          "costScore": 99.20553943306122,
-          "correctRate": 0.5271084337349398,
-          "avgSeconds": 82.09293373493975,
-          "medianSeconds": 60.886,
-          "p95Seconds": 231.426,
-          "effectiveMultiplier": 0.06999650017499125,
-          "feeVerified": true,
-          "adoptedTier": "default | Pro 月卡",
-          "adoptedGroup": "default",
-          "adoptedRechargeName": "Pro 月卡",
-          "billingType": "monthly",
-          "billingTypeLabel": "月卡",
-          "multiplierFullUseAssumption": "按 30 天满额使用折算；7 天额度上限 66.67 美元；1 个月订阅；手动续费，不自动扣款",
-          "requests": 664,
-          "correct": 350,
-          "failures": 314,
-          "http2xx": 350,
-          "http200WithError": 0,
-          "firstAt": "2026-05-11 11:02:52 +0800",
-          "lastAt": "2026-05-19 11:27:47 +0800"
-        },
-        "off_hours": {
-          "rank": 6,
-          "rankingBasis": "formal_high_confidence",
-          "timeWindow": "off_hours",
-          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
-          "station": "freemodel",
-          "label": "freemodel",
-          "stationUrl": "https://freemodel.dev",
-          "stationType": "mixed",
-          "stationTypeLabel": "混合型中转站",
-          "stationTypeShortLabel": "混合型",
-          "totalScore": 87.45690585381533,
-          "successScore": 81.05032822757111,
-          "latencyScore": 86.38682772720452,
-          "costScore": 99.20553943306122,
-          "correctRate": 0.8105032822757111,
-          "avgSeconds": 61.04138118161925,
-          "medianSeconds": 38.319,
-          "p95Seconds": 177.32659999999981,
-          "effectiveMultiplier": 0.06999650017499125,
-          "feeVerified": true,
-          "adoptedTier": "default | Pro 月卡",
-          "adoptedGroup": "default",
-          "adoptedRechargeName": "Pro 月卡",
-          "billingType": "monthly",
-          "billingTypeLabel": "月卡",
-          "multiplierFullUseAssumption": "按 30 天满额使用折算；7 天额度上限 66.67 美元；1 个月订阅；手动续费，不自动扣款",
-          "requests": 2285,
-          "correct": 1852,
-          "failures": 433,
-          "http2xx": 1852,
-          "http200WithError": 0,
-          "firstAt": "2026-05-08 20:46:32 +0800",
-          "lastAt": "2026-05-19 02:44:50 +0800"
-        },
-        "all_hours": {
-          "rank": 10,
-          "rankingBasis": "formal_high_confidence",
-          "timeWindow": "all_hours",
-          "timeWindowLabel": "全部时段",
-          "station": "freemodel",
-          "label": "freemodel",
-          "stationUrl": "https://freemodel.dev",
-          "stationType": "mixed",
-          "stationTypeLabel": "混合型中转站",
-          "stationTypeShortLabel": "混合型",
-          "totalScore": 86.01492081323673,
-          "successScore": 74.66937945066124,
-          "latencyScore": 89.55938335630552,
-          "costScore": 99.20553943306122,
-          "correctRate": 0.7466937945066124,
-          "avgSeconds": 65.78137131230926,
-          "medianSeconds": 42.54,
-          "p95Seconds": 198.32899999999995,
-          "effectiveMultiplier": 0.06999650017499125,
-          "feeVerified": true,
-          "adoptedTier": "default | Pro 月卡",
-          "adoptedGroup": "default",
-          "adoptedRechargeName": "Pro 月卡",
-          "billingType": "monthly",
-          "billingTypeLabel": "月卡",
-          "multiplierFullUseAssumption": "按 30 天满额使用折算；7 天额度上限 66.67 美元；1 个月订阅；手动续费，不自动扣款",
-          "requests": 2949,
-          "correct": 2202,
-          "failures": 747,
-          "http2xx": 2202,
-          "http200WithError": 0,
-          "firstAt": "2026-05-08 20:46:32 +0800",
-          "lastAt": "2026-05-19 11:27:47 +0800"
-        }
-      },
-      "quality": {
-        "work_hours": {
-          "station": "freemodel",
-          "label": "freemodel",
-          "platformGuess": "special",
-          "timeWindow": "work_hours",
-          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
-          "requestSamples": 664,
-          "correct": 350,
-          "failures": 314,
-          "correctRate": 0.5271084337349398,
-          "http2xx": 350,
-          "http200WithError": 0,
-          "nonnullError": 314,
-          "excludedBillingErrors": 0,
-          "avgSeconds": 82.09293373493975,
-          "medianSeconds": 60.886,
-          "p95Seconds": 231.426,
-          "avgFirstResponseSeconds": 43.89841526717557,
-          "firstAt": "2026-05-11 11:02:52 +0800",
-          "lastAt": "2026-05-19 11:27:47 +0800"
-        },
-        "off_hours": {
-          "station": "freemodel",
-          "label": "freemodel",
-          "platformGuess": "special",
-          "timeWindow": "off_hours",
-          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
-          "requestSamples": 2285,
-          "correct": 1852,
-          "failures": 433,
-          "correctRate": 0.8105032822757111,
-          "http2xx": 1852,
-          "http200WithError": 0,
-          "nonnullError": 433,
-          "excludedBillingErrors": 6,
-          "avgSeconds": 61.04138118161925,
-          "medianSeconds": 38.319,
-          "p95Seconds": 177.32659999999981,
-          "avgFirstResponseSeconds": 29.612718997361476,
-          "firstAt": "2026-05-08 20:46:32 +0800",
-          "lastAt": "2026-05-19 02:44:50 +0800"
-        },
-        "all_hours": {
-          "station": "freemodel",
-          "label": "freemodel",
-          "platformGuess": "special",
-          "timeWindow": "all_hours",
-          "timeWindowLabel": "全部时段",
-          "requestSamples": 2949,
-          "correct": 2202,
-          "failures": 747,
-          "correctRate": 0.7466937945066124,
-          "http2xx": 2202,
-          "http200WithError": 0,
-          "nonnullError": 747,
-          "excludedBillingErrors": 6,
-          "avgSeconds": 65.78137131230926,
-          "medianSeconds": 42.54,
-          "p95Seconds": 198.32899999999995,
-          "avgFirstResponseSeconds": 32.807369409354735,
-          "firstAt": "2026-05-08 20:46:32 +0800",
-          "lastAt": "2026-05-19 11:27:47 +0800"
-        }
-      },
-      "dataEvidence": [
-        {
-          "key": "groupMultipliers",
-          "label": "分组倍率",
-          "count": 1,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\freemodel-live-auth-probe.json"
-        },
-        {
-          "key": "rechargeTiers",
-          "label": "充值档位",
-          "count": 4,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 4 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\freemodel-live-auth-probe.json"
-        },
-        {
-          "key": "announcements",
-          "label": "公告",
-          "count": 0,
-          "status": "empty",
-          "statusLabel": "接口返回空",
-          "message": "公告接口已访问，但响应中没有标准公告列表",
-          "source": "https://freemodel.dev/api/announcements"
-        }
-      ]
-    },
-    {
       "key": "flymux",
       "label": "FlyMux",
-      "url": "https://api.flymux.com",
+      "url": "https://106.75.146.14",
       "stationType": "non_subscription",
       "stationTypeLabel": "非包月型中转站",
       "stationTypeShortLabel": "非包月型",
@@ -8829,7 +8902,16 @@
         "ChatGPT Pro+Plus混合号池，响应稳定，适合编程任务，支持codex客户端; UI quick presets; custom amount allowed 1-10000 RMB; checkout multiplier 1; recharge fee 0%",
         "公开配置显示已开启余额充值，但具体档位金额仍需登录/核验。 充值入口：https://api.flymux.com"
       ],
-      "announcements": [],
+      "announcements": [
+        {
+          "id": "4",
+          "publishedAt": "2026-05-14T16:38:13.324697+08:00",
+          "type": "login_probe",
+          "extra": "分组倍率调整公告",
+          "content": "为进一步优化资源配置与服务稳定性，现对部分分组的倍率及号池配置作如下调整：\n1. codex-pro 分组倍率调整为 0.3，并切换为纯 ChatGPT Pro 20x 号池。\n2. codex 分组倍率调整为 0.15，号池由原先的 Plus + Pro 混合配置调整为纯 Plus 号池。若您在使用过程中对响应速度有更高要求，可酌情切换至 codex-pro 分组。\n3. 订阅用户当前使用的 Pro 20x + Plus 混合号池，暂不受本次调整影响。\n感谢您的理解与支持。如有疑问，请及时联系客服.\n另外新套餐暂停售卖，具体恢复时间不定，等待新渠道稳定后另行通知.",
+          "sourceUrl": "https://api.flymux.com/api/v1/announcements"
+        }
+      ],
       "rankings": {
         "work_hours": {
           "rank": 16,
@@ -8838,7 +8920,7 @@
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
           "station": "flymux",
           "label": "FlyMux",
-          "stationUrl": "https://api.flymux.com",
+          "stationUrl": "https://106.75.146.14",
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
@@ -8873,7 +8955,7 @@
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
           "station": "flymux",
           "label": "FlyMux",
-          "stationUrl": "https://api.flymux.com",
+          "stationUrl": "https://106.75.146.14",
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
@@ -8908,7 +8990,7 @@
           "timeWindowLabel": "全部时段",
           "station": "flymux",
           "label": "FlyMux",
-          "stationUrl": "https://api.flymux.com",
+          "stationUrl": "https://106.75.146.14",
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
@@ -9010,7 +9092,7 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 5 条，可在本详情页查看。",
-          "source": "https://106.75.146.14/api/v1/groups/available"
+          "source": "https://api.flymux.com/api/v1/groups/available"
         },
         {
           "key": "rechargeTiers",
@@ -9019,16 +9101,16 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 9 条，可在本详情页查看。",
-          "source": "https://106.75.146.14/api/v1/payment/checkout-info"
+          "source": "https://api.flymux.com/api/v1/payment/checkout-info"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 0,
-          "status": "login_required",
-          "statusLabel": "需要登录",
-          "message": "需要登录或权限不足 (HTTP 401)",
-          "source": "https://106.75.146.14/api/v1/announcements"
+          "count": 1,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 1 条，可在本详情页查看。",
+          "source": "https://api.flymux.com/api/v1/announcements"
         }
       ]
     },
@@ -9837,7 +9919,7 @@
     {
       "key": "bytecat",
       "label": "bytecat",
-      "url": "https://www.bytecatcode.org",
+      "url": "https://codecdn.bytecatcode.org",
       "stationType": "non_subscription",
       "stationTypeLabel": "非包月型中转站",
       "stationTypeShortLabel": "非包月型",
@@ -10090,7 +10172,7 @@
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
           "station": "bytecat",
           "label": "bytecat",
-          "stationUrl": "https://www.bytecatcode.org",
+          "stationUrl": "https://codecdn.bytecatcode.org",
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
@@ -10125,7 +10207,7 @@
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
           "station": "bytecat",
           "label": "bytecat",
-          "stationUrl": "https://www.bytecatcode.org",
+          "stationUrl": "https://codecdn.bytecatcode.org",
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
@@ -10160,7 +10242,7 @@
           "timeWindowLabel": "全部时段",
           "station": "bytecat",
           "label": "bytecat",
-          "stationUrl": "https://www.bytecatcode.org",
+          "stationUrl": "https://codecdn.bytecatcode.org",
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
@@ -10915,7 +10997,7 @@
     {
       "key": "17nas",
       "label": "17nas",
-      "url": "https://ai.17nas.com",
+      "url": "https://api.17nas.com",
       "stationType": "mixed",
       "stationTypeLabel": "混合型中转站",
       "stationTypeShortLabel": "混合型",
@@ -11143,7 +11225,7 @@
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
           "station": "17nas",
           "label": "17nas",
-          "stationUrl": "https://ai.17nas.com",
+          "stationUrl": "https://api.17nas.com",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -11178,7 +11260,7 @@
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
           "station": "17nas",
           "label": "17nas",
-          "stationUrl": "https://ai.17nas.com",
+          "stationUrl": "https://api.17nas.com",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -11213,7 +11295,7 @@
           "timeWindowLabel": "全部时段",
           "station": "17nas",
           "label": "17nas",
-          "stationUrl": "https://ai.17nas.com",
+          "stationUrl": "https://api.17nas.com",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -11450,7 +11532,112 @@
         "钱包页注明可按1 CNY:1 USD划转到指定密钥",
         "当前密钥页可见 claudecode 系列总额度 20 USD 来自超值体验卡"
       ],
-      "announcements": [],
+      "announcements": [
+        {
+          "id": "24",
+          "publishedAt": "2026-05-06 14:16:37",
+          "type": "login_probe",
+          "extra": "五一活动结果公告",
+          "content": "亲爱的 HONGMACC 用户：\n感谢大家参与本次「五一买卡送额度」活动。本次活动的赠送额度及抽奖结果已统计完成，现公告如下：\n一、赠送额度已发放完成\n活动期间，所有符合活动条件用户的赠送额度已全部发放完成。请符合条件的用户登录账户后查看对应额度到账情况。\n二、抽奖结果公布\n以下用户在本次抽奖活动中被抽中，将获得价值 398 元的龙虾卡或编程卡（二选一）：\ncrh***xxx\n151***xxx\nvic***xxx\nlon***xxx\n243***xxx\n543***xxx\n824***xxx\ns10***xxx\n317***xxx\nhel***xxx\n请以上中奖用户通过工单回复选择兑换：龙虾卡 或 编程卡。我们将在收到回复后为您安排发放。\n未来，HONGMACC 将不定期举办更多赠送额度、抽奖福利等活动，欢迎大家持续关注并参与。\n再次感谢大家对 HONGMACC 的支持。我们将持续为用户提供更省钱、更稳定、更高效的 AI Coding 服务。\nHONGMACC 团队",
+          "sourceUrl": "https://hongmacc.com/api/user/announcements"
+        },
+        {
+          "id": "23",
+          "publishedAt": "2026-04-30 13:57:20",
+          "type": "login_probe",
+          "extra": "51假期特惠活动 | 购买龙虾卡和编程卡，赠送高额额度！",
+          "content": "亲爱的用户：\n为了庆祝51假期的到来，我们特别推出了假期特惠活动！即4月30日凌晨至5月5日24时，购买（或兑换）龙虾卡和编程卡即可享受赠送额度，并有机会参与大礼包抽奖，让您在假期也能体验到我们的优质服务。详情如下：\n活动一：购买卡片赠送额度（赠送10%）\n- 龙虾卡-例如：购买798元的龙虾卡，赠送100美元额度。\n- 编程卡-例如：购买788元的编程卡，赠送80美元额度。\n所有赠送额度将在活动结束后统一发放，您可以在5月6日后查看到账额度。\n活动二：大礼包抽奖\n活动期间，购买龙虾卡或编程卡满100元的用户将有机会参与大礼包抽奖。\n奖品：从活动期间购买的用户中抽取10名幸运用户，将获得价值398元的龙虾卡或编程卡（任选其一）。\n抽奖结果将在5月6日公布，并通过邮件或站内信通知中奖用户。\n活动规则：\n- 活动仅限龙虾卡和编程卡，体验卡不参与活动。\n- 赠送额度将在5月6日统一发放。\n- 满额购买龙虾卡或编程卡的用户可参与抽奖，中奖者将在5月6日公布。\n活动时间：\n- 活动开始时间：4月30日凌晨\n- 活动结束时间：5月5日24时\n- 赠送额度发放时间：5月6日\n赶快参与我们的假期特惠活动，享受更多实惠和机会！若有任何问题，欢迎随时联系我们的客服团队。\n祝您度过一个愉快的假期！",
+          "sourceUrl": "https://hongmacc.com/api/user/announcements"
+        },
+        {
+          "id": "22",
+          "publishedAt": "2026-04-10 00:49:39",
+          "type": "login_probe",
+          "extra": "咱家改版啦！关于“龙虾”与“编程”双 Key 模式上线的公告",
+          "content": "各位老铁、家人们：\n首先，真心感谢大家这段时间对咱平台的支持，没被 A 社这波疯狗一样的风控给吓跑，老铁们是真爱！\n最近 A 社（Anthropic）的风控啥样大家也看到了，简直是变态中的变态，封号封得我们心都在滴血。加上大家一直反馈想更稳地“养龙虾”，也对之前乱七八糟的模型倍率有疑问，觉得不够透明。\n为了让大家用得更爽、更明白，我们这次狠下心对平台做了大改版。一句话总结：以后咱家直接分两条线走，账目清清楚楚！\n核心变化：双 Key 时代开启\n以后大家购买对应的产品后，系统会自动帮你生成两个专属 Key：\n龙虾 Key (OpenClaw 专线)： 这是我们对接了 OpenClaw 架构的顶级线路。走这个 Key 就是稳！想稳定“养龙虾”的兄弟，闭眼冲这个。\n编程 Key (全能效率线)： 专门为编程场景优化的线路。响应快、响应稳，写代码撸工程首选。\n大家的余额怎么转？（看这里，咱不坑人！）\n为了这次改版，我们已经把大家之前的额度按最划算的方式转好了：\n额度卡用户： 原有的额度直接 1:1 转化成新的“编程额度”，一分钱不少。\n月卡用户： 我们把你月卡剩下的天数折算成人民币（¥），然后按 ¥1 兑 $1 的超值比例，直接充进你的“编程 Key”余额里了。这波转换，大家绝对不亏！\n倍率实时看，心里更有底\n以前老有人问倍率问题。现在新版本后台支持实时查看模型倍率了！咱家主打的就是一个公开、透明、不玩虚的。\n最后说两句： 改版刚上线，如果大家发现额度转得不对，或者 Key 用着有啥问题，直接去后台发个工单。哥们儿几个全天候守着呢，肯定第一时间给大家解决！\n再次感谢大家的理解，我们会继续死磕稳定性，让大家不管是养龙虾还是撸代码，都能稳如老狗！",
+          "sourceUrl": "https://hongmacc.com/api/user/announcements"
+        },
+        {
+          "id": "21",
+          "publishedAt": "2026-03-20 22:08:13",
+          "type": "login_probe",
+          "extra": "关于服务架构调整与套餐优化的公告",
+          "content": "近期，由于大模型官方风控手段不断升级，导致我们的维护成本急剧攀升，服务稳定性也受到很大影响。对此，我们向受影响的每一位用户致以最诚挚的歉意。\n经过团队慎重研究，我们将对服务模式及套餐体系做出以下调整：\n月卡下线： 即日起，平台将正式下线原有“月卡”订阅模式。\n按量计费（额度卡）： 维持原价不变，暂不调整！\n针对性场景规划（下月初上线）\n考虑到很多用户对养龙虾的需求很大，我们决定专门针对龙虾场景制定优惠套餐，未来将分为两类套餐：\n龙虾场景：包月套餐，便宜、量大；也可按量；\n编程场景：保持按量，保证质量；\n感谢大家在波动期间的包容与理解～",
+          "sourceUrl": "https://hongmacc.com/api/user/announcements"
+        },
+        {
+          "id": "20",
+          "publishedAt": "2026-03-14 01:19:41",
+          "type": "login_probe",
+          "extra": "关于服务价格即将调整的说明",
+          "content": "感谢大家一直以来对我们的信赖与支持。\n今天临时调价，没有事先通知，对大家造成了影响，我们在此道歉；现在已将价格改回去（今天购买了高价的 工单联系我们补差价或者差额）\n由于近期官方风控机制全面升级，导致我们的成本支出出现了大幅增长。为了确保在高强度风控环境下，依然能为大家提供稳定、高速、低延迟的中转服务，经过慎重考虑，我们会重新制定一个合理的大家都能承受的价格。\n调整价格的时间暂定为3月20日，在此之前还是维持原价格\n调整价格后，9.9体验套餐的依然保留给大家；另外，涨价后会去掉5个限制，让大家更好的使用多agent和龙虾；\n如果有对价格有想法，或者好的方案，可以工单提给我们。\n特别说明：因为是我们自己维护号池，但是官方风控随时升级，导致号池在某些时间可能出现不稳的情况，当号池不稳的时候，我们将暂时停止服务，（我们不走三方渠道，三方比我们贵太多太多）请大家理解，如果介意的，请勿下单；\n服务不易，生存维艰，感谢您的理解与包容。我们给广大用户提供特价claude的初心不变。",
+          "sourceUrl": "https://hongmacc.com/api/user/announcements"
+        },
+        {
+          "id": "18",
+          "publishedAt": "2026-03-12 00:22:42",
+          "type": "login_probe",
+          "extra": "A社异常紧急通知",
+          "content": "尊敬的用户：\n我们收到通知，A社（Claude）服务目前出现不稳定情况，导致其号池（资源）紧张，部分用户可能遇到连接困难或响应速度变慢。\n我们理解这可能对您的使用造成不便，为此我们深表歉意。\n根据A社官方说明：“Update -We're currently investigating issues with Claude Code and Claude.ai http://Claude.ai. Some users may be unable to login, and others may experience slower than usual performance. The Claude API is not affected.”\n在此期间，为确保您的顺畅体验，我们诚恳建议您暂时优先使用Codex模型。\n感谢您的理解与支持，我们将持续关注A社服务的恢复情况，并及时向您同步最新进展。",
+          "sourceUrl": "https://hongmacc.com/api/user/announcements"
+        },
+        {
+          "id": "17",
+          "publishedAt": "2026-03-02 16:45:42",
+          "type": "login_probe",
+          "extra": "关于昨晚系统服务波动的情况说明及补偿公告",
+          "content": "昨晚10点多，由于我司后端系统进行流量灰度测试，导致部分用户的访问请求出现短暂不可调用的情况。对于此次测试给您带来的不便，我们深表歉意。\n我们将筛选出受影响的用户，给出一定的补偿，补偿额度将直接发放至“额度包”中。。\n我们将持续优化测试流程，确保系统升级过程中的稳定性。\n感谢您的理解与支持。",
+          "sourceUrl": "https://hongmacc.com/api/user/announcements"
+        },
+        {
+          "id": "16",
+          "publishedAt": "2026-02-27 18:06:16",
+          "type": "login_probe",
+          "extra": "关于服务波动及异常账号处理的公告",
+          "content": "今日下午服务出现不稳定，经排查，主要由于部分账号存在极端异常请求，导致号池负载失衡。严重影响了正常用户的使用体验。经过我们技术团队紧急排查，发现如下异常特征：\nPrompt Cache 滥用；高频请求，高度疑似专门注册用于刷量的账号，被 rate limit 卡住后持续重试。\n处理说明：\n账号清理： 我们已对符合上述异常特征的账号执行封禁，此次封禁时长12个小时，如果后续多次发现异常请求，将会对账号永久封禁。\n申诉通道： 如有被误封的账号，请及时【提交工单】联系我们，我们将人工复核并快速处理。\n对受影响的正常用户深表歉意，我们将持续优化调度算法以保障稳定性。",
+          "sourceUrl": "https://hongmacc.com/api/user/announcements"
+        },
+        {
+          "id": "15",
+          "publishedAt": "2026-02-27 00:00:00",
+          "type": "login_probe",
+          "extra": "终于等到你！OpenClaw / OpenCode 现已全线支持！",
+          "content": "大家催了很久的 OpenClaw 和 OpenCode，今天终于正式上线了！\n最近 OpenClaw 在开发者圈子里非常火爆，我们后台也收到了大量询问。为了让大家能第一时间用上这些得心应手的开源工具，技术部的小伙伴们连夜奋战，完成了深度适配与协议优化。\n- 生态全兼容： 无论是目前风头最劲的 OpenClaw，还是好用的 OpenCode，现在都能完美挂载我们的中转服务。\n- 配置零门槛： 无需复杂的转换脚本，直接填入我们的 API Key 和 Base URL，即可丝滑开启 AI 编程之旅。\n- 稳定不掉线： 针对 OpenClaw 的长文本和多轮对话逻辑进行了专项优化，确保高频调用下的极致稳定性。",
+          "sourceUrl": "https://hongmacc.com/api/user/announcements"
+        },
+        {
+          "id": "14",
+          "publishedAt": "2026-02-24 22:43:03",
+          "type": "login_probe",
+          "extra": "【重大喜讯】使用体验大升级：取消“窗口期”限制！",
+          "content": "我们平台听到大家的呼声了！\n为了让大家用得更爽，我们正式重构了 Claude Code 包月套餐的计费机制：彻底移除 5 小时窗口期限制。\n核心变化（以100刀月卡为例）：\nBefore： 5 小时内只能用 50 刀，等下一个窗口期才可以继续用，使用不自由。\nNow： 彻底放开！ 您的每日额度现在支持全时段、全速消耗，想怎么用就怎么用。\n为什么这么做？\n因为真正的开发不该被“限流”。无论是深夜突击还是全天沉浸，我们希望平台的规则越简单越好。\n感谢您选择我们平台。现在，请开始您的丝滑编程之旅吧！",
+          "sourceUrl": "https://hongmacc.com/api/user/announcements"
+        },
+        {
+          "id": "13",
+          "publishedAt": "2026-01-22 11:34:01",
+          "type": "login_probe",
+          "extra": "【关于价格调整的通知】",
+          "content": "尊敬的用户：\n受近期 Anthropic (A社) 严厉的封控政策影响，渠道获取成本及账号维护成本大幅上升。多家大型中转商已大幅涨价；\n为了确保在当前高压环境下，依然能为您提供稳定、不间断的 CC 模型服务，平台决定对相关产品价格进行调整。\n自 2026年 1 月 28日 12:00 起，将全面调整涨所有套餐价格。我们保证，调整后的价格，相较于其他中转，也将会非常具竞争力。\n我们深知价格变动给您带来的影响，但为了保障服务的连续性与稳定性，这是目前维持运营的必要举措。一旦外部环境好转、成本回落，我们将第一时间恢复原价。\n感谢您的理解与鼎力支持。",
+          "sourceUrl": "https://hongmacc.com/api/user/announcements"
+        },
+        {
+          "id": "12",
+          "publishedAt": "2026-01-12 20:51:59",
+          "type": "login_probe",
+          "extra": "关于限购福利套餐使用规范及违规处理的公告",
+          "content": "我们的限购福利套餐/优惠套餐数量有限，为保障正常用户的使用体验与服务稳定，仅限真实开发者自用（个人/团队开发、学习、测试）。我们明确拒绝任何二道贩子/套利行为。\n严禁：刷额度、多账号/多设备/脚本套利、代购代充、账号共享、拆分转售、倒卖额度等。\n一经发现：封号 + 额度清零 + 拉黑支付/设备，不解释不退款，并永久取消后续购买资格。",
+          "sourceUrl": "https://hongmacc.com/api/user/announcements"
+        },
+        {
+          "id": "11",
+          "publishedAt": "2026-01-04 14:34:01",
+          "type": "login_probe",
+          "extra": "特稳定的Claude Code 极速中转平台",
+          "content": "针对国内连接难、易封号、支付累、不稳定等痛点，提供以下服务：\n- 全模型： 完美支持 Claude 4.5 全系列（Sonnet / Haiku / Opus）。\n- 低延迟： 全球多点中继，毫秒级响应。\n- 高稳定： 官方企业渠道，告别封号风险。\n- 透明化： 实时账单，每一笔消耗清晰可见。",
+          "sourceUrl": "https://hongmacc.com/api/user/announcements"
+        }
+      ],
       "rankings": {
         "work_hours": {
           "rank": 23,
@@ -11645,11 +11832,325 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 0,
-          "status": "empty",
-          "statusLabel": "接口返回空",
-          "message": "公告接口已访问，但响应中没有标准公告列表",
-          "source": "https://hongmacc.com/api/announcements"
+          "count": 13,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 13 条，可在本详情页查看。",
+          "source": "https://hongmacc.com/api/user/announcements"
+        }
+      ]
+    },
+    {
+      "key": "audit-api-printcap-ai",
+      "label": "api.printcap.ai",
+      "url": "https://api.printcap.ai",
+      "stationType": "non_subscription",
+      "stationTypeLabel": "非包月型中转站",
+      "stationTypeShortLabel": "非包月型",
+      "platformGuess": "sub2api",
+      "verifiedTierCount": 9,
+      "groupMultipliers": [
+        {
+          "groupName": "GPT-MIX",
+          "groupMultiplier": 1.0
+        }
+      ],
+      "rechargeTiers": [
+        {
+          "rechargeName": "截图核验充值 10 RMB -> 20 USD",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "rmbAmount": 10.0,
+          "usdAmount": 20.0,
+          "rechargeLocation": "PrintCap 充值页完整截图",
+          "expiresRule": "expiry not stated"
+        },
+        {
+          "rechargeName": "截图核验充值 20 RMB -> 40 USD",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "rmbAmount": 20.0,
+          "usdAmount": 40.0,
+          "rechargeLocation": "PrintCap 充值页完整截图",
+          "expiresRule": "expiry not stated"
+        },
+        {
+          "rechargeName": "截图核验充值 50 RMB -> 100 USD",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "rmbAmount": 50.0,
+          "usdAmount": 100.0,
+          "rechargeLocation": "PrintCap 充值页完整截图",
+          "expiresRule": "expiry not stated"
+        },
+        {
+          "rechargeName": "截图核验充值 100 RMB -> 200 USD",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "rmbAmount": 100.0,
+          "usdAmount": 200.0,
+          "rechargeLocation": "PrintCap 充值页完整截图",
+          "expiresRule": "expiry not stated"
+        },
+        {
+          "rechargeName": "截图核验充值 200 RMB -> 400 USD",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "rmbAmount": 200.0,
+          "usdAmount": 400.0,
+          "rechargeLocation": "PrintCap 充值页完整截图",
+          "expiresRule": "expiry not stated"
+        },
+        {
+          "rechargeName": "截图核验充值 500 RMB -> 1000 USD",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "rmbAmount": 500.0,
+          "usdAmount": 1000.0,
+          "rechargeLocation": "PrintCap 充值页完整截图",
+          "expiresRule": "expiry not stated"
+        },
+        {
+          "rechargeName": "截图核验充值 1000 RMB -> 2000 USD",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "rmbAmount": 1000.0,
+          "usdAmount": 2000.0,
+          "rechargeLocation": "PrintCap 充值页完整截图",
+          "expiresRule": "expiry not stated"
+        },
+        {
+          "rechargeName": "截图核验充值 2000 RMB -> 4000 USD",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "rmbAmount": 2000.0,
+          "usdAmount": 4000.0,
+          "rechargeLocation": "PrintCap 充值页完整截图",
+          "expiresRule": "expiry not stated"
+        },
+        {
+          "rechargeName": "截图核验充值 5000 RMB -> 10000 USD",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "rmbAmount": 5000.0,
+          "usdAmount": 10000.0,
+          "rechargeLocation": "PrintCap 充值页完整截图",
+          "expiresRule": "expiry not stated"
+        }
+      ],
+      "tierNotes": [
+        "用户完整截图确认唯一分组为 GPT-MIX 1x；快捷档位为 10/20/50/100/200/500/1000/2000/5000 RMB；快捷档位与自定义金额均显示 1 CNY = 2 USD；PrintCap 登录被风控阻断，未能抓取 API 证据。",
+        "公开配置显示已开启余额充值，但具体档位金额仍需登录/核验。 充值入口：https://printcap.ai/purchase"
+      ],
+      "announcements": [
+        {
+          "id": "2",
+          "publishedAt": "2026-05-17T21:42:04.280135+08:00",
+          "type": "login_probe",
+          "extra": "现在充值1块得2块额度，试试看",
+          "content": "有遇到问题可以加TG群反馈问题：https://t.me/+YiR-myHaK75mMThl\n反馈一个问题免费送分哈",
+          "sourceUrl": "https://printcap.ai/api/v1/announcements"
+        }
+      ],
+      "rankings": {
+        "work_hours": {
+          "rank": 24,
+          "rankingBasis": "formal_high_confidence",
+          "timeWindow": "work_hours",
+          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
+          "station": "audit-api-printcap-ai",
+          "label": "api.printcap.ai",
+          "stationUrl": "https://api.printcap.ai",
+          "stationType": "non_subscription",
+          "stationTypeLabel": "非包月型中转站",
+          "stationTypeShortLabel": "非包月型",
+          "totalScore": 32.3254313325066,
+          "successScore": 0.0,
+          "latencyScore": 25.831629219329276,
+          "costScore": 93.1374444229654,
+          "correctRate": 0.0,
+          "avgSeconds": 229.34002439024388,
+          "medianSeconds": 269.374,
+          "p95Seconds": 300.014,
+          "effectiveMultiplier": 0.5,
+          "feeVerified": true,
+          "adoptedTier": "GPT-MIX | 截图核验充值 10 RMB -> 20 USD",
+          "adoptedGroup": "GPT-MIX",
+          "adoptedRechargeName": "截图核验充值 10 RMB -> 20 USD",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "multiplierFullUseAssumption": "expiry not stated",
+          "requests": 41,
+          "correct": 0,
+          "failures": 41,
+          "http2xx": 0,
+          "http200WithError": 0,
+          "firstAt": "2026-05-18 11:59:10 +0800",
+          "lastAt": "2026-05-19 17:05:46 +0800"
+        },
+        "off_hours": {
+          "rank": 18,
+          "rankingBasis": "formal_high_confidence",
+          "timeWindow": "off_hours",
+          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
+          "station": "audit-api-printcap-ai",
+          "label": "api.printcap.ai",
+          "stationUrl": "https://api.printcap.ai",
+          "stationType": "non_subscription",
+          "stationTypeLabel": "非包月型中转站",
+          "stationTypeShortLabel": "非包月型",
+          "totalScore": 57.93099551172405,
+          "successScore": 4.442112626792585,
+          "latencyScore": 93.91368387218762,
+          "costScore": 93.1374444229654,
+          "correctRate": 0.044421126267925846,
+          "avgSeconds": 31.21930849947534,
+          "medianSeconds": 24.317,
+          "p95Seconds": 78.25389999999999,
+          "effectiveMultiplier": 0.5,
+          "feeVerified": true,
+          "adoptedTier": "GPT-MIX | 截图核验充值 10 RMB -> 20 USD",
+          "adoptedGroup": "GPT-MIX",
+          "adoptedRechargeName": "截图核验充值 10 RMB -> 20 USD",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "multiplierFullUseAssumption": "expiry not stated",
+          "requests": 2859,
+          "correct": 127,
+          "failures": 2732,
+          "http2xx": 127,
+          "http200WithError": 0,
+          "firstAt": "2026-05-16 23:48:59 +0800",
+          "lastAt": "2026-05-18 19:20:23 +0800"
+        },
+        "all_hours": {
+          "rank": 22,
+          "rankingBasis": "formal_high_confidence",
+          "timeWindow": "all_hours",
+          "timeWindowLabel": "全部时段",
+          "station": "audit-api-printcap-ai",
+          "label": "api.printcap.ai",
+          "stationUrl": "https://api.printcap.ai",
+          "stationType": "non_subscription",
+          "stationTypeLabel": "非包月型中转站",
+          "stationTypeShortLabel": "非包月型",
+          "totalScore": 59.331438690291435,
+          "successScore": 4.379310344827586,
+          "latencyScore": 97.9867241331973,
+          "costScore": 93.1374444229654,
+          "correctRate": 0.04379310344827586,
+          "avgSeconds": 34.020325517241375,
+          "medianSeconds": 24.652,
+          "p95Seconds": 86.95644999999988,
+          "effectiveMultiplier": 0.5,
+          "feeVerified": true,
+          "adoptedTier": "GPT-MIX | 截图核验充值 10 RMB -> 20 USD",
+          "adoptedGroup": "GPT-MIX",
+          "adoptedRechargeName": "截图核验充值 10 RMB -> 20 USD",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "multiplierFullUseAssumption": "expiry not stated",
+          "requests": 2900,
+          "correct": 127,
+          "failures": 2773,
+          "http2xx": 127,
+          "http200WithError": 0,
+          "firstAt": "2026-05-16 23:48:59 +0800",
+          "lastAt": "2026-05-19 17:05:46 +0800"
+        }
+      },
+      "quality": {
+        "work_hours": {
+          "station": "audit-api-printcap-ai",
+          "label": "api.printcap.ai",
+          "platformGuess": "sub2api",
+          "timeWindow": "work_hours",
+          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
+          "requestSamples": 41,
+          "correct": 0,
+          "failures": 41,
+          "correctRate": 0.0,
+          "http2xx": 0,
+          "http200WithError": 0,
+          "nonnullError": 41,
+          "excludedBillingErrors": 0,
+          "avgSeconds": 229.34002439024388,
+          "medianSeconds": 269.374,
+          "p95Seconds": 300.014,
+          "avgFirstResponseSeconds": 152.28057142857142,
+          "firstAt": "2026-05-18 11:59:10 +0800",
+          "lastAt": "2026-05-19 17:05:46 +0800"
+        },
+        "off_hours": {
+          "station": "audit-api-printcap-ai",
+          "label": "api.printcap.ai",
+          "platformGuess": "sub2api",
+          "timeWindow": "off_hours",
+          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
+          "requestSamples": 2859,
+          "correct": 127,
+          "failures": 2732,
+          "correctRate": 0.044421126267925846,
+          "http2xx": 127,
+          "http200WithError": 0,
+          "nonnullError": 2732,
+          "excludedBillingErrors": 2,
+          "avgSeconds": 31.21930849947534,
+          "medianSeconds": 24.317,
+          "p95Seconds": 78.25389999999999,
+          "avgFirstResponseSeconds": 13.996530462184873,
+          "firstAt": "2026-05-16 23:48:59 +0800",
+          "lastAt": "2026-05-18 19:20:23 +0800"
+        },
+        "all_hours": {
+          "station": "audit-api-printcap-ai",
+          "label": "api.printcap.ai",
+          "platformGuess": "sub2api",
+          "timeWindow": "all_hours",
+          "timeWindowLabel": "全部时段",
+          "requestSamples": 2900,
+          "correct": 127,
+          "failures": 2773,
+          "correctRate": 0.04379310344827586,
+          "http2xx": 127,
+          "http200WithError": 0,
+          "nonnullError": 2773,
+          "excludedBillingErrors": 2,
+          "avgSeconds": 34.020325517241375,
+          "medianSeconds": 24.652,
+          "p95Seconds": 86.95644999999988,
+          "avgFirstResponseSeconds": 15.005903023983315,
+          "firstAt": "2026-05-16 23:48:59 +0800",
+          "lastAt": "2026-05-19 17:05:46 +0800"
+        }
+      },
+      "dataEvidence": [
+        {
+          "key": "groupMultipliers",
+          "label": "分组倍率",
+          "count": 1,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 1 条，可在本详情页查看。",
+          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\audit-api-printcap-ai-live-auth-probe.json"
+        },
+        {
+          "key": "rechargeTiers",
+          "label": "充值档位",
+          "count": 9,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 9 条，可在本详情页查看。",
+          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\audit-api-printcap-ai-live-auth-probe.json"
+        },
+        {
+          "key": "announcements",
+          "label": "公告",
+          "count": 1,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 1 条，可在本详情页查看。",
+          "source": "https://printcap.ai/api/v1/announcements"
         }
       ]
     },
@@ -11699,7 +12200,7 @@
       ],
       "rankings": {
         "work_hours": {
-          "rank": 24,
+          "rank": 25,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "work_hours",
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
@@ -12147,7 +12648,7 @@
       ],
       "rankings": {
         "work_hours": {
-          "rank": 25,
+          "rank": 26,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "work_hours",
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
@@ -12360,6 +12861,10 @@
         {
           "groupName": "default",
           "groupMultiplier": 1.0
+        },
+        {
+          "groupName": "test",
+          "groupMultiplier": 1.0
         }
       ],
       "rechargeTiers": [
@@ -12416,7 +12921,7 @@
       ],
       "rankings": {
         "work_hours": {
-          "rank": 26,
+          "rank": 27,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "work_hours",
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
@@ -12590,10 +13095,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 1,
+          "count": 2,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
+          "message": "已归档 2 条，可在本详情页查看。",
           "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\cnrouter-live-auth-probe.json"
         },
         {
@@ -12633,6 +13138,10 @@
         {
           "groupName": "ChatGpt-Plus",
           "groupMultiplier": 0.15
+        },
+        {
+          "groupName": "ClaudeCode-MAX满血(限制cc)",
+          "groupMultiplier": 2.0
         }
       ],
       "rechargeTiers": [
@@ -12723,10 +13232,35 @@
         "全Plus订阅号池; custom balance top-up; min 1 RMB; checkout multiplier 1; recharge fee 0%",
         "公开配置显示已开启余额充值，但具体档位金额仍需登录/核验。 充值入口：https://www.bossclaw.org/purchase"
       ],
-      "announcements": [],
+      "announcements": [
+        {
+          "id": "7",
+          "publishedAt": "2026-05-05T16:41:20.088009+08:00",
+          "type": "login_probe",
+          "extra": "📢虾老板中转站通知",
+          "content": "ClaudeCode-MAX满血2.0倍率现已上线，欢迎尝鲜，量大可开发票请私信管理！",
+          "sourceUrl": "https://www.bossclaw.org/api/v1/announcements"
+        },
+        {
+          "id": "9",
+          "publishedAt": "2026-05-12T15:00:14.409756+08:00",
+          "type": "login_probe",
+          "extra": "📢【系统公告】ChatGPT 线路分组升级、计费调整及新手指南",
+          "content": "尊敬的用户，您好：\n\n为了保障用户体验，有效提升系统在高峰时段的稳定性，并解决模型在拥堵时可能产生的回复质量下降问题，我们对 ChatGPT 线路进行了全面优化与升级。具体调整说明如下：\n\n分组升级与新增\n\n全新 Pro 线路：原 ChatGpt 分组已正式升级为 ChatGpt-Pro。该分组底层全面接入高质量的 Pro 订阅账号池，以保障极速、稳定的顶配体验。\n\n新增 Plus 线路：同步上线 ChatGpt-Plus 分组，底层采用 Plus 订阅账号池，为您提供更加灵活的调用选择。\n\n倍率调整与限时福利\n\n由于 Pro 订阅账号池硬性成本较高，ChatGpt-Pro 分组的常规计费倍率将调整为 0.30x。\n\n限时半价特惠：为降低本次切换对您造成的影响，即日起至 明日 15:00，ChatGpt-Pro 分组倍率限时下调至 0.15x。明日 15:00 后系统将自动恢复至常规倍率 0.30x，届时不再另行通知，请您合理安排调用计划。\n\n老用户分组切换指南\n\n系统默认分组已更新。如您有使用 ChatGpt-Plus 线路的需求，请前往网站后台的 “API 密钥” 页面，直接点击“分组”进行修改即可无缝切换，无需重新创建 API 密钥。\n\n新用户指引与客服支持\n\n操作文档：新接入用户可直接点击网站右上角的 “文档” 查阅详细操作指南（文档正在持续迭代完善中）。\n\n技术支持：如遇任何使用问题，请联系客服（QQ：2857797054 / 微信：ax1999xy）获取协助。\n\n感谢您的理解与支持，我们将持续致力于为您提供更稳定、优质的 API 服务！",
+          "sourceUrl": "https://www.bossclaw.org/api/v1/announcements"
+        },
+        {
+          "id": "6",
+          "publishedAt": "2026-04-29T16:19:09.896474+08:00",
+          "type": "login_probe",
+          "extra": "📢虾老板中转站通知",
+          "content": "🎁 限时活动\n活动时间：【2026-05-12-截止待定】\n活动内容：\n新用户注册进群@管理发注册邮箱送3000wToken\n纯血gpt-plus号池分组倍率0.15x\n纯血gpt-pro号池分组倍率0.3x（强烈推荐）\n充值比例1CNY:1USD\n加入官方QQ群 ：1043926727\n（gpt-5.4 1刀约等于1000万Token）\n为保证用户体验和真实性，小号和别名邮箱一概不送。\n活动名额有限，先到先得，最终解释权归平台所有。",
+          "sourceUrl": "https://www.bossclaw.org/api/v1/announcements"
+        }
+      ],
       "rankings": {
         "work_hours": {
-          "rank": 27,
+          "rank": 28,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "work_hours",
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
@@ -12900,10 +13434,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 2,
+          "count": 3,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 2 条，可在本详情页查看。",
+          "message": "已归档 3 条，可在本详情页查看。",
           "source": "https://www.bossclaw.org/api/v1/groups/available"
         },
         {
@@ -12918,10 +13452,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 0,
-          "status": "login_required",
-          "statusLabel": "需要登录",
-          "message": "需要登录或权限不足 (HTTP 401)",
+          "count": 3,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 3 条，可在本详情页查看。",
           "source": "https://www.bossclaw.org/api/v1/announcements"
         }
       ]
@@ -12929,7 +13463,7 @@
     {
       "key": "qiuqiutoken",
       "label": "qiuqiutoken",
-      "url": "https://qiuqiutoken.com",
+      "url": "https://api.qiuqiutoken.com",
       "stationType": "mixed",
       "stationTypeLabel": "混合型中转站",
       "stationTypeShortLabel": "混合型",
@@ -13162,19 +13696,19 @@
           "publishedAt": "2026-04-16T01:04:21.719Z",
           "type": "default",
           "extra": "",
-          "content": "所有用户联系群主<font color=\"red\">免费领取5美元</font>额度试用体验。售前 QQ 群：<font color=\"blue\">1095876005</font>",
+          "content": "所有用户联系群主免费领取5美元额度试用体验。售前 QQ 群：1095876005",
           "sourceUrl": "https://qiuqiutoken.com"
         }
       ],
       "rankings": {
         "work_hours": {
-          "rank": 28,
+          "rank": 29,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "work_hours",
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
           "station": "qiuqiutoken",
           "label": "qiuqiutoken",
-          "stationUrl": "https://qiuqiutoken.com",
+          "stationUrl": "https://api.qiuqiutoken.com",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -13209,7 +13743,7 @@
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
           "station": "qiuqiutoken",
           "label": "qiuqiutoken",
-          "stationUrl": "https://qiuqiutoken.com",
+          "stationUrl": "https://api.qiuqiutoken.com",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -13244,7 +13778,7 @@
           "timeWindowLabel": "全部时段",
           "station": "qiuqiutoken",
           "label": "qiuqiutoken",
-          "stationUrl": "https://qiuqiutoken.com",
+          "stationUrl": "https://api.qiuqiutoken.com",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -13365,311 +13899,6 @@
           "statusLabel": "已抓取",
           "message": "已归档 9 条，可在本详情页查看。",
           "source": "https://api.qiuqiutoken.com/api/status"
-        }
-      ]
-    },
-    {
-      "key": "audit-api-printcap-ai",
-      "label": "api.printcap.ai",
-      "url": "https://printcap.ai",
-      "stationType": "non_subscription",
-      "stationTypeLabel": "非包月型中转站",
-      "stationTypeShortLabel": "非包月型",
-      "platformGuess": "sub2api",
-      "verifiedTierCount": 9,
-      "groupMultipliers": [
-        {
-          "groupName": "GPT-MIX",
-          "groupMultiplier": 1.0
-        }
-      ],
-      "rechargeTiers": [
-        {
-          "rechargeName": "截图核验充值 10 RMB -> 20 USD",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 10.0,
-          "usdAmount": 20.0,
-          "rechargeLocation": "PrintCap 充值页完整截图",
-          "expiresRule": "expiry not stated"
-        },
-        {
-          "rechargeName": "截图核验充值 20 RMB -> 40 USD",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 20.0,
-          "usdAmount": 40.0,
-          "rechargeLocation": "PrintCap 充值页完整截图",
-          "expiresRule": "expiry not stated"
-        },
-        {
-          "rechargeName": "截图核验充值 50 RMB -> 100 USD",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 50.0,
-          "usdAmount": 100.0,
-          "rechargeLocation": "PrintCap 充值页完整截图",
-          "expiresRule": "expiry not stated"
-        },
-        {
-          "rechargeName": "截图核验充值 100 RMB -> 200 USD",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 100.0,
-          "usdAmount": 200.0,
-          "rechargeLocation": "PrintCap 充值页完整截图",
-          "expiresRule": "expiry not stated"
-        },
-        {
-          "rechargeName": "截图核验充值 200 RMB -> 400 USD",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 200.0,
-          "usdAmount": 400.0,
-          "rechargeLocation": "PrintCap 充值页完整截图",
-          "expiresRule": "expiry not stated"
-        },
-        {
-          "rechargeName": "截图核验充值 500 RMB -> 1000 USD",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 500.0,
-          "usdAmount": 1000.0,
-          "rechargeLocation": "PrintCap 充值页完整截图",
-          "expiresRule": "expiry not stated"
-        },
-        {
-          "rechargeName": "截图核验充值 1000 RMB -> 2000 USD",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 1000.0,
-          "usdAmount": 2000.0,
-          "rechargeLocation": "PrintCap 充值页完整截图",
-          "expiresRule": "expiry not stated"
-        },
-        {
-          "rechargeName": "截图核验充值 2000 RMB -> 4000 USD",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 2000.0,
-          "usdAmount": 4000.0,
-          "rechargeLocation": "PrintCap 充值页完整截图",
-          "expiresRule": "expiry not stated"
-        },
-        {
-          "rechargeName": "截图核验充值 5000 RMB -> 10000 USD",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 5000.0,
-          "usdAmount": 10000.0,
-          "rechargeLocation": "PrintCap 充值页完整截图",
-          "expiresRule": "expiry not stated"
-        }
-      ],
-      "tierNotes": [
-        "用户完整截图确认唯一分组为 GPT-MIX 1x；快捷档位为 10/20/50/100/200/500/1000/2000/5000 RMB；快捷档位与自定义金额均显示 1 CNY = 2 USD；PrintCap 登录被风控阻断，未能抓取 API 证据。",
-        "公开配置显示已开启余额充值，但具体档位金额仍需登录/核验。 充值入口：https://printcap.ai/purchase"
-      ],
-      "announcements": [],
-      "rankings": {
-        "work_hours": {
-          "rank": 29,
-          "rankingBasis": "formal_high_confidence",
-          "timeWindow": "work_hours",
-          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
-          "station": "audit-api-printcap-ai",
-          "label": "api.printcap.ai",
-          "stationUrl": "https://printcap.ai",
-          "stationType": "non_subscription",
-          "stationTypeLabel": "非包月型中转站",
-          "stationTypeShortLabel": "非包月型",
-          "totalScore": 23.284645405495667,
-          "successScore": 0.0,
-          "latencyScore": 0.0008122850123352794,
-          "costScore": 93.1374444229654,
-          "correctRate": 0.0,
-          "avgSeconds": 300.0071111111111,
-          "medianSeconds": 300.0065,
-          "p95Seconds": 300.014,
-          "effectiveMultiplier": 0.5,
-          "feeVerified": true,
-          "adoptedTier": "GPT-MIX | 截图核验充值 10 RMB -> 20 USD",
-          "adoptedGroup": "GPT-MIX",
-          "adoptedRechargeName": "截图核验充值 10 RMB -> 20 USD",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "multiplierFullUseAssumption": "expiry not stated",
-          "requests": 18,
-          "correct": 0,
-          "failures": 18,
-          "http2xx": 0,
-          "http200WithError": 0,
-          "firstAt": "2026-05-18 11:59:10 +0800",
-          "lastAt": "2026-05-18 17:41:22 +0800"
-        },
-        "off_hours": {
-          "rank": 18,
-          "rankingBasis": "formal_high_confidence",
-          "timeWindow": "off_hours",
-          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
-          "station": "audit-api-printcap-ai",
-          "label": "api.printcap.ai",
-          "stationUrl": "https://printcap.ai",
-          "stationType": "non_subscription",
-          "stationTypeLabel": "非包月型中转站",
-          "stationTypeShortLabel": "非包月型",
-          "totalScore": 57.93099551172405,
-          "successScore": 4.442112626792585,
-          "latencyScore": 93.91368387218762,
-          "costScore": 93.1374444229654,
-          "correctRate": 0.044421126267925846,
-          "avgSeconds": 31.21930849947534,
-          "medianSeconds": 24.317,
-          "p95Seconds": 78.25389999999999,
-          "effectiveMultiplier": 0.5,
-          "feeVerified": true,
-          "adoptedTier": "GPT-MIX | 截图核验充值 10 RMB -> 20 USD",
-          "adoptedGroup": "GPT-MIX",
-          "adoptedRechargeName": "截图核验充值 10 RMB -> 20 USD",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "multiplierFullUseAssumption": "expiry not stated",
-          "requests": 2859,
-          "correct": 127,
-          "failures": 2732,
-          "http2xx": 127,
-          "http200WithError": 0,
-          "firstAt": "2026-05-16 23:48:59 +0800",
-          "lastAt": "2026-05-18 19:20:23 +0800"
-        },
-        "all_hours": {
-          "rank": 22,
-          "rankingBasis": "formal_high_confidence",
-          "timeWindow": "all_hours",
-          "timeWindowLabel": "全部时段",
-          "station": "audit-api-printcap-ai",
-          "label": "api.printcap.ai",
-          "stationUrl": "https://printcap.ai",
-          "stationType": "non_subscription",
-          "stationTypeLabel": "非包月型中转站",
-          "stationTypeShortLabel": "非包月型",
-          "totalScore": 59.44939320115488,
-          "successScore": 4.414320472714634,
-          "latencyScore": 98.28372544665048,
-          "costScore": 93.1374444229654,
-          "correctRate": 0.044143204727146335,
-          "avgSeconds": 32.900984011122695,
-          "medianSeconds": 24.456,
-          "p95Seconds": 82.10259999999997,
-          "effectiveMultiplier": 0.5,
-          "feeVerified": true,
-          "adoptedTier": "GPT-MIX | 截图核验充值 10 RMB -> 20 USD",
-          "adoptedGroup": "GPT-MIX",
-          "adoptedRechargeName": "截图核验充值 10 RMB -> 20 USD",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "multiplierFullUseAssumption": "expiry not stated",
-          "requests": 2877,
-          "correct": 127,
-          "failures": 2750,
-          "http2xx": 127,
-          "http200WithError": 0,
-          "firstAt": "2026-05-16 23:48:59 +0800",
-          "lastAt": "2026-05-18 19:20:23 +0800"
-        }
-      },
-      "quality": {
-        "work_hours": {
-          "station": "audit-api-printcap-ai",
-          "label": "api.printcap.ai",
-          "platformGuess": "sub2api",
-          "timeWindow": "work_hours",
-          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
-          "requestSamples": 18,
-          "correct": 0,
-          "failures": 18,
-          "correctRate": 0.0,
-          "http2xx": 0,
-          "http200WithError": 0,
-          "nonnullError": 18,
-          "excludedBillingErrors": 0,
-          "avgSeconds": 300.0071111111111,
-          "medianSeconds": 300.0065,
-          "p95Seconds": 300.014,
-          "avgFirstResponseSeconds": null,
-          "firstAt": "2026-05-18 11:59:10 +0800",
-          "lastAt": "2026-05-18 17:41:22 +0800"
-        },
-        "off_hours": {
-          "station": "audit-api-printcap-ai",
-          "label": "api.printcap.ai",
-          "platformGuess": "sub2api",
-          "timeWindow": "off_hours",
-          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
-          "requestSamples": 2859,
-          "correct": 127,
-          "failures": 2732,
-          "correctRate": 0.044421126267925846,
-          "http2xx": 127,
-          "http200WithError": 0,
-          "nonnullError": 2732,
-          "excludedBillingErrors": 2,
-          "avgSeconds": 31.21930849947534,
-          "medianSeconds": 24.317,
-          "p95Seconds": 78.25389999999999,
-          "avgFirstResponseSeconds": 13.996530462184873,
-          "firstAt": "2026-05-16 23:48:59 +0800",
-          "lastAt": "2026-05-18 19:20:23 +0800"
-        },
-        "all_hours": {
-          "station": "audit-api-printcap-ai",
-          "label": "api.printcap.ai",
-          "platformGuess": "sub2api",
-          "timeWindow": "all_hours",
-          "timeWindowLabel": "全部时段",
-          "requestSamples": 2877,
-          "correct": 127,
-          "failures": 2750,
-          "correctRate": 0.044143204727146335,
-          "http2xx": 127,
-          "http200WithError": 0,
-          "nonnullError": 2750,
-          "excludedBillingErrors": 2,
-          "avgSeconds": 32.900984011122695,
-          "medianSeconds": 24.456,
-          "p95Seconds": 82.10259999999997,
-          "avgFirstResponseSeconds": 13.996530462184873,
-          "firstAt": "2026-05-16 23:48:59 +0800",
-          "lastAt": "2026-05-18 19:20:23 +0800"
-        }
-      },
-      "dataEvidence": [
-        {
-          "key": "groupMultipliers",
-          "label": "分组倍率",
-          "count": 1,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\audit-api-printcap-ai-live-auth-probe.json"
-        },
-        {
-          "key": "rechargeTiers",
-          "label": "充值档位",
-          "count": 9,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 9 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\audit-api-printcap-ai-live-auth-probe.json"
-        },
-        {
-          "key": "announcements",
-          "label": "公告",
-          "count": 0,
-          "status": "login_required",
-          "statusLabel": "需要登录",
-          "message": "需要登录或权限不足 (HTTP 401)",
-          "source": "https://printcap.ai/api/v1/announcements"
         }
       ]
     },
@@ -13800,7 +14029,40 @@
         "低价区，但质量相对不稳定; custom balance top-up; min 1 RMB; checkout multiplier 1; recharge fee 0%",
         "公开配置显示已开启余额充值，但具体档位金额仍需登录/核验。 充值入口：http://35.161.172.243:8080"
       ],
-      "announcements": [],
+      "announcements": [
+        {
+          "id": "2",
+          "publishedAt": "2026-05-08T15:24:30.215341+08:00",
+          "type": "login_probe",
+          "extra": "🚀 快速开始 · 30 秒发出第一个请求",
+          "content": "# 🚀 30 秒上手教程\n\n刚注册完?照下面三步,30 秒内发出第一个请求。\n\n## 第 1 步:创建 API 密钥\n\n进入 **后台 → API 密钥 → 创建密钥**,弹窗里:\n\n- **名称**:随便起(比如 `cc` 或 `cursor`)\n- **分组**:按你要用的客户端选\n  - **Claude Code (CLI)** → `Claude 官方（仅限claude code）` (0.7x)\n  - **Cline / Cursor 用 Claude / opencode / Open WebUI / Cherry Studio / 自建 SDK 调 Anthropic 接口** → `Claude 官方（不限客户端）` (1.5x)\n  - **Cursor / Codex CLI / 任何 OpenAI 兼容工具** → `OpenAI`\n  - **Gemini CLI** → `Gemini`\n  - **只调 Sonnet 想省钱** → `Claude sonnet 折扣` (0.5x,只 Sonnet)\n\n> 📌 **图像生成暂不支持**(`gpt-image-*` / Gemini image / 等所有渠道都不开)。有图像需求请直连官方 API。\n\n创建后**立即复制** sk- 开头那串(只显示一次)。\n\n## 第 2 步:在客户端里配置\n\n**Claude Code(终端)**:\n```bash\nexport ANTHROPIC_BASE_URL=https://claude-api.org\nexport ANTHROPIC_AUTH_TOKEN=sk-你刚刚复制的key\n```\n(Windows PowerShell 把 `export` 换成 `$env:`,等号后不要空格。)\n\n**Cline / opencode / Open WebUI / Cherry Studio**(走 Anthropic 协议):\n- API 地址: `https://claude-api.org`\n- API Key: `sk-你的key`(绑 `Claude 官方（不限客户端）`)\n\n**Cursor**(设置 → Models → OpenAI API Key):\n- API Key: `sk-你的key`(绑 `OpenAI` 或 `Claude 官方（不限客户端）`)\n- Base URL: `https://claude-api.org/v1`\n\n**Codex CLI**:\n- 配置文件加 `OPENAI_API_BASE_URL=https://claude-api.org` 和你的 key\n\n**其他客户端** 完整配置:\n👉 doc.claude-api.org/clients https://doc.claude-api.org/clients/claude-code\n\n## 第 3 步:发出第一个请求\n\n任意目录跑 `claude`(Claude Code)/ Cursor 里打字 / Codex 里发提示 — 看到响应就成了。\n\n后台 → **使用记录** 能看到每次调用的扣费明细(包括缓存命中省了多少)。\n\n## 📋 model 字段填什么(踩坑率最高)\n\n**我们没做短名兜底** — 写 `gpt-5` 而不是 `gpt-5.4` 会拿到 `503 No available accounts`。下面是各分组最常用的精确名(完整清单见 doc.claude-api.org/channels https://doc.claude-api.org/channels):\n\n| 分组 | 最常用 | 备选 |\n|------|--------|------|\n| Claude 官方（仅限claude code）/ Claude 官方（不限客户端） | `claude-sonnet-4-6` | `claude-opus-4-7`(慢但强)、`claude-haiku-4-5-20251001`(便宜快) |\n| Claude sonnet 折扣 | `claude-sonnet-4-6` | `claude-sonnet-4-5-20250929` (仅 Sonnet 系列,调 Opus/Haiku 会 503) |\n| OpenAI | `gpt-5.4` | `gpt-5.5`、`gpt-5.5-codex`、`gpt-5.3-codex`、`gpt-5.4-mini` |\n| Gemini | `gemini-3-pro-preview` | `gemini-3.1-pro-preview`、`gemini-2.5-pro`、`gemini-3-flash-preview`、`gemini-2.5-flash` |\n\n⚠️ Codex CLI 不显式设 model 时**默认发 `gpt-5`**,会 503 — 需要在 `~/.codex/config.toml` 里写 `model = \"gpt-5.4\"` 之类的精确名。同理 `gpt-4`、`claude-3-opus`、`gemini-pro` 这种\"通用名\"全部**不工作**。\n\n## 🤔 常见疑问\n\n**Q:能调用哪些模型?**\nA:**后台 → 可用渠道** 实时显示每个分组下的模型 + 单价。完整清单也在 doc.claude-api.org/channels https://doc.claude-api.org/channels。\n\n**Q:支持流式 / 工具调用 / 视觉 / 缓存吗?**\nA:全支持。沿用你客户端原来的方式,无需特殊适配。\n\n**Q:报错怎么办?**\nA:错误码速查 → doc.claude-api.org/faq https://doc.claude-api.org/faq。还不行邮件 xxx。\n\n## 💡 小贴士\n\n- **缓存命中按缓存价独立计费**(不是当 input 全价收),长对话省钱效果明显 — 后台使用记录里能看 `cache_read_cost` 单独拆开\n- **\\$10 体验金无门槛**,够把各个渠道都跑一遍试试\n- **首次充值建议 ¥1 试水**(对,最低就支持 ¥1,验证支付通道)\n\n写代码愉快 🚀",
+          "sourceUrl": "https://claude-api.org/api/v1/announcements"
+        },
+        {
+          "id": "6",
+          "publishedAt": "2026-05-14T01:14:16.610221+08:00",
+          "type": "login_probe",
+          "extra": "📣 Claude 渠道调整 · 4 档分级 1.4x / 2x / 0.5x",
+          "content": "## Claude 渠道调整 — 4 档分级\n\n由于 Anthropic 风控加强,我们对 Claude 渠道做了重新梳理,现在分 4 档:\n\n### 1. 「Claude官方（仅限claude code）」 1.4x\n- 高质量上游源,稳定性最优且满血\n- ⚠️ 仅限官方 Claude Code 客户端;非 CC 客户端(Cline / Cursor / opencode / Open WebUI 等)会被拒(503)\n\n### 2. 「Claude官方（不限客户端）」 2x\n- 任何 Anthropic 协议客户端都能用; 同样满血稳定\n\n### 3. 🆕「低价claude」 0.5x\n- 任何客户端都能用,价格最低\n- ⚠️ 低价区,质量 / 稳定性相对不稳定 — 适合对偶发失败容忍度高、追求性价比的场景\n\n### 4. 「Claude sonnet 折扣」 0.5x\n- 仅 Sonnet 系列(`claude-sonnet-4-6` 等),调 Opus/Haiku 会 503;不变\n\n---\n\n## 怎么选\n\n| 你的情况 | 推荐 |\n|---|---|\n| 用 Claude Code CLI | Claude官方（仅限claude code）1.4x |\n| 用 Cline / Cursor / opencode 等,要稳定 | Claude官方（不限客户端）2x |\n| 任意客户端,追求最低价 | 低价claude 0.5x |\n| 只用 Sonnet | Claude sonnet 折扣 0.5x |\n\n## 怎么换组\n后台 → API 密钥 → 新建或编辑 → 分组下拉选。客户端 base URL 不用改。\n\n由此带来的不便深表歉意 🙏\n\n— claude-api.org 团队 · 2026-05-13",
+          "sourceUrl": "https://claude-api.org/api/v1/announcements"
+        },
+        {
+          "id": "4",
+          "publishedAt": "2026-05-11T07:21:24.811566+08:00",
+          "type": "login_probe",
+          "extra": "🎫 工单系统上线 + Sonnet 折扣分组开放 + 建议奖励",
+          "content": "## 三个更新一起公告\n\n### 1. 工单系统上线\n\n左侧栏新增「工单」入口,可以提交两类:\n- **问题反映**:某 model 调不通?账单异常?响应慢?\n- **建议**:想要新功能?觉得哪里不顺手?\n\n**重要 — 请按顺序排查**:\n1. 先查 文档站 https://claude-api.org/docs(API 用法 / 错误码 / 常见问题 / 渠道清单)\n2. 文档没解决再开工单\n\n直接开工单不看文档的常见问题(模型名拼错、未带 `anthropic-version` 头、API key 余额不足等),会被引导回文档。这不是冷漠,是让你下次更快自助解决。\n\n### 2. 💡 建议被采纳奖励 ¥20-100\n\n通过工单提交「建议」类型,如果被采纳实际上线,赠送 **¥20-100** 余额作为感谢(具体金额根据建议价值/实现难度评估)。\n\n小到 UI 文案改进,大到新功能 idea 都欢迎。\n\n### 3. 🎉 Claude Sonnet 折扣分组上线\n\n新增 **「Claude sonnet 折扣」** 分组,**0.5x 倍率**(比普通 Claude 组便宜 ~28%)。\n\n- 限定模型:仅 `claude-sonnet-4-6` 和 `claude-sonnet-4-5-20250929`\n- 调 Opus 或 Haiku 会返回 503 — 折扣组就只支持 Sonnet\n- 创建 API key 时在分组下拉选择「Claude sonnet 折扣」即可\n\n**适合**:\n- 主力用 Sonnet(coding / 写作 / 分析)的用户\n- 不需要 Opus 顶配能力 + 想省成本的场景\n\n**不适合**:用 Opus 的请继续用普通 Claude 组,那个组才支持全 Claude 模型。\n\n---\n\n有问题?先文档,后工单 🙂",
+          "sourceUrl": "https://claude-api.org/api/v1/announcements"
+        },
+        {
+          "id": "1",
+          "publishedAt": "2026-05-07T20:50:58.440426+08:00",
+          "type": "login_probe",
+          "extra": "🎉 注册送 ¥1 · 加 TG 群再领 ¥9 · 一个 Key 跑 Claude / GPT / Gemini",
+          "content": "# 欢迎使用 Claude API 🎉\n\n一个 Key 通用 **Claude / GPT / Gemini**,主流客户端无缝接入,国内直连不掉线。\n\n## 🎁 新人福利 = ¥1 + ¥9\n\n- **注册即送 ¥1**:邮箱验证完成立即到账,可在所有渠道(Claude / GPT / Gemini)按量消费\n- **加 Telegram 群再领 ¥9**:加群 + 私聊 bot 绑定后再 +¥9,合计 ¥10 体验金\n  - 群链接:https://t.me/+Lfq1A_3e6BRhNjE5 https://t.me/+Lfq1A_3e6BRhNjE5\n  - 详细步骤:doc.claude-api.org/telegram-bot https://doc.claude-api.org/telegram-bot\n- **邀请返利 15%**:邀请好友注册并充值,他后 90 天内的所有消费,你拿 **15%** 返佣到余额(单人封顶 $20)\n\n邀请链接和返利明细在 **后台 → 推广**。\n\n::: warning 加群 10 分钟未绑定会被自动踢\n防止羊毛刷号,加群后请在 10 分钟内完成 bot 绑定。被踢可以重新加群再操作。\n:::\n\n## 📚 接入文档\n\n完整教程 / 各客户端配置 / 报错速查 / FAQ:\n\n👉 https://doc.claude-api.org https://doc.claude-api.org\n\n主流客户端一键复制配置:Claude Code · Codex CLI · opencode · Cline · Chatbox · Open WebUI\n\n## 💰 价格透明\n\n每个渠道明码标价,价格随官方实时同步,后台 → 钱包 可查每一笔扣费明细。\n\n完整价格表:https://doc.claude-api.org/channels https://doc.claude-api.org/channels\n\n## 📨 联系我们\n\n- 邮件:xxx\n- Telegram 群:https://t.me/+Lfq1A_3e6BRhNjE5 https://t.me/+Lfq1A_3e6BRhNjE5\n- bot:@ClaudeAPIAPIbot https://t.me/ClaudeAPIAPIbot(绑定后可私聊查余额、用量、API key)",
+          "sourceUrl": "https://claude-api.org/api/v1/announcements"
+        }
+      ],
       "rankings": {
         "off_hours": {
           "rank": 32,
@@ -13960,142 +14222,11 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 0,
-          "status": "login_required",
-          "statusLabel": "需要登录",
-          "message": "需要登录或权限不足 (HTTP 401)",
+          "count": 4,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 4 条，可在本详情页查看。",
           "source": "https://claude-api.org/api/v1/announcements"
-        }
-      ]
-    },
-    {
-      "key": "cngpt.net",
-      "label": "cngpt.net",
-      "url": "https://cngpt.net",
-      "stationType": "unknown_pending",
-      "stationTypeLabel": "待补证据",
-      "stationTypeShortLabel": "待补证据",
-      "platformGuess": "new-api",
-      "verifiedTierCount": 0,
-      "groupMultipliers": [
-        {
-          "groupName": "default",
-          "groupMultiplier": 1.0
-        }
-      ],
-      "rechargeTiers": [],
-      "tierNotes": [],
-      "announcements": [
-        {
-          "id": "8",
-          "publishedAt": "2026-04-30T23:31:56.881Z",
-          "type": "ongoing",
-          "extra": "",
-          "content": "已开启邀请功能，aff=15刀",
-          "sourceUrl": "https://cngpt.net"
-        },
-        {
-          "id": "2",
-          "publishedAt": "2026-04-24T13:40:18.259Z",
-          "type": "default",
-          "extra": "",
-          "content": "各位佬友注意，API仅支持在Codex中调用",
-          "sourceUrl": "https://cngpt.net"
-        }
-      ],
-      "rankings": {},
-      "quality": {
-        "work_hours": {
-          "station": "cngpt.net",
-          "label": "cngpt.net",
-          "platformGuess": "new-api",
-          "timeWindow": "work_hours",
-          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
-          "requestSamples": 0,
-          "correct": 0,
-          "failures": 0,
-          "correctRate": 0.0,
-          "http2xx": 0,
-          "http200WithError": 0,
-          "nonnullError": 0,
-          "excludedBillingErrors": 0,
-          "avgSeconds": null,
-          "medianSeconds": null,
-          "p95Seconds": null,
-          "avgFirstResponseSeconds": null,
-          "firstAt": "",
-          "lastAt": ""
-        },
-        "off_hours": {
-          "station": "cngpt.net",
-          "label": "cngpt.net",
-          "platformGuess": "new-api",
-          "timeWindow": "off_hours",
-          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
-          "requestSamples": 0,
-          "correct": 0,
-          "failures": 0,
-          "correctRate": 0.0,
-          "http2xx": 0,
-          "http200WithError": 0,
-          "nonnullError": 0,
-          "excludedBillingErrors": 0,
-          "avgSeconds": null,
-          "medianSeconds": null,
-          "p95Seconds": null,
-          "avgFirstResponseSeconds": null,
-          "firstAt": "",
-          "lastAt": ""
-        },
-        "all_hours": {
-          "station": "cngpt.net",
-          "label": "cngpt.net",
-          "platformGuess": "new-api",
-          "timeWindow": "all_hours",
-          "timeWindowLabel": "全部时段",
-          "requestSamples": 0,
-          "correct": 0,
-          "failures": 0,
-          "correctRate": 0.0,
-          "http2xx": 0,
-          "http200WithError": 0,
-          "nonnullError": 0,
-          "excludedBillingErrors": 0,
-          "avgSeconds": null,
-          "medianSeconds": null,
-          "p95Seconds": null,
-          "avgFirstResponseSeconds": null,
-          "firstAt": "",
-          "lastAt": ""
-        }
-      },
-      "dataEvidence": [
-        {
-          "key": "groupMultipliers",
-          "label": "分组倍率",
-          "count": 1,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\cngpt.net-live-auth-probe.json"
-        },
-        {
-          "key": "rechargeTiers",
-          "label": "充值档位",
-          "count": 0,
-          "status": "missing",
-          "statusLabel": "未抓到",
-          "message": "live auth probe 尚未包含支付接口",
-          "source": "C:\\Users\\xxx\\Documents\\projects\\tabbit-audit-profile\\cngpt.net-live-auth-probe.json"
-        },
-        {
-          "key": "announcements",
-          "label": "公告",
-          "count": 2,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 2 条，可在本详情页查看。",
-          "source": "https://cngpt.net/api/status"
         }
       ]
     },
@@ -14283,7 +14414,7 @@
     {
       "key": "euzhi",
       "label": "Euzhi",
-      "url": "https://api.euzhi.com",
+      "url": "https://admin.euzhi.com",
       "stationType": "non_subscription",
       "stationTypeLabel": "非包月型中转站",
       "stationTypeShortLabel": "非包月型",
@@ -14407,7 +14538,7 @@
           "publishedAt": "2026-05-15T00:00:00+08:00",
           "type": "default",
           "extra": "除完成模型调用、余额结算、支付处理、安全风控和故障排查等必要场景外，系统不会主动留存、窃取或挪用您的请求内容；本地工具产生的配置与使用数据仍以用户本地保存为主。",
-          "content": "<div style=\"padding:10px 12px;border:1px solid rgba(47,107,255,.24);border-radius:10px;background:rgba(47,107,255,.08);line-height:1.7\"><b style=\"color:#4f8cff\">服务与隐私说明</b><br/>Euzhi API 中转站、优智图及相关服务均由 <b>Euzhi 自有账号池、自有上游资源与自建服务链路</b> 统一调度。<br/>您的请求不会被转售给任何平台，也不会被用于与当前服务无关的用途。</div>",
+          "content": "服务与隐私说明\nEuzhi API 中转站、优智图及相关服务均由 Euzhi 自有账号池、自有上游资源与自建服务链路 统一调度。\n您的请求不会被转售给任何平台，也不会被用于与当前服务无关的用途。",
           "sourceUrl": "https://api.euzhi.com"
         }
       ],
@@ -14419,7 +14550,7 @@
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
           "station": "euzhi",
           "label": "Euzhi",
-          "stationUrl": "https://api.euzhi.com",
+          "stationUrl": "https://admin.euzhi.com",
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
@@ -14454,7 +14585,7 @@
           "timeWindowLabel": "全部时段",
           "station": "euzhi",
           "label": "Euzhi",
-          "stationUrl": "https://api.euzhi.com",
+          "stationUrl": "https://admin.euzhi.com",
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
@@ -14820,16 +14951,24 @@
     {
       "key": "hi-code",
       "label": "Hi-Code",
-      "url": "https://pay.ldxp.cn",
+      "url": "https://www.hi-code.cc",
       "stationType": "non_subscription",
       "stationTypeLabel": "非包月型中转站",
       "stationTypeShortLabel": "非包月型",
-      "platformGuess": "unknown",
+      "platformGuess": "sub2api",
       "verifiedTierCount": 3,
       "groupMultipliers": [
         {
           "groupName": "codex-plus",
           "groupMultiplier": 0.1
+        },
+        {
+          "groupName": "codex-plus",
+          "groupMultiplier": 0.12
+        },
+        {
+          "groupName": "gpt-image-2（生图专用，0.035一张）",
+          "groupMultiplier": 0.12
         }
       ],
       "rechargeTiers": [
@@ -14866,7 +15005,32 @@
         "Shop page notes the current 0.1 group ratio can use about 350 USD standard quota.",
         "Shop page notes the current 0.1 group ratio can use about 1050 USD standard quota."
       ],
-      "announcements": [],
+      "announcements": [
+        {
+          "id": "12",
+          "publishedAt": "2026-05-18T21:41:52.538016+08:00",
+          "type": "login_probe",
+          "extra": "codex-plus号池倍率调整",
+          "content": "plus 号池来源稳定了点，倍率从 0.15 降至 0.12",
+          "sourceUrl": "https://www.hi-code.cc/api/v1/announcements"
+        },
+        {
+          "id": "7",
+          "publishedAt": "2026-04-27T19:05:44.117271+08:00",
+          "type": "login_probe",
+          "extra": "gpt-image-2 playground上线",
+          "content": "项目基于开源项目：CookSleep/gpt_image_playground https://github.com/CookSleep/gpt_image_playground\n**访问地址：** https://image-gen.hi-code.cc/ ，从菜单栏的**图片生成**也可进入\n**使用方式：** 访问后打开设置弹窗，配置 API Key，即可生成",
+          "sourceUrl": "https://www.hi-code.cc/api/v1/announcements"
+        },
+        {
+          "id": "1",
+          "publishedAt": "2026-04-09T14:28:56.24905+08:00",
+          "type": "login_probe",
+          "extra": "Codex中转使用说明",
+          "content": "## 基本信息\n\n- **分组类型**：纯 Codex Plus 号池\n- **并发数**：10\n- **缓存**：与官方保持一致\n\n## 计费规则\n\n- 按量计费，无多充多送活动，**不建议囤余额**，用多少充多少\n- 汇率固定为 **1 元人民币 = 1 美元**\n- 实际消耗取决于当前倍率，比如如果倍率为 `0.1` ，充值 1 元可使用 **1/0.1=10美元**额度\n\n## 接入配置\n`Base URL` 和 `API Key` 请前往菜单栏 **API 密钥** 页面获取。\n\n## 优惠活动\n\n| 方式 | 奖励 |\n|------|------|\n| 联系客服领取试用额度，客服QQ：728729363 | 赠送$1余额 |\n| 邀请好友注册，好友联系客服并带上你的邮箱 | 双方各赠送$1余额 |\n\n## 售后QQ 群\n\n扫码加群：\n\n!QQ 群二维码 https://img-cdn.lusyoe.cn/images/hi-code/2026/04/09/23rzbpbu5l.png",
+          "sourceUrl": "https://www.hi-code.cc/api/v1/announcements"
+        }
+      ],
       "rankings": {
         "off_hours": {
           "rank": 10,
@@ -14875,7 +15039,7 @@
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
           "station": "hi-code",
           "label": "Hi-Code",
-          "stationUrl": "https://pay.ldxp.cn",
+          "stationUrl": "https://www.hi-code.cc",
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
@@ -14904,13 +15068,13 @@
           "lastAt": "2026-05-11 21:38:12 +0800"
         },
         "all_hours": {
-          "rank": 8,
+          "rank": 9,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "all_hours",
           "timeWindowLabel": "全部时段",
           "station": "hi-code",
           "label": "Hi-Code",
-          "stationUrl": "https://pay.ldxp.cn",
+          "stationUrl": "https://www.hi-code.cc",
           "stationType": "non_subscription",
           "stationTypeLabel": "非包月型中转站",
           "stationTypeShortLabel": "非包月型",
@@ -14943,7 +15107,7 @@
         "work_hours": {
           "station": "hi-code",
           "label": "Hi-Code",
-          "platformGuess": "unknown",
+          "platformGuess": "sub2api",
           "timeWindow": "work_hours",
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
           "requestSamples": 0,
@@ -14964,7 +15128,7 @@
         "off_hours": {
           "station": "hi-code",
           "label": "Hi-Code",
-          "platformGuess": "unknown",
+          "platformGuess": "sub2api",
           "timeWindow": "off_hours",
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
           "requestSamples": 30,
@@ -14985,7 +15149,7 @@
         "all_hours": {
           "station": "hi-code",
           "label": "Hi-Code",
-          "platformGuess": "unknown",
+          "platformGuess": "sub2api",
           "timeWindow": "all_hours",
           "timeWindowLabel": "全部时段",
           "requestSamples": 30,
@@ -15008,11 +15172,11 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 1,
+          "count": 3,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
-          "source": "https://api-cn.hi-code.cc/api/v1/groups/available"
+          "message": "已归档 3 条，可在本详情页查看。",
+          "source": "https://www.hi-code.cc/api/v1/groups/available"
         },
         {
           "key": "rechargeTiers",
@@ -15021,16 +15185,16 @@
           "status": "captured",
           "statusLabel": "已抓取",
           "message": "已归档 3 条，可在本详情页查看。",
-          "source": "https://api-cn.hi-code.cc/api/v1/payment/checkout-info"
+          "source": "https://www.hi-code.cc/api/v1/payment/checkout-info"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 0,
-          "status": "blocked",
-          "statusLabel": "风控阻断",
-          "message": "登录态公告接口被验证码或风控阻断",
-          "source": "https://api-cn.hi-code.cc/api/v1/announcements"
+          "count": 3,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 3 条，可在本详情页查看。",
+          "source": "https://www.hi-code.cc/api/v1/announcements"
         }
       ]
     },
@@ -15237,7 +15401,7 @@
     {
       "key": "muskai",
       "label": "MuskAI/muskpay",
-      "url": "https://pay.muskpay.top",
+      "url": "https://aiapi.muskpay.top",
       "stationType": "mixed",
       "stationTypeLabel": "混合型中转站",
       "stationTypeShortLabel": "混合型",
@@ -15436,7 +15600,7 @@
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
           "station": "muskai",
           "label": "MuskAI/muskpay",
-          "stationUrl": "https://pay.muskpay.top",
+          "stationUrl": "https://aiapi.muskpay.top",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -15471,7 +15635,7 @@
           "timeWindowLabel": "全部时段",
           "station": "muskai",
           "label": "MuskAI/muskpay",
-          "stationUrl": "https://pay.muskpay.top",
+          "stationUrl": "https://aiapi.muskpay.top",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -15977,7 +16141,7 @@
           "id": "22",
           "publishedAt": "2026-05-08T04:28:24.656Z",
           "type": "ongoing",
-          "extra": "在「订阅套餐」中选购<a href=\"https://1xm.ai/console/subscription-plans\" target=\"_blank\" rel=\"noopener noreferrer\">  【传送门】</a>",
+          "extra": "在「订阅套餐」中选购 【传送门】 https://1xm.ai/console/subscription-plans",
           "content": "上架两款claude 系列模型特权订阅套餐:\n\n1.周卡cc-windsurf 分组享受倍率特权 0.5 -> 0.4，降费 20%\n\n2.月卡cc-windsurf 分组享受倍率特权 0.5 -> 0.3，降费 40%\n\n订阅额度用完后只要没过期使用余额仍可享受特权倍率，用的越多省的越多～\n\n                                                 --OneXModel 运营团队 2026.5.8",
           "sourceUrl": "https://1xm.ai"
         },
@@ -15985,7 +16149,7 @@
           "id": "21",
           "publishedAt": "2026-05-03T07:44:42.931Z",
           "type": "ongoing",
-          "extra": "上线 gpt 生图工具：<a href=\"https://1xm.ai/tools/gpt-image/\" target=\"_blank\" rel=\"noopener noreferrer\">  【传送门】</a>",
+          "extra": "上线 gpt 生图工具： 【传送门】 https://1xm.ai/tools/gpt-image/",
           "content": "【重要通知】gpt 生图模型重大升级， 性能提升，费用降低：\n\n1、openai(x0.5)分组支持 1k 图，每张图从 0.28¥ ->0.1¥\n\n2、新增分组 gpt-image-2[4K]分组，支持 Image API 传参最高 4K 分辨率，每张图 0.16¥\n\n                                            ---OneXModel 运营团队  2026.5.3",
           "sourceUrl": "https://1xm.ai"
         },
@@ -16138,7 +16302,7 @@
           "publishedAt": "2026-03-17T10:37:25.880Z",
           "type": "default",
           "extra": "",
-          "content": "<div style=\"line-height:1.6;font-size:14px\">\n<b>📢 计费与倍率通知</b><br>\n汇率：1 RMB = 1 USD | 1 USD = 50W Tokens<br>\n<b>⚙️ 消耗倍率：</b>Claude=2, Gemini(通用)=0.5, Gemini(生图)=1, GPT=0.2<br>\n<i>*最终消耗 = 实际 Token × 倍率</i><br>\n<b>🎨 Gemini生图按次收费：</b><br>\nNano Banana Pro (gemini-3-pro-image-preview)：$0.3/张<br>\nNano Banana 2 (gemini-3.1-flash-image-preview)：$0.1/张\n</div>",
+          "content": "📢 计费与倍率通知\n汇率：1 RMB = 1 USD | 1 USD = 50W Tokens\n⚙️ 消耗倍率：Claude=2, Gemini(通用)=0.5, Gemini(生图)=1, GPT=0.2\n*最终消耗 = 实际 Token × 倍率\n🎨 Gemini生图按次收费：\nNano Banana Pro (gemini-3-pro-image-preview)：$0.3/张\nNano Banana 2 (gemini-3.1-flash-image-preview)：$0.1/张",
           "sourceUrl": "https://1xm.ai"
         }
       ],
@@ -16615,7 +16779,7 @@
           "publishedAt": "2026-03-03T03:51:33.304Z",
           "type": "default",
           "extra": "",
-          "content": "若遇到 status_code=504, bad response status code 504，API\n更换端点：https://www.vbcode.io<br>然后尝试<b>直连</b>或<b>换节点</b>使用. 尝试ESC重新发送, 或尝试新开终端使用<br><br>AWS 分组不支持一次性输出过长内容<br>若遇到 <b>Error writing file</b>，请让 Claude Code\n少量多次编辑文件，避免一次性写入过多内容。<br>建议在 <b>claude.md</b> 中增加约束说明，要求分段输出、分批修改文件。",
+          "content": "若遇到 status_code=504, bad response status code 504，API\n更换端点：https://www.vbcode.io\n然后尝试直连或换节点使用. 尝试ESC重新发送, 或尝试新开终端使用\nAWS 分组不支持一次性输出过长内容\n若遇到 Error writing file，请让 Claude Code\n少量多次编辑文件，避免一次性写入过多内容。\n建议在 claude.md 中增加约束说明，要求分段输出、分批修改文件。",
           "sourceUrl": "https://vbcode.io"
         },
         {

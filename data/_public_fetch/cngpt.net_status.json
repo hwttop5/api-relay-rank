@@ -110,7 +110,7 @@
     "theme": "classic",
     "top_up_link": "",
     "turnstile_check": false,
-    "turnstile_site_key": "",
+    "turnstile_site_key": "0x4AAAAAADSgATo5UI9aMJhy",
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 7.3,
     "user_agreement_enabled": false,

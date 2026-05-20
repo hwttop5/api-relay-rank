@@ -16,8 +16,7 @@ import requests
 
 SCRIPT_PATH = Path(__file__).resolve()
 APP_ROOT = SCRIPT_PATH.parents[1]
-WORKSPACE_ROOT = SCRIPT_PATH.parents[2]
-SOURCE_ROOTS = [APP_ROOT, WORKSPACE_ROOT]
+SOURCE_ROOTS = [APP_ROOT]
 SITE_DATA_PATH = APP_ROOT / "data" / "site-data.json"
 PUBLIC_FETCH_DIR = Path(os.environ.get("PUBLIC_FETCH_DIR", APP_ROOT / "data" / "_public_fetch"))
 TIMEOUT = 15
@@ -52,6 +51,10 @@ def is_public_station_key(station_key: Any) -> bool:
     if EMAIL_PATTERN.search(text):
         return False
     if "printcap.ai-" in text.lower():
+        return False
+    if "://" in text:
+        return False
+    if any(ch in text for ch in "（）()"):
         return False
     return True
 

@@ -14,18 +14,24 @@ from unittest import mock
 
 from scripts import build_site_data as build_site_data
 from scripts import run_station_audit as run_station_audit
+from scripts import scrape_missing_announcements as scrape_missing_announcements
 
 
-AUDIT_SCRIPT_PATH = Path(r"C:\Users\ttop5\Documents\projects\audit_proxy_multipliers.py")
-AUDIT_SPEC = importlib.util.spec_from_file_location("audit_proxy_multipliers", AUDIT_SCRIPT_PATH)
-assert AUDIT_SPEC and AUDIT_SPEC.loader
-audit_proxy_multipliers = importlib.util.module_from_spec(AUDIT_SPEC)
-sys.modules[AUDIT_SPEC.name] = audit_proxy_multipliers
-AUDIT_SPEC.loader.exec_module(audit_proxy_multipliers)
+AUDIT_SCRIPT_PATH = Path(__file__).resolve().parents[1] / "audit_proxy_multipliers.py"
+if AUDIT_SCRIPT_PATH.exists():
+    AUDIT_SPEC = importlib.util.spec_from_file_location("audit_proxy_multipliers", AUDIT_SCRIPT_PATH)
+    assert AUDIT_SPEC and AUDIT_SPEC.loader
+    audit_proxy_multipliers = importlib.util.module_from_spec(AUDIT_SPEC)
+    sys.modules[AUDIT_SPEC.name] = audit_proxy_multipliers
+    AUDIT_SPEC.loader.exec_module(audit_proxy_multipliers)
+else:
+    audit_proxy_multipliers = None
 
 
 class BuildSiteDataTests(unittest.TestCase):
     def make_fee_tier(self, **overrides: object) -> object:
+        if audit_proxy_multipliers is None:
+            self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
         payload = {
             "station": "demo",
             "label": "Demo",
@@ -102,10 +108,13 @@ class BuildSiteDataTests(unittest.TestCase):
         )
 
     def test_canonical_station_key_resolves_alias_chain(self) -> None:
-        aliases = {"clawto": "gettoken"}
+        aliases = {"demo-a": "demo-b", "demo-b": "demo-c"}
 
-        self.assertEqual(build_site_data.canonical_station_key("clawto", aliases), "gettoken")
-        self.assertEqual(build_site_data.canonical_station_key("gettoken", aliases), "gettoken")
+        self.assertEqual(build_site_data.canonical_station_key("demo-a", aliases), "demo-c")
+        self.assertEqual(build_site_data.canonical_station_key("demo-c", aliases), "demo-c")
+
+    def test_canonical_station_key_without_alias_keeps_station_independent(self) -> None:
+        self.assertEqual(build_site_data.canonical_station_key("demo-a", {}), "demo-a")
 
     def test_private_station_identifiers_are_not_public(self) -> None:
         self.assertFalse(build_site_data.is_public_station_key("printcap.ai-ttop5@qq.com"))
@@ -116,6 +125,29 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertFalse(build_site_data.is_public_station_url("tabit2api.local"))
         self.assertTrue(build_site_data.is_public_station_key("nexus"))
         self.assertTrue(build_site_data.is_public_station_url("https://nexus.1982video.cn"))
+
+    def test_choose_display_url_prefers_site_url_over_payment_evidence(self) -> None:
+        chosen = build_site_data.choose_display_url(
+            "coolplay",
+            [
+                "https://pay.ldxp.cn/shop/1D83WZHM",
+                "https://cp.coolplay-api.fun:55555/api/v1/payment/checkout-info",
+            ],
+        )
+
+        self.assertEqual(chosen, "https://cp.coolplay-api.fun:55555")
+
+    def test_choose_display_url_uses_station_url_override_first(self) -> None:
+        chosen = build_site_data.choose_display_url(
+            "hi-code",
+            [
+                "https://api-cn.hi-code.cc/api/v1/groups/available",
+                "https://pay.ldxp.cn/shop/hi-code",
+            ],
+            {"hi-code": "https://www.hi-code.cc"},
+        )
+
+        self.assertEqual(chosen, "https://www.hi-code.cc")
 
     def test_sub2api_app_config_type_hint_does_not_create_recharge_tiers(self) -> None:
         html = (
@@ -228,6 +260,87 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(status["status"], "empty")
         self.assertEqual(status["source"], "https://demo.example/api/status")
 
+    def test_live_auth_probe_gettoken_active_null_is_empty(self) -> None:
+        probe = {
+            "location": "https://gettoken.dev/zh-CN/console",
+            "results": {
+                "/api/announcements/active?locale=zh-CN": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {
+                        "success": True,
+                        "ok": True,
+                        "data": {"announcement": None},
+                    },
+                }
+            },
+        }
+
+        rows, status = build_site_data.live_probe_announcements_and_status("gettoken", probe)
+
+        self.assertEqual(rows, [])
+        self.assertEqual(status["status"], "empty")
+        self.assertEqual(status["source"], "https://gettoken.dev/api/announcements/active?locale=zh-CN")
+
+    def test_live_auth_probe_user_announcements_are_parsed(self) -> None:
+        probe = {
+            "location": "https://hongmacc.com",
+            "results": {
+                "/api/user/announcements": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {
+                        "items": [
+                            {
+                                "id": "24",
+                                "title": "五一活动结果公告",
+                                "content": "<p>活动结果已公布</p>",
+                                "publishedAt": "2026-05-06 14:16:37",
+                            }
+                        ]
+                    },
+                }
+            },
+        }
+
+        rows, status = build_site_data.live_probe_announcements_and_status("hongmacc", probe)
+
+        self.assertEqual(status["status"], "captured")
+        self.assertEqual(status["source"], "https://hongmacc.com/api/user/announcements")
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["id"], "24")
+        self.assertEqual(rows[0]["extra"], "五一活动结果公告")
+        self.assertIn("活动结果已公布", rows[0]["content"])
+
+    def test_live_auth_probe_announcements_strip_rich_html(self) -> None:
+        probe = {
+            "location": "https://demo.example",
+            "results": {
+                "/api/v1/announcements": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {
+                        "data": [
+                            {
+                                "id": "rich",
+                                "title": "<span style=\"font-size: 16px;\">Rich Notice</span>",
+                                "content": "<h3><span>Rich Notice</span></h3><p><span>Hello&nbsp;<strong>world</strong></span></p><ul><li><p>First item</p></li></ul>",
+                            }
+                        ]
+                    },
+                }
+            },
+        }
+
+        rows, _status = build_site_data.live_probe_announcements_and_status("demo", probe)
+
+        self.assertEqual(len(rows), 1)
+        self.assertNotIn("<span", rows[0]["content"])
+        self.assertNotIn("style=", rows[0]["content"])
+        self.assertIn("Rich Notice", rows[0]["content"])
+        self.assertIn("Hello world", rows[0]["content"])
+        self.assertIn("- First item", rows[0]["content"])
+
     def test_live_auth_probe_notice_string_creates_announcement(self) -> None:
         probe = {
             "location": "https://demo.example",
@@ -269,6 +382,144 @@ class BuildSiteDataTests(unittest.TestCase):
 
         self.assertEqual(rows, [])
         self.assertEqual(status["status"], "empty")
+
+    def test_live_auth_probe_notice_404_text_is_not_announcement(self) -> None:
+        probe = {
+            "location": "https://demo.example",
+            "results": {
+                "/api/notice": {
+                    "status": 404,
+                    "ok": False,
+                    "body": "404 page not found",
+                }
+            },
+        }
+
+        rows, status = build_site_data.live_probe_announcements_and_status("demo", probe)
+
+        self.assertEqual(rows, [])
+        self.assertEqual(status["status"], "failed")
+
+    def test_probe_login_block_status_detects_turnstile_from_login_capture(self) -> None:
+        probe = {
+            "location": "https://cp.coolplay-api.fun:55555",
+            "announcementCapture": {
+                "loginSuccess": False,
+                "loginBlocked": True,
+                "blockPath": "/api/v1/auth/login",
+                "loginAttempts": [
+                    {
+                        "path": "/api/v1/auth/login",
+                        "status": 400,
+                        "message": "turnstile verification failed",
+                        "reason": "TURNSTILE_VERIFICATION_FAILED",
+                    }
+                ],
+            },
+        }
+
+        status = build_site_data.probe_login_block_status(probe, message="公告接口被验证码或风控阻断")
+
+        self.assertIsNotNone(status)
+        self.assertEqual(status["status"], "blocked")
+        self.assertIn("/api/v1/auth/login", status["source"])
+
+    def test_scrape_notice_text_rejects_plain_404(self) -> None:
+        self.assertFalse(scrape_missing_announcements.looks_like_notice_text("404 page not found"))
+
+    def test_scrape_station_specific_fallback_account_uses_primary_password(self) -> None:
+        with mock.patch.dict(
+            scrape_missing_announcements.os.environ,
+            {"API_RELAY_SCRAPE_BOSSCLAW_EMAIL": "fallback-account"},
+            clear=False,
+        ):
+            accounts = scrape_missing_announcements.login_accounts_for_station(
+                "bossclaw",
+                "primary-account",
+                "primary-password",
+            )
+
+        self.assertEqual([item["label"] for item in accounts], ["primary", "bossclaw-fallback"])
+        self.assertEqual(accounts[1]["email"], "fallback-account")
+        self.assertEqual(accounts[1]["password"], "primary-password")
+
+    def test_scrape_summary_keeps_successful_fallback_attempt(self) -> None:
+        attempts = [
+            {"account": "primary", "tokenLength": 0, "ok": False},
+            {"account": "primary", "tokenLength": 0, "ok": False},
+            {"account": "primary", "tokenLength": 0, "ok": False},
+            {"account": "bossclaw-fallback", "tokenLength": 32, "ok": True},
+        ]
+
+        summary = scrape_missing_announcements.summarize_login_attempts(attempts)
+
+        self.assertEqual(len(summary), 3)
+        self.assertEqual(summary[-1]["account"], "bossclaw-fallback")
+
+    def test_scrape_merge_probe_keeps_old_group_probe_when_refresh_fails(self) -> None:
+        capture = {
+            "station": {
+                "key": "coolplay",
+                "label": "Coolplay API",
+                "platform": "sub2api",
+                "base": "https://cp.coolplay-api.fun:55555",
+            },
+            "capturedAt": "2026-05-20T00:00:00+08:00",
+            "loginSuccess": False,
+            "loginBlocked": True,
+            "blockReason": "TURNSTILE_VERIFICATION_FAILED",
+            "blockMessage": "turnstile verification failed",
+            "blockPath": "/api/v1/auth/login",
+            "loginAttempts": [
+                {
+                    "path": "/api/v1/auth/login",
+                    "status": 400,
+                    "ok": False,
+                    "message": "turnstile verification failed",
+                    "reason": "TURNSTILE_VERIFICATION_FAILED",
+                    "tokenLength": 0,
+                }
+            ],
+            "bestAnnouncementPath": "",
+            "announcementCount": None,
+            "results": {
+                "/api/v1/groups/available": {
+                    "status": 404,
+                    "ok": False,
+                    "body": "404 page not found",
+                },
+                "/api/v1/announcements": {
+                    "status": 401,
+                    "ok": False,
+                    "body": {"code": "UNAUTHORIZED", "message": "Authorization header is required"},
+                },
+            },
+        }
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            probe_dir = Path(tmp_dir)
+            existing_path = probe_dir / "coolplay-live-auth-probe.json"
+            existing_path.write_text(
+                json.dumps(
+                    {
+                        "results": {
+                            "/api/v1/groups/available": {
+                                "status": 200,
+                                "ok": True,
+                                "body": {"code": 0, "data": [{"name": "default", "rate_multiplier": 1.5}]},
+                            }
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with mock.patch.object(scrape_missing_announcements, "LIVE_AUTH_PROBE_DIR", probe_dir):
+                output_path = scrape_missing_announcements.merge_probe(capture)
+
+            merged = json.loads(output_path.read_text(encoding="utf-8"))
+            self.assertEqual(merged["results"]["/api/v1/groups/available"]["status"], 200)
+            self.assertTrue(merged["announcementCapture"]["loginBlocked"])
 
     def test_live_auth_probe_payment_config_needs_amounts_before_tiers(self) -> None:
         probe = {
@@ -372,6 +623,32 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(groups["status"], "blocked")
         self.assertEqual(groups["statusLabel"], "风控阻断")
 
+    def test_station_evidence_status_uses_login_block_for_announcements(self) -> None:
+        station = {
+            "platformGuess": "sub2api",
+            "groupMultipliers": [],
+            "rechargeTiers": [],
+            "announcements": [],
+        }
+        live_snapshot = {
+            "rawProbe": {
+                "location": "https://cp.coolplay-api.fun:55555",
+                "announcementCapture": {
+                    "loginBlocked": True,
+                    "blockPath": "/api/v1/auth/login",
+                    "blockMessage": "turnstile verification failed",
+                },
+            },
+            "evidenceStatus": {},
+        }
+
+        evidence = build_site_data.build_station_evidence_status(station, live_snapshot)
+        announcement = next(item for item in evidence if item["key"] == "announcements")
+
+        self.assertEqual(announcement["status"], "blocked")
+        self.assertEqual(announcement["statusLabel"], "风控阻断")
+        self.assertIn("验证码或风控阻断", announcement["message"])
+
     def test_quality_only_local_station_is_not_published(self) -> None:
         required_inputs = [
             "composite_ranking_formal_workhours.csv",
@@ -405,6 +682,7 @@ class BuildSiteDataTests(unittest.TestCase):
                 mock.patch.object(build_site_data, "PUBLIC_FETCH_DIRS", [root / "missing_fetch"]),
                 mock.patch.object(build_site_data, "AUDIT_RUNS_DIR", root / "missing_audits"),
                 mock.patch.object(build_site_data, "STATION_PRICING_OVERRIDES_PATH", root / "missing_overrides.json"),
+                mock.patch.object(build_site_data, "STATION_URL_OVERRIDES_PATH", root / "missing_url_overrides.json"),
                 mock.patch.object(build_site_data, "STATION_AUDIT_TARGETS_PATH", root / "missing_targets.json"),
                 mock.patch("sys.stdout", new=io.StringIO()),
             ):
@@ -809,38 +1087,38 @@ class BuildSiteDataTests(unittest.TestCase):
 
         self.assertEqual(audits["demo"][0]["overallVerdict"], "low")
 
-    def test_load_station_audit_history_keeps_report_path_for_alias_station(self) -> None:
+    def test_load_station_audit_history_keeps_report_path_for_station(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
             audit_root = Path(tmp_dir) / "_audit_runs"
-            run_dir = audit_root / "clawto" / "demo-model" / "20260101T000000Z"
+            run_dir = audit_root / "demo" / "demo-model" / "20260101T000000Z"
             run_dir.mkdir(parents=True)
             summary = {
                 "profile": "general",
                 "model": "demo-model",
-                "auditedBaseUrl": "https://api.clawto.link",
+                "auditedBaseUrl": "https://relay.example",
                 "executedAt": "2026-01-01T00:00:00Z",
                 "overallVerdict": "low",
                 "overallSummary": "ok",
                 "highlights": [],
                 "stepSummaries": [],
-                "reportPath": "data/_audit_runs/clawto/demo-model/20260101T000000Z/report.md",
+                "reportPath": "data/_audit_runs/demo/demo-model/20260101T000000Z/report.md",
                 "toolVersion": "test",
             }
             (run_dir / "summary.json").write_text(json.dumps(summary), encoding="utf-8")
             (run_dir / "run.json").write_text(json.dumps({"status": "success"}), encoding="utf-8")
             stations = {
-                "gettoken": {
-                    "label": "GetToken",
-                    "url": "https://gettoken.dev",
+                "demo": {
+                    "label": "demo",
+                    "url": "https://relay.example",
                 }
             }
 
             with mock.patch.object(build_site_data, "AUDIT_RUNS_DIR", audit_root):
-                history = build_site_data.load_station_audit_history(stations, {"clawto": "gettoken"})
+                history = build_site_data.load_station_audit_history(stations, {})
 
-        self.assertEqual(history[0]["stationKey"], "gettoken")
-        self.assertEqual(history[0]["stationLabel"], "GetToken")
-        self.assertEqual(history[0]["reportUrl"], "/api/audit-report?station=clawto&model=demo-model&run=20260101T000000Z")
+        self.assertEqual(history[0]["stationKey"], "demo")
+        self.assertEqual(history[0]["stationLabel"], "demo")
+        self.assertEqual(history[0]["reportUrl"], "/api/audit-report?station=demo&model=demo-model&run=20260101T000000Z")
 
     def test_load_station_audit_history_keeps_all_runs_sorted_by_time(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -912,13 +1190,12 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(station["url"], "https://relay.example.com/v1")
         self.assertEqual(station_urls["audit-relay-example-com"], {"https://relay.example.com/v1"})
 
-    def test_alias_station_data_merges_into_gettoken(self) -> None:
+    def test_removed_station_probe_snapshots_do_not_reenter_public_station_pool(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = Path(tmp_dir)
             source_root = root / "source"
             data_dir = root / "data"
             fetch_dir = data_dir / "_public_fetch"
-            audit_root = data_dir / "_audit_runs"
             source_root.mkdir()
             fetch_dir.mkdir(parents=True)
             (fetch_dir / "clawto_pricing.json").write_text(
@@ -948,6 +1225,12 @@ class BuildSiteDataTests(unittest.TestCase):
                         "station": "clawto",
                         "baseUrl": "https://api.clawto.link",
                         "results": {
+                            "/": {
+                                "url": "https://api.clawto.link/",
+                                "status": 404,
+                                "ok": False,
+                                "body": "404 page not found",
+                            },
                             "/api/v1/settings/public": {
                                 "url": "https://api.clawto.link/api/v1/settings/public",
                                 "status": 200,
@@ -968,45 +1251,24 @@ class BuildSiteDataTests(unittest.TestCase):
             )
             (source_root / "composite_ranking_formal_workhours.csv").write_text(
                 "rank,ranking_basis,time_window,time_window_label,station,label,station_url,station_type,station_type_label,station_type_short_label,total_score,success_score,latency_score,cost_score,correct_rate,avg_seconds,median_seconds,p95_seconds,effective_multiplier,fee_verified,adopted_tier,adopted_group,adopted_recharge_name,billing_type,billing_type_label,multiplier_full_use_assumption,requests,correct,failures,http_2xx,http_200_with_error,first_at,last_at\n"
-                "1,formal_high_confidence,work_hours,工作时段,clawto,clawto,https://api.clawto.link,unknown_pending,待补证据,待补证据,1,1,1,1,1,1,1,1,1,false,,, ,,,,1,1,0,1,0,,\n",
+                "1,formal_high_confidence,work_hours,工作时段,demo,demo,https://relay.example,unknown_pending,待补证据,待补证据,1,1,1,1,1,1,1,1,1,false,,, ,,,,1,1,0,1,0,,\n",
                 encoding="utf-8",
             )
             for filename in ("composite_ranking_formal_offhours.csv", "composite_ranking_formal_all_hours.csv", "quality_metrics.csv", "login_verification_checklist.csv", "multiplier_tiers.csv"):
                 (source_root / filename).write_text("", encoding="utf-8")
-            (data_dir / "_audit_runs" / "clawto" / "demo-model" / "20260101T000000Z").mkdir(parents=True)
-            (data_dir / "_audit_runs" / "clawto" / "demo-model" / "20260101T000000Z" / "summary.json").write_text(
-                json.dumps(
-                    {
-                        "profile": "general",
-                        "model": "demo-model",
-                        "auditedBaseUrl": "https://api.clawto.link",
-                        "executedAt": "2026-01-01T00:00:00Z",
-                        "overallVerdict": "low",
-                        "overallSummary": "ok",
-                        "highlights": [],
-                        "stepSummaries": [],
-                        "reportPath": "data/_audit_runs/clawto/demo-model/20260101T000000Z/report.md",
-                        "toolVersion": "test",
-                    }
-                ),
-                encoding="utf-8",
-            )
-            (data_dir / "_audit_runs" / "clawto" / "demo-model" / "20260101T000000Z" / "run.json").write_text(
-                json.dumps({"status": "success"}),
-                encoding="utf-8",
-            )
-            (root / "config").mkdir()
-            (root / "config" / "station_aliases.json").write_text(json.dumps({"clawto": "gettoken"}), encoding="utf-8")
 
             with (
                 mock.patch.object(build_site_data, "APP_ROOT", root),
+                mock.patch.object(build_site_data, "SOURCE_ROOTS", [source_root]),
                 mock.patch.object(build_site_data, "DATA_DIR", data_dir),
                 mock.patch.object(build_site_data, "SITE_DATA_PATH", data_dir / "site-data.json"),
                 mock.patch.object(build_site_data, "PUBLIC_FETCH_DIR", fetch_dir),
                 mock.patch.object(build_site_data, "PUBLIC_FETCH_DIRS", [fetch_dir]),
-                mock.patch.object(build_site_data, "AUDIT_RUNS_DIR", audit_root),
+                mock.patch.object(build_site_data, "AUDIT_RUNS_DIR", data_dir / "_audit_runs"),
+                mock.patch.object(build_site_data, "LIVE_AUTH_PROBE_DIR", root / "missing_live_probes"),
                 mock.patch.object(build_site_data, "STATION_ALIASES_PATH", root / "config" / "station_aliases.json"),
                 mock.patch.object(build_site_data, "STATION_PRICING_OVERRIDES_PATH", root / "missing_overrides.json"),
+                mock.patch.object(build_site_data, "STATION_URL_OVERRIDES_PATH", root / "missing_url_overrides.json"),
                 mock.patch.object(build_site_data, "STATION_AUDIT_TARGETS_PATH", root / "missing_targets.json"),
                 mock.patch("sys.stdout", new=io.StringIO()),
             ):
@@ -1014,12 +1276,79 @@ class BuildSiteDataTests(unittest.TestCase):
 
             payload = json.loads((data_dir / "site-data.json").read_text(encoding="utf-8"))
             station_keys = [station["key"] for station in payload["stations"]]
-            self.assertIn("gettoken", station_keys)
+            self.assertIn("demo", station_keys)
             self.assertNotIn("clawto", station_keys)
-            gettoken = next(station for station in payload["stations"] if station["key"] == "gettoken")
-            self.assertEqual(gettoken["url"], "https://gettoken.dev")
-            self.assertTrue(any(row["station"] == "gettoken" for row in payload["rankings"]["work_hours"]))
-            self.assertTrue(any(item.get("key") == "publicProbe" and item.get("status") == "captured" for item in gettoken.get("dataEvidence", [])))
+            self.assertFalse(any(row["station"] == "clawto" for row in payload["rankings"]["work_hours"]))
+
+    def test_unknown_probe_only_station_does_not_become_public_station(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            source_root = root / "source"
+            data_dir = root / "data"
+            fetch_dir = data_dir / "_public_fetch"
+            source_root.mkdir()
+            fetch_dir.mkdir(parents=True)
+            (fetch_dir / "cngpt.net_status.json").write_text(
+                json.dumps(
+                    {
+                        "data": {
+                            "server_address": "https://cngpt.net",
+                            "announcements": [{"id": 1, "content": "demo"}],
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (fetch_dir / "cngpt.net_public_probe.json").write_text(
+                json.dumps(
+                    {
+                        "station": "cngpt.net",
+                        "baseUrl": "https://cngpt.net",
+                        "results": {
+                            "/api/v1/settings/public": {
+                                "url": "https://cngpt.net/api/v1/settings/public",
+                                "status": 200,
+                                "ok": True,
+                                "body": {"data": {}},
+                            }
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (source_root / "composite_ranking_formal_workhours.csv").write_text(
+                "rank,ranking_basis,time_window,time_window_label,station,label,station_url,station_type,station_type_label,station_type_short_label,total_score,success_score,latency_score,cost_score,correct_rate,avg_seconds,median_seconds,p95_seconds,effective_multiplier,fee_verified,adopted_tier,adopted_group,adopted_recharge_name,billing_type,billing_type_label,multiplier_full_use_assumption,requests,correct,failures,http_2xx,http_200_with_error,first_at,last_at\n",
+                encoding="utf-8",
+            )
+            for filename in (
+                "composite_ranking_formal_offhours.csv",
+                "composite_ranking_formal_all_hours.csv",
+                "quality_metrics.csv",
+                "login_verification_checklist.csv",
+                "multiplier_tiers.csv",
+            ):
+                (source_root / filename).write_text("", encoding="utf-8")
+
+            with (
+                mock.patch.object(build_site_data, "APP_ROOT", root),
+                mock.patch.object(build_site_data, "SOURCE_ROOTS", [source_root]),
+                mock.patch.object(build_site_data, "DATA_DIR", data_dir),
+                mock.patch.object(build_site_data, "SITE_DATA_PATH", data_dir / "site-data.json"),
+                mock.patch.object(build_site_data, "PUBLIC_FETCH_DIR", fetch_dir),
+                mock.patch.object(build_site_data, "PUBLIC_FETCH_DIRS", [fetch_dir]),
+                mock.patch.object(build_site_data, "AUDIT_RUNS_DIR", data_dir / "_audit_runs"),
+                mock.patch.object(build_site_data, "LIVE_AUTH_PROBE_DIR", root / "missing_live_probes"),
+                mock.patch.object(build_site_data, "STATION_ALIASES_PATH", root / "config" / "station_aliases.json"),
+                mock.patch.object(build_site_data, "STATION_PRICING_OVERRIDES_PATH", root / "missing_overrides.json"),
+                mock.patch.object(build_site_data, "STATION_URL_OVERRIDES_PATH", root / "missing_url_overrides.json"),
+                mock.patch.object(build_site_data, "STATION_AUDIT_TARGETS_PATH", root / "missing_targets.json"),
+                mock.patch("sys.stdout", new=io.StringIO()),
+            ):
+                self.assertEqual(build_site_data.main(), 0)
+
+            payload = json.loads((data_dir / "site-data.json").read_text(encoding="utf-8"))
+            station_keys = [station["key"] for station in payload["stations"]]
+            self.assertNotIn("cngpt.net", station_keys)
 
     def test_run_station_audit_requires_secret_env(self) -> None:
         target = {

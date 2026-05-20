@@ -99,10 +99,10 @@ export interface AnnouncementRow {
 }
 
 export interface DataEvidenceRow {
-  key: "groupMultipliers" | "rechargeTiers" | "announcements";
+  key: "groupMultipliers" | "rechargeTiers" | "announcements" | "publicProbe";
   label: string;
   count: number;
-  status: "captured" | "empty" | "failed" | "missing" | "login_required" | "public_missing";
+  status: "captured" | "empty" | "failed" | "missing" | "login_required" | "blocked" | "public_missing";
   statusLabel: string;
   message: string;
   source: string;

@@ -4,6 +4,13 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
     "announcements": [
       {
+        "content": "昨日活动中奖用户：2849209973因未在群内且未及时私聊领取，\n\n名额已顺延至：krzover\n\n请该用户于今日内私聊我领取 10 刀账户余额，逾期将视为自动放弃，继续顺延重新抽奖哦。",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-05-19T05:43:07.728Z",
+        "type": "ongoing"
+      },
+      {
         "content": "今日狂飙名额告急，仅剩少量席位，有需要的老板抓紧上车！\n\n福利加码✅\n\n截止今日晚上9点（5.18），我们将从所有付费金额超 20 元的用户中，抽 1 人直接到账 10 刀的账户余额！\n\n⚠️ 需进入 QQ 群参与，不在群内视为无效，名额将顺延。\n\n虽然这次数额不大，但我们会长期不定期推出各类福利活动，持续回馈大家。感谢大家一路信任与陪伴～",
         "extra": "",
         "id": 5,
@@ -29,13 +36,6 @@
         "extra": "",
         "id": 2,
         "publishDate": "2026-05-11T12:54:18.533Z",
-        "type": "default"
-      },
-      {
-        "content": "哈喽各位，新注册赠送10🔪额度，放心使用",
-        "extra": "",
-        "id": 1,
-        "publishDate": "2026-05-10T03:35:17.722Z",
         "type": "default"
       }
     ],

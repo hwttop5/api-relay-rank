@@ -18,7 +18,9 @@ export default async function StationPage({ params }: { params: Promise<{ statio
   const off = station.rankings.off_hours;
   const latestAnnouncements = [...station.announcements].sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1)).slice(0, 5);
   const announcementEvidence = station.dataEvidence?.find((item) => item.key === "announcements");
-  const announcementEmptyText = announcementEvidence
+  const announcementEmptyText = announcementEvidence?.status === "empty"
+    ? "暂无公告数据"
+    : announcementEvidence
     ? `${announcementEvidence.statusLabel}：${announcementEvidence.message}`
     : "暂未抓到可展示公告内容。";
 

@@ -2,19 +2,19 @@
 
 ## 本次经验
 
-- 正式排名从约 30 个站点降到 3 个，核心原因不是当前 Codex Manager 日志不足，而是父目录的核验证据不完整：`tabbit-audit-profile/` 缺失、`verified_multiplier_inputs.csv` 为空时，大量 `high_tabbit_logged_in` 和 `manual_verified` 倍率证据无法参与正式排名。
+- 正式排名从约 30 个站点降到 3 个，核心原因不是当前 Codex Manager 日志不足，而是本地核验证据不完整：`../tabbit-audit-profile/` 缺失、`verified_multiplier_inputs.csv` 为空时，大量 `high_tabbit_logged_in` 和 `manual_verified` 倍率证据无法参与正式排名。
 - 恢复旧会话的登录态核验证据和非空人工核验输入后，正式排名恢复到本次参考规模：工作时段 27 个、非工作时段 31 个、全时段 32 个。
 - 周末全天必须归入非工作时段。刷新数据后需要同时检查脚本口径、`site-data.json` 的 `timeWindows`、特别声明文案和页面上的时段说明。
 - 本地工具、代理网关和临时服务不能进入公开站点列表。本次 `Tabit2api` 来自 `http://127.0.0.1:50124`，只有质量/待证据记录，没有公开站点 URL 和已核验倍率，构建公开数据时应过滤掉这类本地地址或空 URL 站点。
 
-## 外部输入
+## 本地输入
 
-数据刷新不只依赖仓库内代码，还依赖 `C:\Users\ttop5\Documents\projects` 下的外部输入：
+手动数据刷新依赖仓库根目录下的本地输入，以及仓库外的浏览器登录态 probe：
 
 - `audit_proxy_multipliers.py`：日志重算主脚本。
-- `tabbit-audit-profile/`：登录态 live probe 证据，当前恢复目标包含 26 个 `*-live-auth-probe.json` 和 `pending-stations-api-probes.json`。
 - `verified_multiplier_inputs.csv`：非空人工核验输入；如果只剩表头，正式排名会大幅缩水。
 - `capture_tabbit_live_probes.py`：后续重新抓登录态证据时使用。
+- `../tabbit-audit-profile/`：仓库外登录态 live probe 证据，当前恢复目标包含 26 个 `*-live-auth-probe.json` 和 `pending-stations-api-probes.json`。
 
 不要在未确认当前浏览器登录态可用时运行带 `--capture-live-probes` 的刷新，否则可能用空状态覆盖已恢复证据。
 
@@ -33,15 +33,19 @@ npm run site:data
 - 定时为北京时间每天 04:00，对应 GitHub Actions cron `0 20 * * *`。
 - 线上批次顺序为：公开公告/价格快照抓取 -> 全站登录态 probe 抓取 -> `scripts/build_site_data.py` 重建 `data/site-data.json` -> `scripts/validate_refresh_outputs.py` 校验 -> 提交数据变更。
 - 登录态抓取使用 GitHub Actions Secrets：`API_RELAY_SCRAPE_EMAIL` 和 `API_RELAY_SCRAPE_PASSWORD`。凭据只注入 `scripts/scrape_missing_announcements.py --all-stations --write-probes` 这一步，不写入仓库，也不应出现在日志或 JSON 输出中。
+- 如果单站是账号权限或账号状态问题，而不是验证码/风控问题，可以配置站点级备用账号 Secret。命名规则为 `API_RELAY_SCRAPE_<STATION>_EMAIL` 和可选的 `API_RELAY_SCRAPE_<STATION>_PASSWORD`，其中 `<STATION>` 使用大写站点 key 并把非字母数字字符替换为 `_`；未配置站点级密码时默认复用 `API_RELAY_SCRAPE_PASSWORD`。例如 BossClaw 使用 `API_RELAY_SCRAPE_BOSSCLAW_EMAIL`，脚本会先尝试主账号，失败后再尝试备用账号，但日志只记录 `primary` / `bossclaw-fallback` 这类账号标签，不记录真实账号。
+- 线上自动刷新对需要账号直登的站点，以 `scripts/scrape_missing_announcements.py` 为唯一正式入口；`capture_tabbit_live_probes.py` 只用于人工补证据，不进入 GitHub Actions 主链路。
 - 登录态 probe 在 CI 中作为同一次 job 的临时输入，默认写到 checkout 父目录的 `tabbit-audit-profile/`，供随后重建读取；不提交 probe 文件、token、cookie 或密码。
 - 单站登录失败、接口返回空、需要登录、Turnstile/验证码/风控阻断时，只记录对应证据状态，不能用失败结果覆盖已有成功的结构化分组倍率或充值档位。
+- 对于 Turnstile、腾讯验证码、人机验证或其它风控阻断，自动化脚本不得尝试绕过，也不得把公开 401/403 当作最终缺失结论。处理方式是保留旧成功 probe，证据状态标记为 `blocked`，后续由用户在浏览器中完成验证后，再用 AI 辅助人工补抓并写入脱敏 live probe 或人工核验输入。
+- 对于已确认关闭、且明确决定不再收录的站点，必须同时移除识别规则和已有输入快照，避免下次重建时被旧日志或旧探针重新带回公开站点集合。
 - 本次线上自动化只覆盖全站展示数据：公开快照、可登录站点的分组倍率/充值档位/公告证据和 `data/site-data.json`。Codex Manager 本地 SQLite 日志、`quality_metrics.csv` 与 formal ranking CSV 仍保持手动刷新，不放到 GitHub 托管 runner 每日任务中。
 
 ## 手动日志刷新规则
 
 - 最新一次全量数据基线以 `data/site-data.json` 的 `generatedAt` 为准；刷新后请同步核对该字段。
-- 当前 `npm run site:refresh-manual` 会调用父目录的 `audit_proxy_multipliers.py` 重算质量与排名数据，然后执行 `scripts/build_site_data.py` 重建前端 JSON。
-- 可选参数只有 `--capture-live-probes`，用于刷新前先调用父目录的 `capture_tabbit_live_probes.py` 抓取当前已登录浏览器页的 live auth probe。
+- 当前 `npm run site:refresh-manual` 会调用仓库根目录的 `audit_proxy_multipliers.py` 重算质量与排名数据，然后执行 `scripts/build_site_data.py` 重建前端 JSON。
+- 可选参数只有 `--capture-live-probes`，用于刷新前先调用仓库根目录的 `capture_tabbit_live_probes.py` 抓取当前已登录浏览器页的 live auth probe。
 - 公告、倍率快照和登录态 probe 仍按现有脚本刷新，不归入 Codex Manager 日志增量水位线。
 
 本地确认前不要执行 `git add`、提交或推送。需要上线时再单独检查差异并提交数据文件。
@@ -86,11 +90,12 @@ git diff --stat -- data/site-data.json data/_public_fetch
 ## 数据缺口与详情页展示
 
 - 刷新前后要盘点每个站点的三类详情页证据：分组倍率、充值档位、公告。分组倍率和充值档位缺口会影响正式成本口径；公告缺口只影响详情页展示，不应伪造成空公告。
-- `tabbit-audit-profile/*-live-auth-probe.json` 是补齐 sub2api 详情数据的首选来源。v1/sub2api probe 应尽量包含 `/api/v1/groups/available`、`/api/v1/payment/config`、`/api/v1/payment/checkout-info`、`/api/v1/payment/plans`、`/api/v1/announcements`。
+- `../tabbit-audit-profile/*-live-auth-probe.json` 是补齐 sub2api 详情数据的首选来源。v1/sub2api probe 应尽量包含 `/api/v1/groups/available`、`/api/v1/payment/config`、`/api/v1/payment/checkout-info`、`/api/v1/payment/plans`、`/api/v1/announcements`。
 - 公告接口返回空列表、接口未被抓取、接口需要登录、接口抓取失败要分开标注。详情页的“数据证据状态”用于展示这些状态，避免用户把“暂无公告”和“没有抓到公告接口”混为一谈。
 - PrintCap 当前公开配置只能确认 `payment_enabled=true` 且 `purchase_subscription_enabled=false`，可用于修正类型为非包月型；分组倍率、充值档位和公告仍以登录态 probe 或人工核验为准。
 - 如果登录被 Turnstile/腾讯验证码等风控挡住，但用户提供了可辨认截图，可把截图作为 `verified_multiplier_inputs.csv` 的 `manual_verified` 来源；本次 PrintCap 完整充值图确认唯一分组为 `GPT-MIX 1x`，快捷充值档位为 `10/20/50/100/200/500/1000/2000/5000 RMB`，自定义金额与快捷档位均按 `1 CNY = 2 USD` 到账，因此采用倍率按 Codex 口径计算为 `1 × RMB ÷ (RMB × 2) = 0.5`。公告仍不能由截图推断，继续标为需要登录。
 - 公告补抓 helper `scripts/scrape_missing_announcements.py` 只记录登录尝试状态和接口响应，不保存密码或 token；写入 probe 前会脱敏 token 类字段。运行时通过 `API_RELAY_SCRAPE_EMAIL` / `API_RELAY_SCRAPE_PASSWORD` 传入账号密码，不要把凭据写进脚本。
+- 如果某站点主账号登录失败但另一个账号可用，优先把备用账号作为站点级 Secret 接入 `scripts/scrape_missing_announcements.py`，让线上脚本先主账号、后备用账号自动补抓；只有验证码/风控阻断或站点必须人工交互时，才转为浏览器人工补抓。人工补抓完成后仍要重跑 `scripts/build_site_data.py`，并用 `python -m unittest tests/test_build_site_data.py` 与 `npm run build` 校验。
 
 ## 近期排查补充（2026-05-18）
 
@@ -98,8 +103,8 @@ git diff --stat -- data/site-data.json data/_public_fetch
 - 时间窗口径必须先确认再改脚本。之前把请求样本误加了“最近三天”截断，直接把 `nexus` 这类旧日志站点从正式排名里清空了；这类改动必须先用独立 SQL 核对样本时间分布。
 - 新站点分类要补全到脚本里的 `classify_station()`，否则会出现“DB 里有请求、费用证据也有，但质量 CSV 里是 0”的假缺失。`opentk` 就是这类遗漏，补分类后才重新进入正式排名。
 - 私有账号键、本地代理地址和临时站点不能进入公开站点池。像 `ttop5`、`127.0.0.1:8787`、`tabit2api` 这类条目只能留在内部排查链路，不能写进公开站点列表或前端 JSON。
-- 同一中转站如果存在多个 API 域名，必须先做 canonical 归并再进入收录、排行和证据合并。`clawto` / `api.clawto.link` 这次应并回 `gettoken` / `gettoken.dev`，否则会把同一站点拆成两个记录，污染排行和审计历史。
-- 本次归并依据：`clawto_public_probe.json` 的公开配置里已经指向 `https://gettoken.dev`，而 `clawto_api_base_probe.json` 的 `supplier_name` 也落在 `gettoken.dev-*`；这说明 `api.clawto.link` 只是同一家中转站的另一个入口，不应作为独立站点展示。
-- 普通补数使用 `npm run site:refresh-manual` 重新生成质量与排名数据。全量历史扫描是否发生取决于父目录 `audit_proxy_multipliers.py` 的当前实现，执行前需要先检查该脚本口径。
-- 如果需要纠正时段规则、站点分类、错误过滤、评分逻辑、别名归并或历史 DB 数据，应先确认父目录刷新脚本支持对应重算口径，再执行刷新。
-- 只要改了采样、分类或过滤规则，必须马上做三步验证：重新生成父级 CSV、重建 `site-data.json`、再跑 `python -m unittest tests/test_build_site_data` 和 `npm run build`。最后还要强刷本地页面，确认页面读到的是新生成的数据而不是旧缓存。
+- 同一中转站如果存在多个 API 域名，是否做 canonical 归并必须以当前项目收录规则为准，不能只凭公开配置里的跳转链接或供应商命名猜测。要么有明确规则确认并站，要么继续按现有公开站点键处理。
+- 公开探针、菜单链接、`supplier_name` 之类线索只能作为辅助证据，不能单独决定站点归并。要么有明确的项目规则确认并站，要么继续按独立站点保留，避免把已确认的新站点错误吃回旧站点。
+- 普通补数使用 `npm run site:refresh-manual` 重新生成质量与排名数据。全量历史扫描是否发生取决于仓库根目录 `audit_proxy_multipliers.py` 的当前实现，执行前需要先检查该脚本口径。
+- 如果需要纠正时段规则、站点分类、错误过滤、评分逻辑、别名归并或历史 DB 数据，应先确认仓库根目录刷新脚本支持对应重算口径，再执行刷新。
+- 只要改了采样、分类或过滤规则，必须马上做三步验证：重新生成根目录 CSV、重建 `site-data.json`、再跑 `python -m unittest tests/test_build_site_data` 和 `npm run build`。最后还要强刷本地页面，确认页面读到的是新生成的数据而不是旧缓存。
