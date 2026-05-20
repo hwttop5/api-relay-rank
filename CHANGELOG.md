@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.1.2 - 2026-05-20
+
+1. 统一站点品牌与页面文案为“AI中转站监视者”，同步优化综合排名/安全审计入口命名与 README 指引。
+2. 升级站点刷新链路：新增站点级备用抓取账号能力，补充登录阻断处理约束，并完善数据重建与校验说明。
+3. 刷新全站公开快照与 `data/site-data.json`，同步更新站点详情证据与正式榜单展示数据。
+
+### English Notes
+
+1. Unified site branding and page copy as “AI Relay Monitor”, including clearer naming for ranking/audit entries and README guidance.
+2. Upgraded the refresh pipeline with station-level fallback scrape accounts, stricter blocked-login handling rules, and clearer rebuild validation notes.
+3. Refreshed all public snapshots and regenerated `data/site-data.json` with updated station evidence and ranking display data.
+
 ## v0.1.1 - 2026-05-19
 
 1. 将站点展示数据刷新升级为每天北京时间 04:00 的单次 GitHub Actions 自动任务。
