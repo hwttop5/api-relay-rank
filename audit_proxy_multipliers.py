@@ -11,10 +11,14 @@ The script separates verified cost evidence from site coverage hints:
 
 from __future__ import annotations
 
+import argparse
 import csv
 import datetime as dt
+import hashlib
+import ipaddress
 import json
 import os
+import re
 import sqlite3
 import ssl
 import statistics
@@ -22,10 +26,12 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
+
+from scripts.station_display_names import normalize_station_label
 
 
 WORKSPACE = Path(__file__).resolve().parent
@@ -36,6 +42,18 @@ PROBE_TIMEOUT_SECONDS = 6
 PLATFORM_PROBE_READ_BYTES = 1_000_000
 VERIFIED_INPUT_PATH = WORKSPACE / "verified_multiplier_inputs.csv"
 PUBLIC_FEE_EVIDENCE_PATH = WORKSPACE / "public_fee_evidence.csv"
+STATION_PRICING_OVERRIDES_PATH = WORKSPACE / "config" / "station_pricing_overrides.json"
+SITE_DATA_PATH = WORKSPACE / "data" / "site-data.json"
+REQUEST_LOG_STATION_CANDIDATES_PATH = WORKSPACE / "request_log_station_candidates.csv"
+HIGH_MULTIPLIER_REVIEW_PATH = WORKSPACE / "high_multiplier_review.csv"
+MULTIPLIER_SANITY_REVIEW_PATH = WORKSPACE / "multiplier_sanity_review.csv"
+HIGH_MULTIPLIER_REVIEW_THRESHOLD = 2.0
+LOW_MULTIPLIER_REVIEW_THRESHOLD = 0.001
+LOG_REFRESH_STATE_PATH = WORKSPACE / "data" / "codex-log-refresh-state.json"
+LOG_REFRESH_STATE_VERSION = 1
+LOG_REFRESH_OVERLAP_SECONDS = 300
+PROCESSED_LOG_KEY_LIMIT = 50_000
+LAST_LOG_REFRESH_INFO: dict[str, Any] = {}
 PRIMARY_TIME_WINDOW = "work_hours"
 TIME_WINDOW_LABELS = {
     "all_hours": "全部时段",
@@ -85,46 +103,56 @@ class StationConfig:
 
 
 LABELS: dict[str, str] = {
-    "17nas": "17nas",
+    "17nas": "17Nas",
+    "585016d3.u3u.dev": "U3U",
     "4router": "4Router",
-    "aicodelink": "aicodelink",
-    "api.xiaoxin.best": "api.xiaoxin.best",
-    "avemujica": "avemujica",
-    "audit-api-printcap-ai": "api.printcap.ai",
+    "aicodelink": "AICodeLink",
+    "api.xiaoxin.best": "Xiaoxin",
+    "atomflow.vip": "AtomFlow",
+    "avemujica": "AveMujica",
+    "audit-api-printcap-ai": "PrintcapAI",
     "bossclaw": "BossClaw",
-    "bytecat": "bytecat",
-    "claude-api": "claude-api",
-    "cnrouter": "cnrouter.apifox",
-    "coai-work": "CoAI Work",
-    "coolplay": "Coolplay API",
-    "dogcoding": "dogcoding/laodog",
+    "bytecat": "ByteCat",
+    "claude-api": "ClaudeAPI",
+    "cnrouter": "CNRouter",
+    "coai-work": "CoAIWork",
+    "coolplay": "Coolplay",
+    "dogcoding": "DogCoding",
     "euzhi": "Euzhi",
+    "fishxcode.com": "FishXCode",
     "flymux": "FlyMux",
-    "freemodel": "freemodel",
-    "guodongapi": "guodongapi.site",
-    "hello-code": "hello-code",
+    "freemodel": "FreeModel",
+    "guodongapi": "GuodongAPI",
+    "hello-code": "HelloCode",
     "gettoken": "GetToken",
-    "giot": "giot",
-    "goapis": "goapis",
-    "52mx": "52mx",
-    "hi-code": "Hi-Code",
+    "giot": "GIOT",
+    "goapis": "GoAPIs",
+    "52mx": "52Mx",
+    "hi-code": "HiCode",
     "hongmacc": "HongMaCC",
-    "hyperapi": "hyperapi",
+    "hyperapi": "HyperAPI",
+    "icodex.pro": "ICodex",
     "loomex": "Loomex",
-    "lumibest": "lumibest",
-    "muskai": "MuskAI/muskpay",
-    "newcli": "newcli",
-    "nbtoken.ai567.asia": "nbtoken.ai567.asia",
-    "nexus": "nexus",
-    "opentk": "opentk",
+    "lumibest": "LumiBest",
+    "moosecloud.cc": "MooseCloud",
+    "muskai": "MuskAI",
+    "newcli": "NewCLI",
+    "nbtoken.ai567.asia": "NBToken",
+    "nexus": "Nexus",
+    "opentk": "OpenTK",
     "onexmodel": "OneXModel",
-    "qiuqiutoken": "qiuqiutoken",
-    "shunfen6": "Shunfen6.win",
-    "vbcode": "vbcode",
+    "qiuqiutoken": "QiuqiuToken",
+    "shunfen6": "Shunfen6",
+    "vbcode": "VBCode",
     "voapi": "VoAPI",
-    "zerofra": "ZeroFra.me",
-    "zhima": "zhima",
+    "zerofra": "ZeroFra",
+    "zhima": "Zhima",
 }
+
+
+def station_display_label(station_key: Any, raw_label: Any = "", station_url: Any = "") -> str:
+    key = str(station_key or "").strip()
+    return normalize_station_label(key, raw_label or LABELS.get(key, ""), station_url)
 
 
 SCREENSHOT_ONLY_URLS: dict[str, str] = {
@@ -138,19 +166,25 @@ SCREENSHOT_ONLY_URLS: dict[str, str] = {
 
 
 SITE_URL_OVERRIDES: dict[str, str] = {
+    "585016d3.u3u.dev": "https://585016d3.u3u.dev",
     "52mx": "https://52mx.net",
     "aicodelink": "https://aicodelink.top",
     "api.xiaoxin.best": "https://api.xiaoxin.best",
+    "atomflow.vip": "https://atomflow.vip",
+    "audit-api-printcap-ai": "https://printcap.ai",
     "claude-api": "https://claude-api.org",
     "coai-work": "https://coaiwork.com",
     "coolplay": "https://cp.coolplay-api.fun:55555",
     "euzhi": "https://admin.euzhi.com",
+    "fishxcode.com": "https://fishxcode.com",
     "freemodel": "https://freemodel.dev",
     "guodongapi": "https://guodongapi.site",
     "gettoken": "https://gettoken.dev",
     "hello-code": "http://hello-code.cn",
     "hi-code": "https://www.hi-code.cc",
+    "icodex.pro": "https://icodex.pro",
     "loomex": "https://www.loomex.top",
+    "moosecloud.cc": "https://moosecloud.cc",
     "muskai": "https://aiapi.muskpay.top",
     "onexmodel": "https://1xm.ai",
     "opentk": "https://opentk.ai",
@@ -212,27 +246,36 @@ CONFIDENCE_LABELS_CN = {
     "high_user_provided": "高置信-用户提供",
     "high_tabbit_logged_in": "高置信-Tabbit 登录页核验",
     "manual_verified": "高置信-人工录入核验",
+    "public_structured_evidence": "公开结构化证据",
+    "public_external_shop_verified": "公开外部店铺结构化证据",
     "low_public_notice": "低置信-公开公告",
     "low_public_notice_inferred_recharge": "低置信-公开信息推断充值倍率",
 }
 
 
 STATION_TYPE_OVERRIDES = {
+    "585016d3.u3u.dev": "mixed",
     "4router": "non_subscription",
     "17nas": "mixed",
     "api.xiaoxin.best": "mixed",
+    "atomflow.vip": "non_subscription",
     "audit-api-printcap-ai": "non_subscription",
     "bytecat": "non_subscription",
     "bossclaw": "non_subscription",
     "coolplay": "mixed",
     "dogcoding": "non_subscription",
+    "euzhi": "non_subscription",
+    "fishxcode.com": "non_subscription",
     "flymux": "non_subscription",
     "freemodel": "mixed",
     "giot": "non_subscription",
+    "guodongapi": "mixed",
     "hi-code": "non_subscription",
     "hongmacc": "non_subscription",
     "hyperapi": "mixed",
+    "icodex.pro": "unknown_pending",
     "lumibest": "non_subscription",
+    "moosecloud.cc": "subscription",
     "muskai": "mixed",
     "newcli": "non_subscription",
     "nbtoken.ai567.asia": "mixed",
@@ -244,7 +287,7 @@ STATION_TYPE_OVERRIDES = {
 }
 
 
-PACKAGE_BILLING_TYPES = {"monthly", "weekly", "daily", "yearly"}
+PACKAGE_BILLING_TYPES = {"monthly", "weekly", "daily", "quarterly", "yearly"}
 
 
 LIVE_AUTH_PROBE_DIR = WORKSPACE.parent / "tabbit-audit-profile"
@@ -253,6 +296,10 @@ PENDING_API_PROBE_CACHE: dict[str, Any] | None = None
 
 
 LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
+    "585016d3.u3u.dev": {
+        "probe_type": "v1_generic",
+        "station_type": "mixed",
+    },
     "4router": {},
     "52mx": {},
     "aicodelink": {},
@@ -271,6 +318,9 @@ LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
     },
     "api.xiaoxin.best": {
         "probe_type": "v1_generic",
+        "station_type": "non_subscription",
+    },
+    "atomflow.vip": {
         "station_type": "non_subscription",
     },
     "audit-api-printcap-ai": {
@@ -293,6 +343,11 @@ LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
         "probe_type": "v1_generic",
     },
     "euzhi": {},
+    "guodongapi": {
+        "probe_type": "v1_generic",
+        "station_type": "mixed",
+        "quick_amounts": [1, 5, 10, 20, 50, 100, 200, 500],
+    },
     "hyperapi": {
         "station_type": "mixed",
     },
@@ -308,6 +363,9 @@ LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
     "goapis": {},
     "hello-code": {
         "probe_type": "v1_generic",
+        "station_type": "non_subscription",
+        "quick_amounts": [10, 20, 50, 100, 200, 500, 1000, 2000, 5000],
+        "allow_public_payment_disabled_wallet": True,
     },
     "hi-code": {
         "probe_type": "v1_generic",
@@ -333,13 +391,38 @@ LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
 }
 
 
+DETAIL_EVIDENCE_FEE_STATIONS = {
+    "audit-api-printcap-ai",
+    "fishxcode.com",
+    "moosecloud.cc",
+}
+
+
+DETAIL_EVIDENCE_FEE_META: dict[str, dict[str, str]] = {
+    "audit-api-printcap-ai": {
+        "confidence": "manual_verified",
+        "source": "screenshot_verified_detail_baseline",
+        "notes": "PrintCap detail rows come from manually verified recharge screenshot plus archived group evidence.",
+    },
+    "fishxcode.com": {
+        "confidence": "public_structured_evidence",
+        "source": "detail_page_public_structured_evidence",
+        "notes": "FishXCode detail rows come from archived structured public status/pricing evidence.",
+    },
+    "moosecloud.cc": {
+        "confidence": "high_tabbit_logged_in",
+        "source": "detail_page_live_probe_baseline",
+        "notes": "MooseCloud detail rows come from archived logged-in API group and payment plan evidence.",
+    },
+}
+
+
 PENDING_API_PROBE_OVERRIDE_STATIONS = {
     "52mx",
     "aicodelink",
     "claude-api",
     "coai-work",
     "euzhi",
-    "hello-code",
     "muskai",
     "onexmodel",
     "opentk",
@@ -432,6 +515,58 @@ def root_url(raw_url: str) -> str:
     return f"{parsed.scheme}://{parsed.netloc}"
 
 
+def public_host_from_url(raw_url: str | None) -> str | None:
+    if not raw_url:
+        return None
+    try:
+        parsed = urllib.parse.urlparse(raw_url.strip() if "://" in raw_url else "https://" + raw_url.strip())
+    except ValueError:
+        return None
+    host = (parsed.hostname or "").strip().lower()
+    if not host:
+        return None
+    if host in {"localhost", "::1"} or host.startswith("127.") or host.endswith(".local"):
+        return None
+    try:
+        address = ipaddress.ip_address(host)
+    except ValueError:
+        address = None
+    if address is not None and (
+        address.is_private
+        or address.is_loopback
+        or address.is_link_local
+        or address.is_multicast
+        or address.is_reserved
+        or address.is_unspecified
+    ):
+        return None
+    if "@" in host or "ttop5" in host:
+        return None
+    if "." not in host and address is None:
+        return None
+    return host
+
+
+def station_key_from_public_url(raw_url: str | None) -> str | None:
+    host = public_host_from_url(raw_url)
+    return host if host and is_public_station_key(host) else None
+
+
+def supplier_is_private(value: str | None) -> bool:
+    lowered = str(value or "").strip().lower()
+    return bool(lowered and ("@" in lowered or "ttop5" in lowered))
+
+
+def redact_supplier_name(value: str | None) -> str:
+    text = str(value or "").strip()
+    if not text:
+        return ""
+    if supplier_is_private(text):
+        digest = hashlib.sha1(text.encode("utf-8")).hexdigest()[:8]
+        return f"redacted-supplier-{digest}"
+    return text
+
+
 def is_private_account_station_key(key: str) -> bool:
     normalized = key.strip().lower()
     if not normalized:
@@ -478,7 +613,12 @@ def classify_station(supplier: str | None, url: str | None) -> str | None:
     text = f"{supplier or ''} {url or ''}".lower()
     checks = [
         ("nexus", ["nexus", "1982video"]),
+        ("585016d3.u3u.dev", ["585016d3.u3u.dev"]),
+        ("atomflow.vip", ["atomflow.vip"]),
         ("hello-code", ["hello-code", "hello-code.cn"]),
+        ("fishxcode.com", ["fishxcode", "fishxcode.com"]),
+        ("moosecloud.cc", ["moosecloud", "moosecloud.cc"]),
+        ("icodex.pro", ["icodex", "icodex.pro"]),
         ("freemodel", ["freemodel"]),
         ("voapi", ["voapi"]),
         ("newcli", ["newcli"]),
@@ -533,7 +673,7 @@ def db_connection() -> sqlite3.Connection:
 
 def load_station_configs() -> dict[str, StationConfig]:
     stations: dict[str, StationConfig] = {
-        key: StationConfig(key=key, label=label) for key, label in LABELS.items()
+        key: StationConfig(key=key, label=station_display_label(key, label)) for key, label in LABELS.items()
     }
     con = db_connection()
     try:
@@ -545,12 +685,14 @@ def load_station_configs() -> dict[str, StationConfig]:
         for row in con.execute(query):
             key = classify_station(row["supplier_name"], row["url"])
             if key is None:
-                continue
+                key = station_key_from_public_url(row["url"])
+                if key is None:
+                    continue
             station = stations.setdefault(
                 key,
-                StationConfig(key=key, label=LABELS.get(key, row["supplier_name"] or key)),
+                StationConfig(key=key, label=station_display_label(key)),
             )
-            station.configured_suppliers.add(row["supplier_name"] or "")
+            station.configured_suppliers.add(redact_supplier_name(row["supplier_name"]))
             if not is_local_station_url(row["url"]):
                 station.configured_urls.add(root_url(row["url"]))
             station.codex_status_hints.append(
@@ -560,9 +702,9 @@ def load_station_configs() -> dict[str, StationConfig]:
         con.close()
 
     for key, url in SCREENSHOT_ONLY_URLS.items():
-        stations.setdefault(key, StationConfig(key=key, label=LABELS.get(key, key))).configured_urls.add(url)
+        stations.setdefault(key, StationConfig(key=key, label=station_display_label(key, station_url=url))).configured_urls.add(url)
     for key, url in SITE_URL_OVERRIDES.items():
-        stations.setdefault(key, StationConfig(key=key, label=LABELS.get(key, key))).configured_urls.add(url)
+        stations.setdefault(key, StationConfig(key=key, label=station_display_label(key, station_url=url))).configured_urls.add(url)
 
     for key, station_type in STATION_TYPE_OVERRIDES.items():
         if key in stations:
@@ -608,6 +750,261 @@ def init_metric_bucket() -> dict[str, Any]:
         "suppliers": set(),
         "urls": set(),
     }
+
+
+def empty_metrics_by_window() -> dict[str, dict[str, dict[str, Any]]]:
+    return {
+        "all_hours": {},
+        "work_hours": {},
+        "off_hours": {},
+    }
+
+
+def parse_int(value: Any) -> int | None:
+    if value is None or value == "":
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def log_overlap_start(created_at: int | None) -> int | None:
+    if created_at is None:
+        return None
+    overlap = LOG_REFRESH_OVERLAP_SECONDS * 1000 if created_at > 10_000_000_000 else LOG_REFRESH_OVERLAP_SECONDS
+    return max(0, created_at - overlap)
+
+
+def log_key(created_at: int | None, row_id: int | None, fingerprint: str | None = None) -> str:
+    base = f"{created_at}:{row_id}"
+    return f"{base}:{fingerprint}" if fingerprint else base
+
+
+def parse_log_key(value: Any) -> tuple[int, int] | None:
+    if not isinstance(value, str) or ":" not in value:
+        return None
+    created_at, row_id, *_fingerprint = value.split(":", 2)
+    parsed_created_at = parse_int(created_at)
+    parsed_row_id = parse_int(row_id)
+    if parsed_created_at is None or parsed_row_id is None:
+        return None
+    return parsed_created_at, parsed_row_id
+
+
+def cursor_tuple(cursor: dict[str, Any] | None) -> tuple[int, int]:
+    if not isinstance(cursor, dict):
+        return (-1, -1)
+    return (
+        parse_int(cursor.get("createdAt")) or -1,
+        parse_int(cursor.get("id")) or -1,
+    )
+
+
+def row_cursor(row: sqlite3.Row) -> dict[str, int] | None:
+    created_at = parse_int(row["created_at"])
+    row_id = parse_int(row["id"])
+    if created_at is None or row_id is None:
+        return None
+    return {"createdAt": created_at, "id": row_id}
+
+
+def row_fingerprint(row: sqlite3.Row) -> str:
+    payload = [
+        row["supplier"] or "",
+        row["url"] or "",
+        row["status_code"],
+        row["error"] or "",
+        row["duration_ms"],
+        row["first_response_ms"],
+    ]
+    encoded = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha1(encoded).hexdigest()[:16]
+
+
+def max_cursor(left: dict[str, Any] | None, right: dict[str, Any] | None) -> dict[str, int] | None:
+    if right is None:
+        return left if isinstance(left, dict) else None
+    if not isinstance(left, dict) or cursor_tuple(right) > cursor_tuple(left):
+        return {"createdAt": cursor_tuple(right)[0], "id": cursor_tuple(right)[1]}
+    return {"createdAt": cursor_tuple(left)[0], "id": cursor_tuple(left)[1]}
+
+
+def metric_bucket_from_state(raw: dict[str, Any]) -> dict[str, Any]:
+    item = init_metric_bucket()
+    for key in (
+        "requests",
+        "correct",
+        "http_2xx",
+        "http_200_with_error",
+        "nonnull_error",
+        "excluded_billing_errors",
+    ):
+        item[key] = parse_int(raw.get(key)) or 0
+    item["durations"] = [parsed for value in raw.get("durations", []) if (parsed := parse_int(value)) is not None]
+    item["first_response_times"] = [
+        parsed
+        for value in raw.get("firstResponseTimes", raw.get("first_response_times", []))
+        if (parsed := parse_int(value)) is not None
+    ]
+    item["first_at_raw"] = parse_int(raw.get("firstAtRaw", raw.get("first_at_raw")))
+    item["last_at_raw"] = parse_int(raw.get("lastAtRaw", raw.get("last_at_raw")))
+    item["suppliers"] = {str(value) for value in raw.get("suppliers", []) if str(value or "").strip()}
+    item["urls"] = {str(value) for value in raw.get("urls", []) if str(value or "").strip()}
+    return item
+
+
+def metric_bucket_to_state(item: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "requests": int(item.get("requests") or 0),
+        "correct": int(item.get("correct") or 0),
+        "http_2xx": int(item.get("http_2xx") or 0),
+        "http_200_with_error": int(item.get("http_200_with_error") or 0),
+        "nonnull_error": int(item.get("nonnull_error") or 0),
+        "excluded_billing_errors": int(item.get("excluded_billing_errors") or 0),
+        "durations": [parsed for value in item.get("durations", []) if (parsed := parse_int(value)) is not None],
+        "firstResponseTimes": [
+            parsed
+            for value in item.get("first_response_times", [])
+            if (parsed := parse_int(value)) is not None
+        ],
+        "firstAtRaw": parse_int(item.get("first_at_raw")),
+        "lastAtRaw": parse_int(item.get("last_at_raw")),
+        "suppliers": sorted(str(value) for value in item.get("suppliers", set()) if str(value or "").strip()),
+        "urls": sorted(str(value) for value in item.get("urls", set()) if str(value or "").strip()),
+    }
+
+
+def metrics_from_state(raw: dict[str, Any]) -> dict[str, dict[str, dict[str, Any]]]:
+    metrics = empty_metrics_by_window()
+    for window_name, station_rows in raw.items():
+        if window_name not in metrics or not isinstance(station_rows, dict):
+            continue
+        for station_key, bucket in station_rows.items():
+            if isinstance(bucket, dict):
+                metrics[window_name][station_key] = metric_bucket_from_state(bucket)
+    return metrics
+
+
+def metrics_to_state(metrics: dict[str, dict[str, dict[str, Any]]]) -> dict[str, dict[str, dict[str, Any]]]:
+    return {
+        window_name: {
+            station_key: metric_bucket_to_state(bucket)
+            for station_key, bucket in sorted(window_metrics.items())
+        }
+        for window_name, window_metrics in metrics.items()
+    }
+
+
+def metric_station_keys(metrics: dict[str, dict[str, dict[str, Any]]]) -> set[str]:
+    keys: set[str] = set()
+    for window_metrics in metrics.values():
+        for station_key, bucket in window_metrics.items():
+            if parse_int(bucket.get("requests")) or parse_int(bucket.get("excluded_billing_errors")):
+                keys.add(station_key)
+    return keys
+
+
+def load_log_refresh_state() -> dict[str, Any] | None:
+    if not LOG_REFRESH_STATE_PATH.exists():
+        return None
+    try:
+        payload = json.loads(LOG_REFRESH_STATE_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"Cannot read log refresh state; run --full-log-rebuild only if historical logs are complete: {exc}") from exc
+    if not isinstance(payload, dict) or payload.get("version") != LOG_REFRESH_STATE_VERSION:
+        raise ValueError("Unsupported log refresh state; run --full-log-rebuild only if historical logs are complete.")
+    if not isinstance(payload.get("metricsByWindow"), dict):
+        raise ValueError("Log refresh state is missing metricsByWindow.")
+    return payload
+
+
+def trim_processed_log_keys(keys: set[str], cursor: dict[str, Any] | None) -> list[str]:
+    start = log_overlap_start(cursor_tuple(cursor)[0])
+    parsed: list[tuple[int, int, str]] = []
+    for key in keys:
+        parsed_key = parse_log_key(key)
+        if parsed_key is None:
+            continue
+        created_at, row_id = parsed_key
+        if start is not None and created_at < start:
+            continue
+        parsed.append((created_at, row_id, key))
+    parsed.sort()
+    if len(parsed) > PROCESSED_LOG_KEY_LIMIT:
+        parsed = parsed[-PROCESSED_LOG_KEY_LIMIT:]
+    return [key for _created_at, _row_id, key in parsed]
+
+
+def write_log_refresh_state(
+    metrics: dict[str, dict[str, dict[str, Any]]],
+    *,
+    cursor: dict[str, Any] | None,
+    processed_log_keys: set[str],
+    mode: str,
+    rows_seen: int,
+    rows_added: int,
+    historical_backfill: dict[str, Any] | None = None,
+) -> None:
+    LOG_REFRESH_STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    cursor_created_at, cursor_id = cursor_tuple(cursor)
+    payload = {
+        "version": LOG_REFRESH_STATE_VERSION,
+        "generatedAt": GENERATED_AT,
+        "mode": mode,
+        "cursor": {
+            "createdAt": cursor_created_at if cursor_created_at >= 0 else None,
+            "id": cursor_id if cursor_id >= 0 else None,
+        },
+        "overlapSeconds": LOG_REFRESH_OVERLAP_SECONDS,
+        "processedLogKeys": trim_processed_log_keys(processed_log_keys, cursor),
+        "metricsByWindow": metrics_to_state(metrics),
+        "lastRun": {
+            "rowsSeen": rows_seen,
+            "rowsAdded": rows_added,
+            "historicalBackfill": historical_backfill or {"stations": [], "rowsSeen": 0, "rowsAccumulated": 0},
+            "statePath": str(LOG_REFRESH_STATE_PATH),
+        },
+    }
+    LOG_REFRESH_STATE_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def is_auto_discovered_candidate_key(key: str) -> bool:
+    if key in LABELS:
+        return False
+    return station_key_from_public_url("https://" + key) == key
+
+
+def write_request_log_station_candidates(metrics_by_window: dict[str, dict[str, dict[str, Any]]]) -> int:
+    rows: list[dict[str, Any]] = []
+    for key, metric in sorted(metrics_by_window.get("all_hours", {}).items()):
+        if not is_auto_discovered_candidate_key(key):
+            continue
+        rows.append(
+            {
+                "host": key,
+                "url": "; ".join(sorted(str(url) for url in metric.get("urls", set()) if str(url or "").strip())),
+                "request_samples": metric.get("requests", 0),
+                "successes": metric.get("correct", 0),
+                "failures": metric.get("failures", 0),
+                "first_at": metric.get("first_at", ""),
+                "last_at": metric.get("last_at", ""),
+                "avg_ms": metric.get("avg_ms"),
+                "suppliers": "; ".join(
+                    sorted(
+                        redact_supplier_name(str(supplier))
+                        for supplier in metric.get("suppliers", set())
+                        if str(supplier or "").strip()
+                    )
+                ),
+            }
+        )
+    write_csv(
+        REQUEST_LOG_STATION_CANDIDATES_PATH,
+        rows,
+        ["host", "url", "request_samples", "successes", "failures", "first_at", "last_at", "avg_ms", "suppliers"],
+    )
+    return len(rows)
 
 
 def is_billing_or_quota_error(error_text: Any) -> bool:
@@ -664,16 +1061,162 @@ def finalize_metric_bucket(item: dict[str, Any]) -> None:
     item["last_at"] = maybe_epoch_to_iso(item["last_at_raw"])
 
 
-def load_request_metrics() -> dict[str, dict[str, dict[str, Any]]]:
-    metrics_by_window: dict[str, dict[str, dict[str, Any]]] = {
-        "all_hours": {},
-        "work_hours": {},
-        "off_hours": {},
+def add_request_metric(metrics_by_window: dict[str, dict[str, dict[str, Any]]], row: sqlite3.Row) -> bool:
+    key = classify_station(row["supplier"], row["url"])
+    if key is None:
+        key = station_key_from_public_url(row["url"])
+        if key is None:
+            return False
+    created_at = parse_int(row["created_at"])
+    if created_at is None:
+        return False
+    error = row["error"]
+    excluded_billing_error = is_billing_or_quota_error(error)
+    target_windows = ["all_hours"]
+    classified_window = time_window_for_created_at(created_at)
+    if classified_window:
+        target_windows.append(classified_window)
+
+    for window_name in target_windows:
+        item = metrics_by_window[window_name].setdefault(key, init_metric_bucket())
+        if excluded_billing_error:
+            item["excluded_billing_errors"] += 1
+            continue
+        item["requests"] += 1
+        status_code = row["status_code"]
+        is_2xx = status_code is not None and 200 <= status_code <= 299
+        if is_2xx:
+            item["http_2xx"] += 1
+        if status_code == 200 and error is not None:
+            item["http_200_with_error"] += 1
+        if error is not None:
+            item["nonnull_error"] += 1
+        if is_2xx and error is None:
+            item["correct"] += 1
+        if row["duration_ms"] is not None:
+            item["durations"].append(int(row["duration_ms"]))
+        if row["first_response_ms"] is not None:
+            item["first_response_times"].append(int(row["first_response_ms"]))
+        if row["supplier"]:
+            item["suppliers"].add(redact_supplier_name(row["supplier"]))
+        if row["url"]:
+            item["urls"].add(root_url(row["url"]))
+        if item["first_at_raw"] is None or created_at < item["first_at_raw"]:
+            item["first_at_raw"] = created_at
+        if item["last_at_raw"] is None or created_at > item["last_at_raw"]:
+            item["last_at_raw"] = created_at
+    return True
+
+
+def historical_public_backfill_targets(
+    con: sqlite3.Connection,
+    existing_state_keys: set[str],
+) -> dict[str, set[str]]:
+    targets: dict[str, set[str]] = {}
+    query = """
+        select aggregate_api_supplier_name as supplier,
+               aggregate_api_url as url
+        from request_logs
+        where request_type='http'
+          and request_path='/v1/responses'
+          and aggregate_api_url is not null
+        group by aggregate_api_supplier_name, aggregate_api_url
+    """
+    for row in con.execute(query):
+        key = classify_station(row["supplier"], row["url"])
+        if key is None:
+            key = station_key_from_public_url(row["url"])
+        if not key or key in existing_state_keys or not is_public_station_key(key):
+            continue
+        url = str(row["url"] or "").strip()
+        if not url or is_local_station_url(url):
+            continue
+        targets.setdefault(key, set()).add(url)
+    return targets
+
+
+def backfill_historical_public_station_metrics(
+    con: sqlite3.Connection,
+    metrics_by_window: dict[str, dict[str, dict[str, Any]]],
+    targets: dict[str, set[str]],
+) -> dict[str, Any]:
+    if not targets:
+        return {"stations": [], "rowsSeen": 0, "rowsAccumulated": 0}
+
+    for station_key in targets:
+        for window_metrics in metrics_by_window.values():
+            window_metrics.pop(station_key, None)
+
+    rows_seen = 0
+    rows_accumulated = 0
+    base_query = """
+        select id,
+               aggregate_api_supplier_name as supplier,
+               aggregate_api_url as url,
+               status_code,
+               error,
+               duration_ms,
+               first_response_ms,
+               created_at
+        from request_logs
+        where request_type='http'
+          and request_path='/v1/responses'
+          and aggregate_api_url in ({placeholders})
+        order by created_at, id
+    """
+    for urls in targets.values():
+        sorted_urls = sorted(urls)
+        for start in range(0, len(sorted_urls), 400):
+            chunk = sorted_urls[start : start + 400]
+            placeholders = ",".join("?" for _ in chunk)
+            query = base_query.format(placeholders=placeholders)
+            for row in con.execute(query, chunk):
+                rows_seen += 1
+                if add_request_metric(metrics_by_window, row):
+                    rows_accumulated += 1
+
+    return {
+        "stations": sorted(targets),
+        "rowsSeen": rows_seen,
+        "rowsAccumulated": rows_accumulated,
     }
+
+
+def load_request_metrics(*, full_log_rebuild: bool = False) -> dict[str, dict[str, dict[str, Any]]]:
+    global LAST_LOG_REFRESH_INFO
+    state = None if full_log_rebuild else load_log_refresh_state()
+    if full_log_rebuild:
+        metrics_by_window = empty_metrics_by_window()
+        processed_log_keys: set[str] = set()
+        cursor: dict[str, Any] | None = None
+        query_start: int | None = None
+        existing_state_keys: set[str] = set()
+        mode = "full_log_rebuild"
+    elif state is None:
+        metrics_by_window = empty_metrics_by_window()
+        processed_log_keys = set()
+        cursor = None
+        query_start = None
+        existing_state_keys = set()
+        mode = "initialize"
+    else:
+        metrics_by_window = metrics_from_state(state["metricsByWindow"])
+        existing_state_keys = metric_station_keys(metrics_by_window)
+        processed_log_keys = {str(value) for value in state.get("processedLogKeys", [])}
+        cursor = state.get("cursor") if isinstance(state.get("cursor"), dict) else None
+        cursor_created_at = cursor_tuple(cursor)[0]
+        query_start = log_overlap_start(cursor_created_at) if cursor_created_at >= 0 else None
+        mode = "incremental"
+
+    rows_seen = 0
+    rows_added = 0
+    rows_accumulated = 0
+    historical_backfill = {"stations": [], "rowsSeen": 0, "rowsAccumulated": 0}
     con = db_connection()
     try:
         query = """
-            select aggregate_api_supplier_name as supplier,
+            select id,
+                   aggregate_api_supplier_name as supplier,
                    aggregate_api_url as url,
                    status_code,
                    error,
@@ -685,55 +1228,87 @@ def load_request_metrics() -> dict[str, dict[str, dict[str, Any]]]:
               and request_path='/v1/responses'
               and (aggregate_api_supplier_name is not null or aggregate_api_url is not null)
         """
-        for row in con.execute(query):
-            key = classify_station(row["supplier"], row["url"])
-            if key is None:
+        params: list[Any] = []
+        if query_start is not None:
+            query += " and created_at >= ?"
+            params.append(query_start)
+        query += " order by created_at, id"
+        for row in con.execute(query, params):
+            rows_seen += 1
+            current_cursor = row_cursor(row)
+            if current_cursor is None:
                 continue
-            created_at = row["created_at"]
-            if created_at is None:
+            cursor = max_cursor(cursor, current_cursor)
+            legacy_key = log_key(current_cursor["createdAt"], current_cursor["id"])
+            current_key = log_key(current_cursor["createdAt"], current_cursor["id"], row_fingerprint(row))
+            if current_key in processed_log_keys or legacy_key in processed_log_keys:
                 continue
-            error = row["error"]
-            excluded_billing_error = is_billing_or_quota_error(error)
-            target_windows = ["all_hours"]
-            classified_window = time_window_for_created_at(created_at)
-            if classified_window:
-                target_windows.append(classified_window)
-
-            for window_name in target_windows:
-                item = metrics_by_window[window_name].setdefault(key, init_metric_bucket())
-                if excluded_billing_error:
-                    item["excluded_billing_errors"] += 1
-                    continue
-                item["requests"] += 1
-                status_code = row["status_code"]
-                is_2xx = status_code is not None and 200 <= status_code <= 299
-                if is_2xx:
-                    item["http_2xx"] += 1
-                if status_code == 200 and error is not None:
-                    item["http_200_with_error"] += 1
-                if error is not None:
-                    item["nonnull_error"] += 1
-                if is_2xx and error is None:
-                    item["correct"] += 1
-                if row["duration_ms"] is not None:
-                    item["durations"].append(int(row["duration_ms"]))
-                if row["first_response_ms"] is not None:
-                    item["first_response_times"].append(int(row["first_response_ms"]))
-                if row["supplier"]:
-                    item["suppliers"].add(row["supplier"])
-                if row["url"]:
-                    item["urls"].add(root_url(row["url"]))
-                if item["first_at_raw"] is None or created_at < item["first_at_raw"]:
-                    item["first_at_raw"] = created_at
-                if item["last_at_raw"] is None or created_at > item["last_at_raw"]:
-                    item["last_at_raw"] = created_at
+            processed_log_keys.add(current_key)
+            rows_added += 1
+            if add_request_metric(metrics_by_window, row):
+                rows_accumulated += 1
+        if mode == "incremental":
+            historical_backfill = backfill_historical_public_station_metrics(
+                con,
+                metrics_by_window,
+                historical_public_backfill_targets(con, existing_state_keys),
+            )
     finally:
         con.close()
 
     for window_metrics in metrics_by_window.values():
         for item in window_metrics.values():
             finalize_metric_bucket(item)
+    candidate_count = write_request_log_station_candidates(metrics_by_window)
+    write_log_refresh_state(
+        metrics_by_window,
+        cursor=cursor,
+        processed_log_keys=processed_log_keys,
+        mode=mode,
+        rows_seen=rows_seen,
+        rows_added=rows_added,
+        historical_backfill=historical_backfill,
+    )
+    LAST_LOG_REFRESH_INFO = {
+        "mode": mode,
+        "statePath": str(LOG_REFRESH_STATE_PATH),
+        "cursor": {
+            "createdAt": cursor_tuple(cursor)[0] if cursor_tuple(cursor)[0] >= 0 else None,
+            "id": cursor_tuple(cursor)[1] if cursor_tuple(cursor)[1] >= 0 else None,
+        },
+        "overlapSeconds": LOG_REFRESH_OVERLAP_SECONDS,
+        "queryStart": query_start,
+        "rowsSeen": rows_seen,
+        "rowsAdded": rows_added,
+        "rowsAccumulated": rows_accumulated,
+        "historicalBackfill": historical_backfill,
+        "candidatePath": str(REQUEST_LOG_STATION_CANDIDATES_PATH),
+        "candidateCount": candidate_count,
+        "fullRebuildWarning": (
+            "Only use --full-log-rebuild when Codex Manager DB still contains complete historical request_logs."
+            if full_log_rebuild
+            else ""
+        ),
+    }
     return metrics_by_window
+
+
+def ensure_metric_station_configs(
+    stations: dict[str, StationConfig],
+    metrics_by_window: dict[str, dict[str, dict[str, Any]]],
+) -> None:
+    for window_metrics in metrics_by_window.values():
+        for key, metric in window_metrics.items():
+            if not is_public_station_key(key):
+                continue
+            station = stations.setdefault(key, StationConfig(key=key, label=station_display_label(key)))
+            for url in metric.get("urls", set()):
+                if isinstance(url, str) and url and not is_local_station_url(url):
+                    station.configured_urls.add(root_url(url))
+            for supplier in metric.get("suppliers", set()):
+                redacted = redact_supplier_name(str(supplier))
+                if redacted:
+                    station.configured_suppliers.add(redacted)
 
 
 def guess_platform_one(url: str) -> dict[str, str]:
@@ -822,6 +1397,13 @@ def parse_float(value: str | None) -> float | None:
         return None
 
 
+def format_plain_number(value: float | None) -> str:
+    parsed = parse_float(value)
+    if parsed is None:
+        return ""
+    return str(int(parsed)) if parsed.is_integer() else f"{parsed:g}"
+
+
 def parse_bool(value: str | None, default: bool = False) -> bool:
     if value is None:
         return default
@@ -829,6 +1411,16 @@ def parse_bool(value: str | None, default: bool = False) -> bool:
     if not text:
         return default
     return text in {"1", "true", "yes", "y", "rank", "ranking"}
+
+
+def explicitly_false(value: Any) -> bool:
+    if value is False:
+        return True
+    if isinstance(value, str):
+        return value.strip().lower() in {"0", "false", "no", "n", "off", "disabled"}
+    if isinstance(value, (int, float)):
+        return float(value) == 0.0
+    return False
 
 
 def probe_path(station: str) -> Path:
@@ -884,6 +1476,16 @@ def load_live_auth_probe(station: str) -> dict[str, Any] | None:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def load_site_data_snapshot() -> dict[str, Any]:
+    if not SITE_DATA_PATH.exists():
+        return {}
+    try:
+        payload = json.loads(SITE_DATA_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
 def probe_location(probe: dict[str, Any]) -> str:
     state = probe.get("state") if isinstance(probe.get("state"), dict) else {}
     for value in (probe.get("location"), probe.get("url"), state.get("location")):
@@ -892,13 +1494,38 @@ def probe_location(probe: dict[str, Any]) -> str:
     return ""
 
 
+def body_success(value: Any) -> bool:
+    if not isinstance(value, dict):
+        return False
+    return (
+        value.get("success") is True
+        or value.get("code") == 0
+        or str(value.get("message") or "").lower() in {"success", "ok"}
+    )
+
+
 def get_probe_auth_bucket(probe: dict[str, Any]) -> tuple[str, dict[str, Any]] | None:
     results = probe.get("results")
     if not isinstance(results, dict):
         return None
+    candidates: list[tuple[str, dict[str, Any]]] = []
     for key, bucket in results.items():
         if isinstance(key, str) and key.startswith("New-Api-User:") and isinstance(bucket, dict):
-            return key, bucket
+            candidates.append((key, bucket))
+    for key, bucket in candidates:
+        for path in ("/api/user/self/groups", "/api/user/topup/info", "/api/subscription/plans"):
+            entry = bucket.get(path)
+            body = entry.get("body") if isinstance(entry, dict) else None
+            if isinstance(body, dict) and body_success(body):
+                return key, bucket
+        amounts = bucket.get("/api/user/amount")
+        if isinstance(amounts, dict):
+            for entry in amounts.values():
+                body = entry.get("body") if isinstance(entry, dict) else None
+                if isinstance(body, dict) and body_success(body):
+                    return key, bucket
+    if candidates:
+        return candidates[0]
     if "/api/user/self/groups" in results and isinstance(results.get("/api/user/self/groups"), dict):
         return "direct", results
     return None
@@ -989,26 +1616,86 @@ def convert_quota_to_usd(quota_value: Any) -> float | None:
 
 
 def estimate_plan_full_use_usd(station: str, plan: dict[str, Any]) -> float | None:
+    override = parse_float(plan.get("_total_amount_usd_override"))
+    if override and override > 0:
+        return override
+    for key in ("monthly_limit_usd", "weekly_limit_usd", "daily_limit_usd", "usd_amount", "usdAmount", "usd"):
+        direct = parse_float(plan.get(key))
+        if direct and direct > 0:
+            if key == "daily_limit_usd":
+                duration_days = parse_float(plan.get("validity_days") or plan.get("duration_value")) or 1
+                return direct * max(1, duration_days)
+            if key == "weekly_limit_usd":
+                duration_days = parse_float(plan.get("validity_days") or plan.get("duration_value")) or 7
+                return direct * max(1, int(duration_days // 7))
+            return direct
     base_usd = convert_quota_to_usd(plan.get("total_amount"))
     if not base_usd:
-        return None
-    subtitle = str(plan.get("subtitle") or "")
-    if station == "17nas" and "月总额$400" in subtitle:
-        return 400.0
+        base_usd = convert_quota_to_usd(plan.get("quota"))
+    if base_usd:
+        subtitle = str(plan.get("subtitle") or "")
+        if station == "17nas" and "月总额$400" in subtitle:
+            return 400.0
 
-    quota_reset_period = str(plan.get("quota_reset_period") or "").strip()
-    duration_unit = str(plan.get("duration_unit") or "").strip()
-    duration_value = parse_float(plan.get("duration_value")) or 0
-    if quota_reset_period == "daily" and duration_unit == "day" and duration_value > 0:
-        return base_usd * duration_value
-    if quota_reset_period == "weekly":
-        if duration_unit == "day" and duration_value > 0:
-            return base_usd * max(1, int(duration_value // 7))
-        if duration_unit == "month" and duration_value > 0:
-            return base_usd * max(1, int(duration_value * 4))
-        if duration_unit == "year" and duration_value > 0:
-            return base_usd * max(1, int(duration_value * 52))
-    return base_usd
+        quota_reset_period = str(plan.get("quota_reset_period") or "").strip()
+        duration_unit = str(plan.get("duration_unit") or "").strip()
+        duration_value = parse_float(plan.get("duration_value")) or 0
+        if quota_reset_period == "daily" and duration_unit == "day" and duration_value > 0:
+            return base_usd * duration_value
+        if quota_reset_period == "weekly":
+            if duration_unit == "day" and duration_value > 0:
+                return base_usd * max(1, int(duration_value // 7))
+            if duration_unit == "month" and duration_value > 0:
+                return base_usd * max(1, int(duration_value * 4))
+            if duration_unit == "year" and duration_value > 0:
+                return base_usd * max(1, int(duration_value * 52))
+        return base_usd
+    description = str(plan.get("description") or plan.get("subtitle") or plan.get("desc") or "")
+    match = re.search(r"(?:\$\s*(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*(?:USD|usd|刀|美元|\$))", description)
+    if match:
+        parsed = parse_float(match.group(1) or match.group(2))
+        if parsed and parsed > 0:
+            return parsed
+    return None
+
+
+def plan_billing_type_and_expires(plan: dict[str, Any]) -> tuple[str, str]:
+    duration_unit = str(plan.get("duration_unit") or plan.get("validity_unit") or "").strip().lower()
+    duration_value = parse_float(plan.get("duration_value") or plan.get("validity_days"))
+    quota_reset_period = str(plan.get("quota_reset_period") or "").strip().lower()
+    billing_type = "monthly"
+    expires_rule = "Subscription package"
+    if duration_unit in {"month", "monthly"} and duration_value == 1:
+        billing_type = "monthly"
+        expires_rule = "1 month subscription"
+    elif duration_unit in {"day", "days", "daily"} and duration_value == 90:
+        billing_type = "quarterly"
+        expires_rule = "90 day package"
+    elif duration_unit in {"day", "days", "daily"} and duration_value == 30:
+        billing_type = "monthly"
+        expires_rule = "30 day package"
+    elif duration_unit in {"day", "days", "daily"} and duration_value == 7:
+        billing_type = "weekly"
+        expires_rule = "7 day subscription"
+    elif duration_unit in {"day", "days", "daily"} and duration_value == 1:
+        billing_type = "daily"
+        expires_rule = "1 day subscription"
+    elif duration_unit in {"day", "days", "daily"} and duration_value == 365:
+        billing_type = "yearly"
+        expires_rule = "365 day package"
+    elif duration_unit in {"day", "days", "daily"} and duration_value == 3:
+        billing_type = "daily"
+        expires_rule = "3 day package"
+
+    if quota_reset_period == "daily":
+        expires_rule += "; quota resets daily"
+    elif quota_reset_period == "weekly":
+        expires_rule += "; quota resets weekly"
+    elif quota_reset_period == "monthly":
+        expires_rule += "; quota resets monthly"
+    elif quota_reset_period == "never":
+        expires_rule += "; total quota pool, no periodic reset"
+    return billing_type, expires_rule
 
 
 def infer_station_type(
@@ -1046,11 +1733,112 @@ def plan_rows_from_data(raw_data: Any) -> list[dict[str, Any]]:
     return rows
 
 
+def normalize_v1_plan_row(raw: dict[str, Any]) -> dict[str, Any] | None:
+    plan = dict(raw.get("plan") if isinstance(raw.get("plan"), dict) else raw)
+    title = str(plan.get("title") or plan.get("name") or plan.get("product_name") or "").strip()
+    price_amount = parse_float(
+        plan.get("price_amount")
+        or plan.get("price")
+        or plan.get("amount")
+        or plan.get("rmb_amount")
+        or plan.get("rmbAmount")
+    )
+    total_amount_usd = (
+        parse_float(plan.get("usd_amount") or plan.get("usdAmount") or plan.get("usd"))
+        or parse_float(plan.get("monthly_limit_usd"))
+        or parse_float(plan.get("weekly_limit_usd"))
+        or parse_float(plan.get("daily_limit_usd"))
+        or convert_quota_to_usd(plan.get("total_amount"))
+        or convert_quota_to_usd(plan.get("quota"))
+    )
+    if total_amount_usd is None:
+        description = str(plan.get("description") or plan.get("subtitle") or plan.get("desc") or "")
+        match = re.search(r"(?:\$\s*(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*(?:USD|usd|刀|美元|\$))", description)
+        if match:
+            total_amount_usd = parse_float(match.group(1) or match.group(2))
+    if not title:
+        group_name = str(plan.get("group_name") or plan.get("upgrade_group") or "").strip()
+        title = group_name or "subscription plan"
+    if price_amount is None or price_amount <= 0:
+        return None
+    normalized = dict(plan)
+    normalized["title"] = title
+    normalized["price_amount"] = price_amount
+    if total_amount_usd and total_amount_usd > 0:
+        normalized["_total_amount_usd_override"] = total_amount_usd
+    group_name = str(plan.get("group_name") or plan.get("upgrade_group") or "").strip()
+    if group_name:
+        normalized["group_name"] = group_name
+        normalized["upgrade_group"] = group_name
+    if "rate_multiplier" not in normalized and plan.get("group_multiplier") is not None:
+        normalized["rate_multiplier"] = plan.get("group_multiplier")
+    validity_days = parse_float(plan.get("validity_days"))
+    if validity_days and not normalized.get("duration_value"):
+        normalized["duration_unit"] = "day"
+        normalized["duration_value"] = validity_days
+    return normalized
+
+
+def merge_v1_plan_rows(*sources: Any) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    seen: set[tuple[Any, ...]] = set()
+    for source in sources:
+        for raw in plan_rows_from_data(source):
+            if not isinstance(raw, dict):
+                continue
+            plan = normalize_v1_plan_row(raw)
+            if not plan:
+                continue
+            key = (
+                plan.get("id"),
+                plan.get("title"),
+                plan.get("price_amount"),
+                plan.get("_total_amount_usd_override") or plan.get("total_amount") or plan.get("quota"),
+                plan.get("group_name") or plan.get("upgrade_group"),
+            )
+            if key in seen:
+                continue
+            seen.add(key)
+            rows.append(plan)
+    return rows
+
+
 def plan_applies_to_group(plan: dict[str, Any], group_name: str) -> bool:
+    scope_groups = plan.get("scope_groups")
+    if isinstance(scope_groups, list) and scope_groups:
+        return any(
+            isinstance(item, dict)
+            and str(item.get("name") or "").strip() == group_name
+            for item in scope_groups
+        )
+    scope_multipliers = plan.get("scope_multipliers")
+    if isinstance(scope_multipliers, dict) and scope_multipliers:
+        plan_group = str(plan.get("group_name") or plan.get("upgrade_group") or "").strip()
+        return plan_group == group_name
     upgrade_group = str(plan.get("upgrade_group") or "").strip()
     if not upgrade_group:
         return True
     return upgrade_group == group_name
+
+
+def plan_multiplier_for_group(plan: dict[str, Any], group_name: str, fallback: float) -> float:
+    scope_groups = plan.get("scope_groups")
+    if isinstance(scope_groups, list):
+        for item in scope_groups:
+            if not isinstance(item, dict):
+                continue
+            if str(item.get("name") or "").strip() != group_name:
+                continue
+            multiplier = parse_float(item.get("multiplier") or item.get("rate_multiplier"))
+            if multiplier and multiplier > 0:
+                return multiplier
+    scope_multipliers = plan.get("scope_multipliers")
+    group_id = str(plan.get("group_id") or "").strip()
+    if isinstance(scope_multipliers, dict) and group_id:
+        multiplier = parse_float(scope_multipliers.get(group_id))
+        if multiplier and multiplier > 0:
+            return multiplier
+    return fallback
 
 
 def v1_groups_from_probe(probe: dict[str, Any]) -> list[dict[str, Any]]:
@@ -1069,7 +1857,11 @@ def v1_checkout_info_from_probe(probe: dict[str, Any]) -> dict[str, Any]:
 
 
 def v1_payment_plans_from_probe(probe: dict[str, Any]) -> list[dict[str, Any]]:
-    return plan_rows_from_data(probe_result_data(probe, "/api/v1/payment/plans"))
+    checkout_info = v1_checkout_info_from_probe(probe)
+    return merge_v1_plan_rows(
+        checkout_info.get("plans") if isinstance(checkout_info, dict) else None,
+        probe_result_data(probe, "/api/v1/payment/plans"),
+    )
 
 
 def v1_live_probe_tiers(
@@ -1083,6 +1875,8 @@ def v1_live_probe_tiers(
 
     payment_config = v1_payment_config_from_probe(probe)
     checkout_info = v1_checkout_info_from_probe(probe)
+    public_settings = probe_result_data(probe, "/api/v1/settings/public")
+    public_settings = public_settings if isinstance(public_settings, dict) else {}
     plan_rows = v1_payment_plans_from_probe(probe)
 
     methods = checkout_info.get("methods") if isinstance(checkout_info.get("methods"), dict) else {}
@@ -1099,7 +1893,12 @@ def v1_live_probe_tiers(
         or 0.0
     )
     wallet_enabled = (
-        not balance_disabled
+        not explicitly_false(checkout_info.get("enabled"))
+        and (
+            not explicitly_false(public_settings.get("payment_enabled"))
+            or bool(config.get("allow_public_payment_disabled_wallet"))
+        )
+        and not balance_disabled
         and recharge_multiplier > 0
         and (bool(methods) or bool(config.get("allow_wallet_without_methods")))
     )
@@ -1121,7 +1920,7 @@ def v1_live_probe_tiers(
     if max_amount is not None and max_amount > 0:
         quick_amounts = [amount for amount in quick_amounts if amount <= max_amount]
 
-    label = LABELS.get(station, station)
+    label = station_display_label(station)
     evidence_base = probe_location(probe)
     has_subscription_tiers = bool(plan_rows)
     station_type = infer_station_type(
@@ -1132,6 +1931,7 @@ def v1_live_probe_tiers(
     )
 
     tiers: list[FeeTier] = []
+    emitted_plan_keys: set[tuple[Any, ...]] = set()
     amount_note = "custom balance top-up"
     if min_amount is not None and max_amount and max_amount > 0:
         amount_note += f"; allowed {min_amount:g}-{max_amount:g} RMB"
@@ -1186,6 +1986,7 @@ def v1_live_probe_tiers(
         for plan in plan_rows:
             if not isinstance(plan, dict) or not plan_applies_to_group(plan, group_name):
                 continue
+            effective_group_multiplier = plan_multiplier_for_group(plan, group_name, group_multiplier)
             price_amount = parse_float(plan.get("price_amount"))
             if price_amount is None:
                 continue
@@ -1194,48 +1995,21 @@ def v1_live_probe_tiers(
                 continue
             title = str(plan.get("title") or "").strip() or f"{group_name} plan"
             subtitle = str(plan.get("subtitle") or "").strip()
-            duration_unit = str(plan.get("duration_unit") or "").strip()
-            duration_value = parse_float(plan.get("duration_value"))
-            quota_reset_period = str(plan.get("quota_reset_period") or "").strip()
-            billing_type = "monthly"
-            expires_rule = "Subscription package"
-            if duration_unit == "month" and duration_value == 1:
-                billing_type = "monthly"
-                expires_rule = "1 month subscription"
-            elif duration_unit == "day" and duration_value == 7:
-                billing_type = "weekly"
-                expires_rule = "7 day subscription"
-            elif duration_unit == "day" and duration_value == 1:
-                billing_type = "daily"
-                expires_rule = "1 day subscription"
-            elif duration_unit == "day" and duration_value == 365:
-                billing_type = "yearly"
-                expires_rule = "365 day package"
-            elif duration_unit == "day" and duration_value == 3:
-                billing_type = "daily"
-                expires_rule = "3 day package"
+            billing_type, expires_rule = plan_billing_type_and_expires(plan)
 
-            if quota_reset_period == "daily":
-                expires_rule += "; quota resets daily"
-            elif quota_reset_period == "weekly":
-                expires_rule += "; quota resets weekly"
-            elif quota_reset_period == "monthly":
-                expires_rule += "; quota resets monthly"
-            elif quota_reset_period == "never":
-                expires_rule += "; total quota pool, no periodic reset"
-
+            emitted_plan_keys.add((title, group_name, price_amount, total_amount_usd))
             tiers.append(
                 FeeTier(
                     station=station,
                     label=label,
                     station_type=station_type,
                     group_name=group_name,
-                    group_multiplier=group_multiplier,
+                    group_multiplier=effective_group_multiplier,
                     recharge_name=title,
                     billing_type=billing_type,
                     rmb_amount=price_amount,
                     usd_amount=total_amount_usd,
-                    effective_multiplier=group_multiplier * price_amount / total_amount_usd if total_amount_usd else None,
+                    effective_multiplier=effective_group_multiplier * price_amount / total_amount_usd if total_amount_usd else None,
                     recharge_location="payment plans API",
                     expires_rule=expires_rule,
                     verified=True,
@@ -1246,6 +2020,43 @@ def v1_live_probe_tiers(
                     notes=subtitle or desc,
                 )
             )
+    for plan in plan_rows:
+        if not isinstance(plan, dict):
+            continue
+        plan_group = str(plan.get("group_name") or plan.get("upgrade_group") or "").strip()
+        group_multiplier = parse_float(plan.get("rate_multiplier") or plan.get("group_multiplier"))
+        price_amount = parse_float(plan.get("price_amount"))
+        total_amount_usd = estimate_plan_full_use_usd(station, plan)
+        if not plan_group or group_multiplier is None or group_multiplier <= 0 or price_amount is None or not total_amount_usd:
+            continue
+        title = str(plan.get("title") or "").strip() or f"{plan_group} plan"
+        emitted_key = (title, plan_group, price_amount, total_amount_usd)
+        if emitted_key in emitted_plan_keys:
+            continue
+        billing_type, expires_rule = plan_billing_type_and_expires(plan)
+        subtitle = str(plan.get("subtitle") or plan.get("description") or "").strip()
+        tiers.append(
+            FeeTier(
+                station=station,
+                label=label,
+                station_type=station_type,
+                group_name=plan_group,
+                group_multiplier=group_multiplier,
+                recharge_name=title,
+                billing_type=billing_type,
+                rmb_amount=price_amount,
+                usd_amount=total_amount_usd,
+                effective_multiplier=group_multiplier * price_amount / total_amount_usd if total_amount_usd else None,
+                recharge_location="payment checkout plans API",
+                expires_rule=expires_rule,
+                verified=True,
+                confidence="high_tabbit_logged_in",
+                source="tabbit_logged_in_v1_subscription_api",
+                evidence_url=evidence_base,
+                participates_in_verified_ranking=True,
+                notes=subtitle or f"{plan_group} plan",
+            )
+        )
     return tiers
 
 
@@ -1293,7 +2104,7 @@ def flymux_live_probe_tiers(
     max_amount = parse_float(payment_config.get("max_amount"))
     methods = checkout_info.get("methods") if isinstance(checkout_info.get("methods"), dict) else {}
     payment_methods = ", ".join(sorted(str(name) for name in methods)) or "unknown"
-    label = LABELS.get(station, station)
+    label = station_display_label(station)
     station_type = str(config.get("station_type") or STATION_TYPE_OVERRIDES.get(station, "unknown_pending"))
     evidence_base = probe_location(probe)
     tiers: list[FeeTier] = []
@@ -1362,7 +2173,7 @@ def live_probe_tiers() -> list[FeeTier]:
         topup = parse_topup_from_probe(probe)
         subs = parse_subscriptions_from_probe(probe)
         amounts = parse_amount_results_from_probe(probe)
-        label = LABELS.get(station, station)
+        label = station_display_label(station)
         evidence_base = probe_location(probe)
 
         amount_options_raw = topup.get("amount_options")
@@ -1405,8 +2216,16 @@ def live_probe_tiers() -> list[FeeTier]:
                     usd_amount = permanent_usd_map[rmb_amount]
                     discount = parse_float(discount_map.get(str(int(rmb_amount)))) or parse_float(discount_map.get(str(rmb_amount))) or 1.0
                     notes = desc
+                    recharge_name = f"wallet topup {int(rmb_amount) if float(rmb_amount).is_integer() else rmb_amount} RMB"
+                    expires_rule = "No expiry stated in wallet API response"
+                    if station == "euzhi":
+                        recharge_name = f"wallet topup sample {int(rmb_amount) if float(rmb_amount).is_integer() else rmb_amount} RMB"
+                        expires_rule = "Wallet API conversion sample from /api/user/amount; not a fixed package"
+                        notes = f"{notes}; sampled wallet conversion, not a fixed package"
                     if discount != 1.0:
                         notes = f"{desc}; wallet discount {discount}"
+                        if station == "euzhi":
+                            notes = f"{desc}; wallet discount {discount}; sampled wallet conversion, not a fixed package"
                     tiers.append(
                         FeeTier(
                             station=station,
@@ -1414,7 +2233,7 @@ def live_probe_tiers() -> list[FeeTier]:
                             station_type=station_type,
                             group_name=group_name,
                             group_multiplier=group_multiplier,
-                            recharge_name=f"wallet topup {int(rmb_amount) if float(rmb_amount).is_integer() else rmb_amount} RMB",
+                            recharge_name=recharge_name,
                             billing_type="permanent",
                             rmb_amount=rmb_amount,
                             usd_amount=usd_amount,
@@ -1433,6 +2252,7 @@ def live_probe_tiers() -> list[FeeTier]:
             for plan in plan_rows:
                 if not isinstance(plan, dict) or not plan_applies_to_group(plan, group_name):
                     continue
+                effective_group_multiplier = plan_multiplier_for_group(plan, group_name, group_multiplier)
                 title = str(plan.get("title") or "").strip() or f"{group_name} plan"
                 subtitle = str(plan.get("subtitle") or "").strip()
                 price_amount = parse_float(plan.get("price_amount"))
@@ -1478,12 +2298,12 @@ def live_probe_tiers() -> list[FeeTier]:
                         label=label,
                         station_type=station_type,
                         group_name=group_name,
-                        group_multiplier=group_multiplier,
+                        group_multiplier=effective_group_multiplier,
                         recharge_name=title,
                         billing_type=billing_type,
                         rmb_amount=price_amount,
                         usd_amount=total_amount_usd,
-                        effective_multiplier=group_multiplier * price_amount / total_amount_usd if total_amount_usd else None,
+                        effective_multiplier=effective_group_multiplier * price_amount / total_amount_usd if total_amount_usd else None,
                         recharge_location="subscription plans API",
                         expires_rule=expires_rule,
                         verified=True,
@@ -1514,7 +2334,7 @@ def load_verified_input_tiers(stations: dict[str, StationConfig]) -> list[FeeTie
             station = (row.get("station") or "").strip()
             if not station:
                 continue
-            label = (row.get("label") or LABELS.get(station, station)).strip()
+            label = station_display_label(station, row.get("label"))
             station_type = (row.get("station_type") or stations.get(station, StationConfig(station, label)).station_type).strip()
             group_multiplier = parse_float(row.get("group_multiplier"))
             rmb_amount = parse_float(row.get("rmb_amount"))
@@ -1552,6 +2372,22 @@ def load_verified_input_tiers(stations: dict[str, StationConfig]) -> list[FeeTie
 
 def public_discovered_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]:
     rows = [
+        {
+            "station": "atomflow.vip",
+            "station_type": "non_subscription",
+            "group_name": "codex",
+            "group_multiplier": 0.25,
+            "recharge_name": "public status 1 RMB = 1 USD credit",
+            "billing_type": "permanent",
+            "rmb_amount": 1.0,
+            "usd_amount": 1.0,
+            "recharge_location": "public /api/status + /api/pricing",
+            "expires_rule": "Public status exposes quota_per_unit=500000 and price=1; expiry not stated",
+            "confidence": "public_structured_evidence",
+            "source": "public_status_and_pricing",
+            "evidence_url": "https://atomflow.vip/api/status | https://atomflow.vip/api/pricing",
+            "notes": "Public pricing exposes codex group ratio 0.25; public status implies 1 RMB maps to 1 USD quota unit. Login-page cross-check still required.",
+        },
         {
             "station": "hyperapi",
             "station_type": "subscription",
@@ -1732,7 +2568,7 @@ def public_discovered_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]
     tiers: list[FeeTier] = []
     for row in rows:
         station = row["station"]
-        label = stations.get(station, StationConfig(station, LABELS.get(station, station))).label
+        label = station_display_label(station, stations.get(station, StationConfig(station, station_display_label(station))).label)
         effective = row["group_multiplier"] * row["rmb_amount"] / row["usd_amount"]
         tiers.append(
             FeeTier(
@@ -1756,6 +2592,112 @@ def public_discovered_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]
                 notes=row["notes"],
             )
         )
+    return tiers
+
+
+KNOWN_PUBLIC_SHOP_PRODUCTS: dict[str, list[dict[str, Any]]] = {
+    "dogcoding": [
+        {"name": "20 USD external shop redeem code", "billing_type": "permanent", "rmb_amount": 6.0, "usd_amount": 20.0},
+        {"name": "30 USD external shop redeem code", "billing_type": "permanent", "rmb_amount": 9.0, "usd_amount": 30.0},
+        {"name": "50 USD external shop redeem code", "billing_type": "permanent", "rmb_amount": 15.0, "usd_amount": 50.0},
+        {"name": "100 USD external shop redeem code", "billing_type": "permanent", "rmb_amount": 30.0, "usd_amount": 100.0},
+        {"name": "200 USD external shop redeem code", "billing_type": "permanent", "rmb_amount": 60.0, "usd_amount": 200.0},
+        {"name": "500 USD external shop redeem code", "billing_type": "permanent", "rmb_amount": 145.0, "usd_amount": 500.0},
+    ],
+    "585016d3.u3u.dev": [
+        {"name": "weekly card 300 USD quota", "billing_type": "weekly", "rmb_amount": 28.0, "usd_amount": 300.0},
+        {"name": "weekly card 500 USD quota", "billing_type": "weekly", "rmb_amount": 48.0, "usd_amount": 500.0},
+        {"name": "monthly card 1200 USD quota", "billing_type": "monthly", "rmb_amount": 88.0, "usd_amount": 1200.0},
+        {"name": "monthly card 2500 USD quota", "billing_type": "monthly", "rmb_amount": 178.0, "usd_amount": 2500.0},
+        {"name": "monthly card 5000 USD quota", "billing_type": "monthly", "rmb_amount": 358.0, "usd_amount": 5000.0},
+        {"name": "quarterly card 10000 USD quota", "billing_type": "quarterly", "rmb_amount": 588.0, "usd_amount": 10000.0},
+        {"name": "quarterly card 20000 USD quota", "billing_type": "quarterly", "rmb_amount": 1188.0, "usd_amount": 20000.0},
+        {"name": "100 USD permanent quota", "billing_type": "permanent", "rmb_amount": 20.0, "usd_amount": 100.0},
+        {"name": "200 USD permanent quota", "billing_type": "permanent", "rmb_amount": 36.0, "usd_amount": 200.0},
+        {"name": "300 USD permanent quota", "billing_type": "permanent", "rmb_amount": 50.0, "usd_amount": 300.0},
+    ],
+}
+
+
+KNOWN_PUBLIC_SHOP_META: dict[str, dict[str, str]] = {
+    "dogcoding": {
+        "station_type": "non_subscription",
+        "evidence_url": "https://pay.ldxp.cn/shop/JVDCG8IG",
+        "recharge_location": "official external pay.ldxp.cn shop redeem code",
+        "expires_rule": "External shop redeem code; permanent balance unless product name states otherwise",
+        "notes": "Payment config is disabled in the v1 site; use the official menu-linked external shop instead of generated wallet presets.",
+    },
+    "585016d3.u3u.dev": {
+        "station_type": "mixed",
+        "evidence_url": "https://pay.ldxp.cn/shop/u3u",
+        "recharge_location": "official external pay.ldxp.cn shop redeem code",
+        "expires_rule": "External shop redeem code; package validity follows product name",
+        "notes": "Public site config points to the external shop; shop description says quota follows official 1:1 standard. Login-page cross-check still required.",
+    },
+}
+
+
+def known_public_shop_groups(station: str) -> list[tuple[str, float, str]]:
+    probe = load_live_auth_probe(station)
+    groups: list[tuple[str, float, str]] = []
+    if probe:
+        for item in v1_groups_from_probe(probe):
+            if not isinstance(item, dict):
+                continue
+            if str(item.get("status") or "").strip().lower() != "active":
+                continue
+            if str(item.get("subscription_type") or "").strip().lower() not in {"", "standard"}:
+                continue
+            group_name = str(item.get("name") or "").strip()
+            multiplier = parse_float(item.get("rate_multiplier"))
+            if group_name and multiplier and multiplier > 0:
+                groups.append((group_name, multiplier, normalize_group_desc(item, group_name)))
+    if groups:
+        return groups
+    return [("default", 1.0, "default")]
+
+
+def known_public_shop_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]:
+    tiers: list[FeeTier] = []
+    for station, products in KNOWN_PUBLIC_SHOP_PRODUCTS.items():
+        meta = KNOWN_PUBLIC_SHOP_META[station]
+        label = station_display_label(station, stations.get(station, StationConfig(station, station_display_label(station))).label)
+        for group_name, group_multiplier, group_note in known_public_shop_groups(station):
+            for product in products:
+                rmb_amount = parse_float(product.get("rmb_amount"))
+                usd_amount = parse_float(product.get("usd_amount"))
+                if rmb_amount is None or usd_amount is None or usd_amount <= 0:
+                    continue
+                billing_type = str(product.get("billing_type") or "permanent")
+                expires_rule = meta["expires_rule"]
+                if billing_type == "weekly":
+                    expires_rule = "7 day external shop redeem code package"
+                elif billing_type == "monthly":
+                    expires_rule = "30 day external shop redeem code package"
+                elif billing_type == "quarterly":
+                    expires_rule = "90 day external shop redeem code package"
+                tiers.append(
+                    FeeTier(
+                        station=station,
+                        label=label,
+                        station_type=meta["station_type"],
+                        group_name=group_name,
+                        group_multiplier=group_multiplier,
+                        recharge_name=str(product["name"]),
+                        billing_type=billing_type,
+                        rmb_amount=rmb_amount,
+                        usd_amount=usd_amount,
+                        effective_multiplier=group_multiplier * rmb_amount / usd_amount,
+                        recharge_location=meta["recharge_location"],
+                        expires_rule=expires_rule,
+                        verified=True,
+                        confidence="public_external_shop_verified",
+                        source="public_external_shop_redeem_code",
+                        evidence_url=meta["evidence_url"],
+                        participates_in_verified_ranking=True,
+                        notes=f"{group_note}; {meta['notes']}",
+                    )
+                )
     return tiers
 
 
@@ -1845,7 +2787,7 @@ def special_verified_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]:
     tiers: list[FeeTier] = []
     for row in rows:
         station = row["station"]
-        label = stations.get(station, StationConfig(station, LABELS.get(station, station))).label
+        label = station_display_label(station, stations.get(station, StationConfig(station, station_display_label(station))).label)
         effective = row["group_multiplier"] * row["rmb_amount"] / row["usd_amount"]
         tiers.append(
             FeeTier(
@@ -1942,7 +2884,7 @@ def freemodel_verified_tiers(stations: dict[str, StationConfig]) -> list[FeeTier
     tiers: list[FeeTier] = []
     for row in rows:
         station = row["station"]
-        label = stations.get(station, StationConfig(station, LABELS.get(station, station))).label
+        label = station_display_label(station, stations.get(station, StationConfig(station, station_display_label(station))).label)
         effective = row["group_multiplier"] * row["rmb_amount"] / row["usd_amount"]
         tiers.append(
             FeeTier(
@@ -1969,19 +2911,264 @@ def freemodel_verified_tiers(stations: dict[str, StationConfig]) -> list[FeeTier
     return tiers
 
 
+def site_data_station_records() -> dict[str, dict[str, Any]]:
+    stations = load_site_data_snapshot().get("stations")
+    if not isinstance(stations, list):
+        return {}
+    records: dict[str, dict[str, Any]] = {}
+    for item in stations:
+        if not isinstance(item, dict):
+            continue
+        key = str(item.get("key") or "").strip()
+        if key:
+            records[key] = item
+    return records
+
+
+def detail_record_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]:
+    records = site_data_station_records()
+    tiers: list[FeeTier] = []
+    for station, record in records.items():
+        if station not in DETAIL_EVIDENCE_FEE_STATIONS:
+            continue
+        groups = record.get("groupMultipliers")
+        recharges = record.get("rechargeTiers")
+        if not isinstance(groups, list) or not isinstance(recharges, list) or not groups or not recharges:
+            continue
+        meta = DETAIL_EVIDENCE_FEE_META.get(station, {})
+        label = station_display_label(station, record.get("label") or stations.get(station, StationConfig(station, station_display_label(station))).label)
+        station_type = str(record.get("stationType") or stations.get(station, StationConfig(station, label)).station_type)
+        if station_type not in STATION_TYPE_LABELS or station_type == "unknown_pending":
+            station_type = STATION_TYPE_OVERRIDES.get(station, "unknown_pending")
+        evidence_url = str(record.get("url") or SITE_URL_OVERRIDES.get(station) or "").strip()
+        tier_notes = record.get("tierNotes")
+        notes = str(meta.get("notes") or "").strip()
+        if isinstance(tier_notes, list):
+            extra_notes = "; ".join(str(item).strip() for item in tier_notes if str(item).strip())
+            if extra_notes:
+                notes = f"{notes}; {extra_notes}" if notes else extra_notes
+        confidence = str(meta.get("confidence") or "public_structured_evidence")
+        source = str(meta.get("source") or "detail_page_structured_evidence")
+        for group in groups:
+            if not isinstance(group, dict):
+                continue
+            group_name = str(group.get("groupName") or group.get("group_name") or "").strip()
+            group_multiplier = parse_float(group.get("groupMultiplier") or group.get("group_multiplier"))
+            if not group_name or group_multiplier is None or group_multiplier <= 0:
+                continue
+            for recharge in recharges:
+                if not isinstance(recharge, dict):
+                    continue
+                recharge_name = str(recharge.get("rechargeName") or recharge.get("recharge_name") or "").strip()
+                billing_type = str(recharge.get("billingType") or recharge.get("billing_type") or "unknown").strip() or "unknown"
+                rmb_amount = parse_float(recharge.get("rmbAmount") or recharge.get("rmb_amount"))
+                usd_amount = parse_float(recharge.get("usdAmount") or recharge.get("usd_amount"))
+                if not recharge_name or rmb_amount is None or usd_amount is None or usd_amount <= 0:
+                    continue
+                effective = group_multiplier * rmb_amount / usd_amount
+                tiers.append(
+                    FeeTier(
+                        station=station,
+                        label=label,
+                        station_type=station_type,
+                        group_name=group_name,
+                        group_multiplier=group_multiplier,
+                        recharge_name=recharge_name,
+                        billing_type=billing_type,
+                        rmb_amount=rmb_amount,
+                        usd_amount=usd_amount,
+                        effective_multiplier=effective,
+                        recharge_location=str(recharge.get("rechargeLocation") or recharge.get("recharge_location") or "detail page structured evidence"),
+                        expires_rule=str(recharge.get("expiresRule") or recharge.get("expires_rule") or "Expiry not stated"),
+                        verified=True,
+                        confidence=confidence,
+                        source=source,
+                        evidence_url=evidence_url,
+                        participates_in_verified_ranking=True,
+                        notes=notes,
+                    )
+                )
+    return tiers
+
+
 def all_fee_rows(stations: dict[str, StationConfig]) -> list[FeeTier]:
-    return (
+    tiers = (
         nexus_verified_tiers()
         + live_probe_tiers()
+        + detail_record_tiers(stations)
         + load_verified_input_tiers(stations)
         + public_discovered_tiers(stations)
+        + known_public_shop_tiers(stations)
         + special_verified_tiers(stations)
         + freemodel_verified_tiers(stations)
     )
+    return apply_station_pricing_overrides_to_tiers(tiers)
+
+
+def load_station_pricing_overrides() -> dict[str, dict[str, Any]]:
+    if not STATION_PRICING_OVERRIDES_PATH.exists():
+        return {}
+    try:
+        payload = json.loads(STATION_PRICING_OVERRIDES_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    if not isinstance(payload, dict):
+        return {}
+    return {
+        str(station).strip(): override
+        for station, override in payload.items()
+        if str(station).strip() and isinstance(override, dict)
+    }
+
+
+def apply_station_pricing_overrides_to_tiers(tiers: list[FeeTier]) -> list[FeeTier]:
+    overrides = load_station_pricing_overrides()
+    if not overrides:
+        return tiers
+
+    output: list[FeeTier] = []
+    for tier in tiers:
+        override = overrides.get(tier.station)
+        if override and parse_bool(override.get("authoritative"), default=False):
+            continue
+        output.append(tier)
+
+    for station, override in overrides.items():
+        if not parse_bool(override.get("authoritative"), default=False):
+            continue
+        recharge_mode = override.get("rechargeMode")
+        if recharge_mode not in {
+            "linear_rmb_to_usd",
+            "sample_amount_to_usd_with_response_rmb",
+            "sample_payment_amount_to_usd_1to1",
+        }:
+            continue
+        usd_per_rmb = parse_float(override.get("usdPerRmb")) if recharge_mode == "linear_rmb_to_usd" else None
+        usd_per_sample_unit = (
+            parse_float(override.get("usdPerSampleUnit"))
+            if recharge_mode == "sample_amount_to_usd_with_response_rmb"
+            else None
+        )
+        usd_per_payment_unit = None
+        if recharge_mode == "sample_payment_amount_to_usd_1to1":
+            usd_per_payment_unit = parse_float(override.get("usdPerPaymentUnit")) or 1.0
+        sample_payment_amount = (
+            parse_float(override.get("samplePaymentAmount"))
+            if recharge_mode == "sample_payment_amount_to_usd_1to1"
+            else None
+        )
+        if recharge_mode == "linear_rmb_to_usd" and (not usd_per_rmb or usd_per_rmb <= 0):
+            continue
+        if recharge_mode == "sample_amount_to_usd_with_response_rmb" and (
+            not usd_per_sample_unit or usd_per_sample_unit <= 0
+        ):
+            continue
+        if recharge_mode == "sample_payment_amount_to_usd_1to1" and (
+            not usd_per_payment_unit or usd_per_payment_unit <= 0
+        ):
+            continue
+        pattern = re.compile(str(override.get("rechargeNamePattern") or r"wallet topup (\d+(?:\.\d+)?) RMB"), re.IGNORECASE)
+        name_template = str(override.get("rechargeNameTemplate") or "wallet topup sample {rmb} RMB")
+        recharge_location = str(override.get("rechargeLocation") or "").strip()
+        expires_rule = str(override.get("expiresRule") or "").strip()
+        participates_in_verified_ranking = parse_bool(
+            override.get("participatesInVerifiedRanking"),
+            default=True,
+        )
+        group_rows = [
+            group
+            for group in override.get("groupMultipliers", [])
+            if isinstance(group, dict)
+            and str(group.get("groupName") or group.get("group_name") or "").strip()
+            and parse_float(group.get("groupMultiplier") or group.get("group_multiplier")) is not None
+        ]
+        source_tiers = []
+        for tier in tiers:
+            if tier.station != station or tier.rmb_amount is None:
+                continue
+            if pattern.search(tier.recharge_name) or sample_payment_amount is not None:
+                source_tiers.append(tier)
+        assumption = str(override.get("assumptionText") or "").strip()
+        seen: set[tuple[str, str, float | None]] = set()
+        for source_tier in source_tiers:
+            for group in group_rows:
+                group_name = str(group.get("groupName") or group.get("group_name") or "").strip()
+                group_multiplier = parse_float(group.get("groupMultiplier") or group.get("group_multiplier"))
+                if not group_name or group_multiplier is None:
+                    continue
+                if recharge_mode == "linear_rmb_to_usd":
+                    recharge_name = source_tier.recharge_name
+                    rmb_amount = source_tier.rmb_amount
+                    usd_amount = rmb_amount * usd_per_rmb if rmb_amount is not None and usd_per_rmb else None
+                elif recharge_mode == "sample_amount_to_usd_with_response_rmb":
+                    match = pattern.search(source_tier.recharge_name)
+                    sample_amount = parse_float(match.group(1)) if match else parse_float(source_tier.rmb_amount)
+                    rmb_amount = source_tier.usd_amount
+                    usd_amount = sample_amount * usd_per_sample_unit if sample_amount is not None and usd_per_sample_unit else None
+                    recharge_name = name_template.format(
+                        rmb=format_plain_number(rmb_amount),
+                        usd=format_plain_number(usd_amount),
+                    )
+                else:
+                    match = pattern.search(source_tier.recharge_name)
+                    payment_amount = sample_payment_amount
+                    if payment_amount is None and match:
+                        payment_amount = parse_float(match.group(1))
+                    if payment_amount is None:
+                        payment_amount = parse_float(source_tier.usd_amount) or parse_float(source_tier.rmb_amount)
+                    rmb_amount = payment_amount
+                    usd_amount = (
+                        payment_amount * usd_per_payment_unit
+                        if payment_amount is not None and usd_per_payment_unit
+                        else None
+                    )
+                    recharge_name = name_template.format(
+                        rmb=format_plain_number(rmb_amount),
+                        usd=format_plain_number(usd_amount),
+                    )
+                if rmb_amount is None or usd_amount is None or rmb_amount <= 0 or usd_amount <= 0:
+                    continue
+                effective = group_multiplier * rmb_amount / usd_amount
+                key = (group_name, recharge_name, rmb_amount)
+                if key in seen:
+                    continue
+                seen.add(key)
+                output.append(
+                    replace(
+                        source_tier,
+                        group_name=group_name,
+                        group_multiplier=group_multiplier,
+                        recharge_name=recharge_name,
+                        rmb_amount=rmb_amount,
+                        usd_amount=usd_amount,
+                        effective_multiplier=effective,
+                        recharge_location=recharge_location or source_tier.recharge_location,
+                        expires_rule=expires_rule or source_tier.expires_rule,
+                        confidence="manual_verified",
+                        source="station_pricing_override",
+                        notes=assumption or source_tier.notes,
+                        participates_in_verified_ranking=participates_in_verified_ranking,
+                    )
+                )
+    return output
 
 
 def is_low_confidence(confidence: str) -> bool:
     return confidence.startswith("low_")
+
+
+def suspicious_multiplier_reason(value: float | None) -> str:
+    if value is None:
+        return ""
+    if value < LOW_MULTIPLIER_REVIEW_THRESHOLD:
+        return f"effective multiplier < {LOW_MULTIPLIER_REVIEW_THRESHOLD:g}; verify package quota, plan scope multiplier, and recharge conversion"
+    if value >= HIGH_MULTIPLIER_REVIEW_THRESHOLD:
+        return f"effective multiplier >= {HIGH_MULTIPLIER_REVIEW_THRESHOLD:g}; verify group multiplier, recharge conversion, and whether this is a fixed package"
+    return ""
+
+
+def is_suspicious_effective_multiplier(value: float | None) -> bool:
+    return bool(suspicious_multiplier_reason(value))
 
 
 CODEX_GROUP_KEYWORDS = ("codex", "openai", "gpt")
@@ -2031,6 +3218,8 @@ def choose_verified_fee(
             continue
         if tier.effective_multiplier is None or tier.effective_multiplier <= 0:
             continue
+        if not allow_low_confidence and is_suspicious_effective_multiplier(tier.effective_multiplier):
+            continue
         eligible_by_station.setdefault(tier.station, []).append(tier)
     chosen: dict[str, FeeTier] = {}
     for station, candidates in eligible_by_station.items():
@@ -2059,7 +3248,7 @@ def compute_ranking(
                 "time_window": time_window,
                 "time_window_label": time_window_cn(time_window),
                 "station": station,
-                "label": fee.label,
+                "label": station_display_label(station, fee.label),
                 "station_type": fee.station_type,
                 "station_type_label": station_type_cn(fee.station_type),
                 "adopted_tier": f"{fee.group_name} | {fee.recharge_name}",
@@ -2122,7 +3311,7 @@ def compute_ranking(
 def fee_tier_to_row(tier: FeeTier) -> dict[str, Any]:
     return {
         "station": tier.station,
-        "label": tier.label,
+        "label": station_display_label(tier.station, tier.label),
         "station_type": tier.station_type,
         "group_name": tier.group_name,
         "group_multiplier": tier.group_multiplier,
@@ -2145,8 +3334,92 @@ def fee_tier_to_row(tier: FeeTier) -> dict[str, Any]:
 def public_fee_row(tier: FeeTier, stations: dict[str, StationConfig]) -> dict[str, Any]:
     station = stations.get(tier.station, StationConfig(tier.station, tier.label))
     row = fee_tier_to_row(tier)
+    row["label"] = station_display_label(tier.station, row.get("label"))
     row["platform_guess"] = station.platform_guess
     return row
+
+
+def high_multiplier_review_rows(
+    rankings_by_window: dict[str, list[dict[str, Any]]],
+    chosen_fees: dict[str, FeeTier],
+    stations: dict[str, StationConfig],
+) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    seen: set[tuple[str, str]] = set()
+    for window_name, ranking_rows in rankings_by_window.items():
+        for ranking in ranking_rows:
+            effective = parse_float(ranking.get("effective_multiplier"))
+            if effective is None or effective < HIGH_MULTIPLIER_REVIEW_THRESHOLD:
+                continue
+            station_key = str(ranking.get("station") or "").strip()
+            key = (station_key, window_name)
+            if key in seen:
+                continue
+            seen.add(key)
+            fee = chosen_fees.get(station_key)
+            station = stations.get(station_key, StationConfig(station_key, station_display_label(station_key, ranking.get("label"))))
+            rows.append(
+                {
+                    "station": station_key,
+                    "label": station_display_label(station_key, ranking.get("label") or station.label),
+                    "time_window": window_name,
+                    "effective_multiplier": effective,
+                    "adopted_tier": ranking.get("adopted_tier", ""),
+                    "group_name": fee.group_name if fee else "",
+                    "group_multiplier": fee.group_multiplier if fee else "",
+                    "recharge_name": fee.recharge_name if fee else "",
+                    "rmb_amount": fee.rmb_amount if fee else "",
+                    "usd_amount": fee.usd_amount if fee else "",
+                    "recharge_location": fee.recharge_location if fee else "",
+                    "confidence": fee.confidence if fee else ranking.get("fee_confidence", ""),
+                    "evidence_url": fee.evidence_url if fee else "",
+                    "review_reason": f"adopted effective multiplier >= {HIGH_MULTIPLIER_REVIEW_THRESHOLD:g}; verify group multiplier, recharge conversion, billing validity, and evidence source",
+                }
+            )
+    return sorted(rows, key=lambda row: (-float(row["effective_multiplier"]), row["station"], row["time_window"]))
+
+
+def multiplier_sanity_review_rows(tiers: list[FeeTier]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    seen: set[tuple[Any, ...]] = set()
+    for tier in tiers:
+        if not tier.verified or not tier.participates_in_verified_ranking:
+            continue
+        reason = suspicious_multiplier_reason(tier.effective_multiplier)
+        if not reason:
+            continue
+        key = (
+            tier.station,
+            tier.group_name,
+            tier.recharge_name,
+            tier.rmb_amount,
+            tier.usd_amount,
+            tier.effective_multiplier,
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append(
+            {
+                "station": tier.station,
+                "label": station_display_label(tier.station, tier.label),
+                "effective_multiplier": tier.effective_multiplier,
+                "group_name": tier.group_name,
+                "group_multiplier": tier.group_multiplier,
+                "recharge_name": tier.recharge_name,
+                "billing_type": tier.billing_type,
+                "rmb_amount": tier.rmb_amount,
+                "usd_amount": tier.usd_amount,
+                "recharge_location": tier.recharge_location,
+                "confidence": tier.confidence,
+                "source": tier.source,
+                "participates_in_verified_ranking": tier.participates_in_verified_ranking,
+                "evidence_url": tier.evidence_url,
+                "review_reason": reason,
+                "notes": tier.notes,
+            }
+        )
+    return sorted(rows, key=lambda row: (row["station"], float(row["effective_multiplier"])))
 
 
 def write_csv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> None:
@@ -2243,7 +3516,7 @@ def fmt_seconds(value: float | None, digits: int = 3) -> str:
 
 
 def has_formal_confidence(confidence: str) -> bool:
-    return not is_low_confidence(confidence)
+    return not is_low_confidence(confidence) and confidence != "needs_manual_review"
 
 
 def resolved_station_type(
@@ -2564,9 +3837,32 @@ def write_markdown(
     lines.append("- 补完证据后，把数据写入 `verified_multiplier_inputs.csv` 或直接改脚本逻辑，再重新运行。")
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
-def main() -> int:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Refresh Codex Manager request log quality metrics and ranking CSVs.",
+        epilog=(
+            "Every run also writes request_log_station_candidates.csv for newly discovered public hosts "
+            f"and multiplier_sanity_review.csv for effective multipliers < {LOW_MULTIPLIER_REVIEW_THRESHOLD:g} "
+            f"or >= {HIGH_MULTIPLIER_REVIEW_THRESHOLD:g} that need verification."
+        ),
+    )
+    parser.add_argument(
+        "--full-log-rebuild",
+        action="store_true",
+        help=(
+            "Rebuild cumulative metrics from every /v1/responses request_log row in the DB. "
+            "Only use this when historical Codex Manager logs are still complete; otherwise "
+            "keep the default incremental mode backed by data/codex-log-refresh-state.json."
+        ),
+    )
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
     stations = load_station_configs()
-    metrics_by_window = load_request_metrics()
+    metrics_by_window = load_request_metrics(full_log_rebuild=args.full_log_rebuild)
+    ensure_metric_station_configs(stations, metrics_by_window)
     primary_metrics = metrics_by_window[PRIMARY_TIME_WINDOW]
     all_hour_metrics = metrics_by_window["all_hours"]
     off_hour_metrics = metrics_by_window["off_hours"]
@@ -2671,6 +3967,58 @@ def main() -> int:
     write_csv(WORKSPACE / "composite_ranking_formal_workhours.csv", formal_ranking, ranking_fieldnames)
     write_csv(WORKSPACE / "composite_ranking_formal_offhours.csv", formal_off_ranking, ranking_fieldnames)
     write_csv(WORKSPACE / "composite_ranking_formal_all_hours.csv", formal_all_ranking, ranking_fieldnames)
+    sanity_rows = multiplier_sanity_review_rows(tiers)
+    write_csv(
+        MULTIPLIER_SANITY_REVIEW_PATH,
+        sanity_rows,
+        [
+            "station",
+            "label",
+            "effective_multiplier",
+            "group_name",
+            "group_multiplier",
+            "recharge_name",
+            "billing_type",
+            "rmb_amount",
+            "usd_amount",
+            "recharge_location",
+            "confidence",
+            "source",
+            "participates_in_verified_ranking",
+            "evidence_url",
+            "review_reason",
+            "notes",
+        ],
+    )
+    high_multiplier_rows = high_multiplier_review_rows(
+        {
+            PRIMARY_TIME_WINDOW: formal_ranking,
+            "off_hours": formal_off_ranking,
+            "all_hours": formal_all_ranking,
+        },
+        formal_fees,
+        stations,
+    )
+    write_csv(
+        HIGH_MULTIPLIER_REVIEW_PATH,
+        high_multiplier_rows,
+        [
+            "station",
+            "label",
+            "time_window",
+            "effective_multiplier",
+            "adopted_tier",
+            "group_name",
+            "group_multiplier",
+            "recharge_name",
+            "rmb_amount",
+            "usd_amount",
+            "recharge_location",
+            "confidence",
+            "evidence_url",
+            "review_reason",
+        ],
+    )
 
     quality_rows: list[dict[str, Any]] = []
     for key in sorted(stations):
@@ -2680,7 +4028,7 @@ def main() -> int:
             quality_rows.append(
                 {
                     "station": key,
-                    "label": station.label,
+                    "label": station_display_label(key, station.label),
                     "platform_guess": station.platform_guess,
                     "time_window": window_name,
                     "time_window_label": time_window_cn(window_name),
@@ -2751,7 +4099,7 @@ def main() -> int:
         checklist_rows.append(
             {
                 "station": key,
-                "label": station.label,
+                "label": station_display_label(key, station.label),
                 "station_type": station.station_type,
                 "platform_guess": station.platform_guess,
                 "urls": "; ".join(sorted(station.configured_urls)),
@@ -2798,7 +4146,7 @@ def main() -> int:
         probe_rows.append(
             {
                 "station": key,
-                "label": stations[key].label,
+                "label": station_display_label(key, stations[key].label),
                 "url": probe.get("url", ""),
                 "final_url": probe.get("final_url", ""),
                 "http_status": probe.get("http_status", ""),
@@ -2878,6 +4226,10 @@ def main() -> int:
                 "files": [
                     str(WORKSPACE / "multiplier_tiers.csv"),
                     str(PUBLIC_FEE_EVIDENCE_PATH),
+                    str(REQUEST_LOG_STATION_CANDIDATES_PATH),
+                    str(HIGH_MULTIPLIER_REVIEW_PATH),
+                    str(MULTIPLIER_SANITY_REVIEW_PATH),
+                    str(LOG_REFRESH_STATE_PATH),
                     str(WORKSPACE / "composite_ranking_verified.csv"),
                     str(WORKSPACE / "composite_ranking_formal.csv"),
                     str(WORKSPACE / "composite_ranking_formal_workhours.csv"),
@@ -2896,7 +4248,10 @@ def main() -> int:
                 "verified_tier_count": sum(1 for tier in tiers if tier.verified),
                 "formal_ranked_count": len(formal_ranking),
                 "formal_offhours_ranked_count": len(formal_off_ranking),
+                "high_multiplier_review_count": len(high_multiplier_rows),
+                "multiplier_sanity_review_count": len(sanity_rows),
                 "stations_needing_login_evidence": len(pending_rows),
+                "log_refresh": LAST_LOG_REFRESH_INFO,
             },
             ensure_ascii=False,
             indent=2,

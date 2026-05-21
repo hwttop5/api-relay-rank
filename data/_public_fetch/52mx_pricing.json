@@ -1,1 +1,693 @@
-{"auto_groups":["default"],"data":[{"model_name":"kimi-k2.6","description":"Kimi K2.6 is an AI model provided by opencode-go.","tags":"Reasoning,Tools,Files,Open Weights,Vision,262.1K","vendor_id":14,"quota_type":0,"model_ratio":0.475,"model_price":0,"owner_by":"","completion_ratio":4.210526315789,"cache_ratio":0.168421052632,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"],"pricing_version":"5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"},{"model_name":"llama-3.3-70b-instruct","description":"Llama-3.3-70B-Instruct is an AI model provided by scaleway.","tags":"Tools,Files,Open Weights,100K","vendor_id":15,"quota_type":0,"model_ratio":0.3,"model_price":0,"owner_by":"","completion_ratio":4.5,"enable_groups":["plus","pro","default"],"supported_endpoint_types":["openai"]},{"model_name":"claude-haiku-4.5","icon":"Claude.Avatar.type={'platform'}","vendor_id":22,"quota_type":0,"model_ratio":0.5,"model_price":0,"owner_by":"","completion_ratio":5,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"claude-opus-4.5","icon":"Claude.Avatar.type={'platform'}","vendor_id":22,"quota_type":0,"model_ratio":0.5,"model_price":0,"owner_by":"","completion_ratio":5,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"deepseek-v4-pro","description":"DeepSeek V4 Pro is an AI model provided by vivgrid.","tags":"Reasoning,Tools,Open Weights,1M","vendor_id":16,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":2,"cache_ratio":0.009333333333,"enable_groups":["pro","default","plus"],"supported_endpoint_types":["openai"]},{"model_name":"glm-5.1","description":"GLM-5.1 is an AI model provided by zhipuai-coding-plan.","tags":"Reasoning,Tools,200K","vendor_id":13,"quota_type":0,"model_ratio":3,"model_price":0,"owner_by":"","completion_ratio":4,"cache_ratio":0.216666666667,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.2","description":"GPT-5.2 is an AI model provided by qihang-ai.","tags":"Reasoning,Tools,Files,Vision,400K","vendor_id":12,"quota_type":0,"model_ratio":0.125,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.071428571428,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.4","description":"GPT-5.4 is an AI model provided by vivgrid.","tags":"Reasoning,Tools,Files,Vision,400K","vendor_id":12,"quota_type":0,"model_ratio":1.25,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.4-mini","description":"GPT-5.4 Mini is an AI model provided by vivgrid.","tags":"Reasoning,Tools,Files,Vision,400K","vendor_id":12,"quota_type":0,"model_ratio":0.375,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-oss-120b","description":"GPT OSS 120B is an AI model provided by vultr.","tags":"Tools,Open Weights,129K","vendor_id":12,"quota_type":0,"model_ratio":0.5,"model_price":0,"owner_by":"","completion_ratio":4.2,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"claude-opus-4.6","icon":"Claude.Avatar.type={'platform'}","vendor_id":22,"quota_type":0,"model_ratio":0.5,"model_price":0,"owner_by":"","completion_ratio":5,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"claude-opus-4.7","icon":"Claude.Avatar.type={'platform'}","vendor_id":22,"quota_type":0,"model_ratio":0.5,"model_price":0,"owner_by":"","completion_ratio":5,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"claude-sonnet-4","icon":"Claude.Avatar.type={'platform'}","vendor_id":22,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.110233333333,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"deepseek-v4-flash","description":"DeepSeek V4 Flash is an AI model provided by venice.","icon":"DeepSeek.Avatar.type={'platform'}","tags":"Reasoning,Tools,Open Weights,1M","vendor_id":16,"quota_type":0,"model_ratio":0.5,"model_price":0,"owner_by":"","completion_ratio":2,"cache_ratio":0.028,"enable_groups":["plus","pro","default"],"supported_endpoint_types":["openai"]},{"model_name":"gemma-4-31b-it","description":"Gemma 4 31B is an AI model provided by google.","icon":"Gemini.Color","tags":"Reasoning,Tools,Open Weights,Vision,256K","vendor_id":5,"quota_type":0,"model_ratio":0.05,"model_price":0,"owner_by":"","completion_ratio":1,"enable_groups":["pro","default","plus"],"supported_endpoint_types":["openai"]},{"model_name":"minimax-m2.7","description":"MiniMax M2.7 is an AI model provided by opencode-go.","tags":"Reasoning,Tools,Open Weights,204.8K","vendor_id":18,"quota_type":0,"model_ratio":0.15,"model_price":0,"owner_by":"","completion_ratio":4,"cache_ratio":0.2,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"qwen3.5-122b-a10b","description":"Qwen3.5 122B A10B is an AI model provided by cortecs.","tags":"Reasoning,Tools,Open Weights,262.1K","vendor_id":17,"quota_type":0,"model_ratio":0.222,"model_price":0,"owner_by":"","completion_ratio":6.995495495495,"enable_groups":["pro","default","plus"],"supported_endpoint_types":["openai"]},{"model_name":"qwen3.5-397b-a17b","description":"Qwen3.5 397B A17B is an AI model provided by scaleway.","tags":"Reasoning,Tools,Open Weights,Vision,256K","vendor_id":17,"quota_type":0,"model_ratio":0.3,"model_price":0,"owner_by":"","completion_ratio":6,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"claude-sonnet-4.5","icon":"Claude.Avatar.type={'platform'}","vendor_id":22,"quota_type":0,"model_ratio":0.5,"model_price":0,"owner_by":"","completion_ratio":5,"enable_groups":["pro","default","plus"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.3-codex","description":"GPT-5.3 Codex is an AI model provided by vivgrid.","tags":"Reasoning,Tools,Vision,400K","vendor_id":12,"quota_type":0,"model_ratio":0.875,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.1,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.3-codex-spark","description":"GPT-5.3 Codex Spark is an AI model provided by opencode.","icon":"OpenAI.Avatar.type={'platform'}","tags":"Reasoning,Tools,128K","vendor_id":12,"quota_type":0,"model_ratio":0.875,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.1,"enable_groups":["plus","pro","default"],"supported_endpoint_types":["openai"]},{"model_name":"nemotron-3-super-120b-a12b","icon":"Nvidia.Avatar.type={'platform'}","vendor_id":19,"quota_type":0,"model_ratio":0.133,"model_price":0,"owner_by":"","completion_ratio":3.003759398496,"enable_groups":["plus","pro","default"],"supported_endpoint_types":["openai"]},{"model_name":"nemotron-4-340b-instruct","icon":"Nvidia.Avatar.type={'platform'}","vendor_id":19,"quota_type":0,"model_ratio":37.5,"model_price":0,"owner_by":"","completion_ratio":1,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"claude-sonnet-4.6","icon":"Claude.Avatar.type={'platform'}","vendor_id":22,"quota_type":0,"model_ratio":0.5,"model_price":0,"owner_by":"","completion_ratio":5,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"codex-auto-review","vendor_id":12,"quota_type":0,"model_ratio":0.625,"model_price":0,"owner_by":"","completion_ratio":1,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]},{"model_name":"glm5","vendor_id":13,"quota_type":0,"model_ratio":0.05,"model_price":0,"owner_by":"","completion_ratio":1,"enable_groups":["default","plus","pro"],"supported_endpoint_types":["openai"]}],"group_ratio":{"default":1},"pricing_version":"a42d372ccf0b5dd13ecf71203521f9d2","success":true,"supported_endpoint":{"openai":{"path":"/v1/chat/completions","method":"POST"}},"usable_group":{"default":""},"vendors":[{"id":18,"name":"MiniMax","description":"MiniMax","icon":"Minimax.Avatar.type={'platform'}"},{"id":19,"name":"NVIDIA","description":"英伟达","icon":"Nvidia.Avatar.type={'platform'}"},{"id":22,"name":"Claude","description":"Claude","icon":"Claude.Avatar.type={'platform'}"},{"id":5,"name":"Google","icon":"Gemini.Color"},{"id":13,"name":"智谱","icon":"Zhipu.Color"},{"id":15,"name":"Meta","icon":"Ollama"},{"id":16,"name":"DeepSeek","icon":"DeepSeek.Color"},{"id":17,"name":"阿里巴巴","icon":"Qwen.Color"},{"id":20,"name":"Mistral","icon":"Mistral.Color"},{"id":21,"name":"Anthropic","icon":"Claude.Color"},{"id":23,"name":"Cloudflare","icon":"Cloudflare.Color"},{"id":12,"name":"OpenAI","icon":"OpenAI"},{"id":14,"name":"Moonshot","icon":"Moonshot"}]}
+{
+  "auto_groups": [
+    "default"
+  ],
+  "data": [
+    {
+      "model_name": "gpt-5.2",
+      "description": "GPT-5.2 is an AI model provided by qihang-ai.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.071428571428,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4.5",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "pro",
+        "default",
+        "plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "description": "GPT-5.3 Codex Spark is an AI model provided by opencode.",
+      "icon": "OpenAI.Avatar.type={'platform'}",
+      "tags": "Reasoning,Tools,128K",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-3.3-70b-instruct",
+      "description": "Llama-3.3-70B-Instruct is an AI model provided by scaleway.",
+      "tags": "Tools,Files,Open Weights,100K",
+      "vendor_id": 15,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.5,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "nemotron-3-super-120b-a12b",
+      "icon": "Nvidia.Avatar.type={'platform'}",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.133,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.003759398496,
+      "enable_groups": [
+        "pro",
+        "default",
+        "plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4.5",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.5",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "description": "DeepSeek V4 Flash is an AI model provided by venice.",
+      "icon": "DeepSeek.Avatar.type={'platform'}",
+      "tags": "Reasoning,Tools,Open Weights,1M",
+      "vendor_id": 16,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.028,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm5",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.05,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "description": "GPT-5.4 is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "minimax-m2.7",
+      "description": "MiniMax M2.7 is an AI model provided by opencode-go.",
+      "tags": "Reasoning,Tools,Open Weights,204.8K",
+      "vendor_id": 18,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.5-397b-a17b",
+      "description": "Qwen3.5 397B A17B is an AI model provided by scaleway.",
+      "tags": "Reasoning,Tools,Open Weights,Vision,256K",
+      "vendor_id": 17,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.6",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "pro",
+        "default",
+        "plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.7",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4.6",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "description": "DeepSeek V4 Pro is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Open Weights,1M",
+      "vendor_id": 16,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.009333333333,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemma-4-31b-it",
+      "description": "Gemma 4 31B is an AI model provided by google.",
+      "icon": "Gemini.Color",
+      "tags": "Reasoning,Tools,Open Weights,Vision,256K",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.05,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5.1",
+      "description": "GLM-5.1 is an AI model provided by zhipuai-coding-plan.",
+      "tags": "Reasoning,Tools,200K",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.216666666667,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "description": "GPT-5.3 Codex is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Vision,400K",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-oss-120b",
+      "description": "GPT OSS 120B is an AI model provided by vultr.",
+      "tags": "Tools,Open Weights,129K",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.2,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.110233333333,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "description": "GPT-5.4 Mini is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "pro",
+        "default",
+        "plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.6",
+      "description": "Kimi K2.6 is an AI model provided by opencode-go.",
+      "tags": "Reasoning,Tools,Files,Open Weights,Vision,262.1K",
+      "vendor_id": 14,
+      "quota_type": 0,
+      "model_ratio": 0.475,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.210526315789,
+      "cache_ratio": 0.168421052632,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "nemotron-4-340b-instruct",
+      "icon": "Nvidia.Avatar.type={'platform'}",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.5-122b-a10b",
+      "description": "Qwen3.5 122B A10B is an AI model provided by cortecs.",
+      "tags": "Reasoning,Tools,Open Weights,262.1K",
+      "vendor_id": 17,
+      "quota_type": 0,
+      "model_ratio": 0.222,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6.995495495495,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "default": 1
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "default": ""
+  },
+  "vendors": [
+    {
+      "id": 20,
+      "name": "Mistral",
+      "icon": "Mistral.Color"
+    },
+    {
+      "id": 22,
+      "name": "Claude",
+      "description": "Claude",
+      "icon": "Claude.Avatar.type={'platform'}"
+    },
+    {
+      "id": 23,
+      "name": "Cloudflare",
+      "icon": "Cloudflare.Color"
+    },
+    {
+      "id": 5,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 12,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 13,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 14,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 15,
+      "name": "Meta",
+      "icon": "Ollama"
+    },
+    {
+      "id": 16,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 19,
+      "name": "NVIDIA",
+      "description": "英伟达",
+      "icon": "Nvidia.Avatar.type={'platform'}"
+    },
+    {
+      "id": 21,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 17,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 18,
+      "name": "MiniMax",
+      "description": "MiniMax",
+      "icon": "Minimax.Avatar.type={'platform'}"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "",
+      "SidebarModulesAdmin": "",
+      "announcements": [
+        {
+          "content": "为了防止注册机，52模型网只开放了QQ邮箱注册，请使用QQ邮箱注册。",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-05-11T18:51:46.890Z",
+          "type": "ongoing"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": true,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "模元",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "http://doc.52mx.net/52mx-manual.html",
+      "email_verification": true,
+      "enable_batch_update": false,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq": [],
+      "faq_enabled": true,
+      "footer_html": "52模型|52mx.net",
+      "github_client_id": "",
+      "github_oauth": false,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "https://img.imgos.cn/cdn/20260512/f41fcdb44f12adadf9d5bb7968ee58e2.webp",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "52模型|52mx.net",
+      "passkey_login": false,
+      "passkey_origins": "https://52mx.net",
+      "passkey_rp_id": "52mx.net",
+      "passkey_user_verification": "preferred",
+      "price": 1,
+      "privacy_policy_enabled": true,
+      "quota_display_type": "USD",
+      "quota_per_unit": 500000,
+      "self_use_mode_enabled": false,
+      "server_address": "https://52mx.net",
+      "setup": true,
+      "start_time": 1779328669,
+      "stripe_unit_price": 8,
+      "system_name": "52模型|52mx.net",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "classic",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 1,
+      "user_agreement_enabled": true,
+      "version": "v1.0.0-rc.6",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://52mx.net/api/pricing"
+}

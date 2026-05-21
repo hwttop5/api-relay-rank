@@ -214,7 +214,7 @@
     "discord_oauth": false,
     "display_in_currency": true,
     "docs_link": "https://1xm.ai/docs/",
-    "email_verification": false,
+    "email_verification": true,
     "enable_batch_update": false,
     "enable_data_export": true,
     "enable_drawing": true,

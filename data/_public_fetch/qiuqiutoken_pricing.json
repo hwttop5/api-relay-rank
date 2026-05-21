@@ -1,1 +1,779 @@
-{"auto_groups":[],"data":[{"model_name":"gpt-5.5-openai-compact","vendor_id":1,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"enable_groups":["CodeX专用-企业专供","CodeX专用-Pro号池-稳定","CodeX专用-Plus号池","default","vip","测试分组"],"supported_endpoint_types":["openai"],"pricing_version":"5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"},{"model_name":"claude-opus-4.6","vendor_id":7,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude Code专用-逆向"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-sonnet-4.6-thinking","vendor_id":7,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude Code专用-逆向"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"gpt-5.5","vendor_id":1,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"enable_groups":["default","vip","测试分组","CodeX专用-企业专供","CodeX专用-Pro号池-稳定","CodeX专用-Plus号池"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.4-openai-compact","vendor_id":1,"quota_type":0,"model_ratio":1.25,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"enable_groups":["default","vip","测试分组","CodeX专用-企业专供","CodeX专用-Pro号池-稳定","CodeX专用-Plus号池"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.3-codex-openai-compact","vendor_id":1,"quota_type":0,"model_ratio":0.875,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.1,"enable_groups":["default","vip","测试分组","CodeX专用-企业专供","CodeX专用-Pro号池-稳定","CodeX专用-Plus号池"],"supported_endpoint_types":["openai"]},{"model_name":"claude-opus-4.7","vendor_id":7,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude Code专用-逆向"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-opus-4.5","vendor_id":7,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude Code专用-逆向"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-sonnet-4.5","vendor_id":7,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude Code专用-逆向"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-sonnet-4.5-thinking","vendor_id":7,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude Code专用-逆向"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-sonnet-4","vendor_id":7,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude Code专用-逆向"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-sonnet-4-thinking","vendor_id":7,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude Code专用-逆向"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-haiku-4.5-thinking","vendor_id":7,"quota_type":0,"model_ratio":0.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude Code专用-逆向"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"gpt-5.3-codex-spark-openai-compact","icon":"OpenAI","vendor_id":1,"quota_type":0,"model_ratio":0.875,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.1,"enable_groups":["CodeX专用-企业专供","CodeX专用-Pro号池-稳定","CodeX专用-Plus号池","default","vip","测试分组"],"supported_endpoint_types":["openai"]},{"model_name":"claude-opus-4.5-thinking","vendor_id":7,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude Code专用-逆向"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-haiku-4.5","vendor_id":7,"quota_type":0,"model_ratio":0.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude Code专用-逆向"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"gpt-image-2","vendor_id":1,"quota_type":0,"model_ratio":4,"model_price":0,"owner_by":"","completion_ratio":3.75,"cache_ratio":0.25,"enable_groups":["vip","测试分组","CodeX专用-企业专供","CodeX专用-Pro号池-稳定","CodeX专用-Plus号池","default"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.3-codex","vendor_id":1,"quota_type":0,"model_ratio":0.875,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.1,"enable_groups":["default","vip","测试分组","CodeX专用-企业专供","CodeX专用-Pro号池-稳定","CodeX专用-Plus号池"],"supported_endpoint_types":["openai"]},{"model_name":"codex-auto-review","icon":"OpenAI","vendor_id":1,"quota_type":0,"model_ratio":1,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"enable_groups":["CodeX专用-企业专供","CodeX专用-Pro号池-稳定","CodeX专用-Plus号池","default","vip","测试分组"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.3-codex-spark","vendor_id":1,"quota_type":0,"model_ratio":0.875,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.1,"enable_groups":["测试分组","CodeX专用-企业专供","CodeX专用-Pro号池-稳定","CodeX专用-Plus号池","default","vip"],"supported_endpoint_types":["openai"]},{"model_name":"claude-opus-4.7-thinking","vendor_id":7,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude Code专用-逆向"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-opus-4.6-thinking","vendor_id":7,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude Code专用-逆向"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-sonnet-4.6","vendor_id":7,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":5,"enable_groups":["Claude Code专用-逆向"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"gpt-5.2","vendor_id":1,"quota_type":0,"model_ratio":0.875,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.1,"enable_groups":["CodeX专用-企业专供","CodeX专用-Pro号池-稳定","CodeX专用-Plus号池","default","vip","测试分组"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.4","vendor_id":1,"quota_type":0,"model_ratio":1.25,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"enable_groups":["vip","测试分组","CodeX专用-企业专供","CodeX专用-Pro号池-稳定","CodeX专用-Plus号池","default"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.4-mini","vendor_id":1,"quota_type":0,"model_ratio":1.5625,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"create_cache_ratio":1,"enable_groups":["CodeX专用-企业专供","CodeX专用-Pro号池-稳定","CodeX专用-Plus号池","default","vip","测试分组"],"supported_endpoint_types":["openai"]}],"group_ratio":{"Claude Code专用-逆向":0.7,"CodeX专用-Plus号池":0.8,"CodeX专用-Pro号池-稳定":0.8,"CodeX专用-企业专供":3,"group_1":1,"测试分组":5},"pricing_version":"a42d372ccf0b5dd13ecf71203521f9d2","success":true,"supported_endpoint":{"anthropic":{"path":"/v1/messages","method":"POST"},"openai":{"path":"/v1/chat/completions","method":"POST"}},"usable_group":{"Claude Code专用-逆向":"三方逆向，只可用于Claude Code，需要在配置文件中手动指定模型claude-opus-4.7、claude-opus-4.6","CodeX专用-Plus号池":"CodeX专用-自建Plus订阅号池，满血，无场景限制，默认使用Pro分组，有优惠渠道重新调整优惠","CodeX专用-Pro号池-稳定":"CodeX专用-自建Pro订阅号池，满血，无场景限制，支持gpt-image-2、OpenClew、Hermes","CodeX专用-企业专供":"CodeX专用-企业专供-自建Plus、Pro订阅号池，满血，无场景限制、支持OpenClew、Hermes","group_1":"","测试分组":"测试分组"},"vendors":[{"id":1,"name":"OpenAI","icon":"OpenAI"},{"id":4,"name":"OpenCode Zen","icon":"OpenCode"},{"id":7,"name":"Anthropic","icon":"Claude.Color"},{"id":8,"name":"Google","icon":"Gemini.Color"},{"id":9,"name":"小米","icon":"import { XiaomiMiMo } from '@lobehub/icons';"},{"id":2,"name":"讯飞","icon":"Spark.Color"},{"id":3,"name":"Vivgrid"},{"id":5,"name":"QiHang"},{"id":6,"name":"SAP AI Core"}]}
+{
+  "auto_groups": [],
+  "data": [
+    {
+      "model_name": "claude-sonnet-4.5-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "claude-sonnet-4",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
+        "default",
+        "vip",
+        "测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4.5",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4.5-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-openai-compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip",
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark-openai-compact",
+      "icon": "OpenAI",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
+        "default",
+        "vip",
+        "测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip",
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
+        "default",
+        "vip",
+        "测试分组",
+        "CodeX专用-企业专供"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "icon": "OpenAI",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip",
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.7",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4.6-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.5",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.5-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4.5",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 4,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.75,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
+        "default",
+        "vip",
+        "测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-openai-compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
+        "default",
+        "vip",
+        "测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.7-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.6",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.6-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4.6",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 5,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "Claude Code专用-逆向": 0.7,
+    "CodeX专用-Plus号池": 0.8,
+    "CodeX专用-Pro号池-稳定": 0.8,
+    "CodeX专用-企业专供": 3,
+    "测试分组": 5
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "Claude Code专用-逆向": "三方逆向，只可用于Claude Code，需要在配置文件中手动指定模型claude-opus-4.7、claude-opus-4.6",
+    "CodeX专用-Plus号池": "CodeX专用-自建Plus订阅号池，满血，无场景限制，默认使用Pro分组，有优惠渠道重新调整优惠",
+    "CodeX专用-Pro号池-稳定": "CodeX专用-自建Pro订阅号池，满血，无场景限制，支持gpt-image-2、OpenClew、Hermes",
+    "CodeX专用-企业专供": "CodeX专用-企业专供-自建Plus、Pro订阅号池，满血，无场景限制、支持OpenClew、Hermes",
+    "测试分组": "测试分组"
+  },
+  "vendors": [
+    {
+      "id": 3,
+      "name": "Vivgrid"
+    },
+    {
+      "id": 4,
+      "name": "OpenCode Zen",
+      "icon": "OpenCode"
+    },
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 2,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 5,
+      "name": "QiHang"
+    },
+    {
+      "id": 6,
+      "name": "SAP AI Core"
+    },
+    {
+      "id": 7,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 8,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 9,
+      "name": "小米",
+      "icon": "import { XiaomiMiMo } from '@lobehub/icons';"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+      "announcements": [
+        {
+          "content": "由于即将关闭月卡和周卡，现决定将倍率进行调整变更，回馈所有用户\nCodeX专用-Pro号池-稳定 分组倍率调整： 1倍率 下调至 0.8倍率\nCodeX专用-Plus号池 分组倍率调整： 1倍率 下调至 0.8倍率",
+          "extra": "",
+          "id": 9,
+          "publishDate": "2026-05-19T04:11:19.207Z",
+          "type": "default"
+        },
+        {
+          "content": "已重新上架Claude Code，现支持Claude全系模型",
+          "extra": "",
+          "id": 8,
+          "publishDate": "2026-05-09T04:00:29.813Z",
+          "type": "default"
+        },
+        {
+          "content": "1.站内支付已调通，以后充值可以直接通过钱包管理进行充值。\n2.购买月卡、周卡用户，可以直接通过钱包管理查看自己的额度使用剩余情况",
+          "extra": "",
+          "id": 7,
+          "publishDate": "2026-05-08T07:07:31.435Z",
+          "type": "default"
+        },
+        {
+          "content": "目前异地容灾恢复经过手动验证，如果服务器被攻击后出现空路由状态会在3分钟左右原地址会恢复正常使用。     如果想及时恢复使用可手动调整接入地址： api2.qiuqiutoken.com 今天晚上多次全体艾特一下 望大家周知",
+          "extra": "",
+          "id": 6,
+          "publishDate": "2026-05-05T14:25:26.840Z",
+          "type": "default"
+        },
+        {
+          "content": "发布球球AI在线生图工具：https://image.qiuqiutoken.com/",
+          "extra": "",
+          "id": 5,
+          "publishDate": "2026-04-27T13:39:44.069Z",
+          "type": "default"
+        },
+        {
+          "content": "免费用户将不可再使用Claude Code模型，如想使用请前往付费至少1元后恢复使用权限https://item.taobao.com/item.htm?id=1039119490317\n\n已修复Claude Code渠道无法自动路由问题\n\n",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2026-04-26T16:42:12.075Z",
+          "type": "default"
+        },
+        {
+          "content": "新增gpt-image-2生图模型\n\n恢复操练场，支持操练场进行AI对话",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2026-04-25T19:01:03.202Z",
+          "type": "default"
+        },
+        {
+          "content": "球球Token突然涌入多数用户导致Claude模型额度受限，我们将会在24号增加额度。请大家先使用CodeX模型",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-04-23T08:36:51.113Z",
+          "type": "default"
+        },
+        {
+          "content": "所有用户联系群主<font color=\"red\">免费领取5美元</font>额度试用体验。售前 QQ 群：<font color=\"blue\">1095876005</font>",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-04-16T01:04:21.719Z",
+          "type": "default"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "blue",
+          "description": "大带宽直连",
+          "id": 1,
+          "route": "直连（推荐）",
+          "url": "https://api.qiuqiutoken.com/"
+        },
+        {
+          "color": "green",
+          "description": "适合直连速度慢的移动联通等用户",
+          "id": 2,
+          "route": "cdn优化（次推荐）",
+          "url": "https://api2.qiuqiutoken.com/"
+        },
+        {
+          "color": "cyan",
+          "description": "带宽不大，次推荐",
+          "id": 3,
+          "route": "BGP国内中转（备用地址）",
+          "url": "https://api.qiuqiutoken.jiawuyu.com/"
+        },
+        {
+          "color": "purple",
+          "description": "终极选择",
+          "id": 4,
+          "route": "BGP国内中转-不稳定（最终备用）",
+          "url": "https://api2.qiuqiutoken.jiawuyu.com/"
+        },
+        {
+          "color": "blue",
+          "description": "查看模型健康状态",
+          "id": 5,
+          "route": "线路健康监控面板",
+          "url": "https://status.qiuqiutoken.com/"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://qiuqiutoken.com/docs/",
+      "email_verification": true,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": false,
+      "enable_task": true,
+      "faq": [],
+      "faq_enabled": true,
+      "footer_html": "© 2026 球球Token - AI中转服务站. 版权所有.  售前交流qq群：1095876005",
+      "github_client_id": "Ov23li2c3nm6CH2GRuOW",
+      "github_oauth": false,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "https://file1.oss.jiawuyu.com/default/qiuqiutoken_circle.png",
+      "mj_notify_enabled": true,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "New API",
+      "passkey_login": false,
+      "passkey_origins": "https://qiuqiutoken.com",
+      "passkey_rp_id": "qiuqiutoken.com",
+      "passkey_user_verification": "preferred",
+      "price": 1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "CNY",
+      "quota_per_unit": 500000,
+      "self_use_mode_enabled": false,
+      "server_address": "https://qiuqiutoken.com",
+      "setup": true,
+      "start_time": 1779295223,
+      "stripe_unit_price": 8,
+      "system_name": "球球Token - AI中转服务站",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "classic",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 1,
+      "user_agreement_enabled": false,
+      "version": "v1.0.0-rc.4",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://api.qiuqiutoken.com/api/pricing"
+}

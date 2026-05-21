@@ -1,0 +1,64 @@
+{
+  "groupMultipliers": [],
+  "rechargeTiers": [
+    {
+      "rechargeName": "20 USD external shop redeem code",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 6.0,
+      "usdAmount": 20.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; permanent balance"
+    },
+    {
+      "rechargeName": "30 USD external shop redeem code",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 9.0,
+      "usdAmount": 30.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; permanent balance"
+    },
+    {
+      "rechargeName": "50 USD external shop redeem code",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 15.0,
+      "usdAmount": 50.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; permanent balance"
+    },
+    {
+      "rechargeName": "100 USD external shop redeem code",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 30.0,
+      "usdAmount": 100.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; permanent balance"
+    },
+    {
+      "rechargeName": "200 USD external shop redeem code",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 60.0,
+      "usdAmount": 200.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; permanent balance"
+    },
+    {
+      "rechargeName": "500 USD external shop redeem code",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 145.0,
+      "usdAmount": 500.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; permanent balance"
+    }
+  ],
+  "tierNotes": [
+    "laodog/dogcoding payment config is disabled; recharge evidence uses the official menu-linked external shop redeem-code products."
+  ],
+  "sourceUrl": "https://pay.ldxp.cn/shop/JVDCG8IG",
+  "stationTypeHint": "non_subscription"
+}

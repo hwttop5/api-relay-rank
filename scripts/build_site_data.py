@@ -13,6 +13,11 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import quote, urlparse, urlunparse
 
+try:
+    from scripts.station_display_names import contains_han, normalize_station_label
+except ModuleNotFoundError:
+    from station_display_names import contains_han, normalize_station_label
+
 
 SCRIPT_PATH = Path(__file__).resolve()
 APP_ROOT = SCRIPT_PATH.parents[1]
@@ -24,6 +29,7 @@ PUBLIC_FETCH_DIR = Path(os.environ.get("PUBLIC_FETCH_DIR", DATA_DIR / "_public_f
 AUDIT_RUNS_DIR = DATA_DIR / "_audit_runs"
 PUBLIC_FETCH_DIRS = [PUBLIC_FETCH_DIR]
 LIVE_AUTH_PROBE_DIR = WORKSPACE_ROOT / "tabbit-audit-profile"
+PENDING_API_PROBE_PATH = LIVE_AUTH_PROBE_DIR / "pending-stations-api-probes.json"
 STATION_PRICING_OVERRIDES_PATH = APP_ROOT / "config" / "station_pricing_overrides.json"
 STATION_URL_OVERRIDES_PATH = APP_ROOT / "config" / "station_url_overrides.json"
 STATION_AUDIT_TARGETS_PATH = APP_ROOT / "config" / "station_audit_targets.json"
@@ -47,6 +53,7 @@ BILLING_LABELS = {
     "monthly": "月卡",
     "weekly": "周卡",
     "daily": "日卡",
+    "quarterly": "季卡",
     "permanent": "永久额度",
     "permanent_or_unknown": "按量额度",
 }
@@ -72,6 +79,7 @@ APP_CONFIG_PATTERN = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 URL_PATTERN = re.compile(r"https?://[^\s\"'<>]+")
+PAY_SHOP_PATTERN = re.compile(r"https?://pay\.ldxp\.cn/shop/([A-Za-z0-9_-]+)")
 TRAILING_UI_SEGMENTS = {"console", "dashboard", "wallet", "keys", "purchase", "pricing", "plans", "api-keys"}
 LOCALE_SEGMENT_PATTERN = re.compile(r"^[A-Za-z]{2}(?:-[A-Za-z]{2})?$")
 PAYMENT_URL_PATH_SEGMENTS = {"shop", "item", "pay", "checkout", "payment"}
@@ -111,6 +119,16 @@ def parse_int(value: Any) -> int:
 
 def parse_bool(value: Any) -> bool:
     return str(value or "").strip().lower() in {"1", "true", "yes", "y"}
+
+
+def explicitly_false(value: Any) -> bool:
+    if value is False:
+        return True
+    if isinstance(value, str):
+        return value.strip().lower() in {"0", "false", "no", "n", "off", "disabled"}
+    if isinstance(value, (int, float)):
+        return float(value) == 0.0
+    return False
 
 
 def split_list(value: Any) -> list[str]:
@@ -173,6 +191,14 @@ def normalize_public_text(value: Any) -> str:
     text = sanitize_public_text(value)
     text = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)", r"\1 \2", text)
     return text
+
+
+def station_display_label(station_key: Any, raw_label: Any = "", station_url: Any = "") -> str:
+    return normalize_station_label(
+        sanitize_public_text(station_key),
+        sanitize_public_text(raw_label),
+        sanitize_public_text(station_url),
+    )
 
 
 class AnnouncementHtmlTextParser(HTMLParser):
@@ -518,14 +544,16 @@ def ranking_row(row: dict[str, str]) -> dict[str, Any]:
     adopted_tier = sanitize_public_text(row.get("adopted_tier"))
     adopted_group, adopted_recharge = (adopted_tier.split(" | ", 1) + [""])[:2] if adopted_tier else ("", "")
     station_type = row.get("station_type", "unknown_pending")
+    station_key = row.get("station", "")
+    station_url = sanitize_public_text(row.get("station_url"))
     return {
         "rank": parse_int(row.get("rank")),
         "rankingBasis": sanitize_public_text(row.get("ranking_basis")),
         "timeWindow": row.get("time_window", ""),
         "timeWindowLabel": sanitize_public_text(row.get("time_window_label")),
-        "station": row.get("station", ""),
-        "label": sanitize_public_text(row.get("label")),
-        "stationUrl": sanitize_public_text(row.get("station_url")),
+        "station": station_key,
+        "label": station_display_label(station_key, row.get("label"), station_url),
+        "stationUrl": station_url,
         "stationType": station_type,
         "stationTypeLabel": sanitize_public_text(row.get("station_type_label")) or FULL_TYPE_LABELS.get(station_type, station_type),
         "stationTypeShortLabel": SHORT_TYPE_LABELS.get(station_type, station_type),
@@ -556,9 +584,10 @@ def ranking_row(row: dict[str, str]) -> dict[str, Any]:
 
 
 def quality_row(row: dict[str, str]) -> dict[str, Any]:
+    station_key = row.get("station", "")
     return {
-        "station": row.get("station", ""),
-        "label": sanitize_public_text(row.get("label")),
+        "station": station_key,
+        "label": station_display_label(station_key, row.get("label")),
         "platformGuess": sanitize_public_text(row.get("platform_guess")),
         "timeWindow": row.get("time_window", ""),
         "timeWindowLabel": sanitize_public_text(row.get("time_window_label")),
@@ -804,12 +833,14 @@ def ensure_station(
     raw_station_key = sanitize_public_text(station_key).strip()
     station_key = canonical_station_key(raw_station_key, station_aliases)
     station_type = overrides.get("station_type") or "unknown_pending"
+    display_url = sanitize_public_text(overrides.get("url")) if raw_station_key == station_key else ""
+    display_label = station_display_label(station_key, overrides.get("label"), display_url)
     record = container.setdefault(
         station_key,
         {
             "key": station_key,
-            "label": sanitize_public_text(overrides.get("label")) if raw_station_key == station_key else station_key,
-            "url": sanitize_public_text(overrides.get("url")) if raw_station_key == station_key else "",
+            "label": display_label,
+            "url": display_url,
             "stationType": station_type,
             "stationTypeLabel": FULL_TYPE_LABELS.get(station_type, "待补证据"),
             "stationTypeShortLabel": SHORT_TYPE_LABELS.get(station_type, "待补证据"),
@@ -825,7 +856,7 @@ def ensure_station(
     )
 
     if raw_station_key == station_key and overrides.get("label"):
-        record["label"] = sanitize_public_text(overrides["label"])
+        record["label"] = station_display_label(station_key, overrides["label"], record.get("url"))
     if raw_station_key == station_key and overrides.get("url"):
         record["url"] = sanitize_public_text(overrides["url"])
 
@@ -904,20 +935,93 @@ def load_announcements(status_payloads: dict[str, dict[str, Any]]) -> dict[str, 
 
 def load_live_auth_probes(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
     grouped: dict[str, dict[str, Any]] = {}
-    if not LIVE_AUTH_PROBE_DIR.exists():
-        return grouped
-    for path in sorted(LIVE_AUTH_PROBE_DIR.glob("*-live-auth-probe.json")):
-        station_key = canonical_station_key(path.name.removesuffix("-live-auth-probe.json"), station_aliases)
-        if not is_public_station_key(station_key):
-            continue
-        try:
-            payload = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError):
-            continue
-        if isinstance(payload, dict):
-            payload["_probePath"] = str(path)
-            grouped[station_key] = payload
+    if LIVE_AUTH_PROBE_DIR.exists():
+        for path in sorted(LIVE_AUTH_PROBE_DIR.glob("*-live-auth-probe.json")):
+            station_key = canonical_station_key(path.name.removesuffix("-live-auth-probe.json"), station_aliases)
+            if not is_public_station_key(station_key):
+                continue
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            if isinstance(payload, dict):
+                payload["_probePath"] = str(path)
+                grouped[station_key] = payload
+    for station_key, pending in load_pending_api_probes(station_aliases).items():
+        current = grouped.get(station_key)
+        if current is None or not probe_has_useful_detail_data(current):
+            grouped[station_key] = pending
     return grouped
+
+
+def load_pending_api_probes(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
+    if not PENDING_API_PROBE_PATH.exists():
+        return {}
+    try:
+        payload = json.loads(PENDING_API_PROBE_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    if not isinstance(payload, dict):
+        return {}
+    grouped: dict[str, dict[str, Any]] = {}
+    for station, record in payload.items():
+        station_key = canonical_station_key(str(station), station_aliases)
+        if not is_public_station_key(station_key) or not isinstance(record, dict):
+            continue
+        normalized = normalize_pending_api_probe(record)
+        if probe_has_useful_detail_data(normalized):
+            grouped[station_key] = normalized
+    return grouped
+
+
+def normalize_pending_api_probe(record: dict[str, Any]) -> dict[str, Any]:
+    state = record.get("state") if isinstance(record.get("state"), dict) else {}
+    results = record.get("results") if isinstance(record.get("results"), dict) else {}
+    normalized_results: dict[str, Any] = results
+    if record.get("probe_kind") == "new_api" and "/api/user/self/groups" in results:
+        normalized_results = {"New-Api-User:pending": results}
+    return {
+        "location": state.get("location") or record.get("url") or "",
+        "url": record.get("url") or state.get("location") or "",
+        "title": state.get("title") or record.get("title") or "",
+        "results": normalized_results,
+        "_probePath": str(PENDING_API_PROBE_PATH),
+    }
+
+
+def body_has_nonempty_data(body: Any) -> bool:
+    if not isinstance(body, dict):
+        return False
+    data = body.get("data")
+    if isinstance(data, (list, dict)):
+        return bool(data)
+    return data not in (None, "", [])
+
+
+def probe_has_useful_detail_data(probe: dict[str, Any]) -> bool:
+    results = probe.get("results")
+    if not isinstance(results, dict):
+        return False
+    buckets = [results]
+    buckets.extend(bucket for bucket in results.values() if isinstance(bucket, dict))
+    detail_paths = (
+        "/api/user/self/groups",
+        "/api/user/topup/info",
+        "/api/subscription/plans",
+        "/api/v1/groups/available",
+        "/api/v1/payment/plans",
+        "/api/v1/payment/checkout-info",
+    )
+    for bucket in buckets:
+        for path in detail_paths:
+            entry = bucket.get(path)
+            body = entry.get("body") if isinstance(entry, dict) else None
+            if body_has_nonempty_data(body):
+                return True
+        amount_results = bucket.get("/api/user/amount")
+        if isinstance(amount_results, dict) and amount_results:
+            return True
+    return False
 
 
 def probe_location(probe: dict[str, Any]) -> str:
@@ -1146,6 +1250,9 @@ def entry_is_blocked(entry: dict[str, Any] | None) -> bool:
 
 
 def live_probe_group_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]]:
+    new_api_result = new_api_group_rows(probe)
+    if new_api_result is not None:
+        return new_api_result
     entry = find_probe_result(probe, "/api/v1/groups/available")
     data = probe_result_data_from_entry(entry)
     rows = data if isinstance(data, list) else []
@@ -1185,9 +1292,42 @@ def duration_unit_to_billing_type(unit: Any) -> str:
         return "weekly"
     if text in {"day", "daily"}:
         return "daily"
+    if text in {"quarter", "quarterly"}:
+        return "quarterly"
     if text in {"year", "yearly"}:
         return "monthly"
     return "permanent"
+
+
+def billing_type_from_days(days: Any) -> str:
+    value = parse_float(days)
+    if value == 90:
+        return "quarterly"
+    if value == 30:
+        return "monthly"
+    if value == 7:
+        return "weekly"
+    if value == 1:
+        return "daily"
+    return "monthly"
+
+
+def plan_expires_rule(plan: dict[str, Any]) -> str:
+    subtitle = sanitize_public_text(plan.get("subtitle") or plan.get("description") or plan.get("desc"))
+    validity_days = parse_float(plan.get("validity_days"))
+    if validity_days:
+        base = f"{format_plain_number(validity_days)} day package"
+    elif parse_float(plan.get("duration_value")) and str(plan.get("duration_unit") or "").strip():
+        unit = str(plan.get("duration_unit") or "").strip()
+        base = f"{format_plain_number(parse_float(plan.get('duration_value')))} {unit} subscription"
+    else:
+        base = subtitle or "Subscription package"
+    quota_reset_period = str(plan.get("quota_reset_period") or "").strip().lower()
+    if quota_reset_period == "never":
+        base = f"{base}; total quota pool, no periodic reset"
+    elif quota_reset_period in {"daily", "weekly", "monthly"}:
+        base = f"{base}; quota resets {quota_reset_period}"
+    return base
 
 
 def convert_quota_to_usd(quota_value: Any) -> float | None:
@@ -1197,27 +1337,248 @@ def convert_quota_to_usd(quota_value: Any) -> float | None:
     return raw / 500000.0
 
 
-def live_probe_recharge_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]]:
+def plan_total_usd(plan: dict[str, Any]) -> float | None:
+    for key in ("usd_amount", "usdAmount", "usd", "monthly_limit_usd", "weekly_limit_usd", "daily_limit_usd"):
+        direct = parse_float(plan.get(key))
+        if direct and direct > 0:
+            if key == "daily_limit_usd":
+                duration_days = parse_float(plan.get("validity_days") or plan.get("duration_value")) or 1
+                return direct * max(1, duration_days)
+            if key == "weekly_limit_usd":
+                duration_days = parse_float(plan.get("validity_days") or plan.get("duration_value")) or 7
+                return direct * max(1, int(duration_days // 7))
+            return direct
+    quota_usd = convert_quota_to_usd(plan.get("total_amount"))
+    if quota_usd is None:
+        quota_usd = convert_quota_to_usd(plan.get("quota"))
+    if quota_usd:
+        return quota_usd
+    description = str(plan.get("description") or plan.get("subtitle") or plan.get("desc") or "")
+    match = re.search(r"(?:\$\s*(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*(?:USD|usd|\$))", description)
+    if match:
+        return parse_float(match.group(1) or match.group(2))
+    return None
+
+
+def plan_billing_type(plan: dict[str, Any]) -> str:
+    explicit = sanitize_public_text(plan.get("billing_type") or plan.get("billingType"))
+    if explicit:
+        return explicit
+    validity_days = parse_float(plan.get("validity_days"))
+    if validity_days:
+        return billing_type_from_days(validity_days)
+    return duration_unit_to_billing_type(plan.get("duration_unit") or plan.get("validity_unit"))
+
+
+def new_api_auth_bucket(probe: dict[str, Any]) -> dict[str, Any] | None:
+    results = probe.get("results")
+    if not isinstance(results, dict):
+        return None
+    if isinstance(results.get("/api/user/self/groups"), dict):
+        return results
+    candidates: list[dict[str, Any]] = []
+    for key, bucket in results.items():
+        if isinstance(key, str) and key.startswith("New-Api-User:") and isinstance(bucket, dict):
+            candidates.append(bucket)
+    for bucket in candidates:
+        for path in ("/api/user/self/groups", "/api/user/topup/info", "/api/subscription/plans"):
+            entry = bucket.get(path)
+            body = entry.get("body") if isinstance(entry, dict) else None
+            if isinstance(body, dict) and (body.get("success") is True or body.get("code") == 0):
+                return bucket
+        amount_results = bucket.get("/api/user/amount")
+        if isinstance(amount_results, dict):
+            for entry in amount_results.values():
+                body = entry.get("body") if isinstance(entry, dict) else None
+                if isinstance(body, dict) and (body.get("success") is True or body.get("code") == 0):
+                    return bucket
+    if candidates:
+        return candidates[0]
+    return None
+
+
+def new_api_group_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]] | None:
+    bucket = new_api_auth_bucket(probe)
+    if bucket is None:
+        return None
+    entry = bucket.get("/api/user/self/groups")
+    data = probe_result_data_from_entry(entry if isinstance(entry, dict) else None)
+    groups: list[dict[str, Any]] = []
+    if isinstance(data, dict):
+        for group_name, group_info in data.items():
+            if not isinstance(group_info, dict):
+                continue
+            group = normalize_group_row(
+                {
+                    "groupName": group_name,
+                    "groupMultiplier": group_info.get("ratio") or group_info.get("multiplier"),
+                }
+            )
+            if group:
+                groups.append(group)
+    source = probe_source_url(probe, "/api/user/self/groups")
+    if groups:
+        return groups, {"status": "captured", "source": source, "message": f"登录态分组接口抓取到 {len(groups)} 条"}
+    if isinstance(entry, dict):
+        return [], {"status": "empty", "source": source, "message": "登录态 New API 分组接口返回空列表"}
+    return [], {"status": "missing", "source": sanitize_public_text(probe.get("_probePath") or probe_location(probe)), "message": "live auth probe 尚未包含 New API 分组接口"}
+
+
+def new_api_recharge_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]] | None:
+    bucket = new_api_auth_bucket(probe)
+    if bucket is None:
+        return None
+    topup_entry = bucket.get("/api/user/topup/info")
+    topup_data = probe_result_data_from_entry(topup_entry if isinstance(topup_entry, dict) else None)
+    topup_data = topup_data if isinstance(topup_data, dict) else {}
+    amount_options = topup_data.get("amount_options") if isinstance(topup_data.get("amount_options"), list) else []
+    discount_map = topup_data.get("discount") if isinstance(topup_data.get("discount"), dict) else {}
+    amount_results = bucket.get("/api/user/amount")
+    amount_results = amount_results if isinstance(amount_results, dict) else {}
     tiers: list[dict[str, Any]] = []
-    plan_entry = find_probe_result(probe, "/api/v1/payment/plans")
-    plan_rows, _found_plans = extract_collection(probe_result_data_from_entry(plan_entry))
+    for amount in amount_options:
+        rmb_amount = parse_float(amount)
+        if rmb_amount is None or rmb_amount <= 0:
+            continue
+        amount_key = str(int(rmb_amount)) if rmb_amount.is_integer() else str(rmb_amount)
+        entry = amount_results.get(amount_key)
+        data = probe_result_data_from_entry(entry if isinstance(entry, dict) else None)
+        usd_amount = parse_float(data)
+        if usd_amount is None:
+            continue
+        discount = parse_float(discount_map.get(amount_key)) or 1.0
+        note = "Wallet API conversion sample from /api/user/amount; not a fixed package"
+        if discount != 1.0:
+            note = f"{note}; discount {format_plain_number(discount)}"
+        row = normalize_recharge_row(
+            {
+                "rechargeName": f"wallet topup sample {format_plain_number(rmb_amount)} RMB",
+                "billingType": "permanent",
+                "rmbAmount": rmb_amount,
+                "usdAmount": usd_amount,
+                "rechargeLocation": "wallet API -> /api/user/amount sample",
+                "expiresRule": note,
+            }
+        )
+        if row:
+            tiers.append(row)
+
+    plan_entry = bucket.get("/api/subscription/plans")
+    plan_rows, _found = extract_collection(probe_result_data_from_entry(plan_entry if isinstance(plan_entry, dict) else None))
+    seen_plans: set[tuple[Any, ...]] = set()
     for item in plan_rows:
         if not isinstance(item, dict):
             continue
-        plan = item.get("plan") if isinstance(item.get("plan"), dict) else item
-        title = sanitize_public_text(plan.get("title") or plan.get("name") or "subscription plan")
-        price = parse_float(plan.get("price") or plan.get("amount") or plan.get("rmbAmount") or plan.get("rmb_amount"))
-        usd_amount = parse_float(plan.get("usdAmount") or plan.get("usd_amount") or plan.get("usd"))
-        if usd_amount is None:
-            usd_amount = convert_quota_to_usd(plan.get("total_amount") or plan.get("quota"))
+        plan = dict(item.get("plan") if isinstance(item.get("plan"), dict) else item)
+        title = sanitize_public_text(plan.get("title") or plan.get("name") or plan.get("product_name") or "subscription plan")
+        price = parse_float(
+            plan.get("price_amount")
+            or plan.get("price")
+            or plan.get("amount")
+            or plan.get("rmbAmount")
+            or plan.get("rmb_amount")
+        )
+        usd_amount = plan_total_usd(plan)
+        key = (plan.get("id"), title, price, usd_amount)
+        if key in seen_plans:
+            continue
+        seen_plans.add(key)
         row = normalize_recharge_row(
             {
                 "rechargeName": title,
-                "billingType": duration_unit_to_billing_type(plan.get("duration_unit") or plan.get("billing_type")),
+                "billingType": plan_billing_type(plan),
+                "rmbAmount": price,
+                "usdAmount": usd_amount,
+                "rechargeLocation": "subscription plans API",
+                "expiresRule": plan_expires_rule(plan),
+            }
+        )
+        if row:
+            tiers.append(row)
+
+    source = probe_source_url(probe, "/api/subscription/plans" if plan_rows else "/api/user/amount")
+    if tiers:
+        return tiers, {"status": "captured", "source": source, "message": f"登录态充值/订阅接口抓取到 {len(tiers)} 条"}
+    if amount_options or amount_results or plan_entry is not None:
+        return [], {"status": "empty", "source": source, "message": "登录态充值/订阅接口返回空列表"}
+    return [], {"status": "missing", "source": sanitize_public_text(probe.get("_probePath") or probe_location(probe)), "message": "live auth probe 尚未包含 New API 充值接口"}
+
+
+def v1_plan_rows_from_probe(probe: dict[str, Any]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    seen: set[tuple[Any, ...]] = set()
+    plan_sources: list[Any] = []
+    plan_entry = find_probe_result(probe, "/api/v1/payment/plans")
+    checkout_entry = find_probe_result(probe, "/api/v1/payment/checkout-info")
+    checkout_data = probe_result_data_from_entry(checkout_entry)
+    if isinstance(checkout_data, dict):
+        plan_sources.append(checkout_data.get("plans"))
+    plan_sources.append(probe_result_data_from_entry(plan_entry))
+    for source in plan_sources:
+        plan_rows, _found = extract_collection(source)
+        for item in plan_rows:
+            if not isinstance(item, dict):
+                continue
+            plan = dict(item.get("plan") if isinstance(item.get("plan"), dict) else item)
+            title = sanitize_public_text(plan.get("title") or plan.get("name") or plan.get("product_name") or "subscription plan")
+            price = parse_float(plan.get("price") or plan.get("amount") or plan.get("rmbAmount") or plan.get("rmb_amount") or plan.get("price_amount"))
+            usd_amount = parse_float(plan.get("usdAmount") or plan.get("usd_amount") or plan.get("usd"))
+            if usd_amount is None:
+                for key in ("monthly_limit_usd", "weekly_limit_usd", "daily_limit_usd"):
+                    usd_amount = parse_float(plan.get(key))
+                    if usd_amount is not None:
+                        if key == "daily_limit_usd":
+                            usd_amount *= parse_float(plan.get("validity_days")) or 1
+                        elif key == "weekly_limit_usd":
+                            usd_amount *= max(1, int((parse_float(plan.get("validity_days")) or 7) // 7))
+                        break
+            if usd_amount is None:
+                usd_amount = convert_quota_to_usd(plan.get("total_amount") or plan.get("quota"))
+            if usd_amount is None:
+                match = re.search(r"(?:\$\s*(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*(?:USD|usd|刀|美元|\$))", str(plan.get("description") or ""))
+                if match:
+                    usd_amount = parse_float(match.group(1) or match.group(2))
+            key = (title, price, usd_amount, plan.get("group_name") or plan.get("upgrade_group") or plan.get("id"))
+            if key in seen:
+                continue
+            seen.add(key)
+            if price is None or usd_amount is None:
+                continue
+            plan["title"] = title
+            plan["price_amount"] = price
+            plan["usd_amount"] = usd_amount
+            rows.append(plan)
+    return rows
+
+
+def live_probe_recharge_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]]:
+    new_api_result = new_api_recharge_rows(probe)
+    if new_api_result is not None:
+        return new_api_result
+    tiers: list[dict[str, Any]] = []
+    plan_entry = find_probe_result(probe, "/api/v1/payment/plans")
+    for item in v1_plan_rows_from_probe(probe):
+        if not isinstance(item, dict):
+            continue
+        plan = item
+        title = sanitize_public_text(plan.get("title") or plan.get("name") or "subscription plan")
+        price = parse_float(plan.get("price_amount") or plan.get("price") or plan.get("amount") or plan.get("rmbAmount") or plan.get("rmb_amount"))
+        usd_amount = parse_float(plan.get("usd_amount") or plan.get("usdAmount") or plan.get("usd"))
+        row = normalize_recharge_row(
+            {
+                "rechargeName": title,
+                "billingType": (
+                    plan.get("billing_type")
+                    or (
+                        billing_type_from_days(plan.get("validity_days"))
+                        if plan.get("validity_days")
+                        else duration_unit_to_billing_type(plan.get("duration_unit") or plan.get("validity_unit"))
+                    )
+                ),
                 "rmbAmount": price,
                 "usdAmount": usd_amount,
                 "rechargeLocation": "login probe payment plans API",
-                "expiresRule": sanitize_public_text(plan.get("subtitle") or plan.get("description") or plan.get("desc")),
+                "expiresRule": plan_expires_rule(plan),
             }
         )
         if row:
@@ -1227,8 +1588,10 @@ def live_probe_recharge_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]
     checkout_entry = find_probe_result(probe, "/api/v1/payment/checkout-info")
     payment_config = probe_result_data_from_entry(config_entry)
     checkout_info = probe_result_data_from_entry(checkout_entry)
+    public_settings = probe_result_data_from_entry(find_probe_result(probe, "/api/v1/settings/public"))
     payment_config = payment_config if isinstance(payment_config, dict) else {}
     checkout_info = checkout_info if isinstance(checkout_info, dict) else {}
+    public_settings = public_settings if isinstance(public_settings, dict) else {}
     recharge_multiplier = (
         parse_float(checkout_info.get("balance_recharge_multiplier"))
         or parse_float(payment_config.get("balance_recharge_multiplier"))
@@ -1236,7 +1599,14 @@ def live_probe_recharge_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]
     )
     balance_disabled = bool(checkout_info.get("balance_disabled", payment_config.get("balance_disabled")))
     quick_amounts = probe.get("quick_amounts") if isinstance(probe.get("quick_amounts"), list) else []
-    if recharge_multiplier > 0 and not balance_disabled and quick_amounts:
+    wallet_enabled = (
+        not explicitly_false(payment_config.get("enabled"))
+        and not explicitly_false(checkout_info.get("enabled"))
+        and not explicitly_false(public_settings.get("payment_enabled"))
+        and recharge_multiplier > 0
+        and not balance_disabled
+    )
+    if wallet_enabled and quick_amounts:
         methods = checkout_info.get("methods") if isinstance(checkout_info.get("methods"), dict) else {}
         method_text = ", ".join(sorted(str(name) for name in methods)) or "login probe"
         fee_rate = parse_float(checkout_info.get("recharge_fee_rate") or payment_config.get("recharge_fee_rate")) or 0.0
@@ -1624,6 +1994,7 @@ def load_base_site_snapshot(
         for raw_row in existing.get("rankings", {}).get(window_key, []):
             row = deepcopy(raw_row)
             row["station"] = canonical_station_key(row.get("station"), station_aliases)
+            row["label"] = station_display_label(row.get("station"), row.get("label"), row.get("stationUrl"))
             rows.append(row)
         rankings[window_key], _ = merge_ranking_rows_by_station(rows)
 
@@ -1643,7 +2014,7 @@ def load_base_site_snapshot(
             station_type=raw_station.get("stationType", ""),
             platform_guess=raw_station.get("platformGuess", ""),
         )
-        raw_label = sanitize_public_text(raw_station.get("label"))
+        raw_label = station_display_label(station_key, raw_station.get("label"), raw_station.get("url"))
         raw_url = sanitize_public_text(raw_station.get("url"))
         raw_station_type = raw_station.get("stationType", "")
         raw_station_type_label = sanitize_public_text(raw_station.get("stationTypeLabel"))
@@ -1768,7 +2139,7 @@ def sync_station_metadata_into_rows(
             station = stations.get(str(row.get("station") or "").strip())
             if not station:
                 continue
-            row["label"] = sanitize_public_text(station.get("label"))
+            row["label"] = station_display_label(station.get("key"), station.get("label"), station.get("url"))
             row["stationUrl"] = sanitize_public_text(station.get("url"))
             row["stationType"] = station.get("stationType", "")
             row["stationTypeLabel"] = station.get("stationTypeLabel", "")
@@ -1779,7 +2150,7 @@ def sync_station_metadata_into_rows(
             if not isinstance(row, dict):
                 continue
             row["station"] = station["key"]
-            row["label"] = sanitize_public_text(station.get("label"))
+            row["label"] = station_display_label(station.get("key"), station.get("label"), station.get("url"))
             row["platformGuess"] = sanitize_public_text(station.get("platformGuess"))
 
 
@@ -1837,14 +2208,52 @@ def parse_public_pricing_payload(payload: dict[str, Any]) -> dict[str, Any]:
     groups: list[dict[str, Any]] = []
     recharge_tiers: list[dict[str, Any]] = []
     tier_notes: list[str] = []
-    source_url = sanitize_public_text(payload.get("server_address") or payload.get("base_url") or payload.get("source_url"))
+    source_url = sanitize_public_text(payload.get("server_address") or payload.get("base_url") or payload.get("source_url") or payload.get("sourceUrl"))
 
-    group_ratio = payload.get("group_ratio")
-    if isinstance(group_ratio, dict):
-        for group_name, raw_value in group_ratio.items():
-            group = maybe_parse_group_ratio(group_name, raw_value)
-            if group:
-                groups.append(group)
+    normalized_groups = normalized_group_rows(payload.get("groupMultipliers") or payload.get("group_multipliers"))
+    if normalized_groups:
+        groups.extend(normalized_groups)
+
+    normalized_recharges = normalized_recharge_rows(payload.get("rechargeTiers") or payload.get("recharge_tiers_normalized"))
+    if normalized_recharges:
+        recharge_tiers.extend(normalized_recharges)
+
+    for group_ratio in (
+        payload.get("group_ratio"),
+        payload.get("groupRatio"),
+        (payload.get("data") if isinstance(payload.get("data"), dict) else {}).get("group_ratio"),
+    ):
+        if isinstance(group_ratio, dict):
+            for group_name, raw_value in group_ratio.items():
+                group = maybe_parse_group_ratio(group_name, raw_value)
+                if group:
+                    groups.append(group)
+
+    status_data = payload.get("status_payload") or payload.get("statusPayload")
+    if isinstance(status_data, dict) and isinstance(status_data.get("data"), dict):
+        status_data = status_data["data"]
+    if not isinstance(status_data, dict) and isinstance(payload.get("data"), dict):
+        data_payload = payload["data"]
+        if any(key in data_payload for key in ("quota_per_unit", "price", "server_address")):
+            status_data = data_payload
+    if not isinstance(status_data, dict):
+        status_data = payload
+    price = parse_float(status_data.get("price") if isinstance(status_data, dict) else None)
+    quota_per_unit = parse_float(status_data.get("quota_per_unit") if isinstance(status_data, dict) else None)
+    if price and quota_per_unit and price > 0 and quota_per_unit > 0:
+        usd_amount = quota_per_unit / 500000.0
+        row = normalize_recharge_row(
+            {
+                "rechargeName": f"public status {format_plain_number(price)} RMB = {format_plain_number(usd_amount)} USD credit",
+                "billingType": "permanent",
+                "rmbAmount": price,
+                "usdAmount": usd_amount,
+                "rechargeLocation": "public /api/status",
+                "expiresRule": "Public status price/quota conversion; expiry not stated",
+            }
+        )
+        if row:
+            recharge_tiers.append(row)
 
     for key in ("recharge_tiers", "topup_tiers", "topups", "wallet_topups", "pricing_tiers", "data"):
         values = payload.get(key)
@@ -1854,6 +2263,18 @@ def parse_public_pricing_payload(payload: dict[str, Any]) -> dict[str, Any]:
             tier = parse_pricing_tier_item(item)
             if tier:
                 recharge_tiers.append(tier)
+
+    for key in ("tierNotes", "tier_notes", "notes"):
+        notes = payload.get(key)
+        if isinstance(notes, list):
+            for item in notes:
+                note = normalize_public_text(item)
+                if note:
+                    tier_notes.append(note)
+        else:
+            note = normalize_public_text(notes)
+            if note:
+                tier_notes.append(note)
 
     note = normalize_public_text(payload.get("message"))
     if note:
@@ -1865,6 +2286,67 @@ def parse_public_pricing_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "tierNotes": tier_notes,
         "sourceUrl": source_url,
         "stationTypeHint": "",
+    }
+
+
+KNOWN_PAY_SHOP_PRODUCTS: dict[str, dict[str, Any]] = {
+    "JVDCG8IG": {
+        "stationTypeHint": "non_subscription",
+        "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+        "tierNotes": [
+            "laodog/dogcoding payment config is disabled; recharge evidence uses the official menu-linked external shop redeem-code products."
+        ],
+        "products": [
+            {"rechargeName": "20 USD external shop redeem code", "billingType": "permanent", "rmbAmount": 6, "usdAmount": 20, "expiresRule": "External shop redeem code; permanent balance"},
+            {"rechargeName": "30 USD external shop redeem code", "billingType": "permanent", "rmbAmount": 9, "usdAmount": 30, "expiresRule": "External shop redeem code; permanent balance"},
+            {"rechargeName": "50 USD external shop redeem code", "billingType": "permanent", "rmbAmount": 15, "usdAmount": 50, "expiresRule": "External shop redeem code; permanent balance"},
+            {"rechargeName": "100 USD external shop redeem code", "billingType": "permanent", "rmbAmount": 30, "usdAmount": 100, "expiresRule": "External shop redeem code; permanent balance"},
+            {"rechargeName": "200 USD external shop redeem code", "billingType": "permanent", "rmbAmount": 60, "usdAmount": 200, "expiresRule": "External shop redeem code; permanent balance"},
+            {"rechargeName": "500 USD external shop redeem code", "billingType": "permanent", "rmbAmount": 145, "usdAmount": 500, "expiresRule": "External shop redeem code; permanent balance"},
+        ],
+    },
+    "u3u": {
+        "stationTypeHint": "mixed",
+        "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+        "tierNotes": [
+            "u3u public menu points to the external shop; product names state package validity and quota, and shop description says quota follows the official 1:1 standard."
+        ],
+        "products": [
+            {"rechargeName": "weekly card 300 USD quota", "billingType": "weekly", "rmbAmount": 28, "usdAmount": 300, "expiresRule": "7 day external shop redeem code package"},
+            {"rechargeName": "weekly card 500 USD quota", "billingType": "weekly", "rmbAmount": 48, "usdAmount": 500, "expiresRule": "7 day external shop redeem code package"},
+            {"rechargeName": "monthly card 1200 USD quota", "billingType": "monthly", "rmbAmount": 88, "usdAmount": 1200, "expiresRule": "30 day external shop redeem code package"},
+            {"rechargeName": "monthly card 2500 USD quota", "billingType": "monthly", "rmbAmount": 178, "usdAmount": 2500, "expiresRule": "30 day external shop redeem code package"},
+            {"rechargeName": "monthly card 5000 USD quota", "billingType": "monthly", "rmbAmount": 358, "usdAmount": 5000, "expiresRule": "30 day external shop redeem code package"},
+            {"rechargeName": "quarterly card 10000 USD quota", "billingType": "quarterly", "rmbAmount": 588, "usdAmount": 10000, "expiresRule": "90 day external shop redeem code package"},
+            {"rechargeName": "quarterly card 20000 USD quota", "billingType": "quarterly", "rmbAmount": 1188, "usdAmount": 20000, "expiresRule": "90 day external shop redeem code package"},
+            {"rechargeName": "100 USD permanent quota", "billingType": "permanent", "rmbAmount": 20, "usdAmount": 100, "expiresRule": "External shop redeem code; permanent balance"},
+            {"rechargeName": "200 USD permanent quota", "billingType": "permanent", "rmbAmount": 36, "usdAmount": 200, "expiresRule": "External shop redeem code; permanent balance"},
+            {"rechargeName": "300 USD permanent quota", "billingType": "permanent", "rmbAmount": 50, "usdAmount": 300, "expiresRule": "External shop redeem code; permanent balance"},
+        ],
+    },
+}
+
+
+def known_pay_shop_snapshot(token: str, source_url: str) -> dict[str, Any] | None:
+    payload = KNOWN_PAY_SHOP_PRODUCTS.get(token)
+    if not payload:
+        return None
+    tiers: list[dict[str, Any]] = []
+    for product in payload.get("products", []):
+        row = normalize_recharge_row(
+            {
+                **product,
+                "rechargeLocation": payload.get("rechargeLocation"),
+            }
+        )
+        if row:
+            tiers.append(row)
+    return {
+        "groupMultipliers": [],
+        "rechargeTiers": tiers,
+        "tierNotes": normalized_tier_notes(payload.get("tierNotes")),
+        "sourceUrl": source_url,
+        "stationTypeHint": payload.get("stationTypeHint", ""),
     }
 
 
@@ -1909,6 +2391,29 @@ def parse_public_pricing_html(content: str) -> dict[str, Any]:
     if app_config:
         station_type_hint = infer_station_type_from_app_config(app_config)
         source_url = sanitize_public_text(app_config.get("api_base_url") or "")
+        shop_urls: list[str] = []
+        for value in (
+            app_config.get("balance_low_notify_recharge_url"),
+            app_config.get("purchase_subscription_url"),
+        ):
+            if isinstance(value, str) and value.strip():
+                shop_urls.append(value.strip())
+        menu_items = app_config.get("custom_menu_items")
+        if isinstance(menu_items, list):
+            for item in menu_items:
+                if isinstance(item, dict) and isinstance(item.get("url"), str):
+                    shop_urls.append(item["url"])
+        for shop_url in shop_urls:
+            match = PAY_SHOP_PATTERN.search(shop_url)
+            if not match:
+                continue
+            snapshot = known_pay_shop_snapshot(match.group(1), shop_url)
+            if not snapshot:
+                continue
+            recharge_tiers.extend(snapshot["rechargeTiers"])
+            tier_notes.extend(snapshot["tierNotes"])
+            if snapshot.get("stationTypeHint") and not station_type_hint:
+                station_type_hint = snapshot["stationTypeHint"]
         if truthy_public_flag(app_config.get("payment_enabled")):
             recharge_url = sanitize_public_text(
                 app_config.get("balance_low_notify_recharge_url") or app_config.get("purchase_subscription_url")
@@ -2154,11 +2659,12 @@ def load_station_audit_history(
             continue
 
         station = station_records.get(canonical_key, {})
+        fallback_label = audit_station_label_from_base_url(summary.get("auditedBaseUrl"), canonical_key)
         row = dict(summary)
         row.update(
             {
                 "stationKey": canonical_key,
-                "stationLabel": sanitize_public_text(station.get("label")) or audit_station_label_from_base_url(summary.get("auditedBaseUrl"), canonical_key),
+                "stationLabel": station_display_label(canonical_key, station.get("label") or fallback_label, station.get("url") or summary.get("auditedBaseUrl")),
                 "stationUrl": sanitize_public_text(station.get("url")) or sanitize_public_text(summary.get("auditedBaseUrl")),
                 "runId": run_id,
                 "reportUrl": (
@@ -2195,7 +2701,7 @@ def apply_audit_only_station_records(
                 stations,
                 station_key,
                 station_aliases=station_aliases,
-                label=audit_station_label_from_base_url(audited_base_url, station_key),
+                label=station_display_label(station_key, audit_station_label_from_base_url(audited_base_url, station_key), audited_base_url),
                 url=audited_base_url,
             )
 
@@ -2473,8 +2979,74 @@ def apply_station_pricing_overrides(
                     next_tier["usdAmount"] = round(float(next_tier["rmbAmount"]) * usd_per_rmb, 10)
                 updated_tiers.append(next_tier)
             station["rechargeTiers"] = sort_recharge_tiers(updated_tiers)
+        elif recharge_mode == "sample_amount_to_usd_with_response_rmb":
+            usd_per_sample_unit = parse_float(override.get("usdPerSampleUnit")) or 0.0
+            recharge_pattern = re.compile(str(override.get("rechargeNamePattern") or TOPUP_NAME_PATTERN.pattern), re.IGNORECASE)
+            name_template = str(override.get("rechargeNameTemplate") or "wallet topup sample {rmb} RMB")
+            updated_tiers = []
+            for tier in station.get("rechargeTiers", []):
+                next_tier = deepcopy(tier)
+                match = recharge_pattern.search(next_tier.get("rechargeName", ""))
+                sample_amount = parse_float(match.group(1)) if match else parse_float(next_tier.get("rmbAmount"))
+                actual_rmb = parse_float(next_tier.get("usdAmount"))
+                if match and sample_amount is not None and actual_rmb is not None and usd_per_sample_unit > 0:
+                    next_tier["rmbAmount"] = round(actual_rmb, 10)
+                    next_tier["usdAmount"] = round(sample_amount * usd_per_sample_unit, 10)
+                    next_tier["rechargeName"] = name_template.format(rmb=format_plain_number(actual_rmb))
+                updated_tiers.append(next_tier)
+            station["rechargeTiers"] = sort_recharge_tiers(updated_tiers)
+        elif recharge_mode == "sample_payment_amount_to_usd_1to1":
+            usd_per_payment_unit = parse_float(override.get("usdPerPaymentUnit")) or 1.0
+            sample_payment_amount = parse_float(override.get("samplePaymentAmount"))
+            recharge_pattern = re.compile(str(override.get("rechargeNamePattern") or TOPUP_NAME_PATTERN.pattern), re.IGNORECASE)
+            name_template = str(override.get("rechargeNameTemplate") or "wallet topup sample {rmb} RMB")
+            recharge_location = sanitize_public_text(override.get("rechargeLocation"))
+            expires_rule = sanitize_public_text(override.get("expiresRule"))
+            updated_tiers = []
+            seen_tiers: set[tuple[str | None, float | None, float | None]] = set()
+            for tier in station.get("rechargeTiers", []):
+                next_tier = deepcopy(tier)
+                match = recharge_pattern.search(next_tier.get("rechargeName", ""))
+                payment_amount = sample_payment_amount
+                if payment_amount is None and match:
+                    payment_amount = parse_float(match.group(1))
+                if payment_amount is None:
+                    payment_amount = parse_float(next_tier.get("usdAmount")) or parse_float(next_tier.get("rmbAmount"))
+                if (match or sample_payment_amount is not None) and payment_amount is not None and payment_amount > 0 and usd_per_payment_unit > 0:
+                    usd_amount = payment_amount * usd_per_payment_unit
+                    next_tier["rmbAmount"] = round(payment_amount, 10)
+                    next_tier["usdAmount"] = round(usd_amount, 10)
+                    next_tier["rechargeName"] = name_template.format(
+                        rmb=format_plain_number(payment_amount),
+                        usd=format_plain_number(usd_amount),
+                    )
+                    if recharge_location:
+                        next_tier["rechargeLocation"] = recharge_location
+                    if expires_rule:
+                        next_tier["expiresRule"] = expires_rule
+                key = (
+                    next_tier.get("rechargeName"),
+                    parse_float(next_tier.get("rmbAmount")),
+                    parse_float(next_tier.get("usdAmount")),
+                )
+                if key in seen_tiers:
+                    continue
+                seen_tiers.add(key)
+                updated_tiers.append(next_tier)
+            station["rechargeTiers"] = sort_recharge_tiers(updated_tiers)
 
         assumption_text = sanitize_public_text(override.get("assumptionText"))
+        drop_note_patterns = [
+            re.compile(str(pattern), re.IGNORECASE)
+            for pattern in override.get("dropTierNotePatterns", [])
+            if str(pattern or "").strip()
+        ]
+        if drop_note_patterns:
+            station["tierNotes"] = [
+                note
+                for note in station.get("tierNotes", [])
+                if not any(pattern.search(str(note)) for pattern in drop_note_patterns)
+            ]
         if assumption_text and assumption_text not in station["tierNotes"]:
             station["tierNotes"].append(assumption_text)
 
@@ -2804,6 +3376,16 @@ def main() -> int:
 
     apply_authoritative_ranking_overrides(stations, rankings, overrides)
 
+    for station in stations.values():
+        url_choices = dedupe_strings(list(station_urls.get(station["key"], set())) + [station.get("url", "")])
+        station["url"] = choose_display_url(
+            station["key"],
+            url_choices,
+            url_overrides,
+            current_url=station.get("url", ""),
+        )
+        station["label"] = station_display_label(station["key"], station.get("label"), station.get("url"))
+
     station_list = sorted(
         [
             station
@@ -2818,13 +3400,6 @@ def main() -> int:
 
     for station in station_list:
         station["rechargeTiers"] = sort_recharge_tiers(station.get("rechargeTiers", []))
-        url_choices = dedupe_strings(list(station_urls.get(station["key"], set())) + [station.get("url", "")])
-        station["url"] = choose_display_url(
-            station["key"],
-            url_choices,
-            url_overrides,
-            current_url=station.get("url", ""),
-        )
         station["dataEvidence"] = build_station_evidence_status(station, live_snapshots.get(station["key"]))
         if station.get("_publicEvidenceStatus"):
             for item in station["dataEvidence"]:

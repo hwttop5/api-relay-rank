@@ -1,0 +1,100 @@
+{
+  "groupMultipliers": [],
+  "rechargeTiers": [
+    {
+      "rechargeName": "weekly card 300 USD quota",
+      "billingType": "weekly",
+      "billingTypeLabel": "周卡",
+      "rmbAmount": 28.0,
+      "usdAmount": 300.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "7 day external shop redeem code package"
+    },
+    {
+      "rechargeName": "weekly card 500 USD quota",
+      "billingType": "weekly",
+      "billingTypeLabel": "周卡",
+      "rmbAmount": 48.0,
+      "usdAmount": 500.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "7 day external shop redeem code package"
+    },
+    {
+      "rechargeName": "monthly card 1200 USD quota",
+      "billingType": "monthly",
+      "billingTypeLabel": "月卡",
+      "rmbAmount": 88.0,
+      "usdAmount": 1200.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "30 day external shop redeem code package"
+    },
+    {
+      "rechargeName": "monthly card 2500 USD quota",
+      "billingType": "monthly",
+      "billingTypeLabel": "月卡",
+      "rmbAmount": 178.0,
+      "usdAmount": 2500.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "30 day external shop redeem code package"
+    },
+    {
+      "rechargeName": "monthly card 5000 USD quota",
+      "billingType": "monthly",
+      "billingTypeLabel": "月卡",
+      "rmbAmount": 358.0,
+      "usdAmount": 5000.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "30 day external shop redeem code package"
+    },
+    {
+      "rechargeName": "quarterly card 10000 USD quota",
+      "billingType": "quarterly",
+      "billingTypeLabel": "季卡",
+      "rmbAmount": 588.0,
+      "usdAmount": 10000.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "90 day external shop redeem code package"
+    },
+    {
+      "rechargeName": "quarterly card 20000 USD quota",
+      "billingType": "quarterly",
+      "billingTypeLabel": "季卡",
+      "rmbAmount": 1188.0,
+      "usdAmount": 20000.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "90 day external shop redeem code package"
+    },
+    {
+      "rechargeName": "100 USD permanent quota",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 20.0,
+      "usdAmount": 100.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; permanent balance"
+    },
+    {
+      "rechargeName": "200 USD permanent quota",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 36.0,
+      "usdAmount": 200.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; permanent balance"
+    },
+    {
+      "rechargeName": "300 USD permanent quota",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 50.0,
+      "usdAmount": 300.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; permanent balance"
+    }
+  ],
+  "tierNotes": [
+    "u3u public menu points to the external shop; product names state package validity and quota, and shop description says quota follows the official 1:1 standard."
+  ],
+  "sourceUrl": "https://pay.ldxp.cn/shop/u3u",
+  "stationTypeHint": "mixed"
+}

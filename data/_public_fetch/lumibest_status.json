@@ -4,6 +4,13 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "反重力claude和反重力gemini已上线，enjony！",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-05-21T09:39:22.632Z",
+        "type": "ongoing"
+      },
+      {
         "content": "使用文档已上线！enjoy！",
         "extra": "使用文档",
         "id": 8,

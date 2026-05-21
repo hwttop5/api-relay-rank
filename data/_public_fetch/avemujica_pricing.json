@@ -1,1 +1,750 @@
-{"auto_groups":["default"],"data":[{"model_name":"gpt-5.3-codex","tags":"Reasoning,Tools,Vision,400K","vendor_id":3,"quota_type":0,"model_ratio":0.875,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.1,"enable_groups":["default","vip"],"supported_endpoint_types":["openai"],"pricing_version":"5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"},{"model_name":"gpt-5.4-mini","tags":"Reasoning,Tools,Files,Vision,400K","vendor_id":3,"quota_type":0,"model_ratio":0.375,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"enable_groups":["default","vip"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.5","tags":"Reasoning,Tools,Files,Vision,1.1M","vendor_id":3,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"enable_groups":["default","vip"],"supported_endpoint_types":["openai"]},{"model_name":"codex-auto-review","icon":"OpenAI","vendor_id":3,"quota_type":0,"model_ratio":0.5,"model_price":0,"owner_by":"","completion_ratio":1,"enable_groups":["default","vip"],"supported_endpoint_types":["openai"]},{"model_name":"qwen3.6-max-preview","vendor_id":14,"quota_type":0,"model_ratio":37.5,"model_price":0,"owner_by":"","completion_ratio":1,"enable_groups":["百炼"],"supported_endpoint_types":["openai"],"billing_mode":"tiered_expr","billing_expr":"len \u003c= 128000 ? tier(\"\u003c=128k\", p * 9 + c * 54 + cr * 0.9) : tier(\"\u003e128k\", p * 15 + c * 90 + cr * 1.5)"},{"model_name":"deepseek-v4-flash","vendor_id":15,"quota_type":0,"model_ratio":37.5,"model_price":0,"owner_by":"","completion_ratio":1,"enable_groups":["百炼"],"supported_endpoint_types":["openai"],"billing_mode":"tiered_expr","billing_expr":"tier(\"base\", p * 1 + c * 2 + cr * 0.19)"},{"model_name":"claude-sonnet-4-6-thinking","vendor_id":7,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"enable_groups":["aws"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-opus-4-5-20251101-thinking","vendor_id":7,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["aws"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"gpt-5.2","tags":"Reasoning,Tools,Files,Vision,400K","vendor_id":3,"quota_type":0,"model_ratio":0.125,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.071428571428,"enable_groups":["default","vip"],"supported_endpoint_types":["openai"]},{"model_name":"kimi-k2.5","vendor_id":12,"quota_type":0,"model_ratio":2,"model_price":0,"owner_by":"","completion_ratio":5.25,"cache_ratio":0.1,"enable_groups":["百炼"],"supported_endpoint_types":["openai"]},{"model_name":"claude-opus-4-5-20251101","tags":"Reasoning,Tools,Files,Vision,200K","vendor_id":7,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["aws"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-opus-4-7","icon":"Claude.Color","tags":"Reasoning,Tools,Files,Vision,1M","vendor_id":7,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["aws"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"gpt-5.4","tags":"Reasoning,Tools,Files,Vision,400K","vendor_id":3,"quota_type":0,"model_ratio":1.25,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"enable_groups":["default","vip"],"supported_endpoint_types":["openai"]},{"model_name":"qwen3.6-plus","vendor_id":14,"quota_type":0,"model_ratio":37.5,"model_price":0,"owner_by":"","completion_ratio":1,"enable_groups":["百炼"],"supported_endpoint_types":["openai"],"billing_mode":"tiered_expr","billing_expr":"len \u003c= 256000 ? tier(\"\u003c=256k\", p * 2 + c * 12 + cr * 0.2) : tier(\"\u003e256k\", p * 8 + c * 48 + cr * 0.8)"},{"model_name":"claude-opus-4-6","icon":"Claude.Color","tags":"Reasoning,Tools,Files,Vision,1M","vendor_id":7,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["aws"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-opus-4-6-thinking","vendor_id":7,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["aws"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-sonnet-4-6","icon":"Claude.Color","tags":"Reasoning,Tools,Files,Vision,1M","vendor_id":7,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"enable_groups":["aws"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-sonnet-4-5-20250929-thinking","vendor_id":7,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["aws"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-haiku-4-5-20251001-thinking","vendor_id":7,"quota_type":0,"model_ratio":0.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"enable_groups":["aws"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"gpt-image-2","vendor_id":3,"quota_type":1,"model_ratio":0,"model_price":0.1,"owner_by":"","completion_ratio":0,"enable_groups":["default","vip"],"supported_endpoint_types":["image-generation"]},{"model_name":"glm-5.1","vendor_id":13,"quota_type":0,"model_ratio":3,"model_price":0,"owner_by":"","completion_ratio":4,"enable_groups":["百炼"],"supported_endpoint_types":["openai"],"billing_mode":"tiered_expr","billing_expr":"len \u003c= 32000 ? tier(\"\u003c=32k\", p * 6 + c * 24 + cr * 0.6) : tier(\"\u003e32k\", p * 8 + c * 28 + cr * 0.8)"},{"model_name":"deepseek-v4-pro","vendor_id":15,"quota_type":0,"model_ratio":37.5,"model_price":0,"owner_by":"","completion_ratio":1,"enable_groups":["百炼"],"supported_endpoint_types":["openai"],"billing_mode":"tiered_expr","billing_expr":"tier(\"base\", p * 12 + c * 24 + cr * 1)"},{"model_name":"kimi-k2.6","vendor_id":12,"quota_type":0,"model_ratio":3.25,"model_price":0,"owner_by":"","completion_ratio":4.153846153846154,"cache_ratio":0.1,"enable_groups":["百炼"],"supported_endpoint_types":["openai"]},{"model_name":"claude-sonnet-4-5-20250929","tags":"Reasoning,Tools,Files,Vision,200K","vendor_id":7,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["aws"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-haiku-4-5-20251001","tags":"Reasoning,Tools,Files,Vision,200K","vendor_id":7,"quota_type":0,"model_ratio":0.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["aws"],"supported_endpoint_types":["anthropic","openai"]}],"group_ratio":{"aws":0.7,"default":0.15,"vip":0.15,"百炼":0.6},"pricing_version":"a42d372ccf0b5dd13ecf71203521f9d2","success":true,"supported_endpoint":{"anthropic":{"path":"/v1/messages","method":"POST"},"image-generation":{"path":"/v1/images/generations","method":"POST"},"openai":{"path":"/v1/chat/completions","method":"POST"}},"usable_group":{"aws":"aws渠道claude","default":"默认分组","vip":"vip分组","百炼":"阿里云百炼官方渠道，6折"},"vendors":[{"id":12,"name":"Moonshot","icon":"Moonshot"},{"id":13,"name":"智谱","icon":"Zhipu.Color"},{"id":3,"name":"OpenAI","icon":"OpenAI"},{"id":7,"name":"Anthropic","icon":"Claude.Color"},{"id":14,"name":"阿里巴巴","icon":"Qwen.Color"},{"id":15,"name":"DeepSeek","icon":"DeepSeek.Color"}]}
+{
+  "auto_groups": [
+    "default"
+  ],
+  "data": [
+    {
+      "model_name": "gpt-5.4",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.5",
+      "tags": "Reasoning,Tools,Files,Vision,1.1M",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "vendor_id": 15,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "百炼"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 1 + c * 2 + cr * 0.19)"
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "vendor_id": 3,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "image-generation"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.6",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 3.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.153846153846154,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "百炼"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.071428571428,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "icon": "OpenAI",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5.1",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "百炼"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 32000 ? tier(\"<=32k\", p * 6 + c * 24 + cr * 0.6) : tier(\">32k\", p * 8 + c * 28 + cr * 0.8)"
+    },
+    {
+      "model_name": "qwen3.6-plus",
+      "vendor_id": 14,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "百炼"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 256000 ? tier(\"<=256k\", p * 2 + c * 12 + cr * 0.2) : tier(\">256k\", p * 8 + c * 48 + cr * 0.8)"
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "vendor_id": 15,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "百炼"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 12 + c * 24 + cr * 1)"
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "tags": "Reasoning,Tools,Vision,400K",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.6-max-preview",
+      "vendor_id": 14,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "百炼"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 128000 ? tier(\"<=128k\", p * 9 + c * 54 + cr * 0.9) : tier(\">128k\", p * 15 + c * 90 + cr * 1.5)"
+    },
+    {
+      "model_name": "kimi-k2.5",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5.25,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "百炼"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "aws": 0.7,
+    "default": 0.15,
+    "vip": 0.15,
+    "百炼": 0.6
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "image-generation": {
+      "path": "/v1/images/generations",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "aws": "aws渠道claude",
+    "default": "默认分组",
+    "vip": "vip分组",
+    "百炼": "阿里云百炼官方渠道，6折"
+  },
+  "vendors": [
+    {
+      "id": 7,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 12,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 14,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 3,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 13,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 15,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+      "announcements": [
+        {
+          "content": "为庆祝站内注册用户过千，我们开启了签到活动，每日签到最高可得2刀额度，访问个人资料页：https://api.avemujica.moe/profile 进行签到领取，领取后会自动得到一个签到额度订阅包，钱包页面设置优先订阅即可使用",
+          "extra": "",
+          "id": 16,
+          "publishDate": "2026-05-20T09:51:22.922Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "图片接口已支持webp格式返回，可以有效提高响应速度，调用时指定对应返回格式参数为webp即可，目前不传入格式也默认返回webp。\n对于使用cherry-studio或类似软件的用户，请不要直接在chat接口使用图片模型，请打开绘图功能选择绘图模型进行使用",
+          "extra": "",
+          "id": 15,
+          "publishDate": "2026-05-19T05:53:04.142Z",
+          "type": "default"
+        },
+        {
+          "content": "为方便多渠道管理，新用户赠送额度已转为等值订阅额度包，现有用户不受影响，新用户请注意在钱包修改使用方式为优先订阅",
+          "extra": "",
+          "id": 14,
+          "publishDate": "2026-05-18T16:21:38.373Z",
+          "type": "default"
+        },
+        {
+          "content": "已上线阿里云百炼官方6折渠道，支持K2.6，GLM5.1等主流旗舰国产模型，创建令牌时选择百炼分组即可使用",
+          "extra": "",
+          "id": 13,
+          "publishDate": "2026-05-18T15:22:56.519Z",
+          "type": "default"
+        },
+        {
+          "content": "网站即将进行维护升级，预计几分钟内完成，中间可能出现短暂连接断开，敬请谅解",
+          "extra": "",
+          "id": 12,
+          "publishDate": "2026-05-18T14:49:06.960Z",
+          "type": "default"
+        },
+        {
+          "content": "生图渠道已调整，现支持4k出图，生图时建议使用api-cn节点，主节点暂时无法保证连接稳定",
+          "extra": "",
+          "id": 11,
+          "publishDate": "2026-05-17T19:02:42.822Z",
+          "type": "default"
+        },
+        {
+          "content": "已更新订阅购买逻辑，按实际激活订阅计算限制",
+          "extra": "",
+          "id": 10,
+          "publishDate": "2026-05-17T12:24:44.215Z",
+          "type": "default"
+        },
+        {
+          "content": "已上线aws渠道claude，支持claude code内调用，请在创建令牌时选择aws分组，该分组倍率0.7，约为官方1折，暂不保证该渠道稳定供应能力",
+          "extra": "",
+          "id": 9,
+          "publishDate": "2026-05-16T18:55:41.212Z",
+          "type": "default"
+        },
+        {
+          "content": "更新：现已支持使用站内余额直接购买订阅",
+          "extra": "",
+          "id": 8,
+          "publishDate": "2026-05-16T18:41:23.487Z",
+          "type": "success"
+        },
+        {
+          "content": "预计2:00~2:30进行网站的维护升级，同时一并完成额度的统一更新，中间可能出现请求中断，带来的不便敬请谅解。更新后您可能需要重新登录网站，但api调用不受影响（已更新完成，如有问题请邮箱联系）",
+          "extra": "",
+          "id": 7,
+          "publishDate": "2026-05-16T17:40:19.112Z",
+          "type": "success"
+        },
+        {
+          "content": "为统一多提供商的接入与管理，我们近期会对额度/订阅充值进行简化，统一为1:1充值，并调整目前分组为0.15倍率分组，订阅额度也会进行调整以匹配之前的0.1倍率，预计这几天内自动完成，您的额度和分组会被自动更新，以避免阻断现有服务运行",
+          "extra": "",
+          "id": 6,
+          "publishDate": "2026-05-16T13:05:37.836Z",
+          "type": "default"
+        },
+        {
+          "content": "有的朋友可能还在使用一些传统的chatweb/chatapp，我们很推荐各位尝试一下openai官方的codex-app：https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi（当然，写代码的可能觉得codex-cli就很好了），站内也有一份文档做配置参考：https://docs.avemujica.moe/cli/3-codex 安装完成后，打开app，codex/gpt就可以直接在你的电脑上为你完成你的工作😊",
+          "extra": "",
+          "id": 5,
+          "publishDate": "2026-05-13T18:43:51.853Z",
+          "type": "default"
+        },
+        {
+          "content": "已调整日卡订阅购买限制，现在允许同时持有5张日卡，但天数并不会叠加，而是获取新的独立额度，每个订阅仍然需要1天内用完，本意是不希望您囤积太多额度，而是在需要时购买使用",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2026-05-11T15:12:09.666Z",
+          "type": "default"
+        },
+        {
+          "content": "openai官方会对会话内容进行网络安全检查，一旦会话被标记为网络安全问题，就会持续报错，无法继续使用，这并非本站可以控制的，如确有网络安全需求，请联系商务邮箱：business@avemujica.moe",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2026-05-11T14:36:11.520Z",
+          "type": "default"
+        },
+        {
+          "content": "gpt-image-2 的图像生成任务可能需要较长处理时间，并可能受 Cloudflare 基础设施限制影响而出现超时或请求中断。因此，我们暂不承诺该模型的稳定供应能力。如果确实需要生成图片，可以使用https://api-cn.avemujica.moe做为baseurl",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-05-10T09:47:27.404Z",
+          "type": "default"
+        },
+        {
+          "content": "联系方式\nabuse@avemujica.moe 滥用\nsupport@avemujica.moe 工单\nbusiness@avemujica.moe 商业合作",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-05-10T01:19:48.305Z",
+          "type": "default"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "blue",
+          "description": "CN",
+          "id": 1,
+          "route": "CN",
+          "url": "https://api-cn.avemujica.moe"
+        },
+        {
+          "color": "green",
+          "description": "默认",
+          "id": 2,
+          "route": "默认",
+          "url": "https://api.avemujica.moe"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": true,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://docs.avemujica.moe",
+      "email_verification": true,
+      "enable_batch_update": false,
+      "enable_data_export": true,
+      "enable_drawing": false,
+      "enable_task": true,
+      "faq": [
+        {
+          "answer": "## 价格说明\n\n本站采用 **1:1 充值** 规则，模型的基础价格均按官方价格配置。\n\n因此，不同模型的实际折扣计算方式如下：\n\n- **国际模型**：实际折扣约为 `倍率 ÷ 7`，具体结果会受汇率波动影响。\n- **国产模型**：实际折扣即为后台设置的倍率。\n\n示例：\n\n```text\n国际模型倍率 3.5 ≈ 实际 5 折\n国产模型倍率 0.5 = 实际 5 折\n",
+          "id": 1,
+          "question": "折扣如何计算?"
+        },
+        {
+          "answer": "我们推荐在 **Codex** 中使用，以获得最完整、最顺畅的体验。\n\n配置方法可参考：[Codex 配置教程](https://docs.avemujica.moe/cli/3-codex)\n\n日常使用场景下，推荐安装 **Codex App**：\n\n[下载 Codex App](https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi)\n\n如果你主要用于写代码，也可以使用 **Codex CLI**：\n\n```bash\nnpm install -g @openai/codex\n```\n\n如果你习惯使用 **Claude Code**，也可以根据客户端支持情况配置本站的接口使用。\n\n对于同时使用 Codex、Claude Code、Gemini CLI 等多个工具或是不想手动维护配置文件的用户，推荐使用 **CC Switch** 进行统一管理。CC Switch 支持统一管理 Provider、MCP、Skills、Prompt 等配置，也可以更方便地在不同模型服务之间切换。\n\nCC Switch 可参考：[CC Switch 官网](https://cc-switch.cc)",
+          "id": 2,
+          "question": "如何使用？"
+        }
+      ],
+      "faq_enabled": true,
+      "footer_html": "",
+      "github_client_id": "",
+      "github_oauth": false,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "https://cd.avemujica.moe/favicon.svg",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "Avemujica API",
+      "passkey_login": false,
+      "passkey_origins": "https://api.avemujica.moe",
+      "passkey_rp_id": "api.avemujica.moe",
+      "passkey_user_verification": "preferred",
+      "price": 1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "USD",
+      "quota_per_unit": 500000,
+      "self_use_mode_enabled": false,
+      "server_address": "https://api.avemujica.moe",
+      "setup": true,
+      "start_time": 1779216930,
+      "stripe_unit_price": 1,
+      "system_name": "AveMujica API",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "default",
+      "turnstile_check": true,
+      "turnstile_site_key": "0x4AAAAAADHy1VSlRMT-U2oD",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 1,
+      "user_agreement_enabled": true,
+      "version": "v1.6.6",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://api.avemujica.moe/api/pricing"
+}

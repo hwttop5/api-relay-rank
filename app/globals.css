@@ -1879,8 +1879,9 @@ select:focus-visible {
 
 .table-action-cell,
 .col-action {
-  width: 10%;
+  width: 112px;
   min-width: 112px;
+  max-width: 112px;
 }
 
 .table-url-cell .station-link.inline-actions {
@@ -1903,6 +1904,57 @@ select:focus-visible {
 
 .table-action-cell .tiny-button {
   min-width: 88px;
+}
+
+.registry-table {
+  width: 100%;
+  min-width: 0;
+}
+
+.registry-table .registry-col-station {
+  width: 13%;
+  min-width: 160px;
+}
+
+.registry-table .registry-col-url {
+  width: 17%;
+  min-width: 180px;
+}
+
+.registry-table .registry-col-type {
+  width: 8%;
+  min-width: 104px;
+}
+
+.registry-table .registry-col-platform {
+  width: 10%;
+  min-width: 116px;
+}
+
+.registry-table .registry-col-reason {
+  width: 20%;
+  min-width: 180px;
+}
+
+.registry-table .registry-col-sample {
+  width: 9%;
+  min-width: 104px;
+}
+
+.registry-table .registry-col-tier {
+  width: 8%;
+  min-width: 88px;
+}
+
+.registry-table .registry-col-announcements {
+  width: 7%;
+  min-width: 88px;
+}
+
+.registry-table .registry-col-action {
+  width: 112px;
+  min-width: 112px;
+  max-width: 112px;
 }
 
 .subtle {

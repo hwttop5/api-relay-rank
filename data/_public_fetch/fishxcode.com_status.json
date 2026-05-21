@@ -1,0 +1,431 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
+    "SelfServiceSubscriptionConversionCampaign": "{\n  \"enabled\": true,\n  \"key\": \"default-self-service-subscription-conversion\",\n  \"title\": \"套餐自助折算活动\",\n  \"subtitle\": \"提交申请后先禁用原套餐，审核通过后折算为账户余额\",\n  \"description\": \"管理员可在这里维护可参与退款/折算的套餐活动规则、截止时间与展示文案。\",\n  \"deadline\": 0,\n  \"timezone\": \"Asia/Shanghai\",\n  \"require_disabled_plan\": true,\n  \"eligible_plan_ids\": [],\n  \"eligible_upgrade_groups\": [\n    \"claude_sub\"\n  ],\n  \"eligible_title_keywords\": [\n    \"Claude\",\n    \"claude\"\n  ],\n  \"conversion_rule\": \"返还余额 = 套餐折算基价 - 套餐折算基价 / 周期天数 × 计费天数；其中计费天数 = 已使用整天数 + 0.5 天。\",\n  \"billing_rules\": [],\n  \"charge_rules\": []\n}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"package\":true,\"token\":true,\"log\":true,\"checkinLottery\":true,\"activityLottery\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"invoice\":true,\"refund\":false,\"commission\":true,\"personal\":true,\"siteNotifications\":true,\"invite\":true},\"public\":{\"enabled\":true,\"pricing\":true,\"docs\":true,\"about\":true,\"contact\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"discountCode\":true,\"tokenAdmin\":true,\"ecomagent\":true,\"user\":true,\"subscription\":true,\"setting\":true,\"riskControl\":true,\"invoiceAdmin\":false,\"financeAdmin\":true,\"checkinAdmin\":true,\"r2Storage\":false}}",
+    "SubscriptionRefundSettings": "{\n  \"page_enabled\": true,\n  \"enabled\": true,\n  \"allow_balance_refund\": true,\n  \"allow_original_payment_refund\": true,\n  \"settlement_mode\": \"duration_ratio\",\n  \"currency\": \"USD\",\n  \"codex_input_price_per_million\": 3,\n  \"codex_output_price_per_million\": 15,\n  \"codex_cache_read_price_per_million\": 0.3,\n  \"codex_cache_write_price_per_million\": 3.75,\n  \"notes\": \"Codex 套餐如需按 token 用量折算退款，请维护每 100 万 token 的标准单价；当前也可先作为审核参考。\"\n}",
+    "_qn": "new-api",
+    "activity_lottery_auto_draw_enabled": false,
+    "activity_lottery_default_min_participants": 200,
+    "activity_lottery_default_winner_count": 3,
+    "activity_lottery_enabled": true,
+    "activity_lottery_join_daily_consume_min_money": 0,
+    "activity_lottery_join_sources": "manual",
+    "activity_lottery_join_topup_min_money": 0,
+    "announcements": [
+      {
+        "content": "\n> 对抗签到 / 注册 / 邀请风控。如邀请注册奖励未到账，请在群内留言站内 ID，人工发放。\n\n## 注册\n\n### 注册推广\n\n推广人可获得 1 刀 + Codex 天卡。注册人可获得 1 刀 + Codex 天卡。\n\n> 我在 FishXCode 的邀请链接为：[https://fishxcode.com/register?aff=72wk](https://fishxcode.com/register?aff=72wk)  \n> 使用我的邀请注册，你将获得 ¥1.00 Token，另赠套餐：Codex 天卡，总额度 ¥10.00，1 天，升级分组 codex_sub（0.3 倍率）。",
+        "extra": "",
+        "id": 11,
+        "publishDate": "2026-05-19T16:00:00.000Z",
+        "type": "default"
+      },
+      {
+        "content": "FishXCode AI 现已正式上线自建 Claude 号池。\n•   1.5倍高性价比倍率：当前号池容量充足，性价比号称全网最高。\n•   官方api：保障服务稳定与可靠性，缓存性更强。用量性价比更省。\n本次重点推出的 cc_max 号池 详情如下：\n•   基于 Claude max5与 Claude max20 的自建号池。\n•   该号池目前仅限于在 “Claude Code” 或官方开发的插件中使用，限制外接和分发。\n\n针对 Codex 订阅用户，倍率已优化调整至 0.3，更加划算。\n🎁 专属充值福利\n即日起，所有充值用户，在付款时使用下方专属折扣码，即可立即享受 【九折】优惠！\n✅ 专属折扣码：FXCDISC2605D9C5\n🔗 点击查看模型详情：\nhttps://fishxcode.com/pricing?currency=CNY&group=cc_max\n\n迎新活动，注册送1刀。邀请注册邀请人和被邀请人送2刀和codex天卡套餐。\n\n群每满100人抽100刀。",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-05-17T19:00:41.303Z",
+        "type": "default"
+      },
+      {
+        "content": "https://fishxcode-gpt-image-2.lovable.app/ 上线gpt-image-2 工具站",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-04-29T01:19:25.151Z",
+        "type": "default"
+      },
+      {
+        "content": "为提供更可持续的服务，旧版 Claude 套餐已于 4月9日 23:00 下线，您的剩余额度可按比例自动转为账户余额。可在https://fishxcode.com/console/package 根据相关系列套餐的计算公式在自助申请提交转换。我们会在4月10日全部处理完套餐转余额的相关事宜。",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-04-09T04:00:00.000Z",
+        "type": "default"
+      },
+      {
+        "content": "FishXCode 已与北京时间2026年03月29日03:40进行系统维护升级，预计5分钟，这次维护修复了一些问题。 并优化了用户体验。。升级后如果反代本域名会提示不可用，请直连本域名即可。",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-03-28T19:39:51.267Z",
+        "type": "success"
+      },
+      {
+        "content": "FishXCode 将与北京时间2026年03月25日23:00进行系统维护升级，预计5分钟，这次维护修复了一些问题，上线了claude 包天/月套餐。 并优化了用户体验。。升级期间若令牌为默认分组，则直接不可使用。在维护完成后，您可能需要重新登录您的账户重新选择对应的分组激活令牌即可使用。 ",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-03-25T15:00:00.102Z",
+        "type": "success"
+      },
+      {
+        "content": "FishXCode 将与北京时间2026年03月18日11:40进行系统维护升级，预计5分钟，上架更新codex相关模型与codex包月套餐。升级期间所使用有所波动，您的数据安全不会受到任何影响。监控状态可通过https://status.fishxcode.com/ 查看",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-03-18T03:40:52.000Z",
+        "type": "success"
+      },
+      {
+        "content": "FishXCode 将与北京时间2026年03月08日20:10进行系统维护升级，预计30分钟，以提升服务稳定性和性能。升级期间所有服务暂时不可用，您的数据安全不会受到任何影响。监控状态可通过https://status.fishxcode.com/ 查看",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-03-08T12:10:00.254Z",
+        "type": "success"
+      },
+      {
+        "content": "系统更新通知\n\n本次更新已同步接入最新的 GPT-5 模型（Codex），同时对 Claude 分组结构进行了优化调整，以提升整体稳定性与使用体验。\n\n如遇到以下情况：\n\n* 提示 Key 不正确\n* 无法调用 Claude 模型\n\n建议尝试以下操作：\n\n1. 删除当前 Key 并重新创建\n2. 重新选择「官渠」分组即可恢复正常使用\n\n如仍有问题，请联系管理员协助处理。感谢大家的支持与反馈。\n",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-03-06T11:48:42.411Z",
+        "type": "ongoing"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "全球直连&代理",
+        "id": 1,
+        "route": "全球线路",
+        "url": "https://fishxcode.com"
+      }
+    ],
+    "api_info_enabled": true,
+    "blocked_page_skip_logged_in": false,
+    "blocked_regions": "",
+    "ccswitch_defaults": {
+      "claude": {
+        "defaultModels": {
+          "haikuModel": "claude-haiku-4-5-20251001",
+          "model": "claude-opus-4-7",
+          "opusModel": "claude-opus-4-7",
+          "sonnetModel": "claude-sonnet-4-7"
+        },
+        "defaultName": "Claude Provider",
+        "recommendedModels": [
+          "claude-opus-4-7",
+          "claude-sonnet-4-6",
+          "claude-haiku-4-5-20251001"
+        ]
+      },
+      "codex": {
+        "defaultModels": {
+          "model": "gpt-5.4"
+        },
+        "defaultName": "Codex Provider",
+        "recommendedModels": [
+          "gpt-5.4",
+          "gpt-5",
+          "gpt-5-mini",
+          "gpt-5.2"
+        ]
+      }
+    },
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "Lobe Chat": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": true,
+    "checkin_setting.daily_user_limit": 500,
+    "checkin_setting.open_end_seconds": 64800,
+    "checkin_setting.open_start_seconds": 28800,
+    "checkin_setting.open_weekdays": "1,2,3,4,5",
+    "contact_channels": [
+      {
+        "actionHref": "https://qm.qq.com/q/Ce2PaYrbmo",
+        "actionLabel": "加入QQ群",
+        "copyValue": "373865837",
+        "i18n": {
+          "en": {
+            "actionLabel": "Join QQ Group",
+            "subtitle": "Community support, discussions, and experience sharing",
+            "title": "QQ Group",
+            "tone": "Popular Community"
+          },
+          "fr": {
+            "actionLabel": "Rejoindre le groupe QQ",
+            "subtitle": "Pour l'entraide, les discussions en groupe et le partage d'experience",
+            "title": "Groupe QQ",
+            "tone": "Communaute populaire"
+          },
+          "ja": {
+            "actionLabel": "QQグループに参加",
+            "subtitle": "質問対応、グループ交流、ノウハウ共有に適しています",
+            "title": "QQグループ",
+            "tone": "人気コミュニティ"
+          },
+          "ru": {
+            "actionLabel": "Вступить в группу QQ",
+            "subtitle": "Для ответов на вопросы, общения в сообществе и обмена опытом",
+            "title": "Группа QQ",
+            "tone": "Популярное сообщество"
+          },
+          "vi": {
+            "actionLabel": "Tham gia nhom QQ",
+            "subtitle": "Dung de giai dap, trao doi trong nhom va chia se kinh nghiem",
+            "title": "Nhom QQ",
+            "tone": "Cong dong noi bat"
+          },
+          "zh-CN": {
+            "actionLabel": "加入QQ群",
+            "subtitle": "用于问题答疑解决，适合群内交流与经验分享",
+            "title": "QQ群",
+            "tone": "热门社区"
+          },
+          "zh-TW": {
+            "actionLabel": "加入QQ群",
+            "subtitle": "用於問題答疑與交流，適合群內互動和經驗分享",
+            "title": "QQ群",
+            "tone": "熱門社群"
+          }
+        },
+        "imageSrc": "https://fishxcode.com/qq_group.jpg",
+        "key": "qq-group",
+        "subtitle": "用于问题答疑解决，适合群内交流与经验分享",
+        "title": "QQ群",
+        "tone": "热门社区",
+        "value": "373865837"
+      },
+      {
+        "i18n": {
+          "en": {
+            "subtitle": "For Q&A, group announcements, and important notices",
+            "title": "WeChat Group",
+            "tone": "Announcements"
+          },
+          "fr": {
+            "subtitle": "Pour les questions-reponses, les annonces du groupe et les notifications importantes",
+            "title": "Groupe WeChat",
+            "tone": "Annonces"
+          },
+          "ja": {
+            "subtitle": "質問対応、グループ告知、重要なお知らせの受け取りに適しています",
+            "title": "WeChatグループ",
+            "tone": "お知らせ"
+          },
+          "ru": {
+            "subtitle": "Для ответов на вопросы, объявлений группы и важных уведомлений",
+            "title": "Группа WeChat",
+            "tone": "Уведомления"
+          },
+          "vi": {
+            "subtitle": "Dung de hoi dap, nhan thong bao nhom va cac thong tin quan trong",
+            "title": "Nhom WeChat",
+            "tone": "Thong bao"
+          },
+          "zh-CN": {
+            "subtitle": "用于问题答疑解决，适合接收群内公告与通知",
+            "title": "微信群",
+            "tone": "活动通知"
+          },
+          "zh-TW": {
+            "subtitle": "用於問題答疑與通知接收，適合查看群內公告",
+            "title": "微信群",
+            "tone": "活動通知"
+          }
+        },
+        "imageSrc": "https://fishxcode.com/wechat_group.jpg",
+        "key": "wechat-group",
+        "subtitle": "用于问题答疑解决，适合接收群内公告与通知",
+        "title": "微信群",
+        "tone": "活动通知"
+      }
+    ],
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "day",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": true,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "discord_oauth_register": false,
+    "display_in_currency": true,
+    "docs_link": "https://doc.fishxcode.com",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": false,
+    "enable_log_export": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "开票起点：账单金额累计达到 50元​ 起可申请开票。\n发票类型：本次申请开具 增值税普通发票（电子）。\n发票内容：人工技术服务费\n抬头类型：对公（企业单位）\n开票形式：电子普票，开具完成后将发送至您指定的邮箱。同时可在发票管理页面进行下载查看。\n",
+        "id": 1,
+        "question": "开票事宜"
+      },
+      {
+        "answer": "本站支持退款，凭支付订单及用户id联系qq群内支付管理，可申请退款\n\n按照使用情况折算后退款，并收取部分手续费，1-3个工作日内完成",
+        "id": 2,
+        "question": "退款政策"
+      },
+      {
+        "answer": "https://doc.fishxcode.com/faq",
+        "id": 3,
+        "question": "常见错误&解决方法"
+      },
+      {
+        "answer": "不着急可以等次日0点，着急可以直接联系qq vx群内管理https://fishxcode.com/contact，转账后后台操作\n\n",
+        "id": 4,
+        "question": "支付限额如何解决"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "Ov23lidWf4dcQLrXbDEw",
+    "github_oauth": true,
+    "github_oauth_register": true,
+    "google_client_id": "533628944902-389k09bs39sn16jop27qj997rj5vfod4.apps.googleusercontent.com",
+    "google_oauth": false,
+    "google_oauth_register": false,
+    "invite_register_enabled": false,
+    "linuxdo_client_id": "iM7Qqv1fDodBrDeT98PNqHT13Ij9jTaP",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": true,
+    "linuxdo_oauth_register": true,
+    "logo": "https://fishxcode.com/logo.png",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "oidc_register_enabled": false,
+    "passkey_allow_insecure": true,
+    "passkey_attachment": "",
+    "passkey_display_name": "FishXCode",
+    "passkey_login": true,
+    "passkey_origins": "https://fishxcode.com",
+    "passkey_rp_id": "fishxcode.com",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
+    "price": 1,
+    "privacy_policy_enabled": true,
+    "quota_display_type": "CNY",
+    "quota_per_unit": 500000,
+    "register_enabled": true,
+    "self_use_mode_enabled": false,
+    "server_address": "https://fishxcode.com",
+    "setup": true,
+    "start_time": 1779337524,
+    "stripe_unit_price": 8,
+    "subscription_promo_badge_left": "",
+    "subscription_promo_badge_right": "",
+    "subscription_promo_button_link": "https://fishxcode.com/pricing?currency=CNY&plan_series=all&tab=subscription-plans&plan_sort=price_asc",
+    "subscription_promo_button_text": "",
+    "subscription_promo_enabled": true,
+    "subscription_promo_subtitle": "",
+    "subscription_promo_title": "",
+    "system_name": "FishXCode",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "telegram_oauth_register": false,
+    "token_test_defaults": {
+      "claude_model": "claude-opus-4-7",
+      "mode": "both",
+      "responses_model": "gpt-5.4"
+    },
+    "token_test_defaults_by_group": {
+      "aws-enterprise": {
+        "claude_model": "claude-opus-4-7",
+        "mode": "claude",
+        "responses_model": ""
+      },
+      "cc-max": {
+        "claude_model": "claude-opus-4-7",
+        "mode": "claude",
+        "responses_model": ""
+      },
+      "claude": {
+        "claude_model": "claude-opus-4-7",
+        "mode": "claude",
+        "responses_model": ""
+      },
+      "codex": {
+        "claude_model": "",
+        "mode": "responses",
+        "responses_model": "gpt-5.4"
+      },
+      "codex_sub": {
+        "claude_model": "",
+        "mode": "responses",
+        "responses_model": "gpt-5.4"
+      },
+      "default": {
+        "claude_model": "claude-opus-4-7",
+        "mode": "claude",
+        "responses_model": ""
+      },
+      "sub_plan_claude_lite": {
+        "claude_model": "claude-opus-4-7",
+        "mode": "claude",
+        "responses_model": ""
+      },
+      "sub_plan_claude_lite_day": {
+        "claude_model": "claude-opus-4-7",
+        "mode": "claude",
+        "responses_model": ""
+      },
+      "sub_plan_claude_micro": {
+        "claude_model": "claude-opus-4-7",
+        "mode": "claude",
+        "responses_model": ""
+      },
+      "sub_plan_claude_mini_max": {
+        "claude_model": "claude-opus-4-7",
+        "mode": "claude",
+        "responses_model": ""
+      },
+      "sub_plan_claude_mini_plus": {
+        "claude_model": "claude-opus-4-7",
+        "mode": "claude",
+        "responses_model": ""
+      },
+      "sub_plan_claude_nano_day": {
+        "claude_model": "claude-opus-4-7",
+        "mode": "claude",
+        "responses_model": ""
+      },
+      "sub_plan_claude_premium": {
+        "claude_model": "claude-opus-4-7",
+        "mode": "claude",
+        "responses_model": ""
+      },
+      "sub_plan_claude_premium_plus": {
+        "claude_model": "claude-opus-4-7",
+        "mode": "claude",
+        "responses_model": ""
+      }
+    },
+    "top_up_link": "https://fishxcode.com/",
+    "turnstile_check": false,
+    "turnstile_site_key": "0x4AAAAAACadZ8PR4Pg02IdV",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": true,
+    "version": "",
+    "wechat_login": false,
+    "wechat_qrcode": "",
+    "wechat_register": false
+  },
+  "message": "",
+  "success": true
+}

@@ -1,1 +1,782 @@
-{"auto_groups":["default"],"data":[{"model_name":"claude-opus-4-5","vendor_id":11,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"enable_groups":["Claude"],"supported_endpoint_types":["openai"],"pricing_version":"5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"},{"model_name":"claude-opus-4-7","vendor_id":11,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.2","description":"GPT-5.2 is an AI model provided by qihang-ai.","tags":"Reasoning,Tools,Files,Vision,400K","vendor_id":1,"quota_type":0,"model_ratio":0.875,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["default","codex-cheap"],"supported_endpoint_types":["openai"]},{"model_name":"gemini-3-flash-preview","description":"Gemini 3 Flash Preview is an AI model provided by venice.","tags":"Reasoning,Tools,Files,Vision,Audio,256K","vendor_id":9,"quota_type":0,"model_ratio":0.25,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["default"],"supported_endpoint_types":["openai"]},{"model_name":"gemini-3.1-flash-lite","vendor_id":9,"quota_type":0,"model_ratio":0.125,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["default"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.4","description":"GPT-5.4 is an AI model provided by vivgrid.","tags":"Reasoning,Tools,Files,Vision,400K","vendor_id":1,"quota_type":0,"model_ratio":1.25,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["default","codex-cheap"],"supported_endpoint_types":["openai"]},{"model_name":"claude-opus-4-7-think","vendor_id":11,"quota_type":0,"model_ratio":37.5,"model_price":0,"owner_by":"","completion_ratio":5,"enable_groups":["Claude"],"supported_endpoint_types":["openai"]},{"model_name":"claude-opus-4-0","vendor_id":11,"quota_type":0,"model_ratio":7.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"enable_groups":["Claude"],"supported_endpoint_types":["openai"]},{"model_name":"claude-opus-4-6-think","vendor_id":11,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.06,"enable_groups":["Claude"],"supported_endpoint_types":["openai"]},{"model_name":"codex-auto-review","vendor_id":1,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":2,"cache_ratio":1,"enable_groups":["default"],"supported_endpoint_types":["openai"]},{"model_name":"claude-opus-4-6","vendor_id":11,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["Claude"],"supported_endpoint_types":["openai"]},{"model_name":"claude-sonnet-4-6","description":"Claude Sonnet 4.6 is an AI model provided by venice.","icon":"Claude.Color","tags":"Reasoning,Tools,Files,Vision,1M","vendor_id":11,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["Claude"],"supported_endpoint_types":["openai"]},{"model_name":"gemini-3-pro-high","vendor_id":9,"quota_type":0,"model_ratio":2,"model_price":0,"owner_by":"","completion_ratio":4.5,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["default"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-oss-120b-medium","vendor_id":1,"quota_type":0,"model_ratio":0.175,"model_price":0,"owner_by":"","completion_ratio":2.142857142857,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["default"],"supported_endpoint_types":["openai"]},{"model_name":"claude-sonnet-4-5","vendor_id":11,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"enable_groups":["Claude"],"supported_endpoint_types":["openai"]},{"model_name":"claude-sonnet-4-0","vendor_id":11,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"enable_groups":["Claude"],"supported_endpoint_types":["openai"]},{"model_name":"claude-sonnet-4-6-think","vendor_id":11,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"enable_groups":["Claude"],"supported_endpoint_types":["openai"]},{"model_name":"gemini-3-flash","description":"Gemini 3 Flash is an AI model provided by opencode.","tags":"Reasoning,Tools,Files,Vision,Audio,1M","vendor_id":9,"quota_type":0,"model_ratio":0.25,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["default"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.3-codex","description":"GPT-5.3 Codex is an AI model provided by vivgrid.","tags":"Reasoning,Tools,Vision,400K","vendor_id":1,"quota_type":0,"model_ratio":0.875,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["default","codex-cheap"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.5","description":"GPT-5.5 is an AI model provided by opencode.","tags":"Reasoning,Tools,Files,Vision,1.1M","vendor_id":1,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"create_cache_ratio":1,"enable_groups":["default","codex-cheap"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.3-codex-spark","vendor_id":1,"quota_type":0,"model_ratio":0.875,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.1,"enable_groups":["codex-cheap","default"],"supported_endpoint_types":["openai"]},{"model_name":"claude-opus-4-1","vendor_id":11,"quota_type":0,"model_ratio":7.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"enable_groups":["Claude"],"supported_endpoint_types":["openai"]},{"model_name":"gemini-2.5-flash","description":"gemini-2.5-flash is an AI model provided by sap-ai-core.","tags":"Reasoning,Tools,Files,Vision,Audio,1M","vendor_id":9,"quota_type":0,"model_ratio":0.15,"model_price":0,"owner_by":"","completion_ratio":8.333333333333,"cache_ratio":0.266667,"enable_groups":["default"],"supported_endpoint_types":["openai"]},{"model_name":"gemini-3.1-flash-image","vendor_id":9,"quota_type":0,"model_ratio":0.25,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["default"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-5.4-mini","description":"GPT-5.4 Mini is an AI model provided by vivgrid.","tags":"Reasoning,Tools,Files,Vision,400K","vendor_id":1,"quota_type":0,"model_ratio":0.375,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["codex-cheap","default"],"supported_endpoint_types":["openai"]},{"model_name":"gemini-2.5-flash-lite","description":"gemini-2.5-flash-lite is an AI model provided by sap-ai-core.","tags":"Reasoning,Tools,Files,Vision,Audio,1M","vendor_id":9,"quota_type":0,"model_ratio":0.05,"model_price":0,"owner_by":"","completion_ratio":4,"cache_ratio":0.1,"create_cache_ratio":1,"enable_groups":["default"],"supported_endpoint_types":["openai"]},{"model_name":"gemini-3.1-flash-lite-preview","description":"Gemini 3.1 Flash Lite Preview is an AI model provided by vivgrid.","tags":"Reasoning,Tools,Files,Vision,Audio,1M","vendor_id":9,"quota_type":0,"model_ratio":0.125,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["default"],"supported_endpoint_types":["openai"]},{"model_name":"gemini-3.1-pro-low","vendor_id":9,"quota_type":0,"model_ratio":1,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["default"],"supported_endpoint_types":["openai"]},{"model_name":"openai/gpt-image-2","vendor_id":1,"quota_type":0,"model_ratio":4,"model_price":0,"owner_by":"","completion_ratio":3.75,"enable_groups":["OpenAI-Image2"],"supported_endpoint_types":["openai"]},{"model_name":"gemini-3-pro-low","vendor_id":9,"quota_type":0,"model_ratio":1,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["default"],"supported_endpoint_types":["openai"]},{"model_name":"gemini-3.1-pro-high","vendor_id":9,"quota_type":0,"model_ratio":2,"model_price":0,"owner_by":"","completion_ratio":4.5,"cache_ratio":0.1,"create_cache_ratio":0.5,"enable_groups":["default"],"supported_endpoint_types":["openai"]},{"model_name":"gpt-image-2","vendor_id":1,"quota_type":1,"model_ratio":0,"model_price":0.05,"owner_by":"","completion_ratio":0,"enable_groups":["default","codex-cheap"],"supported_endpoint_types":["openai"]}],"group_ratio":{"Claude":10,"OpenAI-Image2":1.5,"codex-cheap":0.8,"default":1},"pricing_version":"a42d372ccf0b5dd13ecf71203521f9d2","success":true,"supported_endpoint":{"anthropic":{"path":"/v1/messages","method":"POST"},"openai":{"path":"/v1/chat/completions","method":"POST"},"openai-response":{"path":"/v1/responses","method":"POST"},"openai-response-compact":{"path":"/v1/responses/compact","method":"POST"}},"usable_group":{"Claude":"Claude稳定渠道","OpenAI-Image2":"gpt-image-2官方中转，支持高质量图片生成","codex-cheap":"低价倍率，偶有不稳定","default":"默认分组"},"vendors":[{"id":1,"name":"OpenAI","icon":"OpenAI"},{"id":6,"name":"Venice AI","icon":"VeniceAI"},{"id":7,"name":"QiHang"},{"id":8,"name":"SAP AI Core"},{"id":10,"name":"Claude","icon":"Claude.Color"},{"id":11,"name":"Anthropic","icon":"Claude.Color"},{"id":13,"name":"讯飞","icon":"Spark.Color"},{"id":2,"name":"DeepSeek","icon":"DeepSeek.Color"},{"id":3,"name":"302.AI"},{"id":4,"name":"Vivgrid"},{"id":5,"name":"OpenCode Zen","icon":"OpenCode"},{"id":9,"name":"Google","icon":"Gemini.Color"},{"id":12,"name":"Tuzi"}]}
+{
+  "auto_groups": [
+    "default"
+  ],
+  "data": [
+    {
+      "model_name": "claude-opus-4-1",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Claude"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gemini-3-pro-low",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "description": "GPT-5.4 is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "default",
+        "codex-cheap"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-image",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "description": "GPT-5.5 is an AI model provided by opencode.",
+      "tags": "Reasoning,Tools,Files,Vision,1.1M",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "default",
+        "codex-cheap"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-think",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.06,
+      "enable_groups": [
+        "Claude"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash",
+      "description": "Gemini 3 Flash is an AI model provided by opencode.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-high",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-low",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "description": "GPT-5.3 Codex is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Vision,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "default",
+        "codex-cheap"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "Claude"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6-think",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Claude"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-lite-preview",
+      "description": "Gemini 3.1 Flash Lite Preview is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-high",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "description": "GPT-5.2 is an AI model provided by qihang-ai.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "default",
+        "codex-cheap"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash",
+      "description": "gemini-2.5-flash is an AI model provided by sap-ai-core.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333333,
+      "cache_ratio": 0.266667,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview",
+      "description": "Gemini 3 Flash Preview is an AI model provided by venice.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,256K",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-lite",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "description": "GPT-5.4 Mini is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "default",
+        "codex-cheap"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.05,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "codex-cheap"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7-think",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "Claude"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "Claude"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "description": "Claude Sonnet 4.6 is an AI model provided by venice.",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "Claude"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-0",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Claude"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-lite",
+      "description": "gemini-2.5-flash-lite is an AI model provided by sap-ai-core.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.05,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-oss-120b-medium",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.175,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2.142857142857,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "openai/gpt-image-2",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 4,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.75,
+      "enable_groups": [
+        "OpenAI-Image2"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex-cheap",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-0",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Claude"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "Claude": 10,
+    "OpenAI-Image2": 1.5,
+    "codex-cheap": 0.8,
+    "default": 1
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    },
+    "openai-response": {
+      "path": "/v1/responses",
+      "method": "POST"
+    },
+    "openai-response-compact": {
+      "path": "/v1/responses/compact",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "Claude": "Claude稳定渠道",
+    "OpenAI-Image2": "gpt-image-2官方中转，支持高质量图片生成",
+    "codex-cheap": "低价倍率，偶有不稳定",
+    "default": "默认分组"
+  },
+  "vendors": [
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 6,
+      "name": "Venice AI",
+      "icon": "VeniceAI"
+    },
+    {
+      "id": 8,
+      "name": "SAP AI Core"
+    },
+    {
+      "id": 9,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 11,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 13,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 2,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 3,
+      "name": "302.AI"
+    },
+    {
+      "id": 4,
+      "name": "Vivgrid"
+    },
+    {
+      "id": 5,
+      "name": "OpenCode Zen",
+      "icon": "OpenCode"
+    },
+    {
+      "id": 7,
+      "name": "QiHang"
+    },
+    {
+      "id": 10,
+      "name": "Claude",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 12,
+      "name": "Tuzi"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":false,\"about\":false}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+      "announcements": [
+        {
+          "content": "已上架ChatGPT Plus和Pro满血号池，创建key时请选择对应分组～",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-05-03T19:10:56.144Z",
+          "type": "success"
+        },
+        {
+          "content": "请根据“文档”加入用户群聊～",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-05-03T19:10:33.943Z",
+          "type": "ongoing"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "blue",
+          "description": "默认线路",
+          "id": 1,
+          "route": "核心线路",
+          "url": "https://api.zerofra.me"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": true,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://my.feishu.cn/wiki/AOIYwgPPMi7wGfkRj0EcYmmsnib?from=from_copylink",
+      "email_verification": true,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq": [],
+      "faq_enabled": true,
+      "footer_html": "",
+      "github_client_id": "",
+      "github_oauth": false,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "https://i.postimg.cc/Dwrp6FQ0/Zero-Frame.png",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "ZeroFra.me",
+      "passkey_login": false,
+      "passkey_origins": "https://api.zerofra.me",
+      "passkey_rp_id": "api.zerofra.me",
+      "passkey_user_verification": "preferred",
+      "password_register_enabled": true,
+      "price": 1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "USD",
+      "quota_per_unit": 500000,
+      "register_enabled": true,
+      "self_use_mode_enabled": false,
+      "server_address": "https://api.zerofra.me",
+      "setup": true,
+      "start_time": 1779240478,
+      "stripe_unit_price": 8,
+      "system_name": "ZeroFra.me",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "default",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 7,
+      "user_agreement_enabled": false,
+      "version": "v1.0.0-rc.7",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://api.zerofra.me/api/pricing"
+}

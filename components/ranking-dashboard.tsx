@@ -100,15 +100,29 @@ function MobileDetail({ label, value }: { label: string; value: ReactNode }) {
   );
 }
 
+function getSampleCount(station: SiteData["stations"][number], window: TimeWindow) {
+  return station.quality[window]?.requestSamples ?? null;
+}
+
 function getTotalSampleCount(station: SiteData["stations"][number]) {
-  const workRequests = station.rankings.work_hours?.requests;
-  const offRequests = station.rankings.off_hours?.requests;
+  return (getSampleCount(station, "work_hours") ?? 0) + (getSampleCount(station, "off_hours") ?? 0);
+}
 
-  if (workRequests == null && offRequests == null) {
-    return null;
+function getUnrankedReason(station: SiteData["stations"][number]) {
+  const hasGroupEvidence = station.groupMultipliers.length > 0;
+  const hasRechargeEvidence = station.rechargeTiers.length > 0;
+  const totalSamples = getTotalSampleCount(station);
+
+  if (!hasGroupEvidence || !hasRechargeEvidence) {
+    return "缺分组/充值证据";
   }
-
-  return (workRequests ?? 0) + (offRequests ?? 0);
+  if (station.verifiedTierCount <= 0) {
+    return "缺正式费用行";
+  }
+  if (totalSamples <= 0) {
+    return "缺请求样本";
+  }
+  return "费用待人工复核";
 }
 
 function MobileRankingCard({ row, index, stationMeta }: { row: RankingRow; index: number; stationMeta?: { platformGuess: string } }) {
@@ -158,7 +172,8 @@ function MobileRankingCard({ row, index, stationMeta }: { row: RankingRow; index
 }
 
 function MobileStationCard({ station }: { station: SiteData["stations"][number] }) {
-  const totalRequests = getTotalSampleCount(station);
+  const allSamples = getSampleCount(station, "all_hours");
+  const unrankedReason = getUnrankedReason(station);
 
   return (
     <article className="mobile-card">
@@ -175,9 +190,7 @@ function MobileStationCard({ station }: { station: SiteData["stations"][number] 
       </div>
 
       <div className="mobile-metrics-grid">
-        <MobileMetric label="工作样本" value={<span className="mono">{station.rankings.work_hours?.requests ?? "-"}</span>} />
-        <MobileMetric label="非工作样本" value={<span className="mono">{station.rankings.off_hours?.requests ?? "-"}</span>} />
-        <MobileMetric label="总样本数" value={<span className="mono">{totalRequests ?? "-"}</span>} />
+        <MobileMetric label="全部时段样本" value={<span className="mono">{allSamples ?? "-"}</span>} />
         <MobileMetric label="公告数量" value={<span className="mono">{station.announcements.length}</span>} />
       </div>
 
@@ -190,13 +203,14 @@ function MobileStationCard({ station }: { station: SiteData["stations"][number] 
           <MobileDetail label="官方网址" value={<StationUrlLink href={station.url} compact />} />
           <MobileDetail label="平台判断" value={station.platformGuess || "-"} />
           <MobileDetail label="站点类型" value={station.stationTypeLabel} />
+          <MobileDetail label="未入榜原因" value={unrankedReason} />
           <MobileDetail label="核验档位" value={<span className="mono">{station.verifiedTierCount}</span>} />
         </div>
       </details>
 
       <div className="mobile-card-actions">
         <Link href={`/stations/${station.key}`} className="tiny-button mobile-card-button">
-          查看
+          详情
           <ChevronRight size={14} />
         </Link>
       </div>
@@ -480,24 +494,35 @@ export function RankingDashboard({ data }: { data: SiteData }) {
           <div className="section-body">
             <div className="desktop-table">
               <div className="table-wrap">
-                <table className="data-table">
+                <table className="data-table registry-table">
+                  <colgroup>
+                    <col className="registry-col-station" />
+                    <col className="registry-col-url" />
+                    <col className="registry-col-type" />
+                    <col className="registry-col-platform" />
+                    <col className="registry-col-reason" />
+                    <col className="registry-col-sample" />
+                    <col className="registry-col-tier" />
+                    <col className="registry-col-announcements" />
+                    <col className="registry-col-action" />
+                  </colgroup>
                   <thead>
                     <tr>
                       <th>站点</th>
                       <th className="col-url">网址</th>
                       <th className="col-type">类型</th>
-                      <th>平台判断</th>
-                      <th>工作时段样本</th>
-                      <th>非工作时段样本</th>
-                      <th>总样本数</th>
+                      <th className="col-platform">平台判断</th>
+                      <th>未入榜原因</th>
+                      <th>全部时段样本</th>
                       <th>核验档位</th>
                       <th>公告数</th>
-                      <th className="col-action">详情</th>
+                      <th className="col-action">操作</th>
                     </tr>
                   </thead>
                   <tbody>
                     {unrankedStations.map((station) => {
-                      const totalRequests = getTotalSampleCount(station);
+                      const allSamples = getSampleCount(station, "all_hours");
+                      const unrankedReason = getUnrankedReason(station);
 
                       return (
                         <tr key={station.key}>
@@ -510,15 +535,14 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                             <StationUrlLink href={station.url} compact />
                           </td>
                           <td className="table-type-cell">{station.stationTypeShortLabel}</td>
-                          <td>{station.platformGuess || "-"}</td>
-                          <td className="mono">{station.rankings.work_hours?.requests ?? "-"}</td>
-                          <td className="mono">{station.rankings.off_hours?.requests ?? "-"}</td>
-                          <td className="mono">{totalRequests ?? "-"}</td>
+                          <td className="table-platform-cell">{station.platformGuess || "-"}</td>
+                          <td>{unrankedReason}</td>
+                          <td className="mono">{allSamples ?? "-"}</td>
                           <td className="mono">{station.verifiedTierCount}</td>
                           <td className="mono">{station.announcements.length}</td>
                           <td className="table-action-cell">
                             <Link href={`/stations/${station.key}`} className="tiny-button">
-                              查看
+                              详情
                               <ChevronRight size={14} />
                             </Link>
                           </td>

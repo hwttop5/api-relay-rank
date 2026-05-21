@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import os
 import re
@@ -19,12 +20,16 @@ WORKSPACE_ROOT = SCRIPT_PATH.parents[2]
 SITE_DATA_PATH = APP_ROOT / "data" / "site-data.json"
 STATION_ALIASES_PATH = APP_ROOT / "config" / "station_aliases.json"
 LIVE_AUTH_PROBE_DIR = WORKSPACE_ROOT / "tabbit-audit-profile"
+REQUEST_LOG_STATION_CANDIDATES_PATH = APP_ROOT / "request_log_station_candidates.csv"
+LOGIN_VERIFICATION_CHECKLIST_PATH = APP_ROOT / "login_verification_checklist.csv"
 
 TIMEOUT = 20
 USER_AGENT = "api-relay-rank/0.1 live-announcement-capture"
 
 BASE_OVERRIDES = {
+    "585016d3.u3u.dev": "https://585016d3.u3u.dev",
     "aicodelink": "https://aicodelink.top",
+    "atomflow.vip": "https://atomflow.vip",
     "coolplay": "https://cp.coolplay-api.fun:55555",
     "flymux": "https://api.flymux.com",
     "freemodel": "https://freemodel.dev",
@@ -37,6 +42,8 @@ BASE_OVERRIDES = {
 }
 
 PLATFORM_OVERRIDES = {
+    "585016d3.u3u.dev": "sub2api",
+    "atomflow.vip": "new-api",
     "hi-code": "sub2api",
 }
 
@@ -98,6 +105,11 @@ def login_accounts_for_station(station_key: str, email: str, password: str) -> l
 
 def read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def read_csv(path: Path) -> list[dict[str, str]]:
+    with path.open("r", encoding="utf-8-sig", newline="") as handle:
+        return list(csv.DictReader(handle))
 
 
 def load_station_aliases() -> dict[str, str]:
@@ -180,33 +192,67 @@ def station_rows(
     *,
     include_all: bool = False,
 ) -> list[dict[str, Any]]:
-    site_data = read_json(SITE_DATA_PATH)
     rows: list[dict[str, Any]] = []
     seen: set[str] = set()
-    for station in site_data.get("stations", []):
-        key = canonical_station_key(str(station.get("key") or ""), station_aliases)
+
+    def add_row(
+        key: str,
+        label: str,
+        base: str,
+        platform: str = "",
+        *,
+        has_announcements: bool = False,
+    ) -> None:
+        key = canonical_station_key(str(key or ""), station_aliases)
         if not key or key in skipped:
-            continue
+            return
         if not is_public_station_key(key):
-            continue
+            return
         if selected is not None and key not in selected:
-            continue
-        if selected is None and not include_all and station.get("announcements"):
-            continue
-        base = BASE_OVERRIDES.get(key) or normalize_base_url(station.get("url"))
+            return
+        if selected is None and not include_all and has_announcements:
+            return
+        base = BASE_OVERRIDES.get(key) or normalize_base_url(base)
         if not base or not is_public_base_url(base):
-            continue
+            return
         if key in seen:
-            continue
+            return
         seen.add(key)
         rows.append(
             {
                 "key": key,
-                "label": station.get("label") or key,
-                "platform": str(PLATFORM_OVERRIDES.get(key) or station.get("platformGuess") or "").lower(),
+                "label": label or key,
+                "platform": str(PLATFORM_OVERRIDES.get(key) or platform or "").lower(),
                 "base": base,
             }
         )
+
+    if SITE_DATA_PATH.exists():
+        site_data = read_json(SITE_DATA_PATH)
+        for station in site_data.get("stations", []):
+            add_row(
+                str(station.get("key") or ""),
+                str(station.get("label") or ""),
+                str(station.get("url") or ""),
+                str(station.get("platformGuess") or ""),
+                has_announcements=bool(station.get("announcements")),
+            )
+
+    if LOGIN_VERIFICATION_CHECKLIST_PATH.exists():
+        for row in read_csv(LOGIN_VERIFICATION_CHECKLIST_PATH):
+            urls = [normalize_base_url(part) for part in str(row.get("urls") or "").split(";") if part.strip()]
+            add_row(
+                row.get("station", ""),
+                row.get("label", ""),
+                next((url for url in urls if url), ""),
+                row.get("platform_guess", ""),
+            )
+
+    if REQUEST_LOG_STATION_CANDIDATES_PATH.exists():
+        for row in read_csv(REQUEST_LOG_STATION_CANDIDATES_PATH):
+            host = row.get("host", "")
+            urls = [normalize_base_url(part) for part in str(row.get("url") or "").split(";") if part.strip()]
+            add_row(host, host, next((url for url in urls if url), f"https://{host}" if host else ""), "")
     return rows
 
 
@@ -399,13 +445,36 @@ def positive_number(value: Any) -> bool:
         return False
 
 
+def explicitly_false(value: Any) -> bool:
+    if value is False:
+        return True
+    if isinstance(value, str):
+        return value.strip().lower() in {"0", "false", "no", "n", "off", "disabled"}
+    if isinstance(value, (int, float)):
+        return float(value) == 0.0
+    return False
+
+
 def payment_config_can_describe_topups(data: dict[str, Any]) -> bool:
+    if explicitly_false(data.get("enabled")) or explicitly_false(data.get("payment_enabled")):
+        return False
     if bool(data.get("balance_disabled")):
         return False
     return positive_number(data.get("balance_recharge_multiplier"))
 
 
 def useful_probe_result(api_path: str, result: dict[str, Any]) -> bool:
+    if api_path.startswith("New-Api-User:"):
+        if not isinstance(result, dict):
+            return False
+        for sub_path, sub_result in result.items():
+            if sub_path == "/api/user/amount" and isinstance(sub_result, dict):
+                if any(useful_probe_result(sub_path, item) for item in sub_result.values() if isinstance(item, dict)):
+                    return True
+                continue
+            if isinstance(sub_result, dict) and useful_probe_result(sub_path, sub_result):
+                return True
+        return False
     if result.get("ok") is not True:
         return False
     if announcement_api_path(api_path):
@@ -485,7 +554,7 @@ def login_new_api(
     password: str,
     *,
     account_label: str = "primary",
-) -> list[dict[str, Any]]:
+) -> tuple[bool, list[dict[str, Any]]]:
     attempts: list[dict[str, Any]] = []
     for payload in ({"username": email, "password": password}, {"email": email, "password": password}):
         result = hit(session, "POST", base_url.rstrip("/") + "/api/user/login", json=payload)
@@ -502,8 +571,8 @@ def login_new_api(
             }
         )
         if body_success(body):
-            break
-    return attempts
+            return True, attempts
+    return False, attempts
 
 
 def login_special(
@@ -624,7 +693,7 @@ def fetch_station(station: dict[str, Any], email: str, password: str) -> dict[st
                 results[path] = hit(session, "GET", base_url + path, headers=headers)
     elif platform == "new-api":
         for account in accounts:
-            attempts = login_new_api(
+            success, attempts = login_new_api(
                 session,
                 base_url,
                 account["email"],
@@ -632,9 +701,36 @@ def fetch_station(station: dict[str, Any], email: str, password: str) -> dict[st
                 account_label=account["label"],
             )
             login_attempts.extend(attempts)
-            if any(item.get("success") for item in attempts):
+            if success:
                 login_success = True
                 break
+        if login_success:
+            self_result = hit(session, "GET", base_url + "/api/user/self")
+            results["/api/user/self"] = self_result
+            body = self_result.get("body")
+            data = body.get("data") if isinstance(body, dict) else None
+            uid = ""
+            if isinstance(data, dict):
+                uid = str(data.get("id") or data.get("user_id") or data.get("uid") or "").strip()
+            user_headers = {"New-Api-User": uid} if uid else {}
+            auth_bucket: dict[str, Any] = {}
+            for path in (
+                "/api/user/self/groups",
+                "/api/user/topup/info",
+                "/api/subscription/plans",
+            ):
+                auth_bucket[path] = hit(session, "GET", base_url + path, headers=user_headers)
+            topup_data = auth_bucket.get("/api/user/topup/info", {}).get("body", {})
+            topup_info = topup_data.get("data") if isinstance(topup_data, dict) else None
+            amount_options = topup_info.get("amount_options") if isinstance(topup_info, dict) else []
+            amount_results: dict[str, Any] = {}
+            if isinstance(amount_options, list):
+                for amount in amount_options[:20]:
+                    amount_text = str(amount)
+                    amount_results[amount_text] = hit(session, "GET", base_url + "/api/user/amount", params={"amount": amount}, headers=user_headers)
+            auth_bucket["/api/user/amount"] = amount_results
+            bucket_key = f"New-Api-User:{uid or 'session'}"
+            results[bucket_key] = auth_bucket
         for path in (
             "/api/status",
             "/api/notice",

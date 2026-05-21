@@ -1,1 +1,467 @@
-{"auto_groups":["GptPro","ClaudeApi"],"data":[{"model_name":"gpt-5.4-pro","vendor_id":4,"quota_type":0,"model_ratio":15,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":1,"create_cache_ratio":1.25,"enable_groups":["GptApi"],"supported_endpoint_types":["openai"]},{"model_name":"claude-sonnet-4-6","vendor_id":1,"quota_type":0,"model_ratio":1.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["cheapCCApi","ClaudeApi","cheapClaude","webuiClaude","ClaudeMaxV","test2","bedrock","AppClaude","ClaudeMax"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-haiku-4-5-20251001","vendor_id":1,"quota_type":0,"model_ratio":0.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["AppClaude","ClaudeMax","test2","cheapCCApi","ClaudeApi","webuiClaude","bedrock","ClaudeMaxV"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"gpt-5.5","vendor_id":4,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["GptPro-Fast","GptPro","AppCodex","webuiGpt","codex-0.3","GptProEnterprise"],"supported_endpoint_types":["openai","anthropic"]},{"model_name":"gpt-5.4","vendor_id":4,"quota_type":0,"model_ratio":1.25,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"create_cache_ratio":1,"enable_groups":["GptPro-Fast","GptPro","AppCodex","webuiGpt","codex-0.3","GptProEnterprise"],"supported_endpoint_types":["openai","anthropic"]},{"model_name":"gpt-5.4-mini","vendor_id":4,"quota_type":0,"model_ratio":0.375,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.1,"create_cache_ratio":1,"enable_groups":["GptPro-Fast","GptPro","AppCodex","webuiGpt","codex-0.3","GptProEnterprise"],"supported_endpoint_types":["openai","anthropic"]},{"model_name":"claude-opus-4-7","vendor_id":1,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["ClaudeApi","webuiClaude","bedrock","AppClaude","ClaudeMax","ClaudeMaxV","cheapCCApi","test2"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"claude-opus-4-6","vendor_id":1,"quota_type":0,"model_ratio":2.5,"model_price":0,"owner_by":"","completion_ratio":5,"cache_ratio":0.1,"create_cache_ratio":1.25,"enable_groups":["cheapCCApi","ClaudeApi","cheapClaude","webuiClaude","ClaudeMax","ClaudeMaxV","test2","bedrock","AppClaude"],"supported_endpoint_types":["anthropic","openai"]},{"model_name":"gpt-5.3-codex","vendor_id":4,"quota_type":0,"model_ratio":0.875,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.1,"create_cache_ratio":1,"enable_groups":["codex-0.3","GptProEnterprise","GptPro","AppCodex","webuiGpt"],"supported_endpoint_types":["openai","anthropic"]},{"model_name":"gpt-5.3-codex-spark","vendor_id":4,"quota_type":0,"model_ratio":0.875,"model_price":0,"owner_by":"","completion_ratio":8,"cache_ratio":0.1,"create_cache_ratio":1,"enable_groups":["webuiGpt","codex-0.3","GptProEnterprise","GptPro","AppCodex"],"supported_endpoint_types":["openai","anthropic"]},{"model_name":"gpt-image-2","vendor_id":4,"quota_type":1,"model_ratio":0,"model_price":0.2,"owner_by":"","completion_ratio":0,"cache_ratio":0,"create_cache_ratio":0,"enable_groups":["webuiGpt","codex-0.3","GptProEnterprise","GptPro","AppCodex"],"supported_endpoint_types":["openai"]}],"group_ratio":{"ClaudeApi":2.2,"ClaudeMax":1.7,"GeminiAnti":0.9,"GeminiApi":1.8,"GptApi":0.35,"GptPro":0.6,"GptPro-Fast":1.2,"cheapCCApi":1,"cheapClaude":0.5,"test":2.2,"test2":1.7},"success":true,"supported_endpoint":{"anthropic":{"path":"/v1/messages","method":"POST"},"openai":{"path":"/v1/chat/completions","method":"POST"}},"usable_group":{"ClaudeApi":"Claude满血Api","ClaudeMax":"Claude Max号池(仅限CC)(CC内使用最推荐!)","GeminiAnti":"反重力Gemini逆向","GeminiApi":"Gemini满血Api","GptApi":"OpenAi官Api","GptPro":"GPT Pro号池","GptPro-Fast":"GPT Pro Fast号池（service_tier=priority）","cheapCCApi":"稳定性较差的claudeApi","cheapClaude":"便宜的claude奇奇怪怪","test":"测试分组","test2":"测试分组2"},"vendors":[{"id":1,"name":"Anthropic","icon":"Claude.Color"},{"id":2,"name":"Gemini","icon":"Gemini.Color"},{"id":4,"name":"OpenAI","icon":"OpenAI"}]}
+{
+  "auto_groups": [
+    "GptPro",
+    "ClaudeApi"
+  ],
+  "data": [
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "GptProEnterprise",
+        "GptPro-Fast",
+        "GptPro",
+        "AppCodex",
+        "webuiGpt",
+        "codex-0.3"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "GptPro",
+        "AppCodex",
+        "webuiGpt",
+        "codex-0.3",
+        "GptProEnterprise",
+        "GptPro-Fast"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "GptPro",
+        "AppCodex",
+        "webuiGpt",
+        "codex-0.3",
+        "GptProEnterprise"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "vendor_id": 4,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "cache_ratio": 0,
+      "create_cache_ratio": 0,
+      "enable_groups": [
+        "GptPro",
+        "AppCodex",
+        "webuiGpt",
+        "codex-0.3",
+        "GptProEnterprise"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "ClaudeApi",
+        "cheapClaude",
+        "ClaudeMax",
+        "ClaudeMaxV",
+        "test2",
+        "cheapCCApi",
+        "webuiClaude",
+        "bedrock",
+        "AppClaude"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "webuiClaude",
+        "bedrock",
+        "ClaudeMax",
+        "ClaudeMaxV",
+        "ClaudeApi",
+        "cheapClaude",
+        "AppClaude",
+        "test2",
+        "cheapCCApi"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "bedrock",
+        "AppClaude",
+        "ClaudeMax",
+        "ClaudeMaxV",
+        "test2",
+        "cheapCCApi",
+        "ClaudeApi",
+        "webuiClaude"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "GptPro",
+        "AppCodex",
+        "webuiGpt",
+        "codex-0.3",
+        "GptProEnterprise"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-pro",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "GptApi"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cheapCCApi",
+        "ClaudeApi",
+        "AppClaude",
+        "ClaudeMaxV",
+        "test2",
+        "webuiClaude",
+        "bedrock",
+        "ClaudeMax"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "GptPro-Fast",
+        "GptPro",
+        "AppCodex",
+        "webuiGpt",
+        "codex-0.3",
+        "GptProEnterprise"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "ClaudeApi": 2.2,
+    "ClaudeMax": 1.7,
+    "GeminiAnti": 0.9,
+    "GeminiApi": 1.8,
+    "GptApi": 0.35,
+    "GptPro": 0.6,
+    "GptPro-Fast": 1.2,
+    "cheapCCApi": 1,
+    "cheapClaude": 0.5,
+    "test": 2.2,
+    "test2": 1.7
+  },
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "ClaudeApi": "Claude满血Api",
+    "ClaudeMax": "Claude Max号池(仅限CC)(CC内使用最推荐!)",
+    "GeminiAnti": "反重力Gemini逆向",
+    "GeminiApi": "Gemini满血Api",
+    "GptApi": "OpenAi官Api",
+    "GptPro": "GPT Pro号池",
+    "GptPro-Fast": "GPT Pro Fast号池（service_tier=priority）",
+    "cheapCCApi": "稳定性较差的claudeApi",
+    "cheapClaude": "便宜的claude奇奇怪怪",
+    "test": "测试分组",
+    "test2": "测试分组2"
+  },
+  "vendors": [
+    {
+      "id": 4,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 1,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 2,
+      "name": "Gemini",
+      "icon": "Gemini.Color"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true,\"bills\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":false,\"redemption\":true,\"user\":true,\"subscription\":false,\"setting\":true,\"admin-invoices\":true}}",
+      "_qn": "4router-core",
+      "announcements": [
+        {
+          "content": "加群1094738104 可以领取2刀额度",
+          "extra": "",
+          "id": 6,
+          "publishDate": "2026-05-18T09:39:47.672Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "cheapCCApi升级为满血1M claude模型，无提示词污染",
+          "extra": "",
+          "id": 5,
+          "publishDate": "2026-04-27T17:37:11.155Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "上架cheapCCApi分组，1.0x倍率，由aws/gcp混合api组成，200k上下文，支持高性能推理，稳定性一般",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2026-04-22T20:37:16.332Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "上架OfficialClaude分组，3.3x倍率，官key转发，除了贵没有缺点",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2026-04-22T03:20:14.594Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "4Router试运营开启",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-04-09T09:58:08.132Z",
+          "type": "default"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "orange",
+          "description": "低延迟高sla",
+          "id": 1,
+          "route": "核心线路(第一选项)",
+          "url": "https://4Router.net"
+        },
+        {
+          "color": "blue",
+          "description": "在核心线路故障时建议采用该路线",
+          "id": 2,
+          "route": "三网优化(备线)",
+          "url": "https://hk.4Router.net"
+        },
+        {
+          "color": "green",
+          "description": "如需使用该线路请联系管理员",
+          "id": 3,
+          "route": "高可用专线(勿选)",
+          "url": "https://47.10x.1xx.1xx"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "webchat": "https://webchat.4router.net/bridge#{accessToken}"
+        }
+      ],
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "custom_oauth_providers": [
+        {
+          "name": "linuxDo登录",
+          "slug": "linuxdo",
+          "client_id": "1MxLoHSZkgzdfRcd64DmipBeHlo81ZHz",
+          "authorization_endpoint": "https://connect.linux.do/oauth2/authorize",
+          "scopes": "openid profile email"
+        }
+      ],
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "display_in_currency": true,
+      "docs_link": "https://docs.4router.net/",
+      "email_verification": true,
+      "enable_batch_update": false,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq": [
+        {
+          "answer": "请加群1094738104（加群有福利！），如有任何问题请咨询客服（包括开票）。退款原则上可扣除充值优惠后按比例返还。",
+          "id": 1,
+          "question": "关于售后与交流"
+        },
+        {
+          "answer": "初次使用务必阅读<a href=\"https://docs.4router.net\" style=\"color: #F0902D;\">文档(点击此处查看)</a>",
+          "id": 2,
+          "question": "关于使用说明"
+        }
+      ],
+      "faq_enabled": true,
+      "footer_html": "",
+      "github_client_id": "",
+      "github_oauth": false,
+      "google_client_id": "",
+      "google_oauth": false,
+      "invoice_min_amount": "100",
+      "logo": "",
+      "notice_updated_at": "2026-04-12T22:28:18.282Z",
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "4Router",
+      "passkey_login": false,
+      "passkey_origins": "https://4router.net",
+      "passkey_rp_id": "4router.net",
+      "passkey_user_verification": "preferred",
+      "price": 1,
+      "privacy_policy_enabled": true,
+      "quota_display_type": "CNY",
+      "quota_per_unit": 500000,
+      "self_use_mode_enabled": false,
+      "server_address": "https://4router.net",
+      "setup": true,
+      "start_time": 1779167382,
+      "stripe_unit_price": 8,
+      "system_name": "4Router",
+      "top_up_link": "",
+      "turnstile_check": true,
+      "turnstile_site_key": "0x4AAAAAAC1587P4VeMFiSsW",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 1,
+      "user_agreement_enabled": true,
+      "version": "v0.0.0",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://4Router.net/api/pricing"
+}

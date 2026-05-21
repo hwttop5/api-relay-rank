@@ -1,1 +1,159 @@
-{"auto_groups":["default"],"data":[{"model_name":"gpt-5.5","vendor_id":1,"quota_type":0,"model_ratio":2,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.475,"enable_groups":["default","svip"],"supported_endpoint_types":["openai"],"pricing_version":"5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"},{"model_name":"gpt-5.4","vendor_id":1,"quota_type":0,"model_ratio":1,"model_price":0,"owner_by":"","completion_ratio":6,"cache_ratio":0.45,"enable_groups":["svip","default"],"supported_endpoint_types":["openai"]}],"group_ratio":{"default":1},"pricing_version":"a42d372ccf0b5dd13ecf71203521f9d2","success":true,"supported_endpoint":{"openai":{"path":"/v1/chat/completions","method":"POST"}},"usable_group":{"default":"默认分组"},"vendors":[{"id":1,"name":"OpenAI","icon":"OpenAI"}]}
+{
+  "auto_groups": [
+    "default"
+  ],
+  "data": [
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.475,
+      "enable_groups": [
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.45,
+      "enable_groups": [
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "default": 1
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "default": "默认分组"
+  },
+  "vendors": [
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":false,\"about\":false}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":false,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+      "announcements": [],
+      "announcements_enabled": true,
+      "api_info": [],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": true,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://docs.newapi.pro",
+      "email_verification": true,
+      "enable_batch_update": false,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq": [],
+      "faq_enabled": true,
+      "footer_html": "",
+      "github_client_id": "",
+      "github_oauth": false,
+      "linuxdo_client_id": "hHRfkShtQi3iiYPTAUdKpffANiIomalj",
+      "linuxdo_minimum_trust_level": 2,
+      "linuxdo_oauth": true,
+      "logo": "https://imgbed.996sb.top/file/1778120370018_logo_transparent_final.png",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "New API",
+      "passkey_login": false,
+      "passkey_origins": "https://nbtoken.ai567.asia",
+      "passkey_rp_id": "nbtoken.ai567.asia",
+      "passkey_user_verification": "preferred",
+      "price": 7.3,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "CUSTOM",
+      "quota_per_unit": 500000,
+      "self_use_mode_enabled": false,
+      "server_address": "https://nbtoken.ai567.asia",
+      "setup": true,
+      "start_time": 1779255649,
+      "stripe_unit_price": 8,
+      "system_name": "词桥云",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "classic",
+      "turnstile_check": false,
+      "turnstile_site_key": "0x4AAAAAADSQh7sHzOwcLTOE",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 7.3,
+      "user_agreement_enabled": false,
+      "version": "v1.0.0-rc.4",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://nbtoken.ai567.asia/api/pricing"
+}

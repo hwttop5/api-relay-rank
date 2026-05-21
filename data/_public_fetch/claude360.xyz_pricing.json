@@ -1,0 +1,561 @@
+{
+  "auto_groups": [
+    "Codex",
+    "Claude-Kiro",
+    "Claude-Azure",
+    "Claude-CC-MAX",
+    "Claude-AWS-Platform",
+    "Claude-AWS"
+  ],
+  "data": [
+    {
+      "model_name": "gpt-5.2",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "Codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0,
+      "create_cache_ratio": 0.07,
+      "enable_groups": [
+        "Codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mimo-v2-pro",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1.75,
+      "cache_ratio": 1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "default",
+        "MiMo"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-codex",
+      "description": "GPT-5.2 Codex is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Vision,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "Codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "image",
+        "Codex"
+      ],
+      "supported_endpoint_types": [
+        "image-generation",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-Azure",
+        "Claude-AWS-Platform",
+        "Claude-AWS",
+        "Claude-Kiro",
+        "Claude-CC-MAX"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mimo-v2-omni",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.075,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "default",
+        "MiMo"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "description": "Claude Opus 4.7 is an AI model provided by venice.",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-AWS-Platform",
+        "Claude-AWS",
+        "Claude-Kiro",
+        "Claude-CC-MAX",
+        "Claude-Azure"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "description": "Claude Sonnet 4.6 is an AI model provided by venice.",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-AWS-Platform",
+        "Claude-AWS",
+        "Claude-Kiro",
+        "Claude-CC-MAX",
+        "Claude-Azure"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "description": "Claude Opus 4.6 is an AI model provided by venice.",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-Kiro",
+        "Claude-CC-MAX",
+        "Claude-Azure",
+        "Claude-AWS-Platform",
+        "Claude-AWS"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "description": "Claude Haiku 4.5 is an AI model provided by qihang-ai.",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-Azure",
+        "Claude-AWS-Platform",
+        "Claude-AWS",
+        "Claude-Kiro",
+        "Claude-CC-MAX"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mimo-v2.5-pro",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1.25,
+      "cache_ratio": 0.875,
+      "create_cache_ratio": 0.875,
+      "enable_groups": [
+        "default",
+        "MiMo"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "description": "GPT-5.4 is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "Codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "Codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-Azure",
+        "Claude-AWS-Platform",
+        "Claude-AWS",
+        "Claude-CC-MAX"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mimo-v2.5",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1.333333333333,
+      "cache_ratio": 1.166666666667,
+      "create_cache_ratio": 1.166666666667,
+      "enable_groups": [
+        "default",
+        "MiMo"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "description": "GPT-5.3 Codex is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Vision,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "Codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "Claude-AWS": 3.5,
+    "Claude-AWS-Platform": 1,
+    "Claude-Azure": 2,
+    "Claude-CC-MAX": 2.5,
+    "Claude-Kiro": 0.5,
+    "Codex": 0.8,
+    "MiMo": 1,
+    "image": 1
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "image-generation": {
+      "path": "/v1/images/generations",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "Claude-AWS": "AWS-BedRock纯血（无提示词，满血版本）",
+    "Claude-AWS-Platform": "AWS-Platform直连（无提示词，编码效果好）",
+    "Claude-Azure": "Azure-Claude（Azure直连，无提示词）",
+    "Claude-CC-MAX": "自建官转MAX号池（原生模型）",
+    "Claude-Kiro": "AWS-Kiro逆向（价格低-量大管饱）",
+    "Codex": "自建Pro号池（稳定-适合编码场景）",
+    "MiMo": "xiaomi-mimo",
+    "image": "图片模型分组"
+  },
+  "vendors": [
+    {
+      "id": 13,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 18,
+      "name": "OpenCode Zen",
+      "icon": "OpenCode"
+    },
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 6,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 12,
+      "name": "Xiaomi Token Plan (Singapore)"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":true}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+      "announcements": [
+        {
+          "content": "1、全站所有模型价格均使用人民币计价\n2、模型价格基准价格为Claude/GPT官方定价\n3、本站基准按照使用官方定价的1美金：1人民币计价\n举例：Claude Opus 4.6/4.7。官方输入价格5美金。\n我站则为5元。\n1倍率=5元。\n2倍率=10元\n0.8倍率=4元\n\n以此类推。",
+          "extra": "",
+          "id": 6,
+          "publishDate": "2026-05-18T15:39:34.965Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "如需开发票或咨询其他问题，请添加微信：balai1988",
+          "extra": "",
+          "id": 5,
+          "publishDate": "2026-05-18T03:20:33.659Z",
+          "type": "success"
+        },
+        {
+          "content": "Image模型，请使用/v1/images/generations 进行调用。",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2026-05-16T15:23:54.561Z",
+          "type": "warning"
+        },
+        {
+          "content": "Claude360 已上架 Kiro 反代分组.支持 Opus 4.6 / 4.7 调用\n欢迎使用！",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2026-05-11T15:07:19.977Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "已上线： GPT 与 Claude 系列模型。AWS 原生接入，100% 不掺水，安全稳定，适合长期调用，量大价优。\n即将上线： Gemini 模型渠道正在接入中。\n支持为企业客户提供定制化方案。（可开票，有返点）\n提供体验 API 额度，有测试需求的客户请直接联系我申请。\n微信：balai1988   ",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-04-29T14:50:17.980Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "**🎉 欢迎使用 Claude360 API 中转站**\n\n专为大陆开发者及企业客户提供纯正、稳定的 AI 接口！\n",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-04-29T12:55:11.000Z",
+          "type": "success"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "blue",
+          "description": "大陆地区用户直连",
+          "id": 1,
+          "route": "香港线路",
+          "url": "https://claude360.xyz"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": false,
+      "claude360_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": true,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://docs.claude360.xyz",
+      "email_verification": false,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": false,
+      "enable_task": true,
+      "faq": [],
+      "faq_enabled": true,
+      "footer_html": "",
+      "github_client_id": "Iv23likcqiRaJPJ2dfb7",
+      "github_oauth": true,
+      "linuxdo_client_id": "6LI3ZCQMKWPXtkd6yp6EUf1PedtKGZdx",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": true,
+      "logo": "",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "Claude 360",
+      "passkey_login": false,
+      "passkey_origins": "https://claude360.xyz",
+      "passkey_rp_id": "claude360.xyz",
+      "passkey_user_verification": "preferred",
+      "price": 1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "CNY",
+      "quota_per_unit": 500000,
+      "self_use_mode_enabled": false,
+      "server_address": "https://claude360.xyz",
+      "setup": true,
+      "start_time": 1778864471,
+      "stripe_unit_price": 8,
+      "system_name": "Claude 360",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "classic",
+      "top_up_link": "",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 1,
+      "user_agreement_enabled": false,
+      "version": "",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://claude360.xyz/api/pricing"
+}
