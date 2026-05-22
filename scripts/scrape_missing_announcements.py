@@ -29,6 +29,7 @@ USER_AGENT = "api-relay-rank/0.1 live-announcement-capture"
 BASE_OVERRIDES = {
     "585016d3.u3u.dev": "https://585016d3.u3u.dev",
     "aicodelink": "https://aicodelink.top",
+    "api-slb.krill-ai.com": "https://www.krill-ai.com",
     "atomflow.vip": "https://atomflow.vip",
     "coolplay": "https://cp.coolplay-api.fun:55555",
     "flymux": "https://api.flymux.com",
@@ -50,6 +51,7 @@ PLATFORM_OVERRIDES = {
 SPECIAL_ANNOUNCEMENT_PATHS = (
     "/api/v1/announcements",
     "/api/announcements",
+    "/api/announcements/unread",
     "/api/announcements/active?locale=zh-CN",
     "/api/announcements/active?locale=en",
     "/api/user/announcements",
@@ -61,6 +63,7 @@ SPECIAL_ANNOUNCEMENT_PATHS = (
 )
 
 TOKEN_KEYS = ("token", "password", "secret", "authorization", "cookie")
+PII_KEYS = ("email", "mail", "username", "account", "phone", "mobile", "subject_hint", "display_name")
 EMAIL_PATTERN = re.compile(r"\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}\b")
 LOCALHOST_PATTERN = re.compile(r"^(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$", re.IGNORECASE)
 BLOCK_MARKERS = ("turnstile", "captcha", "验证码", "人机验证", "风控")
@@ -310,9 +313,13 @@ def redact_sensitive(value: Any) -> Any:
             lowered = str(key).lower()
             if any(marker in lowered for marker in TOKEN_KEYS):
                 redacted[key] = f"<redacted:{len(str(item or ''))}>"
+            elif any(marker in lowered for marker in PII_KEYS):
+                redacted[key] = "<redacted>"
             else:
                 redacted[key] = redact_sensitive(item)
         return redacted
+    if isinstance(value, str) and EMAIL_PATTERN.search(value):
+        return EMAIL_PATTERN.sub("<redacted>", value)
     return value
 
 
@@ -681,7 +688,6 @@ def fetch_station(station: dict[str, Any], email: str, password: str) -> dict[st
             login_success = True
             headers = {"Authorization": "Bearer " + token}
             for path in (
-                "/api/v1/auth/me",
                 "/api/v1/groups/available",
                 "/api/v1/payment/config",
                 "/api/v1/payment/checkout-info",
@@ -804,6 +810,16 @@ def merge_probe(capture: dict[str, Any]) -> Path:
     payload["location"] = base_url
     payload["url"] = base_url
     payload["title"] = station.get("label") or key
+    if capture.get("probe_type"):
+        payload["probe_type"] = capture.get("probe_type")
+    if capture.get("probe_kind"):
+        payload["probe_kind"] = capture.get("probe_kind")
+    if isinstance(capture.get("quick_amounts"), list):
+        payload["quick_amounts"] = [
+            amount
+            for amount in capture["quick_amounts"]
+            if isinstance(amount, (int, float)) and amount > 0
+        ]
     if station.get("platform") == "sub2api":
         payload.setdefault("probe_type", "v1_generic")
         payload.setdefault("probe_kind", "v1_auth")

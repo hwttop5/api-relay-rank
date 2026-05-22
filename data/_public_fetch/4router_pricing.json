@@ -5,53 +5,7 @@
   ],
   "data": [
     {
-      "model_name": "gpt-5.4",
-      "vendor_id": 4,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "GptProEnterprise",
-        "GptPro-Fast",
-        "GptPro",
-        "AppCodex",
-        "webuiGpt",
-        "codex-0.3"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "vendor_id": 4,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "GptPro",
-        "AppCodex",
-        "webuiGpt",
-        "codex-0.3",
-        "GptProEnterprise",
-        "GptPro-Fast"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
+      "model_name": "gpt-5.3-codex-spark",
       "vendor_id": 4,
       "quota_type": 0,
       "model_ratio": 0.875,
@@ -61,11 +15,11 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1,
       "enable_groups": [
-        "GptPro",
         "AppCodex",
         "webuiGpt",
         "codex-0.3",
-        "GptProEnterprise"
+        "GptProEnterprise",
+        "GptPro"
       ],
       "supported_endpoint_types": [
         "openai",
@@ -73,23 +27,27 @@
       ]
     },
     {
-      "model_name": "gpt-image-2",
-      "vendor_id": 4,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.2,
+      "model_name": "claude-haiku-4-5-20251001",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 0,
-      "cache_ratio": 0,
-      "create_cache_ratio": 0,
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "GptPro",
-        "AppCodex",
-        "webuiGpt",
-        "codex-0.3",
-        "GptProEnterprise"
+        "test",
+        "AppClaude",
+        "ClaudeMax",
+        "ClaudeMaxV",
+        "test2",
+        "cheapClaude",
+        "ClaudeApi",
+        "webuiClaude"
       ],
       "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     },
@@ -104,15 +62,14 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "ClaudeApi",
-        "cheapClaude",
+        "test",
+        "AppClaude",
         "ClaudeMax",
         "ClaudeMaxV",
         "test2",
-        "cheapCCApi",
-        "webuiClaude",
-        "bedrock",
-        "AppClaude"
+        "cheapClaude",
+        "ClaudeApi",
+        "webuiClaude"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -130,66 +87,18 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "webuiClaude",
-        "bedrock",
-        "ClaudeMax",
-        "ClaudeMaxV",
-        "ClaudeApi",
         "cheapClaude",
-        "AppClaude",
-        "test2",
-        "cheapCCApi"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "bedrock",
+        "ClaudeApi",
+        "webuiClaude",
+        "test",
         "AppClaude",
         "ClaudeMax",
         "ClaudeMaxV",
-        "test2",
-        "cheapCCApi",
-        "ClaudeApi",
-        "webuiClaude"
+        "test2"
       ],
       "supported_endpoint_types": [
         "anthropic",
         "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex-spark",
-      "vendor_id": 4,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "GptPro",
-        "AppCodex",
-        "webuiGpt",
-        "codex-0.3",
-        "GptProEnterprise"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
       ]
     },
     {
@@ -210,31 +119,6 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-7",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cheapCCApi",
-        "ClaudeApi",
-        "AppClaude",
-        "ClaudeMaxV",
-        "test2",
-        "webuiClaude",
-        "bedrock",
-        "ClaudeMax"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
       "model_name": "gpt-5.5",
       "vendor_id": 4,
       "quota_type": 0,
@@ -245,12 +129,126 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
+        "codex-0.3",
+        "GptProEnterprise",
         "GptPro-Fast",
         "GptPro",
         "AppCodex",
+        "webuiGpt"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "AppCodex",
         "webuiGpt",
         "codex-0.3",
-        "GptProEnterprise"
+        "GptProEnterprise",
+        "GptPro-Fast",
+        "GptPro"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "vendor_id": 4,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "cache_ratio": 0,
+      "create_cache_ratio": 0,
+      "enable_groups": [
+        "webuiGpt",
+        "codex-0.3",
+        "GptProEnterprise",
+        "GptPro",
+        "AppCodex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "ClaudeApi",
+        "webuiClaude",
+        "test",
+        "AppClaude",
+        "ClaudeMax",
+        "ClaudeMaxV",
+        "test2",
+        "cheapClaude"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "webuiGpt",
+        "codex-0.3",
+        "GptProEnterprise",
+        "GptPro-Fast",
+        "GptPro",
+        "AppCodex"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "AppCodex",
+        "webuiGpt",
+        "codex-0.3",
+        "GptProEnterprise",
+        "GptPro"
       ],
       "supported_endpoint_types": [
         "openai",
@@ -260,14 +258,14 @@
   ],
   "group_ratio": {
     "ClaudeApi": 2.2,
-    "ClaudeMax": 1.7,
+    "ClaudeMax": 1.5,
     "GeminiAnti": 0.9,
     "GeminiApi": 1.8,
     "GptApi": 0.35,
-    "GptPro": 0.6,
-    "GptPro-Fast": 1.2,
+    "GptPro": 0.45,
+    "GptPro-Fast": 0.8,
     "cheapCCApi": 1,
-    "cheapClaude": 0.5,
+    "cheapClaude": 0.4,
     "test": 2.2,
     "test2": 1.7
   },
@@ -297,11 +295,6 @@
   },
   "vendors": [
     {
-      "id": 4,
-      "name": "OpenAI",
-      "icon": "OpenAI"
-    },
-    {
       "id": 1,
       "name": "Anthropic",
       "icon": "Claude.Color"
@@ -310,6 +303,11 @@
       "id": 2,
       "name": "Gemini",
       "icon": "Gemini.Color"
+    },
+    {
+      "id": 4,
+      "name": "OpenAI",
+      "icon": "OpenAI"
     }
   ],
   "status_payload": {
@@ -447,7 +445,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://4router.net",
       "setup": true,
-      "start_time": 1779167382,
+      "start_time": 1779467739,
       "stripe_unit_price": 8,
       "system_name": "4Router",
       "top_up_link": "",

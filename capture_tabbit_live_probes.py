@@ -92,8 +92,6 @@ def evaluate_page_state(page: dict) -> dict:
     sessionStorageKeys: Object.keys(ss),
     cookieNames: document.cookie.split(';').map(s => s.trim().split('=')[0]).filter(Boolean),
     uid,
-    user,
-    authUser,
     authTokenLength: (ls.auth_token || '').length,
     refreshTokenLength: (ls.refresh_token || '').length,
     hongmacodeTokenLength: (ls.hongmacode_token || '').length,
@@ -187,7 +185,6 @@ def build_v1_probe(page: dict, station: str, base: dict) -> dict:
   const token = localStorage.getItem('auth_token') || '';
   const headers = {'Authorization': 'Bearer ' + token};
   const paths = [
-    '/api/v1/auth/me',
     '/api/v1/groups/available',
     '/api/v1/payment/config',
     '/api/v1/payment/checkout-info',
@@ -296,6 +293,39 @@ def build_gettoken_probe(page: dict, base: dict) -> dict:
     return probe
 
 
+def build_krill_probe(page: dict, base: dict) -> dict:
+    expression = r"""(async () => {
+  async function hit(path) {
+    try {
+      const response = await fetch(path, {credentials: 'include', cache: 'no-store'});
+      const text = await response.text();
+      let body = null;
+      try { body = JSON.parse(text); } catch { body = text.slice(0, 1000); }
+      return {status: response.status, ok: response.ok, body};
+    } catch (error) {
+      return {error: String(error)};
+    }
+  }
+  const out = {};
+  for (const path of [
+    '/api/endpoint-settings/me',
+    '/api/announcements/unread',
+    '/api/subscription',
+    '/api/credits',
+    '/api/plans',
+    '/api/public/shop/products'
+  ]) {
+    out[path] = await hit(path);
+  }
+  return out;
+})()"""
+    probe = dict(base)
+    probe["probe_type"] = "krill_special"
+    probe["probe_kind"] = "cookie_portal"
+    probe["results"] = evaluate_page(page, expression)
+    return probe
+
+
 def capture_probe(page: dict, station: str, details: dict) -> dict:
     base = {
         "location": details.get("location") or page.get("url") or "",
@@ -304,13 +334,13 @@ def capture_probe(page: dict, station: str, details: dict) -> dict:
         "sessionStorageKeys": details.get("sessionStorageKeys") or [],
         "cookieNames": details.get("cookieNames") or [],
         "uid": details.get("uid"),
-        "user": details.get("user"),
-        "authUser": details.get("authUser"),
         "authTokenLength": details.get("authTokenLength", 0),
         "refreshTokenLength": details.get("refreshTokenLength", 0),
         "hongmacodeTokenLength": details.get("hongmacodeTokenLength", 0),
     }
     probe_kind = str(details.get("probe_kind") or "unknown")
+    if station == "api-slb.krill-ai.com":
+        return build_krill_probe(page, base)
     if station == "gettoken":
         return build_gettoken_probe(page, base)
     if probe_kind == "new_api":

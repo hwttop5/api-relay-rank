@@ -177,7 +177,7 @@ export function AuditHistoryTable({ history }: { history: StationAuditHistoryIte
   const [timeRange, setTimeRange] = useState<AuditHistoryTimeRange>("all");
   const [sortKey, setSortKey] = useState<AuditHistorySortKey>("executedAt");
   const [sortDirection, setSortDirection] = useState<AuditHistorySortDirection>("desc");
-  const [pageSize, setPageSize] = useState(20);
+  const [pageSize, setPageSize] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
   const stationOptions = useMemo(() => {
@@ -218,7 +218,7 @@ export function AuditHistoryTable({ history }: { history: StationAuditHistoryIte
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [modelFilter, pageSize, sortDirection, sortKey, stationFilter, timeRange, verdictFilter]);
+  }, [history, modelFilter, pageSize, sortDirection, sortKey, stationFilter, timeRange, verdictFilter]);
 
   const pageCount = Math.max(1, Math.ceil(visibleRows.length / pageSize));
   const safeCurrentPage = Math.min(currentPage, pageCount);

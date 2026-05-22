@@ -6,6 +6,7 @@ import { AnnouncementFeed } from "@/components/announcement-feed";
 import { StationAuditSummaryPanel } from "@/components/station-audit-summary";
 import { TierOverview } from "@/components/tier-overview";
 import { formatDateTime, formatMultiplier, formatPercent, formatScore, formatSeconds } from "@/lib/format";
+import { localizeSiteDataAuditText, localizeStationAuditText } from "@/lib/audit-localization";
 import { absoluteUrl, findBestRanking, pageMetadata, safeJsonLd, stationMetadataDescription, stationPageTitle } from "@/lib/seo";
 import { getSiteData, getStationRecord } from "@/lib/site-data";
 
@@ -28,7 +29,9 @@ export async function generateMetadata({ params }: { params: Promise<{ station: 
 
 export default async function StationPage({ params }: { params: Promise<{ station: string }> }) {
   const resolvedParams = await params;
-  const { siteData, station } = await getStationRecord(resolvedParams.station);
+  const { siteData: rawSiteData, station: rawStation } = await getStationRecord(resolvedParams.station);
+  const siteData = localizeSiteDataAuditText(rawSiteData);
+  const station = localizeStationAuditText(rawStation);
 
   const work = station.rankings.work_hours;
   const off = station.rankings.off_hours;

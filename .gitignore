@@ -12,6 +12,8 @@ __pycache__/
 .env
 .env.local
 data/_audit_runs/
+output/
+tsconfig.tsbuildinfo
 
 .vercel
 

@@ -4,13 +4,15 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import queue
 import re
 import subprocess
+import threading
 import time
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 from urllib.parse import urlparse
 
 
@@ -464,6 +466,94 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+ProgressCallback = Callable[[dict[str, Any]], None]
+
+
+def write_progress_event(payload: dict[str, Any]) -> None:
+    print(json.dumps(payload, ensure_ascii=False), flush=True)
+
+
+def emit_progress(progress: ProgressCallback | None, event_type: str, message: str, **payload: Any) -> None:
+    if progress is None:
+        return
+    progress({"type": event_type, "message": message, **payload})
+
+
+def engine_env() -> dict[str, str]:
+    return {
+        **os.environ,
+        "PYTHONUTF8": "1",
+        "PYTHONUNBUFFERED": "1",
+        "PYTHONIOENCODING": "utf-8",
+    }
+
+
+def run_engine_command(
+    command: list[str],
+    *,
+    secrets: list[str],
+    progress: ProgressCallback | None = None,
+) -> subprocess.CompletedProcess[str]:
+    if progress is None:
+        return subprocess.run(
+            command,
+            cwd=APP_ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            env=engine_env(),
+        )
+
+    process = subprocess.Popen(
+        command,
+        cwd=APP_ROOT,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        bufsize=1,
+        env=engine_env(),
+    )
+    stream_queue: queue.Queue[tuple[str, str]] = queue.Queue()
+    stdout_parts: list[str] = []
+    stderr_parts: list[str] = []
+
+    def reader(name: str, stream: Any) -> None:
+        try:
+            for line in iter(stream.readline, ""):
+                stream_queue.put((name, line))
+        finally:
+            stream.close()
+
+    threads = [
+        threading.Thread(target=reader, args=("stdout", process.stdout), daemon=True),
+        threading.Thread(target=reader, args=("stderr", process.stderr), daemon=True),
+    ]
+    for thread in threads:
+        thread.start()
+
+    while any(thread.is_alive() for thread in threads) or not stream_queue.empty():
+        try:
+            stream_name, line = stream_queue.get(timeout=0.1)
+        except queue.Empty:
+            continue
+        if stream_name == "stdout":
+            stdout_parts.append(line)
+        else:
+            stderr_parts.append(line)
+        message = sanitize_text(line.rstrip("\r\n"), secrets)
+        if message.strip():
+            emit_progress(progress, "log", message, stream=stream_name)
+
+    return_code = process.wait()
+    for thread in threads:
+        thread.join(timeout=1)
+    return subprocess.CompletedProcess(command, return_code, stdout="".join(stdout_parts), stderr="".join(stderr_parts))
+
+
 def build_run_payload(
     *,
     status: str,
@@ -504,6 +594,7 @@ def run_single_audit(
     timeout: int | None = None,
     api_key: str | None = None,
     options: AuditRunOptions | None = None,
+    progress: ProgressCallback | None = None,
 ) -> dict[str, Any]:
     api_key = (api_key or os.environ.get(target["apiKeyEnv"], "")).strip()
     if not api_key:
@@ -531,8 +622,17 @@ def run_single_audit(
     command = build_audit_command(target, model, api_key, report_path, base_options)
     started = time.perf_counter()
     completed: subprocess.CompletedProcess[str] | None = None
+    emit_progress(
+        progress,
+        "status",
+        f"开始检测 {target['station']} / {model}",
+        station=target["station"],
+        model=model,
+        auditedBaseUrl=target["auditBaseUrl"],
+    )
+    emit_progress(progress, "status", "启动本地审计引擎，等待检测输出。", station=target["station"], model=model)
     try:
-        completed = subprocess.run(command, cwd=APP_ROOT, check=False, capture_output=True, text=True)
+        completed = run_engine_command(command, secrets=secrets, progress=progress)
         if completed.returncode != 0:
             raise subprocess.CalledProcessError(
                 completed.returncode,
@@ -569,6 +669,14 @@ def run_single_audit(
                 completed=completed,
             ),
         )
+        emit_progress(
+            progress,
+            "status",
+            f"检测完成，风险等级：{summary.overall_verdict}",
+            station=target["station"],
+            model=model,
+            overallVerdict=summary.overall_verdict,
+        )
         return {
             "station": target["station"],
             "model": model,
@@ -598,6 +706,13 @@ def run_single_audit(
                 error=str(exc),
             ),
         )
+        emit_progress(
+            progress,
+            "error",
+            sanitize_text(f"检测失败：{exc}", secrets),
+            station=target["station"],
+            model=model,
+        )
         raise AuditConfigError(f"Audit failed for station '{target['station']}' model '{model}'. See {run_path.relative_to(APP_ROOT)}") from exc
 
 
@@ -610,6 +725,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--override-base-url", help=argparse.SUPPRESS)
     parser.add_argument("--request-api-key-env", default="", help=argparse.SUPPRESS)
     parser.add_argument("--ad-hoc-target", action="store_true", help=argparse.SUPPRESS)
+    parser.add_argument("--progress-jsonl", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument("--timeout", type=int, default=None, help="Per-request timeout forwarded to the audit engine.")
     parser.add_argument("--warmup", type=int, default=None, help="Send N benign requests before the audit.")
     parser.add_argument("--latency-probe-count", type=int, default=None, help="Number of Step 13 latency probes.")
@@ -645,18 +761,29 @@ def ad_hoc_target_from_args(args: argparse.Namespace) -> dict[str, Any]:
 
 def main() -> int:
     args = parse_args()
-    if args.ad_hoc_target:
-        target = ad_hoc_target_from_args(args)
-    else:
-        target = get_target(args.station, include_disabled=args.include_disabled)
-    if args.override_base_url:
-        target = {**target, "auditBaseUrl": validate_absolute_url(args.override_base_url, station=args.station, field="overrideBaseUrl")}
-    options = merge_option_overrides(target.get("options") or AuditRunOptions(), args)
-    api_key = os.environ.get(args.request_api_key_env or "", "").strip() if args.request_api_key_env else None
-    models = [args.model] if args.model else list(target["models"])
-    results = [run_single_audit(target, model, options=options, api_key=api_key) for model in models]
-    print(json.dumps({"executed": results}, ensure_ascii=False, indent=2))
-    return 0
+    progress = write_progress_event if args.progress_jsonl else None
+    try:
+        if args.ad_hoc_target:
+            target = ad_hoc_target_from_args(args)
+        else:
+            target = get_target(args.station, include_disabled=args.include_disabled)
+        if args.override_base_url:
+            target = {**target, "auditBaseUrl": validate_absolute_url(args.override_base_url, station=args.station, field="overrideBaseUrl")}
+        options = merge_option_overrides(target.get("options") or AuditRunOptions(), args)
+        api_key = os.environ.get(args.request_api_key_env or "", "").strip() if args.request_api_key_env else None
+        models = [args.model] if args.model else list(target["models"])
+        emit_progress(progress, "status", f"已解析检测目标：{target['station']}，模型 {', '.join(models)}。")
+        results = [run_single_audit(target, model, options=options, api_key=api_key, progress=progress) for model in models]
+        if args.progress_jsonl:
+            write_progress_event({"type": "result", "executed": results})
+        else:
+            print(json.dumps({"executed": results}, ensure_ascii=False, indent=2))
+        return 0
+    except Exception as exc:
+        if args.progress_jsonl:
+            write_progress_event({"type": "error", "message": sanitize_text(exc)})
+            return 1
+        raise
 
 
 if __name__ == "__main__":

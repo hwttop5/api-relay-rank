@@ -4,16 +4,55 @@
   ],
   "data": [
     {
-      "model_name": "gpt-5.2",
-      "description": "GPT-5.2 is an AI model provided by qihang-ai.",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 12,
+      "model_name": "kimi-k2.6",
+      "description": "Kimi K2.6 is an AI model provided by opencode-go.",
+      "tags": "Reasoning,Tools,Files,Open Weights,Vision,262.1K",
+      "vendor_id": 14,
       "quota_type": 0,
-      "model_ratio": 0.125,
+      "model_ratio": 0.475,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.071428571428,
+      "completion_ratio": 4.210526315789,
+      "cache_ratio": 0.168421052632,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "llama-3.3-70b-instruct",
+      "description": "Llama-3.3-70B-Instruct is an AI model provided by scaleway.",
+      "tags": "Tools,Files,Open Weights,100K",
+      "vendor_id": 15,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.5,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.110233333333,
       "enable_groups": [
         "default",
         "plus",
@@ -33,9 +72,9 @@
       "owner_by": "",
       "completion_ratio": 5,
       "enable_groups": [
+        "plus",
         "pro",
-        "default",
-        "plus"
+        "default"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -59,251 +98,6 @@
       ]
     },
     {
-      "model_name": "gpt-5.3-codex-spark",
-      "description": "GPT-5.3 Codex Spark is an AI model provided by opencode.",
-      "icon": "OpenAI.Avatar.type={'platform'}",
-      "tags": "Reasoning,Tools,128K",
-      "vendor_id": 12,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "llama-3.3-70b-instruct",
-      "description": "Llama-3.3-70B-Instruct is an AI model provided by scaleway.",
-      "tags": "Tools,Files,Open Weights,100K",
-      "vendor_id": 15,
-      "quota_type": 0,
-      "model_ratio": 0.3,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4.5,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "nemotron-3-super-120b-a12b",
-      "icon": "Nvidia.Avatar.type={'platform'}",
-      "vendor_id": 19,
-      "quota_type": 0,
-      "model_ratio": 0.133,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3.003759398496,
-      "enable_groups": [
-        "pro",
-        "default",
-        "plus"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4.5",
-      "icon": "Claude.Avatar.type={'platform'}",
-      "vendor_id": 22,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4.5",
-      "icon": "Claude.Avatar.type={'platform'}",
-      "vendor_id": 22,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "deepseek-v4-flash",
-      "description": "DeepSeek V4 Flash is an AI model provided by venice.",
-      "icon": "DeepSeek.Avatar.type={'platform'}",
-      "tags": "Reasoning,Tools,Open Weights,1M",
-      "vendor_id": 16,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "cache_ratio": 0.028,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "glm5",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 0.05,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "description": "GPT-5.4 is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 12,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "minimax-m2.7",
-      "description": "MiniMax M2.7 is an AI model provided by opencode-go.",
-      "tags": "Reasoning,Tools,Open Weights,204.8K",
-      "vendor_id": 18,
-      "quota_type": 0,
-      "model_ratio": 0.15,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4,
-      "cache_ratio": 0.2,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "qwen3.5-397b-a17b",
-      "description": "Qwen3.5 397B A17B is an AI model provided by scaleway.",
-      "tags": "Reasoning,Tools,Open Weights,Vision,256K",
-      "vendor_id": 17,
-      "quota_type": 0,
-      "model_ratio": 0.3,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4.6",
-      "icon": "Claude.Avatar.type={'platform'}",
-      "vendor_id": 22,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "pro",
-        "default",
-        "plus"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4.7",
-      "icon": "Claude.Avatar.type={'platform'}",
-      "vendor_id": 22,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4.6",
-      "icon": "Claude.Avatar.type={'platform'}",
-      "vendor_id": 22,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
       "model_name": "deepseek-v4-pro",
       "description": "DeepSeek V4 Pro is an AI model provided by vivgrid.",
       "tags": "Reasoning,Tools,Open Weights,1M",
@@ -315,9 +109,9 @@
       "completion_ratio": 2,
       "cache_ratio": 0.009333333333,
       "enable_groups": [
-        "default",
         "plus",
-        "pro"
+        "pro",
+        "default"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -335,38 +129,19 @@
       "owner_by": "",
       "completion_ratio": 1,
       "enable_groups": [
+        "pro",
         "default",
-        "plus",
-        "pro"
+        "plus"
       ],
       "supported_endpoint_types": [
         "openai"
       ]
     },
     {
-      "model_name": "glm-5.1",
-      "description": "GLM-5.1 is an AI model provided by zhipuai-coding-plan.",
-      "tags": "Reasoning,Tools,200K",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 3,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4,
-      "cache_ratio": 0.216666666667,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "description": "GPT-5.3 Codex is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Vision,400K",
+      "model_name": "gpt-5.3-codex-spark",
+      "description": "GPT-5.3 Codex Spark is an AI model provided by opencode.",
+      "icon": "OpenAI.Avatar.type={'platform'}",
+      "tags": "Reasoning,Tools,128K",
       "vendor_id": 12,
       "quota_type": 0,
       "model_ratio": 0.875,
@@ -403,15 +178,54 @@
       ]
     },
     {
-      "model_name": "claude-sonnet-4",
+      "model_name": "minimax-m2.7",
+      "description": "MiniMax M2.7 is an AI model provided by opencode-go.",
+      "tags": "Reasoning,Tools,Open Weights,204.8K",
+      "vendor_id": 18,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.7",
       "icon": "Claude.Avatar.type={'platform'}",
       "vendor_id": 22,
       "quota_type": 0,
-      "model_ratio": 1.5,
+      "model_ratio": 0.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
-      "cache_ratio": 0.110233333333,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "description": "GPT-5.2 is an AI model provided by qihang-ai.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.071428571428,
       "enable_groups": [
         "default",
         "plus",
@@ -433,26 +247,6 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "pro",
-        "default",
-        "plus"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "kimi-k2.6",
-      "description": "Kimi K2.6 is an AI model provided by opencode-go.",
-      "tags": "Reasoning,Tools,Files,Open Weights,Vision,262.1K",
-      "vendor_id": 14,
-      "quota_type": 0,
-      "model_ratio": 0.475,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4.210526315789,
-      "cache_ratio": 0.168421052632,
-      "enable_groups": [
         "default",
         "plus",
         "pro"
@@ -462,14 +256,14 @@
       ]
     },
     {
-      "model_name": "nemotron-4-340b-instruct",
+      "model_name": "nemotron-3-super-120b-a12b",
       "icon": "Nvidia.Avatar.type={'platform'}",
       "vendor_id": 19,
       "quota_type": 0,
-      "model_ratio": 37.5,
+      "model_ratio": 0.133,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 1,
+      "completion_ratio": 3.003759398496,
       "enable_groups": [
         "default",
         "plus",
@@ -497,6 +291,213 @@
       "supported_endpoint_types": [
         "openai"
       ]
+    },
+    {
+      "model_name": "claude-opus-4.5",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.6",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5.1",
+      "description": "GLM-5.1 is an AI model provided by zhipuai-coding-plan.",
+      "tags": "Reasoning,Tools,200K",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.216666666667,
+      "enable_groups": [
+        "pro",
+        "default",
+        "plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "nemotron-4-340b-instruct",
+      "icon": "Nvidia.Avatar.type={'platform'}",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.5-397b-a17b",
+      "description": "Qwen3.5 397B A17B is an AI model provided by scaleway.",
+      "tags": "Reasoning,Tools,Open Weights,Vision,256K",
+      "vendor_id": 17,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4.5",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "pro",
+        "default",
+        "plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4.6",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "description": "DeepSeek V4 Flash is an AI model provided by venice.",
+      "icon": "DeepSeek.Avatar.type={'platform'}",
+      "tags": "Reasoning,Tools,Open Weights,1M",
+      "vendor_id": 16,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.028,
+      "enable_groups": [
+        "plus",
+        "pro",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm5",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.05,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "pro",
+        "default",
+        "plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "description": "GPT-5.3 Codex is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Vision,400K",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "description": "GPT-5.4 is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
     }
   ],
   "group_ratio": {
@@ -514,17 +515,6 @@
     "default": ""
   },
   "vendors": [
-    {
-      "id": 20,
-      "name": "Mistral",
-      "icon": "Mistral.Color"
-    },
-    {
-      "id": 22,
-      "name": "Claude",
-      "description": "Claude",
-      "icon": "Claude.Avatar.type={'platform'}"
-    },
     {
       "id": 23,
       "name": "Cloudflare",
@@ -551,11 +541,6 @@
       "icon": "Moonshot"
     },
     {
-      "id": 15,
-      "name": "Meta",
-      "icon": "Ollama"
-    },
-    {
       "id": 16,
       "name": "DeepSeek",
       "icon": "DeepSeek.Color"
@@ -567,9 +552,20 @@
       "icon": "Nvidia.Avatar.type={'platform'}"
     },
     {
-      "id": 21,
-      "name": "Anthropic",
-      "icon": "Claude.Color"
+      "id": 20,
+      "name": "Mistral",
+      "icon": "Mistral.Color"
+    },
+    {
+      "id": 22,
+      "name": "Claude",
+      "description": "Claude",
+      "icon": "Claude.Avatar.type={'platform'}"
+    },
+    {
+      "id": 15,
+      "name": "Meta",
+      "icon": "Ollama"
     },
     {
       "id": 17,
@@ -581,6 +577,11 @@
       "name": "MiniMax",
       "description": "MiniMax",
       "icon": "Minimax.Avatar.type={'platform'}"
+    },
+    {
+      "id": 21,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
     }
   ],
   "status_payload": {
@@ -638,7 +639,7 @@
       "discord_client_id": "",
       "discord_oauth": false,
       "display_in_currency": true,
-      "docs_link": "http://doc.52mx.net/52mx-manual.html",
+      "docs_link": "https://www.axureshow.com/project/cg2KBHHq/",
       "email_verification": true,
       "enable_batch_update": false,
       "enable_data_export": true,

@@ -1,0 +1,195 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":true}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true,\"subscription\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "现在每邀请一位好友注册，您可获得 $20.00 额度奖励!",
+        "extra": "",
+        "id": 21,
+        "publishDate": "2026-05-12T11:59:07.983Z",
+        "type": "success"
+      },
+      {
+        "content": "感谢过去用户的支持,我们为2026年4月7日之前所有的充值用户发放了价值140人民币的额度.",
+        "extra": "",
+        "id": 20,
+        "publishDate": "2026-04-07T10:18:26.826Z",
+        "type": "default"
+      },
+      {
+        "content": "目前Claude渠道增加了AWS渠道,稳定性提升.官方的部分功能不可用(搜索等)",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-04-07T07:57:32.222Z",
+        "type": "default"
+      },
+      {
+        "content": "Claude 官方波动 修复中",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-03-07T11:38:42.906Z",
+        "type": "error"
+      },
+      {
+        "content": "由于Claude官方封禁了大量Claude Code账户.为保证稳定性启用了官方渠道API.即日起充值额度价格提升.同时关闭了新用户注册额度以及邀请用户获取额度的功能.带来的不便敬请谅解.",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-01-21T03:36:56.692Z",
+        "type": "default"
+      },
+      {
+        "content": "由于Claude官方加大了对账户的监控,近期存在不稳定情况,尽请谅解",
+        "extra": "",
+        "id": 16,
+        "publishDate": "2026-01-09T10:39:25.254Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "由于网站最近收到异常地址攻击，导致前端不可用，已经修复了。带来的不便敬请谅解，我们将对过去一周（2025/12/09 00:00 CST 起）活跃用户发放每人10$额度（预计下午2025/12/16 15:00 CST完成）。感谢支持！",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2025-12-16T03:04:22.639Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "即日起网站迁移至 https://api.code-relay.com/。所有功能保持正常。原有域名不再支持登录注册，API访问依然保持正常",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2025-11-28T13:06:54.394Z",
+        "type": "default"
+      },
+      {
+        "content": "由于Opus4.5资源紧张，我们暂时调高了Opus4.5的价格。相比官方依然有5折左右的折扣",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2025-11-27T07:56:40.419Z",
+        "type": "default"
+      },
+      {
+        "content": "Claude Code Bug：Extra inputs are not permitted 目前适配已经完成，我们将对所有充值用户增加10$的额度（24小时到账）。给您带来的不便敬请谅解",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2025-11-18T09:17:45.653Z",
+        "type": "default"
+      },
+      {
+        "content": "由于Codex官方sdk升级原因。新版本遇到401的问题请先 /logout 登录时选择provider own API key。输入令牌即可",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2025-11-17T09:04:05.188Z",
+        "type": "default"
+      },
+      {
+        "content": "由于配置问题导致github用户无法登录。目前已经修复。刷新浏览器缓存即可",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2025-10-31T10:34:34.201Z",
+        "type": "default"
+      },
+      {
+        "content": "由于github注册用户存在大量脚本调用。即日起暂时关闭github渠道的注册功能，给你带来的不便敬请谅解",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2025-10-31T07:45:24.599Z",
+        "type": "default"
+      },
+      {
+        "content": "由于对于Claude系列模型缓存Token计算逻辑存在问题，导致计费异常，我们将对于10月1日至10月28日下午3点为止的所有充值用户补偿对应充值金额的额度。",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2025-10-28T11:26:29.026Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "## Claude计费相关\n## Model\t\t\t\t\t\tInput Tokens\tCache Hits\t\tOutput Tokens\n## Claude Opus 4.1\t\t$15 / MTok\t\t$1.50 / MTok\t$75 / MTok\n## Claude Opus 4\t\t$15 / MTok\t\t$1.50 / MTok\t$75 / MTok\n## Claude Sonnet 4.5\t$3 / MTok\t\t$0.30 / MTok\t$15 / MTok\n## Claude Sonnet 4\t\t$3 / MTok\t\t$0.30 / MTok\t$15 / MTok\n## Claude Sonnet 3.7\t$3 / MTok\t\t$0.30 / MTok\t$15 / MTok\n## Claude Haiku 4.5\t$1 / MTok\t\t$0.10 / MTok\t$5 / MTok\n## Claude Haiku 3.5\t$0.80 / MTok\t$0.08 / MTok\t$4 / MTok",
+        "extra": "整体价格和官方保持一致，优惠在充值价格上体现",
+        "id": 6,
+        "publishDate": "2025-10-28T09:41:34.242Z",
+        "type": "default"
+      },
+      {
+        "content": "由于后台数据检测到异常调用。我们对整体调用速率进行限制，风险用户给予IP和账户封禁。如有误伤请邮件联系",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2025-10-24T03:11:12.437Z",
+        "type": "warning"
+      },
+      {
+        "content": "限时活动，邀请好友得 25$ 永久额度 前往 https://api.codemirror.codes/console/topup 复制邀请链接",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2025-10-13T09:45:59.142Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info_enabled": false,
+    "chats": [],
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "display_in_currency": true,
+    "docs_link": "https://docs.newapi.pro",
+    "email_verification": false,
+    "enable_alipay_topup": true,
+    "enable_batch_update": false,
+    "enable_data_export": true,
+    "enable_drawing": false,
+    "enable_online_topup": false,
+    "enable_stripe_topup": false,
+    "enable_task": true,
+    "faq_enabled": false,
+    "footer_html": "",
+    "github_client_id": "Ov23liMK4FEwTTzBV7s0",
+    "github_oauth": false,
+    "linuxdo_client_id": "iXtSV1xtoD3KY8kPyI6Gx5LWfnE4wzkX",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": true,
+    "logo": "/logo.png",
+    "min_topup": 1,
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "password_login_enabled": true,
+    "password_register_enabled": false,
+    "pay_methods": [
+      {
+        "color": "rgba(var(--semi-blue-5), 1)",
+        "name": "支付宝",
+        "type": "alipay"
+      },
+      {
+        "color": "rgba(var(--semi-green-5), 1)",
+        "name": "微信",
+        "type": "wxpay"
+      }
+    ],
+    "price": 7.3,
+    "quota_for_invitee": 0,
+    "quota_for_inviter": 10000000,
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://api.code-relay.com",
+    "setup": true,
+    "start_time": 1779171434,
+    "stripe_min_topup": 1,
+    "stripe_unit_price": 8,
+    "system_name": "Code Router",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "top_up_link": "",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": false,
+    "usd_exchange_rate": 7.3,
+    "version": "",
+    "wechat_app_id": "wx9e340fe7892b984a",
+    "wechat_login": true,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

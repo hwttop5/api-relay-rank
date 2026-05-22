@@ -14,6 +14,7 @@ STATION_BRAND_LABELS: dict[str, str] = {
     "52mx": "52Mx",
     "585016d3.u3u.dev": "U3U",
     "aicodelink": "AICodeLink",
+    "api.code-relay.com": "CodeRelay",
     "api.feifeimiao.top": "Feifeimiao",
     "api-slb.krill-ai.com": "KrillAI",
     "api.xiaoxin.best": "Xiaoxin",

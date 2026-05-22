@@ -1,15 +1,15 @@
 import { AppShell, StatusChip } from "@/components/app-shell";
+import { AuditInteraction } from "@/components/audit-interaction";
 import { AUDIT_FAQ_ITEMS, AuditFaqContent, AuditSeoContent } from "@/components/audit-seo-content";
-import { AuditHistoryTable } from "@/components/audit-history-table";
-import { HomeAuditLauncher } from "@/components/home-audit-launcher";
 import { getAuditHistory } from "@/lib/audit-history";
+import { localizeAuditHistoryItemText, localizeSiteDataAuditText } from "@/lib/audit-localization";
 import { absoluteUrl, pageMetadata, safeJsonLd } from "@/lib/seo";
 import { getSiteData } from "@/lib/site-data";
 
 const PAGE_TITLE = "AI 中转站安全审计";
 const PAGE_DESCRIPTION = "输入 AI 中转站 API 地址和临时 API Key，执行本地黑盒安全审计，查看风险等级、审计摘要和历史报告。";
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 export const metadata = pageMetadata({
   title: PAGE_TITLE,
@@ -18,8 +18,9 @@ export const metadata = pageMetadata({
 });
 
 export default async function AuditPage() {
-  const siteData = await getSiteData();
-  const auditHistory = await getAuditHistory(siteData);
+  const rawSiteData = await getSiteData();
+  const siteData = localizeSiteDataAuditText(rawSiteData);
+  const auditHistory = (await getAuditHistory(rawSiteData)).map(localizeAuditHistoryItemText);
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -56,9 +57,8 @@ export default async function AuditPage() {
           </>
         }
       >
-        <HomeAuditLauncher />
+        <AuditInteraction history={auditHistory} />
         <AuditSeoContent />
-        <AuditHistoryTable history={auditHistory} />
         <AuditFaqContent />
       </AppShell>
     </>

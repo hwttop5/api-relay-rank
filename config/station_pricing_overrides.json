@@ -43,19 +43,86 @@
         "groupMultiplier": 50
       }
     ],
-    "rechargeMode": "sample_payment_amount_to_usd_1to1",
-    "samplePaymentAmount": 10,
-    "usdPerPaymentUnit": 1,
-    "rechargeNamePattern": "(?:wallet topup(?: sample)?|custom CNY topup sample).*?(\\d+(?:\\.\\d+)?)\\s*(?:RMB|USD)",
-    "rechargeNameTemplate": "wallet topup sample {rmb} RMB",
+    "rechargeTiers": [
+      {
+        "rechargeName": "wallet topup 10 USD",
+        "billingType": "permanent",
+        "rmbAmount": 71,
+        "usdAmount": 10,
+        "rechargeLocation": "浏览器登录态钱包页",
+        "expiresRule": "固定钱包充值档位；支付金额 ￥71，到账 10 USD 额度；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup 50 USD discounted",
+        "billingType": "permanent",
+        "rmbAmount": 337.25,
+        "usdAmount": 50,
+        "rechargeLocation": "浏览器登录态钱包页",
+        "expiresRule": "固定钱包充值档位；支付金额 ￥337.25，到账 50 USD 额度；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup 100 USD discounted",
+        "billingType": "permanent",
+        "rmbAmount": 639,
+        "usdAmount": 100,
+        "rechargeLocation": "浏览器登录态钱包页",
+        "expiresRule": "固定钱包充值档位；支付金额 ￥639，到账 100 USD 额度；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup 200 USD discounted",
+        "billingType": "permanent",
+        "rmbAmount": 1278,
+        "usdAmount": 200,
+        "rechargeLocation": "浏览器登录态钱包页",
+        "expiresRule": "固定钱包充值档位；支付金额 ￥1278，到账 200 USD 额度；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup 500 USD discounted",
+        "billingType": "permanent",
+        "rmbAmount": 3017.5,
+        "usdAmount": 500,
+        "rechargeLocation": "浏览器登录态钱包页",
+        "expiresRule": "固定钱包充值档位；支付金额 ￥3017.5，到账 500 USD 额度；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup 800 USD discounted",
+        "billingType": "permanent",
+        "rmbAmount": 4828,
+        "usdAmount": 800,
+        "rechargeLocation": "浏览器登录态钱包页",
+        "expiresRule": "固定钱包充值档位；支付金额 ￥4828，到账 800 USD 额度；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup 1000 USD discounted",
+        "billingType": "permanent",
+        "rmbAmount": 5680,
+        "usdAmount": 1000,
+        "rechargeLocation": "浏览器登录态钱包页",
+        "expiresRule": "固定钱包充值档位；支付金额 ￥5680，到账 1000 USD 额度；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup 2000 USD discounted",
+        "billingType": "permanent",
+        "rmbAmount": 10650,
+        "usdAmount": 2000,
+        "rechargeLocation": "浏览器登录态钱包页",
+        "expiresRule": "固定钱包充值档位；支付金额 ￥10650，到账 2000 USD 额度；页面未注明有效期"
+      }
+    ],
     "rechargeLocation": "浏览器登录态钱包页",
-    "expiresRule": "钱包在线充值样例；非固定套餐；页面未注明有效期",
+    "expiresRule": "固定钱包充值档位；页面未注明有效期",
     "dropTierNotePatterns": [
       "rb=7\\.1",
-      "CNY rate"
+      "CNY rate",
+      "10、到账 10 USD",
+      "10 RMB -> 71 USD"
     ],
-    "forcedAdoptedTier": "默认分组 | wallet topup sample 10 RMB",
-    "assumptionText": "浏览器登录态核验：VOAPI 钱包页显示支付金额 10、到账 10 USD；不使用公开 CNY 汇率换算；钱包页未注明固定套餐或有效期",
+    "forcedAdoptedTier": "默认分组 | wallet topup 2000 USD discounted",
+    "assumptionText": "浏览器登录态核验：VOAPI API令牌页显示默认分组 (x1)；钱包页固定充值档位按人民币实付金额进入公式，例如支付 ￥71 到账 10 USD 额度、支付 ￥337.25 到账 50 USD 额度；页面未注明有效期",
+    "confidence": "manual_verified",
+    "source": "browser_verified_wallet_page",
+    "evidenceUrl": "https://demo.voapi.top/wallet",
+    "allowHighEffectiveMultiplier": true,
     "authoritative": true
   }
 }

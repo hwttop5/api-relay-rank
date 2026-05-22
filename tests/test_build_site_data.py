@@ -369,9 +369,10 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(chosen["demo"].group_name, "codex-pro")
         self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.2)
 
-    def test_choose_verified_fee_falls_back_to_lowest_non_claude_group(self) -> None:
+    def test_choose_verified_fee_uses_lowest_codex_like_group(self) -> None:
         tiers = [
             self.make_fee_tier(group_name="claude-max", group_multiplier=0.05, effective_multiplier=0.05),
+            self.make_fee_tier(group_name="公益分组", group_multiplier=0.0001, effective_multiplier=0.0001),
             self.make_fee_tier(group_name="GeminiAnti", group_multiplier=0.9, effective_multiplier=0.9),
             self.make_fee_tier(group_name="image-relay", group_multiplier=0.7, effective_multiplier=0.7),
         ]
@@ -380,6 +381,29 @@ class BuildSiteDataTests(unittest.TestCase):
 
         self.assertEqual(chosen["demo"].group_name, "image-relay")
         self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.7)
+
+    def test_choose_verified_fee_treats_route_names_as_codex_like(self) -> None:
+        tiers = [
+            self.make_fee_tier(group_name="国内极速", group_multiplier=0.2, effective_multiplier=0.04),
+            self.make_fee_tier(group_name="海外线路", group_multiplier=0.2, effective_multiplier=0.05),
+        ]
+
+        chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
+
+        self.assertEqual(chosen["demo"].group_name, "国内极速")
+        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.04)
+
+    def test_choose_verified_fee_excludes_domestic_model_groups(self) -> None:
+        tiers = [
+            self.make_fee_tier(group_name="国产模型", group_multiplier=0.0001, effective_multiplier=0.0001),
+            self.make_fee_tier(group_name="deepseek专线", group_multiplier=0.001, effective_multiplier=0.001),
+            self.make_fee_tier(group_name="vip", group_multiplier=0.052, effective_multiplier=0.052),
+        ]
+
+        chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
+
+        self.assertEqual(chosen["demo"].group_name, "vip")
+        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.052)
 
     def test_choose_verified_fee_skips_station_with_only_claude_groups(self) -> None:
         tiers = [
@@ -422,9 +446,53 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(build_site_data.station_display_label("atomflow.vip", "原子流动"), "AtomFlow")
         self.assertEqual(build_site_data.station_display_label("coai-work", "CoAI Work"), "CoAIWork")
         self.assertEqual(build_site_data.station_display_label("17nas", "17nas"), "17Nas")
+        self.assertEqual(
+            build_site_data.station_display_label("api.code-relay.com", "Relay", "https://api.code-relay.com"),
+            "CodeRelay",
+        )
         if audit_proxy_multipliers is not None:
             self.assertEqual(audit_proxy_multipliers.station_display_label("api.xiaoxin.best"), "Xiaoxin")
             self.assertEqual(audit_proxy_multipliers.station_display_label("atomflow.vip", "原子流动"), "AtomFlow")
+            self.assertEqual(
+                audit_proxy_multipliers.station_display_label("api.code-relay.com", "Relay", "https://api.code-relay.com"),
+                "CodeRelay",
+            )
+
+    def test_verified_input_v1_group_uses_current_live_probe_multiplier(self) -> None:
+        if audit_proxy_multipliers is None:
+            self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
+        csv_text = (
+            ",".join(audit_proxy_multipliers.VERIFIED_INPUT_FIELDNAMES)
+            + "\n"
+            + "api.xiaoxin.best,Xiaoxin,mixed,余额用户（专用分组）,1.3,余额充值1000刀（冲多少用多少）,permanent,49.99,1000,,external shop,permanent,high_tabbit_logged_in,tabbit_logged_in_v1_group_and_external_shop_page,https://pay.ldxp.cn/shop/JZ9CUHL0,true,note\n"
+        )
+        probe = {
+            "results": {
+                "/api/v1/groups/available": {
+                    "body": {
+                        "data": [
+                            {
+                                "name": "余额用户（专用分组）",
+                                "rate_multiplier": 1,
+                                "status": "active",
+                                "subscription_type": "standard",
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            input_path = Path(tmp_dir) / "verified_multiplier_inputs.csv"
+            input_path.write_text(csv_text, encoding="utf-8")
+            with mock.patch.object(audit_proxy_multipliers, "VERIFIED_INPUT_PATH", input_path), mock.patch.object(
+                audit_proxy_multipliers, "load_live_auth_probe", return_value=probe
+            ):
+                tiers = audit_proxy_multipliers.load_verified_input_tiers({})
+
+        self.assertEqual(len(tiers), 1)
+        self.assertEqual(tiers[0].group_multiplier, 1)
+        self.assertAlmostEqual(tiers[0].effective_multiplier, 0.04999)
 
     def test_station_rows_do_not_keep_chinese_display_labels(self) -> None:
         station = build_site_data.ensure_station(
@@ -501,6 +569,217 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(station["stationType"], "non_subscription")
         self.assertEqual(station["rechargeTiers"], [])
         self.assertIn("公开配置显示已开启余额充值", station["tierNotes"][0])
+
+    def test_public_pricing_html_parses_feifeimiao_wallet_and_plan_cards(self) -> None:
+        html = r"""
+        \u003cdl class=\"ffm-proof-grid\"\u003e
+          \u003cdiv\u003e\u003cdt\u003e充值倍率\u003c/dt\u003e\u003cdd\u003e¥1 = $5 余额\u003c/dd\u003e\u003c/div\u003e
+        \u003c/dl\u003e
+        \u003carticle class=\"ffm-plan-card\"\u003e
+          \u003cdiv\u003e\u003ch3\u003e试跑喵日卡\u003c/h3\u003e\u003cp\u003e当天试用\u003c/p\u003e\u003c/div\u003e
+          \u003cdiv class=\"ffm-price-block\"\u003e\u003cdel\u003e¥7\u003c/del\u003e\u003cstrong\u003e¥4.9\u003c/strong\u003e\u003cspan\u003e/ 24 小时\u003c/span\u003e\u003c/div\u003e
+          \u003cdl\u003e\u003cdiv\u003e\u003cdt\u003e总额度\u003c/dt\u003e\u003cdd\u003e$35\u003c/dd\u003e\u003c/div\u003e\u003cdiv\u003e\u003cdt\u003e周期\u003c/dt\u003e\u003cdd\u003e购买后 24 小时\u003c/dd\u003e\u003c/div\u003e\u003c/dl\u003e
+        \u003c/article\u003e
+        \u003carticle class=\"ffm-plan-card\"\u003e
+          \u003cdiv\u003e\u003ch3\u003e小喵月卡\u003c/h3\u003e\u003cp\u003e轻量日用\u003c/p\u003e\u003c/div\u003e
+          \u003cdiv class=\"ffm-price-block\"\u003e\u003cdel\u003e¥120\u003c/del\u003e\u003cstrong\u003e¥69.90\u003c/strong\u003e\u003cspan\u003e/ 30 天\u003c/span\u003e\u003c/div\u003e
+          \u003cdl\u003e\u003cdiv\u003e\u003cdt\u003e每日额度\u003c/dt\u003e\u003cdd\u003e$20\u003c/dd\u003e\u003c/div\u003e\u003cdiv\u003e\u003cdt\u003e周期\u003c/dt\u003e\u003cdd\u003e每日刷新\u003c/dd\u003e\u003c/div\u003e\u003c/dl\u003e
+        \u003c/article\u003e
+        """
+
+        parsed = build_site_data.parse_public_pricing_html(html)
+        tiers = {tier["rechargeName"]: tier for tier in parsed["rechargeTiers"]}
+
+        self.assertEqual(parsed["stationTypeHint"], "mixed")
+        self.assertAlmostEqual(tiers["wallet topup sample 1 RMB"]["usdAmount"], 5.0)
+        self.assertEqual(tiers["试跑喵日卡"]["billingType"], "daily")
+        self.assertAlmostEqual(tiers["试跑喵日卡"]["rmbAmount"], 4.9)
+        self.assertAlmostEqual(tiers["试跑喵日卡"]["usdAmount"], 35.0)
+        self.assertIn("total quota 35 USD", tiers["试跑喵日卡"]["expiresRule"])
+        self.assertEqual(tiers["小喵月卡"]["billingType"], "monthly")
+        self.assertAlmostEqual(tiers["小喵月卡"]["usdAmount"], 600.0)
+        self.assertIn("quota resets daily", tiers["小喵月卡"]["expiresRule"])
+
+    def test_public_pricing_html_parses_relayai_conversion_without_fake_tiers(self) -> None:
+        html = """
+        <script>window.__APP_CONFIG__={"payment_enabled":true,"purchase_subscription_enabled":false,
+        "balance_low_notify_recharge_url":"https://www.relayai.asia","api_base_url":"https://relayai.asia"};</script>
+        <section>
+          <p>按真实 token 用量计费，<span>1 RMB = $1</span> 平台积分。</p>
+          <p>充值无门槛，最低 <span>¥10</span> 起；余额永不过期，未消费部分可申请退款。</p>
+        </section>
+        """
+
+        parsed = build_site_data.parse_public_pricing_html(html)
+
+        self.assertEqual(parsed["stationTypeHint"], "non_subscription")
+        self.assertEqual(len(parsed["rechargeTiers"]), 1)
+        self.assertEqual(parsed["rechargeTiers"][0]["rechargeName"], "wallet topup sample 10 RMB")
+        self.assertAlmostEqual(parsed["rechargeTiers"][0]["usdAmount"], 10.0)
+        self.assertIn("not a fixed package", parsed["rechargeTiers"][0]["expiresRule"])
+        self.assertIn("minimum recharge 10 RMB", parsed["rechargeTiers"][0]["expiresRule"])
+
+    def test_krill_public_shop_payload_parses_visible_codex_and_balance_products(self) -> None:
+        payload = {
+            "source_url": "https://www.krill-ai.com/api/public/shop/products",
+            "data": {
+                "plans": [
+                    {
+                        "id": 24,
+                        "name": "轻享天卡",
+                        "price": "12.000000",
+                        "daily_quota_usd": "60.000000",
+                        "duration_days": 1,
+                        "billing_type": "usd_daily",
+                    },
+                    {
+                        "id": 28,
+                        "name": "Basic",
+                        "price": "49.000000",
+                        "daily_quota_usd": "99.000000",
+                        "duration_days": 30,
+                        "billing_type": "usd_monthly",
+                    },
+                    {
+                        "id": 23,
+                        "name": "企业定制分发套餐",
+                        "price": "99999.000000",
+                        "daily_quota_usd": "2500.000000",
+                        "duration_days": 30,
+                        "billing_type": "usd_daily",
+                    },
+                ],
+                "balance_products": [
+                    {"id": 3, "name": "50美元", "amount_usd": "50.000000", "price_cny": "50.000000"},
+                    {
+                        "id": 6,
+                        "name": "补足负余额-5美元（仅限余额为负数用户）",
+                        "amount_usd": "5.000000",
+                        "price_cny": "5.000000",
+                    },
+                ],
+            },
+        }
+
+        parsed = build_site_data.parse_public_pricing_payload(payload)
+        tiers = {tier["rechargeName"]: tier for tier in parsed["rechargeTiers"]}
+
+        self.assertEqual(parsed["stationTypeHint"], "mixed")
+        self.assertIn("轻享天卡", tiers)
+        self.assertAlmostEqual(tiers["轻享天卡"]["rmbAmount"], 12.0)
+        self.assertAlmostEqual(tiers["轻享天卡"]["usdAmount"], 60.0)
+        self.assertEqual(tiers["轻享天卡"]["billingType"], "daily")
+        self.assertIn("50美元", tiers)
+        self.assertEqual(tiers["50美元"]["billingType"], "permanent")
+        self.assertNotIn("Basic", tiers)
+        self.assertNotIn("企业定制分发套餐", tiers)
+        self.assertNotIn("补足负余额-5美元（仅限余额为负数用户）", tiers)
+
+    def test_public_subscription_plans_payload_parses_relay_one_time_recharges(self) -> None:
+        payload = {
+            "source_url": "https://api.code-relay.com/api/subscription/plans",
+            "status_payload": {"data": {"price": 7.3, "quota_per_unit": 500000}},
+            "group_ratio": {"default": 1, "vip": 1},
+            "success": True,
+            "data": [
+                {
+                    "id": "onetime_basic",
+                    "name": "基础充值",
+                    "price": 14.99,
+                    "duration": "一次性",
+                    "charge_price": 10,
+                    "features": ["10 $ 额度", "适合轻度使用", "永久有效"],
+                    "amount": 10,
+                    "enabled": True,
+                },
+                {
+                    "id": "onetime_standard",
+                    "name": "标准充值",
+                    "price": 74.99,
+                    "duration": "一次性",
+                    "charge_price": 50,
+                    "features": ["50 $ 额度", "适合中度使用", "永久有效"],
+                    "amount": 50,
+                    "enabled": True,
+                },
+                {
+                    "id": "onetime_premium",
+                    "name": "高级充值",
+                    "price": 149.99,
+                    "duration": "一次性",
+                    "charge_price": 100,
+                    "features": ["100 $ 额度", "适合重度使用", "永久有效"],
+                    "amount": 100,
+                    "enabled": True,
+                },
+            ],
+        }
+
+        parsed = build_site_data.parse_public_pricing_payload(payload)
+        tiers = {tier["rechargeName"]: tier for tier in parsed["rechargeTiers"]}
+
+        self.assertEqual({group["groupName"] for group in parsed["groupMultipliers"]}, {"default", "vip"})
+        self.assertEqual(set(tiers), {"基础充值", "标准充值", "高级充值"})
+        self.assertAlmostEqual(tiers["基础充值"]["rmbAmount"], 14.99)
+        self.assertAlmostEqual(tiers["基础充值"]["usdAmount"], 10.0)
+        self.assertEqual(tiers["基础充值"]["billingType"], "permanent")
+        self.assertIn("permanent balance", tiers["基础充值"]["expiresRule"])
+        self.assertNotIn("public status 7.3 RMB = 1 USD credit", tiers)
+
+    def test_public_pricing_payload_merges_subscription_plans_payload(self) -> None:
+        payload = {
+            "source_url": "https://api.code-relay.com/api/pricing",
+            "group_ratio": {"default": 1},
+            "subscription_plans_source_url": "https://api.code-relay.com/api/subscription/plans",
+            "subscription_plans_payload": {
+                "success": True,
+                "data": [
+                    {
+                        "id": "onetime_basic",
+                        "name": "基础充值",
+                        "price": 14.99,
+                        "duration": "一次性",
+                        "amount": 10,
+                        "features": ["10 $ 额度", "永久有效"],
+                    }
+                ],
+            },
+            "status_payload": {"data": {"price": 7.3, "quota_per_unit": 500000}},
+        }
+
+        parsed = build_site_data.parse_public_pricing_payload(payload)
+
+        self.assertEqual(parsed["rechargeTiers"][0]["rechargeName"], "基础充值")
+        self.assertAlmostEqual(parsed["rechargeTiers"][0]["rmbAmount"], 14.99)
+        self.assertAlmostEqual(parsed["rechargeTiers"][0]["usdAmount"], 10.0)
+        self.assertEqual(len(parsed["rechargeTiers"]), 1)
+
+    def test_normalized_tier_notes_dedupes_semicolon_repeated_segments(self) -> None:
+        notes = build_site_data.normalized_tier_notes(
+            [
+                "detail rows come from official evidence.; detail rows come from official evidence.; extra note",
+                "extra note",
+            ]
+        )
+
+        self.assertEqual(notes, ["detail rows come from official evidence.; extra note"])
+
+    def test_normalized_tier_notes_collapses_legacy_public_marketing_fragments(self) -> None:
+        notes = build_site_data.normalized_tier_notes(
+            [
+                "Public marketing page conversion sample: 1 RMB = 1 USD credit",
+                "not a fixed package",
+                "expiry not stated",
+                "minimum recharge 10 RMB",
+            ]
+        )
+
+        self.assertEqual(
+            notes,
+            [
+                "Public marketing page conversion sample: 1 RMB = 1 USD credit; not a fixed package; expiry not stated; minimum recharge 10 RMB"
+            ],
+        )
 
     def test_sub2api_app_config_type_hint_does_not_override_known_type(self) -> None:
         stations: dict[str, dict[str, object]] = {}
@@ -1109,6 +1388,47 @@ class BuildSiteDataTests(unittest.TestCase):
             self.assertEqual(json.loads(json_path.read_text(encoding="utf-8"))["group_ratio"]["default"], 1)
             self.assertEqual(html_path.read_text(encoding="utf-8"), "old html pricing")
 
+    def test_public_pricing_fetch_merges_new_api_subscription_plans(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            fetch_dir = Path(tmp_dir)
+            pricing_payload = {"group_ratio": {"default": 1}, "success": True}
+            plans_payload = {
+                "success": True,
+                "data": [
+                    {
+                        "id": "onetime_basic",
+                        "name": "基础充值",
+                        "price": 14.99,
+                        "duration": "一次性",
+                        "amount": 10,
+                        "features": ["10 $ 额度", "永久有效"],
+                    }
+                ],
+            }
+
+            def fake_fetch_text(_client: object, url: str) -> tuple[str, str]:
+                if url.endswith("/api/pricing"):
+                    return json.dumps(pricing_payload), "application/json"
+                return "{}", "application/json"
+
+            def fake_fetch_json(_client: object, url: str) -> dict[str, object] | None:
+                if url.endswith("/api/subscription/plans"):
+                    return plans_payload
+                return {"data": {"price": 7.3, "quota_per_unit": 500000}}
+
+            with (
+                mock.patch.object(fetch_public_content, "PUBLIC_FETCH_DIR", fetch_dir),
+                mock.patch.object(fetch_public_content, "fetch_text", side_effect=fake_fetch_text),
+                mock.patch.object(fetch_public_content, "fetch_json", side_effect=fake_fetch_json),
+            ):
+                report = fetch_public_content.refresh_pricing_snapshots(mock.Mock(), "demo", "https://demo.example")
+
+            self.assertTrue(any(not item["skipped"] for item in report["multiplier_snapshots"]))
+            payload = json.loads((fetch_dir / "demo_pricing.json").read_text(encoding="utf-8"))
+            parsed = build_site_data.parse_public_pricing_payload(payload)
+            self.assertEqual(parsed["rechargeTiers"][0]["rechargeName"], "基础充值")
+            self.assertAlmostEqual(parsed["rechargeTiers"][0]["usdAmount"], 10.0)
+
     def test_log_refresh_writes_unclassified_public_host_candidates(self) -> None:
         if audit_proxy_multipliers is None:
             self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
@@ -1153,6 +1473,40 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(rows[0]["station"], "demo")
         self.assertIn(">= 2", rows[0]["review_reason"])
 
+    def test_high_multiplier_review_rows_skip_allowed_browser_verified_station(self) -> None:
+        if audit_proxy_multipliers is None:
+            self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            override_path = Path(tmp_dir) / "station_pricing_overrides.json"
+            override_path.write_text(json.dumps({"voapi": {"allowHighEffectiveMultiplier": True}}), encoding="utf-8")
+            tier = self.make_fee_tier(
+                station="voapi",
+                label="VoAPI",
+                effective_multiplier=5.325,
+                recharge_name="wallet topup 2000 USD discounted",
+                rmb_amount=10650,
+                usd_amount=2000,
+                confidence="manual_verified",
+                source="browser_verified_wallet_page",
+            )
+            with mock.patch.object(audit_proxy_multipliers, "STATION_PRICING_OVERRIDES_PATH", override_path):
+                rows = audit_proxy_multipliers.high_multiplier_review_rows(
+                    {
+                        "work_hours": [
+                            {
+                                "station": "voapi",
+                                "label": "VoAPI",
+                                "effective_multiplier": 5.325,
+                                "adopted_tier": "默认分组 | wallet topup 2000 USD discounted",
+                            }
+                        ]
+                    },
+                    {"voapi": tier},
+                    {"voapi": audit_proxy_multipliers.StationConfig(key="voapi", label="VoAPI")},
+                )
+
+        self.assertEqual(rows, [])
+
     def test_v1_payment_enabled_false_does_not_create_wallet_tiers(self) -> None:
         if audit_proxy_multipliers is None:
             self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
@@ -1176,7 +1530,7 @@ class BuildSiteDataTests(unittest.TestCase):
 
         self.assertEqual(tiers, [])
 
-    def test_v1_checkout_info_methods_can_create_wallet_tiers_when_config_enabled_false(self) -> None:
+    def test_v1_checkout_info_methods_do_not_create_wallet_tiers_when_config_disabled(self) -> None:
         if audit_proxy_multipliers is None:
             self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
         probe = {
@@ -1206,10 +1560,7 @@ class BuildSiteDataTests(unittest.TestCase):
 
         tiers = audit_proxy_multipliers.v1_live_probe_tiers("hello-code", probe, {"probe_type": "v1_generic", "quick_amounts": [10]})
 
-        self.assertEqual(len(tiers), 1)
-        self.assertEqual(tiers[0].group_name, "codex-plus")
-        self.assertEqual(tiers[0].recharge_name, "wallet topup 10 RMB")
-        self.assertAlmostEqual(tiers[0].effective_multiplier, 0.11)
+        self.assertEqual(tiers, [])
 
     def test_detail_station_records_generate_fee_tiers(self) -> None:
         if audit_proxy_multipliers is None:
@@ -1246,6 +1597,41 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertAlmostEqual(tiers[0].effective_multiplier, 0.3)
         self.assertTrue(tiers[0].participates_in_verified_ranking)
 
+    def test_detail_station_record_notes_are_deduped(self) -> None:
+        if audit_proxy_multipliers is None:
+            self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
+        meta_note = "FishXCode detail rows come from archived structured public status/pricing evidence."
+        payload = {
+            "stations": [
+                {
+                    "key": "fishxcode.com",
+                    "label": "FishXCode",
+                    "url": "https://fishxcode.com",
+                    "stationType": "non_subscription",
+                    "groupMultipliers": [{"groupName": "codex_sub", "groupMultiplier": 0.3}],
+                    "rechargeTiers": [
+                        {
+                            "rechargeName": "public status 1 RMB = 1 USD credit",
+                            "billingType": "permanent",
+                            "rmbAmount": 1,
+                            "usdAmount": 1,
+                            "rechargeLocation": "public /api/status",
+                            "expiresRule": "expiry not stated",
+                        }
+                    ],
+                    "tierNotes": [f"{meta_note}; {meta_note}; extra note", "extra note"],
+                }
+            ]
+        }
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            site_data_path = Path(tmp_dir) / "site-data.json"
+            site_data_path.write_text(json.dumps(payload), encoding="utf-8")
+            with mock.patch.object(audit_proxy_multipliers, "SITE_DATA_PATH", site_data_path):
+                tiers = audit_proxy_multipliers.detail_record_tiers({})
+
+        self.assertEqual(len(tiers), 1)
+        self.assertEqual(tiers[0].notes, f"{meta_note}; extra note")
+
     def test_printcap_detail_rows_are_manual_verified(self) -> None:
         if audit_proxy_multipliers is None:
             self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
@@ -1280,6 +1666,45 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(tiers[0].confidence, "manual_verified")
         self.assertEqual(tiers[0].source, "screenshot_verified_detail_baseline")
         self.assertAlmostEqual(tiers[0].effective_multiplier, 0.5)
+
+    def test_muskai_detail_rows_use_subscription_group_override(self) -> None:
+        if audit_proxy_multipliers is None:
+            self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
+        payload = {
+            "stations": [
+                {
+                    "key": "muskai",
+                    "label": "MuskAI",
+                    "url": "https://aiapi.muskpay.top",
+                    "stationType": "mixed",
+                    "groupMultipliers": [
+                        {"groupName": "Codex-Pro-Plus", "groupMultiplier": 0.2},
+                        {"groupName": "Codex订阅福利组", "groupMultiplier": 1},
+                    ],
+                    "rechargeTiers": [
+                        {
+                            "rechargeName": "Codex 试用套餐",
+                            "billingType": "daily",
+                            "rmbAmount": 15.9,
+                            "usdAmount": 105,
+                            "rechargeLocation": "站内订阅页 + 订阅计划接口",
+                            "expiresRule": "3 天套餐; 35 USD/day; full-use assumption",
+                        }
+                    ],
+                }
+            ]
+        }
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            site_data_path = Path(tmp_dir) / "site-data.json"
+            site_data_path.write_text(json.dumps(payload), encoding="utf-8")
+            with mock.patch.object(audit_proxy_multipliers, "SITE_DATA_PATH", site_data_path):
+                tiers = audit_proxy_multipliers.detail_record_tiers({})
+
+        self.assertEqual(len(tiers), 1)
+        self.assertEqual(tiers[0].group_name, "Codex订阅")
+        self.assertAlmostEqual(tiers[0].group_multiplier, 1.0)
+        self.assertAlmostEqual(tiers[0].effective_multiplier, 15.9 / 105)
+        self.assertEqual(tiers[0].source, "detail_page_live_probe_subscription_evidence")
 
     def test_icodex_missing_detail_does_not_generate_fee_tiers(self) -> None:
         if audit_proxy_multipliers is None:
@@ -1461,6 +1886,32 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(snapshot["rechargeTiers"][0]["rmbAmount"], 6.0)
         self.assertEqual(snapshot["rechargeTiers"][-1]["usdAmount"], 500.0)
 
+    def test_known_zhishu_shop_snapshot_parses_browser_verified_products(self) -> None:
+        snapshot = build_site_data.known_pay_shop_snapshot("CFUOS364", "https://pay.ldxp.cn/shop/CFUOS364/ek8gty")
+
+        self.assertIsNotNone(snapshot)
+        assert snapshot is not None
+        self.assertEqual(snapshot["stationTypeHint"], "mixed")
+        self.assertEqual(len(snapshot["rechargeTiers"]), 5)
+        self.assertEqual(snapshot["rechargeTiers"][0]["rechargeName"], "Codex API 10 USD permanent quota")
+        self.assertEqual(snapshot["rechargeTiers"][0]["rmbAmount"], 10.0)
+        self.assertEqual(snapshot["rechargeTiers"][0]["usdAmount"], 10.0)
+        self.assertEqual(snapshot["rechargeTiers"][-1]["rechargeName"], "Codex monthly Pro 500 USD quota")
+        self.assertEqual(snapshot["rechargeTiers"][-1]["billingType"], "monthly")
+        self.assertEqual(snapshot["rechargeTiers"][-1]["usdAmount"], 500.0)
+
+    def test_known_hello_code_shop_snapshot_parses_browser_verified_products(self) -> None:
+        snapshot = build_site_data.known_pay_shop_snapshot("SAIS2N05", "https://pay.ldxp.cn/shop/SAIS2N05")
+
+        self.assertIsNotNone(snapshot)
+        assert snapshot is not None
+        self.assertEqual(snapshot["stationTypeHint"], "non_subscription")
+        self.assertEqual(len(snapshot["rechargeTiers"]), 4)
+        self.assertEqual(snapshot["rechargeTiers"][0]["rechargeName"], "Codex plus/team 10 USD redeem code")
+        self.assertEqual(snapshot["rechargeTiers"][0]["rmbAmount"], 10.0)
+        self.assertEqual(snapshot["rechargeTiers"][0]["usdAmount"], 10.0)
+        self.assertEqual(snapshot["rechargeTiers"][-1]["rechargeName"], "Codex plus/team 100 USD redeem code")
+
     def test_known_public_shop_tiers_can_participate_in_formal_ranking(self) -> None:
         if audit_proxy_multipliers is None:
             self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
@@ -1470,6 +1921,71 @@ class BuildSiteDataTests(unittest.TestCase):
 
         self.assertTrue(dogcoding_tiers)
         self.assertTrue(all(audit_proxy_multipliers.has_formal_confidence(tier.confidence) for tier in dogcoding_tiers))
+
+    def test_zhishu_known_shop_tiers_use_live_group_multiplier(self) -> None:
+        if audit_proxy_multipliers is None:
+            self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
+        probe = {
+            "results": {
+                "/api/v1/groups/available": {
+                    "body": {
+                        "data": [
+                            {
+                                "name": "codex-自建",
+                                "rate_multiplier": 0.3,
+                                "status": "active",
+                                "subscription_type": "standard",
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+
+        with mock.patch.object(audit_proxy_multipliers, "load_live_auth_probe", return_value=probe):
+            tiers = audit_proxy_multipliers.known_public_shop_tiers({})
+
+        zhishu_tiers = [tier for tier in tiers if tier.station == "zhishu.dev"]
+        self.assertEqual(len(zhishu_tiers), 5)
+        self.assertTrue(all(tier.group_name == "codex-自建" for tier in zhishu_tiers))
+        self.assertAlmostEqual(zhishu_tiers[0].effective_multiplier, 0.3)
+        self.assertTrue(all(audit_proxy_multipliers.has_formal_confidence(tier.confidence) for tier in zhishu_tiers))
+
+    def test_hello_code_known_shop_tiers_use_browser_verified_shop_and_codex_plus_group(self) -> None:
+        if audit_proxy_multipliers is None:
+            self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
+        probe = {
+            "results": {
+                "/api/v1/groups/available": {
+                    "body": {
+                        "data": [
+                            {
+                                "name": "codex-plus",
+                                "rate_multiplier": 0.1,
+                                "status": "active",
+                                "subscription_type": "standard",
+                            },
+                            {
+                                "name": "codex-pro",
+                                "rate_multiplier": 0.25,
+                                "status": "active",
+                                "subscription_type": "standard",
+                            },
+                        ]
+                    }
+                }
+            }
+        }
+
+        with mock.patch.object(audit_proxy_multipliers, "load_live_auth_probe", return_value=probe):
+            tiers = audit_proxy_multipliers.known_public_shop_tiers({})
+
+        hello_tiers = [tier for tier in tiers if tier.station == "hello-code"]
+        self.assertEqual(len(hello_tiers), 4)
+        self.assertTrue(all(tier.group_name == "codex-plus" for tier in hello_tiers))
+        self.assertEqual(hello_tiers[0].recharge_name, "Codex plus/team 10 USD redeem code")
+        self.assertAlmostEqual(hello_tiers[0].effective_multiplier, 0.1)
+        self.assertTrue(all(audit_proxy_multipliers.has_formal_confidence(tier.confidence) for tier in hello_tiers))
 
     def test_new_api_wallet_amounts_are_labeled_as_samples(self) -> None:
         probe = {
@@ -1522,6 +2038,63 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(rows[0]["billingType"], "daily")
         self.assertAlmostEqual(rows[0]["usdAmount"], 50.0)
         self.assertIn("total quota pool", rows[0]["expiresRule"])
+
+    def test_krill_live_probe_parses_routes_recharge_tiers_and_empty_announcements(self) -> None:
+        probe = {
+            "location": "https://www.krill-ai.com/app/shop",
+            "results": {
+                "/api/endpoint-settings/me": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {
+                        "success": True,
+                        "code": 0,
+                        "data": {
+                            "routes": [
+                                {"key": "均衡", "name": "国内极速", "url": "https://api-slb.krill-ai.com", "enabled": True},
+                                {"key": "直连", "name": "海外线路", "url": "https://api.krill-ai.com", "enabled": True},
+                            ]
+                        },
+                    },
+                },
+                "/api/announcements/unread": {"status": 200, "ok": True, "body": {"success": True, "code": 0, "data": {"items": []}}},
+                "/api/public/shop/products": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {
+                        "success": True,
+                        "code": 0,
+                        "data": {
+                            "plans": [
+                                {
+                                    "id": 24,
+                                    "name": "轻享天卡",
+                                    "price": "12.000000",
+                                    "daily_quota_usd": "60.000000",
+                                    "duration_days": 1,
+                                    "billing_type": "usd_daily",
+                                }
+                            ],
+                            "balance_products": [
+                                {"id": 3, "name": "50美元", "amount_usd": "50.000000", "price_cny": "50.000000"}
+                            ],
+                        },
+                    },
+                },
+            },
+        }
+
+        groups, group_status = build_site_data.live_probe_group_rows(probe)
+        recharges, recharge_status = build_site_data.live_probe_recharge_rows(probe)
+        announcements, announcement_status = build_site_data.live_probe_announcements_and_status("api-slb.krill-ai.com", probe)
+
+        self.assertEqual(group_status["status"], "captured")
+        self.assertEqual([row["groupName"] for row in groups], ["国内极速", "海外线路"])
+        self.assertTrue(all(row["groupMultiplier"] == 0.2 for row in groups))
+        self.assertEqual(recharge_status["status"], "captured")
+        self.assertEqual({row["rechargeName"] for row in recharges}, {"轻享天卡", "50美元"})
+        self.assertEqual(announcements, [])
+        self.assertEqual(announcement_status["status"], "empty")
 
     def test_pending_probe_backfills_failed_live_detail_probe(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -1661,6 +2234,7 @@ class BuildSiteDataTests(unittest.TestCase):
 
             with mock.patch.object(audit_proxy_multipliers, "STATION_PRICING_OVERRIDES_PATH", override_path):
                 rows = audit_proxy_multipliers.apply_station_pricing_overrides_to_tiers([tier])
+                chosen = audit_proxy_multipliers.choose_verified_fee(rows, allow_low_confidence=False)
 
         by_group = {row.group_name: row for row in rows}
         self.assertEqual(set(by_group), {"default", "vip"})
@@ -1684,14 +2258,20 @@ class BuildSiteDataTests(unittest.TestCase):
                                 {"groupName": "默认分组", "groupMultiplier": 1},
                                 {"groupName": "test", "groupMultiplier": 50},
                             ],
-                            "rechargeMode": "sample_payment_amount_to_usd_1to1",
-                            "samplePaymentAmount": 10,
-                            "usdPerPaymentUnit": 1,
-                            "rechargeNamePattern": "(?:wallet topup(?: sample)?|custom CNY topup sample).*?(\\d+(?:\\.\\d+)?)\\s*(?:RMB|USD)",
-                            "rechargeNameTemplate": "wallet topup sample {rmb} RMB",
+                            "rechargeTiers": [
+                                {
+                                    "rechargeName": "wallet topup 10 USD",
+                                    "billingType": "permanent",
+                                    "rmbAmount": 71,
+                                    "usdAmount": 10,
+                                    "rechargeLocation": "logged-in wallet page",
+                                    "expiresRule": "browser verified fixed wallet tier",
+                                }
+                            ],
                             "rechargeLocation": "logged-in wallet page",
-                            "expiresRule": "wallet topup sample; not a fixed package",
+                            "expiresRule": "browser verified fixed wallet tier",
                             "assumptionText": "browser verified",
+                            "allowHighEffectiveMultiplier": True,
                         }
                     }
                 ),
@@ -1708,18 +2288,22 @@ class BuildSiteDataTests(unittest.TestCase):
 
             with mock.patch.object(audit_proxy_multipliers, "STATION_PRICING_OVERRIDES_PATH", override_path):
                 rows = audit_proxy_multipliers.apply_station_pricing_overrides_to_tiers([tier])
+                chosen = audit_proxy_multipliers.choose_verified_fee(rows, allow_low_confidence=False)
 
         by_group = {row.group_name: row for row in rows}
         self.assertEqual(set(by_group), {"默认分组", "test"})
-        self.assertEqual(by_group["默认分组"].recharge_name, "wallet topup sample 10 RMB")
-        self.assertAlmostEqual(by_group["默认分组"].rmb_amount, 10.0)
+        self.assertEqual(by_group["默认分组"].recharge_name, "wallet topup 10 USD")
+        self.assertAlmostEqual(by_group["默认分组"].rmb_amount, 71.0)
         self.assertAlmostEqual(by_group["默认分组"].usd_amount, 10.0)
-        self.assertAlmostEqual(by_group["默认分组"].effective_multiplier, 1.0)
-        self.assertAlmostEqual(by_group["test"].effective_multiplier, 50.0)
+        self.assertAlmostEqual(by_group["默认分组"].effective_multiplier, 7.1)
+        self.assertAlmostEqual(by_group["test"].effective_multiplier, 355.0)
         self.assertEqual(by_group["默认分组"].recharge_location, "logged-in wallet page")
-        self.assertEqual(by_group["默认分组"].expires_rule, "wallet topup sample; not a fixed package")
+        self.assertEqual(by_group["默认分组"].expires_rule, "browser verified fixed wallet tier")
         self.assertTrue(by_group["默认分组"].participates_in_verified_ranking)
         self.assertEqual(by_group["默认分组"].source, "station_pricing_override")
+
+        self.assertIn("voapi", chosen)
+        self.assertEqual(chosen["voapi"].group_name, "默认分组")
 
     def test_scrape_station_rows_include_request_log_candidates_without_site_data(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -1797,6 +2381,267 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertAlmostEqual(rows[0]["rmbAmount"], 10.1)
         self.assertAlmostEqual(rows[0]["usdAmount"], 20.0)
 
+    def test_recharge_tiers_infer_mixed_station_type(self) -> None:
+        station_type = build_site_data.infer_station_type_from_recharge_tiers(
+            [
+                {"rechargeName": "wallet 10", "billingType": "permanent", "rmbAmount": 10, "usdAmount": 10},
+                {"rechargeName": "monthly 80", "billingType": "monthly", "rmbAmount": 20, "usdAmount": 80},
+            ]
+        )
+
+        self.assertEqual(station_type, "mixed")
+
+    def test_recharge_tiers_infer_non_subscription_station_type(self) -> None:
+        station_type = build_site_data.infer_station_type_from_recharge_tiers(
+            [{"rechargeName": "wallet 10", "billingType": "permanent", "rmbAmount": 10, "usdAmount": 10}]
+        )
+
+        self.assertEqual(station_type, "non_subscription")
+
+    def test_recharge_tiers_infer_subscription_station_type(self) -> None:
+        station_type = build_site_data.infer_station_type_from_recharge_tiers(
+            [{"rechargeName": "weekly 80", "billingType": "weekly", "rmbAmount": 20, "usdAmount": 80}]
+        )
+
+        self.assertEqual(station_type, "subscription")
+
+    def test_live_probe_verified_tier_count_requires_groups_and_valid_recharges(self) -> None:
+        groups = [{"groupName": "codex", "groupMultiplier": 0.25}]
+        recharges = [
+            {"rechargeName": "wallet 10", "billingType": "permanent", "rmbAmount": 10, "usdAmount": 10},
+            {"rechargeName": "broken", "billingType": "permanent", "rmbAmount": 10, "usdAmount": 0},
+        ]
+
+        self.assertEqual(build_site_data.live_probe_verified_tier_count(groups, recharges), 1)
+        self.assertEqual(build_site_data.live_probe_verified_tier_count([], recharges), 0)
+
+    def test_live_auth_probe_payment_disabled_blocks_wallet_tiers(self) -> None:
+        probe = {
+            "location": "https://zhishu.dev",
+            "quick_amounts": [10],
+            "results": {
+                "/api/v1/payment/config": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": {"enabled": False, "balance_disabled": False, "balance_recharge_multiplier": 1.0}},
+                },
+                "/api/v1/payment/checkout-info": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {
+                        "data": {
+                            "methods": {},
+                            "balance_disabled": False,
+                            "balance_recharge_multiplier": 1.0,
+                            "plans": [],
+                        }
+                    },
+                },
+                "/api/v1/payment/plans": {"status": 200, "ok": True, "body": {"data": []}},
+            },
+        }
+
+        rows, status = build_site_data.live_probe_recharge_rows(probe)
+
+        self.assertEqual(rows, [])
+        self.assertEqual(status["status"], "empty")
+
+    def test_zhishu_live_snapshot_uses_official_external_shop_when_payment_disabled(self) -> None:
+        probe = {
+            "location": "https://zhishu.dev",
+            "results": {
+                "/api/v1/groups/available": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": [{"name": "codex-自建", "rate_multiplier": 0.3, "status": "active", "subscription_type": "standard"}]},
+                },
+                "/api/v1/payment/config": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": {"enabled": False, "balance_disabled": False, "balance_recharge_multiplier": 1.0}},
+                },
+                "/api/v1/payment/checkout-info": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": {"methods": {}, "balance_disabled": False, "balance_recharge_multiplier": 1.0, "plans": []}},
+                },
+                "/api/v1/payment/plans": {"status": 200, "ok": True, "body": {"data": []}},
+            },
+        }
+
+        with mock.patch.object(build_site_data, "load_live_auth_probes", return_value={"zhishu.dev": probe}):
+            snapshots = build_site_data.load_live_probe_snapshots()
+
+        snapshot = snapshots["zhishu.dev"]
+        self.assertEqual(snapshot["stationTypeHint"], "mixed")
+        self.assertEqual(len(snapshot["groupMultipliers"]), 1)
+        self.assertEqual(len(snapshot["rechargeTiers"]), 5)
+        self.assertEqual(snapshot["evidenceStatus"]["rechargeTiers"]["status"], "captured")
+        self.assertEqual(snapshot["rechargeTiers"][0]["rechargeName"], "Codex API 10 USD permanent quota")
+
+    def test_live_snapshot_infers_type_and_verified_tier_count_from_probe_tiers(self) -> None:
+        probe = {
+            "location": "https://api.nerverun.com/purchase",
+            "quick_amounts": [10],
+            "results": {
+                "/api/v1/groups/available": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": [{"name": "codexPlus", "rate_multiplier": 0.25, "status": "active", "subscription_type": "standard"}]},
+                },
+                "/api/v1/payment/config": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": {"enabled": True, "balance_disabled": False, "balance_recharge_multiplier": 1.0}},
+                },
+                "/api/v1/payment/checkout-info": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {
+                        "data": {
+                            "methods": {"wxpay": {}},
+                            "balance_disabled": False,
+                            "balance_recharge_multiplier": 1.0,
+                            "plans": [
+                                {
+                                    "id": 2,
+                                    "group_name": "高性价比Pro号池套餐",
+                                    "rate_multiplier": 0.3,
+                                    "name": "新用户畅享（限时）",
+                                    "price": 20,
+                                    "weekly_limit_usd": 80,
+                                    "validity_days": 10,
+                                    "validity_unit": "days",
+                                }
+                            ],
+                        }
+                    },
+                },
+                "/api/v1/payment/plans": {"status": 200, "ok": True, "body": {"data": []}},
+            },
+        }
+
+        with mock.patch.object(build_site_data, "load_live_auth_probes", return_value={"api.nerverun.com": probe}):
+            snapshots = build_site_data.load_live_probe_snapshots()
+
+        snapshot = snapshots["api.nerverun.com"]
+        self.assertEqual(snapshot["stationTypeHint"], "mixed")
+        self.assertEqual(snapshot["verifiedTierCount"], 2)
+
+    def test_apply_live_snapshot_sets_type_and_verified_tier_count(self) -> None:
+        stations: dict[str, dict[str, object]] = {}
+        station_urls: dict[str, set[str]] = {}
+        snapshot = {
+            "groupMultipliers": [{"groupName": "codexPlus", "groupMultiplier": 0.25}],
+            "rechargeTiers": [
+                {"rechargeName": "wallet 10", "billingType": "permanent", "rmbAmount": 10, "usdAmount": 10},
+                {"rechargeName": "monthly 80", "billingType": "monthly", "rmbAmount": 20, "usdAmount": 80},
+            ],
+            "stationTypeHint": "mixed",
+            "verifiedTierCount": 2,
+            "sourceUrl": "https://api.nerverun.com/purchase",
+            "announcements": [],
+        }
+
+        build_site_data.apply_live_probe_snapshots(stations, station_urls, {"api.nerverun.com": snapshot})
+
+        station = stations["api.nerverun.com"]
+        self.assertEqual(station["stationType"], "mixed")
+        self.assertEqual(station["stationTypeLabel"], "混合型中转站")
+        self.assertEqual(station["verifiedTierCount"], 2)
+
+    def test_live_snapshot_keeps_explicit_station_type_hint(self) -> None:
+        probe = {
+            "location": "https://demo.example",
+            "quick_amounts": [10],
+            "results": {
+                "/api/v1/groups/available": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": [{"name": "codex", "rate_multiplier": 0.3, "status": "active", "subscription_type": "standard"}]},
+                },
+                "/api/v1/payment/config": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": {"enabled": True, "balance_disabled": False, "balance_recharge_multiplier": 1.0}},
+                },
+                "/api/v1/payment/checkout-info": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {
+                        "data": {
+                            "methods": {"wxpay": {}},
+                            "balance_disabled": False,
+                            "balance_recharge_multiplier": 1.0,
+                            "plans": [{"name": "monthly", "price": 20, "weekly_limit_usd": 80, "validity_days": 7}],
+                        }
+                    },
+                },
+                "/api/v1/payment/plans": {"status": 200, "ok": True, "body": {"data": []}},
+            },
+        }
+
+        with (
+            mock.patch.object(build_site_data, "load_live_auth_probes", return_value={"demo": probe}),
+            mock.patch.object(
+                build_site_data,
+                "known_station_pay_shop_snapshot",
+                return_value={"stationTypeHint": "non_subscription", "rechargeTiers": []},
+            ),
+        ):
+            snapshots = build_site_data.load_live_probe_snapshots()
+
+        self.assertEqual(snapshots["demo"]["stationTypeHint"], "non_subscription")
+
+    def test_audit_v1_live_probe_respects_payment_enabled_flag(self) -> None:
+        if audit_proxy_multipliers is None:
+            self.skipTest("audit_proxy_multipliers.py not available")
+        probe = {
+            "location": "https://zhishu.dev",
+            "quick_amounts": [10],
+            "results": {
+                "/api/v1/groups/available": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": [{"name": "codex", "status": "active", "subscription_type": "standard", "rate_multiplier": 0.3}]},
+                },
+                "/api/v1/payment/config": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": {"enabled": False, "balance_disabled": False, "balance_recharge_multiplier": 1.0}},
+                },
+                "/api/v1/payment/checkout-info": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"data": {"methods": {}, "balance_disabled": False, "balance_recharge_multiplier": 1.0, "plans": []}},
+                },
+                "/api/v1/payment/plans": {"status": 200, "ok": True, "body": {"data": []}},
+            },
+        }
+
+        rows = audit_proxy_multipliers.v1_live_probe_tiers("zhishu.dev", probe, {"probe_type": "v1_generic"})
+
+        self.assertEqual(rows, [])
+
+    def test_scrape_redacts_v1_auth_me_identity_fields(self) -> None:
+        payload = {
+            "data": {
+                "email": "person@example.com",
+                "username": "person@example.com",
+                "token": "secret-token",
+                "identities": {"email": {"display_name": "person@example.com", "subject_hint": "person@example.com"}},
+                "balance": 12.3,
+            }
+        }
+
+        redacted = scrape_missing_announcements.redact_sensitive(payload)
+
+        self.assertEqual(redacted["data"]["email"], "<redacted>")
+        self.assertEqual(redacted["data"]["username"], "<redacted>")
+        self.assertTrue(str(redacted["data"]["token"]).startswith("<redacted:"))
+        self.assertEqual(redacted["data"]["identities"]["email"], "<redacted>")
+        self.assertEqual(redacted["data"]["balance"], 12.3)
+
     def test_station_evidence_status_distinguishes_empty_announcements(self) -> None:
         station = {
             "platformGuess": "sub2api",
@@ -1819,6 +2664,29 @@ class BuildSiteDataTests(unittest.TestCase):
 
         self.assertEqual(announcement["status"], "empty")
         self.assertEqual(announcement["statusLabel"], "接口返回空")
+
+    def test_station_evidence_source_uses_workspace_relative_path(self) -> None:
+        source_path = build_site_data.WORKSPACE_ROOT / "tabbit-audit-profile" / "demo-live-auth-probe.json"
+        station = {
+            "platformGuess": "sub2api",
+            "groupMultipliers": [{"groupName": "default", "groupMultiplier": 1}],
+            "rechargeTiers": [],
+            "announcements": [],
+        }
+        live_snapshot = {
+            "evidenceStatus": {
+                "groupMultipliers": {
+                    "status": "captured",
+                    "source": str(source_path),
+                    "message": "登录态分组接口抓取到 1 条",
+                }
+            }
+        }
+
+        evidence = build_site_data.build_station_evidence_status(station, live_snapshot)
+        groups = next(item for item in evidence if item["key"] == "groupMultipliers")
+
+        self.assertEqual(groups["source"], "tabbit-audit-profile/demo-live-auth-probe.json")
 
     def test_station_evidence_status_distinguishes_blocked_live_probe(self) -> None:
         station = {
@@ -2038,13 +2906,16 @@ class BuildSiteDataTests(unittest.TestCase):
             station["groupMultipliers"],
             [{"groupName": "默认分组", "groupMultiplier": 1.0}, {"groupName": "test", "groupMultiplier": 50.0}],
         )
-        self.assertEqual(station["rechargeTiers"][0]["rechargeName"], "wallet topup sample 10 RMB")
-        self.assertAlmostEqual(station["rechargeTiers"][0]["rmbAmount"], 10.0)
+        self.assertEqual(station["rechargeTiers"][0]["rechargeName"], "wallet topup 10 USD")
+        self.assertAlmostEqual(station["rechargeTiers"][0]["rmbAmount"], 71.0)
         self.assertAlmostEqual(station["rechargeTiers"][0]["usdAmount"], 10.0)
         self.assertEqual(station["rechargeTiers"][0]["rechargeLocation"], "浏览器登录态钱包页")
-        self.assertEqual(station["rechargeTiers"][0]["expiresRule"], "钱包在线充值样例；非固定套餐；页面未注明有效期")
+        self.assertEqual(station["rechargeTiers"][0]["expiresRule"], "固定钱包充值档位；支付金额 ￥71，到账 10 USD 额度；页面未注明有效期")
+        self.assertEqual(station["rechargeTiers"][-1]["rechargeName"], "wallet topup 2000 USD discounted")
+        self.assertAlmostEqual(station["rechargeTiers"][-1]["rmbAmount"], 10650.0)
+        self.assertAlmostEqual(station["rechargeTiers"][-1]["usdAmount"], 2000.0)
         self.assertNotIn("CNY rate", station["rechargeTiers"][0]["expiresRule"])
-        self.assertTrue(any("浏览器登录态核验" in note for note in station["tierNotes"]))
+        self.assertTrue(any("支付 ￥71 到账 10 USD" in note for note in station["tierNotes"]))
         self.assertFalse(any("rb=7.1" in note or "CNY rate" in note for note in station["tierNotes"]))
 
     def test_authoritative_ranking_override_corrects_52mx_multiplier(self) -> None:
@@ -2971,6 +3842,70 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertNotIn("user@example.com", sanitized)
         self.assertNotIn("ttop5", sanitized.lower())
         self.assertNotIn("explicit-secret", sanitized)
+
+    def test_run_engine_command_streams_sanitized_progress(self) -> None:
+        events: list[dict[str, object]] = []
+        command = [
+            sys.executable,
+            "-c",
+            (
+                "import sys;"
+                "print('stdout sk-progress-secret', flush=True);"
+                "print('Authorization: Bearer sk-progress-secret', file=sys.stderr, flush=True)"
+            ),
+        ]
+
+        completed = run_station_audit.run_engine_command(command, secrets=["sk-progress-secret"], progress=events.append)
+
+        self.assertEqual(completed.returncode, 0)
+        self.assertIn("sk-progress-secret", completed.stdout)
+        self.assertIn("sk-progress-secret", completed.stderr)
+        self.assertTrue(any(event.get("stream") == "stdout" for event in events))
+        self.assertTrue(any(event.get("stream") == "stderr" for event in events))
+        self.assertNotIn("sk-progress-secret", json.dumps(events))
+        self.assertIn("<redacted>", json.dumps(events))
+
+    def test_run_station_audit_progress_jsonl_emits_status_and_result(self) -> None:
+        def fake_run_single_audit(*_: object, **kwargs: object) -> dict[str, str]:
+            progress = kwargs.get("progress")
+            if progress:
+                progress({"type": "log", "message": "engine progress"})
+            return {
+                "station": "demo",
+                "model": "gpt-5",
+                "summary": "data/_audit_runs/demo/gpt-5/run/summary.json",
+                "report": "data/_audit_runs/demo/gpt-5/run/report.md",
+            }
+
+        with (
+            mock.patch.object(run_station_audit, "run_single_audit", side_effect=fake_run_single_audit),
+            mock.patch.dict(run_station_audit.os.environ, {"DEMO_KEY": "sk-test"}, clear=True),
+            mock.patch(
+                "sys.argv",
+                [
+                    "run_station_audit.py",
+                    "--station",
+                    "demo",
+                    "--model",
+                    "gpt-5",
+                    "--ad-hoc-target",
+                    "--override-base-url",
+                    "https://relay.example/v1",
+                    "--request-api-key-env",
+                    "DEMO_KEY",
+                    "--progress-jsonl",
+                ],
+            ),
+            mock.patch("sys.stdout", new=io.StringIO()) as stdout,
+        ):
+            exit_code = run_station_audit.main()
+
+        lines = [json.loads(line) for line in stdout.getvalue().splitlines()]
+        self.assertEqual(exit_code, 0)
+        self.assertTrue(any(line["type"] == "status" for line in lines))
+        self.assertTrue(any(line["type"] == "log" and line["message"] == "engine progress" for line in lines))
+        self.assertEqual(lines[-1]["type"], "result")
+        self.assertEqual(lines[-1]["executed"][0]["station"], "demo")
 
     def test_build_station_audit_summary_from_markdown_report(self) -> None:
         report = """

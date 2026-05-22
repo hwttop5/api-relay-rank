@@ -1,0 +1,46 @@
+{
+  "groupMultipliers": [],
+  "rechargeTiers": [
+    {
+      "rechargeName": "Codex plus/team 10 USD redeem code",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 10.0,
+      "usdAmount": 10.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station"
+    },
+    {
+      "rechargeName": "Codex plus/team 30 USD redeem code",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 30.0,
+      "usdAmount": 30.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station"
+    },
+    {
+      "rechargeName": "Codex plus/team 50 USD redeem code",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 50.0,
+      "usdAmount": 50.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station"
+    },
+    {
+      "rechargeName": "Codex plus/team 100 USD redeem code",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 100.0,
+      "usdAmount": 100.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station"
+    }
+  ],
+  "tierNotes": [
+    "HelloCode payment config is disabled, but the logged-in Recharge/Subscription menu embeds the official pay.ldxp.cn shop with verified Codex redeem-code products."
+  ],
+  "sourceUrl": "https://pay.ldxp.cn/shop/SAIS2N05",
+  "stationTypeHint": "non_subscription"
+}

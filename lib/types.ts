@@ -165,6 +165,7 @@ export interface HomeAuditRunResponse {
   station: string;
   model: string;
   summary: StationAuditSummary;
+  historyItem?: StationAuditHistoryItem;
   stationUrl: string;
   reportUrl: string;
 }

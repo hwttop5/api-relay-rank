@@ -29,12 +29,26 @@ TIMEOUT = 15
 USER_AGENT = "api-relay-rank/0.1 (+https://local.codex)"
 EMAIL_PATTERN = re.compile(r"\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}\b")
 LOCALHOST_PATTERN = re.compile(r"^(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$", re.IGNORECASE)
+BEARER_PATTERN = re.compile(r"Bearer\s+[A-Za-z0-9._~+\-/=]+", re.IGNORECASE)
+JWT_PATTERN = re.compile(r"eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}")
+SK_PATTERN = re.compile(r"sk-[A-Za-z0-9_-]{12,}")
 APP_CONFIG_PATTERN = re.compile(
     r"window\.__APP_CONFIG__\s*=\s*(\{.*?\})\s*;?\s*</script>",
     re.IGNORECASE | re.DOTALL,
 )
 PAY_SHOP_PATTERN = re.compile(r"https?://pay\.ldxp\.cn/shop/([A-Za-z0-9_-]+)")
 USD_AMOUNT_PATTERN = re.compile(r"(\d+(?:\.\d+)?)\s*(?:刀|美元|USD|\$)", re.IGNORECASE)
+ASSET_URL_PATTERN = re.compile(r"""(?:src|href)=["']([^"']+\.(?:js|mjs))["']""", re.IGNORECASE)
+HOME_CHUNK_PATTERN = re.compile(r"""["']([^"']*HomeView-[^"']+\.js)["']""", re.IGNORECASE)
+PUBLIC_PRICING_ASSET_MARKERS = (
+    "ffm-plan-card",
+    "充值倍率",
+    "充值无门槛",
+    "平台积分",
+    "1 RMB = $1",
+    "¥10",
+    "MTok",
+)
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -72,6 +86,19 @@ def merge_station_map(stations: dict[str, dict[str, Any]], station_key: str, url
     for url in normalized_urls:
         if url not in entry["urls"]:
             entry["urls"].append(url)
+
+
+def prepend_station_url(stations: dict[str, dict[str, Any]], station_key: str, url: str) -> None:
+    normalized_url = normalize_base_url(url)
+    if not is_public_station_key(station_key) or not normalized_url or not is_public_base_url(normalized_url):
+        return
+    entry = stations.setdefault(station_key, {"station": station_key, "platform_guess": "", "urls": []})
+    urls = entry.setdefault("urls", [])
+    if not isinstance(urls, list):
+        urls = []
+        entry["urls"] = urls
+    urls[:] = [item for item in urls if item != normalized_url]
+    urls.insert(0, normalized_url)
 
 
 def is_public_station_key(station_key: Any) -> bool:
@@ -141,6 +168,10 @@ def load_stations() -> list[dict[str, Any]]:
             urls = split_urls(row.get("url")) or ([f"https://{host}"] if host else [])
             merge_station_map(station_map, host, urls)
 
+    station_aliases = build_site_data.load_station_aliases()
+    for station_key, override_url in build_site_data.load_station_url_overrides(station_aliases).items():
+        prepend_station_url(station_map, station_key, override_url)
+
     return list(station_map.values())
 
 
@@ -167,7 +198,36 @@ def fetch_text(client: requests.Session, url: str) -> tuple[str, str]:
 
 def write_snapshot(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(content, encoding="utf-8")
+    path.write_text(redact_snapshot_content(content), encoding="utf-8")
+
+
+def redact_snapshot_content(content: str) -> str:
+    content = EMAIL_PATTERN.sub("xxx", content)
+    content = BEARER_PATTERN.sub("Bearer <redacted>", content)
+    content = JWT_PATTERN.sub("xxx", content)
+    content = SK_PATTERN.sub("sk-<redacted>", content)
+    return content
+
+
+def sanitize_existing_public_fetch_snapshots() -> list[str]:
+    if not PUBLIC_FETCH_DIR.exists():
+        return []
+    changed: list[str] = []
+    for path in sorted(PUBLIC_FETCH_DIR.glob("*")):
+        if path.suffix.lower() not in {".json", ".html"}:
+            continue
+        try:
+            original = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        redacted = redact_snapshot_content(original)
+        if redacted != original:
+            path.write_text(redacted, encoding="utf-8")
+            try:
+                changed.append(path.relative_to(APP_ROOT).as_posix())
+            except ValueError:
+                changed.append(path.name)
+    return changed
 
 
 def status_candidates(base_url: str) -> list[str]:
@@ -179,7 +239,9 @@ def status_candidates(base_url: str) -> list[str]:
 
 def pricing_candidates(base_url: str) -> list[str]:
     return [
+        urljoin(base_url.rstrip("/") + "/", "api/public/shop/products"),
         urljoin(base_url.rstrip("/") + "/", "api/pricing"),
+        urljoin(base_url.rstrip("/") + "/", "api/subscription/plans"),
         urljoin(base_url.rstrip("/") + "/", "api/status"),
         base_url.rstrip("/") + "/",
         urljoin(base_url.rstrip("/") + "/", "pricing"),
@@ -200,12 +262,26 @@ def combine_status_and_pricing_payload(
     status_payload: dict[str, Any] | None,
     pricing_payload: dict[str, Any],
     source_url: str,
+    subscription_plans_payload: dict[str, Any] | None = None,
+    subscription_plans_source_url: str = "",
 ) -> dict[str, Any]:
     payload = dict(pricing_payload)
     if status_payload is not None:
         payload["status_payload"] = status_payload
+    if subscription_plans_payload is not None:
+        payload["subscription_plans_payload"] = subscription_plans_payload
+        payload["subscription_plans_source_url"] = subscription_plans_source_url
     payload.setdefault("source_url", source_url)
     return payload
+
+
+def fetch_subscription_plans_payload(client: requests.Session, base_url: str) -> tuple[dict[str, Any] | None, str]:
+    source_url = urljoin(base_url.rstrip("/") + "/", "api/subscription/plans")
+    try:
+        payload = fetch_json(client, source_url)
+    except Exception:
+        return None, source_url
+    return payload, source_url
 
 
 def parse_pricing_snapshot_content(content: str, suffix: str) -> dict[str, Any]:
@@ -223,6 +299,62 @@ def parse_pricing_snapshot_content(content: str, suffix: str) -> dict[str, Any]:
 def pricing_snapshot_has_structured_data(content: str, suffix: str) -> bool:
     parsed = parse_pricing_snapshot_content(content, suffix)
     return bool(parsed.get("groupMultipliers") or parsed.get("rechargeTiers"))
+
+
+def same_origin_asset_url(page_url: str, asset_ref: str) -> str:
+    asset_url = urljoin(page_url, asset_ref)
+    page_parts = urlparse(page_url)
+    asset_parts = urlparse(asset_url)
+    if page_parts.scheme != asset_parts.scheme or page_parts.netloc != asset_parts.netloc:
+        return ""
+    return asset_url
+
+
+def html_asset_urls(page_url: str, html: str) -> list[str]:
+    urls: list[str] = []
+    for match in ASSET_URL_PATTERN.finditer(html):
+        asset_url = same_origin_asset_url(page_url, match.group(1))
+        if asset_url and asset_url not in urls:
+            urls.append(asset_url)
+    return urls
+
+
+def home_chunk_urls(page_url: str, script_text: str) -> list[str]:
+    urls: list[str] = []
+    for match in HOME_CHUNK_PATTERN.finditer(script_text):
+        asset_url = same_origin_asset_url(page_url, match.group(1))
+        if asset_url and asset_url not in urls:
+            urls.append(asset_url)
+    return urls
+
+
+def augment_html_with_linked_pricing_assets(client: requests.Session, page_url: str, html: str) -> str:
+    appended: list[str] = []
+    visited: set[str] = set()
+    candidate_urls = html_asset_urls(page_url, html)
+    for asset_url in candidate_urls[:4]:
+        if asset_url in visited:
+            continue
+        visited.add(asset_url)
+        try:
+            asset_text, _content_type = fetch_text(client, asset_url)
+        except Exception:
+            continue
+        if any(marker in asset_text for marker in PUBLIC_PRICING_ASSET_MARKERS):
+            appended.append(f"\n<!-- public-fetch linked pricing asset: {asset_url} -->\n{asset_text}\n")
+        for chunk_url in home_chunk_urls(asset_url, asset_text):
+            if chunk_url in visited:
+                continue
+            visited.add(chunk_url)
+            try:
+                chunk_text, _chunk_type = fetch_text(client, chunk_url)
+            except Exception:
+                continue
+            if any(marker in chunk_text for marker in PUBLIC_PRICING_ASSET_MARKERS):
+                appended.append(f"\n<!-- public-fetch linked pricing asset: {chunk_url} -->\n{chunk_text}\n")
+    if not appended:
+        return html
+    return html + "".join(appended)
 
 
 def refresh_status_snapshot(client: requests.Session, station_key: str, base_url: str) -> dict[str, Any]:
@@ -301,18 +433,54 @@ def refresh_pricing_snapshots(client: requests.Session, station_key: str, base_u
             continue
 
         suffix = ".json" if "json" in content_type or text.lstrip().startswith("{") else ".html"
+        raw_payload: dict[str, Any] | None = None
+        subscription_payload: dict[str, Any] | None = None
+        subscription_source_url = ""
         if suffix == ".json":
             try:
-                raw_payload = json.loads(text)
+                loaded_payload = json.loads(text)
             except json.JSONDecodeError:
-                raw_payload = None
-            if isinstance(raw_payload, dict):
+                loaded_payload = None
+            if isinstance(loaded_payload, dict):
+                raw_payload = loaded_payload
+                if candidate.rstrip("/").endswith("/api/pricing"):
+                    subscription_payload, subscription_source_url = fetch_subscription_plans_payload(client, base_url)
+                if not candidate.rstrip("/").endswith("/api/status"):
+                    structured_probe_text = json.dumps(
+                        combine_status_and_pricing_payload(
+                            None,
+                            raw_payload,
+                            candidate,
+                            subscription_payload,
+                            subscription_source_url,
+                        ),
+                        ensure_ascii=False,
+                        indent=2,
+                    )
+                    if not pricing_snapshot_has_structured_data(structured_probe_text, suffix):
+                        multiplier_report.append(
+                            {
+                                "url": candidate,
+                                "ok": True,
+                                "empty": True,
+                                "skipped": True,
+                                "preserved_existing": True,
+                            }
+                        )
+                        continue
                 text = json.dumps(
-                    combine_status_and_pricing_payload(status_payload, raw_payload, candidate),
+                    combine_status_and_pricing_payload(
+                        status_payload,
+                        raw_payload,
+                        candidate,
+                        subscription_payload,
+                        subscription_source_url,
+                    ),
                     ensure_ascii=False,
                     indent=2,
                 )
         else:
+            text = augment_html_with_linked_pricing_assets(client, candidate, text)
             app_config_match = APP_CONFIG_PATTERN.search(text)
             if app_config_match:
                 try:
@@ -404,10 +572,12 @@ def main() -> int:
 
         report.append(row_report)
 
+    sanitized_existing = sanitize_existing_public_fetch_snapshots()
+
     if not args.skip_build:
         run_build_site_data()
 
-    print(json.dumps({"updated": report}, ensure_ascii=False, indent=2))
+    print(json.dumps({"updated": report, "sanitized_existing": sanitized_existing}, ensure_ascii=False, indent=2))
     return 0
 
 

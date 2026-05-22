@@ -4,6 +4,13 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "由于openai停止了gpt-5.3-codex的供应，我们目前对gpt-5.3-codex进行了重定向，以避免阻塞服务，使用到该模型的用户建议尽快迁移",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-05-21T20:11:19.580Z",
+        "type": "default"
+      },
+      {
         "content": "为庆祝站内注册用户过千，我们开启了签到活动，每日签到最高可得2刀额度，访问个人资料页：https://api.avemujica.moe/profile 进行签到领取，领取后会自动得到一个签到额度订阅包，钱包页面设置优先订阅即可使用",
         "extra": "",
         "id": 16,
@@ -95,7 +102,7 @@
         "type": "default"
       },
       {
-        "content": "openai官方会对会话内容进行网络安全检查，一旦会话被标记为网络安全问题，就会持续报错，无法继续使用，这并非本站可以控制的，如确有网络安全需求，请联系商务邮箱：business@avemujica.moe",
+        "content": "openai官方会对会话内容进行网络安全检查，一旦会话被标记为网络安全问题，就会持续报错，无法继续使用，这并非本站可以控制的，如确有网络安全需求，请联系商务邮箱：xxx",
         "extra": "",
         "id": 3,
         "publishDate": "2026-05-11T14:36:11.520Z",
@@ -109,7 +116,7 @@
         "type": "default"
       },
       {
-        "content": "联系方式\nabuse@avemujica.moe 滥用\nsupport@avemujica.moe 工单\nbusiness@avemujica.moe 商业合作",
+        "content": "联系方式\xxx 滥用\xxx 工单\xxx 商业合作",
         "extra": "",
         "id": 1,
         "publishDate": "2026-05-10T01:19:48.305Z",
@@ -189,6 +196,16 @@
         "answer": "我们推荐在 **Codex** 中使用，以获得最完整、最顺畅的体验。\n\n配置方法可参考：[Codex 配置教程](https://docs.avemujica.moe/cli/3-codex)\n\n日常使用场景下，推荐安装 **Codex App**：\n\n[下载 Codex App](https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi)\n\n如果你主要用于写代码，也可以使用 **Codex CLI**：\n\n```bash\nnpm install -g @openai/codex\n```\n\n如果你习惯使用 **Claude Code**，也可以根据客户端支持情况配置本站的接口使用。\n\n对于同时使用 Codex、Claude Code、Gemini CLI 等多个工具或是不想手动维护配置文件的用户，推荐使用 **CC Switch** 进行统一管理。CC Switch 支持统一管理 Provider、MCP、Skills、Prompt 等配置，也可以更方便地在不同模型服务之间切换。\n\nCC Switch 可参考：[CC Switch 官网](https://cc-switch.cc)",
         "id": 2,
         "question": "如何使用？"
+      },
+      {
+        "answer": "我们目前优先保证gpt以及阿里云百炼渠道的稳定供应，其他渠道暂不做可用性保证",
+        "id": 3,
+        "question": "渠道供应问题"
+      },
+      {
+        "answer": "openai官方对该渠道的gpt-5.5有硬上下文限制，建议不要让您的上下文超过258k，如果有长上下文需求，请使用gpt-5.4",
+        "id": 4,
+        "question": "为什么一直出现500报错？"
       }
     ],
     "faq_enabled": true,

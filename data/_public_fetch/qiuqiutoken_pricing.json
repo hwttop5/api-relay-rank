@@ -2,10 +2,10 @@
   "auto_groups": [],
   "data": [
     {
-      "model_name": "claude-sonnet-4.5-thinking",
+      "model_name": "claude-opus-4.5-thinking",
       "vendor_id": 7,
       "quota_type": 0,
-      "model_ratio": 1.5,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
@@ -19,24 +19,6 @@
         "openai"
       ],
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "claude-sonnet-4",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude Code专用-逆向"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
     },
     {
       "model_name": "claude-sonnet-4-thinking",
@@ -57,6 +39,105 @@
       ]
     },
     {
+      "model_name": "gpt-image-2",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 4,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.75,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "CodeX专用-Plus号池",
+        "default",
+        "vip",
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-openai-compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip",
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.7",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.6",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip",
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
       "model_name": "gpt-5.2",
       "vendor_id": 1,
       "quota_type": 0,
@@ -66,14 +147,90 @@
       "completion_ratio": 8,
       "cache_ratio": 0.1,
       "enable_groups": [
+        "测试分组",
         "CodeX专用-企业专供",
         "CodeX专用-Pro号池-稳定",
         "CodeX专用-Plus号池",
         "default",
-        "vip",
-        "测试分组"
+        "vip"
       ],
       "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark-openai-compact",
+      "icon": "OpenAI",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4.5",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4.5-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     },
@@ -123,6 +280,109 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
+        "default",
+        "vip",
+        "测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
+        "default",
+        "vip",
+        "测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.6-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "CodeX专用-Plus号池",
+        "default",
+        "vip",
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
+        "default",
+        "vip",
+        "测试分组",
+        "CodeX专用-企业专供"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
         "测试分组",
         "CodeX专用-企业专供",
         "CodeX专用-Pro号池-稳定",
@@ -144,97 +404,12 @@
       "completion_ratio": 8,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "default",
-        "vip",
-        "测试分组",
-        "CodeX专用-企业专供",
-        "CodeX专用-Pro号池-稳定",
-        "CodeX专用-Plus号池"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex-spark-openai-compact",
-      "icon": "OpenAI",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "CodeX专用-企业专供",
-        "CodeX专用-Pro号池-稳定",
-        "CodeX专用-Plus号池",
-        "default",
-        "vip",
-        "测试分组"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex-spark",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "测试分组",
-        "CodeX专用-企业专供",
-        "CodeX专用-Pro号池-稳定",
-        "CodeX专用-Plus号池",
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "default",
-        "vip",
-        "测试分组",
-        "CodeX专用-企业专供",
-        "CodeX专用-Pro号池-稳定",
-        "CodeX专用-Plus号池"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "CodeX专用-Pro号池-稳定",
         "CodeX专用-Plus号池",
         "default",
         "vip",
         "测试分组",
-        "CodeX专用-企业专供"
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -251,27 +426,6 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "测试分组",
-        "CodeX专用-企业专供",
-        "CodeX专用-Pro号池-稳定",
-        "CodeX专用-Plus号池",
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5-openai-compact",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
         "default",
         "vip",
         "测试分组",
@@ -284,7 +438,7 @@
       ]
     },
     {
-      "model_name": "claude-opus-4.7",
+      "model_name": "claude-opus-4.7-thinking",
       "vendor_id": 7,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -293,6 +447,24 @@
       "completion_ratio": 5,
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Code专用-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4.6",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 5,
       "enable_groups": [
         "Claude Code专用-逆向"
       ],
@@ -336,178 +508,6 @@
         "anthropic",
         "openai"
       ]
-    },
-    {
-      "model_name": "claude-opus-4.5-thinking",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude Code专用-逆向"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4.5",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude Code专用-逆向"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-2",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 4,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3.75,
-      "cache_ratio": 0.25,
-      "enable_groups": [
-        "CodeX专用-企业专供",
-        "CodeX专用-Pro号池-稳定",
-        "CodeX专用-Plus号池",
-        "default",
-        "vip",
-        "测试分组"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-openai-compact",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "vip",
-        "测试分组",
-        "CodeX专用-企业专供",
-        "CodeX专用-Pro号池-稳定",
-        "CodeX专用-Plus号池",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5625,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "CodeX专用-企业专供",
-        "CodeX专用-Pro号池-稳定",
-        "CodeX专用-Plus号池",
-        "default",
-        "vip",
-        "测试分组"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4.7-thinking",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude Code专用-逆向"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4.6",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude Code专用-逆向"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4.6-thinking",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude Code专用-逆向"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4.6",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 5,
-      "enable_groups": [
-        "Claude Code专用-逆向"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
     }
   ],
   "group_ratio": {
@@ -515,6 +515,7 @@
     "CodeX专用-Plus号池": 0.8,
     "CodeX专用-Pro号池-稳定": 0.8,
     "CodeX专用-企业专供": 3,
+    "group_1": 1,
     "测试分组": 5
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
@@ -534,9 +535,25 @@
     "CodeX专用-Plus号池": "CodeX专用-自建Plus订阅号池，满血，无场景限制，默认使用Pro分组，有优惠渠道重新调整优惠",
     "CodeX专用-Pro号池-稳定": "CodeX专用-自建Pro订阅号池，满血，无场景限制，支持gpt-image-2、OpenClew、Hermes",
     "CodeX专用-企业专供": "CodeX专用-企业专供-自建Plus、Pro订阅号池，满血，无场景限制、支持OpenClew、Hermes",
+    "group_1": "",
     "测试分组": "测试分组"
   },
   "vendors": [
+    {
+      "id": 2,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 7,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
     {
       "id": 3,
       "name": "Vivgrid"
@@ -547,27 +564,12 @@
       "icon": "OpenCode"
     },
     {
-      "id": 1,
-      "name": "OpenAI",
-      "icon": "OpenAI"
-    },
-    {
-      "id": 2,
-      "name": "讯飞",
-      "icon": "Spark.Color"
-    },
-    {
       "id": 5,
       "name": "QiHang"
     },
     {
       "id": 6,
       "name": "SAP AI Core"
-    },
-    {
-      "id": 7,
-      "name": "Anthropic",
-      "icon": "Claude.Color"
     },
     {
       "id": 8,
@@ -757,7 +759,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://qiuqiutoken.com",
       "setup": true,
-      "start_time": 1779295223,
+      "start_time": 1779295167,
       "stripe_unit_price": 8,
       "system_name": "球球Token - AI中转服务站",
       "telegram_bot_name": "",

@@ -1,13 +1,16 @@
-import { execFile } from "node:child_process";
+import { execFile, spawn, type ChildProcessWithoutNullStreams } from "node:child_process";
+import readline from "node:readline";
 import { promisify } from "node:util";
 import { revalidatePath } from "next/cache";
 
 import { getSiteData } from "@/lib/site-data";
-import type { SiteData, StationAuditSummary } from "@/lib/types";
+import type { SiteData, StationAuditHistoryItem, StationAuditSummary } from "@/lib/types";
 
 const execFileAsync = promisify(execFile);
 const APP_ROOT = process.cwd();
 const AUDIT_TIMEOUT_MS = 1000 * 60 * 20;
+
+export const runtime = "nodejs";
 
 interface AuditRunPayload {
   apiBaseUrl?: unknown;
@@ -96,10 +99,111 @@ function deriveUnlistedStationKey(siteData: SiteData, apiBaseUrl: string) {
 function runPythonJson(args: string[], env?: Record<string, string>) {
   return execFileAsync("python", args, {
     cwd: APP_ROOT,
-    env: { ...process.env, ...env },
+    env: { ...process.env, PYTHONUTF8: "1", PYTHONIOENCODING: "utf-8", ...env },
     maxBuffer: 1024 * 1024 * 8,
     timeout: AUDIT_TIMEOUT_MS,
   });
+}
+
+type AuditExecutedRow = { station: string; model: string; summary: string; report: string };
+type AuditProgressPayload = Record<string, unknown> & { type?: unknown; message?: unknown; executed?: unknown };
+
+function sanitizeEventValue(value: unknown, secrets: string[]): unknown {
+  if (typeof value === "string") {
+    return sanitizeAuditDetail(value, secrets);
+  }
+  if (Array.isArray(value)) {
+    return value.map((item) => sanitizeEventValue(item, secrets));
+  }
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value as Record<string, unknown>).map(([key, item]) => [key, sanitizeEventValue(item, secrets)]));
+  }
+  return value;
+}
+
+function spawnPython(args: string[], env?: Record<string, string>): ChildProcessWithoutNullStreams {
+  return spawn("python", args, {
+    cwd: APP_ROOT,
+    env: {
+      ...process.env,
+      PYTHONUTF8: "1",
+      PYTHONUNBUFFERED: "1",
+      PYTHONIOENCODING: "utf-8",
+      ...env,
+    },
+  });
+}
+
+async function runPythonProgressJsonl(
+  args: string[],
+  env: Record<string, string>,
+  secrets: string[],
+  onEvent: (payload: AuditProgressPayload) => void,
+) {
+  const child = spawnPython(args, env);
+  const stdout = readline.createInterface({ input: child.stdout, crlfDelay: Infinity });
+  const stderr = readline.createInterface({ input: child.stderr, crlfDelay: Infinity });
+  const executed: AuditExecutedRow[] = [];
+  const stderrLines: string[] = [];
+
+  const readStdout = (async () => {
+    for await (const line of stdout) {
+      const text = line.trim();
+      if (!text) {
+        continue;
+      }
+      try {
+        const payload = JSON.parse(text) as AuditProgressPayload;
+        if (payload.type === "result" && Array.isArray(payload.executed)) {
+          executed.push(...(payload.executed as AuditExecutedRow[]));
+          continue;
+        }
+        onEvent(sanitizeEventValue(payload, secrets) as AuditProgressPayload);
+      } catch {
+        onEvent({ type: "log", stream: "stdout", message: sanitizeAuditDetail(text, secrets) });
+      }
+    }
+  })();
+
+  const readStderr = (async () => {
+    for await (const line of stderr) {
+      const text = line.trim();
+      if (!text) {
+        continue;
+      }
+      stderrLines.push(text);
+      onEvent({ type: "log", stream: "stderr", message: sanitizeAuditDetail(text, secrets) });
+    }
+  })();
+
+  const exit = await new Promise<{ code: number | null; signal: NodeJS.Signals | null }>((resolve, reject) => {
+    child.once("error", reject);
+    child.once("close", (code, signal) => resolve({ code, signal }));
+  });
+
+  await Promise.allSettled([readStdout, readStderr]);
+  if (exit.code !== 0) {
+    const suffix = stderrLines.length > 0 ? ` ${stderrLines.join("\n")}` : "";
+    throw new Error(`Audit engine failed with exit code ${exit.code ?? exit.signal ?? "unknown"}.${suffix}`);
+  }
+
+  return { executed };
+}
+
+function streamResponse(stream: ReadableStream<Uint8Array>) {
+  return new Response(stream, {
+    headers: {
+      "cache-control": "no-store",
+      "content-type": "application/x-ndjson; charset=utf-8",
+      "x-accel-buffering": "no",
+    },
+  });
+}
+
+function auditRunIdFromReportPath(reportPath: string) {
+  const parts = reportPath.replace(/\\/g, "/").split("/").filter(Boolean);
+  const reportIndex = parts.lastIndexOf("report.md");
+  return reportIndex > 0 ? parts[reportIndex - 1] : "";
 }
 
 export async function POST(request: Request) {
@@ -133,56 +237,94 @@ export async function POST(request: Request) {
     return jsonResponse({ error: "apiBaseUrl must be a valid absolute URL." }, 400);
   }
 
-  let executed: Array<{ station: string; model: string; summary: string; report: string }>;
-  try {
-    const script = [
-      "scripts/run_station_audit.py",
-      "--station",
-      stationKey,
-      "--model",
-      model,
-      "--ad-hoc-target",
-      "--override-base-url",
-      apiBaseUrl,
-      "--request-api-key-env",
-      "STATION_AUDIT_REQUEST_KEY",
-    ];
-    const { stdout } = await runPythonJson(script, { STATION_AUDIT_REQUEST_KEY: apiKey });
-    const result = JSON.parse(stdout) as { executed?: Array<{ station: string; model: string; summary: string; report: string }> };
-    executed = result.executed ?? [];
-  } catch (error) {
-    return jsonResponse({ error: "Audit engine failed.", detail: sanitizeAuditDetail(error, [apiKey]) }, 502);
-  }
+  const encoder = new TextEncoder();
+  const stream = new ReadableStream<Uint8Array>({
+    start(controller) {
+      let closed = false;
+      const send = (payload: AuditProgressPayload) => {
+        if (closed) {
+          return;
+        }
+        controller.enqueue(encoder.encode(`${JSON.stringify(sanitizeEventValue(payload, [apiKey]))}\n`));
+      };
+      const close = () => {
+        if (!closed) {
+          closed = true;
+          controller.close();
+        }
+      };
 
-  if (!executed[0]?.summary) {
-    return jsonResponse({ error: "Audit completed without a summary path." }, 502);
-  }
+      void (async () => {
+        try {
+          const script = [
+            "scripts/run_station_audit.py",
+            "--station",
+            stationKey,
+            "--model",
+            model,
+            "--ad-hoc-target",
+            "--override-base-url",
+            apiBaseUrl,
+            "--request-api-key-env",
+            "STATION_AUDIT_REQUEST_KEY",
+            "--progress-jsonl",
+          ];
+          send({ type: "status", message: "已创建检测任务，正在启动审计流程。", station: stationKey, model });
+          const { executed } = await runPythonProgressJsonl(script, { STATION_AUDIT_REQUEST_KEY: apiKey }, [apiKey], send);
+          if (!executed[0]?.summary) {
+            throw new Error("Audit completed without a summary path.");
+          }
 
-  try {
-    await runPythonJson(["scripts/build_site_data.py"]);
-    siteData = await getSiteData();
-  } catch (error) {
-    return jsonResponse({ error: "Failed to rebuild site data.", detail: sanitizeAuditDetail(error, [apiKey]) }, 500);
-  }
+          send({ type: "status", message: "审计报告已归档，正在重建站点数据。", station: stationKey, model });
+          await runPythonJson(["scripts/build_site_data.py"]);
+          siteData = await getSiteData();
 
-  revalidatePath("/");
-  revalidatePath("/ranking");
-  revalidatePath("/audit");
-  revalidatePath("/statement");
-  revalidatePath(`/stations/${encodeURIComponent(stationKey)}`);
-  revalidatePath("/sitemap.xml");
+          revalidatePath("/");
+          revalidatePath("/ranking");
+          revalidatePath("/audit");
+          revalidatePath("/statement");
+          revalidatePath(`/stations/${encodeURIComponent(stationKey)}`);
+          revalidatePath("/sitemap.xml");
 
-  const station = siteData.stations.find((item) => item.key === stationKey);
-  const summary = station?.audits?.latestByModel.find((item) => item.model === model) as StationAuditSummary | undefined;
-  if (!station || !summary) {
-    return jsonResponse({ error: "Audit summary was archived but not found in rebuilt site data." }, 500);
-  }
+          const station = siteData.stations.find((item) => item.key === stationKey);
+          const summary = station?.audits?.latestByModel.find((item) => item.model === model) as StationAuditSummary | undefined;
+          if (!station || !summary) {
+            throw new Error("Audit summary was archived but not found in rebuilt site data.");
+          }
+          const runId = auditRunIdFromReportPath(summary.reportPath);
+          if (!runId) {
+            throw new Error("Audit summary was archived but its run id could not be resolved.");
+          }
+          const reportUrl = `/api/audit-report?station=${encodeURIComponent(station.key)}&model=${encodeURIComponent(model)}&run=${encodeURIComponent(runId)}`;
+          const historyItem: StationAuditHistoryItem = {
+            ...summary,
+            stationKey: station.key,
+            stationLabel: station.label,
+            stationUrl: station.url || summary.auditedBaseUrl,
+            runId,
+            reportUrl,
+          };
 
-  return jsonResponse({
-    station: station.key,
-    model,
-    summary,
-    stationUrl: `/stations/${encodeURIComponent(station.key)}#audit`,
-    reportUrl: `/api/audit-report?station=${encodeURIComponent(station.key)}&model=${encodeURIComponent(model)}`,
+          send({
+            type: "complete",
+            message: "检测完成，结果已按站点归档。",
+            result: {
+              station: station.key,
+              model,
+              summary,
+              historyItem,
+              stationUrl: `/stations/${encodeURIComponent(station.key)}#audit`,
+              reportUrl,
+            },
+          });
+        } catch (error) {
+          send({ type: "error", message: sanitizeAuditDetail(error, [apiKey]) || "Audit engine failed." });
+        } finally {
+          close();
+        }
+      })();
+    },
   });
+
+  return streamResponse(stream);
 }

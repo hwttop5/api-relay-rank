@@ -9,57 +9,24 @@
   ],
   "data": [
     {
-      "model_name": "gpt-5.2",
-      "vendor_id": 1,
+      "model_name": "gemini-3.1-pro-preview",
+      "description": "Gemini 3.1 Pro Preview ",
+      "tags": "gemini,pro,preview",
+      "vendor_id": 19,
       "quota_type": 0,
-      "model_ratio": 0.875,
+      "model_ratio": 2,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0,
-      "create_cache_ratio": 0.1,
+      "completion_ratio": 4.5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
       "enable_groups": [
-        "Codex"
+        "Gemini-Vertex"
       ],
       "supported_endpoint_types": [
         "openai"
       ],
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0,
-      "create_cache_ratio": 0.07,
-      "enable_groups": [
-        "Codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "mimo-v2-pro",
-      "vendor_id": 12,
-      "quota_type": 0,
-      "model_ratio": 0.1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1.75,
-      "cache_ratio": 1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "default",
-        "MiMo"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
     },
     {
       "model_name": "gpt-5.2-codex",
@@ -81,58 +48,55 @@
       ]
     },
     {
-      "model_name": "gpt-image-2",
+      "model_name": "gpt-5.3",
       "vendor_id": 1,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.3,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 0,
+      "completion_ratio": 8,
+      "cache_ratio": 0,
+      "create_cache_ratio": 0.1,
       "enable_groups": [
-        "default",
-        "image",
         "Codex"
       ],
       "supported_endpoint_types": [
-        "image-generation",
         "openai"
       ]
     },
     {
-      "model_name": "claude-sonnet-4-5-20250929",
-      "vendor_id": 6,
+      "model_name": "gpt-5.3-codex",
+      "description": "GPT-5.3 Codex is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Vision,400K",
+      "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 1.5,
+      "model_ratio": 0.875,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
+      "completion_ratio": 8,
+      "cache_ratio": 0,
+      "create_cache_ratio": 0.1,
       "enable_groups": [
-        "Claude-Azure",
-        "Claude-AWS-Platform",
-        "Claude-AWS",
-        "Claude-Kiro",
-        "Claude-CC-MAX"
+        "Codex"
       ],
       "supported_endpoint_types": [
-        "anthropic",
         "openai"
       ]
     },
     {
-      "model_name": "mimo-v2-omni",
-      "vendor_id": 12,
+      "model_name": "gpt-5.4",
+      "description": "GPT-5.4 is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 0.075,
+      "model_ratio": 1.25,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 2,
-      "cache_ratio": 1,
-      "create_cache_ratio": 1,
+      "completion_ratio": 6,
+      "cache_ratio": 0,
+      "create_cache_ratio": 0.1,
       "enable_groups": [
-        "default",
-        "MiMo"
+        "Codex"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -163,30 +127,6 @@
       ]
     },
     {
-      "model_name": "claude-sonnet-4-6",
-      "description": "Claude Sonnet 4.6 is an AI model provided by venice.",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude-AWS-Platform",
-        "Claude-AWS",
-        "Claude-Kiro",
-        "Claude-CC-MAX",
-        "Claude-Azure"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
       "model_name": "claude-opus-4-6",
       "description": "Claude Opus 4.6 is an AI model provided by venice.",
       "tags": "Reasoning,Tools,Files,Vision,1M",
@@ -199,11 +139,33 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "Claude-Kiro",
         "Claude-CC-MAX",
         "Claude-Azure",
         "Claude-AWS-Platform",
-        "Claude-AWS"
+        "Claude-AWS",
+        "Claude-Kiro"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-AWS",
+        "Claude-Kiro",
+        "Claude-CC-MAX",
+        "Claude-Azure",
+        "Claude-AWS-Platform"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -223,11 +185,11 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
+        "Claude-CC-MAX",
         "Claude-Azure",
         "Claude-AWS-Platform",
         "Claude-AWS",
-        "Claude-Kiro",
-        "Claude-CC-MAX"
+        "Claude-Kiro"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -253,17 +215,127 @@
       ]
     },
     {
-      "model_name": "gpt-5.4",
-      "description": "GPT-5.4 is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 1,
+      "model_name": "mimo-v2.5",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1.333333333333,
+      "cache_ratio": 1.166666666667,
+      "create_cache_ratio": 1.166666666667,
+      "enable_groups": [
+        "default",
+        "MiMo"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview",
+      "description": "Gemini 3 Flash Preview ",
+      "tags": "gemini,flash,preview",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "Gemini-Vertex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-low",
+      "description": "Gemini 3.1 Pro (low reasoning)",
+      "tags": "gemini,pro,low",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "Gemini-Vertex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash",
+      "description": "Gemini 2.5 Flash",
+      "tags": "gemini,flash",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "Gemini-Vertex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro",
+      "description": "Gemini 2.5 Pro",
+      "tags": "gemini,pro",
+      "vendor_id": 19,
       "quota_type": 0,
       "model_ratio": 1.25,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "Gemini-Vertex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mimo-v2-omni",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.075,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "MiMo",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
       "cache_ratio": 0,
-      "create_cache_ratio": 0.1,
+      "create_cache_ratio": 0.07,
       "enable_groups": [
         "Codex"
       ],
@@ -272,7 +344,49 @@
       ]
     },
     {
-      "model_name": "gpt-5.3",
+      "model_name": "gpt-image-2",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "image",
+        "Codex"
+      ],
+      "supported_endpoint_types": [
+        "image-generation",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "description": "Claude Sonnet 4.6 is an AI model provided by venice.",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-AWS",
+        "Claude-Kiro",
+        "Claude-CC-MAX",
+        "Claude-Azure",
+        "Claude-AWS-Platform"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 0.875,
@@ -299,10 +413,10 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "Claude-Azure",
-        "Claude-AWS-Platform",
         "Claude-AWS",
-        "Claude-CC-MAX"
+        "Claude-CC-MAX",
+        "Claude-Azure",
+        "Claude-AWS-Platform"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -310,15 +424,15 @@
       ]
     },
     {
-      "model_name": "mimo-v2.5",
+      "model_name": "mimo-v2-pro",
       "vendor_id": 12,
       "quota_type": 0,
-      "model_ratio": 0.15,
+      "model_ratio": 0.1,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 1.333333333333,
-      "cache_ratio": 1.166666666667,
-      "create_cache_ratio": 1.166666666667,
+      "completion_ratio": 1.75,
+      "cache_ratio": 1,
+      "create_cache_ratio": 1,
       "enable_groups": [
         "default",
         "MiMo"
@@ -328,19 +442,19 @@
       ]
     },
     {
-      "model_name": "gpt-5.3-codex",
-      "description": "GPT-5.3 Codex is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Vision,400K",
-      "vendor_id": 1,
+      "model_name": "gemini-3-flash",
+      "description": "Gemini 3 Flash ",
+      "tags": "gemini,flash",
+      "vendor_id": 19,
       "quota_type": 0,
-      "model_ratio": 0.875,
+      "model_ratio": 0.25,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0,
-      "create_cache_ratio": 0.1,
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
       "enable_groups": [
-        "Codex"
+        "Gemini-Vertex"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -354,6 +468,7 @@
     "Claude-CC-MAX": 2.5,
     "Claude-Kiro": 0.5,
     "Codex": 0.8,
+    "Gemini-Vertex": 2,
     "MiMo": 1,
     "image": 1
   },
@@ -380,19 +495,15 @@
     "Claude-CC-MAX": "自建官转MAX号池（原生模型）",
     "Claude-Kiro": "AWS-Kiro逆向（价格低-量大管饱）",
     "Codex": "自建Pro号池（稳定-适合编码场景）",
+    "Gemini-Vertex": "Google-Vertex直连渠道（测试中，可能不稳定）",
     "MiMo": "xiaomi-mimo",
     "image": "图片模型分组"
   },
   "vendors": [
     {
-      "id": 13,
-      "name": "DeepSeek",
-      "icon": "DeepSeek.Color"
-    },
-    {
-      "id": 18,
-      "name": "OpenCode Zen",
-      "icon": "OpenCode"
+      "id": 19,
+      "name": "Google",
+      "icon": "Gemini.Color"
     },
     {
       "id": 1,
@@ -407,6 +518,16 @@
     {
       "id": 12,
       "name": "Xiaomi Token Plan (Singapore)"
+    },
+    {
+      "id": 13,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 18,
+      "name": "OpenCode Zen",
+      "icon": "OpenCode"
     }
   ],
   "status_payload": {
@@ -495,7 +616,10 @@
         }
       ],
       "checkin_enabled": false,
-      "claude360_enabled": false,
+      "claude360_enabled": true,
+      "claude360_site_name": "Claude360",
+      "claude360_site_url": "https://claude360.xyz",
+      "claude360_slogan": "纯血Claude模型，专业稳定",
       "custom_currency_exchange_rate": 1,
       "custom_currency_symbol": "¤",
       "data_export_default_time": "hour",
@@ -538,7 +662,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://claude360.xyz",
       "setup": true,
-      "start_time": 1778864471,
+      "start_time": 1779466682,
       "stripe_unit_price": 8,
       "system_name": "Claude 360",
       "telegram_bot_name": "",

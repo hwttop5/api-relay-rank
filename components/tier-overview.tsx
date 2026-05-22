@@ -4,8 +4,12 @@ import { formatCurrency, formatMultiplier } from "@/lib/format";
 import type { GroupMultiplierRow, RechargeTierRow } from "@/lib/types";
 
 export function TierOverview({ groups, rechargeTiers }: { groups: GroupMultiplierRow[]; rechargeTiers: RechargeTierRow[] }) {
+  const permanentRechargeTiers = rechargeTiers.filter((tier) => tier.billingType === "permanent");
+  const recurringRechargeTiers = rechargeTiers.filter((tier) => tier.billingType !== "permanent");
+  const showRechargeDivider = permanentRechargeTiers.length > 0 && recurringRechargeTiers.length > 0;
+
   return (
-    <div className="grid-2">
+    <div className="grid-2 tier-overview-grid">
       <div className="section nested-section">
         <div className="section-head">
           <div>
@@ -19,7 +23,7 @@ export function TierOverview({ groups, rechargeTiers }: { groups: GroupMultiplie
         <div className="section-body">
           <div className="desktop-table">
             <div className="table-wrap">
-              <table className="subtable">
+              <table className="subtable group-multiplier-table">
                 <thead>
                   <tr>
                     <th>分组</th>
@@ -97,16 +101,35 @@ export function TierOverview({ groups, rechargeTiers }: { groups: GroupMultiplie
                 </thead>
                 <tbody>
                   {rechargeTiers.length ? (
-                    rechargeTiers.map((tier) => (
-                      <tr key={`${tier.rechargeName}-${tier.billingType}-${tier.rmbAmount}-${tier.usdAmount}`}>
-                        <td>{tier.rechargeName}</td>
-                        <td>{tier.billingTypeLabel}</td>
-                        <td className="mono">{formatCurrency(tier.rmbAmount, "￥")}</td>
-                        <td className="mono">{formatCurrency(tier.usdAmount, "$")}</td>
-                        <td>{tier.expiresRule || "-"}</td>
-                        <td>{tier.rechargeLocation || "-"}</td>
-                      </tr>
-                    ))
+                    <>
+                      {permanentRechargeTiers.map((tier) => (
+                        <tr key={`permanent-${tier.rechargeName}-${tier.billingType}-${tier.rmbAmount}-${tier.usdAmount}`}>
+                          <td>{tier.rechargeName}</td>
+                          <td>{tier.billingTypeLabel}</td>
+                          <td className="mono">{formatCurrency(tier.rmbAmount, "￥")}</td>
+                          <td className="mono">{formatCurrency(tier.usdAmount, "$")}</td>
+                          <td>{tier.expiresRule || "-"}</td>
+                          <td>{tier.rechargeLocation || "-"}</td>
+                        </tr>
+                      ))}
+                      {showRechargeDivider ? (
+                        <tr aria-hidden="true">
+                          <td colSpan={6} style={{ padding: 0, borderBottom: 0 }}>
+                            <div style={{ height: 1, width: "100%", backgroundColor: "rgba(74, 88, 97, 0.52)" }} />
+                          </td>
+                        </tr>
+                      ) : null}
+                      {recurringRechargeTiers.map((tier) => (
+                        <tr key={`recurring-${tier.rechargeName}-${tier.billingType}-${tier.rmbAmount}-${tier.usdAmount}`}>
+                          <td>{tier.rechargeName}</td>
+                          <td>{tier.billingTypeLabel}</td>
+                          <td className="mono">{formatCurrency(tier.rmbAmount, "￥")}</td>
+                          <td className="mono">{formatCurrency(tier.usdAmount, "$")}</td>
+                          <td>{tier.expiresRule || "-"}</td>
+                          <td>{tier.rechargeLocation || "-"}</td>
+                        </tr>
+                      ))}
+                    </>
                   ) : (
                     <tr>
                       <td colSpan={6} className="subtle">
@@ -120,36 +143,71 @@ export function TierOverview({ groups, rechargeTiers }: { groups: GroupMultiplie
           </div>
           <div className="mobile-card-list">
             {rechargeTiers.length ? (
-              rechargeTiers.map((tier) => (
-                <article className="mobile-card mobile-card-compact" key={`${tier.rechargeName}-${tier.billingType}-${tier.rmbAmount}-${tier.usdAmount}`}>
-                  <div className="mobile-card-header">
-                    <div className="mobile-card-title-block">
-                      <div className="mobile-card-title">{tier.rechargeName}</div>
-                      <div className="mobile-card-subtitle">{tier.billingTypeLabel}</div>
+              <>
+                {permanentRechargeTiers.map((tier) => (
+                  <article className="mobile-card mobile-card-compact" key={`permanent-${tier.rechargeName}-${tier.billingType}-${tier.rmbAmount}-${tier.usdAmount}`}>
+                    <div className="mobile-card-header">
+                      <div className="mobile-card-title-block">
+                        <div className="mobile-card-title">{tier.rechargeName}</div>
+                        <div className="mobile-card-subtitle">{tier.billingTypeLabel}</div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="mobile-metrics-grid">
-                    <div className="mobile-metric">
-                      <div className="mobile-metric-label">人民币</div>
-                      <div className="mobile-metric-value mono">{formatCurrency(tier.rmbAmount, "￥")}</div>
+                    <div className="mobile-metrics-grid">
+                      <div className="mobile-metric">
+                        <div className="mobile-metric-label">人民币</div>
+                        <div className="mobile-metric-value mono">{formatCurrency(tier.rmbAmount, "￥")}</div>
+                      </div>
+                      <div className="mobile-metric">
+                        <div className="mobile-metric-label">美元额度</div>
+                        <div className="mobile-metric-value mono">{formatCurrency(tier.usdAmount, "$")}</div>
+                      </div>
                     </div>
-                    <div className="mobile-metric">
-                      <div className="mobile-metric-label">美元额度</div>
-                      <div className="mobile-metric-value mono">{formatCurrency(tier.usdAmount, "$")}</div>
+                    <div className="mobile-card-detail-grid">
+                      <div className="mobile-detail-row">
+                        <div className="mobile-detail-label">有效期说明</div>
+                        <div className="mobile-detail-value">{tier.expiresRule || "-"}</div>
+                      </div>
+                      <div className="mobile-detail-row">
+                        <div className="mobile-detail-label">充值位置</div>
+                        <div className="mobile-detail-value">{tier.rechargeLocation || "-"}</div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="mobile-card-detail-grid">
-                    <div className="mobile-detail-row">
-                      <div className="mobile-detail-label">有效期说明</div>
-                      <div className="mobile-detail-value">{tier.expiresRule || "-"}</div>
+                  </article>
+                ))}
+                {showRechargeDivider ? (
+                  <div aria-hidden="true" style={{ height: 1, margin: "12px 0", backgroundColor: "rgba(74, 88, 97, 0.52)" }} />
+                ) : null}
+                {recurringRechargeTiers.map((tier) => (
+                  <article className="mobile-card mobile-card-compact" key={`recurring-${tier.rechargeName}-${tier.billingType}-${tier.rmbAmount}-${tier.usdAmount}`}>
+                    <div className="mobile-card-header">
+                      <div className="mobile-card-title-block">
+                        <div className="mobile-card-title">{tier.rechargeName}</div>
+                        <div className="mobile-card-subtitle">{tier.billingTypeLabel}</div>
+                      </div>
                     </div>
-                    <div className="mobile-detail-row">
-                      <div className="mobile-detail-label">充值位置</div>
-                      <div className="mobile-detail-value">{tier.rechargeLocation || "-"}</div>
+                    <div className="mobile-metrics-grid">
+                      <div className="mobile-metric">
+                        <div className="mobile-metric-label">人民币</div>
+                        <div className="mobile-metric-value mono">{formatCurrency(tier.rmbAmount, "￥")}</div>
+                      </div>
+                      <div className="mobile-metric">
+                        <div className="mobile-metric-label">美元额度</div>
+                        <div className="mobile-metric-value mono">{formatCurrency(tier.usdAmount, "$")}</div>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              ))
+                    <div className="mobile-card-detail-grid">
+                      <div className="mobile-detail-row">
+                        <div className="mobile-detail-label">有效期说明</div>
+                        <div className="mobile-detail-value">{tier.expiresRule || "-"}</div>
+                      </div>
+                      <div className="mobile-detail-row">
+                        <div className="mobile-detail-label">充值位置</div>
+                        <div className="mobile-detail-value">{tier.rechargeLocation || "-"}</div>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </>
             ) : (
               <article className="mobile-card mobile-card-compact">
                 <div className="mobile-card-empty subtle">暂无充值档位数据</div>

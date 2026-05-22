@@ -1,0 +1,55 @@
+{
+  "groupMultipliers": [],
+  "rechargeTiers": [
+    {
+      "rechargeName": "Codex API 10 USD permanent quota",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 10.0,
+      "usdAmount": 10.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; product states Codex API 10 USD quota with no expiry"
+    },
+    {
+      "rechargeName": "Codex API 20 USD permanent quota",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 19.0,
+      "usdAmount": 20.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; product states Codex API 20 USD quota with no expiry"
+    },
+    {
+      "rechargeName": "Codex API 50 USD permanent quota",
+      "billingType": "permanent",
+      "billingTypeLabel": "永久额度",
+      "rmbAmount": 45.0,
+      "usdAmount": 50.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "External shop redeem code; product states Codex API 50 USD quota with no expiry"
+    },
+    {
+      "rechargeName": "Codex monthly Plus 300 USD quota",
+      "billingType": "monthly",
+      "billingTypeLabel": "月卡",
+      "rmbAmount": 240.0,
+      "usdAmount": 300.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "30 day external shop package; detail states 20 USD/day, 100 USD/week, 300 USD/month"
+    },
+    {
+      "rechargeName": "Codex monthly Pro 500 USD quota",
+      "billingType": "monthly",
+      "billingTypeLabel": "月卡",
+      "rmbAmount": 350.0,
+      "usdAmount": 500.0,
+      "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+      "expiresRule": "30 day external shop package; detail states 30 USD/day, 150 USD/week, 500 USD/month"
+    }
+  ],
+  "tierNotes": [
+    "zhishu.dev payment config is disabled; recharge evidence uses the official menu-linked pay.ldxp.cn shop verified in the logged-in browser."
+  ],
+  "sourceUrl": "https://pay.ldxp.cn/shop/CFUOS364/ek8gty",
+  "stationTypeHint": "mixed"
+}

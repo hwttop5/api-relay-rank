@@ -169,6 +169,7 @@ SITE_URL_OVERRIDES: dict[str, str] = {
     "585016d3.u3u.dev": "https://585016d3.u3u.dev",
     "52mx": "https://52mx.net",
     "aicodelink": "https://aicodelink.top",
+    "api-slb.krill-ai.com": "https://www.krill-ai.com",
     "api.xiaoxin.best": "https://api.xiaoxin.best",
     "atomflow.vip": "https://atomflow.vip",
     "audit-api-printcap-ai": "https://printcap.ai",
@@ -257,11 +258,15 @@ STATION_TYPE_OVERRIDES = {
     "585016d3.u3u.dev": "mixed",
     "4router": "non_subscription",
     "17nas": "mixed",
+    "api.baobu.xyz": "non_subscription",
+    "api-slb.krill-ai.com": "mixed",
     "api.xiaoxin.best": "mixed",
     "atomflow.vip": "non_subscription",
     "audit-api-printcap-ai": "non_subscription",
     "bytecat": "non_subscription",
     "bossclaw": "non_subscription",
+    "claude360.xyz": "non_subscription",
+    "cngpt.net": "non_subscription",
     "coolplay": "mixed",
     "dogcoding": "non_subscription",
     "euzhi": "non_subscription",
@@ -282,17 +287,26 @@ STATION_TYPE_OVERRIDES = {
     "nexus": "non_subscription",
     "shunfen6": "mixed",
     "voapi": "non_subscription",
+    "zhishu.dev": "mixed",
     "zhima": "non_subscription",
     "onexmodel": "mixed",
 }
 
 
 PACKAGE_BILLING_TYPES = {"monthly", "weekly", "daily", "quarterly", "yearly"}
+KRILL_ROUTE_MULTIPLIER = 0.2
 
 
 LIVE_AUTH_PROBE_DIR = WORKSPACE.parent / "tabbit-audit-profile"
 PENDING_API_PROBE_PATH = LIVE_AUTH_PROBE_DIR / "pending-stations-api-probes.json"
 PENDING_API_PROBE_CACHE: dict[str, Any] | None = None
+
+
+def workspace_public_path(path: Path) -> str:
+    try:
+        return path.relative_to(WORKSPACE).as_posix()
+    except ValueError:
+        return path.name
 
 
 LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
@@ -339,6 +353,25 @@ LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
     },
     "cnrouter": {},
     "coai-work": {},
+    "api.baobu.xyz": {
+        "probe_type": "v1_generic",
+        "station_type": "non_subscription",
+        "quick_amounts": [1, 10, 20, 50, 100, 200, 500, 1000, 2000, 4000],
+    },
+    "api.feifeimiao.top": {
+        "probe_type": "v1_generic",
+        "station_type": "mixed",
+        "quick_amounts": [10, 20, 50, 100, 200, 500, 1000, 2000, 4000],
+    },
+    "api.nerverun.com": {
+        "probe_type": "v1_generic",
+        "station_type": "mixed",
+        "quick_amounts": [10, 20, 50, 100, 200, 500, 1000, 2000, 5000],
+    },
+    "api-slb.krill-ai.com": {
+        "probe_type": "krill_special",
+        "station_type": "mixed",
+    },
     "dogcoding": {
         "probe_type": "v1_generic",
     },
@@ -382,9 +415,18 @@ LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
         "probe_type": "v1_generic",
     },
     "qiuqiutoken": {},
+    "relayai.asia": {
+        "probe_type": "v1_generic",
+        "station_type": "non_subscription",
+        "quick_amounts": [10, 20, 50, 100, 200, 500, 1000, 2000, 4000],
+    },
     "shunfen6": {},
     "vbcode": {},
     "zerofra": {},
+    "zhishu.dev": {
+        "probe_type": "v1_generic",
+        "station_type": "mixed",
+    },
     "zhima": {
         "probe_type": "v1_generic",
     },
@@ -393,12 +435,18 @@ LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
 
 DETAIL_EVIDENCE_FEE_STATIONS = {
     "audit-api-printcap-ai",
+    "api.code-relay.com",
+    "api-slb.krill-ai.com",
+    "claude360.xyz",
+    "cngpt.net",
     "fishxcode.com",
+    "fushengyunsuan.cn",
     "moosecloud.cc",
+    "muskai",
 }
 
 
-DETAIL_EVIDENCE_FEE_META: dict[str, dict[str, str]] = {
+DETAIL_EVIDENCE_FEE_META: dict[str, dict[str, Any]] = {
     "audit-api-printcap-ai": {
         "confidence": "manual_verified",
         "source": "screenshot_verified_detail_baseline",
@@ -409,10 +457,41 @@ DETAIL_EVIDENCE_FEE_META: dict[str, dict[str, str]] = {
         "source": "detail_page_public_structured_evidence",
         "notes": "FishXCode detail rows come from archived structured public status/pricing evidence.",
     },
+    "fushengyunsuan.cn": {
+        "confidence": "public_structured_evidence",
+        "source": "detail_page_public_status_and_pricing_evidence",
+        "notes": "Fushengyunsuan detail rows come from official public status quota conversion plus public pricing group evidence.",
+    },
+    "api.code-relay.com": {
+        "confidence": "public_structured_evidence",
+        "source": "detail_page_public_status_and_pricing_evidence",
+        "notes": "Code Relay detail rows come from official public status quota conversion plus public pricing group evidence.",
+    },
+    "claude360.xyz": {
+        "confidence": "public_structured_evidence",
+        "source": "detail_page_public_status_and_pricing_evidence",
+        "notes": "Claude360 detail rows come from public /api/status quota conversion plus public /api/pricing group evidence.",
+    },
+    "cngpt.net": {
+        "confidence": "public_structured_evidence",
+        "source": "detail_page_public_status_and_pricing_evidence",
+        "notes": "CNGPT detail rows come from public /api/status quota conversion plus public /api/pricing group evidence.",
+    },
+    "api-slb.krill-ai.com": {
+        "confidence": "high_tabbit_logged_in",
+        "source": "krill_logged_in_shop_and_route_api",
+        "notes": "Krill detail rows come from logged-in route settings plus official shop product APIs; homepage is https://www.krill-ai.com and api-slb.krill-ai.com is a route endpoint.",
+    },
     "moosecloud.cc": {
         "confidence": "high_tabbit_logged_in",
         "source": "detail_page_live_probe_baseline",
         "notes": "MooseCloud detail rows come from archived logged-in API group and payment plan evidence.",
+    },
+    "muskai": {
+        "confidence": "high_tabbit_logged_in",
+        "source": "detail_page_live_probe_subscription_evidence",
+        "notes": "MuskAI detail rows come from logged-in subscription plan evidence; plans are bound to the Codex subscription group and must not be cross-joined with wallet groups.",
+        "groupRows": [{"groupName": "Codex订阅", "groupMultiplier": 1}],
     },
 }
 
@@ -645,8 +724,12 @@ def classify_station(supplier: str | None, url: str | None) -> str | None:
         ("bytecat", ["bytecat"]),
         ("17nas", ["17nas"]),
         ("52mx", ["52mx", "52mx.net"]),
+        ("api.baobu.xyz", ["baobu", "api.baobu.xyz"]),
+        ("claude360.xyz", ["claude360.xyz", "claude360"]),
+        ("cngpt.net", ["cngpt.net", "cngpt"]),
         ("claude-api", ["claude-api"]),
         ("coai-work", ["coai"]),
+        ("api-slb.krill-ai.com", ["krill-ai", "krill.ai", "api-slb.krill-ai.com", "www.krill-ai.com"]),
         ("audit-api-printcap-ai", ["api.printcap.ai", "printcap"]),
         ("onexmodel", ["onexmodel", "onex", "1xm.ai", "1xm"]),
         ("4router", ["4router"]),
@@ -849,7 +932,11 @@ def metric_bucket_from_state(raw: dict[str, Any]) -> dict[str, Any]:
     ]
     item["first_at_raw"] = parse_int(raw.get("firstAtRaw", raw.get("first_at_raw")))
     item["last_at_raw"] = parse_int(raw.get("lastAtRaw", raw.get("last_at_raw")))
-    item["suppliers"] = {str(value) for value in raw.get("suppliers", []) if str(value or "").strip()}
+    item["suppliers"] = {
+        redact_supplier_name(str(value))
+        for value in raw.get("suppliers", [])
+        if str(value or "").strip()
+    }
     item["urls"] = {str(value) for value in raw.get("urls", []) if str(value or "").strip()}
     return item
 
@@ -870,7 +957,11 @@ def metric_bucket_to_state(item: dict[str, Any]) -> dict[str, Any]:
         ],
         "firstAtRaw": parse_int(item.get("first_at_raw")),
         "lastAtRaw": parse_int(item.get("last_at_raw")),
-        "suppliers": sorted(str(value) for value in item.get("suppliers", set()) if str(value or "").strip()),
+        "suppliers": sorted(
+            redact_supplier_name(str(value))
+            for value in item.get("suppliers", set())
+            if str(value or "").strip()
+        ),
         "urls": sorted(str(value) for value in item.get("urls", set()) if str(value or "").strip()),
     }
 
@@ -963,7 +1054,7 @@ def write_log_refresh_state(
             "rowsSeen": rows_seen,
             "rowsAdded": rows_added,
             "historicalBackfill": historical_backfill or {"stations": [], "rowsSeen": 0, "rowsAccumulated": 0},
-            "statePath": str(LOG_REFRESH_STATE_PATH),
+            "statePath": workspace_public_path(LOG_REFRESH_STATE_PATH),
         },
     }
     LOG_REFRESH_STATE_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -1271,7 +1362,7 @@ def load_request_metrics(*, full_log_rebuild: bool = False) -> dict[str, dict[st
     )
     LAST_LOG_REFRESH_INFO = {
         "mode": mode,
-        "statePath": str(LOG_REFRESH_STATE_PATH),
+        "statePath": workspace_public_path(LOG_REFRESH_STATE_PATH),
         "cursor": {
             "createdAt": cursor_tuple(cursor)[0] if cursor_tuple(cursor)[0] >= 0 else None,
             "id": cursor_tuple(cursor)[1] if cursor_tuple(cursor)[1] >= 0 else None,
@@ -1282,7 +1373,7 @@ def load_request_metrics(*, full_log_rebuild: bool = False) -> dict[str, dict[st
         "rowsAdded": rows_added,
         "rowsAccumulated": rows_accumulated,
         "historicalBackfill": historical_backfill,
-        "candidatePath": str(REQUEST_LOG_STATION_CANDIDATES_PATH),
+        "candidatePath": workspace_public_path(REQUEST_LOG_STATION_CANDIDATES_PATH),
         "candidateCount": candidate_count,
         "fullRebuildWarning": (
             "Only use --full-log-rebuild when Codex Manager DB still contains complete historical request_logs."
@@ -1570,6 +1661,145 @@ def parse_amount_results_from_probe(probe: dict[str, Any]) -> dict[str, Any]:
     return amounts if isinstance(amounts, dict) else {}
 
 
+def krill_probe_result_body(probe: dict[str, Any], path: str) -> dict[str, Any]:
+    results = probe.get("results")
+    if not isinstance(results, dict):
+        return {}
+    result = results.get(path)
+    if not isinstance(result, dict):
+        return {}
+    body = result.get("body")
+    return body if isinstance(body, dict) else {}
+
+
+def krill_routes_from_probe(probe: dict[str, Any]) -> list[dict[str, Any]]:
+    data = krill_probe_result_body(probe, "/api/endpoint-settings/me").get("data")
+    routes = data.get("routes") if isinstance(data, dict) else None
+    return [route for route in routes if isinstance(route, dict)] if isinstance(routes, list) else []
+
+
+def krill_product_payloads_from_probe(probe: dict[str, Any]) -> list[dict[str, Any]]:
+    payloads: list[dict[str, Any]] = []
+    for path in ("/api/public/shop/products", "/api/plans"):
+        body = krill_probe_result_body(probe, path)
+        if body:
+            payloads.append(body)
+    return payloads
+
+
+def krill_public_products_payload(payload: dict[str, Any]) -> dict[str, Any] | None:
+    data = payload.get("data") if isinstance(payload.get("data"), dict) else None
+    if isinstance(data, dict) and ("plans" in data or "balance_products" in data):
+        return data
+    if "plans" in payload or "balance_products" in payload:
+        return payload
+    return None
+
+
+def krill_plan_rows(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    data = payload.get("data")
+    if isinstance(data, list):
+        return [item for item in data if isinstance(item, dict)]
+    products = krill_public_products_payload(payload)
+    plans = products.get("plans") if isinstance(products, dict) else None
+    return [item for item in plans if isinstance(item, dict)] if isinstance(plans, list) else []
+
+
+def krill_balance_product_rows(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    products = krill_public_products_payload(payload)
+    rows = products.get("balance_products") if isinstance(products, dict) else None
+    return [item for item in rows if isinstance(item, dict)] if isinstance(rows, list) else []
+
+
+def krill_plan_is_visible_codex(plan: dict[str, Any]) -> bool:
+    if explicitly_false(plan.get("active")):
+        return False
+    if parse_bool(plan.get("is_custom")):
+        return False
+    if "is_on_sale" in plan and not parse_bool(plan.get("is_on_sale")):
+        return False
+    allowed_provider_ids = plan.get("allowed_provider_ids")
+    if isinstance(allowed_provider_ids, list) and 1 not in {int(parse_float(item) or 0) for item in allowed_provider_ids}:
+        return False
+    if str(plan.get("billing_type") or "").strip() != "usd_daily":
+        return False
+    price = parse_float(plan.get("price_usd_per_month") or plan.get("price"))
+    daily_quota = parse_float(plan.get("daily_quota_usd"))
+    duration_days = parse_float(plan.get("duration_days"))
+    if price is None or daily_quota is None or duration_days is None:
+        return False
+    if price <= 0 or daily_quota <= 0 or duration_days <= 0 or price >= 10000:
+        return False
+    name = str(plan.get("name") or plan.get("title") or "").strip()
+    return not any(marker in name for marker in ("企业", "定制", "测试", "推广", "内部"))
+
+
+def krill_billing_type_from_days(days: Any) -> str:
+    value = parse_float(days)
+    if value == 90:
+        return "quarterly"
+    if value == 30:
+        return "monthly"
+    if value == 7:
+        return "weekly"
+    if value == 1:
+        return "daily"
+    return "monthly"
+
+
+def krill_recharge_rows(probe: dict[str, Any]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    seen: set[tuple[Any, ...]] = set()
+    for payload in krill_product_payloads_from_probe(probe):
+        for plan in krill_plan_rows(payload):
+            if not krill_plan_is_visible_codex(plan):
+                continue
+            price = parse_float(plan.get("price_usd_per_month") or plan.get("price"))
+            daily_quota = parse_float(plan.get("daily_quota_usd"))
+            duration_days = parse_float(plan.get("duration_days"))
+            if price is None or daily_quota is None or duration_days is None:
+                continue
+            name = str(plan.get("name") or plan.get("title") or "Krill Codex package").strip()
+            usd_amount = daily_quota * duration_days
+            route_keys = plan.get("entry_route_keys")
+            route_note = ""
+            if isinstance(route_keys, list) and route_keys:
+                route_note = "; entry routes " + ", ".join(str(item).strip() for item in route_keys if str(item).strip())
+            row = {
+                "name": name,
+                "billing_type": krill_billing_type_from_days(duration_days),
+                "rmb_amount": price,
+                "usd_amount": usd_amount,
+                "location": "Krill official shop Codex package API",
+                "expires_rule": f"{format_plain_number(duration_days)} day package; total quota from {format_plain_number(daily_quota)} USD/day; Codex package{route_note}",
+            }
+            key = (row["name"], row["billing_type"], row["rmb_amount"], row["usd_amount"])
+            if key not in seen:
+                seen.add(key)
+                rows.append(row)
+        for product in krill_balance_product_rows(payload):
+            name = str(product.get("name") or product.get("title") or "Krill balance topup").strip()
+            if "负余额" in name or "仅限" in name:
+                continue
+            rmb_amount = parse_float(product.get("price_cny") or product.get("price"))
+            usd_amount = parse_float(product.get("amount_usd") or product.get("usd_amount") or product.get("usd"))
+            if rmb_amount is None or usd_amount is None or rmb_amount <= 0 or usd_amount <= 0:
+                continue
+            row = {
+                "name": name,
+                "billing_type": "permanent",
+                "rmb_amount": rmb_amount,
+                "usd_amount": usd_amount,
+                "location": "Krill official shop balance product API",
+                "expires_rule": "Balance top-up; no expiry shown on shop page",
+            }
+            key = (row["name"], row["billing_type"], row["rmb_amount"], row["usd_amount"])
+            if key not in seen:
+                seen.add(key)
+                rows.append(row)
+    return rows
+
+
 def probe_result_body(probe: dict[str, Any], path: str) -> dict[str, Any]:
     results = probe.get("results")
     if not isinstance(results, dict):
@@ -1779,9 +2009,29 @@ def normalize_v1_plan_row(raw: dict[str, Any]) -> dict[str, Any] | None:
     return normalized
 
 
+def v1_plan_scope_key(plan: dict[str, Any]) -> tuple[Any, ...]:
+    return (
+        plan.get("id"),
+        plan.get("title"),
+        plan.get("price_amount"),
+        plan.get("_total_amount_usd_override") or plan.get("total_amount") or plan.get("quota"),
+    )
+
+
+def v1_plan_has_group_scope(plan: dict[str, Any]) -> bool:
+    if str(plan.get("group_name") or plan.get("upgrade_group") or "").strip():
+        return True
+    if isinstance(plan.get("scope_groups"), list) and plan.get("scope_groups"):
+        return True
+    if isinstance(plan.get("scope_multipliers"), dict) and plan.get("scope_multipliers"):
+        return True
+    return False
+
+
 def merge_v1_plan_rows(*sources: Any) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     seen: set[tuple[Any, ...]] = set()
+    scope_seen: dict[tuple[Any, ...], int] = {}
     for source in sources:
         for raw in plan_rows_from_data(source):
             if not isinstance(raw, dict):
@@ -1798,7 +2048,19 @@ def merge_v1_plan_rows(*sources: Any) -> list[dict[str, Any]]:
             )
             if key in seen:
                 continue
+            scope_key = v1_plan_scope_key(plan)
+            existing_index = scope_seen.get(scope_key)
+            if existing_index is not None:
+                existing = rows[existing_index]
+                if v1_plan_has_group_scope(existing) and not v1_plan_has_group_scope(plan):
+                    seen.add(key)
+                    continue
+                if v1_plan_has_group_scope(plan) and not v1_plan_has_group_scope(existing):
+                    rows[existing_index] = plan
+                    seen.add(key)
+                    continue
             seen.add(key)
+            scope_seen[scope_key] = len(rows)
             rows.append(plan)
     return rows
 
@@ -1893,7 +2155,8 @@ def v1_live_probe_tiers(
         or 0.0
     )
     wallet_enabled = (
-        not explicitly_false(checkout_info.get("enabled"))
+        not explicitly_false(payment_config.get("enabled"))
+        and not explicitly_false(checkout_info.get("enabled"))
         and (
             not explicitly_false(public_settings.get("payment_enabled"))
             or bool(config.get("allow_public_payment_disabled_wallet"))
@@ -2151,6 +2414,59 @@ def flymux_live_probe_tiers(
                     evidence_url=evidence_base,
                     participates_in_verified_ranking=True,
                     notes=f"{desc}; {amount_note}",
+                    )
+                )
+    return tiers
+
+
+def krill_live_probe_tiers(station: str, probe: dict[str, Any], config: dict[str, Any]) -> list[FeeTier]:
+    routes = [
+        route
+        for route in krill_routes_from_probe(probe)
+        if not explicitly_false(route.get("enabled")) and str(route.get("name") or route.get("key") or "").strip()
+    ]
+    recharges = krill_recharge_rows(probe)
+    if not routes or not recharges:
+        return []
+
+    label = station_display_label(station)
+    evidence_base = probe_location(probe) or SITE_URL_OVERRIDES.get(station, "")
+    station_type = infer_station_type(
+        config.get("station_type"),
+        has_wallet_tiers=any(row["billing_type"] == "permanent" for row in recharges),
+        has_subscription_tiers=any(row["billing_type"] in PACKAGE_BILLING_TYPES for row in recharges),
+        station=station,
+    )
+    tiers: list[FeeTier] = []
+    for route in routes:
+        group_name = str(route.get("name") or route.get("key") or "").strip()
+        route_key = str(route.get("key") or "").strip()
+        desc = f"Krill route {route_key or group_name}; Codex shop page states all route multipliers are 0.2x"
+        for recharge in recharges:
+            usd_amount = parse_float(recharge.get("usd_amount"))
+            rmb_amount = parse_float(recharge.get("rmb_amount"))
+            if usd_amount is None or rmb_amount is None or usd_amount <= 0 or rmb_amount <= 0:
+                continue
+            tiers.append(
+                FeeTier(
+                    station=station,
+                    label=label,
+                    station_type=station_type,
+                    group_name=group_name,
+                    group_multiplier=KRILL_ROUTE_MULTIPLIER,
+                    recharge_name=str(recharge.get("name") or "Krill recharge").strip(),
+                    billing_type=str(recharge.get("billing_type") or "unknown").strip(),
+                    rmb_amount=rmb_amount,
+                    usd_amount=usd_amount,
+                    effective_multiplier=KRILL_ROUTE_MULTIPLIER * rmb_amount / usd_amount,
+                    recharge_location=str(recharge.get("location") or "Krill official shop API").strip(),
+                    expires_rule=str(recharge.get("expires_rule") or "Expiry not stated").strip(),
+                    verified=True,
+                    confidence="high_tabbit_logged_in",
+                    source="krill_logged_in_shop_and_route_api",
+                    evidence_url=evidence_base,
+                    participates_in_verified_ranking=True,
+                    notes=desc,
                 )
             )
     return tiers
@@ -2165,6 +2481,9 @@ def live_probe_tiers() -> list[FeeTier]:
         probe_type = str(config.get("probe_type") or "")
         if probe_type == "flymux_special":
             tiers.extend(flymux_live_probe_tiers(station, probe, config))
+            continue
+        if probe_type == "krill_special":
+            tiers.extend(krill_live_probe_tiers(station, probe, config))
             continue
         if probe_type == "v1_generic":
             tiers.extend(v1_live_probe_tiers(station, probe, config))
@@ -2325,6 +2644,23 @@ def ensure_verified_input_template() -> None:
         writer.writeheader()
 
 
+def live_probe_group_multiplier(station: str, group_name: str) -> float | None:
+    probe = load_live_auth_probe(station)
+    if not probe:
+        return None
+    for item in v1_groups_from_probe(probe):
+        if not isinstance(item, dict):
+            continue
+        if str(item.get("status") or "").strip().lower() not in {"", "active"}:
+            continue
+        if str(item.get("name") or "").strip() != group_name:
+            continue
+        multiplier = parse_float(item.get("rate_multiplier"))
+        if multiplier is not None and multiplier > 0:
+            return multiplier
+    return None
+
+
 def load_verified_input_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]:
     ensure_verified_input_template()
     tiers: list[FeeTier] = []
@@ -2337,6 +2673,12 @@ def load_verified_input_tiers(stations: dict[str, StationConfig]) -> list[FeeTie
             label = station_display_label(station, row.get("label"))
             station_type = (row.get("station_type") or stations.get(station, StationConfig(station, label)).station_type).strip()
             group_multiplier = parse_float(row.get("group_multiplier"))
+            group_name = (row.get("group_name") or "unknown").strip()
+            source = (row.get("source") or "manual_tabbit_collection").strip()
+            if "v1_group" in source and group_name:
+                live_multiplier = live_probe_group_multiplier(station, group_name)
+                if live_multiplier is not None:
+                    group_multiplier = live_multiplier
             rmb_amount = parse_float(row.get("rmb_amount"))
             usd_amount = parse_float(row.get("usd_amount"))
             effective_multiplier = parse_float(row.get("effective_multiplier"))
@@ -2350,7 +2692,7 @@ def load_verified_input_tiers(stations: dict[str, StationConfig]) -> list[FeeTie
                     station=station,
                     label=label,
                     station_type=station_type or "unknown_pending",
-                    group_name=(row.get("group_name") or "unknown").strip(),
+                    group_name=group_name,
                     group_multiplier=group_multiplier,
                     recharge_name=(row.get("recharge_name") or "unknown").strip(),
                     billing_type=(row.get("billing_type") or "unknown").strip(),
@@ -2361,7 +2703,7 @@ def load_verified_input_tiers(stations: dict[str, StationConfig]) -> list[FeeTie
                     expires_rule=(row.get("expires_rule") or "").strip(),
                     verified=True,
                     confidence=(row.get("confidence") or "manual_verified").strip(),
-                    source=(row.get("source") or "manual_tabbit_collection").strip(),
+                    source=source,
                     evidence_url=(row.get("evidence_url") or "").strip(),
                     participates_in_verified_ranking=participates,
                     notes=(row.get("notes") or "").strip(),
@@ -2596,6 +2938,12 @@ def public_discovered_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]
 
 
 KNOWN_PUBLIC_SHOP_PRODUCTS: dict[str, list[dict[str, Any]]] = {
+    "hello-code": [
+        {"name": "Codex plus/team 10 USD redeem code", "billing_type": "permanent", "rmb_amount": 10.0, "usd_amount": 10.0, "expires_rule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station"},
+        {"name": "Codex plus/team 30 USD redeem code", "billing_type": "permanent", "rmb_amount": 30.0, "usd_amount": 30.0, "expires_rule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station"},
+        {"name": "Codex plus/team 50 USD redeem code", "billing_type": "permanent", "rmb_amount": 50.0, "usd_amount": 50.0, "expires_rule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station"},
+        {"name": "Codex plus/team 100 USD redeem code", "billing_type": "permanent", "rmb_amount": 100.0, "usd_amount": 100.0, "expires_rule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station"},
+    ],
     "dogcoding": [
         {"name": "20 USD external shop redeem code", "billing_type": "permanent", "rmb_amount": 6.0, "usd_amount": 20.0},
         {"name": "30 USD external shop redeem code", "billing_type": "permanent", "rmb_amount": 9.0, "usd_amount": 30.0},
@@ -2616,10 +2964,25 @@ KNOWN_PUBLIC_SHOP_PRODUCTS: dict[str, list[dict[str, Any]]] = {
         {"name": "200 USD permanent quota", "billing_type": "permanent", "rmb_amount": 36.0, "usd_amount": 200.0},
         {"name": "300 USD permanent quota", "billing_type": "permanent", "rmb_amount": 50.0, "usd_amount": 300.0},
     ],
+    "zhishu.dev": [
+        {"name": "Codex API 10 USD permanent quota", "billing_type": "permanent", "rmb_amount": 10.0, "usd_amount": 10.0, "expires_rule": "External shop redeem code; product states Codex API 10 USD quota with no expiry"},
+        {"name": "Codex API 20 USD permanent quota", "billing_type": "permanent", "rmb_amount": 19.0, "usd_amount": 20.0, "expires_rule": "External shop redeem code; product states Codex API 20 USD quota with no expiry"},
+        {"name": "Codex API 50 USD permanent quota", "billing_type": "permanent", "rmb_amount": 45.0, "usd_amount": 50.0, "expires_rule": "External shop redeem code; product states Codex API 50 USD quota with no expiry"},
+        {"name": "Codex monthly Plus 300 USD quota", "billing_type": "monthly", "rmb_amount": 240.0, "usd_amount": 300.0, "expires_rule": "30 day external shop package; detail states 20 USD/day, 100 USD/week, 300 USD/month"},
+        {"name": "Codex monthly Pro 500 USD quota", "billing_type": "monthly", "rmb_amount": 350.0, "usd_amount": 500.0, "expires_rule": "30 day external shop package; detail states 30 USD/day, 150 USD/week, 500 USD/month"},
+    ],
 }
 
 
-KNOWN_PUBLIC_SHOP_META: dict[str, dict[str, str]] = {
+KNOWN_PUBLIC_SHOP_META: dict[str, dict[str, Any]] = {
+    "hello-code": {
+        "station_type": "non_subscription",
+        "evidence_url": "https://pay.ldxp.cn/shop/SAIS2N05",
+        "recharge_location": "official external pay.ldxp.cn shop redeem code",
+        "expires_rule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station",
+        "notes": "HelloCode payment config is disabled, but the logged-in Recharge/Subscription menu embeds the official pay.ldxp.cn shop. Browser verification found 10/30/50/100 USD Codex plus/team redeem-code products and a payable order dialog.",
+        "group_allowlist": ["codex-plus"],
+    },
     "dogcoding": {
         "station_type": "non_subscription",
         "evidence_url": "https://pay.ldxp.cn/shop/JVDCG8IG",
@@ -2634,12 +2997,24 @@ KNOWN_PUBLIC_SHOP_META: dict[str, dict[str, str]] = {
         "expires_rule": "External shop redeem code; package validity follows product name",
         "notes": "Public site config points to the external shop; shop description says quota follows official 1:1 standard. Login-page cross-check still required.",
     },
+    "zhishu.dev": {
+        "station_type": "mixed",
+        "evidence_url": "https://pay.ldxp.cn/shop/CFUOS364/ek8gty",
+        "recharge_location": "official external pay.ldxp.cn shop redeem code",
+        "expires_rule": "External shop redeem code; package validity follows product detail",
+        "notes": "zhishu.dev payment config is disabled; the official menu-linked pay.ldxp.cn shop was verified in the logged-in browser and exposes Codex API quota plus monthly packages.",
+    },
 }
 
 
 def known_public_shop_groups(station: str) -> list[tuple[str, float, str]]:
     probe = load_live_auth_probe(station)
     groups: list[tuple[str, float, str]] = []
+    group_allowlist = {
+        str(name).strip()
+        for name in KNOWN_PUBLIC_SHOP_META.get(station, {}).get("group_allowlist", [])
+        if str(name).strip()
+    }
     if probe:
         for item in v1_groups_from_probe(probe):
             if not isinstance(item, dict):
@@ -2653,6 +3028,10 @@ def known_public_shop_groups(station: str) -> list[tuple[str, float, str]]:
             if group_name and multiplier and multiplier > 0:
                 groups.append((group_name, multiplier, normalize_group_desc(item, group_name)))
     if groups:
+        if group_allowlist:
+            filtered = [group for group in groups if group[0] in group_allowlist]
+            if filtered:
+                return filtered
         return groups
     return [("default", 1.0, "default")]
 
@@ -2669,10 +3048,10 @@ def known_public_shop_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]
                 if rmb_amount is None or usd_amount is None or usd_amount <= 0:
                     continue
                 billing_type = str(product.get("billing_type") or "permanent")
-                expires_rule = meta["expires_rule"]
+                expires_rule = str(product.get("expires_rule") or meta["expires_rule"])
                 if billing_type == "weekly":
                     expires_rule = "7 day external shop redeem code package"
-                elif billing_type == "monthly":
+                elif billing_type == "monthly" and not product.get("expires_rule"):
                     expires_rule = "30 day external shop redeem code package"
                 elif billing_type == "quarterly":
                     expires_rule = "90 day external shop redeem code package"
@@ -2942,14 +3321,26 @@ def detail_record_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]:
             station_type = STATION_TYPE_OVERRIDES.get(station, "unknown_pending")
         evidence_url = str(record.get("url") or SITE_URL_OVERRIDES.get(station) or "").strip()
         tier_notes = record.get("tierNotes")
-        notes = str(meta.get("notes") or "").strip()
+        note_parts: list[str] = []
+        for item in [meta.get("notes")]:
+            note = str(item or "").strip()
+            if note and note not in note_parts:
+                note_parts.append(note)
         if isinstance(tier_notes, list):
-            extra_notes = "; ".join(str(item).strip() for item in tier_notes if str(item).strip())
-            if extra_notes:
-                notes = f"{notes}; {extra_notes}" if notes else extra_notes
+            for item in tier_notes:
+                note = str(item or "").strip()
+                if not note:
+                    continue
+                for segment in re.split(r";\s+", note):
+                    segment = segment.strip()
+                    if segment and segment not in note_parts:
+                        note_parts.append(segment)
+        notes = "; ".join(note_parts)
         confidence = str(meta.get("confidence") or "public_structured_evidence")
         source = str(meta.get("source") or "detail_page_structured_evidence")
-        for group in groups:
+        meta_group_rows = meta.get("groupRows")
+        tier_groups = meta_group_rows if isinstance(meta_group_rows, list) and meta_group_rows else groups
+        for group in tier_groups:
             if not isinstance(group, dict):
                 continue
             group_name = str(group.get("groupName") or group.get("group_name") or "").strip()
@@ -2989,6 +3380,19 @@ def detail_record_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]:
                     )
                 )
     return tiers
+
+
+def detail_record_verification_needed(record: dict[str, Any] | None) -> str:
+    if not isinstance(record, dict):
+        return "group_multiplier + recharge_tiers"
+    missing: list[str] = []
+    groups = record.get("groupMultipliers")
+    recharges = record.get("rechargeTiers")
+    if not isinstance(groups, list) or not groups:
+        missing.append("group_multiplier")
+    if not isinstance(recharges, list) or not recharges:
+        missing.append("recharge_tiers")
+    return " + ".join(missing)
 
 
 def all_fee_rows(stations: dict[str, StationConfig]) -> list[FeeTier]:
@@ -3037,7 +3441,15 @@ def apply_station_pricing_overrides_to_tiers(tiers: list[FeeTier]) -> list[FeeTi
         if not parse_bool(override.get("authoritative"), default=False):
             continue
         recharge_mode = override.get("rechargeMode")
-        if recharge_mode not in {
+        explicit_recharge_rows = [
+            recharge
+            for recharge in override.get("rechargeTiers", [])
+            if isinstance(recharge, dict)
+            and str(recharge.get("rechargeName") or recharge.get("recharge_name") or "").strip()
+            and parse_float(recharge.get("rmbAmount") or recharge.get("rmb_amount")) is not None
+            and parse_float(recharge.get("usdAmount") or recharge.get("usd_amount")) is not None
+        ]
+        if not explicit_recharge_rows and recharge_mode not in {
             "linear_rmb_to_usd",
             "sample_amount_to_usd_with_response_rmb",
             "sample_payment_amount_to_usd_1to1",
@@ -3057,13 +3469,13 @@ def apply_station_pricing_overrides_to_tiers(tiers: list[FeeTier]) -> list[FeeTi
             if recharge_mode == "sample_payment_amount_to_usd_1to1"
             else None
         )
-        if recharge_mode == "linear_rmb_to_usd" and (not usd_per_rmb or usd_per_rmb <= 0):
+        if not explicit_recharge_rows and recharge_mode == "linear_rmb_to_usd" and (not usd_per_rmb or usd_per_rmb <= 0):
             continue
-        if recharge_mode == "sample_amount_to_usd_with_response_rmb" and (
+        if not explicit_recharge_rows and recharge_mode == "sample_amount_to_usd_with_response_rmb" and (
             not usd_per_sample_unit or usd_per_sample_unit <= 0
         ):
             continue
-        if recharge_mode == "sample_payment_amount_to_usd_1to1" and (
+        if not explicit_recharge_rows and recharge_mode == "sample_payment_amount_to_usd_1to1" and (
             not usd_per_payment_unit or usd_per_payment_unit <= 0
         ):
             continue
@@ -3089,6 +3501,59 @@ def apply_station_pricing_overrides_to_tiers(tiers: list[FeeTier]) -> list[FeeTi
             if pattern.search(tier.recharge_name) or sample_payment_amount is not None:
                 source_tiers.append(tier)
         assumption = str(override.get("assumptionText") or "").strip()
+        if explicit_recharge_rows:
+            confidence = str(override.get("confidence") or "manual_verified").strip() or "manual_verified"
+            source = str(override.get("source") or "station_pricing_override").strip() or "station_pricing_override"
+            evidence_url = str(override.get("evidenceUrl") or override.get("evidence_url") or SITE_URL_OVERRIDES.get(station) or "").strip()
+            recharge_location = str(override.get("rechargeLocation") or "").strip()
+            expires_rule = str(override.get("expiresRule") or "").strip()
+            participates_in_verified_ranking = parse_bool(
+                override.get("participatesInVerifiedRanking"),
+                default=True,
+            )
+            station_type = STATION_TYPE_OVERRIDES.get(station, "unknown_pending")
+            label = station_display_label(station)
+            seen_explicit: set[tuple[str, str, float | None, float | None]] = set()
+            for recharge in explicit_recharge_rows:
+                recharge_name = str(recharge.get("rechargeName") or recharge.get("recharge_name") or "").strip()
+                billing_type = str(recharge.get("billingType") or recharge.get("billing_type") or "unknown").strip() or "unknown"
+                rmb_amount = parse_float(recharge.get("rmbAmount") or recharge.get("rmb_amount"))
+                usd_amount = parse_float(recharge.get("usdAmount") or recharge.get("usd_amount"))
+                if not recharge_name or rmb_amount is None or usd_amount is None or rmb_amount <= 0 or usd_amount <= 0:
+                    continue
+                for group in group_rows:
+                    group_name = str(group.get("groupName") or group.get("group_name") or "").strip()
+                    group_multiplier = parse_float(group.get("groupMultiplier") or group.get("group_multiplier"))
+                    if not group_name or group_multiplier is None:
+                        continue
+                    key = (group_name, recharge_name, rmb_amount, usd_amount)
+                    if key in seen_explicit:
+                        continue
+                    seen_explicit.add(key)
+                    effective = group_multiplier * rmb_amount / usd_amount
+                    output.append(
+                        FeeTier(
+                            station=station,
+                            label=label,
+                            station_type=station_type,
+                            group_name=group_name,
+                            group_multiplier=group_multiplier,
+                            recharge_name=recharge_name,
+                            billing_type=billing_type,
+                            rmb_amount=rmb_amount,
+                            usd_amount=usd_amount,
+                            effective_multiplier=effective,
+                            recharge_location=str(recharge.get("rechargeLocation") or recharge.get("recharge_location") or recharge_location or "browser verified wallet page"),
+                            expires_rule=str(recharge.get("expiresRule") or recharge.get("expires_rule") or expires_rule or "Expiry not stated"),
+                            verified=True,
+                            confidence=confidence,
+                            source=source,
+                            evidence_url=evidence_url,
+                            participates_in_verified_ranking=participates_in_verified_ranking,
+                            notes=assumption,
+                        )
+                    )
+            continue
         seen: set[tuple[str, str, float | None]] = set()
         for source_tier in source_tiers:
             for group in group_rows:
@@ -3171,37 +3636,46 @@ def is_suspicious_effective_multiplier(value: float | None) -> bool:
     return bool(suspicious_multiplier_reason(value))
 
 
-CODEX_GROUP_KEYWORDS = ("codex", "openai", "gpt")
-NON_CODEX_EXCLUDED_KEYWORDS = ("claude", "cc-", "anthropic", "kiro", "windsurf", "bedrock", "sonnet", "opus", "haiku")
+def high_effective_multiplier_allowed_stations() -> set[str]:
+    return {
+        station
+        for station, override in load_station_pricing_overrides().items()
+        if parse_bool(override.get("allowHighEffectiveMultiplier"), default=False)
+    }
 
 
-def is_codex_group_name(group_name: str) -> bool:
+NON_CODEX_EXCLUDED_KEYWORDS = (
+    "claude",
+    "cc-",
+    "anthropic",
+    "kiro",
+    "windsurf",
+    "bedrock",
+    "sonnet",
+    "opus",
+    "haiku",
+    "国产",
+    "公益",
+    "deepseek",
+    "qwen",
+    "glm",
+    "kimi",
+    "doubao",
+    "minimax",
+)
+
+
+def is_codex_like_group_name(group_name: str) -> bool:
     normalized = (group_name or "").strip().lower()
     if not normalized:
         return False
-    if any(keyword in normalized for keyword in NON_CODEX_EXCLUDED_KEYWORDS):
-        return False
-    if normalized == "default":
-        return True
-    return any(keyword in normalized for keyword in CODEX_GROUP_KEYWORDS)
-
-
-def is_non_claude_fallback_group_name(group_name: str) -> bool:
-    normalized = (group_name or "").strip().lower()
-    if not normalized:
-        return False
-    if is_codex_group_name(normalized):
-        return True
     return not any(keyword in normalized for keyword in NON_CODEX_EXCLUDED_KEYWORDS)
 
 
 def choose_codex_or_fallback_tier(candidates: list[FeeTier]) -> FeeTier | None:
-    codex_candidates = [tier for tier in candidates if is_codex_group_name(tier.group_name)]
-    if codex_candidates:
-        return min(codex_candidates, key=lambda tier: tier.effective_multiplier or float("inf"))
-    fallback_candidates = [tier for tier in candidates if is_non_claude_fallback_group_name(tier.group_name)]
-    if fallback_candidates:
-        return min(fallback_candidates, key=lambda tier: tier.effective_multiplier or float("inf"))
+    codex_like_candidates = [tier for tier in candidates if is_codex_like_group_name(tier.group_name)]
+    if codex_like_candidates:
+        return min(codex_like_candidates, key=lambda tier: tier.effective_multiplier or float("inf"))
     return None
 
 
@@ -3211,6 +3685,7 @@ def choose_verified_fee(
     allow_low_confidence: bool,
 ) -> dict[str, FeeTier]:
     eligible_by_station: dict[str, list[FeeTier]] = {}
+    high_multiplier_allowed = high_effective_multiplier_allowed_stations()
     for tier in tiers:
         if not tier.participates_in_verified_ranking or not tier.verified:
             continue
@@ -3218,7 +3693,11 @@ def choose_verified_fee(
             continue
         if tier.effective_multiplier is None or tier.effective_multiplier <= 0:
             continue
-        if not allow_low_confidence and is_suspicious_effective_multiplier(tier.effective_multiplier):
+        if (
+            not allow_low_confidence
+            and tier.station not in high_multiplier_allowed
+            and is_suspicious_effective_multiplier(tier.effective_multiplier)
+        ):
             continue
         eligible_by_station.setdefault(tier.station, []).append(tier)
     chosen: dict[str, FeeTier] = {}
@@ -3346,12 +3825,15 @@ def high_multiplier_review_rows(
 ) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     seen: set[tuple[str, str]] = set()
+    allowed_high_multiplier = high_effective_multiplier_allowed_stations()
     for window_name, ranking_rows in rankings_by_window.items():
         for ranking in ranking_rows:
             effective = parse_float(ranking.get("effective_multiplier"))
             if effective is None or effective < HIGH_MULTIPLIER_REVIEW_THRESHOLD:
                 continue
             station_key = str(ranking.get("station") or "").strip()
+            if station_key in allowed_high_multiplier:
+                continue
             key = (station_key, window_name)
             if key in seen:
                 continue
@@ -3699,7 +4181,7 @@ def write_markdown(
     lines.append("# 中转站倍率核验与综合排名")
     lines.append("")
     lines.append(f"- 采集时间：{GENERATED_AT}")
-    lines.append(f"- Codex Manager 数据库：`{DB_PATH}`")
+    lines.append("- Codex Manager 数据库：本机只读 request log 数据库（路径不写入公开摘要）。")
     lines.append("- 正确响应定义：HTTP 2xx 且 `error IS NULL`。HTTP 200 但 `error` 非空也计为错误响应；因欠费、充值解锁、手机号验证等账户前置条件导致的错误样本，已从正确响应率统计中剔除。")
     lines.append("- 工作时段：周一至周五 09:00:00-18:00:00。")
     lines.append("- 非工作时段：工作日 18:00:01-次日 08:59:59，且周末全天计入非工作时段。")
@@ -4092,10 +4574,12 @@ def main(argv: list[str] | None = None) -> int:
         for station, confidences in station_confidences.items()
         if any(has_formal_confidence(confidence) for confidence in confidences)
     }
+    site_detail_records = site_data_station_records()
     for key in sorted(stations):
         station = stations[key]
         metric = primary_metrics.get(key, {})
         probe = probes.get(key, {})
+        detail_verification_needed = detail_record_verification_needed(site_detail_records.get(key))
         checklist_rows.append(
             {
                 "station": key,
@@ -4112,11 +4596,11 @@ def main(argv: list[str] | None = None) -> int:
                 "probe_error": probe.get("error", ""),
                 "verification_needed": ""
                 if key in fully_verified_stations
-                else "group_multiplier + recharge_tiers"
+                else detail_verification_needed
                 if key not in station_confidences
                 else "login-page cross-check for low-confidence public evidence",
                 "recharge_location_to_record": "in-site entry and external final URL if redirected",
-                "instructions": "" if key in fully_verified_stations else verification_instructions(station.platform_guess),
+                "instructions": "" if key in fully_verified_stations or not detail_verification_needed else verification_instructions(station.platform_guess),
             }
         )
     write_csv(
@@ -4224,25 +4708,25 @@ def main(argv: list[str] | None = None) -> int:
             {
                 "generated_at": GENERATED_AT,
                 "files": [
-                    str(WORKSPACE / "multiplier_tiers.csv"),
-                    str(PUBLIC_FEE_EVIDENCE_PATH),
-                    str(REQUEST_LOG_STATION_CANDIDATES_PATH),
-                    str(HIGH_MULTIPLIER_REVIEW_PATH),
-                    str(MULTIPLIER_SANITY_REVIEW_PATH),
-                    str(LOG_REFRESH_STATE_PATH),
-                    str(WORKSPACE / "composite_ranking_verified.csv"),
-                    str(WORKSPACE / "composite_ranking_formal.csv"),
-                    str(WORKSPACE / "composite_ranking_formal_workhours.csv"),
-                    str(WORKSPACE / "composite_ranking_formal_offhours.csv"),
-                    str(WORKSPACE / "composite_ranking_formal_all_hours.csv"),
-                    str(WORKSPACE / "quality_metrics.csv"),
-                    str(WORKSPACE / "login_verification_checklist.csv"),
-                    str(WORKSPACE / "public_probe_results.csv"),
-                    str(WORKSPACE / "package_full_use_cost_ranking.csv"),
-                    str(WORKSPACE / "monthly_full_use_cost_ranking.csv"),
-                    str(WORKSPACE / "payg_cost_ranking.csv"),
-                    str(WORKSPACE / "pending_evidence.csv"),
-                    str(WORKSPACE / "multiplier_audit_summary.md"),
+                    workspace_public_path(WORKSPACE / "multiplier_tiers.csv"),
+                    workspace_public_path(PUBLIC_FEE_EVIDENCE_PATH),
+                    workspace_public_path(REQUEST_LOG_STATION_CANDIDATES_PATH),
+                    workspace_public_path(HIGH_MULTIPLIER_REVIEW_PATH),
+                    workspace_public_path(MULTIPLIER_SANITY_REVIEW_PATH),
+                    workspace_public_path(LOG_REFRESH_STATE_PATH),
+                    workspace_public_path(WORKSPACE / "composite_ranking_verified.csv"),
+                    workspace_public_path(WORKSPACE / "composite_ranking_formal.csv"),
+                    workspace_public_path(WORKSPACE / "composite_ranking_formal_workhours.csv"),
+                    workspace_public_path(WORKSPACE / "composite_ranking_formal_offhours.csv"),
+                    workspace_public_path(WORKSPACE / "composite_ranking_formal_all_hours.csv"),
+                    workspace_public_path(WORKSPACE / "quality_metrics.csv"),
+                    workspace_public_path(WORKSPACE / "login_verification_checklist.csv"),
+                    workspace_public_path(WORKSPACE / "public_probe_results.csv"),
+                    workspace_public_path(WORKSPACE / "package_full_use_cost_ranking.csv"),
+                    workspace_public_path(WORKSPACE / "monthly_full_use_cost_ranking.csv"),
+                    workspace_public_path(WORKSPACE / "payg_cost_ranking.csv"),
+                    workspace_public_path(WORKSPACE / "pending_evidence.csv"),
+                    workspace_public_path(WORKSPACE / "multiplier_audit_summary.md"),
                 ],
                 "station_count": len(stations),
                 "verified_tier_count": sum(1 for tier in tiers if tier.verified),

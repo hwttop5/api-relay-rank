@@ -6,254 +6,29 @@
   ],
   "data": [
     {
-      "model_name": "gpt-5.3-codex-spark",
-      "description": "GPT-5.3 Codex Spark is an AI model provided by opencode.",
+      "model_name": "gpt-5.5",
+      "description": "GPT-5.5 is an AI model provided by OpenAI.",
       "icon": "OpenAI",
-      "tags": "Reasoning,Tools,128K",
+      "tags": "Reasoning,Tools,Files,Vision",
       "vendor_id": 13,
       "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex_plus",
-        "codex_pro",
-        "auto"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "gpt-5.4",
-      "description": "GPT-5.4 is an AI model provided by opencode.",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Tools,Files,Vision,1.1M",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 1.25,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
       "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
       "enable_groups": [
         "auto",
         "codex_plus",
-        "codex_pro",
-        "default",
-        "codex",
-        "codex_sub"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response"
-      ]
-    },
-    {
-      "model_name": "grok-imagine-image-lite",
-      "description": "grok imagine image lite is an xAI model for image generation and multimodal creative tasks.",
-      "icon": "XAI",
-      "tags": "Reasoning,Vision,Image,Tools,Files,256K",
-      "vendor_id": 45,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.06,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "mimo-v2.5",
-      "description": "mimo v2.5 is a MiniMax model for reasoning and general text generation.",
-      "icon": "Minimax.Color",
-      "tags": "Reasoning,Tools,Files,1M",
-      "vendor_id": 44,
-      "quota_type": 0,
-      "model_ratio": 0.2,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.2,
-      "enable_groups": [
-        "china"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "mimo-v2.5-pro",
-      "description": "mimo v2.5 pro is a MiniMax model for reasoning and general text generation.",
-      "icon": "Minimax.Color",
-      "tags": "Reasoning,Tools,Files,1M",
-      "vendor_id": 44,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "cache_ratio": 0.2,
-      "enable_groups": [
-        "china"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "gemini-3.5-flash-low",
-      "description": "gemini 3.5 flash low is a Google Gemini model for multimodal reasoning and generation.",
-      "icon": "Gemini.Color",
-      "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.3-beta",
-      "description": "grok 4.3 beta is an xAI Grok model for reasoning and general text generation.",
-      "icon": "XAI",
-      "tags": "Reasoning,Vision,Tools,Files,256K",
-      "vendor_id": 45,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.08,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "deepseek-v4-pro[1m]",
-      "description": "deepseek-v4-pro[1m]",
-      "icon": "DeepSeek.Color",
-      "tags": "Reasoning,Tools,Files,1M",
-      "vendor_id": 34,
-      "quota_type": 0,
-      "model_ratio": 0.87,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "cache_ratio": 0.083333333333,
-      "enable_groups": [
-        "deepseek"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.2",
-      "description": "GPT-5.2 is an AI model provided by qihang-ai.",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 0.125,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.071428571428,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "codex_pro",
         "default",
         "codex",
         "codex_sub",
-        "auto",
-        "codex_plus"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response"
-      ]
-    },
-    {
-      "model_name": "mimo-v2-pro",
-      "description": "mimo v2 pro is a MiniMax model for reasoning and general text generation.",
-      "icon": "Minimax.Color",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "cache_ratio": 0.2,
-      "enable_groups": [
-        "china"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-pro-high",
-      "description": "gemini 3.1 pro high is a Google Gemini model for multimodal reasoning and generation.",
-      "icon": "Gemini.Color",
-      "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini"
+        "codex_pro"
       ],
       "supported_endpoint_types": [
         "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-flash-lite-preview",
-      "description": "gemini 3.1 flash lite preview is a Google Gemini model for multimodal reasoning and generation.",
-      "icon": "Gemini.Color",
-      "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 0.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "cache_ratio": 0.05,
-      "enable_groups": [
-        "gemini"
       ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
       "model_name": "grok-4.20-0309-reasoning-super",
@@ -292,41 +67,17 @@
       ]
     },
     {
-      "model_name": "gpt-5.5",
-      "description": "GPT-5.5 is an AI model provided by OpenAI.",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Tools,Files,Vision",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex_pro",
-        "default",
-        "codex",
-        "codex_sub",
-        "auto",
-        "codex_plus"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-pro",
-      "description": "gemini 2.5 pro is a Google Gemini model for multimodal reasoning and generation.",
+      "model_name": "gemini-2.5-flash",
+      "description": "gemini 2.5 flash is a Google Gemini model for multimodal reasoning and generation.",
       "icon": "Gemini.Color",
       "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
       "vendor_id": 30,
       "quota_type": 0,
-      "model_ratio": 0.625,
+      "model_ratio": 0.045,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
+      "completion_ratio": 7.888888888889,
+      "cache_ratio": 0.03,
       "enable_groups": [
         "gemini"
       ],
@@ -336,117 +87,22 @@
       ]
     },
     {
-      "model_name": "grok-4.20-0309-non-reasoning-super",
-      "description": "grok 4.20 0309 non reasoning super is an xAI Grok model for reasoning and general text generation.",
-      "icon": "XAI",
-      "tags": "Reasoning,Vision,Tools,Files,256K",
-      "vendor_id": 45,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.12,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-fast",
-      "description": "grok 4.20 fast is an xAI Grok model for reasoning and general text generation.",
-      "icon": "XAI",
-      "tags": "Reasoning,Vision,Tools,Files,256K",
-      "vendor_id": 45,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.08,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001",
-      "description": "Claude Haiku 4.5 is an AI model provided by qihang-ai.",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 1,
+      "model_name": "gemini-3.1-pro-preview",
+      "description": "gemini 3.1 pro preview is a Google Gemini model for multimodal reasoning and generation.",
+      "icon": "Gemini.Color",
+      "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
+      "vendor_id": 30,
       "quota_type": 0,
-      "model_ratio": 0.07,
+      "model_ratio": 1,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
+      "completion_ratio": 6,
       "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "default",
-        "sub_plan_claude_mini_plus",
-        "reverse_new",
-        "cc_export",
-        "reverse_anti_new",
-        "cc_max",
-        "sub_plan_claude_lite",
-        "sub_plan_claude_mini_max",
-        "sub_plan_claude_ultimate",
-        "kiro_cheap",
-        "sub_plan_claude_nano_day",
-        "sub_plan_claude_premium_plus",
-        "auto",
-        "kiro_svip",
-        "reverse",
-        "reverse_wf",
-        "sub_plan_claude_premium",
-        "aws-enterprise",
-        "aws_api",
-        "sub_plan_claude_premium_max",
-        "claude",
-        "cc-max"
+        "gemini"
       ],
       "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101",
-      "description": "Claude Opus 4.5 is an AI model provided by qihang-ai.",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.355,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "sub_plan_claude_mini_plus",
-        "auto",
-        "reverse",
-        "sub_plan_claude_ultimate",
-        "default",
-        "sub_plan_claude_nano_day",
-        "aws-enterprise",
-        "sub_plan_claude_lite",
-        "sub_plan_claude_premium_max",
-        "sub_plan_claude_premium_plus",
-        "cc-max",
-        "sub_plan_claude_mini_max",
-        "sub_plan_claude_premium",
-        "aws_api",
-        "cc_export",
-        "cc_max",
-        "claude"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
+        "gemini",
         "openai"
       ]
     },
@@ -464,27 +120,211 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "sub_plan_claude_mini_plus",
-        "sub_plan_claude_premium",
-        "aws_api",
-        "reverse",
-        "cc-max",
-        "reverse_wf",
-        "sub_plan_claude_premium_max",
-        "kiro_cheap",
-        "reverse_new",
-        "sub_plan_claude_mini_max",
-        "sub_plan_claude_ultimate",
         "default",
+        "claude",
+        "reverse_new",
+        "auto",
+        "aws_api",
+        "reverse_wf",
+        "sub_plan_claude_ultimate",
+        "sub_plan_claude_premium_max",
+        "cc-max",
+        "sub_plan_claude_lite",
+        "sub_plan_claude_mini_max",
+        "kiro_cheap",
         "sub_plan_claude_nano_day",
+        "sub_plan_claude_premium",
         "sub_plan_claude_premium_plus",
         "kiro_svip",
+        "reverse",
+        "sub_plan_claude_mini_plus",
+        "cc_export",
         "cc_max",
-        "aws-enterprise",
-        "claude",
+        "aws-enterprise"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-pro[1m]",
+      "description": "deepseek-v4-pro[1m]",
+      "icon": "DeepSeek.Color",
+      "tags": "Reasoning,Tools,Files,1M",
+      "vendor_id": 34,
+      "quota_type": 0,
+      "model_ratio": 0.87,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.083333333333,
+      "enable_groups": [
+        "deepseek"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mimo-v2.5-pro",
+      "description": "mimo v2.5 pro is a MiniMax model for reasoning and general text generation.",
+      "icon": "Minimax.Color",
+      "tags": "Reasoning,Tools,Files,1M",
+      "vendor_id": 44,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "china"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "description": "GPT-5.4 mini is an AI model provided by openai.\n",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Tools,Files,Vision,1.1M",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "codex",
+        "codex_sub",
+        "codex_pro",
+        "auto",
+        "codex_plus",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-image-pro",
+      "description": "grok imagine image pro is an xAI model for image generation and multimodal creative tasks.",
+      "icon": "XAI",
+      "tags": "Reasoning,Vision,Image,Tools,Files,256K",
+      "vendor_id": 45,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5",
+      "description": "Claude Haiku 4.5 is an Anthropic Claude-compatible model for fast reasoning and assistant workflows.",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws-enterprise"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "description": "Claude Sonnet 4.5 is an AI model provided by qihang-ai.",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.215,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "sub_plan_claude_premium",
         "auto",
         "cc_export",
-        "sub_plan_claude_lite"
+        "reverse",
+        "aws-enterprise",
+        "sub_plan_claude_mini_max",
+        "sub_plan_claude_premium_max",
+        "claude",
+        "cc_max",
+        "sub_plan_claude_lite",
+        "aws_api",
+        "sub_plan_claude_ultimate",
+        "sub_plan_claude_mini_plus",
+        "sub_plan_claude_nano_day",
+        "cc-max",
+        "sub_plan_claude_premium_plus"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "description": "Claude Sonnet 4.6 is an AI model provided by venice.",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "reverse_wf",
+        "sub_plan_claude_nano_day",
+        "aws_api",
+        "cc_export",
+        "reverse_anti_new",
+        "aws-enterprise",
+        "default",
+        "sub_plan_claude_premium_plus",
+        "sub_plan_claude_mini_max",
+        "sub_plan_claude_ultimate",
+        "kiro_cheap",
+        "reverse_new",
+        "auto",
+        "kiro_svip",
+        "reverse",
+        "sub_plan_claude_lite",
+        "sub_plan_claude_premium_max",
+        "claude",
+        "sub_plan_claude_mini_plus",
+        "sub_plan_claude_premium",
+        "cc-max",
+        "cc_max"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -504,9 +344,32 @@
       "completion_ratio": 2,
       "cache_ratio": 0.2,
       "enable_groups": [
+        "ds_api",
+        "china",
+        "deepseek"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "description": "deepseek v4 pro is a DeepSeek model for coding, reasoning, and general text generation.",
+      "icon": "DeepSeek.Color",
+      "tags": "Reasoning,Tools,Files,128K",
+      "vendor_id": 34,
+      "quota_type": 0,
+      "model_ratio": 0.87,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.083333333333,
+      "enable_groups": [
         "deepseek",
         "china",
-        "ds_api"
+        "ds_api",
+        "ds_api_pro"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -528,21 +391,131 @@
         "gemini"
       ],
       "supported_endpoint_types": [
+        "openai-response",
+        "gemini",
         "openai"
       ]
     },
     {
-      "model_name": "qwen3.6-plus",
-      "description": "qwen3.6 plus is an Alibaba Qwen model for reasoning and general text generation.",
-      "icon": "Qwen.Color",
-      "tags": "Reasoning,Tools,Files,128K",
-      "vendor_id": 29,
+      "model_name": "gpt-5.3-codex",
+      "description": "GPT-5.3 Codex is an AI model provided by openai.",
+      "icon": "OpenAI.Color",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 13,
       "quota_type": 0,
-      "model_ratio": 0.25,
+      "model_ratio": 0.875,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
+      "completion_ratio": 8,
       "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "auto",
+        "codex_plus",
+        "default",
+        "codex",
+        "codex_sub",
+        "codex_pro"
+      ],
+      "supported_endpoint_types": [
+        "openai-response",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "description": "GPT-5.3 Codex Spark is an AI model provided by opencode.",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Tools,128K",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex_plus",
+        "codex_pro",
+        "auto"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-super",
+      "description": "grok 4.20 0309 super is an xAI Grok model for reasoning and general text generation.",
+      "icon": "XAI",
+      "tags": "Reasoning,Vision,Tools,Files,256K",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "description": "Claude Haiku 4.5 is an AI model provided by qihang-ai.",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.07,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "sub_plan_claude_premium_plus",
+        "aws-enterprise",
+        "reverse_wf",
+        "sub_plan_claude_ultimate",
+        "claude",
+        "sub_plan_claude_mini_plus",
+        "cc-max",
+        "sub_plan_claude_lite",
+        "kiro_cheap",
+        "reverse_new",
+        "cc_export",
+        "sub_plan_claude_mini_max",
+        "sub_plan_claude_premium",
+        "auto",
+        "aws_api",
+        "kiro_svip",
+        "reverse",
+        "reverse_anti_new",
+        "cc_max",
+        "sub_plan_claude_premium_max",
+        "default",
+        "sub_plan_claude_nano_day"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5.1",
+      "description": "glm 5.1 is a Zhipu AI GLM model for reasoning and general text generation.",
+      "icon": "Zhipu.Color",
+      "tags": "Reasoning,Tools,Files,128K",
+      "vendor_id": 31,
+      "quota_type": 0,
+      "model_ratio": 0.435,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.195402298851,
       "enable_groups": [
         "china"
       ],
@@ -552,22 +525,40 @@
       ]
     },
     {
-      "model_name": "gemini-3-flash-preview",
-      "description": "gemini 3 flash preview is a Google Gemini model for multimodal reasoning and generation.",
-      "icon": "Gemini.Color",
-      "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
-      "vendor_id": 30,
+      "model_name": "glm-5",
+      "description": "glm 5 is a Zhipu AI GLM model for reasoning and general text generation.",
+      "icon": "Zhipu.Color",
+      "tags": "Reasoning,Tools,Files,128K",
+      "vendor_id": 31,
       "quota_type": 0,
-      "model_ratio": 0.035,
+      "model_ratio": 0.43,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6.142857142857,
-      "cache_ratio": 0.1,
+      "completion_ratio": 3.662790697674,
+      "cache_ratio": 0.2,
       "enable_groups": [
-        "gemini"
+        "china"
       ],
       "supported_endpoint_types": [
-        "gemini",
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.3-beta",
+      "description": "grok 4.3 beta is an xAI Grok model for reasoning and general text generation.",
+      "icon": "XAI",
+      "tags": "Reasoning,Vision,Tools,Files,256K",
+      "vendor_id": 45,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.08,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
         "openai"
       ]
     },
@@ -608,144 +599,40 @@
       ]
     },
     {
-      "model_name": "claude-haiku-4-5",
-      "description": "Claude Haiku 4.5 is an Anthropic Claude-compatible model for fast reasoning and assistant workflows.",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
+      "model_name": "grok-imagine-image-lite",
+      "description": "grok imagine image lite is an xAI model for image generation and multimodal creative tasks.",
+      "icon": "XAI",
+      "tags": "Reasoning,Vision,Image,Tools,Files,256K",
+      "vendor_id": 45,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.06,
       "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
+      "completion_ratio": 0,
       "enable_groups": [
-        "aws-enterprise"
+        "grok"
       ],
       "supported_endpoint_types": [
-        "anthropic",
         "openai"
       ]
     },
     {
-      "model_name": "MiniMax-M2.7",
-      "description": "MiniMax M2.7 is a MiniMax model for reasoning and general text generation.",
-      "icon": "Minimax.Color",
-      "tags": "Reasoning,Tools,Files,1M",
-      "vendor_id": 44,
-      "quota_type": 0,
-      "model_ratio": 0.15,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4,
-      "cache_ratio": 0.2,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "china"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "kimi-k2.6",
-      "description": "kimi k2.6 is a Moonshot AI Kimi model for long-context reasoning and general text generation.",
-      "icon": "Moonshot",
-      "tags": "Reasoning,Tools,Files,1M",
-      "vendor_id": 32,
-      "quota_type": 0,
-      "model_ratio": 0.4645,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4.152852529602,
-      "cache_ratio": 0.168421052632,
-      "enable_groups": [
-        "china"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-pro",
-      "description": "gemini 3.1 pro is a Google Gemini model for multimodal reasoning and generation.",
+      "model_name": "gemini-2.5-pro",
+      "description": "gemini 2.5 pro is a Google Gemini model for multimodal reasoning and generation.",
       "icon": "Gemini.Color",
       "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
       "vendor_id": 30,
       "quota_type": 0,
-      "model_ratio": 1,
+      "model_ratio": 0.625,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
+      "completion_ratio": 8,
       "cache_ratio": 0.1,
       "enable_groups": [
         "gemini"
       ],
       "supported_endpoint_types": [
         "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-0309-non-reasoning",
-      "description": "grok 4.20 0309 non reasoning is an xAI Grok model for reasoning and general text generation.",
-      "icon": "XAI",
-      "tags": "Reasoning,Vision,Tools,Files,256K",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-0309-super",
-      "description": "grok 4.20 0309 super is an xAI Grok model for reasoning and general text generation.",
-      "icon": "XAI",
-      "tags": "Reasoning,Vision,Tools,Files,256K",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "deepseek-v4-pro",
-      "description": "deepseek v4 pro is a DeepSeek model for coding, reasoning, and general text generation.",
-      "icon": "DeepSeek.Color",
-      "tags": "Reasoning,Tools,Files,128K",
-      "vendor_id": 34,
-      "quota_type": 0,
-      "model_ratio": 0.87,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "cache_ratio": 0.083333333333,
-      "enable_groups": [
-        "deepseek",
-        "china",
-        "ds_api",
-        "ds_api_pro"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
         "openai"
       ]
     },
@@ -769,78 +656,20 @@
       ]
     },
     {
-      "model_name": "gemini-3.1-pro-preview-thinking-low",
-      "description": "gemini 3.1 pro preview thinking low is a Google Gemini model for multimodal reasoning and generation.",
-      "icon": "Gemini.Color",
-      "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
-      "vendor_id": 30,
+      "model_name": "MiniMax-M2.7",
+      "description": "MiniMax M2.7 is a MiniMax model for reasoning and general text generation.",
+      "icon": "Minimax.Color",
+      "tags": "Reasoning,Tools,Files,1M",
+      "vendor_id": 44,
       "quota_type": 0,
-      "model_ratio": 0.375,
+      "model_ratio": 0.15,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-imagine-image-pro",
-      "description": "grok imagine image pro is an xAI model for image generation and multimodal creative tasks.",
-      "icon": "XAI",
-      "tags": "Reasoning,Vision,Image,Tools,Files,256K",
-      "vendor_id": 45,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.5,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "description": "Claude Sonnet 4.6 is an AI model provided by venice.",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
+      "completion_ratio": 4,
+      "cache_ratio": 0.2,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "default",
-        "sub_plan_claude_mini_plus",
-        "kiro_cheap",
-        "reverse_new",
-        "auto",
-        "reverse",
-        "cc_max",
-        "sub_plan_claude_mini_max",
-        "sub_plan_claude_premium_plus",
-        "aws_api",
-        "reverse_anti_new",
-        "sub_plan_claude_lite",
-        "reverse_wf",
-        "sub_plan_claude_ultimate",
-        "sub_plan_claude_premium",
-        "sub_plan_claude_premium_max",
-        "claude",
-        "sub_plan_claude_nano_day",
-        "cc_export",
-        "kiro_svip",
-        "cc-max",
-        "aws-enterprise"
+        "china"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -848,83 +677,50 @@
       ]
     },
     {
-      "model_name": "glm-5",
-      "description": "glm 5 is a Zhipu AI GLM model for reasoning and general text generation.",
-      "icon": "Zhipu.Color",
-      "tags": "Reasoning,Tools,Files,128K",
-      "vendor_id": 31,
+      "model_name": "mimo-v2-pro",
+      "description": "mimo v2 pro is a MiniMax model for reasoning and general text generation.",
+      "icon": "Minimax.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 13,
       "quota_type": 0,
-      "model_ratio": 0.43,
+      "model_ratio": 0.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 3.662790697674,
+      "completion_ratio": 3,
       "cache_ratio": 0.2,
       "enable_groups": [
         "china"
       ],
       "supported_endpoint_types": [
+        "anthropic",
         "openai",
-        "anthropic"
+        "openai-response"
       ]
     },
     {
-      "model_name": "qwen3.5-plus",
-      "description": "qwen3.5 plus is an Alibaba Qwen model for reasoning and general text generation.",
-      "icon": "Qwen.Color",
-      "tags": "Reasoning,Tools,Files,128K",
-      "vendor_id": 29,
-      "quota_type": 0,
-      "model_ratio": 0.2865,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6.003490401396,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "china"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-openai-compact",
-      "description": "gpt 5.4 openai compact is an OpenAI model for reasoning and multimodal generation.",
+      "model_name": "gpt-5.2",
+      "description": "GPT-5.2 is an AI model provided by qihang-ai.",
       "icon": "OpenAI",
-      "tags": "Reasoning,Vision,Tools,Files,1.1M",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
       "vendor_id": 13,
       "quota_type": 0,
-      "model_ratio": 1.25,
+      "model_ratio": 0.125,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
+      "completion_ratio": 8,
+      "cache_ratio": 0.071428571428,
+      "create_cache_ratio": 1,
       "enable_groups": [
         "auto",
-        "codex_plus"
+        "codex_plus",
+        "default",
+        "codex",
+        "codex_sub",
+        "codex_pro"
       ],
       "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-preview",
-      "description": "gemini 3 pro preview is a Google Gemini model for multimodal reasoning and generation.",
-      "icon": "Gemini.Color",
-      "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 0.285,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6.017543859649,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
+        "openai",
+        "openai-response"
       ]
     },
     {
@@ -946,16 +742,36 @@
       ]
     },
     {
-      "model_name": "gemini-3-flash-agent",
-      "description": "gemini 3 flash agent is a Google Gemini model for multimodal reasoning and generation.",
+      "model_name": "grok-4.20-0309-non-reasoning",
+      "description": "grok 4.20 0309 non reasoning is an xAI Grok model for reasoning and general text generation.",
+      "icon": "XAI",
+      "tags": "Reasoning,Vision,Tools,Files,256K",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-lite-preview",
+      "description": "gemini 3.1 flash lite preview is a Google Gemini model for multimodal reasoning and generation.",
       "icon": "Gemini.Color",
       "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
       "vendor_id": 30,
       "quota_type": 0,
-      "model_ratio": 37.5,
+      "model_ratio": 0.25,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
+      "completion_ratio": 3,
+      "cache_ratio": 0.05,
       "enable_groups": [
         "gemini"
       ],
@@ -965,131 +781,40 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-6",
-      "description": "Claude Opus 4.6 is an AI model provided by venice.",
+      "model_name": "claude-opus-4-5-20251101",
+      "description": "Claude Opus 4.5 is an AI model provided by qihang-ai.",
       "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 0.355,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "reverse_wf",
-        "sub_plan_claude_premium_max",
-        "default",
-        "kiro_cheap",
-        "sub_plan_claude_premium",
-        "reverse_new",
-        "kiro_svip",
-        "cc_max",
-        "sub_plan_claude_mini_max",
-        "sub_plan_claude_nano_day",
+        "sub_plan_claude_lite",
+        "auto",
         "aws_api",
         "cc_export",
         "reverse",
-        "cc-max",
-        "sub_plan_claude_lite",
-        "claude",
-        "auto",
-        "aws-enterprise",
         "sub_plan_claude_ultimate",
-        "sub_plan_claude_mini_plus",
-        "sub_plan_claude_premium_plus",
-        "reverse_anti_new"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "description": "GPT-5.3 Codex is an AI model provided by openai.",
-      "icon": "OpenAI.Color",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "codex_pro",
+        "sub_plan_claude_premium_max",
         "default",
-        "codex",
-        "codex_sub",
-        "auto",
-        "codex_plus"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash",
-      "description": "gemini 2.5 flash is a Google Gemini model for multimodal reasoning and generation.",
-      "icon": "Gemini.Color",
-      "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 0.045,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 7.888888888889,
-      "cache_ratio": 0.03,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "deepseek-v4-flash[1m]",
-      "description": "deepseek v4 flash[1m] is a DeepSeek model for coding, reasoning, and general text generation.",
-      "icon": "DeepSeek.Color",
-      "tags": "Reasoning,Tools,Files,1M",
-      "vendor_id": 34,
-      "quota_type": 0,
-      "model_ratio": 0.07,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "cache_ratio": 0.2,
-      "enable_groups": [
-        "deepseek"
+        "claude",
+        "sub_plan_claude_premium",
+        "sub_plan_claude_mini_plus",
+        "sub_plan_claude_nano_day",
+        "cc-max",
+        "aws-enterprise",
+        "sub_plan_claude_premium_plus",
+        "sub_plan_claude_mini_max",
+        "cc_max"
       ],
       "supported_endpoint_types": [
         "anthropic",
         "openai"
-      ]
-    },
-    {
-      "model_name": "glm-5.1",
-      "description": "glm 5.1 is a Zhipu AI GLM model for reasoning and general text generation.",
-      "icon": "Zhipu.Color",
-      "tags": "Reasoning,Tools,Files,128K",
-      "vendor_id": 31,
-      "quota_type": 0,
-      "model_ratio": 0.435,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4,
-      "cache_ratio": 0.195402298851,
-      "enable_groups": [
-        "china"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
       ]
     },
     {
@@ -1113,26 +838,6 @@
       ]
     },
     {
-      "model_name": "gemini-3.1-pro-preview",
-      "description": "gemini 3.1 pro preview is a Google Gemini model for multimodal reasoning and generation.",
-      "icon": "Gemini.Color",
-      "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
       "model_name": "gpt-image-2",
       "description": "An advanced AI model for generating images from textual descriptions.",
       "icon": "OpenAI",
@@ -1144,91 +849,24 @@
       "owner_by": "",
       "completion_ratio": 0,
       "enable_groups": [
-        "gpt-image-2",
-        "gpt_image"
+        "gpt_image",
+        "gpt-image-2"
       ],
       "supported_endpoint_types": [
         "image-generation"
       ]
     },
     {
-      "model_name": "gpt-5.4-mini",
-      "description": "GPT-5.4 mini is an AI model provided by openai.\n",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Tools,Files,Vision,1.1M",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "auto",
-        "codex_plus",
-        "codex_pro",
-        "default",
-        "codex",
-        "codex_sub"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response"
-      ]
-    },
-    {
-      "model_name": "gemini-3-flash",
-      "description": "gemini 3 flash is a Google Gemini model for multimodal reasoning and generation.",
-      "icon": "Gemini.Color",
-      "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 0.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "gemini"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5-openai-compact",
-      "description": "gpt 5.5 openai compact is an OpenAI model for reasoning and multimodal generation.",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Vision,Tools,Files,1.1M",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "auto",
-        "codex_plus"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-0309-reasoning",
-      "description": "grok 4.20 0309 reasoning is an xAI Grok model for reasoning and general text generation.",
+      "model_name": "grok-4.20-fast",
+      "description": "grok 4.20 fast is an xAI Grok model for reasoning and general text generation.",
       "icon": "XAI",
       "tags": "Reasoning,Vision,Tools,Files,256K",
       "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.08,
       "owner_by": "",
-      "completion_ratio": 3,
-      "cache_ratio": 0.1,
+      "completion_ratio": 0,
       "enable_groups": [
         "grok"
       ],
@@ -1255,36 +893,75 @@
       ]
     },
     {
-      "model_name": "claude-sonnet-4-5-20250929",
-      "description": "Claude Sonnet 4.5 is an AI model provided by qihang-ai.",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 1,
+      "model_name": "gemini-3-flash-preview",
+      "description": "gemini 3 flash preview is a Google Gemini model for multimodal reasoning and generation.",
+      "icon": "Gemini.Color",
+      "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
+      "vendor_id": 30,
       "quota_type": 0,
-      "model_ratio": 0.215,
+      "model_ratio": 0.035,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
+      "completion_ratio": 6.142857142857,
       "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "sub_plan_claude_premium",
-        "cc_export",
-        "sub_plan_claude_lite",
-        "sub_plan_claude_mini_max",
-        "default",
-        "auto",
-        "reverse",
-        "cc_max",
-        "cc-max",
-        "sub_plan_claude_ultimate",
-        "sub_plan_claude_premium_max",
-        "claude",
-        "aws_api",
-        "sub_plan_claude_nano_day",
-        "sub_plan_claude_premium_plus",
-        "aws-enterprise",
-        "sub_plan_claude_mini_plus"
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.6",
+      "description": "kimi k2.6 is a Moonshot AI Kimi model for long-context reasoning and general text generation.",
+      "icon": "Moonshot",
+      "tags": "Reasoning,Tools,Files,1M",
+      "vendor_id": 32,
+      "quota_type": 0,
+      "model_ratio": 0.4645,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.152852529602,
+      "cache_ratio": 0.168421052632,
+      "enable_groups": [
+        "china"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-flash[1m]",
+      "description": "deepseek v4 flash[1m] is a DeepSeek model for coding, reasoning, and general text generation.",
+      "icon": "DeepSeek.Color",
+      "tags": "Reasoning,Tools,Files,1M",
+      "vendor_id": 34,
+      "quota_type": 0,
+      "model_ratio": 0.07,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "deepseek"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -1292,60 +969,21 @@
       ]
     },
     {
-      "model_name": "gemini-2.5-flash-nothinking",
-      "description": "gemini 2.5 flash nothinking is a Google Gemini model for multimodal reasoning and generation.",
+      "model_name": "gemini-3-flash",
+      "description": "gemini 3 flash is a Google Gemini model for multimodal reasoning and generation.",
       "icon": "Gemini.Color",
       "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
       "vendor_id": 30,
       "quota_type": 0,
-      "model_ratio": 0.15,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8.333333333333,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-pro-preview-thinking-high",
-      "description": "gemini 3.1 pro preview thinking high is a Google Gemini model for multimodal reasoning and generation.",
-      "icon": "Gemini.Color",
-      "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 1,
+      "model_ratio": 0.25,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
+      "cache_ratio": 0.1,
       "enable_groups": [
         "gemini"
       ],
       "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash-lite",
-      "description": "gemini 2.5 flash lite is a Google Gemini model for multimodal reasoning and generation.",
-      "icon": "Gemini.Color",
-      "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 0.15,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1.333333333333,
-      "cache_ratio": 0.033333333333,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
         "openai"
       ]
     },
@@ -1366,6 +1004,230 @@
       "supported_endpoint_types": [
         "openai"
       ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "description": "Claude Opus 4.6 is an AI model provided by venice.",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "sub_plan_claude_premium_max",
+        "sub_plan_claude_mini_plus",
+        "sub_plan_claude_nano_day",
+        "sub_plan_claude_premium_plus",
+        "aws-enterprise",
+        "sub_plan_claude_mini_max",
+        "sub_plan_claude_ultimate",
+        "claude",
+        "aws_api",
+        "cc_export",
+        "kiro_svip",
+        "reverse_anti_new",
+        "reverse_wf",
+        "kiro_cheap",
+        "cc-max",
+        "default",
+        "sub_plan_claude_premium",
+        "reverse_new",
+        "auto",
+        "reverse",
+        "cc_max",
+        "sub_plan_claude_lite"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.6-plus",
+      "description": "qwen3.6 plus is an Alibaba Qwen model for reasoning and general text generation.",
+      "icon": "Qwen.Color",
+      "tags": "Reasoning,Tools,Files,128K",
+      "vendor_id": 29,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "china"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "mimo-v2.5",
+      "description": "mimo v2.5 is a MiniMax model for reasoning and general text generation.",
+      "icon": "Minimax.Color",
+      "tags": "Reasoning,Tools,Files,1M",
+      "vendor_id": 44,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "china"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.5-plus",
+      "description": "qwen3.5 plus is an Alibaba Qwen model for reasoning and general text generation.",
+      "icon": "Qwen.Color",
+      "tags": "Reasoning,Tools,Files,128K",
+      "vendor_id": 29,
+      "quota_type": 0,
+      "model_ratio": 0.2865,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6.003490401396,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "china"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "description": "GPT-5.4 is an AI model provided by opencode.",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Tools,Files,Vision,1.1M",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "codex",
+        "codex_sub",
+        "codex_pro",
+        "auto",
+        "codex_plus",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
+      "description": "gpt 5.5 openai compact is an OpenAI model for reasoning and multimodal generation.",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Vision,Tools,Files,1.1M",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "auto",
+        "codex_plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-non-reasoning-super",
+      "description": "grok 4.20 0309 non reasoning super is an xAI Grok model for reasoning and general text generation.",
+      "icon": "XAI",
+      "tags": "Reasoning,Vision,Tools,Files,256K",
+      "vendor_id": 45,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-reasoning",
+      "description": "grok 4.20 0309 reasoning is an xAI Grok model for reasoning and general text generation.",
+      "icon": "XAI",
+      "tags": "Reasoning,Vision,Tools,Files,256K",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-high",
+      "description": "gemini 3.1 pro high is a Google Gemini model for multimodal reasoning and generation.",
+      "icon": "Gemini.Color",
+      "tags": "Reasoning,Vision,Tools,Files,Multimodal,1M",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-openai-compact",
+      "description": "gpt 5.4 openai compact is an OpenAI model for reasoning and multimodal generation.",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Vision,Tools,Files,1.1M",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "auto",
+        "codex_plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
     }
   ],
   "group_ratio": {
@@ -1373,18 +1235,17 @@
     "cc-max": 2.6,
     "cc_export": 1.8,
     "cc_max": 1.5,
-    "china": 0.8,
+    "china": 1,
     "codex": 1,
     "codex_pro": 0.5,
-    "codex_sub": 0.3,
     "deepseek": 1,
     "default": 1.7,
-    "ds_api": 1.15,
-    "ds_api_pro": 0.44,
+    "ds_api": 1.2,
+    "ds_api_pro": 1,
     "gemini": 1.3,
     "gpt-image-2": 1,
     "gpt_image": 1.2,
-    "grok": 0.35
+    "grok": 1
   },
   "success": true,
   "supported_endpoint": {
@@ -1417,7 +1278,6 @@
     "china": "china",
     "codex": "codex分组 codex 专用分组缓存可达90%",
     "codex_pro": "codex_pro",
-    "codex_sub": "codex订阅专属分组 订阅用户请使用该分组 缓存可达95%",
     "deepseek": "deepseek",
     "default": "default",
     "ds_api": "ds_api",
@@ -1463,11 +1323,6 @@
       "billing_type": "public",
       "desc": "codex_pro"
     },
-    "codex_sub": {
-      "billing_label": "订阅",
-      "billing_type": "subscription",
-      "desc": "codex订阅专属分组 订阅用户请使用该分组 缓存可达95%"
-    },
     "deepseek": {
       "billing_label": "通用",
       "billing_type": "public",
@@ -1511,52 +1366,16 @@
   },
   "vendors": [
     {
-      "id": 13,
-      "name": "OpenAI",
-      "description": "OpenAI provides GPT and multimodal models for reasoning, coding, image generation, and general AI workflows.",
-      "icon": "OpenAI"
-    },
-    {
-      "id": 31,
-      "name": "智谱",
-      "description": "Zhipu AI provides GLM models for reasoning, coding, and general text generation.",
-      "icon": "Zhipu.Color"
-    },
-    {
-      "id": 34,
-      "name": "DeepSeek",
-      "description": "DeepSeek provides models for coding, reasoning, and general text generation.",
-      "icon": "DeepSeek.Color"
-    },
-    {
-      "id": 47,
-      "name": "360",
-      "description": "360 provides AI models for reasoning, coding, and general assistant workflows.",
-      "icon": "Ai360.Color"
-    },
-    {
-      "id": 29,
-      "name": "阿里巴巴",
-      "description": "Alibaba provides Qwen models for reasoning, coding, multilingual generation, and multimodal workflows.",
-      "icon": "Qwen.Color"
-    },
-    {
-      "id": 46,
-      "name": "即梦",
-      "description": "Jimeng provides image and video generation models for creative multimodal workflows.",
-      "icon": "Jimeng.Color"
-    },
-    {
       "id": 35,
       "name": "Meta",
       "description": "Meta provides Llama models for reasoning, coding, and general text generation.",
       "icon": "Ollama"
     },
     {
-      "id": 38,
-      "name": "腾讯",
-      "description": "Tencent provides Hunyuan models for reasoning, generation, and multimodal AI workflows.",
-      "icon": "Hunyuan.Color"
+      "id": 48,
+      "name": "OpenAI",
+      "description": "OpenAI provides GPT and multimodal models for reasoning, coding, image generation, and general AI workflows.",
+      "icon": "OpenAI"
     },
     {
       "id": 1,
@@ -1571,16 +1390,28 @@
       "icon": "Gemini.Color"
     },
     {
-      "id": 32,
-      "name": "Moonshot",
-      "description": "Moonshot AI provides Kimi models for long-context reasoning and general AI workflows.",
-      "icon": "Moonshot"
+      "id": 31,
+      "name": "智谱",
+      "description": "Zhipu AI provides GLM models for reasoning, coding, and general text generation.",
+      "icon": "Zhipu.Color"
     },
     {
-      "id": 48,
-      "name": "OpenAI",
-      "description": "OpenAI provides GPT and multimodal models for reasoning, coding, image generation, and general AI workflows.",
-      "icon": "OpenAI"
+      "id": 34,
+      "name": "DeepSeek",
+      "description": "DeepSeek provides models for coding, reasoning, and general text generation.",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 36,
+      "name": "百度",
+      "description": "Baidu provides ERNIE and related AI models for reasoning, generation, and multimodal workflows.",
+      "icon": "Wenxin.Color"
+    },
+    {
+      "id": 39,
+      "name": "Cohere",
+      "description": "Cohere provides models for enterprise search, embeddings, reranking, and text generation.",
+      "icon": "Cohere.Color"
     },
     {
       "id": 40,
@@ -1589,10 +1420,46 @@
       "icon": "Spark.Color"
     },
     {
+      "id": 43,
+      "name": "字节跳动",
+      "description": "ByteDance provides Doubao models for reasoning, generation, multimodal, image, and video workflows.",
+      "icon": "Doubao.Color"
+    },
+    {
+      "id": 32,
+      "name": "Moonshot",
+      "description": "Moonshot AI provides Kimi models for long-context reasoning and general AI workflows.",
+      "icon": "Moonshot"
+    },
+    {
       "id": 42,
       "name": "Cloudflare",
       "description": "Cloudflare provides hosted AI models through Workers AI for text, image, and embedding workloads.",
       "icon": "Cloudflare.Color"
+    },
+    {
+      "id": 38,
+      "name": "腾讯",
+      "description": "Tencent provides Hunyuan models for reasoning, generation, and multimodal AI workflows.",
+      "icon": "Hunyuan.Color"
+    },
+    {
+      "id": 13,
+      "name": "OpenAI",
+      "description": "OpenAI provides GPT and multimodal models for reasoning, coding, image generation, and general AI workflows.",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 41,
+      "name": "Jina",
+      "description": "Jina AI provides embedding, reranking, and retrieval models for search and RAG workflows.",
+      "icon": "Jina"
+    },
+    {
+      "id": 37,
+      "name": "零一万物",
+      "description": "01.AI provides Yi models for reasoning, coding, and general assistant workflows.",
+      "icon": "Yi.Color"
     },
     {
       "id": 44,
@@ -1613,34 +1480,22 @@
       "icon": "Mistral.Color"
     },
     {
-      "id": 36,
-      "name": "百度",
-      "description": "Baidu provides ERNIE and related AI models for reasoning, generation, and multimodal workflows.",
-      "icon": "Wenxin.Color"
+      "id": 47,
+      "name": "360",
+      "description": "360 provides AI models for reasoning, coding, and general assistant workflows.",
+      "icon": "Ai360.Color"
     },
     {
-      "id": 43,
-      "name": "字节跳动",
-      "description": "ByteDance provides Doubao models for reasoning, generation, multimodal, image, and video workflows.",
-      "icon": "Doubao.Color"
+      "id": 29,
+      "name": "阿里巴巴",
+      "description": "Alibaba provides Qwen models for reasoning, coding, multilingual generation, and multimodal workflows.",
+      "icon": "Qwen.Color"
     },
     {
-      "id": 39,
-      "name": "Cohere",
-      "description": "Cohere provides models for enterprise search, embeddings, reranking, and text generation.",
-      "icon": "Cohere.Color"
-    },
-    {
-      "id": 41,
-      "name": "Jina",
-      "description": "Jina AI provides embedding, reranking, and retrieval models for search and RAG workflows.",
-      "icon": "Jina"
-    },
-    {
-      "id": 37,
-      "name": "零一万物",
-      "description": "01.AI provides Yi models for reasoning, coding, and general assistant workflows.",
-      "icon": "Yi.Color"
+      "id": 46,
+      "name": "即梦",
+      "description": "Jimeng provides image and video generation models for creative multimodal workflows.",
+      "icon": "Jimeng.Color"
     }
   ],
   "status_payload": {
@@ -1906,11 +1761,11 @@
       "discord_oauth_register": false,
       "display_in_currency": true,
       "docs_link": "https://doc.fishxcode.com",
-      "email_verification": true,
+      "email_verification": false,
       "enable_batch_update": true,
       "enable_data_export": true,
       "enable_drawing": false,
-      "enable_log_export": true,
+      "enable_log_export": false,
       "enable_task": true,
       "faq": [
         {
@@ -1957,20 +1812,20 @@
       "passkey_attachment": "",
       "passkey_display_name": "FishXCode",
       "passkey_login": true,
-      "passkey_origins": "https://fishxcode.com",
+      "passkey_origins": "https://enterprise.fishxcode.com",
       "passkey_rp_id": "fishxcode.com",
       "passkey_user_verification": "preferred",
       "password_login_enabled": true,
-      "password_register_enabled": true,
+      "password_register_enabled": false,
       "price": 1,
       "privacy_policy_enabled": true,
       "quota_display_type": "CNY",
       "quota_per_unit": 500000,
       "register_enabled": true,
       "self_use_mode_enabled": false,
-      "server_address": "https://fishxcode.com",
+      "server_address": "https://enterprise.fishxcode.com",
       "setup": true,
-      "start_time": 1779337524,
+      "start_time": 1779463557,
       "stripe_unit_price": 8,
       "subscription_promo_badge_left": "",
       "subscription_promo_badge_right": "",
@@ -2074,5 +1929,1425 @@
     "message": "",
     "success": true
   },
+  "subscription_plans_payload": {
+    "data": [
+      {
+        "plan": {
+          "id": 26,
+          "title": "Claude Ultimate",
+          "subtitle": "5000次/天，月共150000次，每月重置【单次成本 ¥0.0267】",
+          "price_amount": 3999,
+          "discount_price_amount": 0,
+          "discount_deadline": 0,
+          "currency": "USD",
+          "effective_price_amount": 3999,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 110,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 25,
+          "sold_count": 3,
+          "remaining_sale_count": 22,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": false,
+          "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "upgrade_group": "sub_plan_claude_ultimate",
+          "total_amount": 0,
+          "resource_type": "request_count",
+          "request_count_total": 150000,
+          "request_count_period_total": 5000,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": true,
+          "quota_reset_fixed_seconds": 28800,
+          "delivery_mode": "manual_delivery",
+          "allowed_groups": [
+            "sub_plan_claude_ultimate"
+          ],
+          "allowed_models": [
+            "claude-haiku-4-5-20251001",
+            "claude-opus-4-5-20251101",
+            "claude-opus-4-6",
+            "claude-opus-4-7",
+            "claude-sonnet-4-5-20250929",
+            "claude-sonnet-4-6"
+          ],
+          "allowed_vendor_ids": [
+            1
+          ],
+          "allowed_vendor_names": [
+            "Anthropic"
+          ],
+          "delivery_field_schema": [
+            {
+              "key": "base_url",
+              "label": "Base URL",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 1,
+              "placeholder": "例如：https://你的站点地址"
+            },
+            {
+              "key": "api_key",
+              "label": "API Key",
+              "type": "password",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 2,
+              "placeholder": "请输入要发放给用户的 API Key"
+            },
+            {
+              "key": "usage_query_url",
+              "label": "额度使用查询地址",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 3,
+              "placeholder": "https://api-key-tool.fishxcode.com/",
+              "default_value": "https://api-key-tool.fishxcode.com/"
+            }
+          ],
+          "created_at": 1775896483,
+          "updated_at": 1779418725
+        },
+        "group_meta": {
+          "sub_plan_claude_ultimate": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "sub_plan_claude_ultimate",
+            "ratio": 1
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 25,
+          "title": "Claude Premium Max",
+          "subtitle": "3000次/天，月共90000次，每月重置【单次成本 ¥0.0267】",
+          "price_amount": 2399,
+          "discount_price_amount": 0,
+          "discount_deadline": 0,
+          "currency": "USD",
+          "effective_price_amount": 2399,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 100,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 25,
+          "sold_count": 4,
+          "remaining_sale_count": 21,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": false,
+          "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "upgrade_group": "sub_plan_claude_premium_max",
+          "total_amount": 0,
+          "resource_type": "request_count",
+          "request_count_total": 90000,
+          "request_count_period_total": 3000,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": true,
+          "quota_reset_fixed_seconds": 28800,
+          "delivery_mode": "manual_delivery",
+          "allowed_groups": [
+            "sub_plan_claude_premium_max"
+          ],
+          "allowed_models": [
+            "claude-haiku-4-5-20251001",
+            "claude-opus-4-5-20251101",
+            "claude-opus-4-6",
+            "claude-opus-4-7",
+            "claude-sonnet-4-5-20250929",
+            "claude-sonnet-4-6"
+          ],
+          "allowed_vendor_ids": [
+            1
+          ],
+          "allowed_vendor_names": [
+            "Anthropic"
+          ],
+          "delivery_field_schema": [
+            {
+              "key": "base_url",
+              "label": "Base URL",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 1,
+              "placeholder": "例如：https://你的站点地址"
+            },
+            {
+              "key": "api_key",
+              "label": "API Key",
+              "type": "password",
+              "required": true,
+              "masked": true,
+              "copyable": true,
+              "sort_order": 2,
+              "placeholder": "请输入要发放给用户的 API Key"
+            },
+            {
+              "key": "usage_query_url",
+              "label": "额度使用查询地址",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 3,
+              "placeholder": "https://api-key-tool.fishxcode.com/",
+              "default_value": "https://api-key-tool.fishxcode.com/"
+            }
+          ],
+          "created_at": 1775666425,
+          "updated_at": 1779418725
+        },
+        "group_meta": {
+          "sub_plan_claude_premium_max": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "sub_plan_claude_premium_max",
+            "ratio": 1
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 23,
+          "title": "Claude Premium Plus",
+          "subtitle": "2000次/天，月共60000次，每月重置【单次成本 ¥0.0281】",
+          "price_amount": 1688,
+          "discount_price_amount": 0,
+          "discount_deadline": 0,
+          "currency": "USD",
+          "effective_price_amount": 1688,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 90,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 25,
+          "sold_count": 2,
+          "remaining_sale_count": 23,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": false,
+          "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "upgrade_group": "sub_plan_claude_premium_plus",
+          "total_amount": 0,
+          "resource_type": "request_count",
+          "request_count_total": 60000,
+          "request_count_period_total": 2000,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": true,
+          "quota_reset_fixed_seconds": 28800,
+          "delivery_mode": "manual_delivery",
+          "allowed_groups": [
+            "sub_plan_claude_premium_plus"
+          ],
+          "allowed_models": [
+            "claude-haiku-4-5-20251001",
+            "claude-opus-4-5-20251101",
+            "claude-opus-4-6",
+            "claude-opus-4-7",
+            "claude-sonnet-4-5-20250929",
+            "claude-sonnet-4-6"
+          ],
+          "allowed_vendor_ids": [
+            1
+          ],
+          "allowed_vendor_names": [
+            "Anthropic"
+          ],
+          "delivery_field_schema": [
+            {
+              "key": "base_url",
+              "label": "Base URL",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 1,
+              "placeholder": "例如：https://你的站点地址"
+            },
+            {
+              "key": "api_key",
+              "label": "API Key",
+              "type": "password",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 2,
+              "placeholder": "请输入要发放给用户的 API Key"
+            },
+            {
+              "key": "usage_query_url",
+              "label": "额度使用查询地址",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 3,
+              "placeholder": "https://api-key-tool.fishxcode.com/",
+              "default_value": "https://api-key-tool.fishxcode.com/"
+            }
+          ],
+          "created_at": 1775638727,
+          "updated_at": 1779418725
+        },
+        "group_meta": {
+          "sub_plan_claude_premium_plus": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "sub_plan_claude_premium_plus",
+            "ratio": 1
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 22,
+          "title": "Claude Premium",
+          "subtitle": "1500次/天，月共45000次，每月重置【单次成本 ¥0.0289】",
+          "price_amount": 1299,
+          "discount_price_amount": 0,
+          "discount_deadline": 0,
+          "currency": "USD",
+          "effective_price_amount": 1299,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 80,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 27,
+          "sold_count": 24,
+          "remaining_sale_count": 3,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": false,
+          "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "upgrade_group": "sub_plan_claude_premium",
+          "total_amount": 0,
+          "resource_type": "request_count",
+          "request_count_total": 45000,
+          "request_count_period_total": 1500,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": true,
+          "quota_reset_fixed_seconds": 28800,
+          "delivery_mode": "manual_delivery",
+          "allowed_groups": [
+            "sub_plan_claude_premium"
+          ],
+          "allowed_models": [
+            "claude-haiku-4-5-20251001",
+            "claude-opus-4-5-20251101",
+            "claude-opus-4-6",
+            "claude-opus-4-7",
+            "claude-sonnet-4-5-20250929",
+            "claude-sonnet-4-6"
+          ],
+          "allowed_vendor_ids": [
+            1
+          ],
+          "allowed_vendor_names": [
+            "Anthropic"
+          ],
+          "delivery_field_schema": [
+            {
+              "key": "ANTHROPIC_BASE_URL",
+              "label": "ANTHROPIC_BASE_URL",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 1,
+              "placeholder": "https://fishxcode.com",
+              "default_value": "https://fishxcode.com"
+            },
+            {
+              "key": "ANTHROPIC_AUTH_TOKEN",
+              "label": "ANTHROPIC_AUTH_TOKEN",
+              "type": "password",
+              "required": true,
+              "masked": true,
+              "copyable": true,
+              "sort_order": 2,
+              "placeholder": "请输入要发放给用户的 API Key"
+            },
+            {
+              "key": "usage_query_url",
+              "label": "额度使用查询地址",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 3,
+              "placeholder": "https://api-key-tool.fishxcode.com/",
+              "default_value": "https://api-key-tool.fishxcode.com/"
+            }
+          ],
+          "created_at": 1775638727,
+          "updated_at": 1779418725
+        },
+        "group_meta": {
+          "sub_plan_claude_premium": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "sub_plan_claude_premium",
+            "ratio": 1
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 21,
+          "title": "Claude Mini Max",
+          "subtitle": "1000次/天，月共30000次，每月重置【单次成本 ¥0.0265】",
+          "price_amount": 795,
+          "discount_price_amount": 0,
+          "discount_deadline": 0,
+          "currency": "USD",
+          "effective_price_amount": 795,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 70,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 25,
+          "sold_count": 23,
+          "remaining_sale_count": 2,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": false,
+          "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "upgrade_group": "sub_plan_claude_mini_max",
+          "total_amount": 0,
+          "resource_type": "request_count",
+          "request_count_total": 30000,
+          "request_count_period_total": 1000,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": true,
+          "quota_reset_fixed_seconds": 28800,
+          "delivery_mode": "manual_delivery",
+          "allowed_groups": [
+            "sub_plan_claude_mini_max"
+          ],
+          "allowed_models": [
+            "claude-haiku-4-5-20251001",
+            "claude-opus-4-5-20251101",
+            "claude-opus-4-6",
+            "claude-opus-4-7",
+            "claude-sonnet-4-5-20250929",
+            "claude-sonnet-4-6"
+          ],
+          "allowed_vendor_ids": [
+            1
+          ],
+          "allowed_vendor_names": [
+            "Anthropic"
+          ],
+          "delivery_field_schema": [
+            {
+              "key": "base_url",
+              "label": "Base URL",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 1,
+              "placeholder": "例如：https://你的站点地址"
+            },
+            {
+              "key": "api_key",
+              "label": "API Key",
+              "type": "password",
+              "required": true,
+              "masked": true,
+              "copyable": true,
+              "sort_order": 2,
+              "placeholder": "请输入要发放给用户的 API Key"
+            },
+            {
+              "key": "usage_query_url",
+              "label": "额度使用查询地址",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 3,
+              "placeholder": "https://api-key-tool.fishxcode.com/",
+              "default_value": "https://api-key-tool.fishxcode.com/"
+            }
+          ],
+          "created_at": 1775638727,
+          "updated_at": 1779418725
+        },
+        "group_meta": {
+          "sub_plan_claude_mini_max": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "sub_plan_claude_mini_max",
+            "ratio": 1
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 20,
+          "title": "Claude Mini Plus",
+          "subtitle": "500次/天，月共15000次，每月重置【单次成本 ¥0.0224】",
+          "price_amount": 336,
+          "discount_price_amount": 0,
+          "discount_deadline": 0,
+          "currency": "USD",
+          "effective_price_amount": 336,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 60,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 25,
+          "sold_count": 23,
+          "remaining_sale_count": 2,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": false,
+          "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "upgrade_group": "sub_plan_claude_mini_plus",
+          "total_amount": 0,
+          "resource_type": "request_count",
+          "request_count_total": 15000,
+          "request_count_period_total": 500,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": true,
+          "quota_reset_fixed_seconds": 28800,
+          "delivery_mode": "manual_delivery",
+          "allowed_groups": [
+            "sub_plan_claude_mini_plus"
+          ],
+          "allowed_models": [
+            "claude-haiku-4-5-20251001",
+            "claude-opus-4-5-20251101",
+            "claude-opus-4-6",
+            "claude-opus-4-7",
+            "claude-sonnet-4-5-20250929",
+            "claude-sonnet-4-6"
+          ],
+          "allowed_vendor_ids": [
+            1
+          ],
+          "allowed_vendor_names": [
+            "Anthropic"
+          ],
+          "delivery_field_schema": [
+            {
+              "key": "base_url",
+              "label": "Base URL",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 1,
+              "placeholder": "例如：https://你的站点地址"
+            },
+            {
+              "key": "api_key",
+              "label": "API Key",
+              "type": "password",
+              "required": true,
+              "masked": true,
+              "copyable": true,
+              "sort_order": 2,
+              "placeholder": "请输入要发放给用户的 API Key"
+            },
+            {
+              "key": "usage_query_url",
+              "label": "额度使用查询地址",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 3,
+              "placeholder": "https://api-key-tool.fishxcode.com/",
+              "default_value": "https://api-key-tool.fishxcode.com/"
+            }
+          ],
+          "created_at": 1775638727,
+          "updated_at": 1779418725
+        },
+        "group_meta": {
+          "sub_plan_claude_mini_plus": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "sub_plan_claude_mini_plus",
+            "ratio": 1
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 19,
+          "title": "Claude Mini",
+          "subtitle": "300次/天，月共9000次，每月重置【单次成本 ¥0.0221】",
+          "price_amount": 199,
+          "discount_price_amount": 0,
+          "discount_deadline": 0,
+          "currency": "USD",
+          "effective_price_amount": 199,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 50,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 135,
+          "sold_count": 129,
+          "remaining_sale_count": 6,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": false,
+          "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "upgrade_group": "sub_plan_claude_lite",
+          "total_amount": 0,
+          "resource_type": "request_count",
+          "request_count_total": 9000,
+          "request_count_period_total": 300,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": true,
+          "quota_reset_fixed_seconds": 28800,
+          "delivery_mode": "manual_delivery",
+          "allowed_groups": [
+            "sub_plan_claude_lite"
+          ],
+          "allowed_models": [
+            "claude-haiku-4-5-20251001",
+            "claude-opus-4-5-20251101",
+            "claude-opus-4-6",
+            "claude-opus-4-7",
+            "claude-sonnet-4-5-20250929",
+            "claude-sonnet-4-6"
+          ],
+          "allowed_vendor_ids": [
+            1
+          ],
+          "allowed_vendor_names": [
+            "Anthropic"
+          ],
+          "delivery_field_schema": [
+            {
+              "key": "base_url",
+              "label": "Base URL",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 1,
+              "placeholder": "例如：https://你的站点地址",
+              "default_value": "https://fishxcode.com"
+            },
+            {
+              "key": "api_key",
+              "label": "API Key",
+              "type": "password",
+              "required": true,
+              "masked": true,
+              "copyable": true,
+              "sort_order": 2,
+              "placeholder": "请输入要发放给用户的 API Key"
+            },
+            {
+              "key": "usage_query_url",
+              "label": "额度使用查询地址",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 3,
+              "placeholder": "https://api-key-tool.fishxcode.com/",
+              "default_value": "https://api-key-tool.fishxcode.com/"
+            }
+          ],
+          "created_at": 1775638727,
+          "updated_at": 1779449056
+        },
+        "group_meta": {
+          "sub_plan_claude_lite": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "sub_plan_claude_lite",
+            "ratio": 1
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 24,
+          "title": "Claude Nano Day",
+          "subtitle": "购买后至次日 08:00:00 前有效，共 50 次【单次成本 ¥0.1000】",
+          "price_amount": 5,
+          "discount_price_amount": 4,
+          "discount_deadline": 1779292799,
+          "currency": "USD",
+          "effective_price_amount": 5,
+          "has_active_discount": false,
+          "duration_unit": "day",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 40,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 0,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 200,
+          "sold_count": 126,
+          "remaining_sale_count": 74,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": false,
+          "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "upgrade_group": "sub_plan_claude_nano_day",
+          "total_amount": 0,
+          "resource_type": "request_count",
+          "request_count_total": 50,
+          "request_count_period_total": 0,
+          "quota_reset_period": "never",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": false,
+          "quota_reset_fixed_seconds": 0,
+          "delivery_mode": "manual_delivery",
+          "allowed_groups": [
+            "sub_plan_claude_nano_day"
+          ],
+          "allowed_models": [
+            "claude-haiku-4-5-20251001",
+            "claude-opus-4-5-20251101",
+            "claude-opus-4-6",
+            "claude-opus-4-7",
+            "claude-sonnet-4-5-20250929",
+            "claude-sonnet-4-6"
+          ],
+          "allowed_vendor_ids": [
+            1
+          ],
+          "allowed_vendor_names": [
+            "Anthropic"
+          ],
+          "delivery_field_schema": [
+            {
+              "key": "base_url",
+              "label": "Base URL",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 1,
+              "placeholder": "例如：https://你的站点地址"
+            },
+            {
+              "key": "api_key",
+              "label": "API Key",
+              "type": "password",
+              "required": true,
+              "masked": true,
+              "copyable": true,
+              "sort_order": 2,
+              "placeholder": "请输入要发放给用户的 API Key"
+            },
+            {
+              "key": "usage_query_url",
+              "label": "额度使用查询地址",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 3,
+              "placeholder": "https://api-key-tool.fishxcode.com/",
+              "default_value": "https://api-key-tool.fishxcode.com/"
+            }
+          ],
+          "created_at": 1775661862,
+          "updated_at": 1779436257
+        },
+        "group_meta": {
+          "sub_plan_claude_nano_day": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "sub_plan_claude_nano_day",
+            "ratio": 1
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 27,
+          "title": "Codex Standard 套餐",
+          "subtitle": "45 美金额度/天，按天重置，月累计约 1350 美金额度",
+          "price_amount": 599,
+          "discount_price_amount": 0,
+          "discount_deadline": 0,
+          "currency": "USD",
+          "effective_price_amount": 599,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 1,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 0,
+          "sold_count": 1,
+          "remaining_sale_count": 0,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": false
+          },
+          "purchase_window_enabled": false,
+          "purchase_window_open": true,
+          "purchase_window_text": "",
+          "upgrade_group": "codex_sub",
+          "total_amount": 22500000,
+          "resource_type": "quota",
+          "request_count_total": 0,
+          "request_count_period_total": 0,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": false,
+          "quota_reset_fixed_seconds": 0,
+          "delivery_mode": "auto_activate",
+          "allowed_groups": [
+            "codex_sub"
+          ],
+          "allowed_models": [
+            "gpt-5.4",
+            "gpt-5.3-codex",
+            "gpt-5.4-mini",
+            "gpt-5.2",
+            "gpt-5.5"
+          ],
+          "allowed_vendor_ids": [
+            13
+          ],
+          "allowed_vendor_names": [
+            "OpenAI"
+          ],
+          "created_at": 1779343978,
+          "updated_at": 1779418725
+        },
+        "group_meta": {
+          "codex_sub": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "codex_sub",
+            "ratio": 0.3
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 6,
+          "title": "Codex Pro 套餐",
+          "subtitle": "200 美金额度/天，按天重置，月累计约 6000 美金额度",
+          "price_amount": 1688,
+          "discount_price_amount": 600,
+          "discount_deadline": 1777564800,
+          "currency": "USD",
+          "effective_price_amount": 1688,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 0,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 20,
+          "sold_count": 14,
+          "remaining_sale_count": 6,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": false
+          },
+          "purchase_window_enabled": false,
+          "purchase_window_open": true,
+          "purchase_window_text": "",
+          "upgrade_group": "codex_sub",
+          "total_amount": 100000000,
+          "resource_type": "quota",
+          "request_count_total": 0,
+          "request_count_period_total": 0,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": false,
+          "quota_reset_fixed_seconds": 0,
+          "delivery_mode": "auto_activate",
+          "allowed_groups": [
+            "codex_sub"
+          ],
+          "allowed_models": [
+            "gpt-5.4",
+            "gpt-5.3-codex",
+            "gpt-5.4-mini",
+            "gpt-5.2",
+            "gpt-5.5"
+          ],
+          "allowed_vendor_ids": [
+            13
+          ],
+          "allowed_vendor_names": [
+            "OpenAI"
+          ],
+          "created_at": 1773746729,
+          "updated_at": 1779418725
+        },
+        "group_meta": {
+          "codex_sub": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "codex_sub",
+            "ratio": 0.3
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 5,
+          "title": "Codex Plus 套餐",
+          "subtitle": "90 美金额度/天，按天重置，月累计约 2700 美金额度",
+          "price_amount": 999,
+          "discount_price_amount": 270,
+          "discount_deadline": 1777564800,
+          "currency": "USD",
+          "effective_price_amount": 999,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 0,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 30,
+          "sold_count": 23,
+          "remaining_sale_count": 7,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": false
+          },
+          "purchase_window_enabled": false,
+          "purchase_window_open": true,
+          "purchase_window_text": "",
+          "upgrade_group": "codex_sub",
+          "total_amount": 45000000,
+          "resource_type": "quota",
+          "request_count_total": 0,
+          "request_count_period_total": 0,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": false,
+          "quota_reset_fixed_seconds": 0,
+          "delivery_mode": "auto_activate",
+          "allowed_groups": [
+            "codex_sub"
+          ],
+          "allowed_models": [
+            "gpt-5.4",
+            "gpt-5.3-codex",
+            "gpt-5.4-mini",
+            "gpt-5.2",
+            "gpt-5.5"
+          ],
+          "allowed_vendor_ids": [
+            13
+          ],
+          "allowed_vendor_names": [
+            "OpenAI"
+          ],
+          "created_at": 1773746686,
+          "updated_at": 1779419352
+        },
+        "group_meta": {
+          "codex_sub": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "codex_sub",
+            "ratio": 0.3
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 4,
+          "title": "Codex Basic 套餐",
+          "subtitle": "30 美金额度/天，按天重置，月累计约 900 美金额度",
+          "price_amount": 512,
+          "discount_price_amount": 180,
+          "discount_deadline": 1777564800,
+          "currency": "USD",
+          "effective_price_amount": 512,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 0,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 0,
+          "sold_count": 59,
+          "remaining_sale_count": 0,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": false
+          },
+          "purchase_window_enabled": false,
+          "purchase_window_open": true,
+          "purchase_window_text": "",
+          "upgrade_group": "codex_sub",
+          "total_amount": 15000000,
+          "resource_type": "quota",
+          "request_count_total": 0,
+          "request_count_period_total": 0,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": false,
+          "quota_reset_fixed_seconds": 0,
+          "delivery_mode": "auto_activate",
+          "allowed_groups": [
+            "codex_sub"
+          ],
+          "allowed_models": [
+            "gpt-5.4",
+            "gpt-5.3-codex",
+            "gpt-5.4-mini",
+            "gpt-5.2",
+            "gpt-5.5"
+          ],
+          "allowed_vendor_ids": [
+            13
+          ],
+          "allowed_vendor_names": [
+            "OpenAI"
+          ],
+          "created_at": 1773746632,
+          "updated_at": 1779418725
+        },
+        "group_meta": {
+          "codex_sub": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "codex_sub",
+            "ratio": 0.3
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 3,
+          "title": "Codex Mini 套餐",
+          "subtitle": "10 美金额度/天，按天重置，月累计约 300 美金额度",
+          "price_amount": 128,
+          "discount_price_amount": 9,
+          "discount_deadline": 1777564800,
+          "currency": "USD",
+          "effective_price_amount": 128,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 0,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 0,
+          "sold_count": 83,
+          "remaining_sale_count": 0,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": false
+          },
+          "purchase_window_enabled": false,
+          "purchase_window_open": true,
+          "purchase_window_text": "",
+          "upgrade_group": "codex_sub",
+          "total_amount": 5000000,
+          "resource_type": "quota",
+          "request_count_total": 0,
+          "request_count_period_total": 0,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": false,
+          "quota_reset_fixed_seconds": 0,
+          "delivery_mode": "auto_activate",
+          "allowed_groups": [
+            "codex_sub"
+          ],
+          "allowed_models": [
+            "gpt-5.4",
+            "gpt-5.3-codex",
+            "gpt-5.4-mini",
+            "gpt-5.2",
+            "gpt-5.5"
+          ],
+          "allowed_vendor_ids": [
+            13
+          ],
+          "allowed_vendor_names": [
+            "OpenAI"
+          ],
+          "created_at": 1773746508,
+          "updated_at": 1779482959
+        },
+        "group_meta": {
+          "codex_sub": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "codex_sub",
+            "ratio": 0.3
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 2,
+          "title": "Codex 周卡",
+          "subtitle": "10 美金额度/天，按天重置，7日累计约 70 美金额度",
+          "price_amount": 46.8,
+          "discount_price_amount": 3,
+          "discount_deadline": 1777564800,
+          "currency": "USD",
+          "effective_price_amount": 46.8,
+          "has_active_discount": false,
+          "duration_unit": "day",
+          "duration_value": 7,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 0,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 0,
+          "sold_count": 142,
+          "remaining_sale_count": 0,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": false
+          },
+          "purchase_window_enabled": false,
+          "purchase_window_open": true,
+          "purchase_window_text": "",
+          "upgrade_group": "codex_sub",
+          "total_amount": 5000000,
+          "resource_type": "quota",
+          "request_count_total": 0,
+          "request_count_period_total": 0,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": false,
+          "quota_reset_fixed_seconds": 0,
+          "delivery_mode": "auto_activate",
+          "allowed_groups": [
+            "codex_sub"
+          ],
+          "allowed_models": [
+            "gpt-5.4",
+            "gpt-5.3-codex",
+            "gpt-5.4-mini",
+            "gpt-5.2",
+            "gpt-5.5"
+          ],
+          "allowed_vendor_ids": [
+            13
+          ],
+          "allowed_vendor_names": [
+            "OpenAI"
+          ],
+          "created_at": 1773746300,
+          "updated_at": 1779447136
+        },
+        "group_meta": {
+          "codex_sub": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "codex_sub",
+            "ratio": 0.3
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 1,
+          "title": "Codex 天卡",
+          "subtitle": "10 美金额度，1日有效",
+          "price_amount": 10,
+          "discount_price_amount": 6.8,
+          "discount_deadline": 1779551999,
+          "currency": "USD",
+          "effective_price_amount": 6.8,
+          "has_active_discount": true,
+          "duration_unit": "day",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 0,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 0,
+          "sold_count": 953,
+          "remaining_sale_count": 0,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": false
+          },
+          "purchase_window_enabled": false,
+          "purchase_window_open": true,
+          "purchase_window_text": "",
+          "upgrade_group": "codex_sub",
+          "total_amount": 5000000,
+          "resource_type": "quota",
+          "request_count_total": 0,
+          "request_count_period_total": 0,
+          "quota_reset_period": "never",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": false,
+          "quota_reset_fixed_seconds": 0,
+          "delivery_mode": "auto_activate",
+          "allowed_groups": [
+            "codex_sub"
+          ],
+          "allowed_models": [
+            "gpt-5.4",
+            "gpt-5.3-codex",
+            "gpt-5.4-mini",
+            "gpt-5.2",
+            "gpt-5.5"
+          ],
+          "allowed_vendor_ids": [
+            13
+          ],
+          "allowed_vendor_names": [
+            "OpenAI"
+          ],
+          "created_at": 1773746164,
+          "updated_at": 1779441131
+        },
+        "group_meta": {
+          "codex_sub": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "codex_sub",
+            "ratio": 0.3
+          }
+        }
+      }
+    ],
+    "message": "",
+    "success": true
+  },
+  "subscription_plans_source_url": "https://fishxcode.com/api/subscription/plans",
   "source_url": "https://fishxcode.com/api/pricing"
 }

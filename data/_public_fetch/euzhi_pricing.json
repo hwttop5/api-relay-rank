@@ -67,8 +67,8 @@
       "owner_by": "",
       "completion_ratio": 8,
       "enable_groups": [
-        "vip",
-        "default"
+        "default",
+        "vip"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -102,8 +102,8 @@
       "completion_ratio": 0,
       "image_ratio": 1,
       "enable_groups": [
-        "vip",
-        "default"
+        "default",
+        "vip"
       ],
       "supported_endpoint_types": [
         "openai"

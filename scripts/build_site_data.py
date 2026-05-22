@@ -57,6 +57,7 @@ BILLING_LABELS = {
     "permanent": "永久额度",
     "permanent_or_unknown": "按量额度",
 }
+PACKAGE_BILLING_TYPES = {"monthly", "weekly", "daily", "quarterly", "yearly"}
 
 TIME_WINDOWS = {
     "work_hours": {"key": "work_hours", "label": "工作时段", "range": "工作日09:00:00-18:00:00"},
@@ -74,6 +75,18 @@ TOPUP_HTML_PATTERN = re.compile(
     r"(wallet\s*topup\s*(\d+(?:\.\d+)?)\s*RMB).*?(\d+(?:\.\d+)?)\s*(?:USD|\$)",
     re.IGNORECASE | re.DOTALL,
 )
+WALLET_CONVERSION_PATTERNS = (
+    re.compile(r"[\u00a5\uffe5]\s*(\d+(?:\.\d+)?)\s*=\s*\$\s*(\d+(?:\.\d+)?)", re.IGNORECASE),
+    re.compile(r"(\d+(?:\.\d+)?)\s*(?:RMB|CNY|\u4eba\u6c11\u5e01)\s*=\s*\$\s*(\d+(?:\.\d+)?)", re.IGNORECASE),
+)
+MINIMUM_RECHARGE_PATTERN = re.compile(
+    r"(?:\u6700\u4f4e|\u8d77\u5145|minimum)\s*(?:[\u00a5\uffe5]|RMB|CNY|\u4eba\u6c11\u5e01)?\s*(\d+(?:\.\d+)?)",
+    re.IGNORECASE,
+)
+PUBLIC_PLAN_CARD_PATTERN = re.compile(
+    r"<article\b[^>]*class=[\"'][^\"']*\bffm-plan-card\b[^\"']*[\"'][^>]*>(.*?)</article>",
+    re.IGNORECASE | re.DOTALL,
+)
 APP_CONFIG_PATTERN = re.compile(
     r"window\.__APP_CONFIG__\s*=\s*(\{.*?\})\s*;?\s*</script>",
     re.IGNORECASE | re.DOTALL,
@@ -83,6 +96,7 @@ PAY_SHOP_PATTERN = re.compile(r"https?://pay\.ldxp\.cn/shop/([A-Za-z0-9_-]+)")
 TRAILING_UI_SEGMENTS = {"console", "dashboard", "wallet", "keys", "purchase", "pricing", "plans", "api-keys"}
 LOCALE_SEGMENT_PATTERN = re.compile(r"^[A-Za-z]{2}(?:-[A-Za-z]{2})?$")
 PAYMENT_URL_PATH_SEGMENTS = {"shop", "item", "pay", "checkout", "payment"}
+KRILL_ROUTE_MULTIPLIER = 0.2
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -153,6 +167,24 @@ def sanitize_public_text(value: Any) -> str:
     text = PATH_PATTERN.sub(r"\1xxx", text)
     text = EMAIL_PATTERN.sub("xxx", text)
     text = re.sub(r"(?i)ttop5", "xxx", text)
+    return text
+
+
+def public_source_text(value: Any) -> str:
+    raw = str(value or "").replace("\r\n", "\n").replace("\r", "\n").strip()
+    if not raw:
+        return ""
+    if re.match(r"^[A-Za-z]:\\", raw):
+        path = Path(raw)
+        for root in (APP_ROOT, WORKSPACE_ROOT):
+            try:
+                return path.resolve().relative_to(root).as_posix()
+            except (ValueError, OSError):
+                continue
+        return path.name
+    text = sanitize_public_text(raw)
+    if re.match(r"^[A-Za-z]:\\", text):
+        return Path(text).name
     return text
 
 
@@ -1008,6 +1040,10 @@ def probe_has_useful_detail_data(probe: dict[str, Any]) -> bool:
         "/api/user/self/groups",
         "/api/user/topup/info",
         "/api/subscription/plans",
+        "/api/endpoint-settings/me",
+        "/api/plans",
+        "/api/public/shop/products",
+        "/api/announcements/unread",
         "/api/v1/groups/available",
         "/api/v1/payment/plans",
         "/api/v1/payment/checkout-info",
@@ -1158,6 +1194,7 @@ def live_probe_announcements_and_status(station_key: str, probe: dict[str, Any])
     for api_path in (
         "/api/v1/announcements",
         "/api/announcements",
+        "/api/announcements/unread",
         "/api/announcements/active?locale=zh-CN",
         "/api/announcements/active?locale=en",
         "/api/user/announcements",
@@ -1235,7 +1272,7 @@ def live_probe_announcements_and_status(station_key: str, probe: dict[str, Any])
         return [], first_failure
     return [], {
         "status": "missing",
-        "source": sanitize_public_text(probe.get("_probePath") or probe_location(probe)),
+        "source": public_source_text(probe.get("_probePath") or probe_location(probe)),
         "message": "live auth probe 尚未包含公告接口",
     }
 
@@ -1253,6 +1290,9 @@ def live_probe_group_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], 
     new_api_result = new_api_group_rows(probe)
     if new_api_result is not None:
         return new_api_result
+    krill_result = krill_route_group_rows(probe)
+    if krill_result is not None:
+        return krill_result
     entry = find_probe_result(probe, "/api/v1/groups/available")
     data = probe_result_data_from_entry(entry)
     rows = data if isinstance(data, list) else []
@@ -1281,7 +1321,7 @@ def live_probe_group_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], 
         status = int(entry.get("status") or 0)
         message = f"登录态分组接口返回 HTTP {status}" if status >= 400 else "登录态分组接口返回空列表"
         return [], {"status": "empty" if status < 400 else "failed", "source": source, "message": message}
-    return [], {"status": "missing", "source": sanitize_public_text(probe.get("_probePath") or probe_location(probe)), "message": "live auth probe 尚未包含分组接口"}
+    return [], {"status": "missing", "source": public_source_text(probe.get("_probePath") or probe_location(probe)), "message": "live auth probe 尚未包含分组接口"}
 
 
 def duration_unit_to_billing_type(unit: Any) -> str:
@@ -1338,7 +1378,7 @@ def convert_quota_to_usd(quota_value: Any) -> float | None:
 
 
 def plan_total_usd(plan: dict[str, Any]) -> float | None:
-    for key in ("usd_amount", "usdAmount", "usd", "monthly_limit_usd", "weekly_limit_usd", "daily_limit_usd"):
+    for key in ("usd_amount", "usdAmount", "usd", "amount_usd", "charge_price", "quota_amount", "credit_amount", "monthly_limit_usd", "weekly_limit_usd", "daily_limit_usd"):
         direct = parse_float(plan.get(key))
         if direct and direct > 0:
             if key == "daily_limit_usd":
@@ -1348,6 +1388,10 @@ def plan_total_usd(plan: dict[str, Any]) -> float | None:
                 duration_days = parse_float(plan.get("validity_days") or plan.get("duration_value")) or 7
                 return direct * max(1, int(duration_days // 7))
             return direct
+    amount = parse_float(plan.get("amount"))
+    price = parse_float(plan.get("price_amount") or plan.get("price") or plan.get("rmbAmount") or plan.get("rmb_amount"))
+    if amount and amount > 0 and price is not None:
+        return amount
     quota_usd = convert_quota_to_usd(plan.get("total_amount"))
     if quota_usd is None:
         quota_usd = convert_quota_to_usd(plan.get("quota"))
@@ -1421,7 +1465,39 @@ def new_api_group_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dic
         return groups, {"status": "captured", "source": source, "message": f"登录态分组接口抓取到 {len(groups)} 条"}
     if isinstance(entry, dict):
         return [], {"status": "empty", "source": source, "message": "登录态 New API 分组接口返回空列表"}
-    return [], {"status": "missing", "source": sanitize_public_text(probe.get("_probePath") or probe_location(probe)), "message": "live auth probe 尚未包含 New API 分组接口"}
+    return [], {"status": "missing", "source": public_source_text(probe.get("_probePath") or probe_location(probe)), "message": "live auth probe 尚未包含 New API 分组接口"}
+
+
+def krill_route_group_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]] | None:
+    entry = find_probe_result(probe, "/api/endpoint-settings/me")
+    if entry is None:
+        return None
+    data = probe_result_data_from_entry(entry)
+    routes = data.get("routes") if isinstance(data, dict) else None
+    groups: list[dict[str, Any]] = []
+    if isinstance(routes, list):
+        for route in routes:
+            if not isinstance(route, dict) or explicitly_false(route.get("enabled")):
+                continue
+            route_name = sanitize_public_text(route.get("name") or route.get("key"))
+            if not route_name:
+                continue
+            group = normalize_group_row(
+                {
+                    "groupName": route_name,
+                    "groupMultiplier": KRILL_ROUTE_MULTIPLIER,
+                }
+            )
+            if group:
+                groups.append(group)
+    source = probe_source_url(probe, "/api/endpoint-settings/me")
+    if groups:
+        return groups, {"status": "captured", "source": source, "message": f"Krill 路由配置抓取到 {len(groups)} 条；Codex 套餐页显示倍率全部 0.2x"}
+    if entry_is_blocked(entry):
+        return [], {"status": "blocked", "source": source, "message": "Krill 路由配置接口被验证码或风控阻断"}
+    status = int(entry.get("status") or 0)
+    message = f"Krill 路由配置接口返回 HTTP {status}" if status >= 400 else "Krill 路由配置接口返回空列表"
+    return [], {"status": "empty" if status < 400 else "failed", "source": source, "message": message}
 
 
 def new_api_recharge_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]] | None:
@@ -1501,7 +1577,7 @@ def new_api_recharge_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], 
         return tiers, {"status": "captured", "source": source, "message": f"登录态充值/订阅接口抓取到 {len(tiers)} 条"}
     if amount_options or amount_results or plan_entry is not None:
         return [], {"status": "empty", "source": source, "message": "登录态充值/订阅接口返回空列表"}
-    return [], {"status": "missing", "source": sanitize_public_text(probe.get("_probePath") or probe_location(probe)), "message": "live auth probe 尚未包含 New API 充值接口"}
+    return [], {"status": "missing", "source": public_source_text(probe.get("_probePath") or probe_location(probe)), "message": "live auth probe 尚未包含 New API 充值接口"}
 
 
 def v1_plan_rows_from_probe(probe: dict[str, Any]) -> list[dict[str, Any]]:
@@ -1551,7 +1627,153 @@ def v1_plan_rows_from_probe(probe: dict[str, Any]) -> list[dict[str, Any]]:
     return rows
 
 
+def krill_shop_payloads(probe: dict[str, Any]) -> list[tuple[str, dict[str, Any]]]:
+    payloads: list[tuple[str, dict[str, Any]]] = []
+    for path in ("/api/public/shop/products", "/api/plans"):
+        entry = find_probe_result(probe, path)
+        body = probe_result_body_from_entry(entry)
+        if isinstance(body, dict):
+            payloads.append((path, body))
+    return payloads
+
+
+def krill_public_products_payload(payload: dict[str, Any]) -> dict[str, Any] | None:
+    data = payload.get("data") if isinstance(payload.get("data"), dict) else None
+    if isinstance(data, dict) and ("plans" in data or "balance_products" in data):
+        return data
+    if "plans" in payload or "balance_products" in payload:
+        return payload
+    return None
+
+
+def krill_plan_rows(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    data = payload.get("data")
+    if isinstance(data, list):
+        return [item for item in data if isinstance(item, dict)]
+    products = krill_public_products_payload(payload)
+    plans = products.get("plans") if isinstance(products, dict) else None
+    return [item for item in plans if isinstance(item, dict)] if isinstance(plans, list) else []
+
+
+def krill_balance_product_rows(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    products = krill_public_products_payload(payload)
+    rows = products.get("balance_products") if isinstance(products, dict) else None
+    return [item for item in rows if isinstance(item, dict)] if isinstance(rows, list) else []
+
+
+def krill_plan_is_visible_codex(plan: dict[str, Any]) -> bool:
+    if explicitly_false(plan.get("active")):
+        return False
+    if parse_bool(plan.get("is_custom")) or parse_bool(plan.get("custom")):
+        return False
+    if "is_on_sale" in plan and not parse_bool(plan.get("is_on_sale")):
+        return False
+    allowed_provider_ids = plan.get("allowed_provider_ids")
+    if isinstance(allowed_provider_ids, list) and 1 not in {parse_int(item) for item in allowed_provider_ids}:
+        return False
+    billing_type = sanitize_public_text(plan.get("billing_type") or plan.get("billingType"))
+    if billing_type != "usd_daily":
+        return False
+    price = parse_float(plan.get("price_usd_per_month") or plan.get("price"))
+    daily_quota = parse_float(plan.get("daily_quota_usd"))
+    duration_days = parse_float(plan.get("duration_days"))
+    if price is None or daily_quota is None or duration_days is None:
+        return False
+    if price <= 0 or daily_quota <= 0 or duration_days <= 0 or price >= 10000:
+        return False
+    name = sanitize_public_text(plan.get("name") or plan.get("title"))
+    if any(marker in name for marker in ("企业", "定制", "测试", "推广", "内部")):
+        return False
+    return True
+
+
+def krill_codex_plan_row(plan: dict[str, Any], recharge_location: str) -> dict[str, Any] | None:
+    price = parse_float(plan.get("price_usd_per_month") or plan.get("price"))
+    daily_quota = parse_float(plan.get("daily_quota_usd"))
+    duration_days = parse_float(plan.get("duration_days"))
+    if price is None or daily_quota is None or duration_days is None:
+        return None
+    route_keys = plan.get("entry_route_keys")
+    route_note = ""
+    if isinstance(route_keys, list) and route_keys:
+        route_note = "; entry routes " + ", ".join(sanitize_public_text(item) for item in route_keys if sanitize_public_text(item))
+    return normalize_recharge_row(
+        {
+            "rechargeName": plan.get("name") or plan.get("title") or "Krill Codex package",
+            "billingType": billing_type_from_days(duration_days),
+            "rmbAmount": price,
+            "usdAmount": daily_quota * duration_days,
+            "rechargeLocation": recharge_location,
+            "expiresRule": f"{format_plain_number(duration_days)} day package; total quota from {format_plain_number(daily_quota)} USD/day; Codex package{route_note}",
+        }
+    )
+
+
+def krill_balance_product_row(product: dict[str, Any], recharge_location: str) -> dict[str, Any] | None:
+    name = sanitize_public_text(product.get("name") or product.get("title") or "Krill balance topup")
+    if "负余额" in name or "仅限" in name:
+        return None
+    rmb_amount = parse_float(product.get("price_cny") or product.get("price") or product.get("rmbAmount"))
+    usd_amount = parse_float(product.get("amount_usd") or product.get("usdAmount") or product.get("usd"))
+    if rmb_amount is None or usd_amount is None or rmb_amount <= 0 or usd_amount <= 0:
+        return None
+    return normalize_recharge_row(
+        {
+            "rechargeName": name,
+            "billingType": "permanent",
+            "rmbAmount": rmb_amount,
+            "usdAmount": usd_amount,
+            "rechargeLocation": recharge_location,
+            "expiresRule": "Balance top-up; no expiry shown on shop page",
+        }
+    )
+
+
+def krill_recharge_rows_from_payload(payload: dict[str, Any], source_label: str) -> list[dict[str, Any]]:
+    tiers: list[dict[str, Any]] = []
+    seen: set[tuple[Any, ...]] = set()
+    for plan in krill_plan_rows(payload):
+        if not krill_plan_is_visible_codex(plan):
+            continue
+        row = krill_codex_plan_row(plan, f"{source_label} Codex package")
+        if row and recharge_row_key(row) not in seen:
+            seen.add(recharge_row_key(row))
+            tiers.append(row)
+    for product in krill_balance_product_rows(payload):
+        row = krill_balance_product_row(product, f"{source_label} balance tab")
+        if row and recharge_row_key(row) not in seen:
+            seen.add(recharge_row_key(row))
+            tiers.append(row)
+    return tiers
+
+
+def krill_live_probe_recharge_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]] | None:
+    payloads = krill_shop_payloads(probe)
+    if not payloads:
+        return None
+    tiers: list[dict[str, Any]] = []
+    seen: set[tuple[Any, ...]] = set()
+    for path, payload in payloads:
+        source_label = "Krill public shop products API" if path == "/api/public/shop/products" else "Krill plans API"
+        for row in krill_recharge_rows_from_payload(payload, source_label):
+            key = (row.get("rechargeName"), row.get("billingType"), row.get("rmbAmount"), row.get("usdAmount"))
+            if key in seen:
+                continue
+            seen.add(key)
+            tiers.append(row)
+    source_path = "/api/public/shop/products" if find_probe_result(probe, "/api/public/shop/products") is not None else "/api/plans"
+    source = probe_source_url(probe, source_path)
+    if tiers:
+        return tiers, {"status": "captured", "source": source, "message": f"Krill 商店接口抓取到 {len(tiers)} 条充值/套餐档位"}
+    if any(entry_is_blocked(find_probe_result(probe, path)) for path, _payload in payloads):
+        return [], {"status": "blocked", "source": source, "message": "Krill 商店接口被验证码或风控阻断"}
+    return [], {"status": "empty", "source": source, "message": "Krill 商店接口可访问，但没有可归档的公开充值/套餐档位"}
+
+
 def live_probe_recharge_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]]:
+    krill_result = krill_live_probe_recharge_rows(probe)
+    if krill_result is not None:
+        return krill_result
     new_api_result = new_api_recharge_rows(probe)
     if new_api_result is not None:
         return new_api_result
@@ -1656,7 +1878,7 @@ def live_probe_recharge_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]
         }
     if config_entry is not None or checkout_entry is not None or plan_entry is not None:
         return [], {"status": "empty", "source": source, "message": "登录态支付接口可访问，但没有可结构化的充值档位"}
-    return [], {"status": "missing", "source": sanitize_public_text(probe.get("_probePath") or probe_location(probe)), "message": "live auth probe 尚未包含支付接口"}
+    return [], {"status": "missing", "source": public_source_text(probe.get("_probePath") or probe_location(probe)), "message": "live auth probe 尚未包含支付接口"}
 
 
 def merge_announcements(existing: list[dict[str, Any]], incoming: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -1771,6 +1993,20 @@ def load_live_probe_snapshots(station_aliases: dict[str, str] | None = None) -> 
             announcements = stored_announcements
         groups, group_status = live_probe_group_rows(probe)
         recharges, recharge_status = live_probe_recharge_rows(probe)
+        station_shop_snapshot = known_station_pay_shop_snapshot(station_key)
+        station_type_hint = ""
+        if station_shop_snapshot:
+            station_type_hint = sanitize_public_text(station_shop_snapshot.get("stationTypeHint"))
+            shop_recharges = normalized_recharge_rows(station_shop_snapshot.get("rechargeTiers"))
+            if shop_recharges and not recharges:
+                recharges = shop_recharges
+                recharge_status = {
+                    "status": "captured",
+                    "source": public_source_text(station_shop_snapshot.get("sourceUrl")),
+                    "message": f"官方外部店铺核验到 {len(recharges)} 条充值/套餐档位",
+                }
+        if not station_type_hint:
+            station_type_hint = infer_station_type_from_recharge_tiers(recharges)
         announcement_status = normalize_live_probe_status(announcement_status)
         group_status = normalize_live_probe_status(group_status)
         recharge_status = normalize_live_probe_status(recharge_status)
@@ -1778,6 +2014,8 @@ def load_live_probe_snapshots(station_aliases: dict[str, str] | None = None) -> 
             "announcements": announcements,
             "groupMultipliers": groups,
             "rechargeTiers": recharges,
+            "stationTypeHint": station_type_hint,
+            "verifiedTierCount": live_probe_verified_tier_count(groups, recharges),
             "evidenceStatus": {
                 "announcements": announcement_status,
                 "groupMultipliers": group_status,
@@ -1895,15 +2133,78 @@ def normalized_recharge_rows(rows: Any) -> list[dict[str, Any]]:
     return normalized
 
 
+def infer_station_type_from_recharge_tiers(recharge_tiers: Any) -> str:
+    normalized = normalized_recharge_rows(recharge_tiers)
+    if not normalized:
+        return ""
+    billing_types = {row.get("billingType") for row in normalized}
+    has_package_tiers = any(billing_type in PACKAGE_BILLING_TYPES for billing_type in billing_types)
+    has_permanent_tiers = "permanent" in billing_types
+    if has_package_tiers and has_permanent_tiers:
+        return "mixed"
+    if has_package_tiers:
+        return "subscription"
+    return "non_subscription"
+
+
+def live_probe_verified_tier_count(group_rows: Any, recharge_tiers: Any) -> int:
+    if not normalized_group_rows(group_rows):
+        return 0
+    valid_recharges = [
+        row
+        for row in normalized_recharge_rows(recharge_tiers)
+        if row.get("rmbAmount") is not None
+        and row.get("usdAmount") is not None
+        and parse_float(row.get("rmbAmount")) is not None
+        and parse_float(row.get("usdAmount")) is not None
+        and (parse_float(row.get("usdAmount")) or 0) > 0
+    ]
+    return len(valid_recharges)
+
+
+def normalized_tier_note_segments(value: Any) -> list[str]:
+    note = normalize_public_text(value)
+    if not note:
+        return []
+    return [
+        segment.strip()
+        for segment in re.split(r";\s+", note)
+        if segment.strip()
+    ]
+
+
+def collapse_legacy_tier_note_fragments(notes: list[str]) -> list[str]:
+    collapsed: list[str] = []
+    for note in notes:
+        if (
+            collapsed
+            and collapsed[-1].startswith("Public marketing page conversion sample:")
+            and (
+                note in {"not a fixed package", "expiry not stated"}
+                or re.fullmatch(r"minimum recharge \d+(?:\.\d+)? RMB", note)
+            )
+        ):
+            if note not in normalized_tier_note_segments(collapsed[-1]):
+                collapsed[-1] = f"{collapsed[-1]}; {note}"
+            continue
+        collapsed.append(note)
+    return collapsed
+
+
 def normalized_tier_notes(rows: Any) -> list[str]:
     normalized: list[str] = []
+    seen_segments: set[str] = set()
     if not isinstance(rows, list):
         return normalized
     for item in rows:
-        note = normalize_public_text(item)
-        if note and note not in normalized:
-            normalized.append(note)
-    return normalized
+        note_segments: list[str] = []
+        for note in normalized_tier_note_segments(item):
+            if note and note not in seen_segments:
+                seen_segments.add(note)
+                note_segments.append(note)
+        if note_segments:
+            normalized.append("; ".join(note_segments))
+    return collapse_legacy_tier_note_fragments(normalized)
 
 
 def normalized_announcement_rows(rows: Any) -> list[dict[str, Any]]:
@@ -1933,6 +2234,11 @@ def merge_tier_notes(station: dict[str, Any], notes: Any) -> None:
     for note in normalized_tier_notes(notes):
         if note not in station["tierNotes"]:
             station["tierNotes"].append(note)
+
+
+def dedupe_station_tier_notes(stations: dict[str, dict[str, Any]]) -> None:
+    for station in stations.values():
+        station["tierNotes"] = normalized_tier_notes(station.get("tierNotes"))
 
 
 def load_existing_detail_baseline(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
@@ -2204,11 +2510,143 @@ def parse_pricing_tier_item(item: dict[str, Any]) -> dict[str, Any] | None:
     )
 
 
+def public_subscription_plan_features_text(plan: dict[str, Any], separator: str = " ") -> str:
+    features = plan.get("features")
+    if not isinstance(features, list):
+        return ""
+    return separator.join(sanitize_public_text(item) for item in features if sanitize_public_text(item))
+
+
+def looks_like_subscription_plan(plan: dict[str, Any]) -> bool:
+    if not isinstance(plan, dict):
+        return False
+    if "plan" in plan and isinstance(plan.get("plan"), dict):
+        plan = plan["plan"]
+    has_price = any(key in plan for key in ("price", "price_amount", "rmbAmount", "rmb_amount", "price_cny", "cny_amount"))
+    has_credit = any(
+        key in plan
+        for key in (
+            "usd_amount",
+            "usdAmount",
+            "usd",
+            "amount_usd",
+            "charge_price",
+            "quota_amount",
+            "amount",
+            "total_amount",
+            "quota",
+            "daily_limit_usd",
+            "weekly_limit_usd",
+            "monthly_limit_usd",
+        )
+    )
+    text = " ".join(
+        str(value or "")
+        for value in (
+            plan.get("name"),
+            plan.get("title"),
+            plan.get("description"),
+            plan.get("duration"),
+            public_subscription_plan_features_text(plan),
+        )
+    ).lower()
+    return has_price and (has_credit or "$" in text or "usd" in text)
+
+
+def public_subscription_plan_price(plan: dict[str, Any]) -> float | None:
+    return parse_float(
+        plan.get("price_amount")
+        or plan.get("price")
+        or plan.get("rmbAmount")
+        or plan.get("rmb_amount")
+        or plan.get("price_cny")
+        or plan.get("cny_amount")
+    )
+
+
+def public_subscription_plan_usd_amount(plan: dict[str, Any]) -> float | None:
+    direct = plan_total_usd(plan)
+    if direct and direct > 0:
+        return direct
+    feature_text = public_subscription_plan_features_text(plan)
+    text = " ".join(str(value or "") for value in (plan.get("description"), plan.get("subtitle"), plan.get("desc"), feature_text))
+    match = re.search(r"(?:\$\s*(\d+(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*(?:USD|usd|\$))", text)
+    if match:
+        return parse_float(match.group(1) or match.group(2))
+    return None
+
+
+def public_subscription_plan_billing_type(plan: dict[str, Any]) -> str:
+    duration = sanitize_public_text(plan.get("duration")).lower()
+    feature_text = public_subscription_plan_features_text(plan).lower()
+    if any(marker in f"{duration} {feature_text}" for marker in ("one-time", "onetime", "permanent", "一次性", "永久")):
+        return "permanent"
+    return plan_billing_type(plan)
+
+
+def public_subscription_plan_expires_rule(plan: dict[str, Any]) -> str:
+    duration = sanitize_public_text(plan.get("duration"))
+    feature_text = public_subscription_plan_features_text(plan, "; ")
+    combined = f"{duration} {feature_text}".lower()
+    if any(marker in combined for marker in ("one-time", "onetime", "permanent", "一次性", "永久")):
+        return "One-time recharge; permanent balance"
+    return plan_expires_rule(plan)
+
+
+def public_subscription_plan_rows_from_payload(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    plan_sources: list[Any] = []
+    for key in (
+        "subscription_plans_payload",
+        "subscriptionPlansPayload",
+        "subscription_plans",
+        "subscriptionPlans",
+    ):
+        if key in payload:
+            plan_sources.append(payload.get(key))
+
+    source_url = sanitize_public_text(payload.get("source_url") or payload.get("sourceUrl"))
+    top_level_rows, top_level_found = extract_collection(payload)
+    if top_level_found and (source_url.rstrip("/").endswith("/api/subscription/plans") or any(isinstance(item, dict) and looks_like_subscription_plan(item) for item in top_level_rows)):
+        plan_sources.append(payload)
+
+    rows: list[dict[str, Any]] = []
+    seen: set[tuple[Any, ...]] = set()
+    for source in plan_sources:
+        plan_rows, _found = extract_collection(source)
+        for item in plan_rows:
+            if not isinstance(item, dict):
+                continue
+            plan = dict(item.get("plan") if isinstance(item.get("plan"), dict) else item)
+            if explicitly_false(plan.get("enabled")) or not looks_like_subscription_plan(plan):
+                continue
+            title = sanitize_public_text(plan.get("title") or plan.get("name") or plan.get("product_name") or "subscription plan")
+            price = public_subscription_plan_price(plan)
+            usd_amount = public_subscription_plan_usd_amount(plan)
+            key = (plan.get("id"), title, price, usd_amount)
+            if key in seen:
+                continue
+            seen.add(key)
+            row = normalize_recharge_row(
+                {
+                    "rechargeName": title,
+                    "billingType": public_subscription_plan_billing_type(plan),
+                    "rmbAmount": price,
+                    "usdAmount": usd_amount,
+                    "rechargeLocation": "public /api/subscription/plans",
+                    "expiresRule": public_subscription_plan_expires_rule(plan),
+                }
+            )
+            if row:
+                rows.append(row)
+    return rows
+
+
 def parse_public_pricing_payload(payload: dict[str, Any]) -> dict[str, Any]:
     groups: list[dict[str, Any]] = []
     recharge_tiers: list[dict[str, Any]] = []
     tier_notes: list[str] = []
     source_url = sanitize_public_text(payload.get("server_address") or payload.get("base_url") or payload.get("source_url") or payload.get("sourceUrl"))
+    station_type_hint = ""
 
     normalized_groups = normalized_group_rows(payload.get("groupMultipliers") or payload.get("group_multipliers"))
     if normalized_groups:
@@ -2217,6 +2655,17 @@ def parse_public_pricing_payload(payload: dict[str, Any]) -> dict[str, Any]:
     normalized_recharges = normalized_recharge_rows(payload.get("rechargeTiers") or payload.get("recharge_tiers_normalized"))
     if normalized_recharges:
         recharge_tiers.extend(normalized_recharges)
+
+    if "krill-ai.com" in source_url:
+        krill_tiers = krill_recharge_rows_from_payload(payload, "Krill public shop products API")
+        if krill_tiers:
+            recharge_tiers.extend(krill_tiers)
+            station_type_hint = "mixed"
+            tier_notes.append("Krill shop products API exposes Codex packages and balance top-ups; Codex package page states 0.2x billing for all routes.")
+
+    subscription_plan_rows = public_subscription_plan_rows_from_payload(payload)
+    if subscription_plan_rows:
+        recharge_tiers.extend(subscription_plan_rows)
 
     for group_ratio in (
         payload.get("group_ratio"),
@@ -2240,7 +2689,7 @@ def parse_public_pricing_payload(payload: dict[str, Any]) -> dict[str, Any]:
         status_data = payload
     price = parse_float(status_data.get("price") if isinstance(status_data, dict) else None)
     quota_per_unit = parse_float(status_data.get("quota_per_unit") if isinstance(status_data, dict) else None)
-    if price and quota_per_unit and price > 0 and quota_per_unit > 0:
+    if not subscription_plan_rows and price and quota_per_unit and price > 0 and quota_per_unit > 0:
         usd_amount = quota_per_unit / 500000.0
         row = normalize_recharge_row(
             {
@@ -2285,7 +2734,7 @@ def parse_public_pricing_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "rechargeTiers": recharge_tiers,
         "tierNotes": tier_notes,
         "sourceUrl": source_url,
-        "stationTypeHint": "",
+        "stationTypeHint": station_type_hint,
     }
 
 
@@ -2324,6 +2773,45 @@ KNOWN_PAY_SHOP_PRODUCTS: dict[str, dict[str, Any]] = {
             {"rechargeName": "300 USD permanent quota", "billingType": "permanent", "rmbAmount": 50, "usdAmount": 300, "expiresRule": "External shop redeem code; permanent balance"},
         ],
     },
+    "CFUOS364": {
+        "stationTypeHint": "mixed",
+        "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+        "tierNotes": [
+            "zhishu.dev payment config is disabled; recharge evidence uses the official menu-linked pay.ldxp.cn shop verified in the logged-in browser."
+        ],
+        "products": [
+            {"rechargeName": "Codex API 10 USD permanent quota", "billingType": "permanent", "rmbAmount": 10, "usdAmount": 10, "expiresRule": "External shop redeem code; product states Codex API 10 USD quota with no expiry"},
+            {"rechargeName": "Codex API 20 USD permanent quota", "billingType": "permanent", "rmbAmount": 19, "usdAmount": 20, "expiresRule": "External shop redeem code; product states Codex API 20 USD quota with no expiry"},
+            {"rechargeName": "Codex API 50 USD permanent quota", "billingType": "permanent", "rmbAmount": 45, "usdAmount": 50, "expiresRule": "External shop redeem code; product states Codex API 50 USD quota with no expiry"},
+            {"rechargeName": "Codex monthly Plus 300 USD quota", "billingType": "monthly", "rmbAmount": 240, "usdAmount": 300, "expiresRule": "30 day external shop package; detail states 20 USD/day, 100 USD/week, 300 USD/month"},
+            {"rechargeName": "Codex monthly Pro 500 USD quota", "billingType": "monthly", "rmbAmount": 350, "usdAmount": 500, "expiresRule": "30 day external shop package; detail states 30 USD/day, 150 USD/week, 500 USD/month"},
+        ],
+    },
+    "SAIS2N05": {
+        "stationTypeHint": "non_subscription",
+        "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+        "tierNotes": [
+            "HelloCode payment config is disabled, but the logged-in Recharge/Subscription menu embeds the official pay.ldxp.cn shop with verified Codex redeem-code products."
+        ],
+        "products": [
+            {"rechargeName": "Codex plus/team 10 USD redeem code", "billingType": "permanent", "rmbAmount": 10, "usdAmount": 10, "expiresRule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station"},
+            {"rechargeName": "Codex plus/team 30 USD redeem code", "billingType": "permanent", "rmbAmount": 30, "usdAmount": 30, "expiresRule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station"},
+            {"rechargeName": "Codex plus/team 50 USD redeem code", "billingType": "permanent", "rmbAmount": 50, "usdAmount": 50, "expiresRule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station"},
+            {"rechargeName": "Codex plus/team 100 USD redeem code", "billingType": "permanent", "rmbAmount": 100, "usdAmount": 100, "expiresRule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station"},
+        ],
+    },
+}
+
+
+KNOWN_STATION_PAY_SHOPS: dict[str, dict[str, str]] = {
+    "hello-code": {
+        "token": "SAIS2N05",
+        "sourceUrl": "https://pay.ldxp.cn/shop/SAIS2N05",
+    },
+    "zhishu.dev": {
+        "token": "CFUOS364",
+        "sourceUrl": "https://pay.ldxp.cn/shop/CFUOS364/ek8gty",
+    },
 }
 
 
@@ -2348,6 +2836,13 @@ def known_pay_shop_snapshot(token: str, source_url: str) -> dict[str, Any] | Non
         "sourceUrl": source_url,
         "stationTypeHint": payload.get("stationTypeHint", ""),
     }
+
+
+def known_station_pay_shop_snapshot(station_key: str) -> dict[str, Any] | None:
+    shop = KNOWN_STATION_PAY_SHOPS.get(station_key)
+    if not shop:
+        return None
+    return known_pay_shop_snapshot(shop["token"], shop["sourceUrl"])
 
 
 def truthy_public_flag(value: Any) -> bool:
@@ -2381,11 +2876,198 @@ def infer_station_type_from_app_config(app_config: dict[str, Any]) -> str:
     return ""
 
 
+def decode_escaped_public_html(content: str) -> str:
+    text = str(content or "")
+    if "\\u003c" not in text.lower() and "\\n" not in text and '\\"' not in text:
+        return text
+    replacements = {
+        "\\u003c": "<",
+        "\\u003C": "<",
+        "\\u003e": ">",
+        "\\u003E": ">",
+        "\\u0026": "&",
+        "\\u002F": "/",
+        "\\/": "/",
+        '\\"': '"',
+        "\\n": "\n",
+        "\\t": " ",
+    }
+    for src, dst in replacements.items():
+        text = text.replace(src, dst)
+    return text
+
+
+def parse_money_amount(value: Any) -> float | None:
+    text = normalize_public_text(html_to_text(value))
+    match = re.search(r"(?:[\u00a5\uffe5$]\s*|(?:RMB|CNY|USD)\s*)(\d+(?:\.\d+)?)", text, re.IGNORECASE)
+    if match:
+        return parse_float(match.group(1))
+    return parse_float(text)
+
+
+def parse_duration_days(value: Any) -> float | None:
+    text = normalize_public_text(html_to_text(value)).lower()
+    match = re.search(r"(\d+(?:\.\d+)?)\s*(?:\u5c0f\u65f6|hour|hours|hr|hrs)", text, re.IGNORECASE)
+    if match:
+        hours = parse_float(match.group(1))
+        return None if hours is None else hours / 24.0
+    match = re.search(r"(\d+(?:\.\d+)?)\s*(?:\u5929|\u65e5|day|days)", text, re.IGNORECASE)
+    if match:
+        return parse_float(match.group(1))
+    match = re.search(r"(\d+(?:\.\d+)?)\s*(?:\u6708|month|months)", text, re.IGNORECASE)
+    if match:
+        months = parse_float(match.group(1))
+        return None if months is None else months * 30.0
+    return None
+
+
+def public_card_billing_type(duration_days: float | None, title: str) -> str:
+    lowered = title.lower()
+    if "\u6708\u5361" in title or "month" in lowered:
+        return "monthly"
+    if "\u5468\u5361" in title or "week" in lowered:
+        return "weekly"
+    if "\u65e5\u5361" in title or "day" in lowered:
+        return "daily"
+    if duration_days is not None:
+        return billing_type_from_days(round(duration_days))
+    return "permanent"
+
+
+def extract_first_tag_text(content: str, tag: str) -> str:
+    match = re.search(rf"<{tag}\b[^>]*>(.*?)</{tag}>", content, re.IGNORECASE | re.DOTALL)
+    return normalize_public_text(html_to_text(match.group(1))) if match else ""
+
+
+def public_plan_cards_from_html(content: str) -> list[dict[str, Any]]:
+    tiers: list[dict[str, Any]] = []
+    seen: set[tuple[Any, ...]] = set()
+    for match in PUBLIC_PLAN_CARD_PATTERN.finditer(content):
+        card_html = match.group(1)
+        title = extract_first_tag_text(card_html, "h3")
+        price_block_match = re.search(
+            r"<div\b[^>]*class=[\"'][^\"']*\bffm-price-block\b[^\"']*[\"'][^>]*>(.*?)</div>",
+            card_html,
+            re.IGNORECASE | re.DOTALL,
+        )
+        price_block = price_block_match.group(1) if price_block_match else card_html
+        strong_values = re.findall(r"<strong\b[^>]*>(.*?)</strong>", price_block, re.IGNORECASE | re.DOTALL)
+        price = None
+        for value in strong_values:
+            price = parse_money_amount(value)
+            if price is not None:
+                break
+        if price is None:
+            continue
+
+        dl_values: dict[str, str] = {}
+        for item_match in re.finditer(r"<dt\b[^>]*>(.*?)</dt>\s*<dd\b[^>]*>(.*?)</dd>", card_html, re.IGNORECASE | re.DOTALL):
+            label = normalize_public_text(html_to_text(item_match.group(1)))
+            value = normalize_public_text(html_to_text(item_match.group(2)))
+            if label and value:
+                dl_values[label] = value
+
+        duration_text = " ".join([normalize_public_text(html_to_text(price_block)), *dl_values.values()])
+        duration_days = parse_duration_days(duration_text)
+        total_quota = None
+        daily_quota = None
+        for label, value in dl_values.items():
+            lowered_label = label.lower()
+            if "\u603b\u989d\u5ea6" in label or "total" in lowered_label:
+                total_quota = parse_money_amount(value)
+            if "\u6bcf\u65e5\u989d\u5ea6" in label or "daily" in lowered_label:
+                daily_quota = parse_money_amount(value)
+
+        usd_amount = total_quota
+        if usd_amount is None and daily_quota is not None and duration_days is not None:
+            usd_amount = daily_quota * max(1.0, duration_days)
+        if not title or usd_amount is None:
+            continue
+
+        expires_parts: list[str] = []
+        if duration_days is not None:
+            if duration_days < 1:
+                expires_parts.append(f"{format_plain_number(duration_days * 24)} hour package")
+            else:
+                expires_parts.append(f"{format_plain_number(duration_days)} day package")
+        if daily_quota is not None:
+            expires_parts.append(f"quota resets daily; daily quota {format_plain_number(daily_quota)} USD")
+        elif total_quota is not None:
+            expires_parts.append(f"total quota {format_plain_number(total_quota)} USD")
+        expires_rule = "; ".join(expires_parts) or "Public marketing package; expiry not stated"
+        row = normalize_recharge_row(
+            {
+                "rechargeName": title,
+                "billingType": public_card_billing_type(duration_days, title),
+                "rmbAmount": price,
+                "usdAmount": usd_amount,
+                "rechargeLocation": "public marketing pricing page",
+                "expiresRule": expires_rule,
+            }
+        )
+        if not row:
+            continue
+        key = recharge_row_key(row)
+        if key in seen:
+            continue
+        seen.add(key)
+        tiers.append(row)
+    return tiers
+
+
+def minimum_recharge_amount(search_text: str) -> float | None:
+    for match in MINIMUM_RECHARGE_PATTERN.finditer(search_text):
+        amount = parse_float(match.group(1))
+        if amount and amount > 0:
+            return amount
+    return None
+
+
+def public_wallet_conversion_rows(search_text: str) -> tuple[list[dict[str, Any]], list[str]]:
+    tiers: list[dict[str, Any]] = []
+    notes: list[str] = []
+    seen_ratios: set[tuple[float, float]] = set()
+    for pattern in WALLET_CONVERSION_PATTERNS:
+        for match in pattern.finditer(search_text):
+            rmb_unit = parse_float(match.group(1))
+            usd_unit = parse_float(match.group(2))
+            if rmb_unit is None or usd_unit is None or rmb_unit <= 0 or usd_unit <= 0:
+                continue
+            ratio_key = (rmb_unit, usd_unit)
+            if ratio_key in seen_ratios:
+                continue
+            seen_ratios.add(ratio_key)
+            sample_rmb = minimum_recharge_amount(search_text) or rmb_unit
+            sample_usd = sample_rmb * usd_unit / rmb_unit
+            note = (
+                f"Public marketing page conversion sample: {format_plain_number(rmb_unit)} RMB = "
+                f"{format_plain_number(usd_unit)} USD credit; not a fixed package; expiry not stated"
+            )
+            if sample_rmb != rmb_unit:
+                note = f"{note}; minimum recharge {format_plain_number(sample_rmb)} RMB"
+            row = normalize_recharge_row(
+                {
+                    "rechargeName": f"wallet topup sample {format_plain_number(sample_rmb)} RMB",
+                    "billingType": "permanent",
+                    "rmbAmount": sample_rmb,
+                    "usdAmount": sample_usd,
+                    "rechargeLocation": "public marketing pricing page",
+                    "expiresRule": note,
+                }
+            )
+            if row:
+                tiers.append(row)
+                notes.append(note)
+    return tiers, notes
+
+
 def parse_public_pricing_html(content: str) -> dict[str, Any]:
     recharge_tiers: list[dict[str, Any]] = []
     tier_notes: list[str] = []
     source_url = ""
     station_type_hint = ""
+    decoded_content = decode_escaped_public_html(content)
+    search_text = normalize_public_text(html_to_text(decoded_content))
 
     app_config = parse_app_config_from_html(content)
     if app_config:
@@ -2425,7 +3107,13 @@ def parse_public_pricing_html(content: str) -> dict[str, Any]:
         if truthy_public_flag(app_config.get("purchase_subscription_enabled")):
             tier_notes.append("公开配置显示已开启订阅购买，但具体套餐仍需登录/核验。")
 
-    for match in TOPUP_HTML_PATTERN.finditer(content):
+    wallet_rows, wallet_notes = public_wallet_conversion_rows(search_text)
+    recharge_tiers.extend(wallet_rows)
+    tier_notes.extend(wallet_notes)
+
+    recharge_tiers.extend(public_plan_cards_from_html(decoded_content))
+
+    for match in TOPUP_HTML_PATTERN.finditer(decoded_content):
         recharge_name = sanitize_public_text(match.group(1))
         rmb_amount = parse_float(match.group(2))
         usd_amount = parse_float(match.group(3))
@@ -2442,10 +3130,18 @@ def parse_public_pricing_html(content: str) -> dict[str, Any]:
         if row:
             recharge_tiers.append(row)
 
+    inferred_station_type = infer_station_type_from_recharge_tiers(recharge_tiers)
+    if station_type_hint == "mixed":
+        pass
+    elif inferred_station_type == "mixed":
+        station_type_hint = "mixed"
+    elif not station_type_hint and inferred_station_type:
+        station_type_hint = inferred_station_type
+
     return {
         "groupMultipliers": [],
-        "rechargeTiers": recharge_tiers,
-        "tierNotes": tier_notes,
+        "rechargeTiers": normalized_recharge_rows(recharge_tiers),
+        "tierNotes": normalized_tier_notes(tier_notes),
         "sourceUrl": source_url,
         "stationTypeHint": station_type_hint,
     }
@@ -2782,6 +3478,15 @@ def apply_live_probe_snapshots(
 ) -> None:
     for station_key, snapshot in live_snapshots.items():
         station = ensure_station(stations, station_key, station_aliases=station_aliases)
+        station_type_hint = sanitize_public_text(snapshot.get("stationTypeHint"))
+        if (
+            station.get("stationType") == "unknown_pending"
+            and station_type_hint in FULL_TYPE_LABELS
+            and station_type_hint != "unknown_pending"
+        ):
+            station["stationType"] = station_type_hint
+            station["stationTypeLabel"] = FULL_TYPE_LABELS.get(station_type_hint, station_type_hint)
+            station["stationTypeShortLabel"] = SHORT_TYPE_LABELS.get(station_type_hint, station_type_hint)
         source_url = sanitize_public_text(snapshot.get("sourceUrl"))
         if source_url:
             add_station_url(station_urls, station_key, source_url, station_aliases)
@@ -2789,6 +3494,10 @@ def apply_live_probe_snapshots(
             station["groupMultipliers"] = []
         if normalized_recharge_rows(snapshot.get("rechargeTiers")):
             station["rechargeTiers"] = []
+            station["verifiedTierCount"] = max(
+                parse_int(station.get("verifiedTierCount")),
+                parse_int(snapshot.get("verifiedTierCount")),
+            )
         for group in snapshot.get("groupMultipliers", []):
             append_group_row(station, group)
         for tier in snapshot.get("rechargeTiers", []):
@@ -2814,12 +3523,12 @@ def evidence_item(
             "status": "captured",
             "statusLabel": "已抓取",
             "message": f"已归档 {count} 条，可在本详情页查看。",
-            "source": sanitize_public_text((live_status or {}).get("source")),
+            "source": public_source_text((live_status or {}).get("source")),
         }
 
     status = sanitize_public_text((live_status or {}).get("status")) or fallback_status
     message = normalize_public_text((live_status or {}).get("message")) or fallback_message
-    source = sanitize_public_text((live_status or {}).get("source"))
+    source = public_source_text((live_status or {}).get("source"))
     status_labels = {
         "captured": "已抓取",
         "empty": "接口返回空",
@@ -2968,8 +3677,19 @@ def apply_station_pricing_overrides(
         if group_rows:
             station["groupMultipliers"] = group_rows
 
+        explicit_recharge_rows = []
+        for item in override.get("rechargeTiers", []):
+            if isinstance(item, dict):
+                normalized = normalize_recharge_row(item)
+                if normalized:
+                    explicit_recharge_rows.append(normalized)
+        if explicit_recharge_rows:
+            station["rechargeTiers"] = sort_recharge_tiers(explicit_recharge_rows)
+
         recharge_mode = override.get("rechargeMode")
-        if recharge_mode == "linear_rmb_to_usd":
+        if explicit_recharge_rows:
+            pass
+        elif recharge_mode == "linear_rmb_to_usd":
             usd_per_rmb = parse_float(override.get("usdPerRmb")) or 0.0
             recharge_pattern = re.compile(str(override.get("rechargeNamePattern") or TOPUP_NAME_PATTERN.pattern), re.IGNORECASE)
             updated_tiers: list[dict[str, Any]] = []
@@ -3373,6 +4093,7 @@ def main() -> int:
     latest_audits = load_latest_station_audits(station_aliases)
     apply_audit_only_station_records(stations, station_urls, latest_audits, station_aliases=station_aliases)
     apply_existing_detail_baseline(stations, station_urls, existing_detail_baseline, station_aliases=station_aliases)
+    dedupe_station_tier_notes(stations)
 
     apply_authoritative_ranking_overrides(stations, rankings, overrides)
 

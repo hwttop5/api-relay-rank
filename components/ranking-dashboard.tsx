@@ -108,6 +108,76 @@ function getTotalSampleCount(station: SiteData["stations"][number]) {
   return (getSampleCount(station, "work_hours") ?? 0) + (getSampleCount(station, "off_hours") ?? 0);
 }
 
+const NON_CODEX_GROUP_KEYWORDS = [
+  "claude",
+  "anthropic",
+  "sonnet",
+  "opus",
+  "haiku",
+  "kiro",
+  "cc-",
+  "国产",
+  "公益",
+  "deepseek",
+  "qwen",
+  "glm",
+  "kimi",
+  "doubao",
+  "minimax",
+] as const;
+
+function isCodexLikeGroupName(groupName: string) {
+  const normalized = groupName.trim().toLowerCase();
+  if (!normalized) {
+    return false;
+  }
+  return !NON_CODEX_GROUP_KEYWORDS.some((keyword) => normalized.includes(keyword));
+}
+
+function getLowestUnrankedMultiplier(station: SiteData["stations"][number]) {
+  const codexGroupMultipliers = station.groupMultipliers
+    .filter((group) => isCodexLikeGroupName(group.groupName))
+    .map((group) => group.groupMultiplier)
+    .filter((multiplier) => Number.isFinite(multiplier) && multiplier > 0);
+
+  if (!codexGroupMultipliers.length) {
+    return null;
+  }
+
+  const lowestGroupMultiplier = Math.min(...codexGroupMultipliers);
+  const effectiveMultipliers: number[] = [];
+
+  for (const tier of station.rechargeTiers) {
+    const rmbAmount = tier.rmbAmount;
+    const usdAmount = tier.usdAmount;
+    if (
+      rmbAmount === null ||
+      usdAmount === null ||
+      !Number.isFinite(rmbAmount) ||
+      !Number.isFinite(usdAmount) ||
+      usdAmount <= 0
+    ) {
+      continue;
+    }
+
+    const effectiveMultiplier = lowestGroupMultiplier * rmbAmount / usdAmount;
+    if (Number.isFinite(effectiveMultiplier) && effectiveMultiplier > 0) {
+      effectiveMultipliers.push(effectiveMultiplier);
+    }
+  }
+
+  return effectiveMultipliers.length ? Math.min(...effectiveMultipliers) : null;
+}
+
+const MANUAL_FEE_REVIEW_STATIONS = new Set(["voapi"]);
+
+function needsManualFeeReview(station: SiteData["stations"][number]) {
+  return station.verifiedTierCount <= 0 && (
+    MANUAL_FEE_REVIEW_STATIONS.has(station.key) ||
+    station.tierNotes.some((note) => note.includes("费用待人工复核") || note.includes("待人工复核"))
+  );
+}
+
 function getUnrankedReason(station: SiteData["stations"][number]) {
   const hasGroupEvidence = station.groupMultipliers.length > 0;
   const hasRechargeEvidence = station.rechargeTiers.length > 0;
@@ -115,6 +185,9 @@ function getUnrankedReason(station: SiteData["stations"][number]) {
 
   if (!hasGroupEvidence || !hasRechargeEvidence) {
     return "缺分组/充值证据";
+  }
+  if (needsManualFeeReview(station)) {
+    return "费用待人工复核";
   }
   if (station.verifiedTierCount <= 0) {
     return "缺正式费用行";
@@ -174,6 +247,7 @@ function MobileRankingCard({ row, index, stationMeta }: { row: RankingRow; index
 function MobileStationCard({ station }: { station: SiteData["stations"][number] }) {
   const allSamples = getSampleCount(station, "all_hours");
   const unrankedReason = getUnrankedReason(station);
+  const lowestMultiplier = getLowestUnrankedMultiplier(station);
 
   return (
     <article className="mobile-card">
@@ -190,6 +264,7 @@ function MobileStationCard({ station }: { station: SiteData["stations"][number] 
       </div>
 
       <div className="mobile-metrics-grid">
+        <MobileMetric label="最低倍率" value={lowestMultiplier === null ? "-" : formatMultiplier(lowestMultiplier)} mono />
         <MobileMetric label="全部时段样本" value={<span className="mono">{allSamples ?? "-"}</span>} />
         <MobileMetric label="公告数量" value={<span className="mono">{station.announcements.length}</span>} />
       </div>
@@ -501,6 +576,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                     <col className="registry-col-type" />
                     <col className="registry-col-platform" />
                     <col className="registry-col-reason" />
+                    <col className="registry-col-lowest-multiplier" />
                     <col className="registry-col-sample" />
                     <col className="registry-col-tier" />
                     <col className="registry-col-announcements" />
@@ -513,6 +589,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                       <th className="col-type">类型</th>
                       <th className="col-platform">平台判断</th>
                       <th>未入榜原因</th>
+                      <th>最低倍率</th>
                       <th>全部时段样本</th>
                       <th>核验档位</th>
                       <th>公告数</th>
@@ -523,6 +600,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                     {unrankedStations.map((station) => {
                       const allSamples = getSampleCount(station, "all_hours");
                       const unrankedReason = getUnrankedReason(station);
+                      const lowestMultiplier = getLowestUnrankedMultiplier(station);
 
                       return (
                         <tr key={station.key}>
@@ -537,6 +615,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                           <td className="table-type-cell">{station.stationTypeShortLabel}</td>
                           <td className="table-platform-cell">{station.platformGuess || "-"}</td>
                           <td>{unrankedReason}</td>
+                          <td className="mono">{lowestMultiplier === null ? "-" : formatMultiplier(lowestMultiplier)}</td>
                           <td className="mono">{allSamples ?? "-"}</td>
                           <td className="mono">{station.verifiedTierCount}</td>
                           <td className="mono">{station.announcements.length}</td>

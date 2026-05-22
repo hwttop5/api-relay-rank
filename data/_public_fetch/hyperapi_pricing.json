@@ -4,13 +4,13 @@
   ],
   "data": [
     {
-      "model_name": "gpt-5.3-codex-spark",
+      "model_name": "gpt-5.4-mini",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 0.875,
+      "model_ratio": 0.375,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
+      "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
         "default"
@@ -19,6 +19,22 @@
         "openai"
       ],
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
     },
     {
       "model_name": "gpt-image-2",
@@ -38,13 +54,29 @@
       ]
     },
     {
-      "model_name": "gpt-5.4",
+      "model_name": "gpt-5.3-codex",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 1.25,
+      "model_ratio": 0.875,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
       "cache_ratio": 0.1,
       "enable_groups": [
         "default"
@@ -78,38 +110,6 @@
       "owner_by": "",
       "completion_ratio": 8,
       "cache_ratio": 0.071428571428,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
       "enable_groups": [
         "default"
       ],
@@ -150,6 +150,20 @@
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
       "announcements": [
         {
+          "content": "售后群：\n- QQ 群：`1095326876`\n- Telegram: [https://t.me/hyperapiai](https://t.me/hyperapiai)\n",
+          "extra": "",
+          "id": 5,
+          "publishDate": "2026-05-21T17:42:54.301Z",
+          "type": "default"
+        },
+        {
+          "content": "新套餐上线🎺🎺\n\n每日$50 月卡：  ¥59.9\n\n每日$150 月卡： ¥169.9\n\n每日$300 月卡： ¥299.9\n",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2026-05-21T17:24:30.161Z",
+          "type": "default"
+        },
+        {
           "content": "邀请用户和被邀请用户都可以增加 2 刀额度，每天签到领取最大 10 万 token 。\n",
           "extra": "",
           "id": 3,
@@ -157,14 +171,14 @@
           "type": "default"
         },
         {
-          "content": "进入控制台，点击钱包管理，即可开始额度充值：\n\n100刀额度 ---- 40元\n\n200刀额度 ---- 78元\n\n300刀额度 ---- 105元\n\n400刀额度 ---- 136元\n\n500刀额度 ---- 150元\n\n600刀额度 ---- 168元\n\n700刀额度 ---- 189元\n\n800刀额度 ---- 200元",
+          "content": "进入控制台，点击钱包管理，即可开始额度充值：\n\n100刀额度 ---- 30元\n\n200刀额度 ---- 58元\n\n300刀额度 ---- 84元\n\n400刀额度 ---- 108元\n\n500刀额度 ---- 125元\n\n600刀额度 ---- 144元\n\n700刀额度 ---- 161元\n\n800刀额度 ---- 176元",
           "extra": "",
           "id": 2,
           "publishDate": "2026-05-13T17:33:02.484Z",
           "type": "default"
         },
         {
-          "content": "\n订阅套餐上线了🎺🎺，进入控制台，点击钱包管理，即可开始订阅\n\n月卡套餐(plus)\n59.90元\n有效期：1 个月\n总额度：$480.00\n\n月卡套餐(lite)\n39.90元\n有效期：1 个月\n总额度：$240.00\n\n周卡套餐(适合短周期项目)\n15.90元\n有效期:：7 天\n总额度：$120.00\n\n日卡套餐(灵活轻量)\n2.90元\n有效期：1天\n总额度: $20.00\n\n售后群：\n- Telegram: [https://t.me/hyperapiai](https://t.me/hyperapiai)\n- QQ 群：`1095326876`",
+          "content": "月卡套餐 Plus：69.90元\n\n有效期：1 个月\n\n总额度：$480.00\n\n- \n\n\n月卡套餐 Lite：39.90元\n\n有效期：1 个月\n\n总额度：$240.00\n\n\n- \n\n\n周卡套餐：15.90元\n\n有效期:：7 天\n\n总额度：$120.00\n\n\n- \n\n\n日卡套餐：2.90元\n\n有效期：1天\n\n总额度: $20.00\n",
           "extra": "",
           "id": 1,
           "publishDate": "2026-04-30T16:59:30.000Z",
