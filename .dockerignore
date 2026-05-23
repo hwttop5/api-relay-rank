@@ -1,0 +1,16 @@
+.git
+.github
+.husky
+.local-artifacts
+.next
+.next-dev
+.playwright-mcp
+.vercel
+__pycache__
+node_modules
+output
+data/_audit_runs
+*.log
+.env
+deploy/.env
+tsconfig.tsbuildinfo

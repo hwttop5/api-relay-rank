@@ -1,10 +1,9 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 
+import { AUDIT_RUNS_ROOT, resolveLogicalDataPath } from "./runtime-paths";
 import type { AuditVerdict, SiteData, StationAuditHistoryItem, StationAuditSummary } from "./types";
 
-const APP_ROOT = process.cwd();
-export const AUDIT_RUNS_ROOT = path.join(APP_ROOT, "data", "_audit_runs");
 const AUDIT_SEGMENT_PATTERN = /^[A-Za-z0-9._-]+$/;
 const VALID_VERDICTS = new Set<AuditVerdict>(["low", "medium", "high", "inconclusive"]);
 
@@ -20,6 +19,15 @@ export function resolveAuditRunReportPath(stationKey: string, model: string, run
   const root = path.resolve(AUDIT_RUNS_ROOT);
   const filePath = path.resolve(root, stationKey, model, runId, "report.md");
   if (!filePath.startsWith(root + path.sep)) {
+    return null;
+  }
+  return filePath;
+}
+
+export function resolveArchivedReportPath(reportPath: string) {
+  const auditRoot = path.resolve(AUDIT_RUNS_ROOT);
+  const filePath = path.resolve(resolveLogicalDataPath(reportPath));
+  if (!filePath.startsWith(auditRoot + path.sep)) {
     return null;
   }
   return filePath;

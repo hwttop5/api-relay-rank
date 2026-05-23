@@ -6,20 +6,35 @@ import json
 import os
 import queue
 import re
+import shutil
 import subprocess
 import threading
 import time
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any, Callable
 from urllib.parse import urlparse
 
+try:
+    from scripts.runtime_paths import (
+        APP_ROOT,
+        AUDIT_RUNS_DIR,
+        DATA_DIR,
+        ensure_runtime_dirs,
+        exclusive_lock,
+        logical_data_path,
+    )
+except ModuleNotFoundError:
+    from runtime_paths import (
+        APP_ROOT,
+        AUDIT_RUNS_DIR,
+        DATA_DIR,
+        ensure_runtime_dirs,
+        exclusive_lock,
+        logical_data_path,
+    )
 
-SCRIPT_PATH = Path(__file__).resolve()
-APP_ROOT = SCRIPT_PATH.parents[1]
-DATA_DIR = APP_ROOT / "data"
-AUDIT_RUNS_DIR = DATA_DIR / "_audit_runs"
 CONFIG_PATH = APP_ROOT / "config" / "station_audit_targets.json"
 ENGINE_PATH = APP_ROOT / "vendor" / "api_relay_audit" / "audit.py"
 ENGINE_COMMIT = "2d6bc1431cc196d64a22e8aa515094ad9acb7042"
@@ -32,6 +47,8 @@ MAX_WARMUP = 20
 MIN_LATENCY_PROBE_COUNT = 3
 MAX_LATENCY_PROBE_COUNT = 50
 AUDIT_PROFILE = "general"
+DEFAULT_RETENTION_DAYS = 30
+DEFAULT_RETENTION_MAX_PER_TARGET = 20
 
 OPTION_BOOL_FIELDS = {
     "skipInfra",
@@ -120,6 +137,16 @@ def slugify_model(model: str) -> str:
 
 def now_iso() -> str:
     return datetime.now(UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def parse_run_dir_datetime(value: str) -> datetime | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    try:
+        return datetime.strptime(text, "%Y%m%dT%H%M%SZ").replace(tzinfo=UTC)
+    except ValueError:
+        return None
 
 
 def validate_absolute_url(value: str, *, station: str, field: str) -> str:
@@ -415,7 +442,7 @@ def build_summary(
         overall_summary=overall_summary,
         highlights=extract_risk_summary(report_text),
         step_summaries=extract_step_summaries(report_text),
-        report_path=str(report_path.relative_to(APP_ROOT)).replace("\\", "/"),
+        report_path=logical_data_path(report_path),
         tool_version=f"api-relay-audit@{ENGINE_COMMIT}",
         duration_ms=duration_ms,
         effective_options=effective_options or {},
@@ -464,6 +491,52 @@ def build_audit_command(target: dict[str, Any], model: str, api_key: str, report
 
 def write_json(path: Path, payload: dict[str, Any]) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def retention_days() -> int:
+    raw = str(os.environ.get("AUDIT_RETENTION_DAYS", DEFAULT_RETENTION_DAYS)).strip()
+    try:
+        value = int(raw)
+    except ValueError:
+        return DEFAULT_RETENTION_DAYS
+    return value if value >= 1 else DEFAULT_RETENTION_DAYS
+
+
+def retention_max_per_target() -> int:
+    raw = str(os.environ.get("AUDIT_RETENTION_MAX_PER_TARGET", DEFAULT_RETENTION_MAX_PER_TARGET)).strip()
+    try:
+        value = int(raw)
+    except ValueError:
+        return DEFAULT_RETENTION_MAX_PER_TARGET
+    return value if value >= 1 else DEFAULT_RETENTION_MAX_PER_TARGET
+
+
+def prune_audit_runs(*, now: datetime | None = None) -> list[str]:
+    if not AUDIT_RUNS_DIR.exists():
+        return []
+
+    current_time = now or datetime.now(UTC)
+    cutoff = current_time - timedelta(days=retention_days())
+    max_per_target = retention_max_per_target()
+    removed: list[str] = []
+
+    for station_dir in sorted(path for path in AUDIT_RUNS_DIR.iterdir() if path.is_dir()):
+        for model_dir in sorted(path for path in station_dir.iterdir() if path.is_dir()):
+            run_dirs = [path for path in model_dir.iterdir() if path.is_dir()]
+            dated: list[tuple[datetime, Path]] = []
+            for run_dir in run_dirs:
+                parsed = parse_run_dir_datetime(run_dir.name)
+                if parsed is None:
+                    parsed = datetime.fromtimestamp(run_dir.stat().st_mtime, tz=UTC)
+                dated.append((parsed, run_dir))
+            dated.sort(key=lambda item: item[0], reverse=True)
+            keep_names = {path.name for _, path in dated[:max_per_target]}
+            for run_time, run_dir in dated:
+                if run_time >= cutoff and run_dir.name in keep_names:
+                    continue
+                shutil.rmtree(run_dir, ignore_errors=True)
+                removed.append(str(run_dir))
+    return removed
 
 
 ProgressCallback = Callable[[dict[str, Any]], None]
@@ -596,6 +669,7 @@ def run_single_audit(
     options: AuditRunOptions | None = None,
     progress: ProgressCallback | None = None,
 ) -> dict[str, Any]:
+    ensure_runtime_dirs()
     api_key = (api_key or os.environ.get(target["apiKeyEnv"], "")).strip()
     if not api_key:
         raise AuditConfigError(
@@ -677,16 +751,18 @@ def run_single_audit(
             model=model,
             overallVerdict=summary.overall_verdict,
         )
-        return {
+        result = {
             "station": target["station"],
             "model": model,
             "profile": AUDIT_PROFILE,
             "auditedBaseUrl": target["auditBaseUrl"],
-            "run": str(run_path.relative_to(APP_ROOT)).replace("\\", "/"),
-            "report": str(report_path.relative_to(APP_ROOT)).replace("\\", "/"),
-            "summary": str(summary_path.relative_to(APP_ROOT)).replace("\\", "/"),
+            "run": logical_data_path(run_path),
+            "report": logical_data_path(report_path),
+            "summary": logical_data_path(summary_path),
             "overallVerdict": summary.overall_verdict,
         }
+        prune_audit_runs()
+        return result
     except Exception as exc:
         finished_at = now_iso()
         duration_ms = int((time.perf_counter() - started) * 1000)
@@ -713,7 +789,9 @@ def run_single_audit(
             station=target["station"],
             model=model,
         )
-        raise AuditConfigError(f"Audit failed for station '{target['station']}' model '{model}'. See {run_path.relative_to(APP_ROOT)}") from exc
+        raise AuditConfigError(
+            f"Audit failed for station '{target['station']}' model '{model}'. See {logical_data_path(run_path)}"
+        ) from exc
 
 
 def parse_args() -> argparse.Namespace:

@@ -1,0 +1,20 @@
+http:
+  middlewares:
+    api-relay-rank-audit-rate-limit:
+      rateLimit:
+        average: 1
+        period: 1m
+        burst: 2
+    api-relay-rank-audit-inflight:
+      inFlightReq:
+        amount: 1
+    api-relay-rank-audit-buffering:
+      buffering:
+        maxRequestBodyBytes: 16384
+        memRequestBodyBytes: 16384
+    api-relay-rank-audit-chain:
+      chain:
+        middlewares:
+          - api-relay-rank-audit-rate-limit
+          - api-relay-rank-audit-inflight
+          - api-relay-rank-audit-buffering

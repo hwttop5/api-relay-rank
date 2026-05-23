@@ -1,13 +1,11 @@
 import { readFile } from "node:fs/promises";
-import path from "node:path";
 import { notFound } from "next/navigation";
 
+import { SITE_DATA_PATH } from "./runtime-paths";
 import type { SiteData, StationRecord } from "./types";
 
-const DATA_PATH = path.join(process.cwd(), "data", "site-data.json");
-
 export async function getSiteData(): Promise<SiteData> {
-  const raw = await readFile(DATA_PATH, "utf8");
+  const raw = await readFile(SITE_DATA_PATH, "utf8");
   return JSON.parse(raw) as SiteData;
 }
 

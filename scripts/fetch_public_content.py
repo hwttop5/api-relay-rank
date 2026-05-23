@@ -14,17 +14,17 @@ from urllib.parse import urljoin, urlparse, urlunparse
 
 import requests
 
+try:
+    from scripts.runtime_paths import APP_ROOT, PUBLIC_FETCH_DIR, SITE_DATA_PATH, ensure_runtime_dirs
+except ModuleNotFoundError:
+    from runtime_paths import APP_ROOT, PUBLIC_FETCH_DIR, SITE_DATA_PATH, ensure_runtime_dirs
 
-SCRIPT_PATH = Path(__file__).resolve()
-APP_ROOT = SCRIPT_PATH.parents[1]
 if str(APP_ROOT) not in sys.path:
     sys.path.insert(0, str(APP_ROOT))
 
 from scripts import build_site_data
 
 SOURCE_ROOTS = [APP_ROOT]
-SITE_DATA_PATH = APP_ROOT / "data" / "site-data.json"
-PUBLIC_FETCH_DIR = Path(os.environ.get("PUBLIC_FETCH_DIR", APP_ROOT / "data" / "_public_fetch"))
 TIMEOUT = 15
 USER_AGENT = "api-relay-rank/0.1 (+https://local.codex)"
 EMAIL_PATTERN = re.compile(r"\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}\b")
@@ -541,6 +541,7 @@ def run_build_site_data() -> None:
 
 
 def main() -> int:
+    ensure_runtime_dirs()
     parser = argparse.ArgumentParser(description="抓取中转站公开公告与倍率快照。")
     parser.add_argument("--announcements", action="store_true", help="抓取公告快照。")
     parser.add_argument("--multiplier-snapshots", action="store_true", help="抓取公开倍率/价格快照。")
@@ -552,7 +553,6 @@ def main() -> int:
         args.announcements = True
         args.multiplier_snapshots = True
 
-    PUBLIC_FETCH_DIR.mkdir(parents=True, exist_ok=True)
     client = session()
     report: list[dict[str, Any]] = []
 

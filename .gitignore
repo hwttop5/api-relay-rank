@@ -11,6 +11,7 @@ __pycache__/
 *.pyc
 .env
 .env.local
+deploy/.env
 data/_audit_runs/
 output/
 tsconfig.tsbuildinfo

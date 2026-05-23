@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+import contextlib
 import copy
 import io
+import importlib
 import importlib.util
 import json
+import os
 import shutil
 import sqlite3
 import subprocess
@@ -16,7 +19,10 @@ from unittest import mock
 from scripts import build_site_data as build_site_data
 from scripts import fetch_public_content as fetch_public_content
 from scripts import run_station_audit as run_station_audit
+from scripts import run_server_refresh as run_server_refresh
 from scripts import scrape_missing_announcements as scrape_missing_announcements
+from scripts import seed_runtime_data as seed_runtime_data
+from scripts import validate_refresh_outputs as validate_refresh_outputs
 
 
 AUDIT_SCRIPT_PATH = Path(__file__).resolve().parents[1] / "audit_proxy_multipliers.py"
@@ -4255,6 +4261,220 @@ One or more audit steps **crashed**.
         ).to_payload()
 
         self.assertEqual(summary["overallVerdict"], "inconclusive")
+
+    def test_runtime_paths_follow_environment_overrides(self) -> None:
+        from scripts import runtime_paths as runtime_paths
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            data_dir = root / "runtime-data"
+            probe_dir = root / "runtime-probes"
+
+            with mock.patch.dict(os.environ, {"APP_DATA_DIR": str(data_dir), "LIVE_AUTH_PROBE_DIR": str(probe_dir)}, clear=False):
+                importlib.reload(runtime_paths)
+                try:
+                    self.assertEqual(runtime_paths.DATA_DIR, data_dir)
+                    self.assertEqual(runtime_paths.SITE_DATA_PATH, data_dir / "site-data.json")
+                    self.assertEqual(runtime_paths.PUBLIC_FETCH_DIR, data_dir / "_public_fetch")
+                    self.assertEqual(runtime_paths.AUDIT_RUNS_DIR, data_dir / "_audit_runs")
+                    self.assertEqual(runtime_paths.LIVE_AUTH_PROBE_DIR, probe_dir)
+                    runtime_paths.ensure_runtime_dirs()
+                    self.assertTrue((data_dir / "_public_fetch").is_dir())
+                    self.assertTrue((data_dir / "_audit_runs").is_dir())
+                    self.assertTrue((data_dir / "_locks").is_dir())
+                    self.assertTrue(probe_dir.is_dir())
+                finally:
+                    importlib.reload(runtime_paths)
+
+    def test_seed_runtime_data_copies_repo_seed_files_into_runtime_dir(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            app_root = root / "app"
+            repo_data_dir = app_root / "data"
+            repo_fetch_dir = repo_data_dir / "_public_fetch"
+            runtime_data_dir = root / "runtime-data"
+            runtime_fetch_dir = runtime_data_dir / "_public_fetch"
+            runtime_site_data_path = runtime_data_dir / "site-data.json"
+            runtime_audit_dir = runtime_data_dir / "_audit_runs"
+            runtime_locks_dir = runtime_data_dir / "_locks"
+            runtime_probe_dir = root / "runtime-probes"
+
+            repo_fetch_dir.mkdir(parents=True)
+            (repo_data_dir / "site-data.json").write_text(json.dumps({"stations": [], "generatedAt": "2026-05-23T00:00:00Z"}), encoding="utf-8")
+            (repo_fetch_dir / "demo_status.json").write_text(json.dumps({"data": {"announcements": [{"id": 1, "content": "hello"}]}}), encoding="utf-8")
+
+            with (
+                mock.patch.object(seed_runtime_data, "APP_ROOT", app_root),
+                mock.patch.object(seed_runtime_data, "REPO_DATA_DIR", repo_data_dir),
+                mock.patch.object(seed_runtime_data, "REPO_SITE_DATA_PATH", repo_data_dir / "site-data.json"),
+                mock.patch.object(seed_runtime_data, "REPO_PUBLIC_FETCH_DIR", repo_fetch_dir),
+                mock.patch.object(seed_runtime_data, "DATA_DIR", runtime_data_dir),
+                mock.patch.object(seed_runtime_data, "SITE_DATA_PATH", runtime_site_data_path),
+                mock.patch.object(seed_runtime_data, "PUBLIC_FETCH_DIR", runtime_fetch_dir),
+                mock.patch.object(seed_runtime_data, "AUDIT_RUNS_DIR", runtime_audit_dir),
+                mock.patch.object(seed_runtime_data, "LOCKS_DIR", runtime_locks_dir),
+                mock.patch.object(seed_runtime_data, "LIVE_AUTH_PROBE_DIR", runtime_probe_dir),
+                mock.patch.object(
+                    seed_runtime_data,
+                    "ensure_runtime_dirs",
+                    side_effect=lambda: [
+                        runtime_data_dir.mkdir(parents=True, exist_ok=True),
+                        runtime_fetch_dir.mkdir(parents=True, exist_ok=True),
+                        runtime_audit_dir.mkdir(parents=True, exist_ok=True),
+                        runtime_locks_dir.mkdir(parents=True, exist_ok=True),
+                        runtime_probe_dir.mkdir(parents=True, exist_ok=True),
+                    ],
+                ),
+                mock.patch.object(
+                    seed_runtime_data,
+                    "logical_data_path",
+                    side_effect=lambda path: f"data/{Path(path).resolve().relative_to(runtime_data_dir.resolve()).as_posix()}",
+                ),
+                mock.patch("sys.stdout", new=io.StringIO()) as stdout,
+            ):
+                exit_code = seed_runtime_data.main()
+
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(json.loads(runtime_site_data_path.read_text(encoding="utf-8"))["generatedAt"], "2026-05-23T00:00:00Z")
+            self.assertTrue((runtime_fetch_dir / "demo_status.json").exists())
+            self.assertEqual(payload["seeded"]["siteData"], "data/site-data.json")
+            self.assertEqual(payload["seeded"]["publicFetch"], "data/_public_fetch")
+            self.assertTrue(runtime_audit_dir.is_dir())
+            self.assertTrue(runtime_locks_dir.is_dir())
+            self.assertTrue(runtime_probe_dir.is_dir())
+
+    def test_validate_refresh_outputs_allows_skip_scrape_validation_without_probe_files(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            site_data_path = root / "site-data.json"
+            site_data_path.write_text(
+                json.dumps(
+                    {
+                        "stations": [
+                            {
+                                "key": "nexus",
+                                "groupMultipliers": [{"groupName": "default", "groupMultiplier": 1}],
+                                "rechargeTiers": [{"rechargeName": "wallet topup 10 RMB", "billingType": "permanent", "rmbAmount": 10, "usdAmount": 10}],
+                                "dataEvidence": [
+                                    {"key": "groupMultipliers", "status": "captured"},
+                                    {"key": "rechargeTiers", "status": "captured"},
+                                    {"key": "announcements", "status": "empty"},
+                                ],
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with (
+                mock.patch("sys.argv", ["validate_refresh_outputs.py", "--site-data", str(site_data_path), "--skip-scrape-validation"]),
+                mock.patch("sys.stdout", new=io.StringIO()) as stdout,
+                mock.patch.dict(validate_refresh_outputs.os.environ, {}, clear=True),
+            ):
+                exit_code = validate_refresh_outputs.main()
+
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertTrue(payload["validated"])
+            self.assertTrue(payload["skipScrapeValidation"])
+
+    def test_run_server_refresh_without_scrape_credentials_uses_degraded_validation(self) -> None:
+        commands: list[list[str]] = []
+
+        def fake_run(command: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
+            commands.append(command)
+            return subprocess.CompletedProcess(command, 0, stdout="", stderr="")
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            with (
+                mock.patch.object(run_server_refresh, "APP_ROOT", root),
+                mock.patch.object(run_server_refresh, "ensure_runtime_dirs", return_value=None),
+                mock.patch.object(run_server_refresh, "exclusive_lock", side_effect=lambda *args, **kwargs: contextlib.nullcontext()),
+                mock.patch.object(run_server_refresh, "run", side_effect=fake_run),
+                mock.patch.object(run_server_refresh, "prune_audit_runs", return_value=["old-run"]),
+                mock.patch.object(run_server_refresh.subprocess, "run", side_effect=AssertionError("scrape step should be skipped")),
+                mock.patch.dict(run_server_refresh.os.environ, {}, clear=True),
+                mock.patch("sys.stdout", new=io.StringIO()) as stdout,
+            ):
+                exit_code = run_server_refresh.main()
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertTrue(payload["degraded"])
+        self.assertEqual(commands[0], ["python", "scripts/fetch_public_content.py", "--announcements", "--multiplier-snapshots", "--skip-build"])
+        self.assertEqual(commands[1], ["python", "scripts/build_site_data.py"])
+        self.assertIn("--skip-scrape-validation", commands[2])
+        self.assertEqual(payload["removedAuditRuns"], ["old-run"])
+
+    def test_run_server_refresh_with_scrape_credentials_runs_full_validation(self) -> None:
+        commands: list[list[str]] = []
+        scrape_commands: list[list[str]] = []
+
+        def fake_run(command: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
+            commands.append(command)
+            return subprocess.CompletedProcess(command, 0, stdout="", stderr="")
+
+        def fake_subprocess_run(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
+            scrape_commands.append(command)
+            handle = kwargs.get("stdout")
+            if handle is not None:
+                handle.write("[]")
+            return subprocess.CompletedProcess(command, 0, stdout="", stderr="")
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            with (
+                mock.patch.object(run_server_refresh, "APP_ROOT", root),
+                mock.patch.object(run_server_refresh, "ensure_runtime_dirs", return_value=None),
+                mock.patch.object(run_server_refresh, "exclusive_lock", side_effect=lambda *args, **kwargs: contextlib.nullcontext()),
+                mock.patch.object(run_server_refresh, "run", side_effect=fake_run),
+                mock.patch.object(run_server_refresh, "prune_audit_runs", return_value=[]),
+                mock.patch.object(run_server_refresh.subprocess, "run", side_effect=fake_subprocess_run),
+                mock.patch.dict(
+                    run_server_refresh.os.environ,
+                    {"API_RELAY_SCRAPE_EMAIL": "demo@example.com", "API_RELAY_SCRAPE_PASSWORD": "secret-pass"},
+                    clear=True,
+                ),
+                mock.patch("sys.stdout", new=io.StringIO()) as stdout,
+            ):
+                exit_code = run_server_refresh.main()
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertFalse(payload["degraded"])
+        self.assertEqual(scrape_commands[0], ["python", "scripts/scrape_missing_announcements.py", "--all-stations", "--write-probes"])
+        self.assertEqual(commands[0], ["python", "scripts/fetch_public_content.py", "--announcements", "--multiplier-snapshots", "--skip-build"])
+        self.assertEqual(commands[1], ["python", "scripts/build_site_data.py"])
+        self.assertIn("--scrape-report", commands[2])
+
+    def test_prune_audit_runs_respects_retention_days_and_max_per_target(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            audit_root = Path(tmp_dir) / "_audit_runs"
+            model_root = audit_root / "demo" / "gpt-5"
+            keep_latest = model_root / "20260214T000000Z"
+            keep_second = model_root / "20260213T000000Z"
+            drop_by_max = model_root / "20260212T000000Z"
+            drop_by_age = model_root / "20251201T000000Z"
+            for folder in (keep_latest, keep_second, drop_by_max, drop_by_age):
+                folder.mkdir(parents=True)
+
+            with (
+                mock.patch.object(run_station_audit, "AUDIT_RUNS_DIR", audit_root),
+                mock.patch.dict(
+                    run_station_audit.os.environ,
+                    {"AUDIT_RETENTION_DAYS": "30", "AUDIT_RETENTION_MAX_PER_TARGET": "2"},
+                    clear=False,
+                ),
+            ):
+                removed = run_station_audit.prune_audit_runs(now=run_station_audit.datetime(2026, 2, 15, tzinfo=run_station_audit.UTC))
+            remaining = sorted(path.name for path in model_root.iterdir() if path.is_dir())
+            self.assertEqual(remaining, ["20260213T000000Z", "20260214T000000Z"])
+            self.assertEqual(len(removed), 2)
+            self.assertTrue(any("20260212T000000Z" in path for path in removed))
+            self.assertTrue(any("20251201T000000Z" in path for path in removed))
 
 
 if __name__ == "__main__":

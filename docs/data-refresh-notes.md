@@ -49,11 +49,12 @@ python scripts/refresh_quality_rankings.py --full-log-rebuild
 
 线上每日刷新：
 
-- GitHub Actions workflow：`.github/workflows/refresh-site-data.yml`。
-- 定时：北京时间每天 04:00，对应 cron `0 20 * * *`。
-- 顺序：公开公告/价格快照 -> 全站登录态 probe -> `scripts/build_site_data.py` -> `scripts/validate_refresh_outputs.py` -> 如有 diff 则提交 `data/site-data.json` 和 `data/_public_fetch`。
-- 线上登录态补抓只读取 GitHub Actions Secrets 注入的环境变量；不提交 probe 文件、token、cookie 或密码。
-- Vercel 只在 Actions 提交数据变更后部署，不负责定时抓取。
+- 运行位置：Linux 服务器上的 `scheduler` 容器，入口脚本为 `scripts/run_server_refresh.py`。
+- 定时：北京时间每天 04:00，由 `deploy/cron/refresh.cron` + `supercronic` 触发。
+- 顺序：`fetch_public_content --announcements --multiplier-snapshots --skip-build` -> `scrape_missing_announcements --all-stations --write-probes`（仅凭据存在时）-> `build_site_data.py` -> `validate_refresh_outputs.py` -> `prune_audit_runs`。
+- 缺少 `API_RELAY_SCRAPE_EMAIL/API_RELAY_SCRAPE_PASSWORD` 时走 degraded 模式：跳过登录态补抓，但公开快照、站点重建和校验仍需成功。
+- 服务器手动触发命令：`docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec scheduler python scripts/run_server_refresh.py`。
+- `.github/workflows/refresh-site-data.yml` 只保留 `workflow_dispatch`，不再保留 `schedule`，避免与服务器刷新双写。
 
 ## 增量日志规则
 

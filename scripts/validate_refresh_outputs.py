@@ -7,12 +7,10 @@ import os
 from pathlib import Path
 from typing import Any
 
-
-SCRIPT_PATH = Path(__file__).resolve()
-APP_ROOT = SCRIPT_PATH.parents[1]
-WORKSPACE_ROOT = SCRIPT_PATH.parents[2]
-SITE_DATA_PATH = APP_ROOT / "data" / "site-data.json"
-LIVE_AUTH_PROBE_DIR = WORKSPACE_ROOT / "tabbit-audit-profile"
+try:
+    from scripts.runtime_paths import LIVE_AUTH_PROBE_DIR, SITE_DATA_PATH
+except ModuleNotFoundError:
+    from runtime_paths import LIVE_AUTH_PROBE_DIR, SITE_DATA_PATH
 
 REQUIRED_NEXUS_ENDPOINTS = (
     "/api/v1/groups/available",
@@ -52,8 +50,9 @@ def read_json(path: Path) -> Any:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Validate daily site-data refresh outputs.")
     parser.add_argument("--site-data", type=Path, default=SITE_DATA_PATH)
-    parser.add_argument("--scrape-report", type=Path, required=True)
+    parser.add_argument("--scrape-report", type=Path)
     parser.add_argument("--probe-dir", type=Path, default=LIVE_AUTH_PROBE_DIR)
+    parser.add_argument("--skip-scrape-validation", action="store_true")
     return parser.parse_args()
 
 
@@ -170,10 +169,16 @@ def validate_site_data(path: Path) -> None:
 
 def main() -> int:
     args = parse_args()
-    validate_scrape_report(args.scrape_report)
-    validate_nexus_probe(args.probe_dir)
+    if args.skip_scrape_validation:
+        if args.scrape_report:
+            raise SystemExit("Do not combine --skip-scrape-validation with --scrape-report.")
+    else:
+        if not args.scrape_report:
+            raise SystemExit("--scrape-report is required unless --skip-scrape-validation is set.")
+        validate_scrape_report(args.scrape_report)
+        validate_nexus_probe(args.probe_dir)
     validate_site_data(args.site_data)
-    print(json.dumps({"validated": True}, ensure_ascii=False))
+    print(json.dumps({"validated": True, "skipScrapeValidation": bool(args.skip_scrape_validation)}, ensure_ascii=False))
     return 0
 
 

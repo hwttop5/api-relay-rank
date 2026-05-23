@@ -15,21 +15,37 @@ from urllib.parse import quote, urlparse, urlunparse
 
 try:
     from scripts.station_display_names import contains_han, normalize_station_label
+    from scripts.runtime_paths import (
+        APP_ROOT,
+        AUDIT_RUNS_DIR,
+        DATA_DIR,
+        LIVE_AUTH_PROBE_DIR,
+        PENDING_API_PROBE_PATH,
+        PUBLIC_FETCH_DIR,
+        PUBLIC_FETCH_DIRS,
+        SITE_DATA_PATH,
+        WORKSPACE_ROOT,
+        ensure_runtime_dirs,
+        logical_data_path,
+    )
 except ModuleNotFoundError:
     from station_display_names import contains_han, normalize_station_label
+    from runtime_paths import (
+        APP_ROOT,
+        AUDIT_RUNS_DIR,
+        DATA_DIR,
+        LIVE_AUTH_PROBE_DIR,
+        PENDING_API_PROBE_PATH,
+        PUBLIC_FETCH_DIR,
+        PUBLIC_FETCH_DIRS,
+        SITE_DATA_PATH,
+        WORKSPACE_ROOT,
+        ensure_runtime_dirs,
+        logical_data_path,
+    )
 
 
-SCRIPT_PATH = Path(__file__).resolve()
-APP_ROOT = SCRIPT_PATH.parents[1]
-WORKSPACE_ROOT = SCRIPT_PATH.parents[2]
 SOURCE_ROOTS = [APP_ROOT]
-DATA_DIR = APP_ROOT / "data"
-SITE_DATA_PATH = DATA_DIR / "site-data.json"
-PUBLIC_FETCH_DIR = Path(os.environ.get("PUBLIC_FETCH_DIR", DATA_DIR / "_public_fetch"))
-AUDIT_RUNS_DIR = DATA_DIR / "_audit_runs"
-PUBLIC_FETCH_DIRS = [PUBLIC_FETCH_DIR]
-LIVE_AUTH_PROBE_DIR = WORKSPACE_ROOT / "tabbit-audit-profile"
-PENDING_API_PROBE_PATH = LIVE_AUTH_PROBE_DIR / "pending-stations-api-probes.json"
 STATION_PRICING_OVERRIDES_PATH = APP_ROOT / "config" / "station_pricing_overrides.json"
 STATION_URL_OVERRIDES_PATH = APP_ROOT / "config" / "station_url_overrides.json"
 STATION_AUDIT_TARGETS_PATH = APP_ROOT / "config" / "station_audit_targets.json"
@@ -1104,7 +1120,7 @@ def load_live_auth_probes(station_aliases: dict[str, str] | None = None) -> dict
             except (OSError, json.JSONDecodeError):
                 continue
             if isinstance(payload, dict):
-                payload["_probePath"] = str(path)
+                payload["_probePath"] = logical_data_path(path) if path.is_relative_to(DATA_DIR) else str(path)
                 grouped[station_key] = payload
     for station_key, pending in load_pending_api_probes(station_aliases).items():
         current = grouped.get(station_key)
@@ -1144,7 +1160,7 @@ def normalize_pending_api_probe(record: dict[str, Any]) -> dict[str, Any]:
         "url": record.get("url") or state.get("location") or "",
         "title": state.get("title") or record.get("title") or "",
         "results": normalized_results,
-        "_probePath": str(PENDING_API_PROBE_PATH),
+        "_probePath": logical_data_path(PENDING_API_PROBE_PATH) if PENDING_API_PROBE_PATH.is_relative_to(DATA_DIR) else str(PENDING_API_PROBE_PATH),
     }
 
 
@@ -4020,7 +4036,7 @@ def apply_authoritative_ranking_overrides(
 
 
 def main() -> int:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    ensure_runtime_dirs()
     station_aliases = load_station_aliases()
     existing_detail_baseline = load_existing_detail_baseline(station_aliases)
 
@@ -4309,7 +4325,7 @@ def main() -> int:
         json.dumps(
             {
                 "generated_at": intro["generated_at"],
-                "output": str(SITE_DATA_PATH),
+                "output": logical_data_path(SITE_DATA_PATH),
                 "stations": len(station_list),
                 "work_hours_ranked": len(rankings["work_hours"]),
                 "off_hours_ranked": len(rankings["off_hours"]),

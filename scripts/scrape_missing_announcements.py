@@ -13,13 +13,12 @@ from urllib.parse import urlparse, urlunparse
 
 import requests
 
+try:
+    from scripts.runtime_paths import APP_ROOT, LIVE_AUTH_PROBE_DIR, SITE_DATA_PATH, ensure_runtime_dirs
+except ModuleNotFoundError:
+    from runtime_paths import APP_ROOT, LIVE_AUTH_PROBE_DIR, SITE_DATA_PATH, ensure_runtime_dirs
 
-SCRIPT_PATH = Path(__file__).resolve()
-APP_ROOT = SCRIPT_PATH.parents[1]
-WORKSPACE_ROOT = SCRIPT_PATH.parents[2]
-SITE_DATA_PATH = APP_ROOT / "data" / "site-data.json"
 STATION_ALIASES_PATH = APP_ROOT / "config" / "station_aliases.json"
-LIVE_AUTH_PROBE_DIR = WORKSPACE_ROOT / "tabbit-audit-profile"
 REQUEST_LOG_STATION_CANDIDATES_PATH = APP_ROOT / "request_log_station_candidates.csv"
 LOGIN_VERIFICATION_CHECKLIST_PATH = APP_ROOT / "login_verification_checklist.csv"
 
@@ -863,6 +862,7 @@ def merge_probe(capture: dict[str, Any]) -> Path:
 
 def main() -> int:
     args = parse_args()
+    ensure_runtime_dirs()
     if not args.email or not args.password:
         raise SystemExit("Missing --email/--password or API_RELAY_SCRAPE_EMAIL/API_RELAY_SCRAPE_PASSWORD.")
 

@@ -1,22 +1,11 @@
 import { readFile } from "node:fs/promises";
-import path from "node:path";
 
-import { AUDIT_RUNS_ROOT, resolveAuditRunReportPath } from "@/lib/audit-history";
+import { resolveArchivedReportPath, resolveAuditRunReportPath } from "@/lib/audit-history";
 import { getSiteData } from "@/lib/site-data";
 
-const APP_ROOT = process.cwd();
 const NOINDEX_HEADERS = {
   "X-Robots-Tag": "noindex",
 };
-
-function resolveArchivedReportPath(reportPath: string) {
-  const auditRoot = path.resolve(AUDIT_RUNS_ROOT);
-  const filePath = path.resolve(APP_ROOT, reportPath);
-  if (!filePath.startsWith(auditRoot + path.sep)) {
-    return null;
-  }
-  return filePath;
-}
 
 async function readReport(filePath: string | null) {
   if (!filePath) {

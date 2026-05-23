@@ -3,12 +3,14 @@ import readline from "node:readline";
 import { promisify } from "node:util";
 import { revalidatePath } from "next/cache";
 
+import { AuditTargetError, assertPublicAuditTarget, seedRuntimeDataFromRepo, tryAcquireLock, withExclusiveLock } from "@/lib/audit-runtime";
 import { getSiteData } from "@/lib/site-data";
 import type { SiteData, StationAuditHistoryItem, StationAuditSummary } from "@/lib/types";
 
 const execFileAsync = promisify(execFile);
 const APP_ROOT = process.cwd();
 const AUDIT_TIMEOUT_MS = 1000 * 60 * 20;
+const MAX_AUDIT_REQUEST_BYTES = 16 * 1024;
 
 export const runtime = "nodejs";
 
@@ -207,9 +209,22 @@ function auditRunIdFromReportPath(reportPath: string) {
 }
 
 export async function POST(request: Request) {
+  await seedRuntimeDataFromRepo();
+
+  let rawBody = "";
+  try {
+    rawBody = await request.text();
+  } catch {
+    return jsonResponse({ error: "Request body could not be read." }, 400);
+  }
+
+  if (Buffer.byteLength(rawBody, "utf8") > MAX_AUDIT_REQUEST_BYTES) {
+    return jsonResponse({ error: "Request body exceeds 16 KiB." }, 413);
+  }
+
   let payload: AuditRunPayload;
   try {
-    payload = await request.json();
+    payload = JSON.parse(rawBody) as AuditRunPayload;
   } catch {
     return jsonResponse({ error: "Request body must be valid JSON." }, 400);
   }
@@ -220,6 +235,13 @@ export async function POST(request: Request) {
 
   if (!apiBaseUrl || !apiKey || !model) {
     return jsonResponse({ error: "apiBaseUrl, apiKey and model are required." }, 400);
+  }
+
+  try {
+    await assertPublicAuditTarget(apiBaseUrl);
+  } catch (error) {
+    const status = error instanceof AuditTargetError ? error.status : 403;
+    return jsonResponse({ error: sanitizeAuditDetail(error) || "apiBaseUrl must target a public host." }, status);
   }
 
   let siteData = await getSiteData();
@@ -237,94 +259,120 @@ export async function POST(request: Request) {
     return jsonResponse({ error: "apiBaseUrl must be a valid absolute URL." }, 400);
   }
 
-  const encoder = new TextEncoder();
-  const stream = new ReadableStream<Uint8Array>({
-    start(controller) {
-      let closed = false;
-      const send = (payload: AuditProgressPayload) => {
-        if (closed) {
-          return;
-        }
-        controller.enqueue(encoder.encode(`${JSON.stringify(sanitizeEventValue(payload, [apiKey]))}\n`));
-      };
-      const close = () => {
-        if (!closed) {
-          closed = true;
-          controller.close();
-        }
-      };
+  const auditLock = await tryAcquireLock("audit-run", 1000 * 60 * 60);
+  if (!auditLock) {
+    return jsonResponse({ error: "Another audit is already running." }, 429);
+  }
 
-      void (async () => {
-        try {
-          const script = [
-            "scripts/run_station_audit.py",
-            "--station",
-            stationKey,
-            "--model",
-            model,
-            "--ad-hoc-target",
-            "--override-base-url",
-            apiBaseUrl,
-            "--request-api-key-env",
-            "STATION_AUDIT_REQUEST_KEY",
-            "--progress-jsonl",
-          ];
-          send({ type: "status", message: "已创建检测任务，正在启动审计流程。", station: stationKey, model });
-          const { executed } = await runPythonProgressJsonl(script, { STATION_AUDIT_REQUEST_KEY: apiKey }, [apiKey], send);
-          if (!executed[0]?.summary) {
-            throw new Error("Audit completed without a summary path.");
+  try {
+    const encoder = new TextEncoder();
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        let closed = false;
+        const send = (payload: AuditProgressPayload) => {
+          if (closed) {
+            return;
           }
-
-          send({ type: "status", message: "审计报告已归档，正在重建站点数据。", station: stationKey, model });
-          await runPythonJson(["scripts/build_site_data.py"]);
-          siteData = await getSiteData();
-
-          revalidatePath("/");
-          revalidatePath("/ranking");
-          revalidatePath("/audit");
-          revalidatePath("/statement");
-          revalidatePath(`/stations/${encodeURIComponent(stationKey)}`);
-          revalidatePath("/sitemap.xml");
-
-          const station = siteData.stations.find((item) => item.key === stationKey);
-          const summary = station?.audits?.latestByModel.find((item) => item.model === model) as StationAuditSummary | undefined;
-          if (!station || !summary) {
-            throw new Error("Audit summary was archived but not found in rebuilt site data.");
+          controller.enqueue(encoder.encode(`${JSON.stringify(sanitizeEventValue(payload, [apiKey]))}\n`));
+        };
+        const close = () => {
+          if (!closed) {
+            closed = true;
+            controller.close();
           }
-          const runId = auditRunIdFromReportPath(summary.reportPath);
-          if (!runId) {
-            throw new Error("Audit summary was archived but its run id could not be resolved.");
-          }
-          const reportUrl = `/api/audit-report?station=${encodeURIComponent(station.key)}&model=${encodeURIComponent(model)}&run=${encodeURIComponent(runId)}`;
-          const historyItem: StationAuditHistoryItem = {
-            ...summary,
-            stationKey: station.key,
-            stationLabel: station.label,
-            stationUrl: station.url || summary.auditedBaseUrl,
-            runId,
-            reportUrl,
-          };
+        };
 
-          send({
-            type: "complete",
-            message: "检测完成，结果已按站点归档。",
-            result: {
-              station: station.key,
+        void (async () => {
+          try {
+            const script = [
+              "scripts/run_station_audit.py",
+              "--station",
+              stationKey,
+              "--model",
               model,
-              summary,
-              historyItem,
-              stationUrl: `/stations/${encodeURIComponent(station.key)}#audit`,
-              reportUrl,
-            },
-          });
-        } catch (error) {
-          send({ type: "error", message: sanitizeAuditDetail(error, [apiKey]) || "Audit engine failed." });
-        } finally {
-          close();
-        }
-      })();
-    },
-  });
+              "--ad-hoc-target",
+              "--override-base-url",
+              apiBaseUrl,
+              "--request-api-key-env",
+              "STATION_AUDIT_REQUEST_KEY",
+              "--progress-jsonl",
+            ];
+            send({ type: "status", message: "已创建审计任务，正在启动审计流程。", station: stationKey, model });
+            const { executed } = await runPythonProgressJsonl(script, { STATION_AUDIT_REQUEST_KEY: apiKey }, [apiKey], send);
+            if (!executed[0]?.summary) {
+              throw new Error("Audit completed without a summary path.");
+            }
 
-  return streamResponse(stream);
+            send({ type: "status", message: "审计报告已归档，正在重建站点数据。", station: stationKey, model });
+            try {
+              await withExclusiveLock(
+                "site-data-rebuild",
+                async () => {
+                  await runPythonJson(["scripts/build_site_data.py"]);
+                },
+                1000 * 60 * 60,
+              );
+            } catch (error) {
+              if (error instanceof Error && error.message === "LOCK_HELD:site-data-rebuild") {
+                throw new Error("Site data rebuild is already running. Retry later.");
+              }
+              throw error;
+            }
+
+            siteData = await getSiteData();
+
+            revalidatePath("/");
+            revalidatePath("/ranking");
+            revalidatePath("/audit");
+            revalidatePath("/statement");
+            revalidatePath(`/stations/${encodeURIComponent(stationKey)}`);
+            revalidatePath("/sitemap.xml");
+
+            const station = siteData.stations.find((item) => item.key === stationKey);
+            const summary = station?.audits?.latestByModel.find((item) => item.model === model) as StationAuditSummary | undefined;
+            if (!station || !summary) {
+              throw new Error("Audit summary was archived but not found in rebuilt site data.");
+            }
+            const runId = auditRunIdFromReportPath(summary.reportPath);
+            if (!runId) {
+              throw new Error("Audit summary was archived but its run id could not be resolved.");
+            }
+
+            const reportUrl = `/api/audit-report?station=${encodeURIComponent(station.key)}&model=${encodeURIComponent(model)}&run=${encodeURIComponent(runId)}`;
+            const historyItem: StationAuditHistoryItem = {
+              ...summary,
+              stationKey: station.key,
+              stationLabel: station.label,
+              stationUrl: station.url || summary.auditedBaseUrl,
+              runId,
+              reportUrl,
+            };
+
+            send({
+              type: "complete",
+              message: "审计完成，结果已按站点归档。",
+              result: {
+                station: station.key,
+                model,
+                summary,
+                historyItem,
+                stationUrl: `/stations/${encodeURIComponent(station.key)}#audit`,
+                reportUrl,
+              },
+            });
+          } catch (error) {
+            send({ type: "error", message: sanitizeAuditDetail(error, [apiKey]) || "Audit engine failed." });
+          } finally {
+            void auditLock.release();
+            close();
+          }
+        })();
+      },
+    });
+
+    return streamResponse(stream);
+  } catch (error) {
+    await auditLock.release();
+    throw error;
+  }
 }
