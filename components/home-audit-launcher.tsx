@@ -19,6 +19,7 @@ export const AUDIT_MODEL_OPTIONS: AuditModelOption[] = [
 
 const DEFAULT_AUDIT_MODEL = "gpt-5.5";
 const MAX_LOG_LINES = 300;
+const TERMINAL_BOTTOM_THRESHOLD_PX = 48;
 
 type AuditState = "idle" | "running" | "success" | "error";
 type AuditLogKind = "status" | "log" | "error" | "complete";
@@ -78,6 +79,7 @@ export function HomeAuditLauncher({ onAuditComplete }: { onAuditComplete?: (resu
   const logIdRef = useRef(0);
   const terminalBodyRef = useRef<HTMLDivElement | null>(null);
   const shouldStickToBottomRef = useRef(true);
+  const scrollFrameRef = useRef<number | null>(null);
 
   const canSubmit = apiBaseUrl.trim().length > 0 && apiKey.trim().length > 0 && model.length > 0 && state !== "running";
 
@@ -89,6 +91,14 @@ export function HomeAuditLauncher({ onAuditComplete }: { onAuditComplete?: (resu
     logIdRef.current += 1;
     const line = { id: logIdRef.current, kind, message: normalized, stream };
     setLogLines((current) => [...current, line].slice(-MAX_LOG_LINES));
+  }
+
+  function scrollTerminalToBottom() {
+    const terminalBody = terminalBodyRef.current;
+    if (!terminalBody) {
+      return;
+    }
+    terminalBody.scrollTop = terminalBody.scrollHeight;
   }
 
   function handleStreamLine(line: string) {
@@ -201,16 +211,28 @@ export function HomeAuditLauncher({ onAuditComplete }: { onAuditComplete?: (resu
 
   function updateTerminalStickState(event: UIEvent<HTMLDivElement>) {
     const target = event.currentTarget;
-    shouldStickToBottomRef.current = target.scrollHeight - target.scrollTop - target.clientHeight < 48;
+    shouldStickToBottomRef.current =
+      target.scrollHeight - target.scrollTop - target.clientHeight < TERMINAL_BOTTOM_THRESHOLD_PX;
   }
 
   useEffect(() => {
-    const terminalBody = terminalBodyRef.current;
-    if (!terminalBody || !shouldStickToBottomRef.current) {
+    if (!shouldStickToBottomRef.current) {
       return;
     }
-    terminalBody.scrollTop = terminalBody.scrollHeight;
-  }, [logLines]);
+    if (scrollFrameRef.current !== null) {
+      cancelAnimationFrame(scrollFrameRef.current);
+    }
+    scrollFrameRef.current = requestAnimationFrame(() => {
+      scrollTerminalToBottom();
+      scrollFrameRef.current = null;
+    });
+    return () => {
+      if (scrollFrameRef.current !== null) {
+        cancelAnimationFrame(scrollFrameRef.current);
+        scrollFrameRef.current = null;
+      }
+    };
+  }, [logLines.length]);
 
   return (
     <section className="section home-audit-section">
