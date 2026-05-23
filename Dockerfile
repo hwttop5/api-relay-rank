@@ -25,7 +25,7 @@ RUN apt-get update \
 
 COPY package.json package-lock.json requirements.txt ./
 
-RUN npm ci \
+RUN npm ci --include=dev --ignore-scripts \
     && python -m pip install --no-cache-dir --break-system-packages -r requirements.txt
 
 COPY . .

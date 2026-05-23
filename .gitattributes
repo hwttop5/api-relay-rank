@@ -1,0 +1,3 @@
+*.sh text eol=lf
+*.cron text eol=lf
+*.crontab text eol=lf
