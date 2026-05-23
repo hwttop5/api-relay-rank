@@ -10,7 +10,7 @@ from datetime import UTC, datetime
 from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 from urllib.parse import quote, urlparse, urlunparse
 
 try:
@@ -92,6 +92,7 @@ APP_CONFIG_PATTERN = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 URL_PATTERN = re.compile(r"https?://[^\s\"'<>]+")
+FENCED_CODE_BLOCK_PATTERN = re.compile(r"(^```[^\n]*\n[\s\S]*?^```[ \t]*$)", re.MULTILINE)
 PAY_SHOP_PATTERN = re.compile(r"https?://pay\.ldxp\.cn/shop/([A-Za-z0-9_-]+)")
 TRAILING_UI_SEGMENTS = {"console", "dashboard", "wallet", "keys", "purchase", "pricing", "plans", "api-keys"}
 LOCALE_SEGMENT_PATTERN = re.compile(r"^[A-Za-z]{2}(?:-[A-Za-z]{2})?$")
@@ -299,7 +300,133 @@ def html_to_text(value: Any) -> str:
 
 
 def normalize_announcement_text(value: Any) -> str:
-    return normalize_public_text(html_to_text(value))
+    text = sanitize_public_text(html_to_text(value))
+    text = re.sub(r"[ \t]+\n", "\n", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return normalize_announcement_markdown(text.strip())
+
+
+def transform_markdown_outside_code_fences(text: str, transform: Callable[[str], str]) -> str:
+    parts = FENCED_CODE_BLOCK_PATTERN.split(text)
+    if len(parts) == 1:
+        return transform(text)
+    normalized_parts: list[str] = []
+    for index, part in enumerate(parts):
+        normalized_parts.append(part if index % 2 else transform(part))
+    return "".join(normalized_parts)
+
+
+def normalize_announcement_markdown(value: Any) -> str:
+    text = str(value or "")
+    if not text:
+        return ""
+
+    def replace_legacy_image(match: re.Match[str]) -> str:
+        image_url = match.group("image").strip()
+        href = (match.group("href") or "").strip()
+        group_names = match.re.groupindex
+        alt = (match.group("alt") if "alt" in group_names else "image") or "image"
+        alt = str(alt).strip()
+        token = f"![{alt}]({image_url})"
+        return f"[{token}]({href})" if href else token
+
+    def normalize_segment(segment: str) -> str:
+        normalized = re.sub(
+            r"!\[\[(?P<alt>[^\]]+)\]\((?P<image>https?://[^)\s]+)\]\((?P<href>https?://[^)\s]+)\)\)",
+            replace_legacy_image,
+            segment,
+        )
+        normalized = re.sub(
+            r"(?im)^!image\s+(?P<image>https?://\S+)(?:\s+(?P<href>https?://\S+))?\s*$",
+            replace_legacy_image,
+            normalized,
+        )
+        normalized = re.sub(
+            r"(?im)^!(?!\[)(?P<alt>[^\s].*?)\s+(?P<image>https?://\S+)\s+(?P<href>https?://\S+)\s*$",
+            replace_legacy_image,
+            normalized,
+        )
+        normalized = re.sub(
+            r"(?im)^(?P<label>[^\n\[]*?\S)\s+(?P<url>https?://[^\s)]+)\s*$",
+            lambda match: f"[{match.group('label').strip()}]({match.group('url').strip()})",
+            normalized,
+        )
+        normalized = re.sub(r"(?im)^(\s*[-*]\s+Telegram:\s+)(https?://\S+)(?:\s+\2)+\s*$", r"\1[\2](\2)", normalized)
+        normalized = re.sub(r"(?im)^(\s*>\s*.+?:\s+)(https?://\S+)(?:\s+\2)+\s*$", r"\1[\2](\2)", normalized)
+        normalized = re.sub(r"(?im)^(\s*.+?:\s+)(https?://\S+)(?:\s+\2)+\s*$", r"\1[\2](\2)", normalized)
+        normalized = re.sub(r"[ \t]+\n", "\n", normalized)
+        normalized = re.sub(r"\n{3,}", "\n\n", normalized)
+        return normalized
+
+    return transform_markdown_outside_code_fences(text, normalize_segment).strip()
+
+
+def announcement_dedupe_fingerprint(value: Any) -> str:
+    text = normalize_announcement_markdown(value)
+    if not text:
+        return ""
+
+    def image_link_to_semantic(match: re.Match[str]) -> str:
+        alt = re.sub(r"\s+", " ", match.group("alt").strip())
+        image_url = match.group("image").strip()
+        href = match.group("href").strip()
+        return f"{alt} {image_url} {href}".strip()
+
+    def image_to_semantic(match: re.Match[str]) -> str:
+        alt = re.sub(r"\s+", " ", match.group("alt").strip())
+        image_url = match.group("image").strip()
+        return f"{alt} {image_url}".strip()
+
+    def link_to_semantic(match: re.Match[str]) -> str:
+        label = re.sub(r"\s+", " ", match.group("label").strip())
+        href = match.group("href").strip()
+        return f"{label} {href}".strip()
+
+    def fingerprint_segment(segment: str) -> str:
+        fingerprint = re.sub(
+            r"\[!\[(?P<alt>[^\]]*)\]\((?P<image>https?://[^)\s]+)\)\]\((?P<href>https?://[^)\s]+)\)",
+            image_link_to_semantic,
+            segment,
+        )
+        fingerprint = re.sub(
+            r"!\[(?P<alt>[^\]]*)\]\((?P<image>https?://[^)\s]+)\)",
+            image_to_semantic,
+            fingerprint,
+        )
+        fingerprint = re.sub(
+            r"\[(?P<label>[^\]]+)\]\((?P<href>https?://[^)\s]+)\)",
+            link_to_semantic,
+            fingerprint,
+        )
+        fingerprint = re.sub(r"(?im)^\s*[-*_]{3,}\s*$", " ", fingerprint)
+        fingerprint = re.sub(r"(?im)^\s{0,3}(#{1,6}\s+|>\s+|[-*+]\s+|\d+\.\s+)", "", fingerprint)
+        fingerprint = re.sub(r"[ \t]+", " ", fingerprint)
+        fingerprint = re.sub(r"\s*\n\s*", " ", fingerprint)
+        fingerprint = re.sub(r"\s{2,}", " ", fingerprint)
+        return fingerprint.strip()
+
+    parts: list[str] = []
+    for index, part in enumerate(FENCED_CODE_BLOCK_PATTERN.split(text)):
+        if not part:
+            continue
+        if index % 2:
+            parts.append(part.strip())
+            continue
+        fingerprint = fingerprint_segment(part)
+        if fingerprint:
+            parts.append(fingerprint)
+    return "\n".join(parts).strip()
+
+
+def announcement_quality_score(item: dict[str, Any], normalized_content: str) -> tuple[int, int, int]:
+    content = str(item.get("content") or "")
+    has_markdown_image = int("[![" in normalized_content or "![" in normalized_content)
+    has_markdown_link = int(bool(re.search(r"\[[^\]]+\]\((https?://[^)\s]+)\)", normalized_content)))
+    return (
+        has_markdown_image * 10 + has_markdown_link * 5,
+        len(normalized_content),
+        len(content),
+    )
 
 
 def load_station_aliases() -> dict[str, str]:
@@ -1882,19 +2009,32 @@ def live_probe_recharge_rows(probe: dict[str, Any]) -> tuple[list[dict[str, Any]
 
 
 def merge_announcements(existing: list[dict[str, Any]], incoming: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    merged: list[dict[str, Any]] = []
-    seen: set[tuple[str, str, str]] = set()
+    merged_map: dict[tuple[str, str, str], dict[str, Any]] = {}
+    order: list[tuple[str, str, str]] = []
     for item in existing + incoming:
+        normalized_content = normalize_announcement_markdown(item.get("content"))
+        fingerprint = announcement_dedupe_fingerprint(item.get("content"))
         key = (
             str(item.get("id") or ""),
             str(item.get("publishedAt") or ""),
-            str(item.get("content") or ""),
+            fingerprint,
         )
-        if key in seen:
+        normalized_item = dict(item)
+        if normalized_content and normalized_content != str(item.get("content") or ""):
+            normalized_item["content"] = normalized_content
+
+        current = merged_map.get(key)
+        if current is None:
+            merged_map[key] = normalized_item
+            order.append(key)
             continue
-        seen.add(key)
-        merged.append(item)
-    return merged
+
+        current_score = announcement_quality_score(current, normalize_announcement_markdown(current.get("content")))
+        next_score = announcement_quality_score(normalized_item, normalized_content)
+        if next_score > current_score:
+            merged_map[key] = normalized_item
+
+    return [merged_map[key] for key in order]
 
 
 def normalize_live_probe_status(status: dict[str, str]) -> dict[str, str]:
@@ -4163,6 +4303,7 @@ def main() -> int:
         "rankedStationCount": {window: len(rows) for window, rows in rankings.items()},
     }
 
+    SITE_DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
     SITE_DATA_PATH.write_text(json.dumps(site_data, ensure_ascii=False, indent=2), encoding="utf-8")
     print(
         json.dumps(

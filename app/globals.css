@@ -1441,11 +1441,25 @@ select:focus-visible {
   white-space: pre-wrap;
 }
 
+.announcement-content > * + *,
+.announcement-content li > ul,
+.announcement-content li > ol {
+  margin-top: 12px;
+}
+
+.announcement-content li > ul,
+.announcement-content li > ol {
+  margin-bottom: 0;
+}
+
 .announcement-content p + p,
 .announcement-content p + .announcement-heading,
 .announcement-content .announcement-heading + p,
 .announcement-content .announcement-list + p,
-.announcement-content .announcement-table-wrap + p {
+.announcement-content .announcement-table-wrap + p,
+.announcement-content .announcement-image-wrap + p,
+.announcement-content .announcement-code-block + p,
+.announcement-content .announcement-quote + p {
   margin-top: 12px;
 }
 
@@ -1472,6 +1486,18 @@ select:focus-visible {
   margin-top: 4px;
 }
 
+.announcement-quote {
+  margin: 10px 0 14px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--accent-2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.announcement-quote p + p {
+  margin-top: 8px;
+}
+
 .announcement-table-wrap {
   margin: 10px 0 14px;
   overflow-x: auto;
@@ -1482,6 +1508,10 @@ select:focus-visible {
   min-width: 420px;
   border-collapse: collapse;
   font-size: 12px;
+}
+
+.announcement-table-wrap > .announcement-table {
+  margin: 0;
 }
 
 .announcement-table th,
@@ -1504,6 +1534,54 @@ select:focus-visible {
   padding: 1px 4px;
   background: var(--panel-soft);
   color: var(--text);
+}
+
+.announcement-code-block {
+  margin: 10px 0 14px;
+  padding: 12px 14px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(7, 14, 22, 0.78);
+  color: #d7e1ea;
+}
+
+.announcement-code-block code {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-family: "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.65;
+  white-space: pre;
+}
+
+.announcement-code-block > code {
+  display: block;
+}
+
+.announcement-image-wrap {
+  margin: 10px 0 14px;
+}
+
+.announcement-image-wrap > * {
+  margin: 0;
+}
+
+.announcement-image-link {
+  display: inline-flex;
+  max-width: 100%;
+}
+
+.announcement-image {
+  display: block;
+  max-width: min(100%, 520px);
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .announcement-content a,
