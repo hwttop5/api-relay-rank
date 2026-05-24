@@ -411,6 +411,17 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(chosen["demo"].group_name, "vip")
         self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.052)
 
+    def test_choose_verified_fee_excludes_domestic_model_group_notes(self) -> None:
+        tiers = [
+            self.make_fee_tier(group_name="MadeInChina", group_multiplier=0.08, effective_multiplier=0.08, notes="国产大模型"),
+            self.make_fee_tier(group_name="codex", group_multiplier=0.1, effective_multiplier=0.1, notes="codex分组"),
+        ]
+
+        chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
+
+        self.assertEqual(chosen["demo"].group_name, "codex")
+        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.1)
+
     def test_choose_verified_fee_skips_station_with_only_claude_groups(self) -> None:
         tiers = [
             self.make_fee_tier(group_name="claude-code", group_multiplier=0.05, effective_multiplier=0.05),
@@ -2076,6 +2087,18 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(snapshot["rechargeTiers"][0]["rmbAmount"], 6.0)
         self.assertEqual(snapshot["rechargeTiers"][-1]["usdAmount"], 500.0)
 
+    def test_known_lumibest_shop_snapshot_defaults_price_only_products_to_1to1_quota(self) -> None:
+        snapshot = build_site_data.known_pay_shop_snapshot("WE9ZBUQG", "https://pay.ldxp.cn/shop/WE9ZBUQG")
+
+        self.assertIsNotNone(snapshot)
+        assert snapshot is not None
+        self.assertEqual(snapshot["stationTypeHint"], "non_subscription")
+        self.assertEqual(len(snapshot["rechargeTiers"]), 3)
+        self.assertEqual(snapshot["rechargeTiers"][0]["rechargeName"], "Lumi API 10 USD external shop redeem code")
+        self.assertEqual(snapshot["rechargeTiers"][0]["rmbAmount"], 10.0)
+        self.assertEqual(snapshot["rechargeTiers"][0]["usdAmount"], 10.0)
+        self.assertIn("1 RMB = 1 USD", snapshot["rechargeTiers"][0]["expiresRule"])
+
     def test_known_zhishu_shop_snapshot_parses_browser_verified_products(self) -> None:
         snapshot = build_site_data.known_pay_shop_snapshot("CFUOS364", "https://pay.ldxp.cn/shop/CFUOS364/ek8gty")
 
@@ -2111,6 +2134,35 @@ class BuildSiteDataTests(unittest.TestCase):
 
         self.assertTrue(dogcoding_tiers)
         self.assertTrue(all(audit_proxy_multipliers.has_formal_confidence(tier.confidence) for tier in dogcoding_tiers))
+
+    def test_lumibest_known_shop_tiers_use_new_api_groups_and_skip_domestic_notes(self) -> None:
+        if audit_proxy_multipliers is None:
+            self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
+        probe = {
+            "results": {
+                "New-Api-User:1": {
+                    "/api/user/self/groups": {
+                        "body": {
+                            "success": True,
+                            "data": {
+                                "MadeInChina": {"desc": "国产大模型", "ratio": 0.08},
+                                "codex": {"desc": "codex分组", "ratio": 0.1},
+                            },
+                        }
+                    }
+                }
+            }
+        }
+
+        with mock.patch.object(audit_proxy_multipliers, "load_live_auth_probe", return_value=probe):
+            tiers = audit_proxy_multipliers.known_public_shop_tiers({})
+
+        lumibest_tiers = [tier for tier in tiers if tier.station == "lumibest"]
+        self.assertTrue(lumibest_tiers)
+        chosen = audit_proxy_multipliers.choose_verified_fee(lumibest_tiers, allow_low_confidence=False)
+        self.assertEqual(chosen["lumibest"].group_name, "codex")
+        self.assertEqual(chosen["lumibest"].recharge_name, "Lumi API 10 USD external shop redeem code")
+        self.assertAlmostEqual(chosen["lumibest"].effective_multiplier, 0.1)
 
     def test_zhishu_known_shop_tiers_use_live_group_multiplier(self) -> None:
         if audit_proxy_multipliers is None:

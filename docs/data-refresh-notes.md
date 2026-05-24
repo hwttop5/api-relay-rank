@@ -110,6 +110,7 @@ python scripts/refresh_quality_rankings.py --full-log-rebuild
 - live probe 中已经结构化归一的充值档位可反推类型：同时存在 `permanent` 与月/周/日/季/年卡时为混合型；只有周期卡时为包月型；只有永久余额档位时为非包月型。已有明确 `stationTypeHint` 时不被空推断覆盖。
 - 部分营销首页会把实际 DOM 作为 `\u003c...` 转义片段嵌在 HTML 中；公开快照解析需先解码再提取充值倍率、套餐卡片和外部店铺链接。
 - 公开首页写明 `1 RMB = $1`、`¥1 = $5` 等钱包换算时，只能生成 `wallet topup sample ... RMB` 样本行；除非页面列出固定商品金额，否则不要伪造成一组固定充值档位。
+- 官方外链小铺只暴露固定商品价格、没有展示到账额度时，按项目默认口径 `1 RMB = 1 USD` 生成外链兑换码档位，并在 `expiresRule` / `tierNotes` 标明这是 price-only 外链商品默认值；不要把站内 `/api/user/amount` 报价反向解释成到账 USD。
 - 公开套餐卡片可作为详情页充值证据，但要保留套餐周期、总额度/每日额度和是否每日刷新，避免把月卡每日额度误算成单日总额度。
 - 公告接口返回空列表、接口未抓取、接口需要登录、抓取失败和被验证码阻断要分开标注，避免把“暂无公告”和“没抓到公告接口”混为一谈。
 - live probe 登录失败、401、空结构或缺详情数据时，`scripts/build_site_data.py` 可以回退读取 `../tabbit-audit-profile/pending-stations-api-probes.json` 中的旧成功结构化证据；这个回退只用于分组、充值和公告详情补全。
@@ -132,6 +133,7 @@ python scripts/refresh_quality_rankings.py --full-log-rebuild
 | --- | --- | --- | --- | --- |
 | `Xiaoxin` | 余额充值商品 `49.99 RMB -> 1000 USD` 已核验；当前登录态分组接口返回 `余额用户（专用分组）` 倍率 `1.0`，正式采用倍率为 `0.04999`。 | 登录态 `/api/v1/groups/available`、官方外部店铺 `pay.ldxp.cn/shop/JZ9CUHL0`。 | 不能沿用旧人工输入里的 `1.3` 分组倍率；`verified_multiplier_inputs.csv` 的 v1 分组行应优先用当前 live probe 倍率。 | 若分组倍率再次变化，以登录态分组接口为准；外部店铺只负责核对充值金额和到账美元额度。 |
 | `HelloCode` | 站内 `payment/config.enabled=false` 时不生成默认钱包费用行；已登录浏览器核验左侧“充值/订阅”嵌入官方链动小铺，可用 10/30/50/100 USD 兑换码商品生成正式费用行，当前采用 `codex-plus` 分组倍率 `0.1`。 | 登录态分组接口、官方外部店铺 `pay.ldxp.cn/shop/SAIS2N05`、充值页商品详情和支付确认弹窗。 | 不能只凭 `checkout-info` 的支付方式/倍率生成站内钱包档位；不能保存带 `token=`、`user_id=` 或邮箱的签名 URL。 | 复核外部店铺是否仍为 Hello-Code 已认证店铺，商品是否仍写明 1 元兑 1 刀并要求到站内兑换页兑换。 |
+| `LumiBest` | 站内充值入口指向官方链动小铺 `pay.ldxp.cn/shop/WE9ZBUQG`；小铺只展示 `¥10/¥50/¥100` 商品价格、没有公开到账额度，按项目默认 `1 RMB = 1 USD` 生成外链兑换码档位。当前 Codex 采用分组应为 `codex`，倍率按 `0.1 * 10 / 10 = 0.1`，`MadeInChina` 因描述为国产大模型不参与 Codex-like 采用。 | 登录态 `/api/user/self/groups`、`/api/user/topup/info` 的 `topup_link`、官方外部店铺商品页。 | 不能把 `/api/user/amount?amount=10` 的 `73.00` 当成 `10 RMB -> 73 USD`；不能让 `MadeInChina`/国产大模型分组拉低 Codex 采用倍率。 | 如果后续小铺商品详情明确写到账额度，改用商品详情；否则继续按外链 price-only 默认 1:1。 |
 | `PrintcapAI` | 可用人工截图核验费用行；当前 `GPT-MIX 1x`，`1 CNY = 2 USD`，采用倍率 `0.5`。 | 完整充值页截图、人工核验输入。 | 不能从公开配置或公告推断具体金额；登录态恢复前不要伪造公告。 | 若登录态 API 恢复，用结构化 API 重新复核截图结论。 |
 | `VoAPI` | 已浏览器核验固定钱包充值档位，可生成正式费用行；当前按默认分组 `1x` 与最高折扣固定档位采用，采用倍率 `10650 / 2000 = 5.325`。 | 登录态 API 令牌页显示 `默认分组 (x1)`；钱包页固定档位显示到账美元额度，并在支付确认区显示人民币实付金额，例如 `￥71 -> 10 USD`、`￥337.25 -> 50 USD`、`￥10650 -> 2000 USD`。 | 不能把到账美元额度反写成人民币支付金额；不能使用 `test 50x` 作为默认 Codex 采用分组；不能提交真实付款。 | 若钱包页充值面额或折扣变化，更新 `config/station_pricing_overrides.json` 中显式档位；`rmbAmount` 必须是人民币实付金额，`usdAmount` 必须是到账美元额度。 |
 | `laodog/dogcoding` | v1 支付配置关闭时使用官方外部店铺兑换码商品作为证据。 | 官方菜单指向的外部店铺商品。 | 不能在 `payment/config.enabled=false` 时生成默认钱包档位。 | 核对兑换码商品金额和到账美元额度，不按站内快捷充值处理。 |

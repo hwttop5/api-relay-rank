@@ -2504,6 +2504,8 @@ def live_probe_tiers() -> list[FeeTier]:
         recharge_location = "wallet API"
         if topup_link:
             recharge_location = "wallet API -> site topup page"
+        if station in KNOWN_PUBLIC_SHOP_PRODUCTS and "pay.ldxp.cn" in topup_link.lower():
+            amount_options = []
 
         permanent_usd_map: dict[float, float] = {}
         for amount in amount_options:
@@ -2938,6 +2940,11 @@ def public_discovered_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]
 
 
 KNOWN_PUBLIC_SHOP_PRODUCTS: dict[str, list[dict[str, Any]]] = {
+    "lumibest": [
+        {"name": "Lumi API 10 USD external shop redeem code", "billing_type": "permanent", "rmb_amount": 10.0, "usd_amount": 10.0, "expires_rule": "External shop redeem code; shop exposes price only, quota defaults to 1 RMB = 1 USD"},
+        {"name": "Lumi API 50 USD external shop redeem code", "billing_type": "permanent", "rmb_amount": 50.0, "usd_amount": 50.0, "expires_rule": "External shop redeem code; shop exposes price only, quota defaults to 1 RMB = 1 USD"},
+        {"name": "Lumi API 100 USD external shop redeem code", "billing_type": "permanent", "rmb_amount": 100.0, "usd_amount": 100.0, "expires_rule": "External shop redeem code; shop exposes price only, quota defaults to 1 RMB = 1 USD"},
+    ],
     "hello-code": [
         {"name": "Codex plus/team 10 USD redeem code", "billing_type": "permanent", "rmb_amount": 10.0, "usd_amount": 10.0, "expires_rule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station"},
         {"name": "Codex plus/team 30 USD redeem code", "billing_type": "permanent", "rmb_amount": 30.0, "usd_amount": 30.0, "expires_rule": "External shop redeem code; product detail states 1 RMB can redeem 1 USD and code must be redeemed on the station"},
@@ -2975,6 +2982,13 @@ KNOWN_PUBLIC_SHOP_PRODUCTS: dict[str, list[dict[str, Any]]] = {
 
 
 KNOWN_PUBLIC_SHOP_META: dict[str, dict[str, Any]] = {
+    "lumibest": {
+        "station_type": "non_subscription",
+        "evidence_url": "https://pay.ldxp.cn/shop/WE9ZBUQG",
+        "recharge_location": "official external pay.ldxp.cn shop redeem code",
+        "expires_rule": "External shop redeem code; shop exposes price only, quota defaults to 1 RMB = 1 USD",
+        "notes": "LumiBest wallet topup link points to the official pay.ldxp.cn shop. The shop exposes 10/50/100 RMB payment products but no explicit quota field, so the project policy defaults those products to 1 RMB = 1 USD quota.",
+    },
     "hello-code": {
         "station_type": "non_subscription",
         "evidence_url": "https://pay.ldxp.cn/shop/SAIS2N05",
@@ -3027,6 +3041,12 @@ def known_public_shop_groups(station: str) -> list[tuple[str, float, str]]:
             multiplier = parse_float(item.get("rate_multiplier"))
             if group_name and multiplier and multiplier > 0:
                 groups.append((group_name, multiplier, normalize_group_desc(item, group_name)))
+    if not groups and probe:
+        for group_name, group_info in parse_groups_from_probe(probe).items():
+            group_name = str(group_name or "").strip()
+            multiplier = normalize_probe_multiplier(group_info)
+            if group_name and multiplier and multiplier > 0:
+                groups.append((group_name, multiplier, normalize_probe_desc(group_info, group_name)))
     if groups:
         if group_allowlist:
             filtered = [group for group in groups if group[0] in group_allowlist]
@@ -3654,6 +3674,7 @@ NON_CODEX_EXCLUDED_KEYWORDS = (
     "sonnet",
     "opus",
     "haiku",
+    "madeinchina",
     "国产",
     "公益",
     "deepseek",
@@ -3665,15 +3686,23 @@ NON_CODEX_EXCLUDED_KEYWORDS = (
 )
 
 
-def is_codex_like_group_name(group_name: str) -> bool:
-    normalized = (group_name or "").strip().lower()
+def is_codex_like_group_text(*parts: str) -> bool:
+    normalized = " ".join(str(part or "").strip().lower() for part in parts if str(part or "").strip())
     if not normalized:
         return False
     return not any(keyword in normalized for keyword in NON_CODEX_EXCLUDED_KEYWORDS)
 
 
+def is_codex_like_group_name(group_name: str) -> bool:
+    return is_codex_like_group_text(group_name)
+
+
+def is_codex_like_fee_tier(tier: FeeTier) -> bool:
+    return is_codex_like_group_text(tier.group_name, tier.notes)
+
+
 def choose_codex_or_fallback_tier(candidates: list[FeeTier]) -> FeeTier | None:
-    codex_like_candidates = [tier for tier in candidates if is_codex_like_group_name(tier.group_name)]
+    codex_like_candidates = [tier for tier in candidates if is_codex_like_fee_tier(tier)]
     if codex_like_candidates:
         return min(codex_like_candidates, key=lambda tier: tier.effective_multiplier or float("inf"))
     return None

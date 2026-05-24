@@ -1097,7 +1097,16 @@ def load_announcements(status_payloads: dict[str, dict[str, Any]]) -> dict[str, 
             rows.append(
                 {
                     "id": str(item.get("id") or index),
-                    "publishedAt": str(item.get("publishDate") or ""),
+                    "publishedAt": str(
+                        item.get("publishDate")
+                        or item.get("publishedAt")
+                        or item.get("published_at")
+                        or item.get("createdAt")
+                        or item.get("created_at")
+                        or item.get("updatedAt")
+                        or item.get("updated_at")
+                        or ""
+                    ),
                     "type": normalize_announcement_text(item.get("type") or "default"),
                     "extra": normalize_announcement_text(item.get("extra")),
                     "content": content,
@@ -2154,7 +2163,7 @@ def load_live_probe_snapshots(station_aliases: dict[str, str] | None = None) -> 
         if station_shop_snapshot:
             station_type_hint = sanitize_public_text(station_shop_snapshot.get("stationTypeHint"))
             shop_recharges = normalized_recharge_rows(station_shop_snapshot.get("rechargeTiers"))
-            if shop_recharges and not recharges:
+            if shop_recharges:
                 recharges = shop_recharges
                 recharge_status = {
                     "status": "captured",
@@ -2895,6 +2904,18 @@ def parse_public_pricing_payload(payload: dict[str, Any]) -> dict[str, Any]:
 
 
 KNOWN_PAY_SHOP_PRODUCTS: dict[str, dict[str, Any]] = {
+    "WE9ZBUQG": {
+        "stationTypeHint": "non_subscription",
+        "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+        "tierNotes": [
+            "LumiBest wallet topup link points to the official pay.ldxp.cn shop. The shop exposes 10/50/100 RMB payment products but no explicit quota field, so the project policy defaults those products to 1 RMB = 1 USD quota."
+        ],
+        "products": [
+            {"rechargeName": "Lumi API 10 USD external shop redeem code", "billingType": "permanent", "rmbAmount": 10, "usdAmount": 10, "expiresRule": "External shop redeem code; shop exposes price only, quota defaults to 1 RMB = 1 USD"},
+            {"rechargeName": "Lumi API 50 USD external shop redeem code", "billingType": "permanent", "rmbAmount": 50, "usdAmount": 50, "expiresRule": "External shop redeem code; shop exposes price only, quota defaults to 1 RMB = 1 USD"},
+            {"rechargeName": "Lumi API 100 USD external shop redeem code", "billingType": "permanent", "rmbAmount": 100, "usdAmount": 100, "expiresRule": "External shop redeem code; shop exposes price only, quota defaults to 1 RMB = 1 USD"},
+        ],
+    },
     "JVDCG8IG": {
         "stationTypeHint": "non_subscription",
         "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
@@ -2960,6 +2981,10 @@ KNOWN_PAY_SHOP_PRODUCTS: dict[str, dict[str, Any]] = {
 
 
 KNOWN_STATION_PAY_SHOPS: dict[str, dict[str, str]] = {
+    "lumibest": {
+        "token": "WE9ZBUQG",
+        "sourceUrl": "https://pay.ldxp.cn/shop/WE9ZBUQG",
+    },
     "hello-code": {
         "token": "SAIS2N05",
         "sourceUrl": "https://pay.ldxp.cn/shop/SAIS2N05",
