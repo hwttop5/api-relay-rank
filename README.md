@@ -1,6 +1,6 @@
 # AI中转站监视者
 
-`api-relay-rank` 是一个面向中文用户的 AI 中转站观察站点，核心页面是 `/ranking`、`/audit`、`/statement` 和 `/stations/[station]`。
+`api-relay-rank` 是一个面向中文用户的 AI 中转站监视站点，用公开快照、可用性观察和安全审计结果，帮助用户快速了解各中转站的排名表现、倍率档位、公告动态和基础风险。你可以在 `/ranking` 查看综合排名，在 `/audit` 发起本地黑盒审计，在 `/statement` 了解排名口径，并通过 `/stations/[station]` 查看单个站点详情。
 
 ## 快速开始
 
