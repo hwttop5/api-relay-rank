@@ -63,6 +63,7 @@ python scripts/refresh_quality_rankings.py --full-log-rebuild
 - app 和 scheduler 容器 seed 之后都必须继续运行 `scripts/rebuild_runtime_site_data.py`。该脚本使用 `site-data-rebuild` 锁，并把当前 runtime `site-data.json` 的 `generatedAt` 传给 `scripts/build_site_data.py`，这样可以保留本次数据生成时间，同时把 runtime `data/_audit_runs` 中的 audit-only 站点重新合入 `stations[]`。两个容器同时启动时，scheduler 不会在 app 重建后把 repo 版 `site-data.json` 留作最终状态。
 - 这一步用于防止提交数据后的 deploy 把 VPS 审计历史站点从“未纳入正式排名的收录站点”和 `/stations/<station>` 详情页中冲掉。`data/_audit_runs` 仍只保留在线上数据卷，不提交进仓库。
 - 如果 `/audit` 历史仍能看到记录，但点击站点详情出现 404，优先检查 app 容器启动日志里 `rebuild_runtime_site_data.py` 是否执行成功；临时恢复可在 app 容器内执行 `python scripts/rebuild_runtime_site_data.py`，再核对 `/stations/<audit-key>` 和 `/ranking`。
+- 2026-05-25 的审计历史详情 404 事故就是这个问题：deploy seed 把仓库版 `site-data.json` 同步到 VPS runtime 后，没有把 runtime `_audit_runs` 重新合入，导致 `/audit` 仍有历史记录，但 `/stations/audit-right-codes` 和未入榜收录列表缺少对应站点。修复提交 `f6c3b2e` 后，已在线上核对 `/api/health`、`/stations/audit-right-codes` 和 `/ranking` 恢复；`/ranking` 是 ISR 页面，部署或 runtime 重建后必要时等待 5 分钟并请求两次再判断结果。
 
 ## 增量日志规则
 
@@ -73,6 +74,14 @@ python scripts/refresh_quality_rankings.py --full-log-rebuild
 - 旧日志可以在一次刷新成功、CSV diff 合理，并确认 `data/codex-log-refresh-state.json` 已提交或可靠备份后手动删除。刷新脚本不会自动删除 DB 日志。
 - 如果某个公网 host 在已有 state 中没有累计指标，但当前 DB 仍保留它的旧日志，增量刷新会做一次历史回填；如果旧日志已清理，则只能从后续新日志开始累计。
 - `--full-log-rebuild` 会忽略现有 state，从当前 DB 的全部 `/v1/responses` 日志重建累计指标。旧日志已删时不要使用，否则会把累计历史重建成不完整数据。
+
+Codex Manager 新日志增量更新：
+
+- 默认执行 `npm run site:refresh-manual`，等价于增量分析 Codex Manager 新 `/v1/responses` 日志、重建 `site-data.json`、刷新公开快照、必要时登录态补抓，再跑一次增量分析和站点数据重建，让最新费率证据和排名 CSV 对齐。
+- 如果用户指定从某个历史时间点开始补算，不要直接沿用当前 `HEAD` 的 state cursor；先找到该时间点对应的 `data/codex-log-refresh-state.json` 基线版本，只临时回放这个 state 文件，其他文件不回退，再按默认增量链路补算。
+- 执行前先留证据：`git status --short --branch`、当前 state 的 `generatedAt` 和 `cursor.createdAt/id`、指定起点之后 Codex Manager DB 中可处理 `/v1/responses` 数量，以及其中符合脚本筛选条件的预估数量。
+- 第一次补算后立即记录 state 摘要：`generatedAt`、`cursor.createdAt/id`、`lastRun.rowsSeen`、`lastRun.rowsAdded`、`lastRun.historicalBackfill`。最终保留本次 state 的最新 `generatedAt` 和 cursor，作为下次默认增量起点。
+- Codex Manager 日志仍在持续写入时，最终校验前再跑一次 `audit_proxy_multipliers.py` 和 `scripts/build_site_data.py`，避免刷新过程中新增请求导致质量 CSV、正式排名 CSV 和 `data/site-data.json` 漂移。
 
 ## 写盘保护规则
 
@@ -203,6 +212,7 @@ python audit_proxy_multipliers.py --help
 python scripts/refresh_quality_rankings.py --help
 python scripts/scrape_missing_announcements.py --help
 npm run build
+git diff --check
 git status --short --branch
 git diff --stat -- data/codex-log-refresh-state.json quality_metrics.csv composite_ranking_formal_*.csv data/site-data.json data/_public_fetch
 ```
@@ -222,6 +232,14 @@ rg -n "codex-log-refresh-state|full-log-rebuild|request_log_station_candidates|m
 4. `data/site-data.json`：确认 `generatedAt`、`rankedStationCount`、`timeWindows`、详情证据和未入榜状态。
 5. 本地 `/ranking` 与 `/stations/<station>`：确认采用倍率、分组、充值档位和未入榜原因。
 6. 真实站点或官方店铺：对外部店铺、截图来源、异常倍率和高风险站点复核页面金额与文案。
+
+提交数据后线上对账：
+
+1. `/api/health`：确认 `generatedAt` 已变成本次刷新时间。
+2. `/ranking`：确认正式排名数量、未纳入正式排名的收录站点和重点站点未异常缩水；ISR 页面必要时等待并请求两次。
+3. `/stations/<station>`：抽查本次新增、未入榜和 audit-only 站点详情页是否返回 200，尤其是 `/audit` 历史里可点击的站点。
+
+提交前排除 `.codex-tmp/`、本地截图、构建缓存和无关本地改动。常规数据刷新只应包含 `data/codex-log-refresh-state.json`、`quality_metrics.csv`、`composite_ranking_formal_*.csv`、`data/site-data.json`、`data/_public_fetch/*` 以及明确需要同步的审计输出；文档同步只提交对应文档。
 
 常见误判：
 
