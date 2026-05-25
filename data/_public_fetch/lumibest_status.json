@@ -4,6 +4,34 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "周末限时优惠已结束，价格恢复了！",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2026-05-25T00:35:06.096Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "额度刷新了，codex下调0.1到明早",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-05-24T12:19:07.223Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "codex调整到0.15，看看额度消耗",
+        "extra": "",
+        "id": 11,
+        "publishDate": "2026-05-24T10:59:23.465Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "plus额度变少了，codex价格回归到0.25",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-05-24T08:56:59.220Z",
+        "type": "ongoing"
+      },
+      {
         "content": "codex周末限时倍率0.1，claude-kiro周末限时倍率0.08，enjoy！",
         "extra": "",
         "id": 9,
@@ -105,7 +133,7 @@
     "passkey_rp_id": "lumibest.store",
     "passkey_user_verification": "preferred",
     "password_register_enabled": true,
-    "price": 7.3,
+    "price": 1,
     "privacy_policy_enabled": false,
     "quota_display_type": "USD",
     "quota_per_unit": 500000,
@@ -113,8 +141,8 @@
     "self_use_mode_enabled": false,
     "server_address": "https://lumibest.store",
     "setup": true,
-    "start_time": 1779349133,
-    "stripe_unit_price": 8,
+    "start_time": 1779578718,
+    "stripe_unit_price": 1,
     "system_name": "Lumi",
     "telegram_bot_name": "",
     "telegram_oauth": false,
@@ -124,7 +152,7 @@
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 7.3,
     "user_agreement_enabled": true,
-    "version": "v1.0.0-rc.7",
+    "version": "v1.0.0-rc.8",
     "wechat_login": false,
     "wechat_qrcode": ""
   },

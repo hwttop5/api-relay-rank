@@ -77,6 +77,8 @@ export interface QualityRow {
 export interface GroupMultiplierRow {
   groupName: string;
   groupMultiplier: number;
+  codexEligible?: boolean;
+  usageLabel?: string;
 }
 
 export interface RechargeTierRow {
@@ -85,6 +87,8 @@ export interface RechargeTierRow {
   billingTypeLabel: string;
   rmbAmount: number | null;
   usdAmount: number | null;
+  paymentCurrency?: string;
+  paymentAmount?: number | null;
   rechargeLocation: string;
   expiresRule: string;
 }

@@ -4,6 +4,64 @@
   ],
   "data": [
     {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "official"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "icon": "Claude",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "official",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "icon": "OpenAI",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "official"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
       "model_name": "gpt-5.4-mini",
       "icon": "OpenAI",
       "vendor_id": 2,
@@ -19,8 +77,7 @@
       ],
       "supported_endpoint_types": [
         "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+      ]
     },
     {
       "model_name": "gpt-5.5",
@@ -52,69 +109,12 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "official",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
         "default",
         "official"
       ],
       "supported_endpoint_types": [
         "openai",
         "anthropic"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "icon": "Claude",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "default",
-        "official"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "icon": "OpenAI",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "official",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
       ]
     }
   ],
@@ -141,6 +141,11 @@
   },
   "vendors": [
     {
+      "id": 6,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
       "id": 2,
       "name": "OpenAI"
     },
@@ -158,11 +163,6 @@
       "id": 5,
       "name": "Qwen",
       "icon": "Qwen"
-    },
-    {
-      "id": 6,
-      "name": "智谱",
-      "icon": "Zhipu.Color"
     }
   ],
   "status_payload": {
@@ -232,7 +232,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://coaiwork.com",
       "setup": true,
-      "start_time": 1778858304,
+      "start_time": 1779506577,
       "stripe_unit_price": 7,
       "system_name": "CoAI Work",
       "telegram_bot_name": "",

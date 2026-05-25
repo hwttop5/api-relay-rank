@@ -12,7 +12,15 @@
       }
     ],
     "announcements_enabled": true,
-    "api_info": [],
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "韩国线路",
+        "id": 1,
+        "route": "韩国线路",
+        "url": "https://52mx.net"
+      }
+    ],
     "api_info_enabled": true,
     "chats": [
       {
@@ -79,14 +87,16 @@
     "passkey_origins": "https://52mx.net",
     "passkey_rp_id": "52mx.net",
     "passkey_user_verification": "preferred",
+    "password_register_enabled": true,
     "price": 1,
     "privacy_policy_enabled": true,
     "quota_display_type": "USD",
     "quota_per_unit": 500000,
+    "register_enabled": true,
     "self_use_mode_enabled": false,
     "server_address": "https://52mx.net",
     "setup": true,
-    "start_time": 1779328669,
+    "start_time": 1779690273,
     "stripe_unit_price": 8,
     "system_name": "52模型|52mx.net",
     "telegram_bot_name": "",
@@ -97,7 +107,7 @@
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 1,
     "user_agreement_enabled": true,
-    "version": "v1.0.0-rc.6",
+    "version": "v1.0.0-rc.8",
     "wechat_login": false,
     "wechat_qrcode": ""
   },

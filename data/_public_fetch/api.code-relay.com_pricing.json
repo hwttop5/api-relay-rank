@@ -11,6 +11,8 @@
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
         "default",
         "vip"
@@ -18,7 +20,8 @@
       "supported_endpoint_types": [
         "anthropic",
         "openai"
-      ]
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
       "model_name": "claude-haiku-4-5-20251001",
@@ -27,7 +30,28 @@
       "model_ratio": 0.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 2.5,
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
         "default",
         "vip"
@@ -42,40 +66,6 @@
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-5",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
@@ -105,63 +95,49 @@
       ]
     },
     {
+      "model_name": "gpt-5.4",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
       "model_name": "gpt-5.5",
       "vendor_id": 2,
       "quota_type": 0,
       "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
       "enable_groups": [
-        "vip",
-        "default"
+        "default",
+        "vip"
       ],
       "supported_endpoint_types": [
         "openai"
       ]
     },
     {
-      "model_name": "claude-opus-4-5-20251101",
+      "model_name": "claude-sonnet-4-20250514",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 1.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
-      "enable_groups": [
-        "vip",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "vip",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
         "default",
         "vip"
@@ -172,7 +148,7 @@
       ]
     },
     {
-      "model_name": "claude-sonnet-4-20250514",
+      "model_name": "claude-sonnet-4-5",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 1.5,
@@ -196,6 +172,81 @@
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
         "default",
         "vip"
@@ -213,22 +264,7 @@
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 8,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
+      "cache_ratio": 0.1,
       "enable_groups": [
         "default",
         "vip"
@@ -242,6 +278,7 @@
     "default": 1,
     "vip": 1
   },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
   "supported_endpoint": {
     "anthropic": {
@@ -254,7 +291,6 @@
     }
   },
   "usable_group": {
-    "": "用户分组",
     "default": "默认分组",
     "vip": "vip分组"
   },
@@ -403,56 +439,51 @@
       "announcements_enabled": true,
       "api_info_enabled": false,
       "chats": [],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
       "data_export_default_time": "hour",
       "default_collapse_sidebar": false,
       "default_use_auto_group": false,
       "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
       "display_in_currency": true,
       "docs_link": "https://docs.newapi.pro",
       "email_verification": false,
-      "enable_alipay_topup": true,
       "enable_batch_update": false,
       "enable_data_export": true,
       "enable_drawing": false,
-      "enable_online_topup": false,
-      "enable_stripe_topup": false,
       "enable_task": true,
       "faq_enabled": false,
       "footer_html": "",
       "github_client_id": "Ov23liMK4FEwTTzBV7s0",
       "github_oauth": false,
-      "linuxdo_client_id": "iXtSV1xtoD3KY8kPyI6Gx5LWfnE4wzkX",
+      "linuxdo_client_id": "TtPMRBuMz8DXfe9LeiQdVGYXRUhWjg9T",
       "linuxdo_minimum_trust_level": 0,
       "linuxdo_oauth": true,
       "logo": "/logo.png",
-      "min_topup": 1,
       "mj_notify_enabled": false,
       "oidc_authorization_endpoint": "",
       "oidc_client_id": "",
       "oidc_enabled": false,
-      "password_login_enabled": true,
-      "password_register_enabled": false,
-      "pay_methods": [
-        {
-          "color": "rgba(var(--semi-blue-5), 1)",
-          "name": "支付宝",
-          "type": "alipay"
-        },
-        {
-          "color": "rgba(var(--semi-green-5), 1)",
-          "name": "微信",
-          "type": "wxpay"
-        }
-      ],
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "New API",
+      "passkey_login": false,
+      "passkey_origins": "https://api.code-relay.com",
+      "passkey_rp_id": "api.code-relay.com",
+      "passkey_user_verification": "preferred",
       "price": 7.3,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "USD",
       "quota_for_invitee": 0,
       "quota_for_inviter": 10000000,
       "quota_per_unit": 500000,
       "self_use_mode_enabled": false,
       "server_address": "https://api.code-relay.com",
       "setup": true,
-      "start_time": 1779171434,
-      "stripe_min_topup": 1,
+      "start_time": 1779537523,
       "stripe_unit_price": 8,
       "system_name": "Code Router",
       "telegram_bot_name": "",
@@ -462,6 +493,7 @@
       "turnstile_site_key": "",
       "uptime_kuma_enabled": false,
       "usd_exchange_rate": 7.3,
+      "user_agreement_enabled": false,
       "version": "",
       "wechat_app_id": "wx9e340fe7892b984a",
       "wechat_login": true,
@@ -470,66 +502,5 @@
     "message": "",
     "success": true
   },
-  "subscription_plans_payload": {
-    "data": [
-      {
-        "id": "onetime_basic",
-        "name": "基础充值",
-        "price": 14.99,
-        "duration": "一次性",
-        "original_price": 79.99,
-        "charge_price": 10,
-        "badge": "",
-        "features": [
-          "10 $ 额度",
-          "适合轻度使用",
-          "永久有效"
-        ],
-        "amount": 10,
-        "color": "blue",
-        "popular": false,
-        "enabled": true
-      },
-      {
-        "id": "onetime_standard",
-        "name": "标准充值",
-        "price": 74.99,
-        "duration": "一次性",
-        "original_price": 299.99,
-        "charge_price": 50,
-        "badge": "推荐",
-        "features": [
-          "50 $ 额度",
-          "适合中度使用",
-          "永久有效"
-        ],
-        "amount": 50,
-        "color": "green",
-        "popular": true,
-        "enabled": true
-      },
-      {
-        "id": "onetime_premium",
-        "name": "高级充值",
-        "price": 149.99,
-        "duration": "一次性",
-        "original_price": 799.99,
-        "charge_price": 100,
-        "badge": "超值",
-        "features": [
-          "100 $ 额度",
-          "适合重度使用",
-          "永久有效"
-        ],
-        "amount": 100,
-        "color": "purple",
-        "popular": false,
-        "enabled": true
-      }
-    ],
-    "message": "",
-    "success": true
-  },
-  "subscription_plans_source_url": "https://api.code-relay.com/api/subscription/plans",
   "source_url": "https://api.code-relay.com/api/pricing"
 }

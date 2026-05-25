@@ -4,6 +4,13 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "受上游业务变更影响，阿里云渠道暂时下线",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-05-25T04:06:49.073Z",
+        "type": "default"
+      },
+      {
         "content": "由于openai停止了gpt-5.3-codex的供应，我们目前对gpt-5.3-codex进行了重定向，以避免阻塞服务，使用到该模型的用户建议尽快迁移",
         "extra": "",
         "id": 17,
@@ -198,7 +205,7 @@
         "question": "如何使用？"
       },
       {
-        "answer": "我们目前优先保证gpt以及阿里云百炼渠道的稳定供应，其他渠道暂不做可用性保证",
+        "answer": "我们目前优先保证gpt，其他渠道暂不做可用性保证",
         "id": 3,
         "question": "渠道供应问题"
       },
@@ -206,12 +213,18 @@
         "answer": "openai官方对该渠道的gpt-5.5有硬上下文限制，建议不要让您的上下文超过258k，如果有长上下文需求，请使用gpt-5.4",
         "id": 4,
         "question": "为什么一直出现500报错？"
+      },
+      {
+        "answer": "生图建议使用api-cn.avemujica.moe作为端点，主节点受cf最大超时限制影响，暂时无法保证出图稳定性",
+        "id": 5,
+        "question": "生图模型一直报错？"
       }
     ],
     "faq_enabled": true,
     "footer_html": "",
-    "github_client_id": "",
-    "github_oauth": false,
+    "github_client_id": "Ov23liPyNpEBM4WpW4CZ",
+    "github_oauth": true,
+    "invoice_enabled": false,
     "linuxdo_client_id": "",
     "linuxdo_minimum_trust_level": 0,
     "linuxdo_oauth": false,
@@ -222,10 +235,10 @@
     "oidc_enabled": false,
     "passkey_allow_insecure": false,
     "passkey_attachment": "",
-    "passkey_display_name": "Avemujica API",
+    "passkey_display_name": "AveMujica API",
     "passkey_login": false,
-    "passkey_origins": "https://api.avemujica.moe",
-    "passkey_rp_id": "api.avemujica.moe",
+    "passkey_origins": "https://api.avemujica.moe,https://api-cn.avemujica.moe",
+    "passkey_rp_id": "avemujica.moe",
     "passkey_user_verification": "preferred",
     "price": 1,
     "privacy_policy_enabled": false,
@@ -234,7 +247,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://api.avemujica.moe",
     "setup": true,
-    "start_time": 1779216930,
+    "start_time": 1779572059,
     "stripe_unit_price": 1,
     "system_name": "AveMujica API",
     "telegram_bot_name": "",

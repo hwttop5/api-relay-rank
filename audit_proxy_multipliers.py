@@ -127,6 +127,7 @@ LABELS: dict[str, str] = {
     "gettoken": "GetToken",
     "giot": "GIOT",
     "goapis": "GoAPIs",
+    "happycode.vip": "Happycode",
     "52mx": "52Mx",
     "hi-code": "HiCode",
     "hongmacc": "HongMaCC",
@@ -141,6 +142,7 @@ LABELS: dict[str, str] = {
     "nexus": "Nexus",
     "opentk": "OpenTK",
     "onexmodel": "OneXModel",
+    "prod.bbroot.com": "ProdBbroot",
     "qiuqiutoken": "QiuqiuToken",
     "shunfen6": "Shunfen6",
     "vbcode": "VBCode",
@@ -181,6 +183,7 @@ SITE_URL_OVERRIDES: dict[str, str] = {
     "freemodel": "https://freemodel.dev",
     "guodongapi": "https://guodongapi.site",
     "gettoken": "https://gettoken.dev",
+    "happycode.vip": "https://happycode.vip",
     "hello-code": "http://hello-code.cn",
     "hi-code": "https://www.hi-code.cc",
     "icodex.pro": "https://icodex.pro",
@@ -189,6 +192,7 @@ SITE_URL_OVERRIDES: dict[str, str] = {
     "muskai": "https://aiapi.muskpay.top",
     "onexmodel": "https://1xm.ai",
     "opentk": "https://opentk.ai",
+    "prod.bbroot.com": "https://prod.bbroot.com",
     "qiuqiutoken": "https://api.qiuqiutoken.com",
     "vbcode": "https://vbcode.io",
     "voapi": "https://demo.voapi.top",
@@ -290,6 +294,8 @@ STATION_TYPE_OVERRIDES = {
     "zhishu.dev": "mixed",
     "zhima": "non_subscription",
     "onexmodel": "mixed",
+    "happycode.vip": "non_subscription",
+    "prod.bbroot.com": "non_subscription",
 }
 
 
@@ -441,8 +447,10 @@ DETAIL_EVIDENCE_FEE_STATIONS = {
     "cngpt.net",
     "fishxcode.com",
     "fushengyunsuan.cn",
+    "happycode.vip",
     "moosecloud.cc",
     "muskai",
+    "prod.bbroot.com",
 }
 
 
@@ -461,6 +469,16 @@ DETAIL_EVIDENCE_FEE_META: dict[str, dict[str, Any]] = {
         "confidence": "public_structured_evidence",
         "source": "detail_page_public_status_and_pricing_evidence",
         "notes": "Fushengyunsuan detail rows come from official public status quota conversion plus public pricing group evidence.",
+    },
+    "happycode.vip": {
+        "confidence": "manual_verified",
+        "source": "browser_screenshot_verified_external_shop",
+        "notes": "Happycode detail rows come from browser verified external shop cards and manual group check.",
+    },
+    "prod.bbroot.com": {
+        "confidence": "manual_verified",
+        "source": "browser_screenshot_verified_usdc_checkout",
+        "notes": "ProdBbroot detail rows come from browser verified group colors and USDC checkout page.",
     },
     "api.code-relay.com": {
         "confidence": "public_structured_evidence",
@@ -1502,6 +1520,19 @@ def parse_bool(value: str | None, default: bool = False) -> bool:
     if not text:
         return default
     return text in {"1", "true", "yes", "y", "rank", "ranking"}
+
+
+def parse_optional_bool(value: Any) -> bool | None:
+    if isinstance(value, bool):
+        return value
+    text = str(value or "").strip().lower()
+    if not text:
+        return None
+    if text in {"1", "true", "yes", "y", "rank", "ranking"}:
+        return True
+    if text in {"0", "false", "no", "n", "off", "disabled"}:
+        return False
+    return None
 
 
 def explicitly_false(value: Any) -> bool:
@@ -3367,6 +3398,10 @@ def detail_record_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]:
             group_multiplier = parse_float(group.get("groupMultiplier") or group.get("group_multiplier"))
             if not group_name or group_multiplier is None or group_multiplier <= 0:
                 continue
+            codex_eligible = parse_optional_bool(
+                group.get("codexEligible") if "codexEligible" in group else group.get("codex_eligible")
+            )
+            usage_label = str(group.get("usageLabel") or group.get("usage_label") or "").strip()
             for recharge in recharges:
                 if not isinstance(recharge, dict):
                     continue
@@ -3377,6 +3412,13 @@ def detail_record_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]:
                 if not recharge_name or rmb_amount is None or usd_amount is None or usd_amount <= 0:
                     continue
                 effective = group_multiplier * rmb_amount / usd_amount
+                tier_note_parts = list(note_parts)
+                if codex_eligible is False:
+                    tier_note_parts.append("codexEligible=false")
+                elif codex_eligible is True:
+                    tier_note_parts.append("codexEligible=true")
+                if usage_label:
+                    tier_note_parts.append(f"usage={usage_label}")
                 tiers.append(
                     FeeTier(
                         station=station,
@@ -3396,7 +3438,7 @@ def detail_record_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]:
                         source=source,
                         evidence_url=evidence_url,
                         participates_in_verified_ranking=True,
-                        notes=notes,
+                        notes="; ".join(tier_note_parts),
                     )
                 )
     return tiers
@@ -3546,6 +3588,17 @@ def apply_station_pricing_overrides_to_tiers(tiers: list[FeeTier]) -> list[FeeTi
                     group_multiplier = parse_float(group.get("groupMultiplier") or group.get("group_multiplier"))
                     if not group_name or group_multiplier is None:
                         continue
+                    codex_eligible = parse_optional_bool(
+                        group.get("codexEligible") if "codexEligible" in group else group.get("codex_eligible")
+                    )
+                    usage_label = str(group.get("usageLabel") or group.get("usage_label") or "").strip()
+                    note_parts = [assumption] if assumption else []
+                    if codex_eligible is False:
+                        note_parts.append("codexEligible=false")
+                    elif codex_eligible is True:
+                        note_parts.append("codexEligible=true")
+                    if usage_label:
+                        note_parts.append(f"usage={usage_label}")
                     key = (group_name, recharge_name, rmb_amount, usd_amount)
                     if key in seen_explicit:
                         continue
@@ -3570,7 +3623,7 @@ def apply_station_pricing_overrides_to_tiers(tiers: list[FeeTier]) -> list[FeeTi
                             source=source,
                             evidence_url=evidence_url,
                             participates_in_verified_ranking=participates_in_verified_ranking,
-                            notes=assumption,
+                            notes="; ".join(note_parts),
                         )
                     )
             continue
@@ -3581,6 +3634,17 @@ def apply_station_pricing_overrides_to_tiers(tiers: list[FeeTier]) -> list[FeeTi
                 group_multiplier = parse_float(group.get("groupMultiplier") or group.get("group_multiplier"))
                 if not group_name or group_multiplier is None:
                     continue
+                codex_eligible = parse_optional_bool(
+                    group.get("codexEligible") if "codexEligible" in group else group.get("codex_eligible")
+                )
+                usage_label = str(group.get("usageLabel") or group.get("usage_label") or "").strip()
+                next_notes_parts = [assumption or source_tier.notes]
+                if codex_eligible is False:
+                    next_notes_parts.append("codexEligible=false")
+                elif codex_eligible is True:
+                    next_notes_parts.append("codexEligible=true")
+                if usage_label:
+                    next_notes_parts.append(f"usage={usage_label}")
                 if recharge_mode == "linear_rmb_to_usd":
                     recharge_name = source_tier.recharge_name
                     rmb_amount = source_tier.rmb_amount
@@ -3631,7 +3695,7 @@ def apply_station_pricing_overrides_to_tiers(tiers: list[FeeTier]) -> list[FeeTi
                         expires_rule=expires_rule or source_tier.expires_rule,
                         confidence="manual_verified",
                         source="station_pricing_override",
-                        notes=assumption or source_tier.notes,
+                        notes="; ".join(part for part in next_notes_parts if part),
                         participates_in_verified_ranking=participates_in_verified_ranking,
                     )
                 )
@@ -3698,6 +3762,10 @@ def is_codex_like_group_name(group_name: str) -> bool:
 
 
 def is_codex_like_fee_tier(tier: FeeTier) -> bool:
+    if "codexeligible=false" in str(tier.notes or "").strip().lower():
+        return False
+    if "codexeligible=true" in str(tier.notes or "").strip().lower():
+        return True
     return is_codex_like_group_text(tier.group_name, tier.notes)
 
 

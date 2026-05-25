@@ -3,6 +3,31 @@ import { BadgeDollarSign, CalendarClock, Layers3 } from "lucide-react";
 import { formatCurrency, formatMultiplier } from "@/lib/format";
 import type { GroupMultiplierRow, RechargeTierRow } from "@/lib/types";
 
+function formatPaymentAmount(tier: RechargeTierRow): string {
+  const currency = tier.paymentCurrency?.trim().toUpperCase();
+  const amount = tier.paymentAmount ?? tier.rmbAmount;
+  if (currency && currency !== "RMB" && currency !== "CNY") {
+    if (amount === null || amount === undefined || Number.isNaN(amount)) {
+      return "-";
+    }
+    return `${amount.toFixed(2)} ${currency}`;
+  }
+  return formatCurrency(amount, "￥");
+}
+
+function groupUsageText(group: GroupMultiplierRow): string {
+  if (group.usageLabel) {
+    return group.usageLabel;
+  }
+  if (group.codexEligible === true) {
+    return "Codex";
+  }
+  if (group.codexEligible === false) {
+    return "非 Codex";
+  }
+  return "-";
+}
+
 export function TierOverview({ groups, rechargeTiers }: { groups: GroupMultiplierRow[]; rechargeTiers: RechargeTierRow[] }) {
   const permanentRechargeTiers = rechargeTiers.filter((tier) => tier.billingType === "permanent");
   const recurringRechargeTiers = rechargeTiers.filter((tier) => tier.billingType !== "permanent");
@@ -28,6 +53,7 @@ export function TierOverview({ groups, rechargeTiers }: { groups: GroupMultiplie
                   <tr>
                     <th>分组</th>
                     <th>倍率</th>
+                    <th>用途</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -36,11 +62,12 @@ export function TierOverview({ groups, rechargeTiers }: { groups: GroupMultiplie
                       <tr key={`${group.groupName}-${group.groupMultiplier}`}>
                         <td>{group.groupName}</td>
                         <td className="mono">{formatMultiplier(group.groupMultiplier)}</td>
+                        <td>{groupUsageText(group)}</td>
                       </tr>
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={2} className="subtle">
+                      <td colSpan={3} className="subtle">
                         暂无分组倍率数据
                       </td>
                     </tr>
@@ -62,6 +89,10 @@ export function TierOverview({ groups, rechargeTiers }: { groups: GroupMultiplie
                     <div className="mobile-metric">
                       <div className="mobile-metric-label">倍率</div>
                       <div className="mobile-metric-value mono">{formatMultiplier(group.groupMultiplier)}</div>
+                    </div>
+                    <div className="mobile-metric">
+                      <div className="mobile-metric-label">用途</div>
+                      <div className="mobile-metric-value">{groupUsageText(group)}</div>
                     </div>
                   </div>
                 </article>
@@ -93,7 +124,7 @@ export function TierOverview({ groups, rechargeTiers }: { groups: GroupMultiplie
                   <tr>
                     <th>档位</th>
                     <th>类型</th>
-                    <th>人民币</th>
+                    <th>实付金额</th>
                     <th>美元额度</th>
                     <th>有效期 / 说明</th>
                     <th>充值位置</th>
@@ -106,7 +137,7 @@ export function TierOverview({ groups, rechargeTiers }: { groups: GroupMultiplie
                         <tr key={`permanent-${tier.rechargeName}-${tier.billingType}-${tier.rmbAmount}-${tier.usdAmount}`}>
                           <td>{tier.rechargeName}</td>
                           <td>{tier.billingTypeLabel}</td>
-                          <td className="mono">{formatCurrency(tier.rmbAmount, "￥")}</td>
+                          <td className="mono">{formatPaymentAmount(tier)}</td>
                           <td className="mono">{formatCurrency(tier.usdAmount, "$")}</td>
                           <td>{tier.expiresRule || "-"}</td>
                           <td>{tier.rechargeLocation || "-"}</td>
@@ -123,7 +154,7 @@ export function TierOverview({ groups, rechargeTiers }: { groups: GroupMultiplie
                         <tr key={`recurring-${tier.rechargeName}-${tier.billingType}-${tier.rmbAmount}-${tier.usdAmount}`}>
                           <td>{tier.rechargeName}</td>
                           <td>{tier.billingTypeLabel}</td>
-                          <td className="mono">{formatCurrency(tier.rmbAmount, "￥")}</td>
+                          <td className="mono">{formatPaymentAmount(tier)}</td>
                           <td className="mono">{formatCurrency(tier.usdAmount, "$")}</td>
                           <td>{tier.expiresRule || "-"}</td>
                           <td>{tier.rechargeLocation || "-"}</td>
@@ -154,8 +185,8 @@ export function TierOverview({ groups, rechargeTiers }: { groups: GroupMultiplie
                     </div>
                     <div className="mobile-metrics-grid">
                       <div className="mobile-metric">
-                        <div className="mobile-metric-label">人民币</div>
-                        <div className="mobile-metric-value mono">{formatCurrency(tier.rmbAmount, "￥")}</div>
+                        <div className="mobile-metric-label">实付金额</div>
+                        <div className="mobile-metric-value mono">{formatPaymentAmount(tier)}</div>
                       </div>
                       <div className="mobile-metric">
                         <div className="mobile-metric-label">美元额度</div>
@@ -187,8 +218,8 @@ export function TierOverview({ groups, rechargeTiers }: { groups: GroupMultiplie
                     </div>
                     <div className="mobile-metrics-grid">
                       <div className="mobile-metric">
-                        <div className="mobile-metric-label">人民币</div>
-                        <div className="mobile-metric-value mono">{formatCurrency(tier.rmbAmount, "￥")}</div>
+                        <div className="mobile-metric-label">实付金额</div>
+                        <div className="mobile-metric-value mono">{formatPaymentAmount(tier)}</div>
                       </div>
                       <div className="mobile-metric">
                         <div className="mobile-metric-label">美元额度</div>

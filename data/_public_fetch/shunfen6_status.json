@@ -1,8 +1,15 @@
 {
   "data": {
     "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":true,\"about\":false}",
-    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
     "announcements": [
+      {
+        "content": "各位，gpt官方集体拉闸了一大批账号，目前codex-vip分组倍率设置为 0.15。后面看情况恢复",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-05-25T01:27:13.660Z",
+        "type": "default"
+      },
       {
         "content": "各位注意：Codex-VIP 倍率已下调至 0.09。\n\n同时上新「狂飙套餐」，有效期 2 个月，升级为 Codex-SVIP 分组，即可享受 0.075 优惠倍率。",
         "extra": "",
@@ -89,14 +96,14 @@
     "linuxdo_client_id": "",
     "linuxdo_minimum_trust_level": 0,
     "linuxdo_oauth": false,
-    "logo": "",
+    "logo": "https://home.shunfen6.win/icon.png",
     "mj_notify_enabled": true,
     "oidc_authorization_endpoint": "",
     "oidc_client_id": "",
     "oidc_enabled": false,
     "passkey_allow_insecure": false,
     "passkey_attachment": "",
-    "passkey_display_name": "ShunFen Api",
+    "passkey_display_name": "Shunfen Api",
     "passkey_login": false,
     "passkey_origins": "https://shunfen6.win",
     "passkey_rp_id": "shunfen6.win",
@@ -117,7 +124,7 @@
     "telegram_oauth": false,
     "theme": "classic",
     "turnstile_check": false,
-    "turnstile_site_key": "",
+    "turnstile_site_key": "0x4AAAAAADUrasmPfkumDKiu",
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 1,
     "user_agreement_enabled": false,

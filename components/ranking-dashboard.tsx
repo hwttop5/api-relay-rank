@@ -126,7 +126,14 @@ const NON_CODEX_GROUP_KEYWORDS = [
   "minimax",
 ] as const;
 
-function isCodexLikeGroupName(groupName: string) {
+function isCodexLikeGroup(group: SiteData["stations"][number]["groupMultipliers"][number]) {
+  if (group.codexEligible === false) {
+    return false;
+  }
+  if (group.codexEligible === true) {
+    return true;
+  }
+  const groupName = group.groupName;
   const normalized = groupName.trim().toLowerCase();
   if (!normalized) {
     return false;
@@ -136,7 +143,7 @@ function isCodexLikeGroupName(groupName: string) {
 
 function getLowestUnrankedMultiplier(station: SiteData["stations"][number]) {
   const codexGroupMultipliers = station.groupMultipliers
-    .filter((group) => isCodexLikeGroupName(group.groupName))
+    .filter((group) => isCodexLikeGroup(group))
     .map((group) => group.groupMultiplier)
     .filter((multiplier) => Number.isFinite(multiplier) && multiplier > 0);
 
@@ -183,8 +190,14 @@ function getUnrankedReason(station: SiteData["stations"][number]) {
   const hasRechargeEvidence = station.rechargeTiers.length > 0;
   const totalSamples = getTotalSampleCount(station);
 
-  if (!hasGroupEvidence || !hasRechargeEvidence) {
+  if (!hasGroupEvidence && !hasRechargeEvidence) {
     return "缺分组/充值证据";
+  }
+  if (!hasGroupEvidence) {
+    return "缺分组证据";
+  }
+  if (!hasRechargeEvidence) {
+    return "缺充值证据";
   }
   if (needsManualFeeReview(station)) {
     return "费用待人工复核";
@@ -450,7 +463,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
           <div className="section-head">
             <div>
               <h1 className="section-title">正式综合排名</h1>
-              <p className="section-desc">支持工作时段与非工作时段切换；周末样本统一计入非工作时段。采用倍率按 Codex 口径最小非 0 分组倍率 × 实付人民币 ÷ 到账美元额度计算，`default` 分组也按 Codex 可用分组处理。</p>
+              <p className="section-desc">支持工作时段与非工作时段切换；周末样本统一计入非工作时段。采用倍率按 Codex 口径最小非 0 分组倍率 × 实付金额 ÷ 到账美元额度计算；有明确用途标记时排除非 Codex 分组。</p>
             </div>
             <div className="controls">
               <label className="control-group">

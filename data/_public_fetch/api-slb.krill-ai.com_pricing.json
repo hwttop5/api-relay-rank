@@ -17,7 +17,7 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 79,
+        "stock": 27,
         "group_rules": [
           {
             "id": 10,
@@ -60,7 +60,7 @@
         "campaign_name": null,
         "channel_name": "国产模型套餐",
         "total_credits": 9900,
-        "stock": 10,
+        "stock": 105,
         "group_rules": []
       },
       {
@@ -77,7 +77,7 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 22,
+        "stock": 82,
         "group_rules": [
           {
             "id": 13,
@@ -120,7 +120,7 @@
         "campaign_name": null,
         "channel_name": "国产模型套餐",
         "total_credits": 20699,
-        "stock": 15,
+        "stock": 115,
         "group_rules": []
       },
       {
@@ -138,7 +138,7 @@
         "campaign_name": null,
         "channel_name": "国产模型套餐",
         "total_credits": 43999,
-        "stock": 18,
+        "stock": 118,
         "group_rules": []
       },
       {
@@ -155,7 +155,7 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 13,
+        "stock": 110,
         "group_rules": [
           {
             "id": 16,

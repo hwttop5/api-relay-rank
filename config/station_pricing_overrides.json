@@ -32,6 +32,96 @@
     "assumptionText": "人工核验：/api/user/amount 返回实际支付人民币；采样入参 10 对应 100 USD 额度；钱包接口未注明有效期",
     "authoritative": true
   },
+  "happycode.vip": {
+    "stationTypeHint": "non_subscription",
+    "groupMultipliers": [
+      {
+        "groupName": "活动",
+        "groupMultiplier": 0.06,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "5额度(0.06倍率)",
+        "billingType": "permanent",
+        "rmbAmount": 5,
+        "usdAmount": 5,
+        "paymentCurrency": "CNY",
+        "paymentAmount": 5,
+        "rechargeLocation": "Happycode 充值页嵌入外部店铺",
+        "expiresRule": "外部店铺充值卡；购买后到 https://happycode.vip/redeem 兑换；1 RMB = 1 USD 额度；页面未注明有效期"
+      },
+      {
+        "rechargeName": "30额度(0.06倍率)",
+        "billingType": "permanent",
+        "rmbAmount": 30,
+        "usdAmount": 30,
+        "paymentCurrency": "CNY",
+        "paymentAmount": 30,
+        "rechargeLocation": "Happycode 充值页嵌入外部店铺",
+        "expiresRule": "外部店铺充值卡；购买后到 https://happycode.vip/redeem 兑换；1 RMB = 1 USD 额度；页面未注明有效期"
+      },
+      {
+        "rechargeName": "100额度(0.06倍率)",
+        "billingType": "permanent",
+        "rmbAmount": 100,
+        "usdAmount": 100,
+        "paymentCurrency": "CNY",
+        "paymentAmount": 100,
+        "rechargeLocation": "Happycode 充值页嵌入外部店铺",
+        "expiresRule": "外部店铺充值卡；购买后到 https://happycode.vip/redeem 兑换；1 RMB = 1 USD 额度；页面未注明有效期"
+      }
+    ],
+    "forcedAdoptedTier": "活动 | 5额度(0.06倍率)",
+    "assumptionText": "人工截图核验：Happycode 当前只有活动分组 0.06；充值页嵌入外部店铺，5/30/100 额度商品按 1 RMB = 1 USD 额度兑换。",
+    "confidence": "manual_verified",
+    "source": "browser_screenshot_verified_external_shop",
+    "evidenceUrl": "https://happycode.vip/custom",
+    "authoritative": true
+  },
+  "prod.bbroot.com": {
+    "stationTypeHint": "non_subscription",
+    "groupMultipliers": [
+      {
+        "groupName": "codex",
+        "groupMultiplier": 1,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "openai",
+        "groupMultiplier": 0.2,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "default",
+        "groupMultiplier": 1,
+        "codexEligible": false,
+        "usageLabel": "Claude Code"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "Starter (Weekly) — 2.99 USDC",
+        "billingType": "weekly",
+        "rmbAmount": 2.99,
+        "usdAmount": 2.99,
+        "paymentCurrency": "USDC",
+        "paymentAmount": 2.99,
+        "rechargeLocation": "浏览器登录态 USDC/Solana 购买页",
+        "expiresRule": "区块链虚拟币充值；暂按 1 USDC = 1 USD 额度；套餐周期 Weekly；后续以站点结构化套餐为准"
+      }
+    ],
+    "forcedAdoptedTier": "openai | Starter (Weekly) — 2.99 USDC",
+    "assumptionText": "人工截图核验：ProdBbroot 绿色 codex/openai 分组为 Codex 可用，橙色 default 为 Claude Code；USDC/Solana 充值本轮暂按 1 USDC = 1 USD 额度。",
+    "confidence": "manual_verified",
+    "source": "browser_screenshot_verified_usdc_checkout",
+    "evidenceUrl": "https://prod.bbroot.com/custom",
+    "authoritative": true
+  },
   "voapi": {
     "groupMultipliers": [
       {

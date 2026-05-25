@@ -443,6 +443,17 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(chosen["demo"].group_name, "codex")
         self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.2)
 
+    def test_choose_verified_fee_respects_codex_eligible_note(self) -> None:
+        tiers = [
+            self.make_fee_tier(group_name="default", group_multiplier=1.0, effective_multiplier=0.1, notes="codexEligible=false; usage=Claude Code"),
+            self.make_fee_tier(group_name="openai", group_multiplier=0.2, effective_multiplier=0.2, notes="codexEligible=true; usage=Codex"),
+        ]
+
+        chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
+
+        self.assertEqual(chosen["demo"].group_name, "openai")
+        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.2)
+
     def test_public_fetch_dir_defaults_to_repo_local_data_directory(self) -> None:
         self.assertEqual(
             build_site_data.PUBLIC_FETCH_DIR,
@@ -2547,6 +2558,46 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertIn("voapi", chosen)
         self.assertEqual(chosen["voapi"].group_name, "默认分组")
 
+    def test_station_pricing_override_marks_prod_bbroot_default_as_non_codex(self) -> None:
+        if audit_proxy_multipliers is None:
+            self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            override_path = Path(tmp_dir) / "station_pricing_overrides.json"
+            override_path.write_text(
+                json.dumps(
+                    {
+                        "prod.bbroot.com": {
+                            "authoritative": True,
+                            "groupMultipliers": [
+                                {"groupName": "openai", "groupMultiplier": 0.2, "codexEligible": True, "usageLabel": "Codex"},
+                                {"groupName": "default", "groupMultiplier": 1, "codexEligible": False, "usageLabel": "Claude Code"},
+                            ],
+                            "rechargeTiers": [
+                                {
+                                    "rechargeName": "Starter (Weekly) — 2.99 USDC",
+                                    "billingType": "weekly",
+                                    "rmbAmount": 2.99,
+                                    "usdAmount": 2.99,
+                                }
+                            ],
+                            "assumptionText": "browser verified",
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with mock.patch.object(audit_proxy_multipliers, "STATION_PRICING_OVERRIDES_PATH", override_path):
+                rows = audit_proxy_multipliers.apply_station_pricing_overrides_to_tiers([])
+                chosen = audit_proxy_multipliers.choose_verified_fee(rows, allow_low_confidence=False)
+
+        by_group = {row.group_name: row for row in rows}
+        self.assertEqual(set(by_group), {"openai", "default"})
+        self.assertIn("codexEligible=false", by_group["default"].notes)
+        self.assertIn("codexEligible=true", by_group["openai"].notes)
+        self.assertEqual(chosen["prod.bbroot.com"].group_name, "openai")
+        self.assertAlmostEqual(chosen["prod.bbroot.com"].effective_multiplier, 0.2)
+
     def test_scrape_station_rows_include_request_log_candidates_without_site_data(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = Path(tmp_dir)
@@ -2953,7 +3004,7 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(groups["status"], "blocked")
         self.assertEqual(groups["statusLabel"], "风控阻断")
 
-    def test_station_evidence_status_uses_login_block_for_announcements(self) -> None:
+    def test_station_evidence_status_uses_login_block_for_missing_detail_evidence(self) -> None:
         station = {
             "platformGuess": "sub2api",
             "groupMultipliers": [],
@@ -2973,11 +3024,50 @@ class BuildSiteDataTests(unittest.TestCase):
         }
 
         evidence = build_site_data.build_station_evidence_status(station, live_snapshot)
+        groups = next(item for item in evidence if item["key"] == "groupMultipliers")
+        recharges = next(item for item in evidence if item["key"] == "rechargeTiers")
         announcement = next(item for item in evidence if item["key"] == "announcements")
 
+        self.assertEqual(groups["status"], "blocked")
+        self.assertEqual(groups["statusLabel"], "风控阻断")
+        self.assertIn("验证码或风控阻断", groups["message"])
+        self.assertEqual(recharges["status"], "blocked")
+        self.assertEqual(recharges["statusLabel"], "风控阻断")
+        self.assertIn("验证码或风控阻断", recharges["message"])
         self.assertEqual(announcement["status"], "blocked")
         self.assertEqual(announcement["statusLabel"], "风控阻断")
         self.assertIn("验证码或风控阻断", announcement["message"])
+
+    def test_station_evidence_status_does_not_use_login_block_source_for_captured_rows(self) -> None:
+        station = {
+            "platformGuess": "new-api",
+            "groupMultipliers": [{"groupName": "vip", "groupMultiplier": 0.05}],
+            "rechargeTiers": [{"rechargeName": "public status 1 RMB = 1 USD credit"}],
+            "announcements": [{"content": "current public announcement"}],
+        }
+        live_snapshot = {
+            "rawProbe": {
+                "location": "https://fushengyunsuan.cn",
+                "announcementCapture": {
+                    "loginBlocked": True,
+                    "blockPath": "/api/user/login",
+                    "blockMessage": "Turnstile token 为空",
+                },
+            },
+            "evidenceStatus": {},
+        }
+
+        evidence = build_site_data.build_station_evidence_status(station, live_snapshot)
+        groups = next(item for item in evidence if item["key"] == "groupMultipliers")
+        recharges = next(item for item in evidence if item["key"] == "rechargeTiers")
+        announcements = next(item for item in evidence if item["key"] == "announcements")
+
+        self.assertEqual(groups["status"], "captured")
+        self.assertEqual(groups["source"], "")
+        self.assertEqual(recharges["status"], "captured")
+        self.assertEqual(recharges["source"], "")
+        self.assertEqual(announcements["status"], "captured")
+        self.assertEqual(announcements["source"], "")
 
     def test_quality_only_local_station_is_not_published(self) -> None:
         required_inputs = [
@@ -3067,6 +3157,27 @@ class BuildSiteDataTests(unittest.TestCase):
         station = stations["52mx"]
         self.assertEqual(station["groupMultipliers"], [{"groupName": "default", "groupMultiplier": 1.0}])
         self.assertEqual([tier["usdAmount"] for tier in station["rechargeTiers"]], [100.0, 500.0])
+
+    def test_load_summary_intro_uses_generated_at_env_override(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            data_dir = root / "data"
+            data_dir.mkdir()
+            site_data_path = data_dir / "site-data.json"
+            site_data_path.write_text(json.dumps({"generatedAt": "2026-05-22 20:09:46 +0800"}), encoding="utf-8")
+
+            with (
+                mock.patch.object(build_site_data, "SOURCE_ROOTS", [root]),
+                mock.patch.object(build_site_data, "SITE_DATA_PATH", site_data_path),
+                mock.patch.dict(
+                    build_site_data.os.environ,
+                    {build_site_data.GENERATED_AT_ENV: "2026-05-25 18:20:00 +0800"},
+                    clear=False,
+                ),
+            ):
+                intro = build_site_data.load_summary_intro()
+
+        self.assertEqual(intro["generated_at"], "2026-05-25 18:20:00 +0800")
 
     def test_apply_station_pricing_overrides_corrects_euzhi_amount_semantics(self) -> None:
         overrides = build_site_data.load_station_pricing_overrides()
@@ -3159,6 +3270,95 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertNotIn("CNY rate", station["rechargeTiers"][0]["expiresRule"])
         self.assertTrue(any("支付 ￥71 到账 10 USD" in note for note in station["tierNotes"]))
         self.assertFalse(any("rb=7.1" in note or "CNY rate" in note for note in station["tierNotes"]))
+
+    def test_normalized_rows_preserve_group_usage_and_payment_currency(self) -> None:
+        group = build_site_data.normalize_group_row(
+            {
+                "groupName": "default",
+                "groupMultiplier": 1,
+                "codexEligible": False,
+                "usageLabel": "Claude Code",
+            }
+        )
+        tier = build_site_data.normalize_recharge_row(
+            {
+                "rechargeName": "Starter (Weekly) — 2.99 USDC",
+                "billingType": "weekly",
+                "rmbAmount": 2.99,
+                "usdAmount": 2.99,
+                "paymentCurrency": "usdc",
+                "paymentAmount": 2.99,
+            }
+        )
+
+        self.assertEqual(group["codexEligible"], False)
+        self.assertEqual(group["usageLabel"], "Claude Code")
+        self.assertEqual(tier["paymentCurrency"], "USDC")
+        self.assertAlmostEqual(tier["paymentAmount"], 2.99)
+
+    def test_apply_station_pricing_overrides_adds_happycode_manual_shop_rows(self) -> None:
+        overrides = build_site_data.load_station_pricing_overrides()
+        stations = {
+            "happycode.vip": {
+                "key": "happycode.vip",
+                "label": "Happycode",
+                "url": "https://happycode.vip",
+                "stationType": "non_subscription",
+                "stationTypeLabel": "非包月型中转站",
+                "stationTypeShortLabel": "非包月型",
+                "platformGuess": "sub2api",
+                "verifiedTierCount": 0,
+                "groupMultipliers": [{"groupName": "活动", "groupMultiplier": 0.04}],
+                "rechargeTiers": [],
+                "tierNotes": [],
+                "announcements": [],
+                "rankings": {},
+                "quality": {},
+            }
+        }
+
+        build_site_data.apply_station_pricing_overrides(stations, overrides)
+
+        station = stations["happycode.vip"]
+        self.assertEqual(station["groupMultipliers"], [{"groupName": "活动", "groupMultiplier": 0.06, "codexEligible": True, "usageLabel": "Codex"}])
+        self.assertEqual([tier["rechargeName"] for tier in station["rechargeTiers"]], ["5额度(0.06倍率)", "30额度(0.06倍率)", "100额度(0.06倍率)"])
+        self.assertEqual([tier["usdAmount"] for tier in station["rechargeTiers"]], [5.0, 30.0, 100.0])
+        self.assertEqual(station["verifiedTierCount"], 3)
+        self.assertEqual(station["stationType"], "non_subscription")
+
+    def test_apply_station_pricing_overrides_adds_prod_bbroot_codex_usage_rows(self) -> None:
+        overrides = build_site_data.load_station_pricing_overrides()
+        stations = {
+            "prod.bbroot.com": {
+                "key": "prod.bbroot.com",
+                "label": "ProdBbroot",
+                "url": "https://prod.bbroot.com",
+                "stationType": "non_subscription",
+                "stationTypeLabel": "非包月型中转站",
+                "stationTypeShortLabel": "非包月型",
+                "platformGuess": "sub2api",
+                "verifiedTierCount": 0,
+                "groupMultipliers": [{"groupName": "default", "groupMultiplier": 1.0}],
+                "rechargeTiers": [],
+                "tierNotes": [],
+                "announcements": [],
+                "rankings": {},
+                "quality": {},
+            }
+        }
+
+        build_site_data.apply_station_pricing_overrides(stations, overrides)
+
+        station = stations["prod.bbroot.com"]
+        groups = {group["groupName"]: group for group in station["groupMultipliers"]}
+        self.assertEqual(set(groups), {"codex", "openai", "default"})
+        self.assertTrue(groups["codex"]["codexEligible"])
+        self.assertTrue(groups["openai"]["codexEligible"])
+        self.assertFalse(groups["default"]["codexEligible"])
+        self.assertEqual(groups["default"]["usageLabel"], "Claude Code")
+        self.assertEqual(station["rechargeTiers"][0]["paymentCurrency"], "USDC")
+        self.assertAlmostEqual(station["rechargeTiers"][0]["paymentAmount"], 2.99)
+        self.assertEqual(station["stationType"], "non_subscription")
 
     def test_authoritative_ranking_override_corrects_52mx_multiplier(self) -> None:
         overrides = build_site_data.load_station_pricing_overrides()
@@ -4434,9 +4634,12 @@ One or more audit steps **crashed**.
 
     def test_run_server_refresh_without_scrape_credentials_uses_degraded_validation(self) -> None:
         commands: list[list[str]] = []
+        build_generated_at_values: list[str | None] = []
 
         def fake_run(command: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
             commands.append(command)
+            if command == ["python", "scripts/build_site_data.py"]:
+                build_generated_at_values.append(run_server_refresh.os.environ.get("SITE_DATA_GENERATED_AT"))
             return subprocess.CompletedProcess(command, 0, stdout="", stderr="")
 
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -4445,6 +4648,7 @@ One or more audit steps **crashed**.
                 mock.patch.object(run_server_refresh, "APP_ROOT", root),
                 mock.patch.object(run_server_refresh, "ensure_runtime_dirs", return_value=None),
                 mock.patch.object(run_server_refresh, "exclusive_lock", side_effect=lambda *args, **kwargs: contextlib.nullcontext()),
+                mock.patch.object(run_server_refresh, "generated_at_now", return_value="2026-05-25 18:20:00 +0800"),
                 mock.patch.object(run_server_refresh, "run", side_effect=fake_run),
                 mock.patch.object(run_server_refresh, "prune_audit_runs", return_value=["old-run"]),
                 mock.patch.object(run_server_refresh.subprocess, "run", side_effect=AssertionError("scrape step should be skipped")),
@@ -4458,6 +4662,8 @@ One or more audit steps **crashed**.
         self.assertTrue(payload["degraded"])
         self.assertEqual(commands[0], ["python", "scripts/fetch_public_content.py", "--announcements", "--multiplier-snapshots", "--skip-build"])
         self.assertEqual(commands[1], ["python", "scripts/build_site_data.py"])
+        self.assertEqual(build_generated_at_values, ["2026-05-25 18:20:00 +0800"])
+        self.assertEqual(payload["generatedAt"], "2026-05-25 18:20:00 +0800")
         self.assertIn("--skip-scrape-validation", commands[2])
         self.assertEqual(payload["removedAuditRuns"], ["old-run"])
 

@@ -4,38 +4,22 @@
   ],
   "data": [
     {
-      "model_name": "gemini-3-flash",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 0.15,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8.333333333333,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "gpt-5.2",
+      "model_name": "gpt-5.3-codex",
       "icon": "OpenAI",
-      "tags": "推理,工具,文件,多模态,400K",
       "vendor_id": 2,
       "quota_type": 0,
       "model_ratio": 0.875,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 8,
+      "cache_ratio": 0.1,
       "enable_groups": [
         "codex"
       ],
       "supported_endpoint_types": [
         "openai"
-      ]
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
       "model_name": "gpt-5.4",
@@ -55,14 +39,14 @@
       ]
     },
     {
-      "model_name": "gpt-5.3-codex-openai-compact",
+      "model_name": "gpt-5.4-openai-compact",
       "icon": "OpenAI",
       "vendor_id": 2,
       "quota_type": 0,
-      "model_ratio": 0.875,
+      "model_ratio": 1.25,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
+      "completion_ratio": 6,
       "enable_groups": [
         "codex"
       ],
@@ -71,89 +55,28 @@
       ]
     },
     {
-      "model_name": "claude-haiku-4-5-20251001",
-      "icon": "Claude.Color",
-      "tags": "工具,多模态,200K,Web search",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-mix",
-        "cc-codex-to-claude",
-        "cc-windsurf",
-        "cc-aws",
-        "cc-max-stable",
-        "cc-antigravity",
-        "cc-anthropic",
-        "cc-max-ext",
-        "cc-kiro-ent",
-        "monitor",
-        "cc-aws-bedrock"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "icon": "Claude.Color",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-kiro-ent",
-        "cc-codex-to-claude",
-        "monitor",
-        "cc-mix",
-        "cc-windsurf",
-        "cc-aws",
-        "cc-aws-bedrock",
-        "cc-max-stable",
-        "cc-anthropic",
-        "cc-max-ext"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101",
-      "description": "Claude Opus 4.5 是由 anthropic 提供的人工智能模型。",
-      "icon": "Claude.Color",
-      "tags": "推理,工具,文件,多模态,200K,Web search",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-kiro-ent",
-        "monitor",
-        "cc-max-stable"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.2-openai-compact",
+      "model_name": "gpt-image-2",
+      "description": "生图请使用这个API地址: https://api.vbcode.io \n协议: v1/images/generations or /v1/images/edits",
       "icon": "OpenAI",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "gpt-img2"
+      ],
+      "supported_endpoint_types": [
+        "generations",
+        "edits",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "icon": "OpenAI",
+      "tags": "推理,工具,文件,多模态,400K",
       "vendor_id": 2,
       "quota_type": 0,
       "model_ratio": 0.875,
@@ -184,294 +107,7 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-6",
-      "icon": "Claude.Color",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-anthropic",
-        "cc-mix",
-        "cc-max-ext",
-        "cc-windsurf",
-        "monitor",
-        "cc-codex-to-claude",
-        "cc-kiro-ent",
-        "cc-aws",
-        "cc-aws-bedrock",
-        "cc-antigravity",
-        "cc-max-stable"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-flash-preview",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 0.15,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8.333333333333,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-pro-high",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-5-20250929",
-      "icon": "Claude.Color",
-      "tags": "推理,工具,多模态,200K,Web search",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "monitor",
-        "cc-kiro-ent",
-        "cc-max-stable"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
       "model_name": "gemini-3-pro-preview",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-openai-compact",
-      "icon": "OpenAI",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "icon": "Claude.Color",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-anthropic",
-        "cc-mix",
-        "cc-codex-to-claude",
-        "cc-windsurf",
-        "monitor",
-        "cc-aws",
-        "cc-aws-bedrock",
-        "cc-antigravity",
-        "cc-max-ext",
-        "cc-kiro-ent",
-        "cc-max-stable"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-flash-image-preview",
-      "vendor_id": 13,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.125,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "nano-banana"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "veo-3.0",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 4.5,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "veo"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "veo-3.0-fast",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 2.5,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "veo"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "veo-3.1",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 4.5,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "veo"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "veo-3.1-fast",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 2.5,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "veo"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "icon": "OpenAI",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex-spark",
-      "icon": "OpenAI",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-2",
-      "description": "生图请使用这个API地址: https://api.vbcode.io \n协议: v1/images/generations or /v1/images/edits",
-      "icon": "OpenAI",
-      "vendor_id": 2,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.1,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "gpt-img2"
-      ],
-      "supported_endpoint_types": [
-        "generations",
-        "edits",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-pro-preview",
       "vendor_id": 13,
       "quota_type": 0,
       "model_ratio": 1,
@@ -501,6 +137,370 @@
       ],
       "supported_endpoint_types": [
         "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "icon": "Claude.Color",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "monitor",
+        "cc-kiro-ent",
+        "cc-aws",
+        "cc-antigravity",
+        "cc-max-stable",
+        "cc-anthropic",
+        "cc-aws-bedrock",
+        "cc-codex-to-claude",
+        "cc-mix",
+        "cc-max-ext",
+        "cc-windsurf"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333333,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "veo-3.0-fast",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 2.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "veo"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-openai-compact",
+      "icon": "OpenAI",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333333,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "icon": "Claude.Color",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "monitor",
+        "cc-aws",
+        "cc-aws-bedrock",
+        "cc-max-stable",
+        "cc-anthropic",
+        "cc-mix",
+        "cc-max-ext",
+        "cc-windsurf",
+        "cc-kiro-ent",
+        "cc-codex-to-claude",
+        "cc-antigravity"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-image-preview",
+      "vendor_id": 13,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.125,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "nano-banana"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-high",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "description": "Claude Opus 4.5 是由 anthropic 提供的人工智能模型。",
+      "icon": "Claude.Color",
+      "tags": "推理,工具,文件,多模态,200K,Web search",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-max-stable",
+        "cc-kiro-ent",
+        "monitor"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "icon": "Claude.Color",
+      "tags": "推理,工具,多模态,200K,Web search",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-max-stable",
+        "monitor",
+        "cc-kiro-ent"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-openai-compact",
+      "icon": "OpenAI",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "icon": "OpenAI",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "veo-3.1-fast",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 2.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "veo"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "icon": "Claude.Color",
+      "tags": "工具,多模态,200K,Web search",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-windsurf",
+        "cc-aws-bedrock",
+        "cc-codex-to-claude",
+        "cc-max-stable",
+        "cc-antigravity",
+        "cc-anthropic",
+        "cc-kiro-ent",
+        "monitor",
+        "cc-aws",
+        "cc-mix",
+        "cc-max-ext"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "icon": "Claude.Color",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-mix",
+        "cc-max-ext",
+        "cc-kiro-ent",
+        "cc-aws",
+        "monitor",
+        "cc-anthropic",
+        "cc-windsurf",
+        "cc-aws-bedrock",
+        "cc-codex-to-claude",
+        "cc-max-stable"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "veo-3.0",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 4.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "veo"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "veo-3.1",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 4.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "veo"
+      ],
+      "supported_endpoint_types": [
         "openai"
       ]
     }
@@ -567,13 +567,13 @@
   },
   "vendors": [
     {
-      "id": 4,
-      "name": "Vivgrid"
-    },
-    {
       "id": 6,
       "name": "OpenCode Zen",
       "icon": "OpenCode"
+    },
+    {
+      "id": 7,
+      "name": "SAP AI Core"
     },
     {
       "id": 11,
@@ -585,6 +585,11 @@
       "id": 12,
       "name": "讯飞",
       "icon": "Spark.Color"
+    },
+    {
+      "id": 13,
+      "name": "Google",
+      "icon": "Gemini.Color"
     },
     {
       "id": 1,
@@ -602,22 +607,17 @@
       "icon": "Moonshot"
     },
     {
-      "id": 5,
-      "name": "Helicone"
+      "id": 4,
+      "name": "Vivgrid"
     },
     {
-      "id": 7,
-      "name": "SAP AI Core"
+      "id": 5,
+      "name": "Helicone"
     },
     {
       "id": 10,
       "name": "智谱",
       "icon": "Zhipu.Color"
-    },
-    {
-      "id": 13,
-      "name": "Google",
-      "icon": "Gemini.Color"
     }
   ],
   "status_payload": {

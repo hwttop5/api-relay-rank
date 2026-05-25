@@ -5,21 +5,15 @@
   ],
   "data": [
     {
-      "model_name": "claude-opus-4-5-20251101",
-      "icon": "Claude.Avatar.type={'platform'}",
+      "model_name": "claude-haiku-4-5",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 0.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "cc-officially-sp",
-        "cc-aws",
-        "cc-officially",
-        "cc-sale"
+        "cc-officially-sp"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -28,324 +22,8 @@
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
-      "model_name": "claude-opus-4-5",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "cc-max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6",
-      "icon": "Claude.Avatar.type={'platform'}",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-sale",
-        "cc-officially-sp",
-        "cc-max",
-        "cc-aws",
-        "cc-windsurf",
-        "cc-officially"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6-thinking",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.09999999999999999,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-officially",
-        "cc-sale",
-        "cc-officially-sp",
-        "cc-max",
-        "cc-aws",
-        "cc-windsurf"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex-high",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.09999999999999999,
-      "enable_groups": [
-        "openai(x0.5)"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-flash-preview",
-      "icon": "Gemini.Avatar.type={'platform'}",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.6,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "openai(x0.5)"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6-max",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-aws",
-        "cc-windsurf",
-        "cc-officially",
-        "cc-sale"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-5-20250929-thinking",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.09999999999999999,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-5",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "cc-officially",
-        "cc-officially-sp",
-        "cc-max",
-        "cc-aws"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "icon": "Claude.Avatar.type={'platform'}",
-      "tags": "代码推荐",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.09999999999999999,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-max",
-        "cc-aws",
-        "cc-windsurf",
-        "cc-officially",
-        "cc-sale",
-        "cc-officially-sp"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
       "model_name": "gpt-5.3-codex",
       "icon": "OpenAI.Avatar.type={'platform'}",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.09999999999999999,
-      "enable_groups": [
-        "openai(x0.5)"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.5-flash",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.09999999999999999,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001",
-      "icon": "Claude.Avatar.type={'platform'}",
-      "tags": "🦞龙虾推荐",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-max",
-        "cc-aws",
-        "cc-windsurf",
-        "cc-officially",
-        "cc-sale",
-        "cc-officially-sp"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-5-20250929",
-      "icon": "Claude.Avatar.type={'platform'}",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.09999999999999999,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-max",
-        "cc-aws",
-        "cc-windsurf",
-        "cc-officially",
-        "cc-sale",
-        "cc-officially-sp"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6-low",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-aws",
-        "cc-windsurf",
-        "cc-officially",
-        "cc-sale"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "icon": "OpenAI.Avatar.type={'platform'}",
-      "tags": "🦞龙虾推荐",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "openai(x0.5)"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex-medium",
       "vendor_id": 2,
       "quota_type": 0,
       "model_ratio": 0.875,
@@ -378,7 +56,48 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-6-medium",
+      "model_name": "gemini-3-pro-image-preview",
+      "icon": "Gemini.Avatar.type={'platform'}",
+      "tags": "生图推荐",
+      "vendor_id": 3,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.62,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "nano-banana(x1)"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.09999999999999999,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-max",
+        "cc-aws",
+        "cc-windsurf",
+        "cc-officially",
+        "cc-sale",
+        "cc-officially-sp"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-max",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -389,6 +108,7 @@
       "create_cache_ratio": 1.25,
       "enable_groups": [
         "cc-aws",
+        "cc-windsurf",
         "cc-officially",
         "cc-sale"
       ],
@@ -398,19 +118,17 @@
       ]
     },
     {
-      "model_name": "claude-haiku-4-5",
-      "vendor_id": 1,
+      "model_name": "seedance2",
       "quota_type": 0,
-      "model_ratio": 0.5,
+      "model_ratio": 37.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
+      "completion_ratio": 1,
       "enable_groups": [
-        "cc-officially-sp"
+        "default"
       ],
       "supported_endpoint_types": [
-        "anthropic",
-        "openai"
+        "openai-video"
       ]
     },
     {
@@ -430,7 +148,268 @@
       ]
     },
     {
+      "model_name": "gpt-5.3-codex-medium",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.09999999999999999,
+      "enable_groups": [
+        "openai(x0.5)"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.09999999999999999,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-max"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "tags": "代码推荐",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.09999999999999999,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-aws",
+        "cc-windsurf",
+        "cc-officially",
+        "cc-sale",
+        "cc-officially-sp",
+        "cc-max"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-officially",
+        "cc-sale",
+        "cc-officially-sp",
+        "cc-max",
+        "cc-aws",
+        "cc-windsurf"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-low",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-sale",
+        "cc-aws",
+        "cc-windsurf",
+        "cc-officially"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "seedance-fast",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai-video"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-xhigh",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.09999999999999999,
+      "enable_groups": [
+        "openai(x0.5)"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "openai(x0.5)"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview",
+      "icon": "Gemini.Avatar.type={'platform'}",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "cc-aws",
+        "cc-officially",
+        "cc-officially-sp",
+        "cc-max"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.09999999999999999,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
       "model_name": "gpt-5.2",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.09999999999999999,
+      "enable_groups": [
+        "openai(x0.5)"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-officially",
+        "cc-sale",
+        "cc-officially-sp",
+        "cc-max",
+        "cc-aws",
+        "cc-windsurf"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "icon": "OpenAI.Avatar.type={'platform'}",
+      "tags": "生图推荐",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "gpt-image-2[4k]",
+        "openai(x0.5)"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "image-generation"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-high",
       "vendor_id": 2,
       "quota_type": 0,
       "model_ratio": 0.875,
@@ -462,25 +441,7 @@
       ]
     },
     {
-      "model_name": "gemini-3-pro-image-preview",
-      "icon": "Gemini.Avatar.type={'platform'}",
-      "tags": "生图推荐",
-      "vendor_id": 3,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.62,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "nano-banana(x1)"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
+      "model_name": "claude-opus-4-6-high",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -493,8 +454,6 @@
         "cc-windsurf",
         "cc-officially",
         "cc-sale",
-        "cc-officially-sp",
-        "cc-max",
         "cc-aws"
       ],
       "supported_endpoint_types": [
@@ -503,7 +462,8 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-6-high",
+      "model_name": "claude-opus-4-5-20251101",
+      "icon": "Claude.Avatar.type={'platform'}",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -513,10 +473,10 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
+        "cc-officially",
         "cc-sale",
-        "cc-aws",
-        "cc-windsurf",
-        "cc-officially"
+        "cc-officially-sp",
+        "cc-aws"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -524,36 +484,21 @@
       ]
     },
     {
-      "model_name": "seedance2",
+      "model_name": "gpt-5.4",
+      "icon": "OpenAI.Avatar.type={'platform'}",
+      "tags": "🦞龙虾推荐",
+      "vendor_id": 2,
       "quota_type": 0,
-      "model_ratio": 37.5,
+      "model_ratio": 1.25,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 1,
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
       "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai-video"
-      ]
-    },
-    {
-      "model_name": "gpt-image-2",
-      "icon": "OpenAI.Avatar.type={'platform'}",
-      "tags": "生图推荐",
-      "vendor_id": 2,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.2,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "gpt-image-2[4k]",
         "openai(x0.5)"
       ],
       "supported_endpoint_types": [
-        "openai",
-        "image-generation"
+        "openai"
       ]
     },
     {
@@ -571,6 +516,31 @@
       ],
       "supported_endpoint_types": [
         "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "tags": "🦞龙虾推荐",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-windsurf",
+        "cc-officially",
+        "cc-sale",
+        "cc-officially-sp",
+        "cc-max",
+        "cc-aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     },
@@ -593,6 +563,46 @@
       ]
     },
     {
+      "model_name": "claude-opus-4-5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "cc-max"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.09999999999999999,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-aws",
+        "cc-windsurf",
+        "cc-officially",
+        "cc-sale",
+        "cc-officially-sp",
+        "cc-max"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
       "model_name": "claude-opus-4-6-thinking",
       "vendor_id": 1,
       "quota_type": 0,
@@ -603,11 +613,11 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "cc-max",
-        "cc-aws",
         "cc-windsurf",
         "cc-officially",
-        "cc-officially-sp"
+        "cc-officially-sp",
+        "cc-max",
+        "cc-aws"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -615,33 +625,23 @@
       ]
     },
     {
-      "model_name": "gpt-5.3-codex-xhigh",
-      "vendor_id": 2,
+      "model_name": "claude-opus-4-6-medium",
+      "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 0.875,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.09999999999999999,
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "openai(x0.5)"
+        "cc-sale",
+        "cc-aws",
+        "cc-officially"
       ],
       "supported_endpoint_types": [
+        "anthropic",
         "openai"
-      ]
-    },
-    {
-      "model_name": "seedance-fast",
-      "quota_type": 0,
-      "model_ratio": 37.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai-video"
       ]
     }
   ],
@@ -965,7 +965,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://1xm.ai",
       "setup": true,
-      "start_time": 1779428616,
+      "start_time": 1779598079,
       "stripe_unit_price": 8,
       "system_name": "OneXModel",
       "telegram_bot_name": "",

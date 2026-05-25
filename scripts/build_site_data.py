@@ -50,6 +50,7 @@ STATION_PRICING_OVERRIDES_PATH = APP_ROOT / "config" / "station_pricing_override
 STATION_URL_OVERRIDES_PATH = APP_ROOT / "config" / "station_url_overrides.json"
 STATION_AUDIT_TARGETS_PATH = APP_ROOT / "config" / "station_audit_targets.json"
 STATION_ALIASES_PATH = APP_ROOT / "config" / "station_aliases.json"
+GENERATED_AT_ENV = "SITE_DATA_GENERATED_AT"
 
 SHORT_TYPE_LABELS = {
     "subscription": "包月型",
@@ -150,6 +151,19 @@ def parse_int(value: Any) -> int:
 
 def parse_bool(value: Any) -> bool:
     return str(value or "").strip().lower() in {"1", "true", "yes", "y"}
+
+
+def parse_optional_bool(value: Any) -> bool | None:
+    if isinstance(value, bool):
+        return value
+    text = str(value or "").strip().lower()
+    if not text:
+        return None
+    if text in {"1", "true", "yes", "y"}:
+        return True
+    if text in {"0", "false", "no", "n", "off", "disabled"}:
+        return False
+    return None
 
 
 def explicitly_false(value: Any) -> bool:
@@ -650,9 +664,9 @@ def split_label_value(item: str) -> tuple[str, str]:
 
 def load_summary_intro() -> dict[str, Any]:
     summary_path = resolve_source_path("multiplier_audit_summary.md")
-    generated_at = ""
+    generated_at = str(os.environ.get(GENERATED_AT_ENV, "")).strip()
 
-    if summary_path and summary_path.exists():
+    if not generated_at and summary_path and summary_path.exists():
         summary_text = summary_path.read_text(encoding="utf-8-sig")
         lines = summary_text.splitlines()
 
@@ -689,7 +703,7 @@ def load_summary_intro() -> dict[str, Any]:
                 "工作时段：周一至周五 09:00:00-18:00:00。",
                 "非工作时段：工作日 18:00:01-次日 08:59:59；周末全天计入非工作时段。",
                 "正式综合排名仅使用高置信度或人工核验的费用证据；0 倍率分组不参与排名。",
-                "正式采用倍率优先使用 Codex 口径分组（`codex` / `openai` / `gpt` / `default`）中的最小非 0 倍率；若缺失，再回退到最低非 Claude 分组。",
+                "正式采用倍率优先使用 Codex 口径分组中的最小非 0 倍率；有明确用途标记时先排除非 Codex 分组。",
                 "sub2api 站点的公告、分组倍率、订阅和充值计划通常需要登录后查看；公开抓取只作为首页配置、文档链接和菜单项补充。",
                 DISCLAIMER_EMPHASIS,
             ],
@@ -698,18 +712,18 @@ def load_summary_intro() -> dict[str, Any]:
                     "本次数据来自本人电脑上 Codex Manager 对多家中转站 Codex API Key 的聚合调用日志，使用场景为 Codex 接入开发。",
                     "由于所有请求均先经过 Codex Manager，再转发至各中转站，相比直连会天然增加一层延迟。",
                     "日志样本来自本人实际开发个人小项目期间的调用记录，网络环境为昆明广电宽带。以下排名仅反映本人使用时间点、当时账号状态与当时网络环境下的观测结果。",
-                    f"费用口径统一按各站当前可核验的 Codex 口径最小非 0 分组倍率计算，`default` 分组视为 Codex 可用分组；若站点未显式区分 Codex，则回退到最低非 Claude 分组。该档位通常价格最低，但也往往延迟更高、稳定性更差，{HIGHLIGHT_PHRASE}",
+                    f"费用口径统一按各站当前可核验的 Codex 口径最小非 0 分组倍率计算；有明确用途标记时先排除非 Codex 分组，未显式区分时再回退到最低非 Claude 分组。该档位通常价格最低，但也往往延迟更高、稳定性更差，{HIGHLIGHT_PHRASE}",
                 ]
             ),
             "coreItems": [
                 "综合评分权重 = 正确响应率 40% + 响应时间 35% + 实际倍率 25%。",
-                "实际倍率 = 分组倍率 × 实付人民币 ÷ 到账美元额度。",
-                "正式采用倍率 = Codex 口径分组倍率（最小非 0 倍率） × 实付人民币 ÷ 到账美元额度。",
-                "Codex 口径分组：分组名包含 `codex`、`openai`、`gpt`，或分组名为 `default`；若缺失，再回退到最低非 Claude 分组。",
+                "实际倍率 = 分组倍率 × 实付金额 ÷ 到账美元额度。",
+                "正式采用倍率 = Codex 口径分组倍率（最小非 0 倍率） × 实付金额 ÷ 到账美元额度。",
+                "Codex 口径分组：优先尊重人工或结构化用途标记；没有标记时按分组名排除 Claude/国产/公益等非 Codex 分组。",
                 "正确响应定义：HTTP 2xx 且 error IS NULL；HTTP 200 但 error 非空也计为错误响应；因欠费、充值解锁、手机号验证等账户前置条件导致的错误样本，已从正确响应率统计中剔除。部分请求报错（如502）但能正常使用时，也计为错误响应。",
             ],
-            "formula": "实际倍率 = 分组倍率 × 实付人民币 ÷ 到账美元额度。",
-            "adoptedMultiplierRule": "正式采用倍率：优先取 Codex 口径分组中的最小非 0 实际倍率；若无明确 Codex/default 分组，再回退到最低非 Claude 分组。",
+            "formula": "实际倍率 = 分组倍率 × 实付金额 ÷ 到账美元额度。",
+            "adoptedMultiplierRule": "正式采用倍率：优先取 Codex 口径分组中的最小非 0 实际倍率；有明确用途标记时排除非 Codex 分组，否则按名称规则排除 Claude/国产/公益等分组。",
             "scoring": "综合评分权重 = 正确响应率 40% + 响应时间 35% + 实际倍率 25%。",
         },
     }
@@ -2197,10 +2211,19 @@ def normalize_group_row(item: dict[str, Any]) -> dict[str, Any] | None:
     group_multiplier = parse_float(item.get("groupMultiplier") if "groupMultiplier" in item else item.get("group_multiplier"))
     if not group_name or group_multiplier is None:
         return None
-    return {
+    row: dict[str, Any] = {
         "groupName": group_name,
         "groupMultiplier": group_multiplier,
     }
+    codex_eligible = parse_optional_bool(
+        item.get("codexEligible") if "codexEligible" in item else item.get("codex_eligible")
+    )
+    if codex_eligible is not None:
+        row["codexEligible"] = codex_eligible
+    usage_label = sanitize_public_text(item.get("usageLabel") or item.get("usage_label"))
+    if usage_label:
+        row["usageLabel"] = usage_label
+    return row
 
 
 def normalize_recharge_row(item: dict[str, Any]) -> dict[str, Any] | None:
@@ -2220,7 +2243,7 @@ def normalize_recharge_row(item: dict[str, Any]) -> dict[str, Any] | None:
         return None
     recharge_location = sanitize_public_text(item.get("rechargeLocation") or item.get("recharge_location") or item.get("location"))
     expires_rule = sanitize_public_text(item.get("expiresRule") or item.get("expires_rule") or item.get("note"))
-    return {
+    row: dict[str, Any] = {
         "rechargeName": recharge_name,
         "billingType": billing_type,
         "billingTypeLabel": sanitize_public_text(item.get("billingTypeLabel") or item.get("billing_type_label")) or BILLING_LABELS.get(billing_type, billing_type or "未知"),
@@ -2229,6 +2252,13 @@ def normalize_recharge_row(item: dict[str, Any]) -> dict[str, Any] | None:
         "rechargeLocation": recharge_location,
         "expiresRule": expires_rule,
     }
+    payment_currency = sanitize_public_text(item.get("paymentCurrency") or item.get("payment_currency"))
+    payment_amount = parse_float(item.get("paymentAmount") if "paymentAmount" in item else item.get("payment_amount"))
+    if payment_currency:
+        row["paymentCurrency"] = payment_currency.upper()
+    if payment_amount is not None:
+        row["paymentAmount"] = payment_amount
+    return row
 
 
 def group_row_key(group: dict[str, Any]) -> tuple[str, float]:
@@ -2241,6 +2271,8 @@ def recharge_row_key(row: dict[str, Any]) -> tuple[Any, ...]:
         row.get("billingType", ""),
         row.get("rmbAmount"),
         row.get("usdAmount"),
+        row.get("paymentCurrency", ""),
+        row.get("paymentAmount"),
         row.get("rechargeLocation", ""),
         row.get("expiresRule", ""),
     )
@@ -3734,6 +3766,9 @@ def build_station_evidence_status(station: dict[str, Any], live_snapshot: dict[s
     live_statuses = (live_snapshot or {}).get("evidenceStatus") if isinstance(live_snapshot, dict) else {}
     live_statuses = live_statuses if isinstance(live_statuses, dict) else {}
     platform = str(station.get("platformGuess") or "").strip().lower()
+    group_count = len(station.get("groupMultipliers", []))
+    recharge_count = len(station.get("rechargeTiers", []))
+    announcement_count = len(station.get("announcements", []))
     public_probe_snapshot = station.get("_publicProbeSnapshot") if isinstance(station.get("_publicProbeSnapshot"), dict) else None
     root_unavailable_status = public_probe_root_status(public_probe_snapshot)
     announcement_live_status = (
@@ -3745,7 +3780,7 @@ def build_station_evidence_status(station: dict[str, Any], live_snapshot: dict[s
     if isinstance(live_snapshot, dict):
         login_block_status = probe_login_block_status(
             live_snapshot.get("rawProbe"),
-            message="公告接口被验证码或风控阻断",
+            message="登录态接口被验证码或风控阻断",
         )
     sub2api_login_message = "sub2api 的该类接口通常需要登录态；当前公开快照或已归档 probe 没有可用结构化数据。"
     announcement_message = (
@@ -3759,9 +3794,20 @@ def build_station_evidence_status(station: dict[str, Any], live_snapshot: dict[s
         group_live_status = root_unavailable_status
     if root_unavailable_status and (recharge_live_status or {}).get("status") == "login_required":
         recharge_live_status = root_unavailable_status
-    if login_block_status and (
+    weak_statuses = {"login_required", "failed", "missing", "public_missing", ""}
+    if login_block_status and group_count == 0 and (
+        group_live_status is None
+        or (group_live_status or {}).get("status") in weak_statuses
+    ):
+        group_live_status = login_block_status
+    if login_block_status and recharge_count == 0 and (
+        recharge_live_status is None
+        or (recharge_live_status or {}).get("status") in weak_statuses
+    ):
+        recharge_live_status = login_block_status
+    if login_block_status and announcement_count == 0 and (
         announcement_live_status is None
-        or (announcement_live_status or {}).get("status") in {"login_required", "failed", "missing", "public_missing", ""}
+        or (announcement_live_status or {}).get("status") in weak_statuses
     ):
         announcement_live_status = login_block_status
     if root_unavailable_status and (
@@ -3773,7 +3819,7 @@ def build_station_evidence_status(station: dict[str, Any], live_snapshot: dict[s
         evidence_item(
             key="groupMultipliers",
             label="分组倍率",
-            count=len(station.get("groupMultipliers", [])),
+            count=group_count,
             fallback_status="login_required" if platform == "sub2api" else "missing",
             fallback_message=root_unavailable_status["message"] if root_unavailable_status else (sub2api_login_message if platform == "sub2api" else "当前未抓到结构化分组倍率。"),
             live_status=group_live_status or root_unavailable_status,
@@ -3781,7 +3827,7 @@ def build_station_evidence_status(station: dict[str, Any], live_snapshot: dict[s
         evidence_item(
             key="rechargeTiers",
             label="充值档位",
-            count=len(station.get("rechargeTiers", [])),
+            count=recharge_count,
             fallback_status="login_required" if platform == "sub2api" else "missing",
             fallback_message=root_unavailable_status["message"] if root_unavailable_status else (sub2api_login_message if platform == "sub2api" else "当前未抓到结构化充值档位。"),
             live_status=recharge_live_status or root_unavailable_status,
@@ -3789,7 +3835,7 @@ def build_station_evidence_status(station: dict[str, Any], live_snapshot: dict[s
         evidence_item(
             key="announcements",
             label="公告",
-            count=len(station.get("announcements", [])),
+            count=announcement_count,
             fallback_status="login_required" if platform == "sub2api" else "public_missing",
             fallback_message=root_unavailable_status["message"] if root_unavailable_status else announcement_message,
             live_status=announcement_live_status or root_unavailable_status,
@@ -3848,6 +3894,11 @@ def apply_station_pricing_overrides(
 ) -> None:
     for station_key, override in overrides.items():
         station = ensure_station(stations, station_key, station_aliases=station_aliases)
+        station_type_hint = sanitize_public_text(override.get("stationTypeHint") or override.get("station_type"))
+        if station_type_hint in FULL_TYPE_LABELS and station_type_hint != "unknown_pending":
+            station["stationType"] = station_type_hint
+            station["stationTypeLabel"] = FULL_TYPE_LABELS.get(station_type_hint, station_type_hint)
+            station["stationTypeShortLabel"] = SHORT_TYPE_LABELS.get(station_type_hint, station_type_hint)
 
         group_rows = []
         for item in override.get("groupMultipliers", []):
@@ -3866,6 +3917,7 @@ def apply_station_pricing_overrides(
                     explicit_recharge_rows.append(normalized)
         if explicit_recharge_rows:
             station["rechargeTiers"] = sort_recharge_tiers(explicit_recharge_rows)
+            station["verifiedTierCount"] = max(parse_int(station.get("verifiedTierCount")), len(explicit_recharge_rows))
 
         recharge_mode = override.get("rechargeMode")
         if explicit_recharge_rows:

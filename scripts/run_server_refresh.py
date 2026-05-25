@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import os
 import subprocess
+from datetime import UTC, datetime, timedelta, timezone
 from pathlib import Path
 
 try:
@@ -23,6 +24,11 @@ def run(command: list[str], *, check: bool = True) -> subprocess.CompletedProces
 
 def has_scrape_credentials() -> bool:
     return bool(os.environ.get("API_RELAY_SCRAPE_EMAIL")) and bool(os.environ.get("API_RELAY_SCRAPE_PASSWORD"))
+
+
+def generated_at_now() -> str:
+    china_standard_time = timezone(timedelta(hours=8))
+    return datetime.now(UTC).astimezone(china_standard_time).strftime("%Y-%m-%d %H:%M:%S %z")
 
 
 def main() -> int:
@@ -53,6 +59,8 @@ def main() -> int:
         steps.append("scrape_missing_announcements skipped (missing scrape credentials)")
 
     with exclusive_lock("site-data-rebuild", stale_seconds=60 * 60):
+        generated_at = generated_at_now()
+        os.environ["SITE_DATA_GENERATED_AT"] = generated_at
         run(["python", "scripts/build_site_data.py"])
     steps.append("build_site_data")
 
@@ -72,6 +80,7 @@ def main() -> int:
             {
                 "ok": True,
                 "degraded": degraded,
+                "generatedAt": generated_at,
                 "completed": steps,
                 "removedAuditRuns": removed,
             },

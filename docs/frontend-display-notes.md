@@ -24,9 +24,20 @@
 - 桌面端“未纳入正式排名的收录站点”表格列顺序固定为：站点、网址、类型、平台判断、未入榜原因、最低倍率、全部时段样本、核验档位、公告数、操作。“最低倍率”必须在第 6 列。
 - 移动端未排名站点卡片要在指标区同步显示“最低倍率”，并复用现有倍率格式化规则；无法计算时显示 `-`。
 - “最低倍率”只解释未入榜站点的可见成本线索，不改变正式排名、评分、`effectiveMultiplier`、排序或 `rankedStationCount`。
+- 详情页分组表如果存在 `usageLabel` / `codexEligible`，必须展示用途；sub2api 绿色分组显示为 Codex，橙色 Claude Code 分组不得参与最低倍率。
+- 充值表第一金额列使用“实付金额”，不要固定写“人民币”；当 `paymentCurrency=USDC` 时应显示 USDC，而不是 `￥`。
 - 类型列只读 `stationTypeShortLabel`。只要构建脚本已根据结构化充值/套餐证据推断出 `mixed`、`subscription` 或 `non_subscription`，即使请求样本为 0，也不要回退显示“待补证据”。
 - 未入榜原因要区分费用证据和质量样本：结构化分组与有效充值/套餐都已抓到，但 Codex Manager 请求样本为 0 时，显示“缺请求样本”；只有缺少可用于正式费用证据链的结构化费用行时，才显示“缺正式费用行”。
-- 典型案例：Nerverun 已抓到分组、永久余额档位、10 天订阅套餐和公告，类型显示“混合型”，未入榜原因显示“缺请求样本”；Relay 的最低倍率来自订阅 plans 一次性档位，约 `1.499x`；KrillAI 和 Fushengyunsuan 应按宽松 Codex-like 分组口径显示可计算的最低倍率。
+- 典型案例：Nerverun 已抓到分组、永久余额档位、10 天订阅套餐和公告，类型显示“混合型”，未入榜原因显示“缺请求样本”；Happycode 应显示 `0.06` 分组和 5/30/100 三个外部店铺档位；ProdBbroot 应显示 USDC 实付金额，并排除橙色 `default` 分组；Fushengyunsuan 不应再显示旧 `0.0075` 异常倍率。
+
+## 2026-05-25 三站页面核对补充
+
+- `/ranking` 顶部说明和未入榜表要使用同一成本口径：`Codex-like 最小非 0 分组倍率 × 实付金额 ÷ 到账美元额度`；有明确用途标记时，先排除非 Codex 分组。
+- 未入榜表中，`Happycode` 与 `ProdBbroot` 这类已有分组和充值证据、但请求样本为 0 的站点，应显示“缺请求样本”，最低倍率分别来自 `活动=0.06` 和 `openai=0.2`。
+- 详情页分组表必须展示“用途”。`codexEligible=true` 显示 Codex，`codexEligible=false` 显示 Claude Code；ProdBbroot 的橙色 `default` 不参与最低倍率或采用倍率解释。
+- 充值表金额列保持“实付金额”。Happycode 的 CNY 档位继续显示 `￥5.00`、`￥30.00`、`￥100.00`；ProdBbroot 的 `paymentCurrency=USDC` 必须显示 `2.99 USDC`，不能显示 `￥2.99`。
+- Fushengyunsuan 当前分组表和排名快照应显示 `vip=0.05` / `企业生图专线=0.05` 及采用倍率 `0.05`。如果公告区展示历史公告中的 `0.0075x`，只作为历史公告文本保留，不应出现在当前分组表、未入榜最低倍率或排名采用倍率中。
+- 页面验收至少覆盖 `/ranking`、`/stations/happycode.vip`、`/stations/prod.bbroot.com`、`/stations/fushengyunsuan.cn`，并同时检查未入榜原因、最低倍率、分组用途、实付金额币种和详情页证据数量。
 
 ## 验证清单
 

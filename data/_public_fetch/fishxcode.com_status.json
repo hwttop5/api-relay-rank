@@ -1,6 +1,6 @@
 {
   "data": {
-    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"package\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true,\"contact\":true}",
     "SelfServiceSubscriptionConversionCampaign": "{\n  \"enabled\": true,\n  \"key\": \"default-self-service-subscription-conversion\",\n  \"title\": \"套餐自助折算活动\",\n  \"subtitle\": \"提交申请后先禁用原套餐，审核通过后折算为账户余额\",\n  \"description\": \"管理员可在这里维护可参与退款/折算的套餐活动规则、截止时间与展示文案。\",\n  \"deadline\": 0,\n  \"timezone\": \"Asia/Shanghai\",\n  \"require_disabled_plan\": true,\n  \"eligible_plan_ids\": [],\n  \"eligible_upgrade_groups\": [\n    \"claude_sub\"\n  ],\n  \"eligible_title_keywords\": [\n    \"Claude\",\n    \"claude\"\n  ],\n  \"conversion_rule\": \"返还余额 = 套餐折算基价 - 套餐折算基价 / 周期天数 × 计费天数；其中计费天数 = 已使用整天数 + 0.5 天。\",\n  \"billing_rules\": [],\n  \"charge_rules\": []\n}",
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"package\":true,\"token\":true,\"log\":true,\"checkinLottery\":true,\"activityLottery\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"invoice\":true,\"refund\":false,\"commission\":true,\"personal\":true,\"siteNotifications\":true,\"invite\":true},\"public\":{\"enabled\":true,\"pricing\":true,\"docs\":true,\"about\":true,\"contact\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"discountCode\":true,\"tokenAdmin\":true,\"ecomagent\":true,\"user\":true,\"subscription\":true,\"setting\":true,\"riskControl\":true,\"invoiceAdmin\":false,\"financeAdmin\":true,\"checkinAdmin\":true,\"r2Storage\":false}}",
     "SubscriptionRefundSettings": "{\n  \"page_enabled\": true,\n  \"enabled\": true,\n  \"allow_balance_refund\": true,\n  \"allow_original_payment_refund\": true,\n  \"settlement_mode\": \"duration_ratio\",\n  \"currency\": \"USD\",\n  \"codex_input_price_per_million\": 3,\n  \"codex_output_price_per_million\": 15,\n  \"codex_cache_read_price_per_million\": 0.3,\n  \"codex_cache_write_price_per_million\": 3.75,\n  \"notes\": \"Codex 套餐如需按 token 用量折算退款，请维护每 100 万 token 的标准单价；当前也可先作为审核参考。\"\n}",
@@ -146,7 +146,7 @@
     ],
     "checkin_enabled": true,
     "checkin_setting.daily_user_limit": 500,
-    "checkin_setting.open_end_seconds": 64800,
+    "checkin_setting.open_end_seconds": 43200,
     "checkin_setting.open_start_seconds": 28800,
     "checkin_setting.open_weekdays": "1,2,3,4,5",
     "contact_channels": [
@@ -265,7 +265,7 @@
     "enable_batch_update": true,
     "enable_data_export": true,
     "enable_drawing": false,
-    "enable_log_export": false,
+    "enable_log_export": true,
     "enable_task": true,
     "faq": [
       {
@@ -312,7 +312,7 @@
     "passkey_attachment": "",
     "passkey_display_name": "FishXCode",
     "passkey_login": true,
-    "passkey_origins": "https://enterprise.fishxcode.com",
+    "passkey_origins": "https://fishxcode.com",
     "passkey_rp_id": "fishxcode.com",
     "passkey_user_verification": "preferred",
     "password_login_enabled": true,
@@ -323,9 +323,9 @@
     "quota_per_unit": 500000,
     "register_enabled": true,
     "self_use_mode_enabled": false,
-    "server_address": "https://enterprise.fishxcode.com",
+    "server_address": "https://fishxcode.com",
     "setup": true,
-    "start_time": 1779463557,
+    "start_time": 1779706905,
     "stripe_unit_price": 8,
     "subscription_promo_badge_left": "",
     "subscription_promo_badge_right": "",
