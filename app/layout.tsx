@@ -5,6 +5,21 @@ import { DEFAULT_DESCRIPTION, SITE_TITLE, getSiteBaseUrl } from "@/lib/seo";
 
 import "./globals.css";
 
+const baiduTongjiId = process.env.NEXT_PUBLIC_BAIDU_TONGJI_ID?.trim();
+const baiduTongjiScript =
+  baiduTongjiId && /^[0-9a-f]{32}$/i.test(baiduTongjiId)
+    ? `
+var _hmt = window._hmt || [];
+window._hmt = _hmt;
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?${baiduTongjiId.toLowerCase()}";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+`
+    : null;
+
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteBaseUrl()),
   title: {
@@ -52,6 +67,9 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         {children}
+        {baiduTongjiScript ? (
+          <script id="baidu-tongji" dangerouslySetInnerHTML={{ __html: baiduTongjiScript }} />
+        ) : null}
       </body>
     </html>
   );

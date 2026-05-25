@@ -47,6 +47,42 @@ jobs:
             -e "ssh -i ~/.ssh/deploy_key -p 22" \
             ./ "$VPS_USER@$VPS_HOST:/opt/stacks/api-relay-rank/"
 
+      - name: Configure Baidu Tongji on VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          BAIDU_TONGJI_ID: ${{ secrets.BAIDU_TONGJI_ID }}
+        run: |
+          set -euo pipefail
+          test -n "$BAIDU_TONGJI_ID"
+          encoded_id="$(printf '%s' "$BAIDU_TONGJI_ID" | base64 -w 0)"
+          ssh -i ~/.ssh/deploy_key -p 22 "$VPS_USER@$VPS_HOST" \
+            "BAIDU_TONGJI_ID_B64='$encoded_id' sh -s" <<'REMOTE_SCRIPT'
+          set -eu
+          env_file="/opt/stacks/api-relay-rank/deploy/.env"
+          baidu_tongji_id="$(printf '%s' "$BAIDU_TONGJI_ID_B64" | base64 -d)"
+          mkdir -p "$(dirname "$env_file")"
+          touch "$env_file"
+          tmp_file="$(mktemp)"
+          awk -v value="$baidu_tongji_id" '
+            BEGIN { found = 0 }
+            /^NEXT_PUBLIC_BAIDU_TONGJI_ID=/ {
+              print "NEXT_PUBLIC_BAIDU_TONGJI_ID=" value
+              found = 1
+              next
+            }
+            { print }
+            END {
+              if (!found) {
+                print "NEXT_PUBLIC_BAIDU_TONGJI_ID=" value
+              }
+            }
+          ' "$env_file" > "$tmp_file"
+          cat "$tmp_file" > "$env_file"
+          rm -f "$tmp_file"
+          echo "Configured NEXT_PUBLIC_BAIDU_TONGJI_ID in $env_file"
+          REMOTE_SCRIPT
+
       - name: Restart Docker stack
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
