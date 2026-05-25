@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import shutil
+from datetime import datetime
 from pathlib import Path
 
 try:
@@ -49,11 +50,63 @@ def copy_tree_contents(source_dir: Path, target_dir: Path) -> None:
             shutil.copy2(source_path, target_path)
 
 
+def replace_tree_contents(source_dir: Path, target_dir: Path) -> None:
+    target_dir.mkdir(parents=True, exist_ok=True)
+    for target_path in target_dir.iterdir():
+        if target_path.is_dir():
+            shutil.rmtree(target_path)
+        else:
+            target_path.unlink()
+    copy_tree_contents(source_dir, target_dir)
+
+
+def read_generated_at(path: Path) -> str | None:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    if not isinstance(payload, dict):
+        return None
+    value = payload.get("generatedAt")
+    return str(value).strip() if value else None
+
+
+def parse_generated_at(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    normalized = value.replace("Z", "+00:00")
+    try:
+        return datetime.fromisoformat(normalized)
+    except ValueError:
+        pass
+    for pattern in ("%Y-%m-%d %H:%M:%S %z", "%Y-%m-%dT%H:%M:%S%z"):
+        try:
+            return datetime.strptime(value, pattern)
+        except ValueError:
+            continue
+    return None
+
+
+def repo_site_data_is_newer() -> bool:
+    repo_generated_at = parse_generated_at(read_generated_at(REPO_SITE_DATA_PATH))
+    runtime_generated_at = parse_generated_at(read_generated_at(SITE_DATA_PATH))
+    if repo_generated_at is None:
+        return False
+    if runtime_generated_at is None:
+        return True
+    return repo_generated_at > runtime_generated_at
+
+
 def main() -> int:
     ensure_runtime_dirs()
     seeded: dict[str, str] = {}
 
-    if REPO_SITE_DATA_PATH.resolve() != SITE_DATA_PATH.resolve() and not SITE_DATA_PATH.exists() and REPO_SITE_DATA_PATH.exists():
+    should_seed_site_data = (
+        REPO_SITE_DATA_PATH.resolve() != SITE_DATA_PATH.resolve()
+        and REPO_SITE_DATA_PATH.exists()
+        and (not SITE_DATA_PATH.exists() or repo_site_data_is_newer())
+    )
+    if should_seed_site_data:
         SITE_DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(REPO_SITE_DATA_PATH, SITE_DATA_PATH)
         seeded["siteData"] = logical_data_path(SITE_DATA_PATH)
@@ -61,10 +114,13 @@ def main() -> int:
     if (
         REPO_PUBLIC_FETCH_DIR.exists()
         and REPO_PUBLIC_FETCH_DIR.resolve() != PUBLIC_FETCH_DIR.resolve()
-        and not directory_has_entries(PUBLIC_FETCH_DIR)
     ):
-        copy_tree_contents(REPO_PUBLIC_FETCH_DIR, PUBLIC_FETCH_DIR)
-        seeded["publicFetch"] = logical_data_path(PUBLIC_FETCH_DIR)
+        if should_seed_site_data:
+            replace_tree_contents(REPO_PUBLIC_FETCH_DIR, PUBLIC_FETCH_DIR)
+            seeded["publicFetch"] = logical_data_path(PUBLIC_FETCH_DIR)
+        elif not directory_has_entries(PUBLIC_FETCH_DIR):
+            copy_tree_contents(REPO_PUBLIC_FETCH_DIR, PUBLIC_FETCH_DIR)
+            seeded["publicFetch"] = logical_data_path(PUBLIC_FETCH_DIR)
 
     print(
         json.dumps(

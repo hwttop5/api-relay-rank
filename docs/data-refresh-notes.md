@@ -57,6 +57,13 @@ python scripts/refresh_quality_rankings.py --full-log-rebuild
 - 服务器手动触发命令：`docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec scheduler python scripts/run_server_refresh.py`。
 - `.github/workflows/refresh-site-data.yml` 只保留 `workflow_dispatch`，不再保留 `schedule`，避免与服务器刷新双写。
 
+线上部署同步与审计历史：
+
+- VPS 部署时，app 容器启动会先运行 `scripts/seed_runtime_data.py`。当仓库版 `data/site-data.json` 的 `generatedAt` 晚于 runtime 数据卷时，它会同步仓库版主数据和 `_public_fetch` 到 runtime。
+- app 和 scheduler 容器 seed 之后都必须继续运行 `scripts/rebuild_runtime_site_data.py`。该脚本使用 `site-data-rebuild` 锁，并把当前 runtime `site-data.json` 的 `generatedAt` 传给 `scripts/build_site_data.py`，这样可以保留本次数据生成时间，同时把 runtime `data/_audit_runs` 中的 audit-only 站点重新合入 `stations[]`。两个容器同时启动时，scheduler 不会在 app 重建后把 repo 版 `site-data.json` 留作最终状态。
+- 这一步用于防止提交数据后的 deploy 把 VPS 审计历史站点从“未纳入正式排名的收录站点”和 `/stations/<station>` 详情页中冲掉。`data/_audit_runs` 仍只保留在线上数据卷，不提交进仓库。
+- 如果 `/audit` 历史仍能看到记录，但点击站点详情出现 404，优先检查 app 容器启动日志里 `rebuild_runtime_site_data.py` 是否执行成功；临时恢复可在 app 容器内执行 `python scripts/rebuild_runtime_site_data.py`，再核对 `/stations/<audit-key>` 和 `/ranking`。
+
 ## 增量日志规则
 
 - 普通刷新读取 `data/codex-log-refresh-state.json`，只累计 Codex Manager DB 中尚未处理的新 `/v1/responses` 日志。

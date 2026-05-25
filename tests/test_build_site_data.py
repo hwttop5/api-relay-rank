@@ -20,6 +20,7 @@ from scripts import build_site_data as build_site_data
 from scripts import fetch_public_content as fetch_public_content
 from scripts import run_station_audit as run_station_audit
 from scripts import run_server_refresh as run_server_refresh
+from scripts import rebuild_runtime_site_data as rebuild_runtime_site_data
 from scripts import scrape_missing_announcements as scrape_missing_announcements
 from scripts import seed_runtime_data as seed_runtime_data
 from scripts import validate_refresh_outputs as validate_refresh_outputs
@@ -3815,6 +3816,78 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(station["url"], "https://relay.example.com/v1")
         self.assertEqual(station_urls["audit-relay-example-com"], {"https://relay.example.com/v1"})
 
+    def test_build_runtime_site_data_merges_audit_only_station_after_seed(self) -> None:
+        required_inputs = [
+            "composite_ranking_formal_workhours.csv",
+            "composite_ranking_formal_offhours.csv",
+            "composite_ranking_formal_all_hours.csv",
+            "quality_metrics.csv",
+            "login_verification_checklist.csv",
+            "multiplier_tiers.csv",
+        ]
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            source_root = root / "source"
+            data_dir = root / "runtime-data"
+            fetch_dir = data_dir / "_public_fetch"
+            audit_dir = data_dir / "_audit_runs" / "audit-right-codes" / "claude-opus-4-7" / "20260525T120000Z"
+            source_root.mkdir()
+            fetch_dir.mkdir(parents=True)
+            audit_dir.mkdir(parents=True)
+            (data_dir / "site-data.json").write_text(
+                json.dumps({"stations": [], "generatedAt": "2026-05-25 19:41:10 +0800"}),
+                encoding="utf-8",
+            )
+            for filename in required_inputs:
+                (source_root / filename).write_text("", encoding="utf-8")
+            (audit_dir / "summary.json").write_text(
+                json.dumps(
+                    {
+                        "profile": "general",
+                        "model": "claude-opus-4-7",
+                        "auditedBaseUrl": "https://right-codes.example/v1",
+                        "executedAt": "2026-05-25T12:00:00Z",
+                        "overallVerdict": "low",
+                        "overallSummary": "clean",
+                        "highlights": ["ok"],
+                        "stepSummaries": [{"title": "1. Infrastructure", "summary": "ok"}],
+                        "reportPath": "data/_audit_runs/audit-right-codes/claude-opus-4-7/20260525T120000Z/report.md",
+                        "toolVersion": "api-relay-audit@test",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (audit_dir / "run.json").write_text(json.dumps({"status": "success"}), encoding="utf-8")
+
+            with (
+                mock.patch.object(build_site_data, "APP_ROOT", root),
+                mock.patch.object(build_site_data, "SOURCE_ROOTS", [source_root]),
+                mock.patch.object(build_site_data, "DATA_DIR", data_dir),
+                mock.patch.object(build_site_data, "SITE_DATA_PATH", data_dir / "site-data.json"),
+                mock.patch.object(build_site_data, "PUBLIC_FETCH_DIR", fetch_dir),
+                mock.patch.object(build_site_data, "PUBLIC_FETCH_DIRS", [fetch_dir]),
+                mock.patch.object(build_site_data, "AUDIT_RUNS_DIR", data_dir / "_audit_runs"),
+                mock.patch.object(build_site_data, "LIVE_AUTH_PROBE_DIR", root / "missing_live_probes"),
+                mock.patch.object(build_site_data, "STATION_ALIASES_PATH", root / "config" / "station_aliases.json"),
+                mock.patch.object(build_site_data, "STATION_PRICING_OVERRIDES_PATH", root / "missing_overrides.json"),
+                mock.patch.object(build_site_data, "STATION_URL_OVERRIDES_PATH", root / "missing_url_overrides.json"),
+                mock.patch.object(build_site_data, "STATION_AUDIT_TARGETS_PATH", root / "missing_targets.json"),
+                mock.patch.dict(
+                    build_site_data.os.environ,
+                    {build_site_data.GENERATED_AT_ENV: "2026-05-25 19:41:10 +0800"},
+                    clear=False,
+                ),
+                mock.patch("sys.stdout", new=io.StringIO()),
+            ):
+                self.assertEqual(build_site_data.main(), 0)
+
+            payload = json.loads((data_dir / "site-data.json").read_text(encoding="utf-8"))
+            station = next(item for item in payload["stations"] if item["key"] == "audit-right-codes")
+            self.assertEqual(payload["generatedAt"], "2026-05-25 19:41:10 +0800")
+            self.assertEqual(station["url"], "https://right-codes.example")
+            self.assertEqual(station["audits"]["latestAuditAt"], "2026-05-25T12:00:00Z")
+
     def test_removed_station_probe_snapshots_do_not_reenter_public_station_pool(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = Path(tmp_dir)
@@ -4595,6 +4668,193 @@ One or more audit steps **crashed**.
             self.assertTrue(runtime_audit_dir.is_dir())
             self.assertTrue(runtime_locks_dir.is_dir())
             self.assertTrue(runtime_probe_dir.is_dir())
+
+    def test_seed_runtime_data_replaces_older_runtime_site_data(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            app_root = root / "app"
+            repo_data_dir = app_root / "data"
+            repo_fetch_dir = repo_data_dir / "_public_fetch"
+            runtime_data_dir = root / "runtime-data"
+            runtime_fetch_dir = runtime_data_dir / "_public_fetch"
+            runtime_site_data_path = runtime_data_dir / "site-data.json"
+            runtime_audit_dir = runtime_data_dir / "_audit_runs"
+            runtime_locks_dir = runtime_data_dir / "_locks"
+            runtime_probe_dir = root / "runtime-probes"
+
+            repo_fetch_dir.mkdir(parents=True)
+            runtime_fetch_dir.mkdir(parents=True)
+            (repo_data_dir / "site-data.json").write_text(json.dumps({"stations": [], "generatedAt": "2026-05-25 19:41:10 +0800"}), encoding="utf-8")
+            (repo_fetch_dir / "fresh_status.json").write_text(json.dumps({"ok": True}), encoding="utf-8")
+            runtime_site_data_path.write_text(json.dumps({"stations": [], "generatedAt": "2026-05-25 18:24:03 +0800"}), encoding="utf-8")
+            (runtime_fetch_dir / "stale_status.json").write_text(json.dumps({"ok": False}), encoding="utf-8")
+
+            with (
+                mock.patch.object(seed_runtime_data, "APP_ROOT", app_root),
+                mock.patch.object(seed_runtime_data, "REPO_DATA_DIR", repo_data_dir),
+                mock.patch.object(seed_runtime_data, "REPO_SITE_DATA_PATH", repo_data_dir / "site-data.json"),
+                mock.patch.object(seed_runtime_data, "REPO_PUBLIC_FETCH_DIR", repo_fetch_dir),
+                mock.patch.object(seed_runtime_data, "DATA_DIR", runtime_data_dir),
+                mock.patch.object(seed_runtime_data, "SITE_DATA_PATH", runtime_site_data_path),
+                mock.patch.object(seed_runtime_data, "PUBLIC_FETCH_DIR", runtime_fetch_dir),
+                mock.patch.object(seed_runtime_data, "AUDIT_RUNS_DIR", runtime_audit_dir),
+                mock.patch.object(seed_runtime_data, "LOCKS_DIR", runtime_locks_dir),
+                mock.patch.object(seed_runtime_data, "LIVE_AUTH_PROBE_DIR", runtime_probe_dir),
+                mock.patch.object(
+                    seed_runtime_data,
+                    "ensure_runtime_dirs",
+                    side_effect=lambda: [
+                        runtime_data_dir.mkdir(parents=True, exist_ok=True),
+                        runtime_fetch_dir.mkdir(parents=True, exist_ok=True),
+                        runtime_audit_dir.mkdir(parents=True, exist_ok=True),
+                        runtime_locks_dir.mkdir(parents=True, exist_ok=True),
+                        runtime_probe_dir.mkdir(parents=True, exist_ok=True),
+                    ],
+                ),
+                mock.patch.object(
+                    seed_runtime_data,
+                    "logical_data_path",
+                    side_effect=lambda path: f"data/{Path(path).resolve().relative_to(runtime_data_dir.resolve()).as_posix()}",
+                ),
+                mock.patch("sys.stdout", new=io.StringIO()) as stdout,
+            ):
+                exit_code = seed_runtime_data.main()
+
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(json.loads(runtime_site_data_path.read_text(encoding="utf-8"))["generatedAt"], "2026-05-25 19:41:10 +0800")
+            self.assertTrue((runtime_fetch_dir / "fresh_status.json").exists())
+            self.assertFalse((runtime_fetch_dir / "stale_status.json").exists())
+            self.assertEqual(payload["seeded"]["siteData"], "data/site-data.json")
+            self.assertEqual(payload["seeded"]["publicFetch"], "data/_public_fetch")
+
+    def test_seed_runtime_data_preserves_newer_runtime_site_data(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            app_root = root / "app"
+            repo_data_dir = app_root / "data"
+            repo_fetch_dir = repo_data_dir / "_public_fetch"
+            runtime_data_dir = root / "runtime-data"
+            runtime_fetch_dir = runtime_data_dir / "_public_fetch"
+            runtime_site_data_path = runtime_data_dir / "site-data.json"
+            runtime_audit_dir = runtime_data_dir / "_audit_runs"
+            runtime_locks_dir = runtime_data_dir / "_locks"
+            runtime_probe_dir = root / "runtime-probes"
+
+            repo_fetch_dir.mkdir(parents=True)
+            runtime_fetch_dir.mkdir(parents=True)
+            (repo_data_dir / "site-data.json").write_text(json.dumps({"stations": [], "generatedAt": "2026-05-25 18:24:03 +0800"}), encoding="utf-8")
+            (repo_fetch_dir / "repo_status.json").write_text(json.dumps({"ok": True}), encoding="utf-8")
+            runtime_site_data_path.write_text(json.dumps({"stations": [], "generatedAt": "2026-05-25 19:41:10 +0800"}), encoding="utf-8")
+            (runtime_fetch_dir / "runtime_status.json").write_text(json.dumps({"ok": True}), encoding="utf-8")
+
+            with (
+                mock.patch.object(seed_runtime_data, "APP_ROOT", app_root),
+                mock.patch.object(seed_runtime_data, "REPO_DATA_DIR", repo_data_dir),
+                mock.patch.object(seed_runtime_data, "REPO_SITE_DATA_PATH", repo_data_dir / "site-data.json"),
+                mock.patch.object(seed_runtime_data, "REPO_PUBLIC_FETCH_DIR", repo_fetch_dir),
+                mock.patch.object(seed_runtime_data, "DATA_DIR", runtime_data_dir),
+                mock.patch.object(seed_runtime_data, "SITE_DATA_PATH", runtime_site_data_path),
+                mock.patch.object(seed_runtime_data, "PUBLIC_FETCH_DIR", runtime_fetch_dir),
+                mock.patch.object(seed_runtime_data, "AUDIT_RUNS_DIR", runtime_audit_dir),
+                mock.patch.object(seed_runtime_data, "LOCKS_DIR", runtime_locks_dir),
+                mock.patch.object(seed_runtime_data, "LIVE_AUTH_PROBE_DIR", runtime_probe_dir),
+                mock.patch.object(
+                    seed_runtime_data,
+                    "ensure_runtime_dirs",
+                    side_effect=lambda: [
+                        runtime_data_dir.mkdir(parents=True, exist_ok=True),
+                        runtime_fetch_dir.mkdir(parents=True, exist_ok=True),
+                        runtime_audit_dir.mkdir(parents=True, exist_ok=True),
+                        runtime_locks_dir.mkdir(parents=True, exist_ok=True),
+                        runtime_probe_dir.mkdir(parents=True, exist_ok=True),
+                    ],
+                ),
+                mock.patch.object(
+                    seed_runtime_data,
+                    "logical_data_path",
+                    side_effect=lambda path: f"data/{Path(path).resolve().relative_to(runtime_data_dir.resolve()).as_posix()}",
+                ),
+                mock.patch("sys.stdout", new=io.StringIO()) as stdout,
+            ):
+                exit_code = seed_runtime_data.main()
+
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(json.loads(runtime_site_data_path.read_text(encoding="utf-8"))["generatedAt"], "2026-05-25 19:41:10 +0800")
+            self.assertTrue((runtime_fetch_dir / "runtime_status.json").exists())
+            self.assertFalse((runtime_fetch_dir / "repo_status.json").exists())
+            self.assertNotIn("siteData", payload["seeded"])
+            self.assertNotIn("publicFetch", payload["seeded"])
+
+    def test_rebuild_runtime_site_data_preserves_current_generated_at_under_lock(self) -> None:
+        commands: list[list[str]] = []
+        env_values: list[str | None] = []
+        lock_calls: list[tuple[str, int]] = []
+
+        def fake_run(command: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
+            commands.append(command)
+            env_values.append(rebuild_runtime_site_data.os.environ.get("SITE_DATA_GENERATED_AT"))
+            return subprocess.CompletedProcess(command, 0, stdout="", stderr="")
+
+        def fake_lock(name: str, *, stale_seconds: int = 0) -> contextlib.AbstractContextManager[None]:
+            lock_calls.append((name, stale_seconds))
+            return contextlib.nullcontext()
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            runtime_site_data_path = root / "runtime-data" / "site-data.json"
+            runtime_site_data_path.parent.mkdir(parents=True)
+            runtime_site_data_path.write_text(
+                json.dumps({"stations": [], "generatedAt": "2026-05-25 19:41:10 +0800"}),
+                encoding="utf-8",
+            )
+
+            with (
+                mock.patch.object(rebuild_runtime_site_data, "APP_ROOT", root),
+                mock.patch.object(rebuild_runtime_site_data, "SITE_DATA_PATH", runtime_site_data_path),
+                mock.patch.object(rebuild_runtime_site_data, "ensure_runtime_dirs", return_value=None),
+                mock.patch.object(rebuild_runtime_site_data, "exclusive_lock", side_effect=fake_lock),
+                mock.patch.object(rebuild_runtime_site_data, "LOCK_WAIT_SECONDS", 0),
+                mock.patch.object(rebuild_runtime_site_data, "LOCK_RETRY_SECONDS", 0),
+                mock.patch.object(rebuild_runtime_site_data, "run", side_effect=fake_run),
+                mock.patch.object(rebuild_runtime_site_data, "logical_data_path", side_effect=lambda path: f"data/{Path(path).name}"),
+                mock.patch.dict(rebuild_runtime_site_data.os.environ, {}, clear=True),
+                mock.patch("sys.stdout", new=io.StringIO()) as stdout,
+            ):
+                exit_code = rebuild_runtime_site_data.main()
+                self.assertNotIn("SITE_DATA_GENERATED_AT", rebuild_runtime_site_data.os.environ)
+
+            payload = json.loads(stdout.getvalue())
+
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(commands, [["python", "scripts/build_site_data.py"]])
+        self.assertEqual(env_values, ["2026-05-25 19:41:10 +0800"])
+        self.assertEqual(lock_calls, [("site-data-rebuild", 60 * 60)])
+        self.assertEqual(payload["generatedAt"], "2026-05-25 19:41:10 +0800")
+        self.assertEqual(payload["siteDataPath"], "data/site-data.json")
+
+    def test_rebuild_runtime_site_data_waits_for_rebuild_lock(self) -> None:
+        attempts: list[str] = []
+
+        def fake_lock(name: str, *, stale_seconds: int = 0) -> contextlib.AbstractContextManager[None]:
+            attempts.append(name)
+            if len(attempts) == 1:
+                raise rebuild_runtime_site_data.LockHeldError("busy")
+            return contextlib.nullcontext()
+
+        with (
+            mock.patch.object(rebuild_runtime_site_data, "exclusive_lock", side_effect=fake_lock),
+            mock.patch.object(rebuild_runtime_site_data, "run", return_value=subprocess.CompletedProcess([], 0)),
+            mock.patch.object(rebuild_runtime_site_data.time, "sleep", return_value=None) as sleep_mock,
+            mock.patch.object(rebuild_runtime_site_data.time, "monotonic", side_effect=[0, 1, 1]),
+            mock.patch.object(rebuild_runtime_site_data, "LOCK_WAIT_SECONDS", 10),
+            mock.patch.object(rebuild_runtime_site_data, "LOCK_RETRY_SECONDS", 0),
+        ):
+            rebuild_runtime_site_data.rebuild_with_lock()
+
+        self.assertEqual(attempts, ["site-data-rebuild", "site-data-rebuild"])
+        sleep_mock.assert_called_once_with(0)
 
     def test_validate_refresh_outputs_allows_skip_scrape_validation_without_probe_files(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
