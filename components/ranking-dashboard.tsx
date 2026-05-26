@@ -511,12 +511,12 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                       <th className="col-type">类型</th>
                       <th className="col-platform">平台判断</th>
                       <th>总分</th>
+                      <th>请求样本数</th>
                       <th>正确率</th>
                       <th>平均响应时间（秒）</th>
                       <th>采用倍率</th>
                       <th>采用倍率档位</th>
                       <th>倍率口径</th>
-                      <th>请求样本数</th>
                       <th className="col-action">操作</th>
                     </tr>
                   </thead>
@@ -539,12 +539,12 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                           <td className="table-type-cell">{row.stationTypeShortLabel}</td>
                           <td className="table-platform-cell">{stationMeta?.platformGuess || "-"}</td>
                           <td className="mono">{formatScore(row.totalScore)}</td>
+                          <td className="mono">{row.requests}</td>
                           <td className="mono">{formatPercent(row.correctRate)}</td>
                           <td className="mono">{formatSeconds(row.avgSeconds)}</td>
                           <td className="mono">{formatMultiplier(row.effectiveMultiplier)}</td>
                           <td>{row.adoptedTier}</td>
                           <td>{row.multiplierFullUseAssumption}</td>
-                          <td className="mono">{row.requests}</td>
                           <td className="table-action-cell">
                             <Link href={`/stations/${row.station}`} className="tiny-button">
                               详情
