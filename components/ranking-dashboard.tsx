@@ -502,7 +502,22 @@ export function RankingDashboard({ data }: { data: SiteData }) {
           <div className="section-body">
             <div className="desktop-table">
               <div className="table-wrap">
-                <table className="data-table">
+                <table className="data-table ranking-table">
+                  <colgroup>
+                    <col className="ranking-col-rank" />
+                    <col className="ranking-col-station" />
+                    <col className="ranking-col-url" />
+                    <col className="ranking-col-type" />
+                    <col className="ranking-col-platform" />
+                    <col className="ranking-col-metric" />
+                    <col className="ranking-col-metric" />
+                    <col className="ranking-col-metric" />
+                    <col className="ranking-col-metric" />
+                    <col className="ranking-col-metric" />
+                    <col className="ranking-col-tier" />
+                    <col className="ranking-col-assumption" />
+                    <col className="ranking-col-action" />
+                  </colgroup>
                   <thead>
                     <tr>
                       <th>排名</th>

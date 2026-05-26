@@ -1,6 +1,7 @@
 node_modules/
 .next/
 .next-dev/
+.codex-tmp/
 .playwright-mcp/
 .playwright-cli/
 *auth-capture.json

@@ -2140,6 +2140,51 @@ select:focus-visible {
   min-width: 88px;
 }
 
+.ranking-table {
+  table-layout: fixed;
+}
+
+.ranking-table .ranking-col-rank {
+  width: 64px;
+}
+
+.ranking-table .ranking-col-station {
+  width: 140px;
+}
+
+.ranking-table .ranking-col-url {
+  width: 150px;
+}
+
+.ranking-table .ranking-col-type {
+  width: 96px;
+}
+
+.ranking-table .ranking-col-platform {
+  width: 120px;
+}
+
+.ranking-table .ranking-col-metric {
+  width: 112px;
+}
+
+.ranking-table .ranking-col-tier {
+  width: 150px;
+}
+
+.ranking-table .ranking-col-assumption {
+  width: 184px;
+}
+
+.ranking-table .ranking-col-action {
+  width: 112px;
+}
+
+.ranking-table th:nth-child(n + 6):nth-child(-n + 10),
+.ranking-table td:nth-child(n + 6):nth-child(-n + 10) {
+  white-space: nowrap;
+}
+
 .registry-table {
   width: 100%;
   min-width: 0;
