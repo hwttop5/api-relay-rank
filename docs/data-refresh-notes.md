@@ -65,6 +65,19 @@ python scripts/refresh_quality_rankings.py --full-log-rebuild
 - 如果 `/audit` 历史仍能看到记录，但点击站点详情出现 404，优先检查 app 容器启动日志里 `rebuild_runtime_site_data.py` 是否执行成功；临时恢复可在 app 容器内执行 `python scripts/rebuild_runtime_site_data.py`，再核对 `/stations/<audit-key>` 和 `/ranking`。
 - 2026-05-25 的审计历史详情 404 事故就是这个问题：deploy seed 把仓库版 `site-data.json` 同步到 VPS runtime 后，没有把 runtime `_audit_runs` 重新合入，导致 `/audit` 仍有历史记录，但 `/stations/audit-right-codes` 和未入榜收录列表缺少对应站点。修复提交 `f6c3b2e` 后，已在线上核对 `/api/health`、`/stations/audit-right-codes` 和 `/ranking` 恢复；`/ranking` 是 ISR 页面，部署或 runtime 重建后必要时等待 5 分钟并请求两次再判断结果。
 
+## 站长公告 / 消息通知
+
+- 站长公告固定抓取 GitHub issue `hwttop5/github-actions#1`；站内不再单独维护本地文案配置，也不再依赖 issue 正文 frontmatter。
+- 页面运行时只读本地缓存，不在用户打开弹窗时直连 GitHub。缓存目录固定为 `data/_owner_announcement/`，其中：
+  - `manifest.json` 保存标题、更新时间、正文和来源链接。
+  - `assets/` 保存公告正文中图片下载后的本地副本。
+- 同步脚本是 `scripts/refresh_owner_announcement.py`。刷新判断只看远端 issue 的 `updated_at` 与本地 `manifest.json` 里的 `updatedAt`；未变化时直接跳过，避免重复下载图片。
+- 公告元数据口径固定为：`title = issue.title`、`updatedAt = issue.updated_at`、`content = issue.body`。如果 issue 正文以 `---` 开头，也按普通 Markdown 原样保留，不再做 frontmatter 解析。
+- 公告图片不直接引用 GitHub 外链。脚本会用 issue 的 `body_html` 解析实际渲染出来的图片地址，先下载到本地 `data/_owner_announcement/assets/`，再把 Markdown 图片链接改写成站内 `/api/contact-ad/assets/...`。
+- 本地 API `/api/contact-ad` 只负责读取 `manifest.json`；若本地缓存缺失、标题为空或正文为空，则返回空公告，由前端进入空态展示。
+- issue 正文为空时，不会触发首次自动弹窗；但右上角“消息通知”入口仍保留，用户手动打开时应看到“暂无公告”。
+- `manifest.json` 和 `assets/` 都属于运行时缓存，不手工编辑；需要更新内容时，只改 GitHub issue 正文，再让脚本同步。
+
 ## 增量日志规则
 
 - 普通刷新读取 `data/codex-log-refresh-state.json`，只累计 Codex Manager DB 中尚未处理的新 `/v1/responses` 日志。

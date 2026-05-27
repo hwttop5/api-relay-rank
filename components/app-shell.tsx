@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 
 import { formatDateTime } from "@/lib/format";
 import type { SiteData } from "@/lib/types";
+import { ContactAdProvider, ContactAdTrigger } from "@/components/contact-ad";
 import { MobileNavMenu } from "@/components/mobile-nav-menu";
 import { NAV_ITEMS, type AppNavKey } from "@/components/nav-items";
 import { ThemeControls, ThemeToggle } from "@/components/theme-toggle";
@@ -42,44 +43,47 @@ export function AppShell({
   const topbarMetaClasses = ["topbar-meta", topbarMetaClassName].filter(Boolean).join(" ");
 
   return (
-    <main className="app-shell">
-      <div className="page-shell">
-        <header className="topbar">
-          <div className="topbar-main">
-            <div className="topbar-brand-row">
-              <div className="brand">
-                <div className="brand-title">
-                  <Radar size={18} aria-hidden="true" />
-                  <span>{title ?? data.siteName}</span>
+    <ContactAdProvider>
+      <main className="app-shell">
+        <div className="page-shell">
+          <header className="topbar">
+            <div className="topbar-main">
+              <div className="topbar-brand-row">
+                <div className="brand">
+                  <div className="brand-title">
+                    <Radar size={18} aria-hidden="true" />
+                    <span>{title ?? data.siteName}</span>
+                  </div>
+                  <div className="brand-subtitle">{subtitle ?? `数据生成于 ${formatDateTime(data.generatedAt)}`}</div>
                 </div>
-                <div className="brand-subtitle">{subtitle ?? `数据生成于 ${formatDateTime(data.generatedAt)}`}</div>
+                <div className="mobile-topbar-actions">
+                  <ThemeToggle />
+                  <ContactAdTrigger />
+                  <MobileNavMenu active={active} />
+                </div>
               </div>
-              <div className="mobile-topbar-actions">
-                <ThemeToggle />
-                <MobileNavMenu active={active} />
+              <nav className="main-nav" aria-label="主导航">
+                {NAV_ITEMS.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <Link key={item.key} href={item.href} className={active === item.key ? "nav-link is-active" : "nav-link"}>
+                      <Icon size={15} aria-hidden="true" />
+                      <span>{item.label}</span>
+                    </Link>
+                  );
+                })}
+              </nav>
+            </div>
+            <div className={topbarMetaClasses}>
+              {actions}
+              <div className="desktop-theme-controls">
+                <ThemeControls />
               </div>
             </div>
-            <nav className="main-nav" aria-label="主导航">
-              {NAV_ITEMS.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <Link key={item.key} href={item.href} className={active === item.key ? "nav-link is-active" : "nav-link"}>
-                    <Icon size={15} aria-hidden="true" />
-                    <span>{item.label}</span>
-                  </Link>
-                );
-              })}
-            </nav>
-          </div>
-          <div className={topbarMetaClasses}>
-            {actions}
-            <div className="desktop-theme-controls">
-              <ThemeControls />
-            </div>
-          </div>
-        </header>
-        {children}
-      </div>
-    </main>
+          </header>
+          {children}
+        </div>
+      </main>
+    </ContactAdProvider>
   );
 }

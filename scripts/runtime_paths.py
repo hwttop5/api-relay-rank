@@ -18,6 +18,9 @@ DATA_DIR = Path(os.environ.get("APP_DATA_DIR", APP_ROOT / "data"))
 SITE_DATA_PATH = DATA_DIR / "site-data.json"
 PUBLIC_FETCH_DIR = Path(os.environ.get("PUBLIC_FETCH_DIR", DATA_DIR / "_public_fetch"))
 AUDIT_RUNS_DIR = DATA_DIR / "_audit_runs"
+OWNER_ANNOUNCEMENT_DIR = DATA_DIR / "_owner_announcement"
+OWNER_ANNOUNCEMENT_MANIFEST_PATH = OWNER_ANNOUNCEMENT_DIR / "manifest.json"
+OWNER_ANNOUNCEMENT_ASSETS_DIR = OWNER_ANNOUNCEMENT_DIR / "assets"
 PUBLIC_FETCH_DIRS = [PUBLIC_FETCH_DIR]
 LIVE_AUTH_PROBE_DIR = Path(os.environ.get("LIVE_AUTH_PROBE_DIR", WORKSPACE_ROOT / "tabbit-audit-profile"))
 PENDING_API_PROBE_PATH = LIVE_AUTH_PROBE_DIR / "pending-stations-api-probes.json"
@@ -44,6 +47,8 @@ def ensure_runtime_dirs() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     PUBLIC_FETCH_DIR.mkdir(parents=True, exist_ok=True)
     AUDIT_RUNS_DIR.mkdir(parents=True, exist_ok=True)
+    OWNER_ANNOUNCEMENT_DIR.mkdir(parents=True, exist_ok=True)
+    OWNER_ANNOUNCEMENT_ASSETS_DIR.mkdir(parents=True, exist_ok=True)
     LIVE_AUTH_PROBE_DIR.mkdir(parents=True, exist_ok=True)
     LOCKS_DIR.mkdir(parents=True, exist_ok=True)
 

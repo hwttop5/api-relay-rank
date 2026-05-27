@@ -3,6 +3,8 @@
 import { Github, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { ContactAdTrigger } from "@/components/contact-ad";
+
 type ThemeMode = "dark" | "light";
 
 const STORAGE_KEY = "api-relay-rank-theme";
@@ -58,17 +60,18 @@ export function ThemeToggle() {
 export function ThemeControls() {
   return (
     <div className="topbar-icon-group">
+      <ThemeToggle />
+      <ContactAdTrigger />
       <a
         href={REPO_URL}
         target="_blank"
         rel="noreferrer"
         className="icon-button icon-button-github"
-        aria-label="打开项目仓库"
-        title="打开项目仓库"
+        aria-label="项目地址"
+        title="项目地址"
       >
         <Github size={15} />
       </a>
-      <ThemeToggle />
     </div>
   );
 }

@@ -53,6 +53,7 @@ docker compose --env-file deploy/.env -f deploy/docker-compose.yml up -d --build
 - 如果 `/runtime/data/site-data.json` 不存在，就从镜像内初始数据复制。
 - 如果 `/runtime/data/_public_fetch` 不存在或为空，就从镜像内初始公开快照复制。
 - `/runtime/data/_audit_runs`、`/runtime/data/_locks`、`/runtime/tabbit-audit-profile` 会自动创建。
+- `app` 和 `scheduler` 在完成 `seed_runtime_data.py`、`rebuild_runtime_site_data.py` 后，都会额外执行一次 `python scripts/refresh_owner_announcement.py || true`，预热本地公告缓存；公告同步失败不会阻塞容器启动。
 
 ## 日常运维
 
@@ -74,15 +75,25 @@ docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec schedule
 docker compose --env-file deploy/.env -f deploy/docker-compose.yml logs -f traefik app scheduler
 ```
 
+手动触发一次公告同步：
+
+```bash
+docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec scheduler python scripts/refresh_owner_announcement.py
+```
+
 ## 刷新与审计行为
 
+- 站长公告与站点主数据刷新分离：公告检查是高频轻量任务，站点主数据仍保持每天 `04:00` 的完整刷新链路。
 - scheduler 固定使用 `supercronic`，时区固定 `Asia/Shanghai`，计划为每天 `04:00`。
+- `deploy/cron/refresh.cron` 里额外有一条每 5 分钟任务：`python scripts/refresh_owner_announcement.py`。脚本只比较远端 issue `updated_at` 与本地缓存 `updatedAt`；没有变化时不会重复拉取正文和图片。
 - 刷新顺序固定为：
   1. `fetch_public_content --announcements --multiplier-snapshots --skip-build`
   2. `scrape_missing_announcements --all-stations --write-probes`（仅凭据存在时）
   3. `build_site_data.py`
   4. `validate_refresh_outputs.py`
   5. `prune_audit_runs`
+- 公告缓存保存在运行时卷 `/srv/api-relay-rank/data` 下的 `_owner_announcement/`，因此 `manifest.json` 和 `assets/` 会随容器重启保留，不需要在每次打开弹窗时重新抓 GitHub 图片。
+- `GITHUB_TOKEN` 是可选优化项。存在时脚本优先走带 `Authorization: Bearer ...` 的 GitHub API；缺失时允许回退到公开 API，必要时再尝试 `gh api`。
 - `POST /api/station-audit/run` 仍保持公开，但会同时受以下限制：
   - SSRF 拦截与 DNS 解析后地址校验
   - 应用层单并发审计锁

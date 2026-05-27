@@ -13,6 +13,7 @@ try:
         DATA_DIR,
         LIVE_AUTH_PROBE_DIR,
         LOCKS_DIR,
+        OWNER_ANNOUNCEMENT_DIR,
         PUBLIC_FETCH_DIR,
         SITE_DATA_PATH,
         ensure_runtime_dirs,
@@ -25,6 +26,7 @@ except ModuleNotFoundError:
         DATA_DIR,
         LIVE_AUTH_PROBE_DIR,
         LOCKS_DIR,
+        OWNER_ANNOUNCEMENT_DIR,
         PUBLIC_FETCH_DIR,
         SITE_DATA_PATH,
         ensure_runtime_dirs,
@@ -34,6 +36,7 @@ except ModuleNotFoundError:
 REPO_DATA_DIR = APP_ROOT / "data"
 REPO_SITE_DATA_PATH = REPO_DATA_DIR / "site-data.json"
 REPO_PUBLIC_FETCH_DIR = REPO_DATA_DIR / "_public_fetch"
+REPO_OWNER_ANNOUNCEMENT_DIR = REPO_DATA_DIR / "_owner_announcement"
 
 
 def directory_has_entries(path: Path) -> bool:
@@ -122,6 +125,14 @@ def main() -> int:
             copy_tree_contents(REPO_PUBLIC_FETCH_DIR, PUBLIC_FETCH_DIR)
             seeded["publicFetch"] = logical_data_path(PUBLIC_FETCH_DIR)
 
+    if (
+        REPO_OWNER_ANNOUNCEMENT_DIR.exists()
+        and REPO_OWNER_ANNOUNCEMENT_DIR.resolve() != OWNER_ANNOUNCEMENT_DIR.resolve()
+        and not directory_has_entries(OWNER_ANNOUNCEMENT_DIR)
+    ):
+        copy_tree_contents(REPO_OWNER_ANNOUNCEMENT_DIR, OWNER_ANNOUNCEMENT_DIR)
+        seeded["ownerAnnouncement"] = logical_data_path(OWNER_ANNOUNCEMENT_DIR)
+
     print(
         json.dumps(
             {
@@ -130,6 +141,7 @@ def main() -> int:
                 "dataDir": str(DATA_DIR),
                 "siteDataPath": str(SITE_DATA_PATH),
                 "publicFetchDir": str(PUBLIC_FETCH_DIR),
+                "ownerAnnouncementDir": str(OWNER_ANNOUNCEMENT_DIR),
                 "auditRunsDir": str(AUDIT_RUNS_DIR),
                 "liveAuthProbeDir": str(LIVE_AUTH_PROBE_DIR),
                 "locksDir": str(LOCKS_DIR),

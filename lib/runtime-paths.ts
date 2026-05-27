@@ -12,6 +12,9 @@ export const SITE_DATA_PATH = path.join(DATA_DIR, "site-data.json");
 export const PUBLIC_FETCH_DIR = path.join(DATA_DIR, "_public_fetch");
 export const AUDIT_RUNS_ROOT = path.join(DATA_DIR, "_audit_runs");
 export const LOCKS_DIR = path.join(DATA_DIR, "_locks");
+export const OWNER_ANNOUNCEMENT_DIR = path.join(DATA_DIR, "_owner_announcement");
+export const OWNER_ANNOUNCEMENT_MANIFEST_PATH = path.join(OWNER_ANNOUNCEMENT_DIR, "manifest.json");
+export const OWNER_ANNOUNCEMENT_ASSETS_DIR = path.join(OWNER_ANNOUNCEMENT_DIR, "assets");
 export const LIVE_AUTH_PROBE_DIR = process.env.LIVE_AUTH_PROBE_DIR
   ? path.resolve(process.env.LIVE_AUTH_PROBE_DIR)
   : path.resolve(DEFAULT_LIVE_AUTH_PROBE_DIR);

@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: deploy-vps-api-relay-rank-${{ github.ref }}
+  group: deploy-vps-api-relay-rank-v2-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -81,6 +81,45 @@ jobs:
           cat "$tmp_file" > "$env_file"
           rm -f "$tmp_file"
           echo "Configured NEXT_PUBLIC_BAIDU_TONGJI_ID in $env_file"
+          REMOTE_SCRIPT
+
+      - name: Configure owner announcement token on VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          OWNER_ANNOUNCEMENT_GITHUB_TOKEN: ${{ secrets.OWNER_ANNOUNCEMENT_GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${OWNER_ANNOUNCEMENT_GITHUB_TOKEN:-}" ]; then
+            echo "OWNER_ANNOUNCEMENT_GITHUB_TOKEN not configured; keep existing GITHUB_TOKEN value."
+            exit 0
+          fi
+          encoded_token="$(printf '%s' "$OWNER_ANNOUNCEMENT_GITHUB_TOKEN" | base64 -w 0)"
+          ssh -i ~/.ssh/deploy_key -p 22 "$VPS_USER@$VPS_HOST" \
+            "OWNER_ANNOUNCEMENT_GITHUB_TOKEN_B64='$encoded_token' sh -s" <<'REMOTE_SCRIPT'
+          set -eu
+          env_file="/opt/stacks/api-relay-rank/deploy/.env"
+          github_token="$(printf '%s' "$OWNER_ANNOUNCEMENT_GITHUB_TOKEN_B64" | base64 -d)"
+          mkdir -p "$(dirname "$env_file")"
+          touch "$env_file"
+          tmp_file="$(mktemp)"
+          awk -v value="$github_token" '
+            BEGIN { found = 0 }
+            /^GITHUB_TOKEN=/ {
+              print "GITHUB_TOKEN=" value
+              found = 1
+              next
+            }
+            { print }
+            END {
+              if (!found) {
+                print "GITHUB_TOKEN=" value
+              }
+            }
+          ' "$env_file" > "$tmp_file"
+          cat "$tmp_file" > "$env_file"
+          rm -f "$tmp_file"
+          echo "Configured GITHUB_TOKEN in $env_file"
           REMOTE_SCRIPT
 
       - name: Restart Docker stack

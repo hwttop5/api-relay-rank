@@ -3,7 +3,16 @@ import dns from "node:dns/promises";
 import net from "node:net";
 import path from "node:path";
 
-import { AUDIT_RUNS_ROOT, DATA_DIR, LIVE_AUTH_PROBE_DIR, LOCKS_DIR, PUBLIC_FETCH_DIR, lockPath } from "./runtime-paths";
+import {
+  AUDIT_RUNS_ROOT,
+  DATA_DIR,
+  LIVE_AUTH_PROBE_DIR,
+  LOCKS_DIR,
+  OWNER_ANNOUNCEMENT_ASSETS_DIR,
+  OWNER_ANNOUNCEMENT_DIR,
+  PUBLIC_FETCH_DIR,
+  lockPath,
+} from "./runtime-paths";
 
 const CLOUD_METADATA_HOSTS = new Set([
   "169.254.169.254",
@@ -124,6 +133,8 @@ export async function ensureRuntimeDirectories() {
     mkdir(DATA_DIR, { recursive: true }),
     mkdir(PUBLIC_FETCH_DIR, { recursive: true }),
     mkdir(AUDIT_RUNS_ROOT, { recursive: true }),
+    mkdir(OWNER_ANNOUNCEMENT_DIR, { recursive: true }),
+    mkdir(OWNER_ANNOUNCEMENT_ASSETS_DIR, { recursive: true }),
     mkdir(LIVE_AUTH_PROBE_DIR, { recursive: true }),
     mkdir(LOCKS_DIR, { recursive: true }),
   ]);
@@ -203,8 +214,11 @@ export async function seedRuntimeDataFromRepo() {
   const runtimeSiteData = path.resolve(path.join(DATA_DIR, "site-data.json"));
   const repoFetchDir = path.join(process.cwd(), "data", "_public_fetch");
   const runtimeFetchDir = path.resolve(PUBLIC_FETCH_DIR);
+  const repoOwnerAnnouncementDir = path.join(process.cwd(), "data", "_owner_announcement");
+  const runtimeOwnerAnnouncementDir = path.resolve(OWNER_ANNOUNCEMENT_DIR);
   const sameSiteDataPath = path.resolve(repoSiteData) === runtimeSiteData;
   const sameFetchDir = path.resolve(repoFetchDir) === runtimeFetchDir;
+  const sameOwnerAnnouncementDir = path.resolve(repoOwnerAnnouncementDir) === runtimeOwnerAnnouncementDir;
 
   await ensureRuntimeDirectories();
   if (!sameSiteDataPath) {
@@ -215,15 +229,20 @@ export async function seedRuntimeDataFromRepo() {
       await writeFile(runtimeSiteData, payload, "utf8");
     }
   }
-  if (sameFetchDir) {
-    return;
+  if (!sameFetchDir) {
+    try {
+      await access(repoFetchDir);
+      if (!(await directoryHasEntries(runtimeFetchDir))) {
+        await copyDirectoryContents(repoFetchDir, runtimeFetchDir);
+      }
+    } catch {}
   }
-  try {
-    await access(repoFetchDir);
-  } catch {
-    return;
-  }
-  if (!(await directoryHasEntries(runtimeFetchDir))) {
-    await copyDirectoryContents(repoFetchDir, runtimeFetchDir);
+  if (!sameOwnerAnnouncementDir) {
+    try {
+      await access(repoOwnerAnnouncementDir);
+      if (!(await directoryHasEntries(runtimeOwnerAnnouncementDir))) {
+        await copyDirectoryContents(repoOwnerAnnouncementDir, runtimeOwnerAnnouncementDir);
+      }
+    } catch {}
   }
 }

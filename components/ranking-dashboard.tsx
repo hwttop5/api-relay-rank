@@ -501,7 +501,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
 
           <div className="section-body">
             <div className="desktop-table">
-              <div className="table-wrap">
+              <div className="table-wrap ranking-table-wrap">
                 <table className="data-table ranking-table">
                   <colgroup>
                     <col className="ranking-col-rank" />
@@ -528,7 +528,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                       <th>总分</th>
                       <th>请求样本数</th>
                       <th>正确率</th>
-                      <th>平均响应时间（秒）</th>
+                      <th>平均响应时间</th>
                       <th>采用倍率</th>
                       <th>采用倍率档位</th>
                       <th>倍率口径</th>
@@ -556,10 +556,14 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                           <td className="mono">{formatScore(row.totalScore)}</td>
                           <td className="mono">{row.requests}</td>
                           <td className="mono">{formatPercent(row.correctRate)}</td>
-                          <td className="mono">{formatSeconds(row.avgSeconds)}</td>
+                          <td className="mono">{formatSeconds(row.avgSeconds)}s</td>
                           <td className="mono">{formatMultiplier(row.effectiveMultiplier)}</td>
                           <td>{row.adoptedTier}</td>
-                          <td>{row.multiplierFullUseAssumption}</td>
+                          <td>
+                            <span className="ranking-assumption-text" title={row.multiplierFullUseAssumption}>
+                              {row.multiplierFullUseAssumption}
+                            </span>
+                          </td>
                           <td className="table-action-cell">
                             <Link href={`/stations/${row.station}`} className="tiny-button">
                               详情
