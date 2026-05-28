@@ -130,3 +130,45 @@ jobs:
           set -euo pipefail
           ssh -i ~/.ssh/deploy_key -p 22 "$VPS_USER@$VPS_HOST" \
             "/opt/stacks/deploy-hooks/deploy-stack.sh api-relay-rank"
+
+      - name: Verify owner announcement sync
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          set -euo pipefail
+          set +e
+          remote_output="$(
+            ssh -i ~/.ssh/deploy_key -p 22 "$VPS_USER@$VPS_HOST" <<'REMOTE_SCRIPT'
+          set -eu
+          cd /opt/stacks/api-relay-rank
+          if docker compose --env-file deploy/.env -f deploy/docker-compose.yml ps scheduler >/dev/null 2>&1; then
+            docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec -T scheduler python scripts/refresh_owner_announcement.py
+          else
+            python scripts/refresh_owner_announcement.py
+          fi
+          REMOTE_SCRIPT
+          )"
+          remote_status=$?
+          set -e
+
+          {
+            echo "## Owner announcement sync"
+            echo
+            echo '```json'
+            printf '%s\n' "$remote_output"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "$remote_status" -ne 0 ]; then
+            echo "::warning::Owner announcement sync failed. The site deployment continues, but /api/contact-ad may serve the previous cache or empty state."
+            printf '%s\n' "$remote_output"
+            exit 0
+          fi
+
+          if printf '%s' "$remote_output" | grep -q '"ok": false'; then
+            echo "::warning::Owner announcement sync reported ok=false. Check GITHUB_TOKEN, GitHub rate limits, and data/_owner_announcement/status.json."
+            exit 0
+          fi
+
+          echo "Owner announcement sync verification completed."

@@ -22,6 +22,7 @@ try:
         OWNER_ANNOUNCEMENT_ASSETS_DIR,
         OWNER_ANNOUNCEMENT_DIR,
         OWNER_ANNOUNCEMENT_MANIFEST_PATH,
+        OWNER_ANNOUNCEMENT_STATUS_PATH,
         LockHeldError,
         ensure_runtime_dirs,
         exclusive_lock,
@@ -32,6 +33,7 @@ except ModuleNotFoundError:
         OWNER_ANNOUNCEMENT_ASSETS_DIR,
         OWNER_ANNOUNCEMENT_DIR,
         OWNER_ANNOUNCEMENT_MANIFEST_PATH,
+        OWNER_ANNOUNCEMENT_STATUS_PATH,
         LockHeldError,
         ensure_runtime_dirs,
         exclusive_lock,
@@ -72,6 +74,30 @@ class PlannedAsset:
     placeholder: str
 
 
+@dataclass
+class FetchAttemptResult:
+    payload: dict[str, Any] | None
+    auth_mode: str
+    http_status: int | None = None
+    error: str = ""
+    reason: str = ""
+
+
+class FetchIssueError(RuntimeError):
+    def __init__(
+        self,
+        message: str,
+        *,
+        auth_mode: str,
+        reason: str,
+        http_status: int | None = None,
+    ) -> None:
+        super().__init__(message)
+        self.auth_mode = auth_mode
+        self.reason = reason
+        self.http_status = http_status
+
+
 class IssueImageParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
@@ -108,12 +134,50 @@ def parse_rendered_image_urls(body_html: str) -> list[dict[str, str]]:
     return parser.images
 
 
-def read_cached_manifest() -> dict[str, Any] | None:
+def read_json_file(path: Path) -> dict[str, Any] | None:
     try:
-        payload = json.loads(OWNER_ANNOUNCEMENT_MANIFEST_PATH.read_text(encoding="utf-8"))
+        payload = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return None
     return payload if isinstance(payload, dict) else None
+
+
+def read_cached_manifest() -> dict[str, Any] | None:
+    return read_json_file(OWNER_ANNOUNCEMENT_MANIFEST_PATH)
+
+
+def read_cached_status() -> dict[str, Any] | None:
+    return read_json_file(OWNER_ANNOUNCEMENT_STATUS_PATH)
+
+
+def manifest_has_content(manifest: dict[str, Any] | None) -> bool:
+    if not isinstance(manifest, dict):
+        return False
+    return bool(get_text(manifest.get("title")) and get_text(manifest.get("content")))
+
+
+def manifest_updated_at(manifest: dict[str, Any] | None) -> str:
+    if not isinstance(manifest, dict):
+        return ""
+    return get_text(manifest.get("updatedAt"))
+
+
+def manifest_source_url(manifest: dict[str, Any] | None) -> str:
+    if not isinstance(manifest, dict):
+        return OWNER_ISSUE_URL
+    return get_text(manifest.get("sourceUrl")) or OWNER_ISSUE_URL
+
+
+def resolve_last_success_at(status: dict[str, Any] | None, manifest: dict[str, Any] | None) -> str:
+    if isinstance(status, dict):
+        status_value = get_text(status.get("lastSuccessAt"))
+        if status_value:
+            return status_value
+    if isinstance(manifest, dict):
+        manifest_value = get_text(manifest.get("syncedAt"))
+        if manifest_value:
+            return manifest_value
+    return ""
 
 
 def should_refresh_cached_manifest(cached_manifest: dict[str, Any] | None, issue_updated_at: str) -> bool:
@@ -155,25 +219,65 @@ def github_headers(accept: str, token: str) -> dict[str, str]:
     return headers
 
 
-def fetch_issue_from_api(session: requests.Session, *, accept: str, token: str) -> dict[str, Any] | None:
+def build_api_error_message(response: requests.Response) -> str:
+    message = f"GitHub API returned HTTP {response.status_code}."
+    try:
+        payload = response.json()
+    except ValueError:
+        return message
+    detail = get_text(payload.get("message")) if isinstance(payload, dict) else ""
+    return f"{message} {detail}" if detail else message
+
+
+def fetch_issue_from_api(session: requests.Session, *, accept: str, token: str) -> FetchAttemptResult:
+    auth_mode = "token" if token else "anonymous"
     try:
         response = session.get(
             OWNER_ISSUE_API_URL,
             headers=github_headers(accept, token),
             timeout=REQUEST_TIMEOUT_SECONDS,
         )
-    except requests.RequestException:
-        return None
+    except requests.RequestException as exc:
+        return FetchAttemptResult(
+            payload=None,
+            auth_mode=auth_mode,
+            error=str(exc),
+            reason="github_api_request_failed",
+        )
     if response.status_code != 200:
-        return None
+        return FetchAttemptResult(
+            payload=None,
+            auth_mode=auth_mode,
+            http_status=response.status_code,
+            error=build_api_error_message(response),
+            reason=f"github_api_http_{response.status_code}",
+        )
     try:
         payload = response.json()
-    except ValueError:
-        return None
-    return payload if isinstance(payload, dict) else None
+    except ValueError as exc:
+        return FetchAttemptResult(
+            payload=None,
+            auth_mode=auth_mode,
+            http_status=response.status_code,
+            error=f"GitHub API returned invalid JSON: {exc}",
+            reason="github_api_invalid_json",
+        )
+    if not isinstance(payload, dict):
+        return FetchAttemptResult(
+            payload=None,
+            auth_mode=auth_mode,
+            http_status=response.status_code,
+            error="GitHub API payload is not an object.",
+            reason="github_api_invalid_payload",
+        )
+    return FetchAttemptResult(
+        payload=payload,
+        auth_mode=auth_mode,
+        http_status=response.status_code,
+    )
 
 
-def fetch_issue_from_gh(*, accept: str) -> dict[str, Any] | None:
+def fetch_issue_from_gh(*, accept: str) -> FetchAttemptResult:
     try:
         completed = subprocess.run(
             ["gh", "api", OWNER_ISSUE_API_PATH, "-H", f"Accept: {accept}"],
@@ -181,25 +285,69 @@ def fetch_issue_from_gh(*, accept: str) -> dict[str, Any] | None:
             capture_output=True,
             timeout=10,
         )
-    except (FileNotFoundError, subprocess.SubprocessError):
-        return None
+    except FileNotFoundError:
+        return FetchAttemptResult(
+            payload=None,
+            auth_mode="gh_cli",
+            error="gh api is unavailable in the current runtime.",
+            reason="gh_cli_unavailable",
+        )
+    except subprocess.SubprocessError as exc:
+        return FetchAttemptResult(
+            payload=None,
+            auth_mode="gh_cli",
+            error=f"gh api failed to run: {exc}",
+            reason="gh_cli_failed",
+        )
     if completed.returncode != 0:
-        return None
+        stderr = completed.stderr.decode("utf-8", errors="replace").strip()
+        stdout = completed.stdout.decode("utf-8", errors="replace").strip()
+        detail = stderr or stdout or f"exit code {completed.returncode}"
+        return FetchAttemptResult(
+            payload=None,
+            auth_mode="gh_cli",
+            error=f"gh api failed: {detail}",
+            reason="gh_cli_failed",
+        )
     try:
         payload = json.loads(completed.stdout.decode("utf-8", errors="replace"))
-    except json.JSONDecodeError:
-        return None
-    return payload if isinstance(payload, dict) else None
+    except json.JSONDecodeError as exc:
+        return FetchAttemptResult(
+            payload=None,
+            auth_mode="gh_cli",
+            error=f"gh api returned invalid JSON: {exc}",
+            reason="gh_cli_invalid_json",
+        )
+    if not isinstance(payload, dict):
+        return FetchAttemptResult(
+            payload=None,
+            auth_mode="gh_cli",
+            error="gh api payload is not an object.",
+            reason="gh_cli_invalid_payload",
+        )
+    return FetchAttemptResult(
+        payload=payload,
+        auth_mode="gh_cli",
+    )
 
 
-def fetch_issue_payload(session: requests.Session, *, accept: str, token: str) -> dict[str, Any]:
-    api_payload = fetch_issue_from_api(session, accept=accept, token=token)
-    if api_payload is not None:
-        return api_payload
-    cli_payload = fetch_issue_from_gh(accept=accept)
-    if cli_payload is not None:
-        return cli_payload
-    raise RuntimeError("Unable to fetch owner announcement issue from GitHub.")
+def fetch_issue_payload(session: requests.Session, *, accept: str, token: str) -> FetchAttemptResult:
+    api_attempt = fetch_issue_from_api(session, accept=accept, token=token)
+    if api_attempt.payload is not None:
+        return api_attempt
+
+    gh_attempt = fetch_issue_from_gh(accept=accept)
+    if gh_attempt.payload is not None:
+        return gh_attempt
+
+    message_parts = [part for part in [api_attempt.error, gh_attempt.error] if part]
+    message = " ".join(message_parts) or "Unable to fetch owner announcement issue from GitHub."
+    raise FetchIssueError(
+        message,
+        auth_mode=api_attempt.auth_mode or gh_attempt.auth_mode,
+        reason=api_attempt.reason or gh_attempt.reason or "fetch_failed",
+        http_status=api_attempt.http_status,
+    )
 
 
 def slugify(value: str) -> str:
@@ -227,7 +375,11 @@ def plan_asset_rewrites(content: str, body_html: str) -> tuple[str, list[Planned
 
     def resolve_download_src(alt: str, original_src: str) -> str:
         resolved_index = next(
-            (index for index, image in enumerate(rendered_images) if image.get("alt", "").strip() == alt and index not in used_indexes),
+            (
+                index
+                for index, image in enumerate(rendered_images)
+                if image.get("alt", "").strip() == alt and index not in used_indexes
+            ),
             -1,
         )
         if resolved_index < 0:
@@ -322,74 +474,217 @@ def build_manifest_payload(
     return payload
 
 
+def write_json_atomic(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(
+        mode="w",
+        encoding="utf-8",
+        dir=path.parent,
+        prefix=f"{path.stem}-",
+        suffix=path.suffix,
+        delete=False,
+    ) as handle:
+        json.dump(payload, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
+        temp_path = Path(handle.name)
+    temp_path.replace(path)
+
+
 def persist_manifest(payload: dict[str, Any], staging_assets_dir: Path) -> None:
     OWNER_ANNOUNCEMENT_DIR.mkdir(parents=True, exist_ok=True)
     OWNER_ANNOUNCEMENT_ASSETS_DIR.mkdir(parents=True, exist_ok=True)
 
     if staging_assets_dir.exists():
+        for target_path in OWNER_ANNOUNCEMENT_ASSETS_DIR.iterdir():
+            if target_path.is_dir():
+                shutil.rmtree(target_path)
+            else:
+                target_path.unlink()
         for staged_file in staging_assets_dir.iterdir():
             target_path = OWNER_ANNOUNCEMENT_ASSETS_DIR / staged_file.name
-            if target_path.exists():
-                target_path.unlink()
             shutil.move(str(staged_file), target_path)
 
-    with tempfile.NamedTemporaryFile(
-        mode="w",
-        encoding="utf-8",
-        dir=OWNER_ANNOUNCEMENT_DIR,
-        prefix="manifest-",
-        suffix=".json",
-        delete=False,
-    ) as handle:
-        json.dump(payload, handle, ensure_ascii=False, indent=2)
-        handle.write("\n")
-        temp_manifest_path = Path(handle.name)
+    write_json_atomic(OWNER_ANNOUNCEMENT_MANIFEST_PATH, payload)
 
-    temp_manifest_path.replace(OWNER_ANNOUNCEMENT_MANIFEST_PATH)
+
+def build_status_payload(
+    *,
+    ok: bool,
+    reason: str,
+    last_attempt_at: str,
+    last_success_at: str,
+    updated_at: str,
+    source_url: str,
+    auth_mode: str,
+    http_status: int | None,
+    error: str,
+    manifest_present: bool,
+) -> dict[str, Any]:
+    return {
+        "ok": ok,
+        "reason": reason,
+        "lastAttemptAt": last_attempt_at,
+        "lastSuccessAt": last_success_at,
+        "updatedAt": updated_at,
+        "sourceUrl": source_url,
+        "authMode": auth_mode,
+        "httpStatus": http_status,
+        "error": error,
+        "manifestPresent": manifest_present,
+    }
+
+
+def persist_status(payload: dict[str, Any]) -> None:
+    write_json_atomic(OWNER_ANNOUNCEMENT_STATUS_PATH, payload)
 
 
 def sync_owner_announcement() -> dict[str, Any]:
     ensure_runtime_dirs()
     cached_manifest = read_cached_manifest()
+    cached_status = read_cached_status()
     token = os.environ.get("GITHUB_TOKEN", "").strip()
     synced_at = now_iso()
+    current_auth_mode = "token" if token else "anonymous"
+    current_http_status: int | None = None
+    current_updated_at = manifest_updated_at(cached_manifest)
+    current_source_url = manifest_source_url(cached_manifest)
+    previous_last_success_at = resolve_last_success_at(cached_status, cached_manifest)
 
-    with requests.Session() as session:
-        metadata_payload = fetch_issue_payload(session, accept=GITHUB_DEFAULT_ACCEPT, token=token)
-        metadata_issue = parse_issue_payload(metadata_payload)
+    try:
+        with requests.Session() as session:
+            metadata_result = fetch_issue_payload(session, accept=GITHUB_DEFAULT_ACCEPT, token=token)
+            metadata_issue = parse_issue_payload(metadata_result.payload)
+            current_auth_mode = metadata_result.auth_mode
+            current_http_status = metadata_result.http_status
+            current_updated_at = metadata_issue.updated_at
+            current_source_url = metadata_issue.html_url or OWNER_ISSUE_URL
 
-        if not should_refresh_cached_manifest(cached_manifest, metadata_issue.updated_at):
-            return {
-                "ok": True,
-                "updated": False,
-                "reason": "issue_unchanged",
-                "updatedAt": metadata_issue.updated_at,
-                "manifestPath": logical_data_path(OWNER_ANNOUNCEMENT_MANIFEST_PATH),
-            }
+            if not should_refresh_cached_manifest(cached_manifest, metadata_issue.updated_at):
+                status_payload = build_status_payload(
+                    ok=True,
+                    reason="issue_unchanged",
+                    last_attempt_at=synced_at,
+                    last_success_at=previous_last_success_at or synced_at,
+                    updated_at=metadata_issue.updated_at,
+                    source_url=current_source_url,
+                    auth_mode=current_auth_mode,
+                    http_status=current_http_status,
+                    error="",
+                    manifest_present=manifest_has_content(cached_manifest),
+                )
+                persist_status(status_payload)
+                return {
+                    "ok": True,
+                    "updated": False,
+                    "reason": "issue_unchanged",
+                    "updatedAt": metadata_issue.updated_at,
+                    "manifestPath": logical_data_path(OWNER_ANNOUNCEMENT_MANIFEST_PATH),
+                    "statusPath": logical_data_path(OWNER_ANNOUNCEMENT_STATUS_PATH),
+                    "authMode": current_auth_mode,
+                }
 
-        full_payload = fetch_issue_payload(session, accept=GITHUB_FULL_ACCEPT, token=token)
-        full_issue = parse_issue_payload(full_payload)
+            full_result = fetch_issue_payload(session, accept=GITHUB_FULL_ACCEPT, token=token)
+            full_issue = parse_issue_payload(full_result.payload)
+            current_auth_mode = full_result.auth_mode
+            current_http_status = full_result.http_status
+            current_updated_at = full_issue.updated_at
+            current_source_url = full_issue.html_url or OWNER_ISSUE_URL
 
-        staging_dir = Path(tempfile.mkdtemp(prefix="owner-announcement-", dir=OWNER_ANNOUNCEMENT_DIR))
-        staging_assets_dir = staging_dir / "assets"
-        try:
-            manifest_payload = build_manifest_payload(
-                full_issue,
-                synced_at=synced_at,
-                session=session,
-                staging_assets_dir=staging_assets_dir,
+            staging_dir = Path(tempfile.mkdtemp(prefix="owner-announcement-", dir=OWNER_ANNOUNCEMENT_DIR))
+            staging_assets_dir = staging_dir / "assets"
+            try:
+                manifest_payload = build_manifest_payload(
+                    full_issue,
+                    synced_at=synced_at,
+                    session=session,
+                    staging_assets_dir=staging_assets_dir,
+                )
+                persist_manifest(manifest_payload, staging_assets_dir)
+            finally:
+                shutil.rmtree(staging_dir, ignore_errors=True)
+
+        status_payload = build_status_payload(
+            ok=True,
+            reason="refreshed",
+            last_attempt_at=synced_at,
+            last_success_at=synced_at,
+            updated_at=get_text(manifest_payload.get("updatedAt")),
+            source_url=get_text(manifest_payload.get("sourceUrl")) or OWNER_ISSUE_URL,
+            auth_mode=current_auth_mode,
+            http_status=current_http_status,
+            error="",
+            manifest_present=manifest_has_content(manifest_payload),
+        )
+        persist_status(status_payload)
+        return {
+            "ok": True,
+            "updated": True,
+            "reason": "refreshed",
+            "updatedAt": manifest_payload.get("updatedAt"),
+            "manifestPath": logical_data_path(OWNER_ANNOUNCEMENT_MANIFEST_PATH),
+            "assetsDir": logical_data_path(OWNER_ANNOUNCEMENT_ASSETS_DIR),
+            "statusPath": logical_data_path(OWNER_ANNOUNCEMENT_STATUS_PATH),
+            "sourceUrl": manifest_payload.get("sourceUrl"),
+            "authMode": current_auth_mode,
+        }
+    except FetchIssueError as exc:
+        persist_status(
+            build_status_payload(
+                ok=False,
+                reason=exc.reason,
+                last_attempt_at=synced_at,
+                last_success_at=previous_last_success_at,
+                updated_at=current_updated_at,
+                source_url=current_source_url,
+                auth_mode=exc.auth_mode,
+                http_status=exc.http_status,
+                error=str(exc),
+                manifest_present=manifest_has_content(cached_manifest),
             )
-            persist_manifest(manifest_payload, staging_assets_dir)
-        finally:
-            shutil.rmtree(staging_dir, ignore_errors=True)
+        )
+        raise
+    except Exception as exc:
+        persist_status(
+            build_status_payload(
+                ok=False,
+                reason="sync_failed",
+                last_attempt_at=synced_at,
+                last_success_at=previous_last_success_at,
+                updated_at=current_updated_at,
+                source_url=current_source_url,
+                auth_mode=current_auth_mode,
+                http_status=current_http_status,
+                error=str(exc),
+                manifest_present=manifest_has_content(cached_manifest),
+            )
+        )
+        raise
 
+
+def write_lock_status() -> dict[str, Any]:
+    ensure_runtime_dirs()
+    cached_manifest = read_cached_manifest()
+    cached_status = read_cached_status()
+    synced_at = now_iso()
+    status_payload = build_status_payload(
+        ok=True,
+        reason="lock_held",
+        last_attempt_at=synced_at,
+        last_success_at=resolve_last_success_at(cached_status, cached_manifest),
+        updated_at=manifest_updated_at(cached_manifest),
+        source_url=manifest_source_url(cached_manifest),
+        auth_mode=get_text(cached_status.get("authMode")) if isinstance(cached_status, dict) else "",
+        http_status=cached_status.get("httpStatus") if isinstance(cached_status, dict) else None,
+        error="",
+        manifest_present=manifest_has_content(cached_manifest),
+    )
+    persist_status(status_payload)
     return {
         "ok": True,
-        "updated": True,
-        "updatedAt": manifest_payload.get("updatedAt"),
+        "updated": False,
+        "reason": "lock_held",
         "manifestPath": logical_data_path(OWNER_ANNOUNCEMENT_MANIFEST_PATH),
-        "assetsDir": logical_data_path(OWNER_ANNOUNCEMENT_ASSETS_DIR),
-        "sourceUrl": manifest_payload.get("sourceUrl"),
+        "statusPath": logical_data_path(OWNER_ANNOUNCEMENT_STATUS_PATH),
     }
 
 
@@ -398,12 +693,7 @@ def main() -> int:
         with exclusive_lock(LOCK_NAME, stale_seconds=LOCK_STALE_SECONDS):
             result = sync_owner_announcement()
     except LockHeldError:
-        result = {
-            "ok": True,
-            "updated": False,
-            "reason": "lock_held",
-            "manifestPath": logical_data_path(OWNER_ANNOUNCEMENT_MANIFEST_PATH),
-        }
+        result = write_lock_status()
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
     except Exception as exc:
@@ -411,6 +701,7 @@ def main() -> int:
             "ok": False,
             "error": str(exc),
             "manifestPath": logical_data_path(OWNER_ANNOUNCEMENT_MANIFEST_PATH),
+            "statusPath": logical_data_path(OWNER_ANNOUNCEMENT_STATUS_PATH),
             "sourceUrl": OWNER_ISSUE_URL,
         }
         print(json.dumps(result, ensure_ascii=False, indent=2))

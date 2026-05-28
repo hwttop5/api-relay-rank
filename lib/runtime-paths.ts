@@ -15,6 +15,7 @@ export const LOCKS_DIR = path.join(DATA_DIR, "_locks");
 export const OWNER_ANNOUNCEMENT_DIR = path.join(DATA_DIR, "_owner_announcement");
 export const OWNER_ANNOUNCEMENT_MANIFEST_PATH = path.join(OWNER_ANNOUNCEMENT_DIR, "manifest.json");
 export const OWNER_ANNOUNCEMENT_ASSETS_DIR = path.join(OWNER_ANNOUNCEMENT_DIR, "assets");
+export const OWNER_ANNOUNCEMENT_STATUS_PATH = path.join(OWNER_ANNOUNCEMENT_DIR, "status.json");
 export const LIVE_AUTH_PROBE_DIR = process.env.LIVE_AUTH_PROBE_DIR
   ? path.resolve(process.env.LIVE_AUTH_PROBE_DIR)
   : path.resolve(DEFAULT_LIVE_AUTH_PROBE_DIR);
