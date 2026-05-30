@@ -4,11 +4,12 @@
   ],
   "data": [
     {
-      "model_name": "claude-sonnet-4-5-20250929",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "model_name": "claude-opus-4-6",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
       "vendor_id": 7,
       "quota_type": 0,
-      "model_ratio": 1.5,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
@@ -22,77 +23,6 @@
         "openai"
       ],
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "claude-sonnet-4-5-20250929-thinking",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "aws"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001-thinking",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "aws"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "tags": "Reasoning,Tools,Files,Vision,1.1M",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
     },
     {
       "model_name": "claude-sonnet-4-6",
@@ -114,11 +44,11 @@
       ]
     },
     {
-      "model_name": "claude-haiku-4-5-20251001",
+      "model_name": "claude-opus-4-5-20251101",
       "tags": "Reasoning,Tools,Files,Vision,200K",
       "vendor_id": 7,
       "quota_type": 0,
-      "model_ratio": 0.5,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
@@ -137,6 +67,96 @@
       "vendor_id": 7,
       "quota_type": 0,
       "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "icon": "OpenAI",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929-thinking",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
@@ -171,36 +191,21 @@
       ]
     },
     {
-      "model_name": "codex-auto-review",
-      "icon": "OpenAI",
+      "model_name": "gpt-5.5",
+      "tags": "Reasoning,Tools,Files,Vision,1.1M",
       "vendor_id": 3,
       "quota_type": 0,
-      "model_ratio": 0.5,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 1,
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
       "enable_groups": [
         "default",
         "vip"
       ],
       "supported_endpoint_types": [
         "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-2",
-      "vendor_id": 3,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.1,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "image-generation"
       ]
     },
     {
@@ -239,20 +244,41 @@
       ]
     },
     {
-      "model_name": "gpt-5.2",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 3,
+      "model_name": "claude-haiku-4-5-20251001",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 7,
       "quota_type": 0,
-      "model_ratio": 0.125,
+      "model_ratio": 0.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.071428571428,
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "default",
-        "vip"
+        "aws"
       ],
       "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,1m",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     },
@@ -275,11 +301,11 @@
       ]
     },
     {
-      "model_name": "gpt-5.4",
+      "model_name": "gpt-5.4-mini",
       "tags": "Reasoning,Tools,Files,Vision,400K",
       "vendor_id": 3,
       "quota_type": 0,
-      "model_ratio": 1.25,
+      "model_ratio": 0.375,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
@@ -293,17 +319,14 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-6",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "model_name": "claude-haiku-4-5-20251001-thinking",
       "vendor_id": 7,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 0.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
       "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
       "enable_groups": [
         "aws"
       ],
@@ -313,22 +336,19 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-5-20251101",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
+      "model_name": "gpt-image-2",
+      "vendor_id": 3,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
       "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
+      "completion_ratio": 0,
       "enable_groups": [
-        "aws"
+        "default",
+        "vip"
       ],
       "supported_endpoint_types": [
-        "anthropic",
-        "openai"
+        "image-generation"
       ]
     }
   ],
@@ -360,14 +380,14 @@
   },
   "vendors": [
     {
-      "id": 7,
-      "name": "Anthropic",
-      "icon": "Claude.Color"
-    },
-    {
       "id": 3,
       "name": "OpenAI",
       "icon": "OpenAI"
+    },
+    {
+      "id": 7,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
     }
   ],
   "status_payload": {
@@ -375,6 +395,27 @@
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
       "announcements": [
+        {
+          "content": "openai在六月初就会停止该渠道的gpt-5.2以及gpt-5.3-codex的供应，建议还在用的用户提前转移",
+          "extra": "",
+          "id": 21,
+          "publishDate": "2026-05-28T11:02:23.899Z",
+          "type": "default"
+        },
+        {
+          "content": "请勿使用本站 GPT 官方转发服务进行恶意网络安全活动，OpenAI 官方会对相关会话进行网络安全检测，多次风险标记后，响应可能因额外安全检查而变慢，账号也可能受到限制。对于频繁触发的用户，本站可能采取提醒、限速、暂停服务或封禁等措施，以保障其他用户的正常体验。",
+          "extra": "",
+          "id": 20,
+          "publishDate": "2026-05-27T12:03:32.430Z",
+          "type": "default"
+        },
+        {
+          "content": "由于配置错误，之前请求部分模型（gpt-5.2）价格异常，现已将基础价格上调至官方标价",
+          "extra": "",
+          "id": 19,
+          "publishDate": "2026-05-25T18:52:32.842Z",
+          "type": "default"
+        },
         {
           "content": "受上游业务变更影响，阿里云渠道暂时下线",
           "extra": "",
@@ -590,6 +631,11 @@
           "answer": "生图建议使用api-cn.avemujica.moe作为端点，主节点受cf最大超时限制影响，暂时无法保证出图稳定性",
           "id": 5,
           "question": "生图模型一直报错？"
+        },
+        {
+          "answer": "本站提供 GPT 官方转发服务，请勿用于恶意网络安全活动，包括钓鱼、凭证窃取、漏洞利用、恶意扫描、绕过安全防护、生成或改造恶意代码等。\n\nOpenAI 官方会对会话进行网络安全检测。Codex 源码显示，官方返回 `cyber_policy` 时会被识别为网络安全策略事件；多次风险标记后，响应可能因额外安全检查而变慢，账号也可能被限制或封禁。\n\n## 免责声明\n\n本站只识别 OpenAI 官方返回的事件错误码或异常类型，用于提醒、限速或封禁高频触发用户。本站不会读取、保存或人工审核用户与 AI 的聊天正文内容。\n\n参考：[cyber_policy 识别](https://github.com/openai/codex/blob/12bfb57139f169c1a1822d57a6fdb2a3d08e0c53/codex-rs/codex-api/src/sse/responses.rs#L529-L535)、[变慢提示](https://github.com/openai/codex/blob/12bfb57139f169c1a1822d57a6fdb2a3d08e0c53/codex-rs/tui/src/chatwidget.rs#L189-L195)",
+          "id": 6,
+          "question": "防滥用说明"
         }
       ],
       "faq_enabled": true,
@@ -619,7 +665,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://api.avemujica.moe",
       "setup": true,
-      "start_time": 1779572059,
+      "start_time": 1779998753,
       "stripe_unit_price": 1,
       "system_name": "AveMujica API",
       "telegram_bot_name": "",

@@ -4,16 +4,17 @@
   ],
   "data": [
     {
-      "model_name": "gpt-image-2",
+      "model_name": "gpt-5.3-codex",
       "vendor_id": 2,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 1,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 0,
-      "image_ratio": 0,
+      "completion_ratio": 8,
       "enable_groups": [
-        "default"
+        "default",
+        "vip",
+        "sub2pilot"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -31,8 +32,9 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 0.1,
       "enable_groups": [
+        "default",
         "vip",
-        "default"
+        "sub2pilot"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -49,23 +51,9 @@
       "cache_ratio": 1,
       "create_cache_ratio": 1,
       "enable_groups": [
+        "default",
         "vip",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "default"
+        "sub2pilot"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -83,40 +71,25 @@
       "create_cache_ratio": 1,
       "enable_groups": [
         "default",
-        "vip"
+        "vip",
+        "sub2pilot"
       ],
       "supported_endpoint_types": [
         "openai"
       ]
     },
     {
-      "model_name": "gpt-5.3-codex-spark",
-      "description": "OpenAI Codex Spark",
-      "icon": "OpenAI",
+      "model_name": "gpt-image-2",
       "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1,
       "owner_by": "",
-      "completion_ratio": 8,
+      "completion_ratio": 0,
+      "image_ratio": 0,
       "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.2-codex",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
+        "vip",
+        "sub2pilot",
         "default"
       ],
       "supported_endpoint_types": [
@@ -142,11 +115,6 @@
   },
   "vendors": [
     {
-      "id": 2,
-      "name": "OpenAI",
-      "icon": "OpenAI"
-    },
-    {
       "id": 3,
       "name": "讯飞",
       "icon": "Spark.Color"
@@ -155,6 +123,11 @@
       "id": 1,
       "name": "Google",
       "icon": "Gemini.Color"
+    },
+    {
+      "id": 2,
+      "name": "OpenAI",
+      "icon": "OpenAI"
     }
   ],
   "status_payload": {
@@ -163,7 +136,21 @@
       "SidebarModulesAdmin": "{\"chat\": {\"chat\": false, \"enabled\": true, \"playground\": true}, \"admin\": {\"user\": true, \"models\": true, \"channel\": true, \"enabled\": true, \"setting\": true, \"deployment\": true, \"redemption\": true, \"subscription\": true}, \"console\": {\"log\": true, \"task\": true, \"token\": true, \"detail\": true, \"enabled\": true, \"midjourney\": true}, \"personal\": {\"topup\": true, \"enabled\": true, \"personal\": true}}",
       "announcements": [
         {
-          "content": "<div style=\"padding:10px 12px;border:1px solid rgba(47,107,255,.24);border-radius:10px;background:rgba(47,107,255,.08);line-height:1.7\"><b style=\"color:#4f8cff\">服务与隐私说明</b><br/>Euzhi API 中转站、优智图及相关服务均由 <b>Euzhi 自有账号池、自有上游资源与自建服务链路</b> 统一调度。<br/>您的请求不会被转售给任何平台，也不会被用于与当前服务无关的用途。</div>",
+          "content": "<b style=\"color:#22c55e;font-weight:800;\">Image2 服务已恢复</b><br/>目前 Image2 与 <a href=\"https://app.euzhi.com/\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"display:inline-flex;align-items:center;justify-content:center;margin:0 4px;padding:3px 12px;border-radius:999px;background:linear-gradient(135deg,#4f8cff 0%,#16c7b8 100%);color:#fff;font-size:13px;font-weight:800;line-height:1.6;text-decoration:none;box-shadow:0 6px 16px rgba(79,140,255,.28);vertical-align:baseline;\">优智图</a> 均已恢复正常访问和使用。",
+          "extra": "",
+          "id": 1779821350128,
+          "publishDate": "2026-05-26T18:49:10.128Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"padding:10px 12px;border:1px solid rgba(245,158,11,.32);border-radius:10px;background:rgba(245,158,11,.10);line-height:1.7\"><b style=\"color:#d97706\">服务线路切换通知</b><br/>本站已将 GPT 主线路切换至新的架构，以减少长尾超时和上下文中断问题。切换后系统已清理旧渠道亲和缓存，前几轮请求可能因新号池冷启动、缓存重新建立而略慢，通常会在短时间内恢复稳定。</div>",
+          "extra": "如遇单次请求异常，请稍后重试；系统会持续监控 504、空 usage 与首包耗时，并优先保障会话连续性。",
+          "id": 2,
+          "publishDate": "2026-05-27T01:40:00+08:00",
+          "type": "warning"
+        },
+        {
+          "content": "<div style=\"padding:10px 12px;border:1px solid rgba(47,107,255,.24);border-radius:10px;background:rgba(47,107,255,.08);line-height:1.7\"><b style=\"color:#4f8cff\">服务与隐私说明</b><br/>Euzhi API 公益站、优智图及相关服务均由 <b>Euzhi自有上游资源与自建服务链路</b> 统一调度。<br/>您的请求不会被转售给任何平台，也不会被用于与当前服务无关的用途。</div>",
           "extra": "除完成模型调用、余额结算、支付处理、安全风控和故障排查等必要场景外，系统不会主动留存、窃取或挪用您的请求内容；本地工具产生的配置与使用数据仍以用户本地保存为主。",
           "id": 1,
           "publishDate": "2026-05-15T00:00:00+08:00",
@@ -245,7 +232,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://api.euzhi.com",
       "setup": true,
-      "start_time": 1779708202,
+      "start_time": 1779821928,
       "stripe_unit_price": 8,
       "system_name": "Euzhi",
       "telegram_bot_name": "",

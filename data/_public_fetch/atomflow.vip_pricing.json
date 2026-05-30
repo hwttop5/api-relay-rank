@@ -4,23 +4,152 @@
   ],
   "data": [
     {
-      "model_name": "gpt-5.3-codex",
-      "vendor_id": 1,
+      "model_name": "gemini-3.5-flash",
+      "vendor_id": 6,
       "quota_type": 0,
-      "model_ratio": 0.875,
+      "model_ratio": 0.75,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
+      "completion_ratio": 6,
       "cache_ratio": 0.1,
+      "create_cache_ratio": 0.055553333333,
       "enable_groups": [
-        "codex",
-        "test",
-        "default"
+        "gemini",
+        "test"
       ],
       "supported_endpoint_types": [
+        "gemini",
         "openai"
       ],
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-special",
+        "test",
+        "claude-aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "codex",
+        "test"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.071428571428,
+      "enable_groups": [
+        "default",
+        "codex",
+        "test"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.16,
+      "create_cache_ratio": 1.6,
+      "enable_groups": [
+        "test",
+        "claude-special"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.166666666667,
+      "enable_groups": [
+        "default",
+        "codex",
+        "test"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "test",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
     },
     {
       "model_name": "gpt-5.5",
@@ -41,19 +170,19 @@
       ]
     },
     {
-      "model_name": "gemini-3-pro-preview",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
+      "model_name": "gpt-image-2",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.4,
       "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
+      "completion_ratio": 0,
       "enable_groups": [
-        "gemini"
+        "default",
+        "codex",
+        "test"
       ],
       "supported_endpoint_types": [
-        "gemini",
         "openai"
       ]
     },
@@ -76,7 +205,27 @@
       ]
     },
     {
-      "model_name": "gemini-3.1-pro-preview",
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-special",
+        "test",
+        "claude-aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-preview",
       "vendor_id": 6,
       "quota_type": 0,
       "model_ratio": 1,
@@ -85,8 +234,7 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "gemini",
-        "test"
+        "gemini"
       ],
       "supported_endpoint_types": [
         "gemini",
@@ -104,99 +252,8 @@
       "cache_ratio": 0.1,
       "enable_groups": [
         "claude-special",
-        "test"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.2",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.125,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.071428571428,
-      "enable_groups": [
-        "codex",
         "test",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "claude-special",
-        "test"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "test",
-        "default",
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.5-flash",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 0.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 0.055553333333,
-      "enable_groups": [
-        "gemini",
-        "test"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "claude-special",
-        "test"
+        "claude-aws"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -215,6 +272,26 @@
       "create_cache_ratio": 1.25,
       "enable_groups": [
         "claude-special",
+        "test",
+        "claude-aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "claude-aws",
+        "claude-special",
         "test"
       ],
       "supported_endpoint_types": [
@@ -223,31 +300,14 @@
       ]
     },
     {
-      "model_name": "gpt-5.4",
+      "model_name": "gpt-5.4-mini",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 1.25,
+      "model_ratio": 0.375,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
       "cache_ratio": 0.1,
-      "enable_groups": [
-        "test",
-        "default",
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "codex-auto-review",
-      "quota_type": 0,
-      "model_ratio": 0.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.166666666667,
       "enable_groups": [
         "default",
         "codex",
@@ -258,43 +318,26 @@
       ]
     },
     {
-      "model_name": "gpt-image-2",
+      "model_name": "gpt-5.3-codex",
       "vendor_id": 1,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.4,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "test",
-        "default",
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001",
-      "vendor_id": 5,
       "quota_type": 0,
-      "model_ratio": 0.5,
+      "model_ratio": 0.875,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
+      "completion_ratio": 8,
       "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "claude-special",
+        "default",
+        "codex",
         "test"
       ],
       "supported_endpoint_types": [
-        "anthropic",
         "openai"
       ]
     }
   ],
   "group_ratio": {
+    "claude-aws": 2.5,
     "claude-special": 0.5,
     "codex": 0.25,
     "default": 0.25,
@@ -317,6 +360,7 @@
     }
   },
   "usable_group": {
+    "claude-aws": "claude aws 渠道",
     "claude-special": "claude 逆向渠道",
     "codex": "codex用，自建渠道",
     "default": "不要用默认分组",
@@ -344,6 +388,13 @@
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
       "announcements": [
+        {
+          "content": "上线claude-opus-4-8",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-05-29T15:43:05.078Z",
+          "type": "default"
+        },
         {
           "content": "gemini推送gemini-3.5-flash， 倍率下调到 1.5",
           "extra": "",
@@ -434,6 +485,7 @@
       "passkey_origins": "https://atomflow.vip",
       "passkey_rp_id": "atomflow.vip",
       "passkey_user_verification": "preferred",
+      "password_login_enabled": true,
       "password_register_enabled": true,
       "price": 1,
       "privacy_policy_enabled": true,
@@ -443,7 +495,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://atomflow.vip",
       "setup": true,
-      "start_time": 1779635123,
+      "start_time": 1779896920,
       "stripe_unit_price": 1,
       "system_name": "原子流动",
       "telegram_bot_name": "",
@@ -454,7 +506,7 @@
       "uptime_kuma_enabled": false,
       "usd_exchange_rate": 7.3,
       "user_agreement_enabled": true,
-      "version": "v1.0.0-rc.7",
+      "version": "v1.0.0-rc.10",
       "wechat_login": false,
       "wechat_qrcode": ""
     },

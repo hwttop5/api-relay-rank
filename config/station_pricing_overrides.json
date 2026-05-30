@@ -95,31 +95,56 @@
         "groupMultiplier": 0.2,
         "codexEligible": true,
         "usageLabel": "Codex"
-      },
-      {
-        "groupName": "default",
-        "groupMultiplier": 1,
-        "codexEligible": false,
-        "usageLabel": "Claude Code"
       }
     ],
     "rechargeTiers": [
       {
-        "rechargeName": "Starter (Weekly) — 2.99 USDC",
+        "rechargeName": "限时月卡",
+        "billingType": "monthly",
+        "rmbAmount": 60,
+        "usdAmount": null,
+        "displayOnly": true,
+        "rechargeLocation": "公告外部卡网 https://pay.ldxp.cn/shop/47N31MWH",
+        "expiresRule": "截图可见商品；未见额度说明，仅作为可见档位展示，不参与采用倍率"
+      },
+      {
+        "rechargeName": "API额度$500",
+        "billingType": "permanent",
+        "rmbAmount": 100,
+        "usdAmount": 500,
+        "rechargeLocation": "公告外部卡网 https://pay.ldxp.cn/shop/47N31MWH",
+        "expiresRule": "公告说明 API额度2:10，可用 codex 0.2 分组；API额度不限制使用时间"
+      },
+      {
+        "rechargeName": "周卡",
         "billingType": "weekly",
-        "rmbAmount": 2.99,
-        "usdAmount": 2.99,
-        "paymentCurrency": "USDC",
-        "paymentAmount": 2.99,
-        "rechargeLocation": "浏览器登录态 USDC/Solana 购买页",
-        "expiresRule": "区块链虚拟币充值；暂按 1 USDC = 1 USD 额度；套餐周期 Weekly；后续以站点结构化套餐为准"
+        "rmbAmount": 18,
+        "usdAmount": null,
+        "displayOnly": true,
+        "rechargeLocation": "公告外部卡网 https://pay.ldxp.cn/shop/47N31MWH",
+        "expiresRule": "截图可见商品；未见额度说明，仅作为可见档位展示，不参与采用倍率"
+      },
+      {
+        "rechargeName": "日卡",
+        "billingType": "daily",
+        "rmbAmount": 6.98,
+        "usdAmount": null,
+        "displayOnly": true,
+        "rechargeLocation": "公告外部卡网 https://pay.ldxp.cn/shop/47N31MWH",
+        "expiresRule": "截图可见商品，库存状态显示缺货；未见额度说明，仅作为可见档位展示，不参与采用倍率"
       }
     ],
-    "forcedAdoptedTier": "openai | Starter (Weekly) — 2.99 USDC",
-    "assumptionText": "人工截图核验：ProdBbroot 绿色 codex/openai 分组为 Codex 可用，橙色 default 为 Claude Code；USDC/Solana 充值本轮暂按 1 USDC = 1 USD 额度。",
+    "forcedAdoptedTier": "openai | API额度$500",
+    "assumptionText": "人工核验：ProdBbroot 当前分组为 codex/openai，均按 Codex 可用处理；公告卡网显示 API额度$500 为 100 RMB，公告说明 API额度2:10 且可用 codex 0.2 分组；卡类商品未见额度，仅展示不参与采用倍率。",
+    "dropTierNotePatterns": [
+      "ProdBbroot 绿色 codex/openai 分组",
+      "codexEligible=false; usage=Claude Code",
+      "USDC/Solana",
+      "Starter \\(Weekly\\)"
+    ],
     "confidence": "manual_verified",
-    "source": "browser_screenshot_verified_usdc_checkout",
-    "evidenceUrl": "https://prod.bbroot.com/custom",
+    "source": "browser_screenshot_verified_external_shop",
+    "evidenceUrl": "https://pay.ldxp.cn/shop/47N31MWH",
     "authoritative": true
   },
   "voapi": {

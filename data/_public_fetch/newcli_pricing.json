@@ -4,329 +4,28 @@
   ],
   "data": [
     {
-      "model_name": "gpt-5.5-openai-compact",
+      "model_name": "gpt-5.4",
+      "description": "GPT-5.4 is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
       "vendor_id": 2,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 1.25,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
-      "cache_ratio": 0.05,
+      "cache_ratio": 0.1,
       "enable_groups": [
+        "admin",
+        "claude-cx",
+        "codex",
         "codex-stable",
-        "vip",
-        "admin",
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "gemini-3-flash",
-      "description": "Gemini 3 Flash is an AI model provided by opencode.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "cache_ratio": 0.016666666667,
-      "enable_groups": [
-        "gemini-cli"
-      ],
-      "supported_endpoint_types": [
-        "gemini"
-      ]
-    },
-    {
-      "model_name": "gemini-3.5-flash",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 0.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini-cli"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101",
-      "description": "Claude Opus 4.5 is an AI model provided by qihang-ai.",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "CC-aws逆向",
-        "CC-逆向2",
-        "claude-bedrock",
-        "claude-max",
-        "claude-ultra",
-        "admin",
-        "CC-aws-high",
-        "CC-Azure",
-        "claude-platform",
-        "claude-power",
-        "claude-super",
-        "svip",
         "vip"
-      ],
-      "supported_endpoint_types": [
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-1-20250805",
-      "description": "Claude 4.1 Opus is an AI model provided by nano-gpt.",
-      "tags": "Tools,Files,Vision,200K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 7.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "claude-power",
-        "claude-super",
-        "claude-ultra",
-        "svip",
-        "CC-aws-high",
-        "CC-aws逆向",
-        "CC-逆向2",
-        "claude-max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6-thinking",
-      "description": "claude-opus-4-6-thinking is an AI model provided by 302ai.",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 8,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "claude-bedrock"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.5-flash-low",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4,
-      "enable_groups": [
-        "gemini-cli"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6",
-      "description": "Claude Opus 4.6 is an AI model provided by venice.",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "CC-aws-high",
-        "claude-better",
-        "svip",
-        "vip",
-        "admin",
-        "CC-Azure",
-        "claude-max",
-        "claude-power",
-        "claude-ultra",
-        "CC-aws逆向",
-        "CC-逆向2",
-        "claude-cx",
-        "claude-platform",
-        "claude-bedrock",
-        "claude-super"
-      ],
-      "supported_endpoint_types": [
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex-stable",
-        "vip",
-        "admin",
-        "claude-cx",
-        "codex"
       ],
       "supported_endpoint_types": [
         "openai",
         "anthropic"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-20250514",
-      "description": "Claude 4 Sonnet is an AI model provided by nano-gpt.",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "svip",
-        "CC-逆向2",
-        "claude-bedrock",
-        "claude-max",
-        "CC-aws-high",
-        "CC-aws逆向",
-        "claude-power",
-        "claude-super",
-        "claude-ultra"
       ],
-      "supported_endpoint_types": [
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "gpt-image-2",
-      "description": "An advanced AI model for generating images from textual descriptions.",
-      "icon": "OpenAI.Color",
-      "tags": "Reasoning,Tools,Files,Open Weights,Vision,1K,2K,3K,4K",
-      "vendor_id": 2,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.1,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "0",
-        "1"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash",
-      "description": "gemini-2.5-flash is an AI model provided by sap-ai-core.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 0.7888889,
-      "enable_groups": [
-        "gemini-cli"
-      ],
-      "supported_endpoint_types": [
-        "gemini"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001",
-      "description": "Claude Haiku 4.5 is an AI model provided by qihang-ai.",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "claude-platform",
-        "svip",
-        "vip",
-        "CC-aws-high",
-        "CC-aws逆向",
-        "CC-Azure",
-        "claude-bedrock",
-        "claude-max",
-        "claude-power",
-        "claude-super",
-        "claude-ultra",
-        "admin",
-        "CC-逆向2",
-        "claude-better"
-      ],
-      "supported_endpoint_types": [
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-5-20250929",
-      "description": "Claude Sonnet 4.5 is an AI model provided by qihang-ai.",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "CC-aws-high",
-        "claude-bedrock",
-        "claude-cx",
-        "claude-max",
-        "claude-platform",
-        "claude-super",
-        "claude-ultra",
-        "svip",
-        "admin",
-        "CC-aws逆向",
-        "CC-Azure",
-        "CC-逆向2",
-        "claude-power",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "anthropic"
-      ]
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
       "model_name": "claude-opus-4-5-20251101-thinking",
@@ -340,13 +39,13 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
+        "svip",
         "CC-aws-high",
         "CC-aws逆向",
         "CC-逆向2",
         "claude-power",
         "claude-super",
-        "claude-ultra",
-        "svip"
+        "claude-ultra"
       ],
       "supported_endpoint_types": [
         "anthropic"
@@ -385,51 +84,12 @@
       "model_ratio": 1.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 3.333333333333,
+      "completion_ratio": 8,
       "enable_groups": [
         "gemini-cli"
       ],
       "supported_endpoint_types": [
         "gemini"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-low",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "gemini-cli"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.2",
-      "description": "GPT-5.2 is an AI model provided by qihang-ai.",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "admin",
-        "claude-cx",
-        "codex",
-        "codex-stable",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
       ]
     },
     {
@@ -441,87 +101,13 @@
       "model_ratio": 1.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 4,
-      "cache_ratio": 0.066666666667,
-      "enable_groups": [
-        "gemini-cli"
-      ],
-      "supported_endpoint_types": [
-        "gemini"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-image-preview",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 60,
-      "enable_groups": [
-        "gemini-cli"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-flash-image",
-      "vendor_id": 10,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 1,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "gemini-cli"
-      ],
-      "supported_endpoint_types": [
-        "gemini"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-pro-preview",
-      "description": "Gemini 3.1 Pro Preview is an AI model provided by google-vertex.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
       "completion_ratio": 6,
+      "cache_ratio": 0.1,
       "enable_groups": [
         "gemini-cli"
       ],
       "supported_endpoint_types": [
         "gemini"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-20250514",
-      "description": "Claude 4 Opus is an AI model provided by nano-gpt.",
-      "tags": "Tools,Files,Vision,200K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 7.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "CC-逆向2",
-        "claude-max",
-        "claude-power",
-        "claude-super",
-        "claude-ultra",
-        "svip",
-        "CC-aws-high",
-        "CC-aws逆向"
-      ],
-      "supported_endpoint_types": [
-        "anthropic"
       ]
     },
     {
@@ -543,79 +129,9 @@
       ]
     },
     {
-      "model_name": "gemini-3.1-pro-low",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4,
-      "enable_groups": [
-        "gemini-cli"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "description": "Claude Opus 4.7 is an AI model provided by venice.",
-      "icon": "VeniceAI",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 9,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "claude-max",
-        "claude-platform",
-        "claude-power",
-        "claude-super",
-        "admin",
-        "CC-逆向2",
-        "claude-bedrock",
-        "claude-ultra",
-        "svip",
-        "vip",
-        "CC-aws-high",
-        "CC-aws逆向",
-        "CC-Azure",
-        "claude-cx"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-5",
-      "description": "Claude Sonnet 4.5 is an AI model provided by venice.",
-      "icon": "VeniceAI",
-      "tags": "Reasoning,Tools,Files,Vision,198K",
-      "vendor_id": 9,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "CC-逆向2",
-        "claude-bedrock",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-3-5-haiku-20241022",
+      "model_name": "claude-haiku-4-5-20251001",
+      "description": "Claude Haiku 4.5 is an AI model provided by qihang-ai.",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 0.5,
@@ -625,93 +141,23 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "claude-max"
+        "CC-aws-high",
+        "cc_max_ext",
+        "claude-bedrock",
+        "claude-max",
+        "claude-power",
+        "claude-super",
+        "svip",
+        "CC-aws逆向",
+        "CC-Azure",
+        "CC-逆向2",
+        "claude-better",
+        "claude-ultra",
+        "vip",
+        "admin"
       ],
       "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash-lite",
-      "description": "gemini-2.5-flash-lite is an AI model provided by sap-ai-core.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 0.133333333333,
-      "enable_groups": [
-        "gemini-cli"
-      ],
-      "supported_endpoint_types": [
-        "gemini"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-high",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "gemini-cli"
-      ],
-      "supported_endpoint_types": [
-        "gemini"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-preview",
-      "description": "Gemini 3 Pro Preview is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6.017544,
-      "enable_groups": [
-        "gemini-cli"
-      ],
-      "supported_endpoint_types": [
-        "gemini"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-flash-image-preview",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 20,
-      "enable_groups": [
-        "gemini-cli"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-flash-preview",
-      "description": "Gemini 3 Flash Preview is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1.0238095,
-      "enable_groups": [
-        "gemini-cli"
-      ],
-      "supported_endpoint_types": [
-        "gemini"
+        "anthropic"
       ]
     },
     {
@@ -725,31 +171,181 @@
       "completion_ratio": 5,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "CC-Azure",
-        "claude-bedrock",
-        "claude-platform",
-        "svip",
-        "claude-better",
-        "claude-max",
-        "claude-super",
-        "claude-ultra",
-        "vip",
         "admin",
+        "CC-aws逆向",
+        "CC-Azure",
         "CC-逆向2",
-        "claude-cx",
         "claude-power",
+        "claude-super",
+        "vip",
+        "claude-cx",
+        "svip",
+        "cc_max_ext",
+        "claude-bedrock",
+        "claude-max",
         "CC-aws-high",
-        "CC-aws逆向"
+        "claude-better",
+        "claude-ultra"
       ],
       "supported_endpoint_types": [
         "anthropic"
       ]
     },
     {
-      "model_name": "claude-sonnet-4-6-thinking",
-      "description": "claude-sonnet-4-6-thinking is an AI model provided by 302ai.",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 8,
+      "model_name": "gemini-3-pro-preview",
+      "description": "Gemini 3 Pro Preview is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini-cli"
+      ],
+      "supported_endpoint_types": [
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-image-preview",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "gemini-cli"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "description": "Claude Opus 4.6 is an AI model provided by venice.",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "CC-逆向2",
+        "claude-better",
+        "svip",
+        "claude-bedrock",
+        "vip",
+        "cc_max_ext",
+        "claude-cx",
+        "claude-power",
+        "claude-super",
+        "admin",
+        "CC-aws逆向",
+        "claude-max",
+        "claude-ultra",
+        "CC-aws-high",
+        "CC-Azure"
+      ],
+      "supported_endpoint_types": [
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-max",
+        "claude-power",
+        "claude-super",
+        "claude-ultra",
+        "CC-aws-high",
+        "CC-Azure",
+        "CC-逆向2",
+        "cc_max_ext",
+        "claude-bedrock",
+        "claude-better",
+        "svip",
+        "vip",
+        "admin",
+        "CC-aws逆向"
+      ],
+      "supported_endpoint_types": [
+        "0"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-image-preview",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "gemini-cli"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview",
+      "description": "Gemini 3.1 Pro Preview is an AI model provided by google-vertex.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.15,
+      "enable_groups": [
+        "gemini-cli"
+      ],
+      "supported_endpoint_types": [
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.05,
+      "enable_groups": [
+        "codex-stable",
+        "vip",
+        "admin",
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5",
+      "description": "Claude Sonnet 4.5 is an AI model provided by venice.",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,198K",
+      "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 1.5,
       "model_price": 0,
@@ -757,7 +353,8 @@
       "completion_ratio": 5,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "claude-bedrock"
+        "vip",
+        "CC-逆向2"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -765,48 +362,158 @@
       ]
     },
     {
-      "model_name": "gpt-5.3-codex",
-      "description": "GPT-5.3 Codex is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Vision,400K",
-      "vendor_id": 11,
+      "model_name": "gemini-3.1-pro-low",
+      "vendor_id": 10,
       "quota_type": 0,
-      "model_ratio": 0.875,
+      "model_ratio": 1,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
+      "completion_ratio": 6,
+      "cache_ratio": 0.15,
       "enable_groups": [
-        "admin",
-        "claude-cx",
-        "codex",
-        "vip"
+        "gemini-cli"
       ],
       "supported_endpoint_types": [
-        "openai",
-        "anthropic"
+        "gemini",
+        "openai"
       ]
     },
     {
-      "model_name": "gpt-5.4",
-      "description": "GPT-5.4 is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 11,
+      "model_name": "gemini-3.5-flash",
+      "vendor_id": 10,
       "quota_type": 0,
-      "model_ratio": 1.25,
+      "model_ratio": 0.75,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "vip",
-        "admin",
-        "claude-cx",
-        "codex",
-        "codex-stable"
+        "gemini-cli"
       ],
       "supported_endpoint_types": [
-        "openai",
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "description": "Claude Opus 4.5 is an AI model provided by qihang-ai.",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "CC-逆向2",
+        "cc_max_ext",
+        "claude-better",
+        "claude-super",
+        "claude-ultra",
+        "svip",
+        "admin",
+        "CC-aws逆向",
+        "claude-bedrock",
+        "claude-max",
+        "claude-power",
+        "vip",
+        "CC-aws-high",
+        "CC-Azure"
+      ],
+      "supported_endpoint_types": [
         "anthropic"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "description": "Claude Opus 4.7 is an AI model provided by venice.",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "CC-Azure",
+        "claude-max",
+        "claude-ultra",
+        "svip",
+        "claude-super",
+        "CC-aws-high",
+        "claude-better",
+        "claude-cx",
+        "vip",
+        "claude-bedrock",
+        "admin",
+        "CC-aws逆向",
+        "CC-逆向2",
+        "cc_max_ext",
+        "claude-power"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-20250514",
+      "description": "Claude 4 Sonnet is an AI model provided by nano-gpt.",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "CC-aws-high",
+        "CC-aws逆向",
+        "CC-逆向2",
+        "claude-power",
+        "claude-super",
+        "claude-ultra",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-high",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini-cli"
+      ],
+      "supported_endpoint_types": [
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-image",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "gemini-cli"
+      ],
+      "supported_endpoint_types": [
+        "gemini"
       ]
     },
     {
@@ -827,14 +534,288 @@
       "supported_endpoint_types": [
         "openai"
       ]
+    },
+    {
+      "model_name": "claude-opus-4-1-20250805",
+      "description": "Claude 4.1 Opus is an AI model provided by nano-gpt.",
+      "tags": "Tools,Files,Vision,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "CC-aws-high",
+        "CC-aws逆向",
+        "CC-逆向2",
+        "claude-power",
+        "claude-super",
+        "claude-ultra",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-20250514",
+      "description": "Claude 4 Opus is an AI model provided by nano-gpt.",
+      "tags": "Tools,Files,Vision,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "CC-aws-high",
+        "CC-aws逆向",
+        "CC-逆向2",
+        "claude-power",
+        "claude-super",
+        "claude-ultra",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-lite",
+      "description": "gemini-2.5-flash-lite is an AI model provided by sap-ai-core.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "gemini-cli"
+      ],
+      "supported_endpoint_types": [
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-low",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini-cli"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash-low",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini-cli"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "description": "Claude Sonnet 4.5 is an AI model provided by qihang-ai.",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "CC-aws-high",
+        "CC-逆向2",
+        "claude-bedrock",
+        "claude-better",
+        "claude-cx",
+        "claude-power",
+        "cc_max_ext",
+        "claude-ultra",
+        "admin",
+        "claude-max",
+        "vip",
+        "CC-aws逆向",
+        "CC-Azure",
+        "claude-super",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "admin",
+        "claude-cx",
+        "codex",
+        "codex-stable",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "description": "An advanced AI model for generating images from textual descriptions.",
+      "icon": "OpenAI.Color",
+      "tags": "Reasoning,Tools,Files,Open Weights,Vision,1K,2K,3K,4K",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "0",
+        "1"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash",
+      "description": "gemini-2.5-flash is an AI model provided by sap-ai-core.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333333,
+      "cache_ratio": 0.05,
+      "enable_groups": [
+        "gemini-cli"
+      ],
+      "supported_endpoint_types": [
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash",
+      "description": "Gemini 3 Flash is an AI model provided by opencode.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini-cli"
+      ],
+      "supported_endpoint_types": [
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview",
+      "description": "Gemini 3 Flash Preview is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini-cli"
+      ],
+      "supported_endpoint_types": [
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "description": "GPT-5.2 is an AI model provided by qihang-ai.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "claude-cx",
+        "codex",
+        "codex-stable",
+        "vip",
+        "admin"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "description": "GPT-5.3 Codex is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Vision,400K",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "admin",
+        "claude-cx",
+        "codex",
+        "codex-stable",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
     }
   ],
   "group_ratio": {
-    "CC-Azure": 1,
+    "CC-Azure": 2,
     "CC-aws-high": 0.3,
     "CC-aws逆向": 0.3,
     "CC-逆向2": 0.3,
-    "claude-bedrock": 1,
+    "cc_max_ext": 1.5,
+    "claude-bedrock": 2,
     "claude-better": 2,
     "claude-cx": 0.1,
     "claude-max": 2,
@@ -842,19 +823,17 @@
     "claude-power": 1,
     "claude-super": 0.3,
     "claude-ultra": 0.5,
-    "codex": 0.1,
+    "codex": 0.07,
     "codex-stable": 0.5,
     "default": 1,
     "gemini-cli": 1,
-    "svip": 0.1,
-    "vip2": 1,
-    "vip5": 2
+    "svip": 0.1
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
   "supported_endpoint": {
     "0": {
-      "path": "image-generation",
+      "path": "anthropic",
       "method": "POST"
     },
     "1": {
@@ -862,7 +841,7 @@
       "method": "POST"
     },
     "anthropic": {
-      "path": "anthropic",
+      "path": "/v1/messages",
       "method": "POST"
     },
     "gemini": {
@@ -875,12 +854,13 @@
     }
   },
   "usable_group": {
-    "CC-Azure": "",
+    "CC-Azure": "azure,不可用",
     "CC-aws-high": "claude-aws逆向分组",
     "CC-aws逆向": "claude-aws逆向分组",
-    "CC-逆向2": "",
+    "CC-逆向2": "缓存命中率高，无思考，稳定高可用",
+    "cc_max_ext": "官渠",
     "claude-bedrock": "官逆渠道，Aws Bedrock platform 混合，99%高缓存",
-    "claude-better": "",
+    "claude-better": "官逆渠道",
     "claude-cx": "Claude协议，支持在claude code使用",
     "claude-max": "100%官方渠道，保真",
     "claude-platform": "官渠道，Aws Platform，99%高缓存",
@@ -890,50 +870,26 @@
     "codex": "codex特价，限时福利",
     "codex-stable": "codex管渠，保真，稳定",
     "default": "默认分组",
-    "gemini-cli": "",
-    "svip": "限时特价claude逆向, 高缓存支持1m",
-    "vip2": "",
-    "vip5": ""
+    "gemini-cli": "gemini cli",
+    "svip": "限时特价claude逆向, 高缓存支持1m"
   },
   "vendors": [
+    {
+      "id": 3,
+      "name": "Helicone"
+    },
     {
       "id": 5,
       "name": "OpenCode Zen",
       "icon": "OpenCode"
     },
     {
-      "id": 6,
-      "name": "QiHang"
-    },
-    {
-      "id": 8,
-      "name": "302.AI"
-    },
-    {
-      "id": 11,
-      "name": "Vivgrid"
-    },
-    {
-      "id": 1,
-      "name": "Anthropic",
-      "icon": "Claude.Color"
-    },
-    {
-      "id": 3,
-      "name": "Helicone"
-    },
-    {
-      "id": 4,
-      "name": "SAP AI Core"
-    },
-    {
       "id": 7,
       "name": "NanoGPT"
     },
     {
-      "id": 9,
-      "name": "Venice AI",
-      "icon": "VeniceAI"
+      "id": 8,
+      "name": "302.AI"
     },
     {
       "id": 10,
@@ -941,14 +897,36 @@
       "icon": "Gemini.Color"
     },
     {
+      "id": 11,
+      "name": "Vivgrid"
+    },
+    {
       "id": 12,
       "name": "Vertex",
       "icon": "VertexAI.Color"
     },
     {
+      "id": 1,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
       "id": 2,
       "name": "OpenAI",
       "icon": "OpenAI"
+    },
+    {
+      "id": 4,
+      "name": "SAP AI Core"
+    },
+    {
+      "id": 6,
+      "name": "QiHang"
+    },
+    {
+      "id": 9,
+      "name": "Venice AI",
+      "icon": "VeniceAI"
     }
   ],
   "status_payload": {

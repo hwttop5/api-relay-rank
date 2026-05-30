@@ -2,12 +2,47 @@
   "auto_groups": [],
   "data": [
     {
-      "model_name": "claude-haiku-4-5-20251001",
-      "description": "Claude Haiku 4.5 is an AI model provided by qihang-ai.",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 6,
+      "model_name": "claude-haiku-4-5",
+      "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "满血cc max"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-image-1.5",
+      "vendor_id": 3,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "gpt-image"
+      ],
+      "supported_endpoint_types": [
+        "image-generation",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "description": "Claude Opus 4.6 is an AI model provided by venice.",
+      "icon": "Venice",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
@@ -21,8 +56,52 @@
       "supported_endpoint_types": [
         "anthropic",
         "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "description": "Claude Opus 4.7 is an AI model provided by venice.",
+      "icon": "Venice",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Kiro",
+        "只支持claude code",
+        "满血cc max"
       ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "description": "Claude Opus 4.5 is an AI model provided by qihang-ai.",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Kiro",
+        "只支持claude code",
+        "满血cc max"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
     },
     {
       "model_name": "claude-sonnet-4-5-20250929",
@@ -47,14 +126,16 @@
       ]
     },
     {
-      "model_name": "gpt-5.4-pro",
-      "vendor_id": 3,
+      "model_name": "gpt-5.2",
+      "description": "GPT-5.2 is an AI model provided by qihang-ai.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 6,
       "quota_type": 0,
-      "model_ratio": 15,
+      "model_ratio": 0.875,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 1,
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
       "enable_groups": [
         "Codex Pro"
       ],
@@ -63,25 +144,20 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-7",
-      "description": "Claude Opus 4.7 is an AI model provided by venice.",
-      "icon": "Venice",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 9,
+      "model_name": "gpt-5.4",
+      "description": "GPT-5.4 is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 7,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 1.25,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
+      "completion_ratio": 6,
       "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "Claude Kiro",
-        "只支持claude code",
-        "满血cc max"
+        "Codex Pro"
       ],
       "supported_endpoint_types": [
-        "anthropic",
         "openai"
       ]
     },
@@ -120,54 +196,21 @@
       ]
     },
     {
-      "model_name": "gpt-image-2",
-      "vendor_id": 3,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 1,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "gpt-image"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6",
-      "description": "Claude Opus 4.6 is an AI model provided by venice.",
-      "icon": "Venice",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 9,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude Kiro",
-        "只支持claude code",
-        "满血cc max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5",
-      "vendor_id": 1,
+      "model_name": "claude-haiku-4-5-20251001",
+      "description": "Claude Haiku 4.5 is an AI model provided by qihang-ai.",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 6,
       "quota_type": 0,
       "model_ratio": 0.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
       "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "满血cc max"
+        "只支持claude code",
+        "满血cc max",
+        "Claude Kiro"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -175,20 +218,25 @@
       ]
     },
     {
-      "model_name": "gpt-5.2",
-      "description": "GPT-5.2 is an AI model provided by qihang-ai.",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 6,
+      "model_name": "claude-sonnet-4-6",
+      "description": "Claude Sonnet 4.6 is an AI model provided by venice.",
+      "icon": "Venice",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 9,
       "quota_type": 0,
-      "model_ratio": 0.875,
+      "model_ratio": 1.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
+      "completion_ratio": 5,
       "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "Codex Pro"
+        "只支持claude code",
+        "满血cc max",
+        "Claude Kiro"
       ],
       "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     },
@@ -211,26 +259,7 @@
       ]
     },
     {
-      "model_name": "gpt-5.3-codex-spark",
-      "description": "GPT-5.3 Codex Spark is an AI model provided by opencode.",
-      "icon": "OpenCode",
-      "tags": "Reasoning,Tools,128K",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "Codex Pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-1.5",
+      "model_name": "gpt-image-2",
       "vendor_id": 3,
       "quota_type": 1,
       "model_ratio": 0,
@@ -238,71 +267,8 @@
       "owner_by": "",
       "completion_ratio": 0,
       "enable_groups": [
+        "Codex Pro",
         "gpt-image"
-      ],
-      "supported_endpoint_types": [
-        "image-generation",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101",
-      "description": "Claude Opus 4.5 is an AI model provided by qihang-ai.",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude Kiro",
-        "只支持claude code",
-        "满血cc max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "description": "Claude Sonnet 4.6 is an AI model provided by venice.",
-      "icon": "Venice",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 9,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude Kiro",
-        "只支持claude code",
-        "满血cc max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "description": "GPT-5.4 is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "Codex Pro"
       ],
       "supported_endpoint_types": [
         "openai"

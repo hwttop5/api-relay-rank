@@ -2575,12 +2575,13 @@ class BuildSiteDataTests(unittest.TestCase):
                             ],
                             "rechargeTiers": [
                                 {
-                                    "rechargeName": "Starter (Weekly) — 2.99 USDC",
-                                    "billingType": "weekly",
-                                    "rmbAmount": 2.99,
-                                    "usdAmount": 2.99,
+                                    "rechargeName": "API额度$500",
+                                    "billingType": "permanent",
+                                    "rmbAmount": 100,
+                                    "usdAmount": 500,
                                 }
                             ],
+                            "forcedAdoptedTier": "openai | API额度$500",
                             "assumptionText": "browser verified",
                         }
                     }
@@ -2597,7 +2598,8 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertIn("codexEligible=false", by_group["default"].notes)
         self.assertIn("codexEligible=true", by_group["openai"].notes)
         self.assertEqual(chosen["prod.bbroot.com"].group_name, "openai")
-        self.assertAlmostEqual(chosen["prod.bbroot.com"].effective_multiplier, 0.2)
+        self.assertEqual(chosen["prod.bbroot.com"].recharge_name, "API额度$500")
+        self.assertAlmostEqual(chosen["prod.bbroot.com"].effective_multiplier, 0.04)
 
     def test_scrape_station_rows_include_request_log_candidates_without_site_data(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -3341,7 +3343,10 @@ class BuildSiteDataTests(unittest.TestCase):
                 "verifiedTierCount": 0,
                 "groupMultipliers": [{"groupName": "default", "groupMultiplier": 1.0}],
                 "rechargeTiers": [],
-                "tierNotes": [],
+                "tierNotes": [
+                    "人工截图核验：ProdBbroot 绿色 codex/openai 分组为 Codex 可用，橙色 default 为 Claude Code；USDC/Solana 充值本轮暂按 1 USDC = 1 USD 额度。",
+                    "codexEligible=false; usage=Claude Code",
+                ],
                 "announcements": [],
                 "rankings": {},
                 "quality": {},
@@ -3352,14 +3357,30 @@ class BuildSiteDataTests(unittest.TestCase):
 
         station = stations["prod.bbroot.com"]
         groups = {group["groupName"]: group for group in station["groupMultipliers"]}
-        self.assertEqual(set(groups), {"codex", "openai", "default"})
+        self.assertEqual(set(groups), {"codex", "openai"})
         self.assertTrue(groups["codex"]["codexEligible"])
         self.assertTrue(groups["openai"]["codexEligible"])
-        self.assertFalse(groups["default"]["codexEligible"])
-        self.assertEqual(groups["default"]["usageLabel"], "Claude Code")
-        self.assertEqual(station["rechargeTiers"][0]["paymentCurrency"], "USDC")
-        self.assertAlmostEqual(station["rechargeTiers"][0]["paymentAmount"], 2.99)
+        tiers = {tier["rechargeName"]: tier for tier in station["rechargeTiers"]}
+        self.assertEqual(set(tiers), {"限时月卡", "API额度$500", "周卡", "日卡"})
+        self.assertAlmostEqual(tiers["限时月卡"]["rmbAmount"], 60.0)
+        self.assertIsNone(tiers["限时月卡"]["usdAmount"])
+        self.assertTrue(tiers["限时月卡"]["displayOnly"])
+        self.assertAlmostEqual(tiers["API额度$500"]["rmbAmount"], 100.0)
+        self.assertAlmostEqual(tiers["API额度$500"]["usdAmount"], 500.0)
+        self.assertAlmostEqual(tiers["周卡"]["rmbAmount"], 18.0)
+        self.assertIsNone(tiers["周卡"]["usdAmount"])
+        self.assertTrue(tiers["周卡"]["displayOnly"])
+        self.assertAlmostEqual(tiers["日卡"]["rmbAmount"], 6.98)
+        self.assertIsNone(tiers["日卡"]["usdAmount"])
+        self.assertTrue(tiers["日卡"]["displayOnly"])
+        self.assertIn("缺货", tiers["日卡"]["expiresRule"])
         self.assertEqual(station["stationType"], "non_subscription")
+        self.assertEqual(
+            station["tierNotes"],
+            [
+                "人工核验：ProdBbroot 当前分组为 codex/openai，均按 Codex 可用处理；公告卡网显示 API额度$500 为 100 RMB，公告说明 API额度2:10 且可用 codex 0.2 分组；卡类商品未见额度，仅展示不参与采用倍率。"
+            ],
+        )
 
     def test_authoritative_ranking_override_corrects_52mx_multiplier(self) -> None:
         overrides = build_site_data.load_station_pricing_overrides()

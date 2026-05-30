@@ -4,6 +4,13 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "gpt-image-2异步生图已上线\n\n地址：https://img.qiuqiutoken.com/ \n\n备用访问地址：https://img2.qiuqiutoken.com/ \n\n原生图地址：https://image.qiuqiutoken.com",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-05-27T22:02:31.580Z",
+        "type": "default"
+      },
+      {
         "content": "由于即将关闭月卡和周卡，现决定将倍率进行调整变更，回馈所有用户\nCodeX专用-Pro号池-稳定 分组倍率调整： 1倍率 下调至 0.8倍率\nCodeX专用-Plus号池 分组倍率调整： 1倍率 下调至 0.8倍率",
         "extra": "",
         "id": 9,
@@ -102,7 +109,7 @@
         "description": "查看模型健康状态",
         "id": 5,
         "route": "线路健康监控面板",
-        "url": "https://status.qiuqiutoken.com/"
+        "url": "https://status.qiuqiutoken.com/status/qiuqiutoken"
       }
     ],
     "api_info_enabled": true,
@@ -148,7 +155,28 @@
     "enable_data_export": true,
     "enable_drawing": false,
     "enable_task": true,
-    "faq": [],
+    "faq": [
+      {
+        "answer": "我们提供CC Switch快速令牌导入方法：https://qiuqiutoken.com/docs/quick-config/cc-switch.html",
+        "id": 1,
+        "question": "如何快速导入模型令牌?"
+      },
+      {
+        "answer": "我们提供在线生图页面，并且提供更多提示词案例：https://image.qiuqiutoken.com/",
+        "id": 2,
+        "question": "如何使用gpt-image-2生图模型？"
+      },
+      {
+        "answer": "我们提供了全自动安装工具 https://qiuqiutoken.com/docs/quick-config/windows-ai-installer.html\n\n如果无法自动安装成功，请前往微软商店搜索CodeX进行下载",
+        "id": 3,
+        "question": "怎么使用gpt并且安装CodeX？"
+      },
+      {
+        "answer": "添加我们用户服务交流qq群：1095876005 ，群里艾特群主或者管理，会在2分钟内为你响应处理。 如果不会安装及配置，可以为你远程安装",
+        "id": 4,
+        "question": "不会用怎么寻求帮助？"
+      }
+    ],
     "faq_enabled": true,
     "footer_html": "© 2026 球球Token - AI中转服务站. 版权所有.  售前交流qq群：1095876005",
     "github_client_id": "Ov23li2c3nm6CH2GRuOW",
@@ -175,7 +203,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://qiuqiutoken.com",
     "setup": true,
-    "start_time": 1779459026,
+    "start_time": 1779908965,
     "stripe_unit_price": 8,
     "system_name": "球球Token - AI中转服务站",
     "telegram_bot_name": "",

@@ -5,6 +5,34 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "kiro会在这个月月底超额到期账单结算，所以可能6.1开始的一段时间kiro这条渠道不能用，或者需要点时间补新号进来，大家有需要用到opus的任务请在这两天收收尾，我尽量第一时间更新opus的特价渠道。",
+        "extra": "",
+        "id": 29,
+        "publishDate": "2026-05-30T07:19:08.036Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro反代的opus4.8已上新，没试过的小伙伴可以试一下，ide容器反代出来的所以禾维测不满，提前提醒一下。",
+        "extra": "",
+        "id": 28,
+        "publishDate": "2026-05-29T02:53:39.384Z",
+        "type": "default"
+      },
+      {
+        "content": "plus又5块了，价格上调至0.08x，一点半调价",
+        "extra": "",
+        "id": 27,
+        "publishDate": "2026-05-28T05:11:26.781Z",
+        "type": "default"
+      },
+      {
+        "content": "gpt价格临时下调至0.06x\n连续两天没封号了，不知道在憋什么大的，先少下调点吧，临时下调，遇到大封还是会调整回来的。",
+        "extra": "",
+        "id": 26,
+        "publishDate": "2026-05-26T22:12:54.608Z",
+        "type": "default"
+      },
+      {
         "content": "下午四点要调一下gpt的价格了，4-6块区间/号的话，得先调到0.08x了，四点调价，找到便宜的号才能降下来，大家有任务切换或者有更便宜备用站的注意下切换时间。库存再蹬两个小时蹬完了，得补号了- -\ngpt0.08x\ngpt0.08x\ngpt0.08x",
         "extra": "",
         "id": 25,
@@ -177,10 +205,10 @@
     "api_info": [
       {
         "color": "green",
-        "description": "稳定",
+        "description": "主站",
         "id": 1,
-        "route": "CDN加速",
-        "url": "https://fushengyunsuan.cn"
+        "route": "国际加速",
+        "url": "https://fushengyunsuan.com"
       },
       {
         "color": "blue",
@@ -188,13 +216,6 @@
         "id": 2,
         "route": "图生节点",
         "url": "https://image.fushengyunsuan.cn"
-      },
-      {
-        "color": "orange",
-        "description": "海外加速 · 国际线路",
-        "id": 3,
-        "route": "国际线路",
-        "url": "https://fushengyunsuan.com"
       }
     ],
     "api_info_enabled": true,
@@ -233,7 +254,7 @@
     "display_in_currency": true,
     "docs_link": "https://mcnzsgzs2xvu.feishu.cn/docx/XiRKdAOLHoUEGvxseGoc6FNhnQc",
     "email_verification": true,
-    "enable_batch_update": false,
+    "enable_batch_update": true,
     "enable_data_export": true,
     "enable_drawing": true,
     "enable_task": true,
@@ -305,9 +326,10 @@
     "passkey_attachment": "",
     "passkey_display_name": "浮生云算",
     "passkey_login": false,
-    "passkey_origins": "https://fushengyunsuan.cn",
-    "passkey_rp_id": "fushengyunsuan.cn",
+    "passkey_origins": "https://fushengyunsuan.com",
+    "passkey_rp_id": "fushengyunsuan.com",
     "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
     "password_register_enabled": true,
     "price": 1,
     "privacy_policy_enabled": false,
@@ -315,9 +337,9 @@
     "quota_per_unit": 500000,
     "register_enabled": true,
     "self_use_mode_enabled": false,
-    "server_address": "https://fushengyunsuan.cn",
+    "server_address": "https://fushengyunsuan.com",
     "setup": true,
-    "start_time": 1779575683,
+    "start_time": 1779912351,
     "stripe_unit_price": 1,
     "system_name": "浮生云算",
     "telegram_bot_name": "",
@@ -328,7 +350,7 @@
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 6.8,
     "user_agreement_enabled": false,
-    "version": "v1.0.0-rc.8",
+    "version": "v1.0.0-rc.10",
     "wechat_login": false,
     "wechat_qrcode": ""
   },

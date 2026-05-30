@@ -1,13 +1,20 @@
 {
   "data": {
     "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":true,\"about\":false}",
-    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
     "announcements": [
       {
-        "content": "各位，gpt官方集体拉闸了一大批账号，目前codex-vip分组倍率设置为 0.15。后面看情况恢复",
+        "content": "消耗王活动开奖啦~\n\n统计周期：5 月 19 日至今日平台将根据额度消耗比例，为消耗排名前五的用户发放对应额度。\n\n请以下用户携带用户名联系客服核实领取：\n\n铁头\n\nyqz\n\necho\n\nskyoo\n\nyanchen\n\n请以上用户携带用户名联系客服核对发放，感谢支持！",
         "extra": "",
-        "id": 9,
-        "publishDate": "2026-05-25T01:27:13.660Z",
+        "id": 11,
+        "publishDate": "2026-05-26T13:42:12.539Z",
+        "type": "default"
+      },
+      {
+        "content": "krzover  echo  kai  铁头  danmo  xxx  knight9salt  小野  GL qo_ow  xxx\n\n 我已通过后台日志查到上午服务中断受影响的用户，请大家带上用户名私聊我，我会为您补发补偿额度。\n\n如有遗漏未补到的，也请加我好友并附上用户名私聊，我会第一时间为您处理。\n\n记得私聊我！\n\n今日之前（5.25）",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-05-25T12:00:21.755Z",
         "type": "default"
       },
       {
@@ -137,13 +144,20 @@
   "status_payload": {
     "data": {
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":true,\"about\":false}",
-      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
       "announcements": [
         {
-          "content": "各位，gpt官方集体拉闸了一大批账号，目前codex-vip分组倍率设置为 0.15。后面看情况恢复",
+          "content": "消耗王活动开奖啦~\n\n统计周期：5 月 19 日至今日平台将根据额度消耗比例，为消耗排名前五的用户发放对应额度。\n\n请以下用户携带用户名联系客服核实领取：\n\n铁头\n\nyqz\n\necho\n\nskyoo\n\nyanchen\n\n请以上用户携带用户名联系客服核对发放，感谢支持！",
           "extra": "",
-          "id": 9,
-          "publishDate": "2026-05-25T01:27:13.660Z",
+          "id": 11,
+          "publishDate": "2026-05-26T13:42:12.539Z",
+          "type": "default"
+        },
+        {
+          "content": "krzover  echo  kai  铁头  danmo  xxx  knight9salt  小野  GL qo_ow  xxx\n\n 我已通过后台日志查到上午服务中断受影响的用户，请大家带上用户名私聊我，我会为您补发补偿额度。\n\n如有遗漏未补到的，也请加我好友并附上用户名私聊，我会第一时间为您处理。\n\n记得私聊我！\n\n今日之前（5.25）",
+          "extra": "",
+          "id": 10,
+          "publishDate": "2026-05-25T12:00:21.755Z",
           "type": "default"
         },
         {

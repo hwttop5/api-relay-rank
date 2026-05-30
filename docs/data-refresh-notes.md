@@ -154,7 +154,7 @@ Codex Manager 新日志增量更新：
 - `fetch_public_content.py` 当前没有单站过滤参数，刷新公开公告和倍率快照时只能跑全量；404、空列表、Turnstile 或登录失败必须记录真实状态，不能为了补齐页面而伪造分组、充值或公告。
 - `data/site-data.json` 与 `data/_public_fetch/*` 仍然只通过脚本生成。人工确认后的例外口径写入 `config/station_pricing_overrides.json`，再用 `npm run site:data` 重建。
 - `Happycode`：充值页嵌入外部店铺，当前可见商品为 `5额度(0.06倍率)`、`30额度(0.06倍率)`、`100额度(0.06倍率)`，按 `1 RMB = 1 USD` 额度处理；当前唯一 Codex 分组为 `活动=0.06`，不能沿用公告中的旧 `0.04`。
-- `ProdBbroot`：sub2api 颜色是用途证据，绿色 `codex/openai` 作为 Codex 可用分组，橙色 `default` 作为 Claude Code 分组并写 `codexEligible=false`；USDC/Solana 充值暂按 `1 USDC = 1 USD`，必须保留 `paymentCurrency=USDC` / `paymentAmount`，不要误显示为人民币。
+- `ProdBbroot`：当前权威口径来自公告外部卡网 `https://pay.ldxp.cn/shop/47N31MWH`。分组只保留 `codex/openai` 作为 Codex 可用分组，正式榜采用 `openai` 倍率 `0.2`；卡网可见 `日卡`、`周卡`、`限时月卡`、`API额度$500`，只有 `API额度$500 ¥100 -> $500` 有明确额度并参与正式排名，采用倍率为 `0.2 * 100 / 500 = 0.04`。卡类商品未见额度，必须写 `displayOnly=true` 仅展示不参与采用倍率；`日卡` 即使显示缺货，也作为当前可见商品保留并备注缺货。不要恢复旧 USDC/Solana 周卡口径。
 - `Fushengyunsuan`：当前结构化分组以最新公开/登录态证据为准，`vip=0.05` 与 `企业生图专线=0.05` 可参与 Codex-like 计算，`公益分组` 不参与；历史公告里的 `0.0075` 只保留为公告内容，不倒推当前分组。
 
 ## 2026-05-22/23 数据补抓复盘
@@ -180,7 +180,7 @@ Codex Manager 新日志增量更新：
 | `VoAPI` | 已浏览器核验固定钱包充值档位，可生成正式费用行；当前按默认分组 `1x` 与最高折扣固定档位采用，采用倍率 `10650 / 2000 = 5.325`。 | 登录态 API 令牌页显示 `默认分组 (x1)`；钱包页固定档位显示到账美元额度，并在支付确认区显示人民币实付金额，例如 `￥71 -> 10 USD`、`￥337.25 -> 50 USD`、`￥10650 -> 2000 USD`。 | 不能把到账美元额度反写成人民币支付金额；不能使用 `test 50x` 作为默认 Codex 采用分组；不能提交真实付款。 | 若钱包页充值面额或折扣变化，更新 `config/station_pricing_overrides.json` 中显式档位；`rmbAmount` 必须是人民币实付金额，`usdAmount` 必须是到账美元额度。 |
 | `laodog/dogcoding` | v1 支付配置关闭时使用官方外部店铺兑换码商品作为证据。 | 官方菜单指向的外部店铺商品。 | 不能在 `payment/config.enabled=false` 时生成默认钱包档位。 | 核对兑换码商品金额和到账美元额度，不按站内快捷充值处理。 |
 | `zhishu.dev` | 登录态 v1 接口可补齐 `codex-自建` 分组和公告；站内支付配置关闭，但左侧“充值”嵌入的官方链动小铺已核验 5 个 Codex 商品，可生成充值/套餐档位。 | 登录态 `/api/v1/groups/available`、`/api/v1/payment/config`、`/api/v1/payment/checkout-info`、`/api/v1/announcements`、官方外部店铺 `pay.ldxp.cn/shop/CFUOS364/ek8gty`。 | 不能只凭 `balance_recharge_multiplier` 生成站内钱包档位；不能保存店铺签名 URL 参数、用户邮箱或 token。 | 用户协助登录后脚本仍抓不到时，可用浏览器直接识别官方店铺和页面内容，再反哺脚本/配置。外部店铺顶层登录态可见 10/20/50 USD 不限时额度和 Plus/Pro 包月商品；headless 直接访问可能 403 `http_bot_simple`。 |
-| `ProdBbroot` | sub2api 分组颜色已核验：绿色 `codex` 与 `openai` 是 Codex 可用分组，橙色 `default` 是 Claude Code 分组；当前采用绿色 `openai` 倍率 `0.2`。充值页为 USDC/Solana，截图可见 `Starter (Weekly) — $2.99`，本轮暂按 `2.99 USDC -> 2.99 USD`。 | 浏览器登录态分组页、USDC/Solana 购买页截图。 | 不能把橙色 `default` 当 Codex 候选；不能把 USDC 支付误显示为人民币；不能引入实时汇率推断。 | 继续用 `codexEligible` 标记颜色语义；后续若站点暴露完整套餐 API，再用结构化套餐替代临时人工档位。 |
+| `ProdBbroot` | 当前只保留 `codex` 与 `openai` 两个 Codex 可用分组，正式榜采用 `openai` 倍率 `0.2`；公告外部卡网可见 `日卡`、`周卡`、`限时月卡`、`API额度$500`，其中只有 `API额度$500 ¥100 -> $500` 有明确额度并参与采用倍率，当前采用倍率 `0.04`。 | 浏览器登录态分组页、公告外部卡网 `pay.ldxp.cn/shop/47N31MWH`、站点公告。 | 不能恢复旧 `default`/Claude Code 分组；不能恢复旧 USDC/Solana `Starter (Weekly)` 档位；不能把无额度说明的日卡、周卡、月卡用于正式排名计算。 | 卡类商品只能以 `displayOnly=true` 写入人工 override 展示，不参与 adopted tier；`displayOnly` 不应放宽公开抓取解析，公开抓取缺 `usdAmount` 仍应视为不可生成正式费用行。 |
 
 ### 公开结构化快照
 

@@ -87,6 +87,7 @@ export interface RechargeTierRow {
   billingTypeLabel: string;
   rmbAmount: number | null;
   usdAmount: number | null;
+  displayOnly?: boolean;
   paymentCurrency?: string;
   paymentAmount?: number | null;
   rechargeLocation: string;

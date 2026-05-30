@@ -2239,7 +2239,8 @@ def normalize_recharge_row(item: dict[str, Any]) -> dict[str, Any] | None:
         if "usdAmount" in item
         else item.get("usd_amount", item.get("usd", item.get("quota", item.get("amount_usd"))))
     )
-    if not recharge_name or rmb_amount is None or usd_amount is None:
+    display_only = parse_bool(item.get("displayOnly") or item.get("display_only"))
+    if not recharge_name or rmb_amount is None or (usd_amount is None and not display_only):
         return None
     recharge_location = sanitize_public_text(item.get("rechargeLocation") or item.get("recharge_location") or item.get("location"))
     expires_rule = sanitize_public_text(item.get("expiresRule") or item.get("expires_rule") or item.get("note"))
@@ -2252,6 +2253,8 @@ def normalize_recharge_row(item: dict[str, Any]) -> dict[str, Any] | None:
         "rechargeLocation": recharge_location,
         "expiresRule": expires_rule,
     }
+    if display_only:
+        row["displayOnly"] = True
     payment_currency = sanitize_public_text(item.get("paymentCurrency") or item.get("payment_currency"))
     payment_amount = parse_float(item.get("paymentAmount") if "paymentAmount" in item else item.get("payment_amount"))
     if payment_currency:
