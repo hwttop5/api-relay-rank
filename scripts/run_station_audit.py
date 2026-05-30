@@ -37,7 +37,7 @@ except ModuleNotFoundError:
 
 CONFIG_PATH = APP_ROOT / "config" / "station_audit_targets.json"
 ENGINE_PATH = APP_ROOT / "vendor" / "api_relay_audit" / "audit.py"
-ENGINE_COMMIT = "2d6bc1431cc196d64a22e8aa515094ad9acb7042"
+ENGINE_COMMIT = "408e3f0b0ce25ae4cbe74add121c2fe30dc66583"
 DEFAULT_TIMEOUT_SECONDS = 120
 DEFAULT_LATENCY_PROBE_COUNT = 10
 MIN_TIMEOUT_SECONDS = 1

@@ -9,15 +9,15 @@ import { formatAuditVerdict, formatDateTime } from "@/lib/format";
 import type { AuditModelOption, HomeAuditRunRequest, HomeAuditRunResponse } from "@/lib/types";
 
 export const AUDIT_MODEL_OPTIONS: AuditModelOption[] = [
+  { label: "Opus 4.8", value: "claude-opus-4-8", badge: "NEW" },
   { label: "Opus 4.7", value: "claude-opus-4-7" },
   { label: "Opus 4.6", value: "claude-opus-4-6" },
-  { label: "Sonnet 4.6", value: "claude-sonnet-4-6" },
-  { label: "GPT 5.5", value: "gpt-5.5", badge: "NEW" },
+  { label: "GPT 5.5", value: "gpt-5.5" },
   { label: "GPT 5.4", value: "gpt-5.4" },
-  { label: "Gemini 3.1 Pro", value: "gemini-3.1-pro-preview" },
+  { label: "Gemini 3.5 Flash", value: "gemini-3.5-flash" },
 ];
 
-const DEFAULT_AUDIT_MODEL = "gpt-5.5";
+const DEFAULT_AUDIT_MODEL = "claude-opus-4-8";
 const MAX_LOG_LINES = 300;
 const TERMINAL_BOTTOM_THRESHOLD_PX = 48;
 
