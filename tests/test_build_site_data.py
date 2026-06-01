@@ -1070,6 +1070,34 @@ class BuildSiteDataTests(unittest.TestCase):
             "[![XINX 套餐商品图](https://example.com/poster.png)](https://example.com/shop/ABC123)",
         )
 
+    def test_merge_announcements_preserves_html_payload(self) -> None:
+        merged = build_site_data.merge_announcements(
+            [
+                {
+                    "id": "9",
+                    "publishedAt": "2026-06-01T11:06:21Z",
+                    "type": "default",
+                    "extra": "",
+                    "content": "正文",
+                    "sourceUrl": "https://relay.example/api/v1/announcements",
+                }
+            ],
+            [
+                {
+                    "id": "9",
+                    "publishedAt": "2026-06-01T11:06:21Z",
+                    "type": "default",
+                    "extra": "",
+                    "content": "正文",
+                    "contentHtml": '<p><strong>正文</strong><img src="/api/contact-ad/assets/01-image.png"></p>',
+                    "sourceUrl": "https://relay.example/api/v1/announcements",
+                }
+            ],
+        )
+
+        self.assertEqual(len(merged), 1)
+        self.assertEqual(merged[0]["contentHtml"], '<p><strong>正文</strong><img src="/api/contact-ad/assets/01-image.png"></p>')
+
     def test_merge_announcements_dedupes_plain_and_markdown_links(self) -> None:
         merged = build_site_data.merge_announcements(
             [
@@ -4142,6 +4170,64 @@ class BuildSiteDataTests(unittest.TestCase):
             self.assertEqual(station["groupMultipliers"][0]["groupName"], "old")
             self.assertEqual(station["rechargeTiers"][0]["rechargeName"], "old tier")
             self.assertEqual(station["announcements"][0]["content"], "old notice")
+
+    def test_build_preserves_announcement_html_payload(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            source_root = root / "source"
+            data_dir = root / "data"
+            fetch_dir = data_dir / "_public_fetch"
+            source_root.mkdir()
+            fetch_dir.mkdir(parents=True)
+            (data_dir / "site-data.json").write_text(
+                json.dumps({"rankings": {}, "stations": []}),
+                encoding="utf-8",
+            )
+            (fetch_dir / "demo_status.json").write_text(
+                json.dumps(
+                    {
+                        "data": {
+                            "server_address": "https://relay.example",
+                            "announcements": [
+                                {
+                                    "id": "new",
+                                    "content": "new notice",
+                                    "contentHtml": '<p><strong>new notice</strong><img src="/api/contact-ad/assets/01-image.png"></p>',
+                                }
+                            ],
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (source_root / "composite_ranking_formal_workhours.csv").write_text(
+                "rank,ranking_basis,time_window,time_window_label,station,label,station_url,station_type,station_type_label,station_type_short_label,total_score,success_score,latency_score,cost_score,correct_rate,avg_seconds,median_seconds,p95_seconds,effective_multiplier,fee_verified,adopted_tier,adopted_group,adopted_recharge_name,billing_type,billing_type_label,multiplier_full_use_assumption,requests,correct,failures,http_2xx,http_200_with_error,first_at,last_at\n"
+                "1,formal_high_confidence,work_hours,work,demo,Demo,https://relay.example,non_subscription,non_subscription,non_subscription,1,1,1,1,1,1,1,1,1,false,,,,,,,1,1,0,1,0,,\n",
+                encoding="utf-8",
+            )
+            for filename in ("composite_ranking_formal_offhours.csv", "composite_ranking_formal_all_hours.csv", "quality_metrics.csv", "login_verification_checklist.csv", "multiplier_tiers.csv"):
+                (source_root / filename).write_text("", encoding="utf-8")
+
+            with (
+                mock.patch.object(build_site_data, "APP_ROOT", root),
+                mock.patch.object(build_site_data, "SOURCE_ROOTS", [source_root]),
+                mock.patch.object(build_site_data, "DATA_DIR", data_dir),
+                mock.patch.object(build_site_data, "SITE_DATA_PATH", data_dir / "site-data.json"),
+                mock.patch.object(build_site_data, "PUBLIC_FETCH_DIR", fetch_dir),
+                mock.patch.object(build_site_data, "PUBLIC_FETCH_DIRS", [fetch_dir]),
+                mock.patch.object(build_site_data, "AUDIT_RUNS_DIR", data_dir / "_audit_runs"),
+                mock.patch.object(build_site_data, "LIVE_AUTH_PROBE_DIR", root / "missing_live_probes"),
+                mock.patch.object(build_site_data, "STATION_ALIASES_PATH", root / "config" / "station_aliases.json"),
+                mock.patch.object(build_site_data, "STATION_PRICING_OVERRIDES_PATH", root / "missing_overrides.json"),
+                mock.patch.object(build_site_data, "STATION_URL_OVERRIDES_PATH", root / "missing_url_overrides.json"),
+                mock.patch.object(build_site_data, "STATION_AUDIT_TARGETS_PATH", root / "missing_targets.json"),
+                mock.patch("sys.stdout", new=io.StringIO()),
+            ):
+                self.assertEqual(build_site_data.main(), 0)
+
+            payload = json.loads((data_dir / "site-data.json").read_text(encoding="utf-8"))
+            station = next(item for item in payload["stations"] if item["key"] == "demo")
+            self.assertEqual(station["announcements"][0]["contentHtml"], '<p><strong>new notice</strong><img src="/api/contact-ad/assets/01-image.png"></p>')
 
     def test_build_replaces_nonempty_tiers_and_merges_announcements(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:

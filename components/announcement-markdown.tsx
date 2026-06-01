@@ -74,6 +74,19 @@ export function renderInlineAnnouncementText(text: string) {
   return linkify(normalizeAnnouncementMarkdown(text));
 }
 
+function renderMarkdownContent(content: string) {
+  const normalized = content.replace(/\r\n?/g, "\n").trim();
+  if (!normalized) {
+    return null;
+  }
+
+  return (
+    <Markdown remarkPlugins={[remarkGfm]} skipHtml components={markdownComponents}>
+      {normalizeAnnouncementMarkdown(normalized)}
+    </Markdown>
+  );
+}
+
 type MarkdownCodeProps = ComponentPropsWithoutRef<"code"> & {
   node?: unknown;
 };
@@ -202,9 +215,20 @@ const markdownComponents: Components = {
 export function AnnouncementMarkdown({ content, className }: { content: string; className?: string }) {
   return (
     <div className={mergeClassNames("announcement-content", className)}>
-      <Markdown remarkPlugins={[remarkGfm]} skipHtml components={markdownComponents}>
-        {normalizeAnnouncementMarkdown(content)}
-      </Markdown>
+      {renderMarkdownContent(content)}
     </div>
   );
+}
+
+export function AnnouncementContent({ content, contentHtml, className }: { content: string; contentHtml?: string; className?: string }) {
+  if (contentHtml?.trim()) {
+    return (
+      <div
+        className={mergeClassNames("announcement-content", "announcement-content-html", className)}
+        dangerouslySetInnerHTML={{ __html: contentHtml.trim() }}
+      />
+    );
+  }
+
+  return <AnnouncementMarkdown content={content} className={className} />;
 }

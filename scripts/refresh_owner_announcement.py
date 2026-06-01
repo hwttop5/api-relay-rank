@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import html
 import json
 import mimetypes
 import os
@@ -14,6 +15,7 @@ from datetime import UTC, datetime
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 import requests
 
@@ -54,6 +56,66 @@ GITHUB_DEFAULT_ACCEPT = "application/vnd.github+json"
 GITHUB_FULL_ACCEPT = "application/vnd.github.full+json"
 MARKDOWN_IMAGE_RE = re.compile(r"!\[([^\]]*)\]\((https?://[^)\s]+)\)")
 NON_LOCAL_MARKDOWN_IMAGE_RE = re.compile(r"!\[[^\]]*\]\(((?!/api/contact-ad/assets/)[^)\s]+)\)")
+NON_LOCAL_HTML_IMAGE_RE = re.compile(r"<img\b[^>]*\bsrc=[\"']?(?!/api/contact-ad/assets/)(?:https?:)?//", re.IGNORECASE)
+BLOCKED_HTML_TAGS = {"script", "style", "iframe", "object", "embed", "svg", "math", "link", "meta"}
+ALLOWED_HTML_TAGS = {
+    "a",
+    "b",
+    "blockquote",
+    "br",
+    "code",
+    "dd",
+    "del",
+    "details",
+    "div",
+    "dl",
+    "dt",
+    "em",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "hr",
+    "i",
+    "img",
+    "kbd",
+    "li",
+    "ol",
+    "p",
+    "pre",
+    "s",
+    "strike",
+    "strong",
+    "sub",
+    "summary",
+    "sup",
+    "table",
+    "tbody",
+    "td",
+    "tfoot",
+    "th",
+    "thead",
+    "tr",
+    "ul",
+}
+ANNOUNCEMENT_CLASS_BY_TAG = {
+    "blockquote": "announcement-quote",
+    "h1": "announcement-heading",
+    "h2": "announcement-heading",
+    "h3": "announcement-heading",
+    "h4": "announcement-heading",
+    "h5": "announcement-heading",
+    "h6": "announcement-heading",
+    "hr": "announcement-divider",
+    "img": "announcement-image",
+    "ol": "announcement-list",
+    "pre": "announcement-code-block",
+    "table": "announcement-table",
+    "ul": "announcement-list",
+}
+VOID_HTML_TAGS = {"br", "hr", "img"}
 
 
 @dataclass
@@ -71,6 +133,7 @@ class PlannedAsset:
     alt: str
     original_src: str
     download_src: str
+    rendered_href: str
     placeholder: str
 
 
@@ -102,11 +165,24 @@ class IssueImageParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.images: list[dict[str, str]] = []
+        self.link_stack: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        normalized_tag = tag.lower()
+        attr_map = {name.lower(): (value or "").strip() for name, value in attrs}
+        if normalized_tag == "a":
+            self.link_stack.append(attr_map.get("href", ""))
+            return
+        if normalized_tag != "img":
+            return
+        self._append_image(attr_map)
+
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         if tag.lower() != "img":
             return
-        attr_map = {name.lower(): (value or "").strip() for name, value in attrs}
+        self._append_image({name.lower(): (value or "").strip() for name, value in attrs})
+
+    def _append_image(self, attr_map: dict[str, str]) -> None:
         src = attr_map.get("src", "")
         if not src:
             return
@@ -114,8 +190,82 @@ class IssueImageParser(HTMLParser):
             {
                 "src": src,
                 "alt": attr_map.get("alt", ""),
+                "href": self.link_stack[-1] if self.link_stack else "",
             }
         )
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() == "a" and self.link_stack:
+            self.link_stack.pop()
+
+
+class IssueHtmlSanitizer(HTMLParser):
+    def __init__(self, asset_urls_by_src: dict[str, str], asset_urls_by_href: dict[str, str]) -> None:
+        super().__init__(convert_charrefs=False)
+        self.asset_urls_by_src = asset_urls_by_src
+        self.asset_urls_by_href = asset_urls_by_href
+        self.parts: list[str] = []
+        self.open_tags: list[str] = []
+        self.blocked_stack: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        self._handle_starttag(tag, attrs, closed=False)
+
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        self._handle_starttag(tag, attrs, closed=True)
+
+    def handle_endtag(self, tag: str) -> None:
+        normalized_tag = tag.lower()
+        if self.blocked_stack:
+            if normalized_tag == self.blocked_stack[-1]:
+                self.blocked_stack.pop()
+            return
+        if normalized_tag not in ALLOWED_HTML_TAGS or normalized_tag in VOID_HTML_TAGS:
+            return
+        if normalized_tag in self.open_tags:
+            while self.open_tags:
+                open_tag = self.open_tags.pop()
+                self.parts.append(f"</{open_tag}>")
+                if open_tag == normalized_tag:
+                    break
+
+    def handle_data(self, data: str) -> None:
+        if not self.blocked_stack:
+            self.parts.append(html.escape(data, quote=False))
+
+    def handle_entityref(self, name: str) -> None:
+        if not self.blocked_stack:
+            self.parts.append(f"&{name};")
+
+    def handle_charref(self, name: str) -> None:
+        if not self.blocked_stack:
+            self.parts.append(f"&#{name};")
+
+    def handle_comment(self, data: str) -> None:
+        return
+
+    def get_html(self) -> str:
+        while self.open_tags:
+            self.parts.append(f"</{self.open_tags.pop()}>")
+        return "".join(self.parts).strip()
+
+    def _handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]], *, closed: bool) -> None:
+        normalized_tag = tag.lower()
+        if self.blocked_stack:
+            if normalized_tag in BLOCKED_HTML_TAGS:
+                self.blocked_stack.append(normalized_tag)
+            return
+        if normalized_tag in BLOCKED_HTML_TAGS:
+            self.blocked_stack.append(normalized_tag)
+            return
+        if normalized_tag not in ALLOWED_HTML_TAGS:
+            return
+
+        safe_attrs = sanitize_html_attrs(normalized_tag, attrs, self.asset_urls_by_src, self.asset_urls_by_href)
+        attr_text = "".join(f' {name}="{html.escape(value, quote=True)}"' for name, value in safe_attrs)
+        self.parts.append(f"<{normalized_tag}{attr_text}>")
+        if normalized_tag not in VOID_HTML_TAGS and not closed:
+            self.open_tags.append(normalized_tag)
 
 
 def now_iso() -> str:
@@ -124,6 +274,123 @@ def now_iso() -> str:
 
 def get_text(value: Any) -> str:
     return value.strip() if isinstance(value, str) else ""
+
+
+def sanitize_html_attrs(
+    tag: str,
+    attrs: list[tuple[str, str | None]],
+    asset_urls_by_src: dict[str, str],
+    asset_urls_by_href: dict[str, str],
+) -> list[tuple[str, str]]:
+    safe_attrs: list[tuple[str, str]] = []
+    allowed_for_all = {"class", "title", "aria-label", "aria-hidden", "role", "lang", "dir"}
+    allowed_per_tag = {
+        "a": {"href", "name", "rel", "target"},
+        "img": {"alt", "height", "loading", "src", "title", "width"},
+        "table": {"summary"},
+        "td": {"align", "colspan", "rowspan"},
+        "th": {"align", "colspan", "rowspan", "scope"},
+        "details": {"open"},
+    }
+    boolean_attrs = {"open"}
+    for name, value in attrs:
+        attr_name = (name or "").strip().lower()
+        attr_value = get_text(value)
+        if not attr_name:
+            continue
+        if attr_name.startswith("on"):
+            continue
+        if attr_name in boolean_attrs and attr_name in allowed_per_tag.get(tag, set()):
+            safe_attrs.append((attr_name, attr_name))
+            continue
+        if attr_name in allowed_for_all or attr_name in allowed_per_tag.get(tag, set()):
+            if attr_name in {"href", "src"} and not is_safe_html_url(attr_value):
+                continue
+            if tag == "img" and attr_name == "src":
+                attr_value = asset_urls_by_src.get(attr_value, attr_value)
+            if tag == "a" and attr_name == "href":
+                attr_value = asset_urls_by_href.get(attr_value, attr_value)
+            if tag == "a" and attr_name == "rel":
+                attr_value = normalize_rel_value(attr_value)
+            if tag == "a" and attr_name == "target":
+                attr_value = "_blank" if attr_value.lower() == "_blank" else attr_value
+            if not attr_value:
+                continue
+            safe_attrs.append((attr_name, attr_value))
+    if tag == "a":
+        safe_attrs = ensure_link_rel_attrs(safe_attrs)
+    if tag == "img" and not any(name == "loading" for name, _ in safe_attrs):
+        safe_attrs.append(("loading", "lazy"))
+    if tag == "img" and not any(name == "alt" for name, _ in safe_attrs):
+        safe_attrs.append(("alt", "announcement image"))
+    class_name = ANNOUNCEMENT_CLASS_BY_TAG.get(tag)
+    if class_name:
+        class_index = next((index for index, (name, _) in enumerate(safe_attrs) if name == "class"), -1)
+        if class_index >= 0:
+            name, value = safe_attrs[class_index]
+            classes = [part for part in value.split() if part]
+            if class_name not in classes:
+                classes.append(class_name)
+            safe_attrs[class_index] = (name, " ".join(classes))
+        else:
+            safe_attrs.append(("class", class_name))
+    return safe_attrs
+
+
+def normalize_rel_value(value: str) -> str:
+    tokens = []
+    seen: set[str] = set()
+    for token in value.split():
+        lowered = token.strip().lower()
+        if lowered and lowered not in seen:
+            seen.add(lowered)
+            tokens.append(lowered)
+    for required in ("noopener", "noreferrer"):
+        if required not in seen:
+            tokens.append(required)
+            seen.add(required)
+    return " ".join(tokens)
+
+
+def ensure_link_rel_attrs(attrs: list[tuple[str, str]]) -> list[tuple[str, str]]:
+    rel_index = next((index for index, (name, _) in enumerate(attrs) if name == "rel"), -1)
+    if rel_index >= 0:
+        name, value = attrs[rel_index]
+        attrs[rel_index] = (name, normalize_rel_value(value))
+    else:
+        attrs.append(("rel", "noopener noreferrer"))
+    target_index = next((index for index, (name, _) in enumerate(attrs) if name == "target"), -1)
+    if target_index >= 0:
+        name, value = attrs[target_index]
+        attrs[target_index] = (name, "_blank" if value.lower() == "_blank" else value)
+    return attrs
+
+
+def is_safe_html_url(url: str) -> bool:
+    lowered = url.strip().lower()
+    if not lowered:
+        return False
+    if lowered.startswith("//"):
+        return True
+    parsed = urlparse(lowered)
+    if parsed.scheme in {"http", "https"}:
+        return True
+    if parsed.scheme in {"", "mailto"} and not lowered.startswith("javascript:") and not lowered.startswith("data:"):
+        return True
+    return lowered.startswith("/api/contact-ad/assets/")
+
+
+def sanitize_issue_html(
+    content_html: str,
+    asset_urls_by_src: dict[str, str],
+    asset_urls_by_href: dict[str, str] | None = None,
+) -> str:
+    if not content_html.strip():
+        return ""
+    sanitizer = IssueHtmlSanitizer(asset_urls_by_src, asset_urls_by_href or {})
+    sanitizer.feed(content_html)
+    sanitizer.close()
+    return sanitizer.get_html()
 
 
 def parse_rendered_image_urls(body_html: str) -> list[dict[str, str]]:
@@ -153,7 +420,7 @@ def read_cached_status() -> dict[str, Any] | None:
 def manifest_has_content(manifest: dict[str, Any] | None) -> bool:
     if not isinstance(manifest, dict):
         return False
-    return bool(get_text(manifest.get("title")) and get_text(manifest.get("content")))
+    return bool(get_text(manifest.get("title")) and (get_text(manifest.get("content")) or get_text(manifest.get("contentHtml"))))
 
 
 def manifest_updated_at(manifest: dict[str, Any] | None) -> str:
@@ -188,9 +455,12 @@ def should_refresh_cached_manifest(cached_manifest: dict[str, Any] | None, issue
         return True
     title = get_text(cached_manifest.get("title"))
     content = get_text(cached_manifest.get("content"))
-    if not title or not content:
+    content_html = get_text(cached_manifest.get("contentHtml"))
+    if not title or not (content or content_html):
         return True
-    return bool(NON_LOCAL_MARKDOWN_IMAGE_RE.search(content))
+    if not content_html:
+        return True
+    return bool(NON_LOCAL_MARKDOWN_IMAGE_RE.search(content) or NON_LOCAL_HTML_IMAGE_RE.search(content_html))
 
 
 def parse_issue_payload(payload: Any) -> IssuePayload:
@@ -373,7 +643,7 @@ def plan_asset_rewrites(content: str, body_html: str) -> tuple[str, list[Planned
     used_indexes: set[int] = set()
     planned_assets: list[PlannedAsset] = []
 
-    def resolve_download_src(alt: str, original_src: str) -> str:
+    def resolve_rendered_image(alt: str, original_src: str) -> dict[str, str] | None:
         resolved_index = next(
             (
                 index
@@ -385,9 +655,9 @@ def plan_asset_rewrites(content: str, body_html: str) -> tuple[str, list[Planned
         if resolved_index < 0:
             resolved_index = next((index for index in range(len(rendered_images)) if index not in used_indexes), -1)
         if resolved_index < 0:
-            return original_src
+            return None
         used_indexes.add(resolved_index)
-        return get_text(rendered_images[resolved_index].get("src")) or original_src
+        return rendered_images[resolved_index]
 
     def replace(match: re.Match[str]) -> str:
         index = len(planned_assets) + 1
@@ -395,18 +665,41 @@ def plan_asset_rewrites(content: str, body_html: str) -> tuple[str, list[Planned
         original_src = match.group(2).strip()
         alt = alt_text.strip()
         placeholder = f"__OWNER_ANNOUNCEMENT_ASSET_{index}__"
+        rendered_image = resolve_rendered_image(alt, original_src) or {}
         planned_assets.append(
             PlannedAsset(
                 index=index,
                 alt=alt or f"image-{index}",
                 original_src=original_src,
-                download_src=resolve_download_src(alt, original_src),
+                download_src=get_text(rendered_image.get("src")) or original_src,
+                rendered_href=get_text(rendered_image.get("href")),
                 placeholder=placeholder,
             )
         )
         return f"![{alt_text}]({placeholder})"
 
     return MARKDOWN_IMAGE_RE.sub(replace, content), planned_assets
+
+
+def plan_html_asset_rewrites(body_html: str) -> list[PlannedAsset]:
+    planned_assets: list[PlannedAsset] = []
+    for image in parse_rendered_image_urls(body_html):
+        original_src = get_text(image.get("src"))
+        if not original_src or original_src.startswith(OWNER_ANNOUNCEMENT_ASSET_ROUTE_PREFIX):
+            continue
+        index = len(planned_assets) + 1
+        alt = get_text(image.get("alt")) or f"image-{index}"
+        planned_assets.append(
+            PlannedAsset(
+                index=index,
+                alt=alt,
+                original_src=original_src,
+                download_src=original_src,
+                rendered_href=get_text(image.get("href")),
+                placeholder=f"__OWNER_ANNOUNCEMENT_ASSET_{index}__",
+            )
+        )
+    return planned_assets
 
 
 def download_assets(
@@ -443,6 +736,20 @@ def replace_asset_placeholders(content: str, asset_urls: dict[str, str]) -> str:
     return rewritten
 
 
+def build_asset_url_maps(planned_assets: list[PlannedAsset], asset_urls: dict[str, str]) -> tuple[dict[str, str], dict[str, str]]:
+    asset_urls_by_src: dict[str, str] = {}
+    asset_urls_by_href: dict[str, str] = {}
+    for asset in planned_assets:
+        local_url = asset_urls.get(asset.placeholder, "")
+        if not local_url:
+            continue
+        asset_urls_by_src[asset.download_src] = local_url
+        asset_urls_by_src[asset.original_src] = local_url
+        if asset.rendered_href:
+            asset_urls_by_href[asset.rendered_href] = local_url
+    return asset_urls_by_src, asset_urls_by_href
+
+
 def build_manifest_payload(
     issue: IssuePayload,
     *,
@@ -458,19 +765,34 @@ def build_manifest_payload(
         "title": title,
         "updatedAt": updated_at,
         "content": "",
+        "contentHtml": "",
         "sourceUrl": issue.html_url or OWNER_ISSUE_URL,
         "syncedAt": synced_at,
     }
 
-    if not title or not content:
+    if not title or not (content or issue.body_html.strip()):
         return payload
 
-    rewritten_content, planned_assets = plan_asset_rewrites(content, issue.body_html)
+    rewritten_content, markdown_assets = plan_asset_rewrites(content, issue.body_html)
+    html_assets = plan_html_asset_rewrites(issue.body_html)
+    planned_assets = html_assets or markdown_assets
+    planned_assets_by_src = {asset.original_src: asset for asset in planned_assets}
+    asset_urls: dict[str, str] = {}
+    asset_urls_by_src: dict[str, str] = {}
+    asset_urls_by_href: dict[str, str] = {}
     if planned_assets:
         asset_urls = download_assets(session, planned_assets, issue_updated_at=issue.updated_at, target_dir=staging_assets_dir)
-        rewritten_content = replace_asset_placeholders(rewritten_content, asset_urls)
+        asset_urls_by_src, asset_urls_by_href = build_asset_url_maps(planned_assets, asset_urls)
+
+    if markdown_assets:
+        markdown_asset_urls = {
+            asset.placeholder: asset_urls.get(planned_assets_by_src.get(asset.download_src, asset).placeholder, "")
+            for asset in markdown_assets
+        }
+        rewritten_content = replace_asset_placeholders(rewritten_content, markdown_asset_urls)
 
     payload["content"] = rewritten_content
+    payload["contentHtml"] = sanitize_issue_html(issue.body_html, asset_urls_by_src, asset_urls_by_href)
     return payload
 
 

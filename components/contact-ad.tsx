@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Clock, Megaphone, ShieldCheck, X } from "lucide-react";
 
-import { AnnouncementMarkdown } from "@/components/announcement-markdown";
+import { AnnouncementContent } from "@/components/announcement-markdown";
 
 const CONFIG_URL = "/api/contact-ad";
 const STORAGE_KEY = "api-relay-rank-contact-ad-dismissal";
@@ -27,6 +27,7 @@ type ContactAdConfig = {
   title: string;
   updatedAt: string;
   content: string;
+  contentHtml: string;
   sourceUrl: string;
 };
 
@@ -46,9 +47,10 @@ function normalizeConfig(value: unknown): ContactAdConfig | null {
   const title = getString(value.title);
   const updatedAt = getString(value.updatedAt);
   const content = getString(value.content);
+  const contentHtml = getString(value.contentHtml);
   const sourceUrl = getString(value.sourceUrl);
 
-  if (!title || !content) {
+  if (!title || (!content && !contentHtml)) {
     return null;
   }
 
@@ -56,6 +58,7 @@ function normalizeConfig(value: unknown): ContactAdConfig | null {
     title,
     updatedAt,
     content,
+    contentHtml,
     sourceUrl,
   };
 }
@@ -245,7 +248,7 @@ export function ContactAdProvider({ children }: { children: ReactNode }) {
             {announcementConfig ? (
               <>
                 <div className="contact-ad-body">
-                  <AnnouncementMarkdown content={announcementConfig.content} className="contact-ad-markdown" />
+                  <AnnouncementContent content={announcementConfig.content} contentHtml={announcementConfig.contentHtml} className="contact-ad-markdown" />
                 </div>
               </>
             ) : (

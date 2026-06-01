@@ -72,9 +72,9 @@ python scripts/refresh_quality_rankings.py --full-log-rebuild
   - `manifest.json` 保存标题、更新时间、正文和来源链接。
   - `assets/` 保存公告正文中图片下载后的本地副本。
 - 同步脚本是 `scripts/refresh_owner_announcement.py`。刷新判断只看远端 issue 的 `updated_at` 与本地 `manifest.json` 里的 `updatedAt`；未变化时直接跳过，避免重复下载图片。
-- 公告元数据口径固定为：`title = issue.title`、`updatedAt = issue.updated_at`、`content = issue.body`。如果 issue 正文以 `---` 开头，也按普通 Markdown 原样保留，不再做 frontmatter 解析。
-- 公告图片不直接引用 GitHub 外链。脚本会用 issue 的 `body_html` 解析实际渲染出来的图片地址，先下载到本地 `data/_owner_announcement/assets/`，再把 Markdown 图片链接改写成站内 `/api/contact-ad/assets/...`。
-- 本地 API `/api/contact-ad` 只负责读取 `manifest.json`；若本地缓存缺失、标题为空或正文为空，则返回空公告，由前端进入空态展示。
+- 公告元数据口径固定为：`title = issue.title`、`updatedAt = issue.updated_at`、`content = issue.body`、`contentHtml = sanitize(issue.body_html)`。如果 issue 正文以 `---` 开头，也按普通 Markdown 原样保留，不再做 frontmatter 解析。
+- 公告图片不直接引用 GitHub 外链。脚本会用 issue 的 `body_html` 解析实际渲染出来的图片地址，先下载到本地 `data/_owner_announcement/assets/`，再把 HTML 里的图片链接改写成站内 `/api/contact-ad/assets/...`。
+- 本地 API `/api/contact-ad` 只负责读取 `manifest.json`；若本地缓存缺失、标题为空或正文/HTML 为空，则返回空公告，由前端进入空态展示。
 - issue 正文为空时，不会触发首次自动弹窗；但右上角“消息通知”入口仍保留，用户手动打开时应看到“暂无公告”。
 - `manifest.json` 和 `assets/` 都属于运行时缓存，不手工编辑；需要更新内容时，只改 GitHub issue 正文，再让脚本同步。
 

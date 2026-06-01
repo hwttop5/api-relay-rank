@@ -1,6 +1,6 @@
 import { CalendarDays, ExternalLink, Info, ListOrdered } from "lucide-react";
 
-import { AnnouncementMarkdown, renderInlineAnnouncementText } from "@/components/announcement-markdown";
+import { AnnouncementContent, renderInlineAnnouncementText } from "@/components/announcement-markdown";
 import { formatDateTime } from "@/lib/format";
 import type { AnnouncementRow } from "@/lib/types";
 
@@ -34,7 +34,7 @@ export function AnnouncementFeed({ announcements, emptyText = "暂未抓到公�
               {formatDateTime(announcement.publishedAt)}
             </span>
           </div>
-          <AnnouncementMarkdown content={announcement.content} />
+          <AnnouncementContent content={announcement.content} contentHtml={announcement.contentHtml} />
           <div className="footer-note" style={{ marginTop: 10 }}>
             {announcement.sourceUrl ? (
               <a href={announcement.sourceUrl} target="_blank" rel="noreferrer" className="inline-actions station-link">

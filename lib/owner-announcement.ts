@@ -8,6 +8,7 @@ export interface OwnerAnnouncement {
   title: string;
   updatedAt: string;
   content: string;
+  contentHtml: string;
   sourceUrl: string;
 }
 
@@ -49,6 +50,7 @@ function getDisabledAnnouncement(sourceUrl = OWNER_ISSUE_URL): OwnerAnnouncement
     title: "",
     updatedAt: "",
     content: "",
+    contentHtml: "",
     sourceUrl,
   };
 }
@@ -78,8 +80,9 @@ function normalizeStoredAnnouncement(value: unknown): OwnerAnnouncement {
   const title = getString(payload.title);
   const updatedAt = getString(payload.updatedAt);
   const content = getString(payload.content);
+  const contentHtml = getString(payload.contentHtml);
 
-  if (!title || !content) {
+  if (!title || (!content && !contentHtml)) {
     return getDisabledAnnouncement(sourceUrl);
   }
 
@@ -87,6 +90,7 @@ function normalizeStoredAnnouncement(value: unknown): OwnerAnnouncement {
     title,
     updatedAt,
     content,
+    contentHtml,
     sourceUrl,
   };
 }

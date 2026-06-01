@@ -1234,6 +1234,21 @@ select:focus-visible {
   max-width: 100%;
 }
 
+.contact-ad-markdown.announcement-content-html .announcement-image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin-inline: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.contact-ad-markdown.announcement-content-html a:has(> .announcement-image) {
+  display: inline-block;
+  max-width: 100%;
+}
+
 .contact-ad-markdown .announcement-table-wrap {
   overflow-x: visible;
 }
@@ -1758,6 +1773,21 @@ select:focus-visible {
   border: 1px solid var(--border);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.04);
+}
+
+.announcement-content-html .announcement-image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin-inline: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.announcement-content-html a:has(> .announcement-image) {
+  display: inline-block;
+  max-width: 100%;
 }
 
 .announcement-content a,

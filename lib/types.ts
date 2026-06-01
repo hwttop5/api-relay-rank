@@ -100,6 +100,7 @@ export interface AnnouncementRow {
   type: string;
   extra: string;
   content: string;
+  contentHtml?: string;
   sourceUrl: string;
 }
 

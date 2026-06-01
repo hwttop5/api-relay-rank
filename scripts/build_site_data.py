@@ -450,12 +450,15 @@ def announcement_dedupe_fingerprint(value: Any) -> str:
 
 def announcement_quality_score(item: dict[str, Any], normalized_content: str) -> tuple[int, int, int]:
     content = str(item.get("content") or "")
+    content_html = str(item.get("contentHtml") or "")
     has_markdown_image = int("[![" in normalized_content or "![" in normalized_content)
     has_markdown_link = int(bool(re.search(r"\[[^\]]+\]\((https?://[^)\s]+)\)", normalized_content)))
+    has_html = int(bool(content_html))
+    has_html_image = int(bool(re.search(r"<img\b", content_html, flags=re.IGNORECASE)))
     return (
-        has_markdown_image * 10 + has_markdown_link * 5,
+        has_html * 20 + has_html_image * 10 + has_markdown_image * 10 + has_markdown_link * 5,
         len(normalized_content),
-        len(content),
+        len(content) + len(content_html),
     )
 
 
@@ -1108,6 +1111,7 @@ def load_announcements(status_payloads: dict[str, dict[str, Any]]) -> dict[str, 
             content = normalize_announcement_text(item.get("content"))
             if not content:
                 continue
+            content_html = str(item.get("contentHtml") or "").strip()
             rows.append(
                 {
                     "id": str(item.get("id") or index),
@@ -1124,6 +1128,7 @@ def load_announcements(status_payloads: dict[str, dict[str, Any]]) -> dict[str, 
                     "type": normalize_announcement_text(item.get("type") or "default"),
                     "extra": normalize_announcement_text(item.get("extra")),
                     "content": content,
+                    **({"contentHtml": content_html} if content_html else {}),
                     "sourceUrl": source_url,
                 }
             )
@@ -2061,6 +2066,9 @@ def merge_announcements(existing: list[dict[str, Any]], incoming: list[dict[str,
         normalized_item = dict(item)
         if normalized_content and normalized_content != str(item.get("content") or ""):
             normalized_item["content"] = normalized_content
+        content_html = str(item.get("contentHtml") or "").strip()
+        if content_html:
+            normalized_item["contentHtml"] = content_html
 
         current = merged_map.get(key)
         if current is None:
@@ -2424,6 +2432,7 @@ def normalized_announcement_rows(rows: Any) -> list[dict[str, Any]]:
                 "type": normalize_announcement_text(item.get("type") or "default"),
                 "extra": normalize_announcement_text(item.get("extra") or ""),
                 "content": content,
+                **({"contentHtml": str(item.get("contentHtml") or "").strip()} if str(item.get("contentHtml") or "").strip() else {}),
                 "sourceUrl": sanitize_public_text(item.get("sourceUrl")),
             }
         )

@@ -10,7 +10,8 @@ from scripts import refresh_owner_announcement as owner_announcement
 
 
 class DummySession:
-    pass
+    def get(self, url: str, **_kwargs):
+        return DummyAssetResponse(url)
 
 
 class DummyResponse:
@@ -23,6 +24,16 @@ class DummyResponse:
         if isinstance(self._payload, Exception):
             raise self._payload
         return self._payload
+
+
+class DummyAssetResponse:
+    def __init__(self, url: str) -> None:
+        self.url = url
+        self.headers = {"content-type": "image/jpeg"}
+        self.content = f"image:{url}".encode("utf-8")
+
+    def raise_for_status(self) -> None:
+        return
 
 
 class RefreshOwnerAnnouncementTests(unittest.TestCase):
@@ -46,6 +57,7 @@ class RefreshOwnerAnnouncementTests(unittest.TestCase):
         self.assertEqual(payload["title"], "GPT Plus 公告")
         self.assertEqual(payload["updatedAt"], "2026-05-28T01:23:45Z")
         self.assertEqual(payload["content"], "站长补贴服务器：GPT Plus 账号需求可联系。\n\n## 联系方式")
+        self.assertEqual(payload["contentHtml"], "")
         self.assertEqual(payload["sourceUrl"], "https://github.com/hwttop5/github-actions/issues/1")
 
     def test_build_manifest_payload_does_not_strip_leading_frontmatter_like_text(self) -> None:
@@ -90,20 +102,66 @@ class RefreshOwnerAnnouncementTests(unittest.TestCase):
         self.assertEqual(planned_assets[0].download_src, "https://private-user-images.githubusercontent.com/tg.png?token=1")
         self.assertEqual(planned_assets[1].download_src, "https://private-user-images.githubusercontent.com/qq.png?token=2")
 
+    def test_build_manifest_payload_sanitizes_html_and_localizes_images(self) -> None:
+        issue = owner_announcement.IssuePayload(
+            title="GPT Plus 公告",
+            body="**站长赚钱买服务器**\n\n<img alt=\"Image\" src=\"https://github.com/user-attachments/assets/demo\" />",
+            body_html=(
+                '<p dir="auto"><strong>站长赚钱买服务器</strong></p>'
+                '<details open><summary>更多</summary><table><tbody><tr><td>价格</td></tr></tbody></table></details>'
+                '<a target="_blank" href="https://private-user-images.githubusercontent.com/demo.jpg?token=1">'
+                '<img width="1505" alt="Image" src="https://private-user-images.githubusercontent.com/demo.jpg?token=1" onerror="alert(1)" style="max-width:100%">'
+                "</a>"
+                '<script>alert(1)</script><a href="javascript:alert(1)">bad</a><iframe src="https://example.com"></iframe>'
+            ),
+            updated_at="2026-06-01T11:06:21Z",
+            html_url="https://github.com/hwttop5/github-actions/issues/1",
+        )
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            payload = owner_announcement.build_manifest_payload(
+                issue,
+                synced_at="2026-06-01T11:30:00Z",
+                session=DummySession(),
+                staging_assets_dir=Path(tmp_dir),
+            )
+            assets = list(Path(tmp_dir).iterdir())
+
+        self.assertEqual(len(assets), 1)
+        self.assertIn("/api/contact-ad/assets/01-image-", payload["contentHtml"])
+        self.assertIn('<details open="open">', payload["contentHtml"])
+        self.assertIn('class="announcement-table"', payload["contentHtml"])
+        self.assertIn('class="announcement-image"', payload["contentHtml"])
+        self.assertIn('href="/api/contact-ad/assets/01-image-', payload["contentHtml"])
+        self.assertNotIn("onerror", payload["contentHtml"])
+        self.assertNotIn("style=", payload["contentHtml"])
+        self.assertNotIn("javascript:", payload["contentHtml"])
+        self.assertNotIn("<script", payload["contentHtml"])
+        self.assertNotIn("<iframe", payload["contentHtml"])
+
     def test_should_refresh_cached_manifest_only_when_needed(self) -> None:
         local_manifest = {
             "title": "消息通知",
             "updatedAt": "2026-05-27T12:00:00Z",
             "content": "![二维码](/api/contact-ad/assets/01-image-demo.png)",
+            "contentHtml": '<p><img src="/api/contact-ad/assets/01-image-demo.png" class="announcement-image"></p>',
         }
         remote_manifest = {
             "title": "消息通知",
             "updatedAt": "2026-05-27T12:00:00Z",
             "content": "![二维码](https://github.com/user-attachments/assets/demo)",
+            "contentHtml": '<p><img src="/api/contact-ad/assets/01-image-demo.png" class="announcement-image"></p>',
+        }
+        remote_html_manifest = {
+            "title": "消息通知",
+            "updatedAt": "2026-05-27T12:00:00Z",
+            "content": "二维码",
+            "contentHtml": '<p><img src="https://github.com/user-attachments/assets/demo"></p>',
         }
 
         self.assertFalse(owner_announcement.should_refresh_cached_manifest(local_manifest, "2026-05-27T12:00:00Z"))
         self.assertTrue(owner_announcement.should_refresh_cached_manifest(remote_manifest, "2026-05-27T12:00:00Z"))
+        self.assertTrue(owner_announcement.should_refresh_cached_manifest(remote_html_manifest, "2026-05-27T12:00:00Z"))
         self.assertTrue(owner_announcement.should_refresh_cached_manifest(local_manifest, "2026-05-27T12:05:00Z"))
 
     def test_fetch_issue_payload_reports_anonymous_rate_limit_failure(self) -> None:
