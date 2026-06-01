@@ -1,5 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "npm install",
-  "buildCommand": "npm run build"
+  "buildCommand": "npm run build",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://apirank.ttop5.cc",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://apirank.ttop5.cc/:path*",
+      "permanent": true
+    }
+  ]
 }
