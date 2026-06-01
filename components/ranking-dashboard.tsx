@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
-import { ChevronDown, ChevronRight, ExternalLink } from "lucide-react";
+import { ChevronDown, ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 
 import { formatMultiplier, formatPercent, formatScore, formatSeconds } from "@/lib/format";
 import type { RankingRow, SiteData, SortMode, TimeWindow } from "@/lib/types";
@@ -30,6 +30,8 @@ const TYPE_OPTIONS = [
   { key: "non_subscription", label: "非包月型" },
   { key: "mixed", label: "混合型" }
 ] as const;
+
+const PAGE_SIZE_OPTIONS = [10, 20, 50, 100] as const;
 
 type TypeFilter = (typeof TYPE_OPTIONS)[number]["key"];
 
@@ -96,6 +98,83 @@ function MobileDetail({ label, value }: { label: string; value: ReactNode }) {
     <div className="mobile-detail-row">
       <div className="mobile-detail-label">{label}</div>
       <div className="mobile-detail-value">{value}</div>
+    </div>
+  );
+}
+
+function PageButton({
+  children,
+  disabled,
+  label,
+  onClick,
+}: {
+  children: ReactNode;
+  disabled: boolean;
+  label: string;
+  onClick: () => void;
+}) {
+  return (
+    <button type="button" className="table-page-button" disabled={disabled} aria-label={label} onClick={onClick}>
+      {children}
+    </button>
+  );
+}
+
+function TablePagination({
+  ariaLabel,
+  currentPage,
+  displayEnd,
+  displayStart,
+  onPageChange,
+  onPageSizeChange,
+  pageCount,
+  pageSize,
+  totalRows,
+}: {
+  ariaLabel: string;
+  currentPage: number;
+  displayEnd: number;
+  displayStart: number;
+  onPageChange: (page: number) => void;
+  onPageSizeChange: (pageSize: number) => void;
+  pageCount: number;
+  pageSize: number;
+  totalRows: number;
+}) {
+  return (
+    <div className="table-pagination" aria-label={ariaLabel}>
+      <div className="table-page-meta">
+        <span>
+          第 {currentPage} / {pageCount} 页
+        </span>
+        <span>
+          显示 {displayStart}-{displayEnd} / {totalRows} 条
+        </span>
+      </div>
+      <div className="table-page-controls">
+        <PageButton label="第一页" disabled={currentPage <= 1} onClick={() => onPageChange(1)}>
+          <ChevronFirst size={15} />
+        </PageButton>
+        <PageButton label="上一页" disabled={currentPage <= 1} onClick={() => onPageChange(Math.max(1, currentPage - 1))}>
+          <ChevronLeft size={15} />
+        </PageButton>
+        <PageButton label="下一页" disabled={currentPage >= pageCount} onClick={() => onPageChange(Math.min(pageCount, currentPage + 1))}>
+          <ChevronRight size={15} />
+        </PageButton>
+        <PageButton label="最后一页" disabled={currentPage >= pageCount} onClick={() => onPageChange(pageCount)}>
+          <ChevronLast size={15} />
+        </PageButton>
+      </div>
+      <label className="table-page-size">
+        <span>每页显示</span>
+        <select aria-label="每页显示" className="toolbar-select" value={pageSize} onChange={(event) => onPageSizeChange(Number(event.target.value))}>
+          {PAGE_SIZE_OPTIONS.map((option) => (
+            <option key={option} value={option}>
+              {option} 条
+            </option>
+          ))}
+        </select>
+      </label>
     </div>
   );
 }
@@ -424,6 +503,10 @@ export function RankingDashboard({ data }: { data: SiteData }) {
   const [timeWindow, setTimeWindow] = useState<TimeWindow>(data.defaultTimeWindow);
   const [sortMode, setSortMode] = useState<SortMode>(data.defaultSort);
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("all");
+  const [rankingPageSize, setRankingPageSize] = useState(10);
+  const [rankingCurrentPage, setRankingCurrentPage] = useState(1);
+  const [registryPageSize, setRegistryPageSize] = useState(10);
+  const [registryCurrentPage, setRegistryCurrentPage] = useState(1);
 
   const stationMap = useMemo(() => new Map(data.stations.map((station) => [station.key, station])), [data.stations]);
   const unrankedStations = useMemo(() => {
@@ -441,6 +524,30 @@ export function RankingDashboard({ data }: { data: SiteData }) {
     filtered.sort((a, b) => compareByMode(a, b, sortMode));
     return filtered;
   }, [data.rankings, sortMode, timeWindow, typeFilter]);
+
+  useEffect(() => {
+    setRankingCurrentPage(1);
+  }, [rankingPageSize, sortMode, timeWindow, typeFilter]);
+
+  useEffect(() => {
+    setRegistryCurrentPage(1);
+  }, [registryPageSize, unrankedStations.length]);
+
+  const rankingPageCount = Math.max(1, Math.ceil(activeRows.length / rankingPageSize));
+  const safeRankingCurrentPage = Math.min(rankingCurrentPage, rankingPageCount);
+  const rankingPageStartIndex = (safeRankingCurrentPage - 1) * rankingPageSize;
+  const rankingPageEndIndex = Math.min(rankingPageStartIndex + rankingPageSize, activeRows.length);
+  const paginatedRankingRows = activeRows.slice(rankingPageStartIndex, rankingPageEndIndex);
+  const rankingDisplayStart = activeRows.length > 0 ? rankingPageStartIndex + 1 : 0;
+  const rankingDisplayEnd = activeRows.length > 0 ? rankingPageEndIndex : 0;
+
+  const registryPageCount = Math.max(1, Math.ceil(unrankedStations.length / registryPageSize));
+  const safeRegistryCurrentPage = Math.min(registryCurrentPage, registryPageCount);
+  const registryPageStartIndex = (safeRegistryCurrentPage - 1) * registryPageSize;
+  const registryPageEndIndex = Math.min(registryPageStartIndex + registryPageSize, unrankedStations.length);
+  const paginatedUnrankedStations = unrankedStations.slice(registryPageStartIndex, registryPageEndIndex);
+  const registryDisplayStart = unrankedStations.length > 0 ? registryPageStartIndex + 1 : 0;
+  const registryDisplayEnd = unrankedStations.length > 0 ? registryPageEndIndex : 0;
 
   const rankedCount = data.rankedStationCount[timeWindow];
   const selectedTypeLabel = TYPE_OPTIONS.find((option) => option.key === typeFilter)?.label ?? "全部类型";
@@ -536,11 +643,11 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {activeRows.map((row, index) => {
+                    {paginatedRankingRows.map((row, index) => {
                       const stationMeta = stationMap.get(row.station);
                       return (
                         <tr key={`${row.station}-${row.rank}`}>
-                          <td className="mono">{index + 1}</td>
+                          <td className="mono">{rankingPageStartIndex + index + 1}</td>
                           <td>
                             <div className="table-cell-stack">
                               <Link href={`/stations/${row.station}`} className="station-link">
@@ -578,11 +685,25 @@ export function RankingDashboard({ data }: { data: SiteData }) {
               </div>
             </div>
             <div className="mobile-card-list mobile-card-list-ranking">
-              {activeRows.map((row, index) => {
+              {paginatedRankingRows.map((row, index) => {
                 const stationMeta = stationMap.get(row.station);
-                return <MobileRankingCard key={`${row.station}-${row.rank}`} row={row} index={index} stationMeta={stationMeta} />;
+                return <MobileRankingCard key={`${row.station}-${row.rank}`} row={row} index={rankingPageStartIndex + index} stationMeta={stationMeta} />;
               })}
             </div>
+            <TablePagination
+              ariaLabel="正式综合排名分页"
+              currentPage={safeRankingCurrentPage}
+              displayEnd={rankingDisplayEnd}
+              displayStart={rankingDisplayStart}
+              onPageChange={setRankingCurrentPage}
+              onPageSizeChange={(value) => {
+                setRankingPageSize(value);
+                setRankingCurrentPage(1);
+              }}
+              pageCount={rankingPageCount}
+              pageSize={rankingPageSize}
+              totalRows={activeRows.length}
+            />
             <div className="footer-note">
               当前时段：{selectedTimeWindow.label}（{selectedTimeWindow.range}） · 排序：{SORT_OPTIONS.find((option) => option.value === sortMode)?.label} · 类型筛选：
               {selectedTypeLabel}
@@ -629,7 +750,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {unrankedStations.map((station) => {
+                    {paginatedUnrankedStations.map((station) => {
                       const allSamples = getSampleCount(station, "all_hours");
                       const unrankedReason = getUnrankedReason(station);
                       const lowestMultiplier = getLowestUnrankedMultiplier(station);
@@ -665,10 +786,24 @@ export function RankingDashboard({ data }: { data: SiteData }) {
               </div>
             </div>
             <div className="mobile-card-list mobile-card-list-stations">
-              {unrankedStations.map((station) => (
+              {paginatedUnrankedStations.map((station) => (
                 <MobileStationCard key={station.key} station={station} />
               ))}
             </div>
+            <TablePagination
+              ariaLabel="未纳入正式排名的收录站点分页"
+              currentPage={safeRegistryCurrentPage}
+              displayEnd={registryDisplayEnd}
+              displayStart={registryDisplayStart}
+              onPageChange={setRegistryCurrentPage}
+              onPageSizeChange={(value) => {
+                setRegistryPageSize(value);
+                setRegistryCurrentPage(1);
+              }}
+              pageCount={registryPageCount}
+              pageSize={registryPageSize}
+              totalRows={unrankedStations.length}
+            />
           </div>
         </section>
     </AppShell>
