@@ -1,0 +1,196 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":true}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true,\"risk\":true}}",
+    "announcements": [
+      {
+        "content": "首 Token 响应慢的用户可以打开或者关闭梯子试试，链接也有两个可以切换试试。",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-06-02T09:16:59.047Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "Claude API 官方服务不稳定，需要Claude模型的可以晚点再试",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-06-02T08:56:22.522Z",
+        "type": "warning"
+      },
+      {
+        "content": "OpenAI 提升账号风控警告，本站 自建的 Plus 号池目前可用，若需要稳定请切 default 分组使用",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-06-02T07:16:31.605Z",
+        "type": "warning"
+      },
+      {
+        "content": "Plus 分组已恢复",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-06-01T06:15:49.047Z",
+        "type": "success"
+      },
+      {
+        "content": "平台新增 Gemini 分组，欢迎体验！",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-06-01T03:40:24.805Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "由于 Claude 模型的特殊性，现上线四款不同分组的 Claude 模型，从倍率排序低到高分别为：Claude-Kiro 分组(逆向 kiro)，Claude-Antigravity 分组(逆向Antigravity)，Claude-Max 分组(逆向 CCMAX，仅限于 CC 使用),Claude-API 分组(官方满血 API)",
+        "extra": "上线 Claude",
+        "id": 4,
+        "publishDate": "2026-05-30T12:31:26.278Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "已获得周体验订阅的用户，请尽快登录 dddAI 开始使用。周体验订阅有有效期限制，过期后权益将自动失效，建议你尽早体验模型调用、控制台和相关功能。",
+        "extra": "周体验订阅使用提醒",
+        "id": 3,
+        "publishDate": "2026-05-30T10:36:32.797Z",
+        "type": "default"
+      },
+      {
+        "content": "<b>默认 Pro 号池：0.24 倍率</b><br><b>Plus 性价比组：0.12 倍率</b><br><br>充值 <b>¥1 = $1 余额</b>，模型按官方美元价计费。<br>按 <b>$1 ≈ ¥7</b> 估算：<br><br>默认 Pro 号池约 <b>2 毛 4</b>，可使用约 <b>7 元官方模型额度</b>；<br>Plus 性价比组约 <b>1 毛 2</b>，可使用约 <b>7 元官方模型额度</b>。<br><br>余额和扣费均按美元显示，无需再换算<br><b>充值倍率 × 分组倍率 × 汇率</b>，价格透明直观。",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-05-30T06:21:39.515Z",
+        "type": "success"
+      },
+      {
+        "content": "前100位新注册用户赠送订阅周体验卡，钱包-订阅查看！",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-05-29T16:24:15.859Z",
+        "type": "ongoing"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "green",
+        "description": "主要",
+        "id": 1,
+        "route": "主要线路",
+        "url": "https://api.dddai.dev/v1"
+      },
+      {
+        "color": "cyan",
+        "description": "备用",
+        "id": 2,
+        "route": "备用线路",
+        "url": "https://dddai.dev/v1"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "$",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://docs.dddai.dev",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "如需退款，可联系售后、群主或技术人员私聊处理。\n\n退款金额将根据 **实际充值金额** 按 **剩余未使用额度比例** 计算后退还。",
+        "id": 1,
+        "question": "如何退款？"
+      },
+      {
+        "answer": "使用过程中如遇问题，可联系技术支持协助处理：\n\n- QQ 群：[261976359](https://qun.qq.com/universal-share/share?ac=1&authKey=9AZy0osb%2B7ArkwCYco0pJfZ%2FA5n4QtQdxHNQmQxxKkUhhNhqk%2Bmuvm9KxEEMzcGB&busi_data=eyJncm91cENvZGUiOiIyNjE5NzYzNTkiLCJ0b2tlbiI6ImNHc2ZKSS8xYk56Q1hQcDRNeWVxTzRPTy9iK3BLbzBjVC9DaVluVHBubnNUWThDdnBuRnhvcmNvS3hwTTBFZHEiLCJ1aW4iOiIyMTIwNTUyMjA2In0%3D&data=hXYzcVI7AjYyBZGsSaC6CRZrRVLLIv-p1QUd13n8PbGjSOrDj48Nmtp4sQji3PIC_n19pGbZ6jxdSqP0b7fryQ&svctype=4&tempid=h5_group_info)",
+        "id": 2,
+        "question": "如何联系技术支持？"
+      },
+      {
+        "answer": "API 密钥 -> 聊天（旁边选项）-> CCSwitch\n\n⚠️注意：OpenAI 模型需要手动添加 /v1",
+        "id": 3,
+        "question": "怎么导入 CC Switch"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://r2.dddai.dev/ai/dddAI_logo.png",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "dddAI",
+    "passkey_login": true,
+    "passkey_origins": "https://dddai.dev",
+    "passkey_rp_id": "dddai.dev",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
+    "price": 1,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "register_enabled": true,
+    "self_use_mode_enabled": false,
+    "server_address": "https://dddai.dev",
+    "setup": true,
+    "start_time": 1780408153,
+    "stripe_unit_price": 8,
+    "system_name": "dddAI",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "default",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": false,
+    "version": "",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

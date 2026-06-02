@@ -2,28 +2,31 @@
   "auto_groups": [],
   "data": [
     {
-      "model_name": "gpt-5.2",
+      "model_name": "gpt-5.4-openai-compact",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 0.875,
+      "model_ratio": 1.25,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
+      "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "CodeX专用-企业专供",
-        "CodeX专用-Pro号池-稳定",
         "CodeX专用-Plus号池",
         "default",
         "vip",
-        "测试分组"
+        "视觉生成专用",
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定"
       ],
       "supported_endpoint_types": [
         "openai"
-      ]
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
-      "model_name": "gpt-5.3-codex",
+      "model_name": "gpt-5.3-codex-spark-openai-compact",
+      "icon": "OpenAI",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 0.875,
@@ -33,7 +36,7 @@
       "cache_ratio": 0.1,
       "enable_groups": [
         "vip",
-        "测试分组",
+        "视觉生成专用",
         "CodeX专用-企业专供",
         "CodeX专用-Pro号池-稳定",
         "CodeX专用-Plus号池",
@@ -54,12 +57,53 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
         "CodeX专用-Plus号池",
         "default",
         "vip",
+        "视觉生成专用"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt‑5.3‑codex‑openai‑compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "视觉生成专用",
+        "CodeX专用-Pro号池-稳定",
         "测试分组",
         "CodeX专用-企业专供",
-        "CodeX专用-Pro号池-稳定"
+        "CodeX专用-Plus号池",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.02,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
+        "default",
+        "vip",
+        "视觉生成专用"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -75,12 +119,77 @@
       "completion_ratio": 8,
       "cache_ratio": 0.1,
       "enable_groups": [
+        "default",
+        "vip",
+        "视觉生成专用",
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "视觉生成专用",
+        "测试分组",
         "CodeX专用-企业专供",
         "CodeX专用-Pro号池-稳定",
         "CodeX专用-Plus号池",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "CodeX专用-Plus号池",
         "default",
         "vip",
-        "测试分组"
+        "视觉生成专用",
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt‑5.4‑openai‑compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "CodeX专用-Plus号池",
+        "default",
+        "视觉生成专用",
+        "CodeX专用-Pro号池-稳定",
+        "测试分组",
+        "CodeX专用-企业专供"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -96,12 +205,13 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
+        "测试分组",
         "CodeX专用-企业专供",
         "CodeX专用-Pro号池-稳定",
         "CodeX专用-Plus号池",
         "default",
         "vip",
-        "测试分组"
+        "视觉生成专用"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -118,12 +228,13 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1,
       "enable_groups": [
+        "测试分组",
         "CodeX专用-企业专供",
         "CodeX专用-Pro号池-稳定",
         "CodeX专用-Plus号池",
         "default",
         "vip",
-        "测试分组"
+        "视觉生成专用"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -139,51 +250,50 @@
       "completion_ratio": 8,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "CodeX专用-企业专供",
         "CodeX专用-Pro号池-稳定",
         "CodeX专用-Plus号池",
         "default",
         "vip",
-        "测试分组"
+        "视觉生成专用",
+        "CodeX专用-企业专供"
       ],
       "supported_endpoint_types": [
         "openai"
       ]
     },
     {
-      "model_name": "gpt-image-2",
-      "vendor_id": 1,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.02,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "default",
-        "vip",
-        "测试分组",
-        "CodeX专用-企业专供",
-        "CodeX专用-Pro号池-稳定",
-        "CodeX专用-Plus号池"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5-openai-compact",
+      "model_name": "gpt-5.3-openai-compact",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "视觉生成专用",
+        "CodeX专用-Pro号池-稳定",
+        "测试分组",
+        "CodeX专用-企业专供",
+        "CodeX专用-Plus号池",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini-openai-compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
-      "cache_ratio": 0.1,
       "enable_groups": [
-        "CodeX专用-Pro号池-稳定",
         "CodeX专用-Plus号池",
         "default",
-        "vip",
+        "视觉生成专用",
+        "CodeX专用-Pro号池-稳定",
         "测试分组",
         "CodeX专用-企业专供"
       ],
@@ -192,50 +302,47 @@
       ]
     },
     {
-      "model_name": "gpt-5.4",
+      "model_name": "gpt‑5.4‑mini‑openai‑compact",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 1.25,
+      "model_ratio": 37.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
+      "completion_ratio": 1,
       "enable_groups": [
-        "CodeX专用-企业专供",
+        "default",
+        "视觉生成专用",
         "CodeX专用-Pro号池-稳定",
-        "CodeX专用-Plus号池",
-        "default",
-        "vip",
-        "测试分组"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-openai-compact",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "CodeX专用-Plus号池",
-        "default",
-        "vip",
         "测试分组",
         "CodeX专用-企业专供",
-        "CodeX专用-Pro号池-稳定"
+        "CodeX专用-Plus号池"
       ],
       "supported_endpoint_types": [
         "openai"
       ]
     },
     {
-      "model_name": "gpt-5.3-codex-spark-openai-compact",
-      "icon": "OpenAI",
+      "model_name": "gpt‑5.5‑openai‑compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "CodeX专用-Plus号池",
+        "default",
+        "视觉生成专用",
+        "CodeX专用-Pro号池-稳定",
+        "测试分组",
+        "CodeX专用-企业专供"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 0.875,
@@ -244,12 +351,34 @@
       "completion_ratio": 8,
       "cache_ratio": 0.1,
       "enable_groups": [
+        "CodeX专用-企业专供",
+        "CodeX专用-Pro号池-稳定",
+        "CodeX专用-Plus号池",
         "default",
         "vip",
+        "视觉生成专用"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "视觉生成专用",
         "测试分组",
         "CodeX专用-企业专供",
         "CodeX专用-Pro号池-稳定",
-        "CodeX专用-Plus号池"
+        "CodeX专用-Plus号池",
+        "default",
+        "vip"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -259,7 +388,8 @@
   "group_ratio": {
     "CodeX专用-Plus号池": 0.8,
     "CodeX专用-Pro号池-稳定": 0.8,
-    "CodeX专用-企业专供": 3
+    "CodeX专用-企业专供": 3,
+    "视觉生成专用": 0.8
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
@@ -275,47 +405,15 @@
   },
   "usable_group": {
     "CodeX专用-Plus号池": "CodeX专用-自建Plus订阅号池，满血，无场景限制，默认使用Pro分组，有优惠渠道重新调整优惠",
-    "CodeX专用-Pro号池-稳定": "CodeX专用-自建Pro订阅号池，满血，无场景限制，支持gpt-image-2、OpenClew、Hermes",
-    "CodeX专用-企业专供": "CodeX专用-企业专供-自建Plus、Pro订阅号池，满血，无场景限制、支持OpenClew、Hermes"
+    "CodeX专用-Pro号池-稳定": "CodeX专用-自建Pro订阅号池，满血，无场景限制，支持OpenClew、Hermes",
+    "CodeX专用-企业专供": "CodeX专用-企业专供-自建Plus、Pro订阅号池，满血，无场景限制、支持OpenClew、Hermes",
+    "视觉生成专用": "自建Pro订阅号池，支持gpt-image-2"
   },
   "vendors": [
-    {
-      "id": 5,
-      "name": "QiHang"
-    },
-    {
-      "id": 6,
-      "name": "SAP AI Core"
-    },
-    {
-      "id": 9,
-      "name": "小米",
-      "icon": "import { XiaomiMiMo } from '@lobehub/icons';"
-    },
-    {
-      "id": 2,
-      "name": "讯飞",
-      "icon": "Spark.Color"
-    },
-    {
-      "id": 4,
-      "name": "OpenCode Zen",
-      "icon": "OpenCode"
-    },
-    {
-      "id": 7,
-      "name": "Anthropic",
-      "icon": "Claude.Color"
-    },
     {
       "id": 8,
       "name": "Google",
       "icon": "Gemini.Color"
-    },
-    {
-      "id": 10,
-      "name": "xAI",
-      "icon": "XAI"
     },
     {
       "id": 1,
@@ -323,8 +421,41 @@
       "icon": "OpenAI"
     },
     {
+      "id": 2,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
       "id": 3,
       "name": "Vivgrid"
+    },
+    {
+      "id": 5,
+      "name": "QiHang"
+    },
+    {
+      "id": 9,
+      "name": "小米",
+      "icon": "import { XiaomiMiMo } from '@lobehub/icons';"
+    },
+    {
+      "id": 10,
+      "name": "xAI",
+      "icon": "XAI"
+    },
+    {
+      "id": 4,
+      "name": "OpenCode Zen",
+      "icon": "OpenCode"
+    },
+    {
+      "id": 6,
+      "name": "SAP AI Core"
+    },
+    {
+      "id": 7,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
     }
   ],
   "status_payload": {
@@ -332,6 +463,13 @@
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
       "announcements": [
+        {
+          "content": "测试gpt-image-2异步并发，现已将价格调整为0.016一张图，有高并发量用户联系站长解锁请求上限限制",
+          "extra": "",
+          "id": 11,
+          "publishDate": "2026-05-30T09:14:49.482Z",
+          "type": "default"
+        },
         {
           "content": "gpt-image-2异步生图已上线\n\n地址：https://img.qiuqiutoken.com/ \n\n备用访问地址：https://img2.qiuqiutoken.com/ \n\n原生图地址：https://image.qiuqiutoken.com",
           "extra": "",
@@ -532,7 +670,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://qiuqiutoken.com",
       "setup": true,
-      "start_time": 1779908938,
+      "start_time": 1780309831,
       "stripe_unit_price": 8,
       "system_name": "球球Token - AI中转服务站",
       "telegram_bot_name": "",

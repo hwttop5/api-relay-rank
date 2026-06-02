@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import contextlib
 import copy
+import hashlib
 import io
 import importlib
 import importlib.util
@@ -13,11 +14,14 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 from unittest import mock
 
 from scripts import build_site_data as build_site_data
+from scripts import export_codex_logs as export_codex_logs
 from scripts import fetch_public_content as fetch_public_content
+from scripts import import_log_batches as import_log_batches
 from scripts import run_station_audit as run_station_audit
 from scripts import run_server_refresh as run_server_refresh
 from scripts import rebuild_runtime_site_data as rebuild_runtime_site_data
@@ -167,6 +171,66 @@ class BuildSiteDataTests(unittest.TestCase):
             self.assertEqual(state["mode"], "initialize")
             self.assertEqual(state["cursor"], {"createdAt": base_time + 1_000, "id": 2})
             self.assertEqual(state["metricsByWindow"]["all_hours"]["nexus"]["durations"], [100, 300])
+
+    def test_export_codex_logs_writes_sanitized_whitelisted_batch(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            db_path = root / "codexmanager.db"
+            output_dir = root / "batches"
+            self.create_request_logs_db(db_path)
+            self.insert_request_log(
+                db_path,
+                row_id=1,
+                created_at=1_700_000_000_000,
+                supplier="demo user@example.com",
+                url="https://example.com/v1/responses?token=secret",
+                error="Bearer abcdefghijklmnop sk-abcdefghijklmnop",
+            )
+
+            rows = export_codex_logs.query_rows(db_path)
+            package_path = export_codex_logs.write_log_batch(rows, output_dir, batch_id="test-batch")
+            package = import_log_batches.load_batch_package(package_path)
+
+            self.assertEqual(package.manifest["rowCount"], 1)
+            row = package.rows[0]
+            self.assertEqual(set(row), import_log_batches.ALLOWED_LOG_FIELDS)
+            self.assertEqual(row["aggregate_api_supplier_name"], "demo xxx")
+            self.assertEqual(row["aggregate_api_url"], "https://example.com/v1/responses")
+            self.assertIn("Bearer <redacted>", row["error"])
+            self.assertIn("sk-<redacted>", row["error"])
+
+    def test_import_log_batch_rejects_forbidden_fields_before_database_write(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            package_path = root / "bad.zip"
+            row = {
+                "id": 1,
+                "created_at": 1_700_000_000_000,
+                "request_type": "http",
+                "request_path": "/v1/responses",
+                "aggregate_api_supplier_name": "demo",
+                "aggregate_api_url": "https://example.com/v1/responses",
+                "status_code": 200,
+                "error": "",
+                "duration_ms": 100,
+                "first_response_ms": 50,
+                "key_id": "must-not-export",
+            }
+            jsonl = (json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8")
+            manifest = {
+                "schemaVersion": import_log_batches.SCHEMA_VERSION,
+                "batchId": "bad-batch",
+                "createdAt": "2026-06-03T00:00:00Z",
+                "sourceCursor": {"createdAt": 1_700_000_000_000, "id": 1},
+                "rowCount": 1,
+                "sha256": hashlib.sha256(jsonl).hexdigest(),
+            }
+            with zipfile.ZipFile(package_path, "w") as package:
+                package.writestr("manifest.json", json.dumps(manifest))
+                package.writestr("request_logs.jsonl", jsonl)
+
+            with self.assertRaisesRegex(ValueError, "forbidden fields"):
+                import_log_batches.load_batch_package(package_path)
 
     def test_log_refresh_keeps_state_when_old_db_logs_are_deleted(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -5074,6 +5138,42 @@ One or more audit steps **crashed**.
         self.assertEqual(commands[0], ["python", "scripts/fetch_public_content.py", "--announcements", "--multiplier-snapshots", "--skip-build"])
         self.assertEqual(commands[1], ["python", "scripts/build_site_data.py"])
         self.assertIn("--scrape-report", commands[2])
+
+    def test_run_server_refresh_with_database_imports_analyzes_and_publishes_snapshot(self) -> None:
+        commands: list[list[str]] = []
+
+        def fake_run(command: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
+            commands.append(command)
+            return subprocess.CompletedProcess(command, 0, stdout="", stderr="")
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            with (
+                mock.patch.object(run_server_refresh, "APP_ROOT", root),
+                mock.patch.object(run_server_refresh, "ensure_runtime_dirs", return_value=None),
+                mock.patch.object(run_server_refresh, "exclusive_lock", side_effect=lambda *args, **kwargs: contextlib.nullcontext()),
+                mock.patch.object(run_server_refresh, "generated_at_now", return_value="2026-06-03 04:00:00 +0800"),
+                mock.patch.object(run_server_refresh, "run", side_effect=fake_run),
+                mock.patch.object(run_server_refresh, "start_analysis_run", return_value=None) as start_run,
+                mock.patch.object(run_server_refresh, "record_analysis_failure", return_value=None),
+                mock.patch.object(run_server_refresh, "prune_audit_runs", return_value=[]),
+                mock.patch.object(run_server_refresh.subprocess, "run", side_effect=AssertionError("scrape step should be skipped")),
+                mock.patch.dict(run_server_refresh.os.environ, {"DATABASE_URL": "postgresql://demo"}, clear=True),
+                mock.patch("sys.stdout", new=io.StringIO()) as stdout,
+            ):
+                exit_code = run_server_refresh.main()
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertIsNotNone(payload["runId"])
+        start_run.assert_called_once()
+        self.assertEqual(commands[0], ["python", "scripts/import_log_batches.py", "--fail-on-error"])
+        self.assertEqual(commands[1], ["python", "audit_proxy_multipliers.py", "--log-source", "postgres"])
+        self.assertEqual(commands[2], ["python", "scripts/fetch_public_content.py", "--announcements", "--multiplier-snapshots", "--skip-build"])
+        self.assertEqual(commands[3], ["python", "audit_proxy_multipliers.py", "--log-source", "postgres"])
+        self.assertEqual(commands[4], ["python", "scripts/build_site_data.py"])
+        self.assertIn("--skip-scrape-validation", commands[5])
+        self.assertEqual(commands[6][0:2], ["python", "scripts/publish_site_data_snapshot.py"])
 
     def test_prune_audit_runs_respects_retention_days_and_max_per_target(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:

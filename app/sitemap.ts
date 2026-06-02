@@ -3,6 +3,8 @@ import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/seo";
 import { getSiteData } from "@/lib/site-data";
 
+export const dynamic = "force-dynamic";
+
 function parseLastModified(value: string) {
   const normalized = value.replace(/ ([+-]\d{2})(\d{2})$/, "$1:$2");
   const date = new Date(normalized);

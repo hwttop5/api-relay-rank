@@ -17,7 +17,7 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 27,
+        "stock": 718,
         "group_rules": [
           {
             "id": 10,
@@ -60,7 +60,7 @@
         "campaign_name": null,
         "channel_name": "国产模型套餐",
         "total_credits": 9900,
-        "stock": 105,
+        "stock": 1076,
         "group_rules": []
       },
       {
@@ -77,7 +77,7 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 82,
+        "stock": 927,
         "group_rules": [
           {
             "id": 13,
@@ -120,7 +120,7 @@
         "campaign_name": null,
         "channel_name": "国产模型套餐",
         "total_credits": 20699,
-        "stock": 115,
+        "stock": 114,
         "group_rules": []
       },
       {
@@ -138,8 +138,50 @@
         "campaign_name": null,
         "channel_name": "国产模型套餐",
         "total_credits": 43999,
-        "stock": 118,
+        "stock": 112,
         "group_rules": []
+      },
+      {
+        "id": 22,
+        "name": "轻享周卡",
+        "description": "<blockquote><p>入门性价比优选，适合日常体验或短期使用。</p></blockquote><p></p><p></p>",
+        "daily_quota_usd": "60.000000",
+        "price": "84.000000",
+        "duration_days": 7,
+        "billing_type": "usd_daily",
+        "rate_limit_5h": null,
+        "rate_limit_weekly": null,
+        "rate_limit_monthly": null,
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "Codex套餐",
+        "stock": 961,
+        "group_rules": [
+          {
+            "id": 31,
+            "plan_id": 22,
+            "member_count": 3,
+            "effective_quota_usd": "462.000000",
+            "group_duration_minutes": 1440,
+            "active": true
+          },
+          {
+            "id": 32,
+            "plan_id": 22,
+            "member_count": 5,
+            "effective_quota_usd": "490.000000",
+            "group_duration_minutes": 1440,
+            "active": true
+          },
+          {
+            "id": 33,
+            "plan_id": 22,
+            "member_count": 10,
+            "effective_quota_usd": "560.000000",
+            "group_duration_minutes": 1440,
+            "active": true
+          }
+        ]
       },
       {
         "id": 4,
@@ -155,40 +197,40 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 110,
+        "stock": 84,
         "group_rules": [
           {
-            "id": 16,
+            "id": 34,
             "plan_id": 4,
             "member_count": 3,
             "effective_quota_usd": "924.000000",
-            "group_duration_minutes": 60,
+            "group_duration_minutes": 1440,
             "active": true
           },
           {
-            "id": 17,
+            "id": 35,
             "plan_id": 4,
             "member_count": 5,
             "effective_quota_usd": "980.000000",
-            "group_duration_minutes": 120,
+            "group_duration_minutes": 1440,
             "active": true
           },
           {
-            "id": 18,
+            "id": 36,
             "plan_id": 4,
             "member_count": 10,
             "effective_quota_usd": "1120.000000",
-            "group_duration_minutes": 180,
+            "group_duration_minutes": 1440,
             "active": true
           }
         ]
       },
       {
-        "id": 23,
-        "name": "企业定制分发套餐",
-        "description": "<p>🌐 <strong>网络环境：</strong><br>支持<strong>全网络环境接入（国内 / 海外均可）</strong>，无需额外限制，兼容多种使用场景。</p><p>⚡ <strong>性能与模型：</strong></p><ul><li><p>提供高性能通道，稳定高速响应</p></li><li><p>支持多模型灵活接入（按需配置）</p></li><li><p>支持企业级并发与业务扩展</p></li></ul><p>💰 <strong>额度与配置：</strong></p><ul><li><p>额度<strong>完全自定义</strong>（按需分配）</p></li><li><p>支持日额度 / 总额度 / 周期额度灵活配置</p></li><li><p>可按业务需求调整策略与限制</p></li></ul><p>🛠 <strong>定制能力：</strong></p><ul><li><p>支持账号策略定制</p></li><li><p>支持分发规则定制</p></li><li><p>支持接口/API定制接入</p></li><li><p>支持企业级专属方案设计</p></li></ul><p>📞 <strong>服务说明：</strong><br>本套餐为<strong>定制化产品</strong>，具体配置需根据需求确认。<br>👉 请联系在线客服，获取专属方案与报价。</p><p></p>",
-        "daily_quota_usd": "2500.000000",
-        "price": "99999.000000",
+        "id": 43,
+        "name": "轻享月卡",
+        "description": null,
+        "daily_quota_usd": "60.000000",
+        "price": "360.000000",
         "duration_days": 30,
         "billing_type": "usd_daily",
         "rate_limit_5h": null,
@@ -197,8 +239,75 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 0,
-        "group_rules": []
+        "stock": 15,
+        "group_rules": [
+          {
+            "id": 37,
+            "plan_id": 43,
+            "member_count": 3,
+            "effective_quota_usd": "1980.000000",
+            "group_duration_minutes": 2880,
+            "active": true
+          },
+          {
+            "id": 38,
+            "plan_id": 43,
+            "member_count": 5,
+            "effective_quota_usd": "2100.000000",
+            "group_duration_minutes": 2880,
+            "active": true
+          },
+          {
+            "id": 39,
+            "plan_id": 43,
+            "member_count": 10,
+            "effective_quota_usd": "2400.000000",
+            "group_duration_minutes": 2880,
+            "active": true
+          }
+        ]
+      },
+      {
+        "id": 44,
+        "name": "尊享月卡",
+        "description": null,
+        "daily_quota_usd": "120.000000",
+        "price": "720.000000",
+        "duration_days": 30,
+        "billing_type": "usd_daily",
+        "rate_limit_5h": null,
+        "rate_limit_weekly": null,
+        "rate_limit_monthly": null,
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "Codex套餐",
+        "stock": 19,
+        "group_rules": [
+          {
+            "id": 40,
+            "plan_id": 44,
+            "member_count": 3,
+            "effective_quota_usd": "3960.000000",
+            "group_duration_minutes": 2880,
+            "active": true
+          },
+          {
+            "id": 41,
+            "plan_id": 44,
+            "member_count": 5,
+            "effective_quota_usd": "4200.000000",
+            "group_duration_minutes": 2880,
+            "active": true
+          },
+          {
+            "id": 42,
+            "plan_id": 44,
+            "member_count": 10,
+            "effective_quota_usd": "4800.000000",
+            "group_duration_minutes": 2880,
+            "active": true
+          }
+        ]
       }
     ],
     "balance_products": [

@@ -1,0 +1,904 @@
+{
+  "auto_groups": [],
+  "data": [
+    {
+      "model_name": "gpt-image-2",
+      "context_length": 4096,
+      "max_output_tokens": 0,
+      "knowledge_cutoff": "2024-04",
+      "release_date": "2025-10-15",
+      "parameter_count": "",
+      "description": "OpenAI gpt-image-2 image generation model",
+      "icon": "OpenAI",
+      "tags": "image,gen",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "vip",
+        "企业生图专线"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "deepseek-ai/deepseek-v4-flash",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "公益分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-ai/deepseek-v4-pro",
+      "vendor_id": 5,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0001,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "公益分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash",
+      "vendor_id": 8,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1e-05,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "公益分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "kiro",
+        "测试",
+        "any外接回血"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "kiro"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "description": "Claude Sonnet 4.6",
+      "icon": "Claude",
+      "tags": "Reasoning,Tools,Vision,200K",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "kiro",
+        "测试"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-openai-compact",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "vip",
+        "企业生图专线"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "minimaxai/minimax-m2.5",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0001,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "公益分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "minimaxai/minimax-m2.7",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0001,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "公益分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "z-ai/glm-5.1",
+      "vendor_id": 4,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0001,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "公益分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "description": "Claude Opus 4.6 is an AI model provided by venice.",
+      "icon": "Claude",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "测试",
+        "any外接回血",
+        "kiro"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "测试",
+        "any外接回血",
+        "kiro"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "vip",
+        "企业生图专线"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "knowledge_cutoff": "2024-09",
+      "release_date": "2025-08-15",
+      "parameter_count": "",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "vip",
+        "企业生图专线"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "knowledge_cutoff": "2024-09",
+      "release_date": "2025-08-15",
+      "parameter_count": "",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "vip",
+        "企业生图专线"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "vip",
+        "企业生图专线"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "moonshotai/kimi-k2.6",
+      "vendor_id": 6,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0001,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "公益分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "z-ai/glm5",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0001,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "公益分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "kiro"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "knowledge_cutoff": "2024-09",
+      "release_date": "2025-08-15",
+      "parameter_count": "",
+      "description": "GPT-5.4 by OpenAI",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Tools,Vision",
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "vip",
+        "企业生图专线"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "kiro"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "kiro"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "any外接回血": 0.6,
+    "kiro": 0.2,
+    "vip": 0.08,
+    "企业生图专线": 0.08,
+    "公益分组": 0.0001,
+    "测试": 1.2
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "any外接回血": "anyrouter二接，模型名要配    claude-opus-4-8[1m]    大家可以自己去注册，也可以用我这的",
+    "kiro": "kiro反代，禾维测不满，已做缓存优化处理，因为有内置提示词，所以大概是官转版本80%的性能。",
+    "vip": "GPT分组实时波动价格",
+    "企业生图专线": "企业生图专线",
+    "公益分组": "请有度调用，来源是各个公益站签到做活动的额度，做了公益二次分发，有公益站大佬愿意单独接一条冠名公益分组进来，或者愿意开放注册的话也可以联系我，我推荐群里小伙伴去串门",
+    "测试": "测试专用"
+  },
+  "vendors": [
+    {
+      "id": 9,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 12,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 13,
+      "name": "Meta",
+      "icon": "Ollama"
+    },
+    {
+      "id": 2,
+      "name": "Venice AI",
+      "icon": "VeniceAI"
+    },
+    {
+      "id": 3,
+      "name": "GitHub Copilot",
+      "icon": "GithubCopilot"
+    },
+    {
+      "id": 8,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 10,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 11,
+      "name": "xAI",
+      "icon": "XAI"
+    },
+    {
+      "id": 1,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 4,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 5,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 6,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 7,
+      "name": "字节跳动",
+      "icon": "Doubao.Color"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "enable_online_topup": true,
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":true}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+      "announcements": [
+        {
+          "content": "wo_wuhao   大佬看到公告的话加一下群，你的扣费分组有点问题，我给你补贴一下",
+          "extra": "",
+          "id": 32,
+          "publishDate": "2026-06-01T08:30:05.571Z",
+          "type": "default"
+        },
+        {
+          "content": "有解决不了的报错可以加Q群820116443咨询解决",
+          "extra": "",
+          "id": 31,
+          "publishDate": "2026-06-01T03:58:40.028Z",
+          "type": "default"
+        },
+        {
+          "content": "kiro分组莫名其妙的没炸，又重置额度找回来很多个号，临时调到0.1x倍率了应该是能抗住并发，如果频繁报速度墙又找不到号的话会往上调调价的",
+          "extra": "",
+          "id": 30,
+          "publishDate": "2026-06-01T02:12:42.011Z",
+          "type": "default"
+        },
+        {
+          "content": "kiro会在这个月月底超额到期账单结算，所以可能6.1开始的一段时间kiro这条渠道不能用，或者需要点时间补新号进来，大家有需要用到opus的任务请在这两天收收尾，我尽量第一时间更新opus的特价渠道。",
+          "extra": "",
+          "id": 29,
+          "publishDate": "2026-05-30T07:19:08.036Z",
+          "type": "default"
+        },
+        {
+          "content": "kiro反代的opus4.8已上新，没试过的小伙伴可以试一下，ide容器反代出来的所以禾维测不满，提前提醒一下。",
+          "extra": "",
+          "id": 28,
+          "publishDate": "2026-05-29T02:53:39.384Z",
+          "type": "default"
+        },
+        {
+          "content": "plus又5块了，价格上调至0.08x，一点半调价",
+          "extra": "",
+          "id": 27,
+          "publishDate": "2026-05-28T05:11:26.781Z",
+          "type": "default"
+        },
+        {
+          "content": "gpt价格临时下调至0.06x\n连续两天没封号了，不知道在憋什么大的，先少下调点吧，临时下调，遇到大封还是会调整回来的。",
+          "extra": "",
+          "id": 26,
+          "publishDate": "2026-05-26T22:12:54.608Z",
+          "type": "default"
+        },
+        {
+          "content": "下午四点要调一下gpt的价格了，4-6块区间/号的话，得先调到0.08x了，四点调价，找到便宜的号才能降下来，大家有任务切换或者有更便宜备用站的注意下切换时间。库存再蹬两个小时蹬完了，得补号了- -\ngpt0.08x\ngpt0.08x\ngpt0.08x",
+          "extra": "",
+          "id": 25,
+          "publishDate": "2026-05-25T07:13:59.491Z",
+          "type": "default"
+        },
+        {
+          "content": "工作日价格调整回gpt0.05x，kiro分组的opus0.2x（带满缓存实际体验价格下降三分之二）",
+          "extra": "",
+          "id": 24,
+          "publishDate": "2026-05-24T17:15:56.607Z",
+          "type": "default"
+        },
+        {
+          "content": "最近plus号跌到8毛到5毛5一个号了，周末搞点限时活动，gpt分组0.0075x倍率，opus0.1x倍率，搞到今晚凌晨大封，下批号补进来为止。",
+          "extra": "",
+          "id": 23,
+          "publishDate": "2026-05-24T09:32:38.179Z",
+          "type": "default"
+        },
+        {
+          "content": "原材料成本下移，gpt分组临时下调价格至0.03x，祝大家用的愉快",
+          "extra": "",
+          "id": 22,
+          "publishDate": "2026-05-23T22:37:05.461Z",
+          "type": "default"
+        },
+        {
+          "content": "最新价格，gpt0.052x，kiro分组的opus闲鱼缺货上浮至0.2x",
+          "extra": "",
+          "id": 21,
+          "publishDate": "2026-05-22T17:07:42.047Z",
+          "type": "default"
+        },
+        {
+          "content": "重回gpt的0.08x时代\nkiro分组的opus定价是0.1x，大家用用试试就知道了，风味缓存的加持下，相当于0.06x-0.04x区间，无敌了。",
+          "extra": "",
+          "id": 20,
+          "publishDate": "2026-05-19T06:29:49.228Z",
+          "type": "default"
+        },
+        {
+          "content": "新上的opus4.7、opus4.6定价为0.08x的kiro渠道，原生是不带缓存的，为了计费费率更准，做了缓存优化处理了，整体比不做缓存应该是能再便宜50%。在kiro分组。建议控制一下上下文，模型原生支持百万，但是用在30-25万以内速度快，性能强。",
+          "extra": "",
+          "id": 19,
+          "publishDate": "2026-05-18T02:14:46.529Z",
+          "type": "default"
+        },
+        {
+          "content": "价格暂定0.13x，今天上午8点调价。也就是模型定价0.1，vip分组调整成1.3x，综合下来就是0.13，大家临时休息休息吧，只剩下1200个free号了，支撑不了太久，6.5的plus补进来只能来到0.13x\n\n每次涨价都开通退款通道，实在是燃尽了，货太少了",
+          "extra": "",
+          "id": 18,
+          "publishDate": "2026-05-15T21:49:58.339Z",
+          "type": "default"
+        },
+        {
+          "content": "本来寻思周末搞点活动的，现在号都凑不齐gpt活动量了\n我给deepseek官网充50，单独开个活动deepseek分组，周六上午十点限量开放\n大家体验体验正价官网国产吧，真gpt拉闸了也有个切换的渠道，今晚睡前可以配在claude code里边了",
+          "extra": "",
+          "id": 17,
+          "publishDate": "2026-05-15T14:32:43.031Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "过了今晚12点image2生图调整到0.04/张了，参照4.8/个plus号来定价了，等plus号便宜的时候再调整",
+          "extra": "",
+          "id": 16,
+          "publishDate": "2026-05-15T10:05:42.343Z",
+          "type": "default"
+        },
+        {
+          "content": "今晚12点得将价格上调至0.1x了，没有补号来源，做点利润准备随时外接别的站保证不拉闸。",
+          "extra": "",
+          "id": 15,
+          "publishDate": "2026-05-14T12:51:09.885Z",
+          "type": "default"
+        },
+        {
+          "content": "今晚12点得将价格上调至0.1x了，没有补号来源，做点利润准备随时外接别的站保证不拉闸。",
+          "extra": "",
+          "id": 14,
+          "publishDate": "2026-05-14T12:51:06.748Z",
+          "type": "default"
+        },
+        {
+          "content": "今晚12点得将价格上调至0.1x了，没有补号来源，做点利润准备随时外接别的站保证不拉闸。",
+          "extra": "",
+          "id": 13,
+          "publishDate": "2026-05-14T12:51:00.297Z",
+          "type": "default"
+        },
+        {
+          "content": "公益分组全面升级\nkimik2.6\ndeepseekv4pro\nglm5.1\nminimaxm2.7\n以上四款已经配置了400次/分钟的调用量储备，这次接的不是公益分组，是英伟达官方直连，如果卡顿或者连不上，那就是英伟达拉闸了，大家想要用的，需要按照模型广场的新名字配置一下。",
+          "extra": "",
+          "id": 12,
+          "publishDate": "2026-05-11T19:18:44.999Z",
+          "type": "warning"
+        },
+        {
+          "content": "为了维护用户体验，防止无序扩张，现暂停新用户注册，我综合根据这段时间的使用情况，将后续增长人数调优与号池管理进行详细统计后开放注册。",
+          "extra": "",
+          "id": 10,
+          "publishDate": "2026-05-09T08:29:31.880Z",
+          "type": "success"
+        },
+        {
+          "content": "价格已经上调至0.08x，每次价格调整我都会提前且重复提醒大家。",
+          "extra": "",
+          "id": 9,
+          "publishDate": "2026-05-08T16:29:46.707Z",
+          "type": "error"
+        },
+        {
+          "content": "价格已经上调至0.08x，每次价格调整我都会提前且重复提醒大家。",
+          "extra": "",
+          "id": 8,
+          "publishDate": "2026-05-08T16:29:41.696Z",
+          "type": "error"
+        },
+        {
+          "content": "价格已经上调至0.08x，每次价格调整我都会提前且重复提醒大家。",
+          "extra": "",
+          "id": 7,
+          "publishDate": "2026-05-08T16:28:31.924Z",
+          "type": "error"
+        },
+        {
+          "content": "国产模型为福利分组，价格理论上而言几乎是免费的，主要是为了让大家能够多尝试一下各种模型，所以不太建议单人高并发，或者外接使用。\n\n我再按照现在的模式敞开运行几天，如果后续仍然额度跑的太快的话，可能就需要麻烦点单独创建个令牌，我把国产模型统一归到公益分组，但是需要遵守公益分组公约。",
+          "extra": "",
+          "id": 6,
+          "publishDate": "2026-05-07T09:32:00.433Z",
+          "type": "error"
+        },
+        {
+          "content": "预计5月8日23:59分从现在的定价0.06x上调至0.08x，提前通知一下。征求一下大家的意见，后续调价可能波动的更灵活一些，提前6H-12H告知可以么？",
+          "extra": "",
+          "id": 5,
+          "publishDate": "2026-05-06T21:24:24.437Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "原定的价格从0.06x调整回0.08x的计划推延三天，祝大家工作日能产出更多的创意。",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2026-05-05T22:02:51.420Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "没想到人数增加的这么快，正在扩充第二台服务器加大带宽，请加一下QQ群820116443，应该是无感负载迁移",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2026-05-05T08:25:38.146Z",
+          "type": "default"
+        },
+        {
+          "content": "计划于5月5日23:59分调整回原0.08x计费倍率。依然保持满缓存，缓存读取定价为0.008x计费倍率。",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-05-04T08:29:53.191Z",
+          "type": "default"
+        },
+        {
+          "content": "大家在中转站单次少充，勤充，最近封控比较严，现在推出的大额充值优惠，所谓的锁定价格可能是跑路的信号。你盯别人的优惠，别人盯你的本金。\n目前号池延续0.06x的价格到五一假期应该是没什么问题，五一之后预计调整回0.08x，价格随时波动，每次调整我都在Q群和网页置顶公告，大家注意观看。不会出现后台暗调倍率或者暗调缓存那些套路。",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-05-02T23:14:44.506Z",
+          "type": "default"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "green",
+          "description": "主站",
+          "id": 1,
+          "route": "国际加速",
+          "url": "https://fushengyunsuan.com"
+        },
+        {
+          "color": "blue",
+          "description": "图像生成专用 · BV 高带宽",
+          "id": 2,
+          "route": "图生节点",
+          "url": "https://image.fushengyunsuan.cn"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://mcnzsgzs2xvu.feishu.cn/docx/XiRKdAOLHoUEGvxseGoc6FNhnQc",
+      "email_verification": true,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq": [
+        {
+          "answer": "本站提供 **3 个等价入口**,共用同一账号、密钥、额度,选一个即可:\n\n- **主线路** `https://fushengyunsuan.cn/v1` — 国内访问优先,日常推荐\n- **国际线路** `https://fushengyunsuan.com/v1` — 海外用户/出海项目优选,走独立 CF zone\n- **图生节点** `https://image.fushengyunsuan.cn/v1` — `gpt-image-2` 等图像生成专用,TTFB <1s 不卡顿\n\n其他模型(文本/对话)继续用主线路或国际线路即可,**不要把图像调用混入主域,容易卡到超时**。",
+          "id": 1,
+          "question": "我应该用哪个接入地址(base_url)?"
+        },
+        {
+          "answer": "1. 登录后在 **控制台 → 令牌** 创建一个 API key(`sk-...`)\n2. 在你的客户端/SDK 中:\n   - `base_url` = `https://fushengyunsuan.cn/v1`(或国际线路 `https://fushengyunsuan.com/v1`)\n   - `api_key` = 刚才创建的 token\n3. 用任意 OpenAI / Anthropic / Gemini 兼容的客户端就能直接发请求\n\n**curl 示例:**\n```bash\ncurl https://fushengyunsuan.cn/v1/chat/completions \\\n  -H 'Authorization: Bearer <redacted>' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"model\":\"gpt-5.5\",\"messages\":[{\"role\":\"user\",\"content\":\"hi\"}]}'\n```",
+          "id": 2,
+          "question": "如何快速开始第一次调用?"
+        },
+        {
+          "answer": "**默认分组当前计费倍率 0.08x**(按 OpenAI 官方定价的 8% 计费),缓存读取 **0.008x**(10 倍折扣)。\n\n- 倍率会根据上游号池成本动态调整,**任何调整都会提前在 QQ 群和首页公告通知**\n- 不会在后台暗调倍率、暗动缓存,价格透明\n- 价格变更详见首页置顶公告\n\n**国产模型(DeepSeek / Qwen / Doubao 等)** 走免费/公益分组,几乎是免费的;请勿单人高并发或大规模外接。",
+          "id": 3,
+          "question": "价格倍率怎么算?为什么有缓存折扣?"
+        },
+        {
+          "answer": "覆盖主流 LLM,详见首页「**模型广场**」实时列表。\n\n**当前主推:**\n- OpenAI: GPT-5.4 / GPT-5.5(主力,稳定)\n- Anthropic: Claude 系列(支持 `/v1/messages` 原生协议)\n- Google: Gemini 系列(支持 `/v1beta` 原生协议)\n- 图像: `gpt-image-2`(走 image 域)\n- 国产: DeepSeek / Qwen / Doubao(公益分组,免费试用)\n\n如果发现想要的模型没上,可以加 QQ 群反馈,大部分能很快加上。",
+          "id": 4,
+          "question": "支持哪些模型?主推什么?"
+        },
+        {
+          "answer": "充值入口: **控制台 → 钱包(充值)**。当前支持 **支付宝**(经七相易支付聚合)。\n\n**充值建议:**\n- **少充勤充**,单次不建议超过日常用量\n- 不要相信任何\"大额优惠\"\"锁定低价\"等套路,中转行业那是跑路前兆\n- 本站价格变动随号池成本浮动,**提前 6~12h** 在 QQ 群和首页公告通知\n- 如有充值技术问题,QQ 群 820116443 找站长",
+          "id": 5,
+          "question": "怎么充值?支持哪些支付方式?"
+        },
+        {
+          "answer": "**401 Unauthorized:**\n- API key 是否复制完整(开头 `sk-`,无空格)\n- 是否填到了 `Authorization: Bearer <key>` 头里\n- 令牌是否被你自己手动禁用(控制台 → 令牌 → 状态)\n\n**403 Forbidden 或 \"无可用渠道\":**\n- 你的用户分组是否能用该模型?默认分组只能用付费模型,免费/公益分组只能用国产模型\n- 模型名拼写是否正确(参考「模型广场」列表)\n- 余额是否充足\n\n都查过了仍然失败,**截图整段错误信息**发到 QQ 群,站长查日志最快。",
+          "id": 6,
+          "question": "请求返回 401 / 403,怎么排查?"
+        },
+        {
+          "answer": "图像生成(`gpt-image-2` 等)单张耗时 60-120 秒,容易触发 CDN 的 100 秒默认超时(表现为 524/504)。\n\n**解决:** 把图像请求的 `base_url` 改成 `https://image.fushengyunsuan.cn/v1`。该子域配了专用的长连接保活机制,TTFB <1s,不会再卡到超时。\n\n**文本调用继续走主域**(`fushengyunsuan.cn/v1` 或 `fushengyunsuan.com/v1`),不需要改。\n\nAPI key、模型名、调用参数都和主域完全一致,只换 base_url 即可。",
+          "id": 7,
+          "question": "图像生成请求超时/504/524,怎么办?"
+        },
+        {
+          "answer": "**完整支持流式**,无论是 OpenAI `chat.completions` / `responses`、Anthropic `messages`、还是 Gemini `streamGenerateContent`,首字节延迟一般 <1s。\n\n在请求里加 `\"stream\": true` 即可,响应是标准 `text/event-stream`,客户端用 SDK 自带的 stream handler 处理。\n\n如果你用 SSE 客户端跨海外访问感觉慢,可以试国际线路 `https://fushengyunsuan.com/v1`。",
+          "id": 8,
+          "question": "支持流式(stream/SSE)输出吗?延迟怎么样?"
+        },
+        {
+          "answer": "为了维护现有用户体验、防止号池过载,**本站已暂停新用户注册**。\n\n等号池扩容/统计分析完成后会重新放开,请关注:\n- 首页置顶公告\n- QQ 群 820116443\n\n已经注册的用户不受影响,正常使用。",
+          "id": 9,
+          "question": "新用户为什么注册不了?"
+        },
+        {
+          "answer": "- **QQ 群:** 820116443(技术问题、价格反馈、模型需求,这里最快)\n- **使用文档:** 顶部导航「文档」按钮(飞书)\n- **首页公告:** 价格调整、新功能、维护通知\n\n**反馈 BUG 时请尽量提供:**\n1. 请求 URL 和 method\n2. 完整错误信息(整段截图)\n3. 大概发生时间(精确到分钟)\n\n站长查日志会快很多。",
+          "id": 10,
+          "question": "怎么联系站长?反馈问题最快的方式?"
+        }
+      ],
+      "faq_enabled": true,
+      "footer_html": "<p>浮生云算 &copy; 2026 | QQ群: 820116443 | <a href=\"https://mcnzsgzs2xvu.feishu.cn/docx/QqySdpt8ao3mJwxjXHxcHnOEnZE\" target=\"_blank\">使用文档</a></p>",
+      "github_client_id": "",
+      "github_oauth": false,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "https://fushengyunsuan.cn/logo.png?v=20260507-174254",
+      "mj_notify_enabled": true,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "浮生云算",
+      "passkey_login": false,
+      "passkey_origins": "https://fushengyunsuan.com",
+      "passkey_rp_id": "fushengyunsuan.com",
+      "passkey_user_verification": "preferred",
+      "password_login_enabled": true,
+      "password_register_enabled": true,
+      "price": 1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "USD",
+      "quota_per_unit": 500000,
+      "register_enabled": true,
+      "self_use_mode_enabled": false,
+      "server_address": "https://fushengyunsuan.com",
+      "setup": true,
+      "start_time": 1779912351,
+      "stripe_unit_price": 1,
+      "system_name": "浮生云算",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "default",
+      "turnstile_check": false,
+      "turnstile_site_key": "0x4AAAAAADTk2w62SSyqiRmC",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 6.8,
+      "user_agreement_enabled": false,
+      "version": "v1.0.0-rc.10",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://fushengyunsuan.com/api/pricing"
+}

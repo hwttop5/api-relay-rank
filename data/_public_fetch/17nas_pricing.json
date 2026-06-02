@@ -4,23 +4,19 @@
   ],
   "data": [
     {
-      "model_name": "ernie-4.5-turbo-20260402",
-      "description": "百度 ERNIE 4.5 Turbo 20260402，128k 上下文高速文本模型，适合中文问答、代码辅助、长文档理解和业务文本处理。",
-      "tags": "baidu,ernie,chat,128k",
-      "vendor_id": 14,
+      "model_name": "deepseek-v4-pro",
+      "description": "DeepSeek V4 Pro，高能力推理模型，适合复杂分析、代码任务、长上下文推理和高质量 Agent 工作流。",
+      "tags": "deepseek,chat,reasoning",
+      "vendor_id": 4,
       "quota_type": 0,
-      "model_ratio": 0.4,
+      "model_ratio": 2,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 4,
-      "cache_ratio": 0.25,
+      "completion_ratio": 2,
+      "cache_ratio": 0.0083333333,
       "enable_groups": [
-        "grok",
-        "max",
-        "vip",
         "cn",
-        "default",
-        "gpt"
+        "default"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -28,23 +24,98 @@
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
-      "model_name": "kimi-k2.5",
-      "description": "Moonshot Kimi K2.5，长文本理解与中文写作能力较强，适合资料整理、内容创作与通用问答场景。",
-      "tags": "auto-desc",
-      "vendor_id": 2,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.5,
+      "model_name": "glm-4.5-air",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 0,
-      "cache_ratio": 0.175,
+      "completion_ratio": 4,
       "enable_groups": [
+        "cn",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "description": "OpenAI Codex Auto Review，自动代码审查入口，适合 PR 审查、差异分析、风险提示和工程质量检查。",
+      "tags": "gpt,codex,review",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "cn",
+        "default",
+        "gpt",
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3.2",
+      "description": "DeepSeek V3.2，兼顾推理效果与响应效率，适合通用问答、日常 Agent 任务、基础开发辅助和内容生成。",
+      "tags": "deepseek",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.02,
+      "enable_groups": [
+        "cn",
         "default",
         "gpt",
         "grok",
         "max",
-        "vip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "description": "OpenAI GPT-5.3 Codex，面向代码生成、项目理解和工程任务优化的编程模型，适合代码补全、重构、调试、脚本编写、仓库分析和自动化开发流程。",
+      "tags": "gpt,codex,coding",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "default",
+        "gpt",
+        "grok",
         "cn"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-fast",
+      "description": "xAI Grok 4.20 Fast，偏向低延迟通用对话，适合日常问答、轻量写作与快速助手场景。",
+      "tags": "xai,grok",
+      "vendor_id": 8,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "cn",
+        "default",
+        "grok"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -70,6 +141,163 @@
       ]
     },
     {
+      "model_name": "grok-4.20-auto",
+      "description": "xAI Grok 4.20 Auto，综合速度与质量的默认档位，适合大多数聊天、检索整理与内容生成任务。",
+      "tags": "xai,grok",
+      "vendor_id": 8,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "ernie-4.5-turbo-20260402",
+      "description": "百度 ERNIE 4.5 Turbo 20260402，128k 上下文高速文本模型，适合中文问答、代码辅助、长文档理解和业务文本处理。",
+      "tags": "baidu,ernie,chat,128k",
+      "vendor_id": 14,
+      "quota_type": 0,
+      "model_ratio": 0.4,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "gpt",
+        "grok",
+        "max",
+        "vip",
+        "cn",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5",
+      "description": "智谱 GLM-5，新一代通用文本模型，兼顾质量、稳定性与成本，适合日常问答、内容生成、代码辅助与多场景通用推理任务。",
+      "tags": "glm,zhipu,chat,reasoning",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.5,
+      "enable_groups": [
+        "default",
+        "gpt",
+        "grok",
+        "max",
+        "vip",
+        "cn"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "description": "OpenAI GPT-5.2，稳定的通用文本模型，适合日常问答、基础写作、轻量代码任务与常规 Agent 场景。",
+      "tags": "gpt",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "grok",
+        "cn",
+        "default",
+        "gpt"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "description": "OpenAI GPT-5.5，新一代旗舰级通用模型，推理、代码、长文本分析与复杂任务表现更强，适合作为当前 GPT 主力模型。",
+      "tags": "gpt",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "gpt",
+        "grok",
+        "cn",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.3-beta",
+      "description": "xAI Grok 4.3 Beta，较新的实验性版本，适合尝试新能力、新风格输出与前沿文本场景。",
+      "tags": "xai,grok",
+      "vendor_id": 8,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "cn",
+        "default",
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mimo-v2-omni",
+      "description": "小米 MiMo V2 Omni，多模态通用模型，适合文本理解、综合问答和多模态相关任务入口。",
+      "icon": "XiaomiMiMo.Avatar",
+      "tags": "mimo,xiaomi,chat,multimodal,256k,openai",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.28,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "cn",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-image",
+      "description": "xAI Grok Imagine Image，标准版文生图模型，兼顾画面质量与生成速度，适合通用海报、插画与场景图生成。",
+      "tags": "xai,grok",
+      "vendor_id": 8,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.04,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
       "model_name": "grok-imagine-image-edit",
       "description": "xAI Grok Imagine Image Edit reference image model",
       "tags": "xai,grok",
@@ -87,12 +315,225 @@
       ]
     },
     {
+      "model_name": "glm-5-turbo",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.4,
+      "enable_groups": [
+        "cn",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
       "model_name": "gpt-5.4",
       "description": "OpenAI GPT-5.4，上一代旗舰级通用模型，质量与稳定性均衡，适合复杂对话、代码生成、分析推理与通用生产任务。",
       "tags": "gpt",
       "vendor_id": 5,
       "quota_type": 0,
       "model_ratio": 1.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "cn",
+        "default",
+        "gpt",
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.5",
+      "description": "Moonshot Kimi K2.5，长文本理解与中文写作能力较强，适合资料整理、内容创作与通用问答场景。",
+      "tags": "auto-desc",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "cache_ratio": 0.175,
+      "enable_groups": [
+        "grok",
+        "max",
+        "vip",
+        "cn",
+        "default",
+        "gpt"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-video",
+      "description": "xAI Grok Imagine Video，文生视频模型，适合生成短时长动态片段、创意镜头与宣传演示视频。",
+      "tags": "xai,grok",
+      "vendor_id": 8,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-4.7",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.7,
+      "enable_groups": [
+        "cn",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "description": "OpenAI GPT Image 2，标准图片生成模型，适合 1K 与常规比例图片输出。画面质量稳定，适合产品图、海报、插画、社媒配图、封面和日常创意出图。接入教程：https://ai.17nas.com/tools/gpt-image-2/",
+      "tags": "image,gpt,standard",
+      "vendor_id": 5,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.4,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "cn",
+        "default",
+        "gpt",
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2-4k",
+      "description": "OpenAI GPT Image 2 4K，超高清图片生成档位，面向最长边 2700px 以上或 4K/Ultra 画质请求。适合大尺寸海报、精修视觉、商业宣传图、复杂场景图和需要高像素输出的正式素材。",
+      "tags": "image,gpt,4k,ultra",
+      "vendor_id": 5,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "cn",
+        "default",
+        "gpt",
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-image-pro",
+      "description": "xAI Grok Imagine Image Pro，高质量文生图模型，适合追求细节、氛围感与成片效果的正式出图场景。",
+      "tags": "xai,grok",
+      "vendor_id": 8,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mimo-v2.5-pro",
+      "description": "小米 MiMo V2.5 Pro，旗舰文本与推理模型，支持长上下文，适合复杂问答、代码、长文档理解和高质量内容生成。",
+      "icon": "XiaomiMiMo.Avatar",
+      "tags": "mimo,xiaomi,chat,reasoning,256k,openai",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.7,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "cn",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "description": "DeepSeek V4 Flash，轻量推理模型，适合通用问答、日常 Agent、基础开发辅助和低成本快速响应场景。",
+      "tags": "deepseek,chat,reasoning",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.02,
+      "enable_groups": [
+        "grok",
+        "max",
+        "vip",
+        "cn",
+        "default",
+        "gpt"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5.1",
+      "description": "智谱 GLM-5.1，新一代旗舰基座模型，强化 Coding 与 Agent 能力，适合复杂系统工程、长程任务和高质量代码协作。",
+      "tags": "glm,zhipu,chat,reasoning",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "gpt",
+        "grok",
+        "max",
+        "vip",
+        "cn",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "description": "OpenAI GPT-5.4 Mini，偏轻量与低成本的通用模型，适合快速问答、轻量写作与日常助手场景。",
+      "tags": "gpt",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.45,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
@@ -127,30 +568,10 @@
       ]
     },
     {
-      "model_name": "gpt-image-2",
-      "description": "OpenAI GPT Image 2，标准图片生成模型，适合 1K 与常规比例图片输出。画面质量稳定，适合产品图、海报、插画、社媒配图、封面和日常创意出图。接入教程：https://ai.17nas.com/tools/gpt-image-2/",
-      "tags": "image,gpt,standard",
-      "vendor_id": 5,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.4,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "gpt",
-        "grok",
-        "cn",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "mimo-v2-omni",
-      "description": "小米 MiMo V2 Omni，多模态通用模型，适合文本理解、综合问答和多模态相关任务入口。",
+      "model_name": "mimo-v2.5",
+      "description": "小米 MiMo V2.5，通用文本模型，适合日常问答、写作润色、资料整理和中低成本业务场景。",
       "icon": "XiaomiMiMo.Avatar",
-      "tags": "mimo,xiaomi,chat,multimodal,256k,openai",
+      "tags": "mimo,xiaomi,chat,cost-effective,256k,openai",
       "vendor_id": 13,
       "quota_type": 0,
       "model_ratio": 0.28,
@@ -166,68 +587,15 @@
       ]
     },
     {
-      "model_name": "mimo-v2.5",
-      "description": "小米 MiMo V2.5，通用文本模型，适合日常问答、写作润色、资料整理和中低成本业务场景。",
-      "icon": "XiaomiMiMo.Avatar",
-      "tags": "mimo,xiaomi,chat,cost-effective,256k,openai",
-      "vendor_id": 13,
+      "model_name": "minimax-m2.5",
+      "description": "MiniMax M2.5，新一代旗舰编程模型，适合真实世界复杂任务、代码生成、工具调用、搜索协同与办公 Agent 场景。",
+      "tags": "minimax,chat,coding,agent",
+      "vendor_id": 11,
       "quota_type": 0,
-      "model_ratio": 0.28,
+      "model_ratio": 0.4,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "cn",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-fast",
-      "description": "xAI Grok 4.20 Fast，偏向低延迟通用对话，适合日常问答、轻量写作与快速助手场景。",
-      "tags": "xai,grok",
-      "vendor_id": 8,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 1,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-imagine-image-pro",
-      "description": "xAI Grok Imagine Image Pro，高质量文生图模型，适合追求细节、氛围感与成片效果的正式出图场景。",
-      "tags": "xai,grok",
-      "vendor_id": 8,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.1,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "glm-5",
-      "description": "智谱 GLM-5，新一代通用文本模型，兼顾质量、稳定性与成本，适合日常问答、内容生成、代码辅助与多场景通用推理任务。",
-      "tags": "glm,zhipu,chat,reasoning",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 2,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4.5,
+      "completion_ratio": 10,
       "enable_groups": [
         "cn",
         "default",
@@ -235,26 +603,6 @@
         "grok",
         "max",
         "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "description": "OpenAI GPT-5.5，新一代旗舰级通用模型，推理、代码、长文本分析与复杂任务表现更强，适合作为当前 GPT 主力模型。",
-      "tags": "gpt",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 1.2,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "cn",
-        "default",
-        "gpt",
-        "grok"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -271,15 +619,33 @@
       "owner_by": "",
       "completion_ratio": 0,
       "enable_groups": [
-        "grok"
+        "grok",
+        "cn",
+        "default"
       ],
       "supported_endpoint_types": [
         "openai"
       ]
     },
     {
-      "model_name": "grok-4.3-beta",
-      "description": "xAI Grok 4.3 Beta，较新的实验性版本，适合尝试新能力、新风格输出与前沿文本场景。",
+      "model_name": "kimi-k2.6",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "cn"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-expert",
+      "description": "xAI Grok 4.20 Expert，偏向更强推理与复杂任务处理，适合分析、规划、较长文本生成与难题拆解。",
       "tags": "xai,grok",
       "vendor_id": 8,
       "quota_type": 1,
@@ -310,283 +676,6 @@
       "supported_endpoint_types": [
         "openai"
       ]
-    },
-    {
-      "model_name": "codex-auto-review",
-      "description": "OpenAI Codex Auto Review，自动代码审查入口，适合 PR 审查、差异分析、风险提示和工程质量检查。",
-      "tags": "gpt,codex,review",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 1.2,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "cn",
-        "default",
-        "gpt",
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "description": "OpenAI GPT-5.4 Mini，偏轻量与低成本的通用模型，适合快速问答、轻量写作与日常助手场景。",
-      "tags": "gpt",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 0.45,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "cn",
-        "default",
-        "gpt",
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "minimax-m2.5",
-      "description": "MiniMax M2.5，新一代旗舰编程模型，适合真实世界复杂任务、代码生成、工具调用、搜索协同与办公 Agent 场景。",
-      "tags": "minimax,chat,coding,agent",
-      "vendor_id": 11,
-      "quota_type": 0,
-      "model_ratio": 0.4,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 10,
-      "enable_groups": [
-        "cn",
-        "default",
-        "gpt",
-        "grok",
-        "max",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-expert",
-      "description": "xAI Grok 4.20 Expert，偏向更强推理与复杂任务处理，适合分析、规划、较长文本生成与难题拆解。",
-      "tags": "xai,grok",
-      "vendor_id": 8,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 1.5,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "deepseek-v3.2",
-      "description": "DeepSeek V3.2，兼顾推理效果与响应效率，适合通用问答、日常 Agent 任务、基础开发辅助和内容生成。",
-      "tags": "deepseek",
-      "vendor_id": 4,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "cache_ratio": 0.02,
-      "enable_groups": [
-        "grok",
-        "max",
-        "vip",
-        "cn",
-        "default",
-        "gpt"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "glm-5.1",
-      "description": "智谱 GLM-5.1，新一代旗舰基座模型，强化 Coding 与 Agent 能力，适合复杂系统工程、长程任务和高质量代码协作。",
-      "tags": "glm,zhipu,chat,reasoning",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 3,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4,
-      "enable_groups": [
-        "default",
-        "gpt",
-        "grok",
-        "max",
-        "vip",
-        "cn"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-2-4k",
-      "description": "OpenAI GPT Image 2 4K，超高清图片生成档位，面向最长边 2700px 以上或 4K/Ultra 画质请求。适合大尺寸海报、精修视觉、商业宣传图、复杂场景图和需要高像素输出的正式素材。",
-      "tags": "image,gpt,4k,ultra",
-      "vendor_id": 5,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 3,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "cn",
-        "default",
-        "gpt",
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-auto",
-      "description": "xAI Grok 4.20 Auto，综合速度与质量的默认档位，适合大多数聊天、检索整理与内容生成任务。",
-      "tags": "xai,grok",
-      "vendor_id": 8,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 1.2,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-imagine-image",
-      "description": "xAI Grok Imagine Image，标准版文生图模型，兼顾画面质量与生成速度，适合通用海报、插画与场景图生成。",
-      "tags": "xai,grok",
-      "vendor_id": 8,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.04,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.2",
-      "description": "OpenAI GPT-5.2，稳定的通用文本模型，适合日常问答、基础写作、轻量代码任务与常规 Agent 场景。",
-      "tags": "gpt",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "cn",
-        "default",
-        "gpt",
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "description": "OpenAI GPT-5.3 Codex，面向代码生成、项目理解和工程任务优化的编程模型，适合代码补全、重构、调试、脚本编写、仓库分析和自动化开发流程。",
-      "tags": "gpt,codex,coding",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 1.2,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "gpt",
-        "grok",
-        "cn",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "mimo-v2.5-pro",
-      "description": "小米 MiMo V2.5 Pro，旗舰文本与推理模型，支持长上下文，适合复杂问答、代码、长文档理解和高质量内容生成。",
-      "icon": "XiaomiMiMo.Avatar",
-      "tags": "mimo,xiaomi,chat,reasoning,256k,openai",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 0.7,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "cn",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-imagine-video",
-      "description": "xAI Grok Imagine Video，文生视频模型，适合生成短时长动态片段、创意镜头与宣传演示视频。",
-      "tags": "xai,grok",
-      "vendor_id": 8,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.1,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "deepseek-v4-flash",
-      "description": "DeepSeek V4 Flash，轻量推理模型，适合通用问答、日常 Agent、基础开发辅助和低成本快速响应场景。",
-      "tags": "deepseek,chat,reasoning",
-      "vendor_id": 4,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "cache_ratio": 0.02,
-      "enable_groups": [
-        "cn",
-        "default",
-        "gpt",
-        "grok",
-        "max",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
     }
   ],
   "group_ratio": {
@@ -613,59 +702,6 @@
   },
   "vendors": [
     {
-      "id": 10,
-      "name": "阿里巴巴",
-      "icon": "Qwen.Color"
-    },
-    {
-      "id": 11,
-      "name": "MiniMax",
-      "description": "MiniMax 是国内领先的拥有文本、声音、视觉三模态融合的千亿参数语言大模型",
-      "icon": "Minimax.Color"
-    },
-    {
-      "id": 2,
-      "name": "Moonshot",
-      "icon": "Moonshot"
-    },
-    {
-      "id": 7,
-      "name": "智谱",
-      "icon": "Zhipu.Color"
-    },
-    {
-      "id": 9,
-      "name": "Meta",
-      "icon": "Ollama"
-    },
-    {
-      "id": 12,
-      "name": "字节跳动",
-      "icon": "Doubao.Color"
-    },
-    {
-      "id": 13,
-      "name": "小米",
-      "description": "小米 MiMo 系列模型，覆盖通用文本、复杂推理与多模态理解场景。",
-      "icon": "XiaomiMiMo"
-    },
-    {
-      "id": 14,
-      "name": "百度",
-      "icon": "Wenxin.Color"
-    },
-    {
-      "id": 1,
-      "name": "Google",
-      "icon": "Gemini.Color"
-    },
-    {
-      "id": 3,
-      "name": "Anthropic",
-      "description": "claude 模型",
-      "icon": "Claude.Color"
-    },
-    {
       "id": 4,
       "name": "DeepSeek",
       "icon": "DeepSeek.Color"
@@ -681,9 +717,62 @@
       "icon": "Spark.Color"
     },
     {
+      "id": 7,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
       "id": 8,
       "name": "xAI",
       "icon": "XAI"
+    },
+    {
+      "id": 14,
+      "name": "百度",
+      "icon": "Wenxin.Color"
+    },
+    {
+      "id": 1,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 2,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 9,
+      "name": "Meta",
+      "icon": "Ollama"
+    },
+    {
+      "id": 10,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 11,
+      "name": "MiniMax",
+      "description": "MiniMax 是国内领先的拥有文本、声音、视觉三模态融合的千亿参数语言大模型",
+      "icon": "Minimax.Color"
+    },
+    {
+      "id": 12,
+      "name": "字节跳动",
+      "icon": "Doubao.Color"
+    },
+    {
+      "id": 13,
+      "name": "小米",
+      "description": "小米 MiMo 系列模型，覆盖通用文本、复杂推理与多模态理解场景。",
+      "icon": "XiaomiMiMo"
+    },
+    {
+      "id": 3,
+      "name": "Anthropic",
+      "description": "claude 模型",
+      "icon": "Claude.Color"
     }
   ],
   "status_payload": {
@@ -691,6 +780,13 @@
       "HeaderNavModules": "{\n  \"home\": true,\n  \"console\": true,\n  \"pricing\": {\n    \"enabled\": true,\n    \"requireAuth\": true\n  },\n  \"docs\": true,\n  \"about\": true\n}",
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
       "announcements": [
+        {
+          "content": "因 OpenAI 官方已下架 gpt-5.2 与 gpt-5.3-codex 模型，将同步进行相应调整。",
+          "extra": "",
+          "id": 30,
+          "publishDate": "2026-06-02T10:59:32.817Z",
+          "type": "default"
+        },
         {
           "content": "🎉 邀请抽奖活动上线！邀请好友首充 ¥10 即得抽奖券，奖品 ¥3-100 必中。\n\n抽奖地址：https://ai.17nas.com/tools/lottery/",
           "extra": "邀请抽奖 · 抽 ¥100 大奖",
@@ -877,7 +973,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://ai.17nas.com",
       "setup": true,
-      "start_time": 1780085122,
+      "start_time": 1780417566,
       "stripe_unit_price": 1,
       "system_name": "镜核 AI",
       "telegram_bot_name": "",

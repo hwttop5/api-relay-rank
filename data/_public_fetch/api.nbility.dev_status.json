@@ -1,0 +1,236 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"package\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":false,\"contact\":true}",
+    "SelfServiceSubscriptionConversionCampaign": "",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"package\":true,\"token\":true,\"log\":true,\"checkinLottery\":true,\"activityLottery\":false,\"midjourney\":false,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"invoice\":true,\"refund\":true,\"invite\":true,\"personal\":true,\"siteNotifications\":true},\"public\":{\"enabled\":false,\"pricing\":true,\"docs\":true,\"about\":true,\"contact\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"tokenAdmin\":true,\"ecomagent\":true,\"user\":true,\"subscription\":true,\"setting\":true,\"riskControl\":true,\"invoiceAdmin\":true,\"financeAdmin\":true,\"checkinAdmin\":true}}",
+    "SubscriptionRefundSettings": "",
+    "_qn": "new-api",
+    "activity_lottery_auto_draw_enabled": true,
+    "activity_lottery_default_min_participants": 3,
+    "activity_lottery_default_winner_count": 1,
+    "activity_lottery_enabled": true,
+    "activity_lottery_join_daily_consume_min_money": 0,
+    "activity_lottery_join_sources": "manual",
+    "activity_lottery_join_topup_min_money": 0,
+    "announcements": [
+      {
+        "content": "Nbility 提供 claude awsb、 max企业专属渠道，3000rpm+，价格美丽，量大可谈折扣，可用于蒸馏，详情请联系客服 xxx",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-06-02T08:04:09.722Z",
+        "type": "default"
+      },
+      {
+        "content": "为进一步提升平台性能与服务体验，我们计划于下周一对网站服务器进行扩容升级。维护期间，部分服务可能出现短暂波动或访问延迟，预计影响时间较短。",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2026-05-31T12:38:04.013Z",
+        "type": "default"
+      },
+      {
+        "content": "- `claude-max group` is now available in the fully functional version of Claude Opus 4.8. Please use the following command to upgrade your local terminal to v2.1.154\n- Max 分组现已上线 Claude Opus 4.8 满血版。请使用以下命令将本地终端升级至 v2.1.154",
+        "extra": "npm install -g @anthropic-ai/claude-code@2.1.154",
+        "id": 12,
+        "publishDate": "2026-05-29T01:59:24.117Z",
+        "type": "success"
+      },
+      {
+        "content": " - Azure GPT 企业接入：Nbility 已通过 Azure GPT 官方企业通道提供服务，支持 GPT-5.5 模型。如需接入，请联系 xxx 或提交 [工单](https://nbility.dev/console/tickets)，价格在官方原价基础上有折扣\n- 开票申请：请通过 [工单系统](https://nbility.dev/console/tickets) 提交开票申请。默认开具增值税普通发票（税率 1%），开票金额 1,000 元起。",
+        "extra": "服务监控：实时接口状态请查看 https://status.nbility.dev",
+        "id": 11,
+        "publishDate": "2026-05-28T07:41:28.339Z",
+        "type": "default"
+      },
+      {
+        "content": "Gemini Group Update: Legacy channels retired. New channels feature unlimited concurrency with adjusted group rate multipliers.",
+        "extra": "Gemini 分组通知调整：旧渠道已下线，新渠道不限并发，分组倍率已上调。",
+        "id": 10,
+        "publishDate": "2026-05-28T05:51:23.174Z",
+        "type": "default"
+      },
+      {
+        "content": "-  Claude Max is offering a limited-time special discount with a multiplier of 1.2x. When creating a token, please select the \"claude-max-cheap\" group\n- 新上架 Claude Max 限时特价倍率 1.2x，创建令牌时选择claude-max-cheap 分组。",
+        "extra": "⚠️注意，claude相关分组目前仅限于在 “Claude Code” 或官方开发的插件中使用，若需外接请联系站长。",
+        "id": 9,
+        "publishDate": "2026-05-25T07:26:46.357Z",
+        "type": "success"
+      },
+      {
+        "content": "Nbility now supports the seedance-2-480p and seedance-2-720p pay-per-second models, as well as face recognition and skip-the-line features. See  [seedance 2.0 docs](https://nbility.dev/docs/api/videos/seedance) to get start.",
+        "extra": "Nbility 已支持邀请充值返佣；已上架 seedance-2-480p、seedance-2-720p 按秒计费模型，支持人脸、免排队。",
+        "id": 8,
+        "publishDate": "2026-05-19T14:13:49.627Z",
+        "type": "success"
+      },
+      {
+        "content": "Anthropic just bumped up the Claude Max limits! We're passing that on to you: the claude-max group multiplier is dropping from 3.2x to 2.4x costs.",
+        "extra": "claude-max 分组倍率从 3.2x 降到 2.4x，感谢各位一直以来的支持。",
+        "id": 6,
+        "publishDate": "2026-05-17T14:52:07.000Z",
+        "type": "success"
+      },
+      {
+        "content": "The \"$\" symbolis not real USD—it′s simply a display unit for quota. It may appear as ‘¥, or even 🤓‘.  ¥1 = 1 site credit.",
+        "extra": "说明一下，本站的“$”不是真美金，仅仅是一个额度单位，这个单位可以是$，也可以是¥，还可以是🤓，充值时 ¥1 = 1 站内额度。",
+        "id": 1,
+        "publishDate": "2026-05-13T03:44:56.000Z",
+        "type": "default"
+      },
+      {
+        "content": "Images are stored on CDN for 3 days. Grab the URL from your generation log and download promptly.",
+        "extra": "图片生成后会在 CDN 中保存 3 天，可在生图日志详情中获取图片地址，请及时下载。",
+        "id": 3,
+        "publishDate": "2026-05-11T03:51:39.000Z",
+        "type": "default"
+      },
+      {
+        "content": "For gpt-image-2 models, async mode is recommended for higher success rates. See the [API docs](https://nbility.dev/docs/api/images) for details. Please implement client-side retry logic. Note that high-res / high-quality modes have higher latency and lower success rates.",
+        "extra": "调用 gpt-image-2 相关模型时，高分辨率、高质量模式延迟较高，出图成功率较低。若失败，请在客户端自行实现重试逻辑。",
+        "id": 2,
+        "publishDate": "2026-05-10T03:49:03.000Z",
+        "type": "warning"
+      },
+      {
+        "content": "Nbility now supports gpt-5.5 and gpt-image-2. API docs: https://nbility.dev/docs/api/images",
+        "extra": "Nbility 已支持 gpt-5.5、gpt-image-2。API 文档：https://nbility.dev/docs/api/images",
+        "id": 4,
+        "publishDate": "2026-04-24T03:52:11.000Z",
+        "type": "success"
+      },
+      {
+        "content": "Nbility is officially launched, with support for Codex, Claude Code, and Gemini.\n\nNbility 正式发布，支持 Codex、Claude Code、Gemini。Nbility 的目标不是做大做强，而是各位朋友、家人们能在有需要的时候，能方便、快捷的用上这些AI工具，感受技术对工作、生活的改变，哪怕你不常用，在下次突然想起这个工具时，打开敲下回车，Nbility 依然给予你最快捷的回复！",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-04-01T05:54:53.000Z",
+        "type": "success"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "国际直连后端服务",
+        "id": 1,
+        "route": "通用线路",
+        "url": "https://api.nbility.dev"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": true,
+    "checkin_setting.daily_user_limit": 50,
+    "checkin_setting.open_end_seconds": 79200,
+    "checkin_setting.open_start_seconds": 28800,
+    "checkin_setting.open_weekdays": "1,2,3,4,5,6,0",
+    "contact_channels": [],
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "discord_oauth_register": false,
+    "display_in_currency": true,
+    "docs_link": "",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_log_export": true,
+    "enable_task": true,
+    "faq": [],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "Ov23liid8IrtOQqb88l0",
+    "github_oauth": true,
+    "github_oauth_register": true,
+    "google_client_id": "823969323285-kvataa32skssfjitsbg8324t9ci5ngvq.apps.googleusercontent.com",
+    "google_oauth": true,
+    "google_oauth_register": true,
+    "invite_register_enabled": false,
+    "linuxdo_client_id": "2kFVCbyveDpYYdQjLeHzi1ZThZ6RCVFG",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": true,
+    "linuxdo_oauth_register": true,
+    "logo": "https://nbility.dev/logo.svg",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "oidc_register_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "Nbility",
+    "passkey_login": false,
+    "passkey_origins": "https://nbility.dev",
+    "passkey_rp_id": "nbility.dev",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
+    "price": 1,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "register_enabled": true,
+    "self_use_mode_enabled": false,
+    "server_address": "https://nbility.dev",
+    "setup": true,
+    "start_time": 1780393855,
+    "stripe_unit_price": 1,
+    "subscription_promo_badge_left": "",
+    "subscription_promo_badge_right": "",
+    "subscription_promo_button_link": "",
+    "subscription_promo_button_text": "",
+    "subscription_promo_enabled": true,
+    "subscription_promo_subtitle": "",
+    "subscription_promo_title": "",
+    "system_name": "Nbility",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "telegram_oauth_register": false,
+    "token_test_defaults": {
+      "claude_model": "claude-opus-4-6",
+      "mode": "both",
+      "responses_model": "gpt-5.4"
+    },
+    "top_up_link": "",
+    "turnstile_check": false,
+    "turnstile_site_key": "0x4AAAAAACwqDnd2PE0GLAXA",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": false,
+    "version": "alpha-20260602-d9287bf",
+    "wechat_login": false,
+    "wechat_qrcode": "",
+    "wechat_register": false
+  },
+  "message": "",
+  "success": true
+}

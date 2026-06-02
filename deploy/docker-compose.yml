@@ -1,6 +1,23 @@
 name: api-relay-rank
 
 services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      TZ: Asia/Shanghai
+    volumes:
+      - /srv/api-relay-rank/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
   app:
     image: api-relay-rank:local
     build:
@@ -19,6 +36,8 @@ services:
       NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}
       NEXT_PUBLIC_BAIDU_TONGJI_ID: ${NEXT_PUBLIC_BAIDU_TONGJI_ID:-}
       GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      SITE_DATA_ALLOW_FILE_FALLBACK: ${SITE_DATA_ALLOW_FILE_FALLBACK:-0}
       APP_DATA_DIR: ${APP_DATA_DIR}
       LIVE_AUTH_PROBE_DIR: ${LIVE_AUTH_PROBE_DIR}
       AUDIT_RETENTION_DAYS: ${AUDIT_RETENTION_DAYS}
@@ -30,6 +49,9 @@ services:
     volumes:
       - /srv/api-relay-rank/data:/runtime/data
       - /srv/api-relay-rank/probes:/runtime/tabbit-audit-profile
+    depends_on:
+      postgres:
+        condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:3000/api/health >/dev/null || exit 1"]
       interval: 30s
@@ -59,6 +81,10 @@ services:
       NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}
       NEXT_PUBLIC_BAIDU_TONGJI_ID: ${NEXT_PUBLIC_BAIDU_TONGJI_ID:-}
       GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      SITE_DATA_ALLOW_FILE_FALLBACK: ${SITE_DATA_ALLOW_FILE_FALLBACK:-0}
+      LOG_INBOX_DIR: ${LOG_INBOX_DIR}
+      LOG_ARCHIVE_DIR: ${LOG_ARCHIVE_DIR}
       APP_DATA_DIR: ${APP_DATA_DIR}
       LIVE_AUTH_PROBE_DIR: ${LIVE_AUTH_PROBE_DIR}
       AUDIT_RETENTION_DAYS: ${AUDIT_RETENTION_DAYS}
@@ -70,6 +96,11 @@ services:
     volumes:
       - /srv/api-relay-rank/data:/runtime/data
       - /srv/api-relay-rank/probes:/runtime/tabbit-audit-profile
+      - /srv/api-relay-rank/log-inbox:/runtime/log-inbox
+      - /srv/api-relay-rank/log-archive:/runtime/log-archive
+    depends_on:
+      postgres:
+        condition: service_healthy
 
 networks:
   shared_proxy:

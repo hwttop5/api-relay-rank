@@ -23,6 +23,21 @@
 
 ## 刷新流程
 
+数据库与日志同步链路：
+
+- 生产环境以 PostgreSQL 中最新 `site_data_snapshots.status='success'` 的 `payload` 作为前端主数据；`data/site-data.json` 仍由脚本生成，作为发布快照、备份和显式回滚来源。
+- `SITE_DATA_ALLOW_FILE_FALLBACK=1` 只作为显式回滚开关；生产默认 `0`，数据库不可读时不静默使用旧 JSON。
+- 本机 Windows 定时任务固定每天 `23:59:59` 运行 `scripts/run_codex_log_sync.ps1`，导出脱敏后的 Codex Manager `/v1/responses` 日志包并上传到服务器 `LOG_INBOX_DIR`。
+- 脱敏日志包只允许 `id`、`created_at`、`request_type`、`request_path`、`aggregate_api_supplier_name`、`aggregate_api_url`、`status_code`、`error`、`duration_ms`、`first_response_ms` 字段；不得上传完整 Codex Manager DB。
+- 服务器 `04:00` 的 `scripts/run_server_refresh.py` 在 `DATABASE_URL` 存在时会先导入 `LOG_INBOX_DIR` 中的批次，再用 `audit_proxy_multipliers.py --log-source postgres` 从 PostgreSQL 分析日志。
+- 刷新成功后，`scripts/publish_site_data_snapshot.py` 会把当前 `site-data.json` 发布到 PostgreSQL；刷新失败只记录 failed run，不发布新的 success snapshot，前端继续读取上一条成功快照。
+
+本机任务安装示例：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/install_windows_log_sync_task.ps1 -UploadTarget user@example.com:/srv/api-relay-rank/log-inbox
+```
+
 本地普通刷新：
 
 ```powershell

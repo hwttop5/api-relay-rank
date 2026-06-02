@@ -17,6 +17,8 @@ data/_audit_runs/
 data/_owner_announcement/
 output/
 tsconfig.tsbuildinfo
+codex-log-*.zip
+*.zip.tmp
 
 .vercel
 
