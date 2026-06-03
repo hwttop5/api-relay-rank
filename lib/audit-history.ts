@@ -112,12 +112,38 @@ async function readAuditSummary(summaryPath: string) {
   }
 }
 
+function publicUrlHost(value: string) {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "http:" && url.protocol !== "https:") {
+      return "";
+    }
+    return url.hostname.toLowerCase().replace(/^www\./, "");
+  } catch {
+    return "";
+  }
+}
+
+function hostsReferToSameSite(left: string, right: string) {
+  return left === right || left.endsWith(`.${right}`) || right.endsWith(`.${left}`);
+}
+
+function findStationByAuditUrl(siteData: SiteData, auditedBaseUrl: string) {
+  const auditedHost = publicUrlHost(auditedBaseUrl);
+  if (!auditedHost) {
+    return null;
+  }
+  return siteData.stations.find((station) => {
+    const stationHost = publicUrlHost(station.url);
+    return stationHost && hostsReferToSameSite(auditedHost, stationHost);
+  });
+}
+
 export async function getAuditHistory(siteData: SiteData): Promise<StationAuditHistoryItem[]> {
   const stationMap = new Map(siteData.stations.map((station) => [station.key, station]));
   const history: StationAuditHistoryItem[] = [];
 
   for (const stationKey of await safeListDirectories(AUDIT_RUNS_ROOT)) {
-    const station = stationMap.get(stationKey);
     const stationRoot = path.join(AUDIT_RUNS_ROOT, stationKey);
     for (const modelDir of await safeListDirectories(stationRoot)) {
       const modelRoot = path.join(stationRoot, modelDir);
@@ -126,9 +152,11 @@ export async function getAuditHistory(siteData: SiteData): Promise<StationAuditH
         if (!summary) {
           continue;
         }
+        const station = stationMap.get(stationKey) || findStationByAuditUrl(siteData, summary.auditedBaseUrl);
+        const displayStationKey = station?.key || stationKey;
         history.push({
           ...summary,
-          stationKey,
+          stationKey: displayStationKey,
           stationLabel: station?.label || stationKey,
           stationUrl: station?.url || summary.auditedBaseUrl,
           runId,

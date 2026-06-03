@@ -1,0 +1,2342 @@
+{
+  "auto_groups": [
+    "vip",
+    "default"
+  ],
+  "data": [
+    {
+      "model_name": "Claude-sonnet-4-6",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- anthropic: POST /v1/messages",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 1.395,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "glm-5",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- anthropic: POST /v1/messages",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-image-pro",
+      "detail_description": "可用端点：\n- image-generation: POST /v1/images/generations\n- image-generation-async: POST /v1/images/generations/async\n- image-task-query: GET /v1/images/tasks/{task_id}",
+      "resolved_endpoints": {
+        "image-generation": {
+          "path": "/v1/images/generations",
+          "method": "POST"
+        },
+        "image-generation-async": {
+          "path": "/v1/images/generations/async",
+          "method": "POST"
+        },
+        "image-task-query": {
+          "path": "/v1/images/tasks/{task_id}",
+          "method": "GET"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.02,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M2.5",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- anthropic: POST /v1/messages",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.315,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "free"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- openai-response: POST /v1/responses",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        },
+        "openai-response": {
+          "path": "/v1/responses",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "vvip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.072,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-image-preview",
+      "detail_description": "可用端点：\n- gemini: POST /v1beta/models/gemini-3-pro-image-preview:generateContent\n- image-generation-async: POST /v1/images/generations/async\n- image-task-query: GET /v1/images/tasks/{task_id}",
+      "resolved_endpoints": {
+        "gemini": {
+          "path": "/v1beta/models/gemini-3-pro-image-preview:generateContent",
+          "method": "POST"
+        },
+        "image-generation-async": {
+          "path": "/v1/images/generations/async",
+          "method": "POST"
+        },
+        "image-task-query": {
+          "path": "/v1/images/tasks/{task_id}",
+          "method": "GET"
+        }
+      },
+      "tags": "图像",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "group_1"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "image-generation-async",
+        "image-task-query"
+      ]
+    },
+    {
+      "model_name": "gemma-4-26b-a4b-it",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-1.0-video-landscape-10s",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- openai-response: POST /v1/responses",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        },
+        "openai-response": {
+          "path": "/v1/responses",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M2.7",
+      "detail_description": "可用端点：\n- anthropic: POST /v1/messages\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.315,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "free"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "detail_description": "可用端点：\n- anthropic: POST /v1/messages\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 1.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.248,
+      "enable_groups": [
+        "ccmax",
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.7,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5.714285714286,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "glm-4-flash-250414",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5.1-20260408",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-image-lite",
+      "detail_description": "可用端点：\n- image-generation: POST /v1/images/generations\n- image-generation-async: POST /v1/images/generations/async\n- image-task-query: GET /v1/images/tasks/{task_id}",
+      "resolved_endpoints": {
+        "image-generation": {
+          "path": "/v1/images/generations",
+          "method": "POST"
+        },
+        "image-generation-async": {
+          "path": "/v1/images/generations/async",
+          "method": "POST"
+        },
+        "image-task-query": {
+          "path": "/v1/images/tasks/{task_id}",
+          "method": "GET"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.02,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-video-square-10s",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- openai-response: POST /v1/responses",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        },
+        "openai-response": {
+          "path": "/v1/responses",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "sora-v3-pro",
+      "detail_description": "可用端点：\n- openai-video: POST /v1/videos\n- video-task-query: GET /v1/videos/{task_id}\n- video-content: GET /v1/videos/{task_id}/content",
+      "resolved_endpoints": {
+        "openai-video": {
+          "path": "/v1/videos",
+          "method": "POST"
+        },
+        "video-content": {
+          "path": "/v1/videos/{task_id}/content",
+          "method": "GET"
+        },
+        "video-task-query": {
+          "path": "/v1/videos/{task_id}",
+          "method": "GET"
+        }
+      },
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.6,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "seedance",
+        "seedancevip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "sora2-pro",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash",
+      "detail_description": "可用端点：\n- gemini: POST /v1beta/models/gemini-2.5-flash:generateContent\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "gemini": {
+          "path": "/v1beta/models/gemini-2.5-flash:generateContent",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.03,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333333,
+      "cache_ratio": 0.033333333333,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "hunyuan-mt-7b",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- anthropic: POST /v1/messages",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "nano-banana2",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- gemini: POST /v1beta/models/nano-banana2:generateContent",
+      "resolved_endpoints": {
+        "gemini": {
+          "path": "/v1beta/models/nano-banana2:generateContent",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.15,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "nemotron-3-super-120b-a12b",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 14,
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-preview",
+      "detail_description": "可用端点：\n- gemini: POST /v1beta/models/gemini-3-pro-preview:generateContent\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "gemini": {
+          "path": "/v1beta/models/gemini-3-pro-preview:generateContent",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-image-edit",
+      "detail_description": "可用端点：\n- image-edit: POST /v1/images/edits\n- image-edit-async: POST /v1/images/edits/async\n- image-task-query: GET /v1/images/tasks/{task_id}",
+      "resolved_endpoints": {
+        "image-edit": {
+          "path": "/v1/images/edits",
+          "method": "POST"
+        },
+        "image-edit-async": {
+          "path": "/v1/images/edits/async",
+          "method": "POST"
+        },
+        "image-task-query": {
+          "path": "/v1/images/tasks/{task_id}",
+          "method": "GET"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.02,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-video-preview",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- openai-response: POST /v1/responses",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        },
+        "openai-response": {
+          "path": "/v1/responses",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "sora2",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "spark-lite",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- anthropic: POST /v1/messages",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "ali-deepseek-v4-flash",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.585,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1.5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.018,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- image-generation: POST /v1/images/generations\n- image-generation-async: POST /v1/images/generations/async\n- image-task-query: GET /v1/images/tasks/{task_id}",
+      "resolved_endpoints": {
+        "image-generation": {
+          "path": "/v1/images/generations",
+          "method": "POST"
+        },
+        "image-generation-async": {
+          "path": "/v1/images/generations/async",
+          "method": "POST"
+        },
+        "image-task-query": {
+          "path": "/v1/images/tasks/{task_id}",
+          "method": "GET"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "tags": "图像",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.05,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "group_1",
+        "image2"
+      ],
+      "supported_endpoint_types": [
+        "image-generation",
+        "image-generation-async",
+        "image-task-query"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-1.0-video",
+      "detail_description": "可用端点：\n- openai-video: POST /v1/videos\n- video-task-query: GET /v1/videos/{task_id}\n- video-content: GET /v1/videos/{task_id}/content",
+      "resolved_endpoints": {
+        "openai-video": {
+          "path": "/v1/videos",
+          "method": "POST"
+        },
+        "video-content": {
+          "path": "/v1/videos/{task_id}/content",
+          "method": "GET"
+        },
+        "video-task-query": {
+          "path": "/v1/videos/{task_id}",
+          "method": "GET"
+        }
+      },
+      "tags": "视频",
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai-video",
+        "video-content",
+        "video-task-query"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-video",
+      "detail_description": "可用端点：\n- openai-video: POST /v1/videos\n- video-task-query: GET /v1/videos/{task_id}\n- video-content: GET /v1/videos/{task_id}/content",
+      "resolved_endpoints": {
+        "openai-video": {
+          "path": "/v1/videos",
+          "method": "POST"
+        },
+        "video-content": {
+          "path": "/v1/videos/{task_id}/content",
+          "method": "GET"
+        },
+        "video-task-query": {
+          "path": "/v1/videos/{task_id}",
+          "method": "GET"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.5",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 3,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.02,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "detail_description": "可用端点：\n- anthropic: POST /v1/messages\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 1.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.249866666667,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-lite-preview",
+      "detail_description": "可用端点：\n- gemini: POST /v1beta/models/gemini-3.1-flash-lite-preview:generateContent\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "gemini": {
+          "path": "/v1beta/models/gemini-3.1-flash-lite-preview:generateContent",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.08,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6.25,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash",
+      "detail_description": "可用端点：\n- gemini: POST /v1beta/models/gemini-3.5-flash:generateContent\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "gemini": {
+          "path": "/v1beta/models/gemini-3.5-flash:generateContent",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-super",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.002,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-video-1.5-preview",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- openai-response: POST /v1/responses",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        },
+        "openai-response": {
+          "path": "/v1/responses",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- anthropic: POST /v1/messages",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 1.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.248,
+      "enable_groups": [
+        "ccmax",
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "glm-4.7",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- anthropic: POST /v1/messages",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "glm-5-turbo",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mistral-7b-instruct-v0.2",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-image-preview",
+      "detail_description": "可用端点：\n- gemini: POST /v1beta/models/gemini-3.1-flash-image-preview:generateContent\n- image-generation-async: POST /v1/images/generations/async\n- image-task-query: GET /v1/images/tasks/{task_id}",
+      "resolved_endpoints": {
+        "gemini": {
+          "path": "/v1beta/models/gemini-3.1-flash-image-preview:generateContent",
+          "method": "POST"
+        },
+        "image-generation-async": {
+          "path": "/v1/images/generations/async",
+          "method": "POST"
+        },
+        "image-task-query": {
+          "path": "/v1/images/tasks/{task_id}",
+          "method": "GET"
+        }
+      },
+      "tags": "图像",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.15,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "group_1"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "image-generation-async",
+        "image-task-query"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M2.1",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- anthropic: POST /v1/messages",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.315,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "free"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "detail_description": "可用端点：\n- anthropic: POST /v1/messages\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 0.0525,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.095238095238,
+      "create_cache_ratio": 1.238095238095,
+      "enable_groups": [
+        "ccmax",
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "Claude-opus-4-6",
+      "detail_description": "可用端点：\n- anthropic: POST /v1/messages\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 2.32,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5.1",
+      "detail_description": "可用端点：\n- anthropic: POST /v1/messages\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "sora-v3-fast",
+      "detail_description": "可用端点：\n- openai-video: POST /v1/videos\n- video-task-query: GET /v1/videos/{task_id}\n- video-content: GET /v1/videos/{task_id}/content",
+      "resolved_endpoints": {
+        "openai-video": {
+          "path": "/v1/videos",
+          "method": "POST"
+        },
+        "video-content": {
+          "path": "/v1/videos/{task_id}/content",
+          "method": "GET"
+        },
+        "video-task-query": {
+          "path": "/v1/videos/{task_id}",
+          "method": "GET"
+        }
+      },
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "seedancevip",
+        "default",
+        "seedance"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash-low",
+      "detail_description": "可用端点：\n- gemini: POST /v1beta/models/gemini-3.5-flash-low:generateContent\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "gemini": {
+          "path": "/v1beta/models/gemini-3.5-flash-low:generateContent",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-4.7-flash",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.0135,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5.888888888889,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "K2.6-code-preview",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 3,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.02,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "nano-banana",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- gemini: POST /v1beta/models/nano-banana:generateContent",
+      "resolved_endpoints": {
+        "gemini": {
+          "path": "/v1beta/models/nano-banana:generateContent",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-non-reasoning-super",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.002,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-reasoning-super",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.002,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.6",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 3,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.02,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mimo-v2.5-pro",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 3.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M2.5-highspeed",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- anthropic: POST /v1/messages",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.63,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "free"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M2.7-highspeed",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- anthropic: POST /v1/messages",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.63,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "free"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-lite",
+      "detail_description": "可用端点：\n- gemini: POST /v1beta/models/gemini-2.5-flash-lite:generateContent\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "gemini": {
+          "path": "/v1beta/models/gemini-2.5-flash-lite:generateContent",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.03,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.333333333333,
+      "cache_ratio": 0.333333333333,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.025,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- openai-response: POST /v1/responses",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        },
+        "openai-response": {
+          "path": "/v1/responses",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "vvip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- openai-response: POST /v1/responses",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        },
+        "openai-response": {
+          "path": "/v1/responses",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "vvip",
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-1.0-video-landscape-6s",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- openai-response: POST /v1/responses",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        },
+        "openai-response": {
+          "path": "/v1/responses",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-1.0-video-portrait-6s",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- openai-response: POST /v1/responses",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        },
+        "openai-response": {
+          "path": "/v1/responses",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "nano-banana-pro",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- gemini: POST /v1beta/models/nano-banana-pro:generateContent",
+      "resolved_endpoints": {
+        "gemini": {
+          "path": "/v1beta/models/nano-banana-pro:generateContent",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "nemotron-3-nano-omni-30b-a3b-reasoning",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 14,
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "detail_description": "可用端点：\n- anthropic: POST /v1/messages\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 1.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "ccmax",
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "detail_description": "可用端点：\n- anthropic: POST /v1/messages\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "anthropic": {
+          "path": "/v1/messages",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 0.525,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.249523809524,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.3-beta",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- openai-response: POST /v1/responses",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        },
+        "openai-response": {
+          "path": "/v1/responses",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.002,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-1.0-video-portrait-10s",
+      "detail_description": "可用端点：\n- openai-video: POST /v1/videos\n- video-task-query: GET /v1/videos/{task_id}\n- video-content: GET /v1/videos/{task_id}/content",
+      "resolved_endpoints": {
+        "openai-video": {
+          "path": "/v1/videos",
+          "method": "POST"
+        },
+        "video-content": {
+          "path": "/v1/videos/{task_id}/content",
+          "method": "GET"
+        },
+        "video-task-query": {
+          "path": "/v1/videos/{task_id}",
+          "method": "GET"
+        }
+      },
+      "tags": "视频",
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-video-square-6s",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- openai-response: POST /v1/responses",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        },
+        "openai-response": {
+          "path": "/v1/responses",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "nemotron-3-nano-30b-a3b",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 14,
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- gemini: POST /v1beta/models/gemini-2.5-pro:generateContent",
+      "resolved_endpoints": {
+        "gemini": {
+          "path": "/v1beta/models/gemini-2.5-pro:generateContent",
+          "method": "POST"
+        },
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.4,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 7.5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "gpt-oss-120b",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions\n- openai-response: POST /v1/responses",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        },
+        "openai-response": {
+          "path": "/v1/responses",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai-response",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-image",
+      "detail_description": "可用端点：\n- image-generation: POST /v1/images/generations\n- image-generation-async: POST /v1/images/generations/async\n- image-task-query: GET /v1/images/tasks/{task_id}",
+      "resolved_endpoints": {
+        "image-generation": {
+          "path": "/v1/images/generations",
+          "method": "POST"
+        },
+        "image-generation-async": {
+          "path": "/v1/images/generations/async",
+          "method": "POST"
+        },
+        "image-task-query": {
+          "path": "/v1/images/tasks/{task_id}",
+          "method": "GET"
+        }
+      },
+      "tags": "图像",
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.02,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "mimo-v2.5",
+      "detail_description": "可用端点：\n- openai: POST /v1/chat/completions",
+      "resolved_endpoints": {
+        "openai": {
+          "path": "/v1/chat/completions",
+          "method": "POST"
+        }
+      },
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1.4,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "ccmax": 2.5,
+    "default": 1,
+    "free": 0.01,
+    "group_1": 1.5,
+    "image2": 1,
+    "seedance": 0.8,
+    "vip": 0.7,
+    "vvip": 0.5
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "gemini": {
+      "path": "/v1beta/models/{model}:generateContent",
+      "method": "POST"
+    },
+    "image-generation": {
+      "path": "/v1/images/generations",
+      "method": "POST"
+    },
+    "image-generation-async": {
+      "path": "/v1/images/generations/async",
+      "method": "POST"
+    },
+    "image-task-query": {
+      "path": "/v1/images/tasks/{task_id}",
+      "method": "GET"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    },
+    "openai-response": {
+      "path": "/v1/responses",
+      "method": "POST"
+    },
+    "openai-video": {
+      "path": "/v1/videos",
+      "method": "POST"
+    },
+    "video-content": {
+      "path": "/v1/videos/{task_id}/content",
+      "method": "GET"
+    },
+    "video-task-query": {
+      "path": "/v1/videos/{task_id}",
+      "method": "GET"
+    }
+  },
+  "usable_group": {
+    "ccmax": "cc纯血max专用分组",
+    "default": "默认分组",
+    "free": "超低倍率渠道，能用就用，不能用就算了",
+    "group_1": "自用分组",
+    "image2": "image2异步专用分组",
+    "seedance": "seedance 0.8倍率分组",
+    "vip": "0.7倍率分组",
+    "vvip": "0.5倍率分组"
+  },
+  "vendors": [
+    {
+      "id": 4,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 5,
+      "name": "腾讯",
+      "icon": "Hunyuan.Color"
+    },
+    {
+      "id": 8,
+      "name": "Stepfun",
+      "icon": "Stepfun"
+    },
+    {
+      "id": 9,
+      "name": "xAI",
+      "icon": "XAI"
+    },
+    {
+      "id": 10,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 11,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 12,
+      "name": "Xiaomi MiMo",
+      "icon": "Xiaomi MiMo"
+    },
+    {
+      "id": 13,
+      "name": "Minimax",
+      "icon": "Minimax"
+    },
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 2,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 3,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 6,
+      "name": "Mistral",
+      "icon": "Mistral.Color"
+    },
+    {
+      "id": 7,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 14,
+      "name": "NVIDIA",
+      "icon": "Nvidia"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "",
+      "SidebarModulesAdmin": "",
+      "announcements": [],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "blue",
+          "description": "图片/视频类任务推荐异步方式获取",
+          "id": 1,
+          "route": "大陆优化线路",
+          "url": "https://www.kuaiaiapi.com"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://docs.newapi.pro",
+      "email_verification": false,
+      "enable_batch_update": false,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq": [
+        {
+          "answer": "1.提供多种计费模式：按请求次数、按token数量等\n2.实时显示用户的API使用情况和费用.",
+          "id": 1,
+          "question": "本站的计费模式"
+        },
+        {
+          "answer": "400 Bad Request|请求格式错误或无效。这通常意味着你的请求参数有误，需要你检查并修正请求参数。\n401 Unauthorized|请求格式错误或无效。这通常意味着你的请求令牌有误，需要你检查并修正请求参数。\n403 Forbidden|一般是余额不足。\n404 Not Found|请求的资源未找到。你可能正在试图访问一个不存在的端点。\n413 Request Entity Too Large|请求体太大。你可能需要减少你的请求数据量。\n429 Too Many Requests|由于短时间内发送过多的请求，你已经超过了你的速率限制。\n500 Internal Server Error|服务器内部错误。这可能是OpenAI服务器的问题，不是你的问题。\n503 Service Unavailable|服务暂时不可用。这可能是由于OpenAI正在进行维护或者服务器过载。",
+          "id": 2,
+          "question": "API接口的返回数据显示错误是什么意思？"
+        },
+        {
+          "answer": "我们的API遵循RESTful标准，支持任何可以发送HTTP请求的编程语言，包括但不限于Python、JavaScript、Java、Go、PHP、C#等。",
+          "id": 3,
+          "question": "支持哪些编程语言的调用？"
+        },
+        {
+          "answer": "常见的API请求失败原因及解决方案：\n\n1.认证错误：检查API密钥是否正确\n2.余额不足：请及时充值账户\n3.参数错误：参考文档检查请求参数\n4.模型不可用：尝试切换到其他可用模型\n5.请求超时：可能是网络问题或服务压力大，请稍后重试",
+          "id": 4,
+          "question": "API请求失败怎么办？"
+        },
+        {
+          "answer": "登录后，可在左侧菜单《使用日志》页面查看详细的API调用记录，包括时间、模型、消耗的token数量和费用等信息。",
+          "id": 5,
+          "question": "如何查看API调用记录和用量？"
+        },
+        {
+          "answer": "1.我们不存储您的请求内容和响应数据\n2.所有API请求采用TLS加密传输\n3.严格的访问控制和权限管理\n4.定期安全审计和漏洞扫描",
+          "id": 6,
+          "question": "数据安全如何保障？"
+        }
+      ],
+      "faq_enabled": true,
+      "footer_html": "",
+      "github_client_id": "",
+      "github_oauth": false,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "kuaiai",
+      "passkey_login": false,
+      "passkey_origins": "https://www.kuaiaiapi.com",
+      "passkey_rp_id": "www.kuaiaiapi.com",
+      "passkey_user_verification": "preferred",
+      "price": 1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "CNY",
+      "quota_per_unit": 500000,
+      "self_use_mode_enabled": false,
+      "server_address": "https://www.kuaiaiapi.com",
+      "setup": true,
+      "start_time": 1779814012,
+      "stripe_unit_price": 8,
+      "system_name": "kuaiai",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "top_up_link": "",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 1,
+      "user_agreement_enabled": false,
+      "version": "20260527-002538-image-sse-compat",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://www.kuaiaiapi.com/api/pricing"
+}

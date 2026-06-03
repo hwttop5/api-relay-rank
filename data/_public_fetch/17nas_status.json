@@ -4,6 +4,13 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "因 OpenAI 官方已下架 gpt-5.2 与 gpt-5.3-codex 模型，将同步进行相应调整。",
+        "extra": "",
+        "id": 30,
+        "publishDate": "2026-06-02T10:59:32.817Z",
+        "type": "default"
+      },
+      {
         "content": "🎉 邀请抽奖活动上线！邀请好友首充 ¥10 即得抽奖券，奖品 ¥3-100 必中。\n\n抽奖地址：https://ai.17nas.com/tools/lottery/",
         "extra": "邀请抽奖 · 抽 ¥100 大奖",
         "id": 29,
@@ -189,7 +196,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://ai.17nas.com",
     "setup": true,
-    "start_time": 1780085122,
+    "start_time": 1780490205,
     "stripe_unit_price": 1,
     "system_name": "镜核 AI",
     "telegram_bot_name": "",

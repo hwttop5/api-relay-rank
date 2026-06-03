@@ -24,6 +24,7 @@ from scripts import rebuild_runtime_site_data as rebuild_runtime_site_data
 from scripts import scrape_missing_announcements as scrape_missing_announcements
 from scripts import seed_runtime_data as seed_runtime_data
 from scripts import validate_refresh_outputs as validate_refresh_outputs
+from scripts.database import SnapshotValidationError, validate_site_data_snapshot
 
 
 AUDIT_SCRIPT_PATH = Path(__file__).resolve().parents[1] / "audit_proxy_multipliers.py"
@@ -138,6 +139,51 @@ class BuildSiteDataTests(unittest.TestCase):
         }
         payload.update(overrides)
         return audit_proxy_multipliers.FeeTier(**payload)
+
+    def test_validate_site_data_snapshot_accepts_current_fixture(self) -> None:
+        payload = json.loads((Path(__file__).resolve().parents[1] / "data" / "site-data.json").read_text(encoding="utf-8"))
+        summary = validate_site_data_snapshot(payload)
+        self.assertGreaterEqual(summary["stationCount"], 67)
+        self.assertGreaterEqual(summary["rankingCounts"]["all_hours"], 39)
+        self.assertGreaterEqual(summary["rankingCounts"]["work_hours"], 32)
+        self.assertGreaterEqual(summary["rankingCounts"]["off_hours"], 38)
+
+    def test_validate_site_data_snapshot_rejects_regressed_rankings_and_correct_rates(self) -> None:
+        payload = json.loads((Path(__file__).resolve().parents[1] / "data" / "site-data.json").read_text(encoding="utf-8"))
+        payload["rankings"]["all_hours"] = payload["rankings"]["all_hours"][:15]
+        with self.assertRaisesRegex(SnapshotValidationError, "all_hours ranking rows regressed"):
+            validate_site_data_snapshot(payload)
+
+        payload = json.loads((Path(__file__).resolve().parents[1] / "data" / "site-data.json").read_text(encoding="utf-8"))
+        nexus = next(station for station in payload["stations"] if station["key"] == "nexus")
+        nexus["quality"]["work_hours"]["correctRate"] = 0
+        with self.assertRaisesRegex(SnapshotValidationError, "nexus work_hours correctRate regressed"):
+            validate_site_data_snapshot(payload)
+
+    def test_empty_error_string_is_counted_as_successful_request(self) -> None:
+        if audit_proxy_multipliers is None:
+            self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
+        metrics_by_window = {"all_hours": {}, "work_hours": {}, "off_hours": {}}
+        added = audit_proxy_multipliers.add_request_metric(
+            metrics_by_window,
+            {
+                "id": 1,
+                "supplier": "nexus",
+                "url": "https://nexus.1982video.cn/v1/responses",
+                "status_code": 200,
+                "error": "",
+                "duration_ms": 100,
+                "first_response_ms": 50,
+                "created_at": 1_700_000_000_000,
+            },
+        )
+
+        self.assertTrue(added)
+        row = metrics_by_window["all_hours"]["nexus"]
+        self.assertEqual(row["requests"], 1)
+        self.assertEqual(row["correct"], 1)
+        self.assertEqual(row["http_200_with_error"], 0)
+        self.assertEqual(row["nonnull_error"], 0)
 
     def test_log_refresh_state_initializes_from_full_db(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -454,6 +500,26 @@ class BuildSiteDataTests(unittest.TestCase):
 
         self.assertEqual(chosen["demo"].group_name, "openai")
         self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.2)
+
+    def test_choose_verified_fee_uses_group_name_when_notes_mention_other_routes(self) -> None:
+        tiers = [
+            self.make_fee_tier(
+                group_name="Codex-特价渠道",
+                group_multiplier=0.1,
+                effective_multiplier=0.09,
+                notes="logged-in evidence; also mentions Claude套餐 and other routes",
+            ),
+            self.make_fee_tier(
+                group_name="ClaudeCode MAX官方",
+                group_multiplier=5.0,
+                effective_multiplier=5.0,
+            ),
+        ]
+
+        chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
+
+        self.assertEqual(chosen["demo"].group_name, "Codex-特价渠道")
+        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.09)
 
     def test_public_fetch_dir_defaults_to_repo_local_data_directory(self) -> None:
         self.assertEqual(
@@ -897,6 +963,30 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(rows, [])
         self.assertEqual(status["status"], "empty")
         self.assertEqual(status["source"], "https://demo.example/api/status")
+
+    def test_live_auth_probe_explicit_announcement_status_is_used(self) -> None:
+        probe = {
+            "location": "https://freemodel.dev/dashboard",
+            "announcementStatus": {
+                "status": "public_missing",
+                "source": "https://freemodel.dev/dashboard",
+                "message": "Logged-in dashboard exposes auth, billing, usage and logs APIs; no announcement endpoint was observed.",
+            },
+            "results": {
+                "/api/auth/me": {
+                    "status": 200,
+                    "ok": True,
+                    "body": {"authenticated": True, "dataKeys": ["id", "role"]},
+                }
+            },
+        }
+
+        rows, status = build_site_data.live_probe_announcements_and_status("freemodel", probe)
+
+        self.assertEqual(rows, [])
+        self.assertEqual(status["status"], "public_missing")
+        self.assertEqual(status["source"], "https://freemodel.dev/dashboard")
+        self.assertIn("no announcement endpoint", status["message"])
 
     def test_live_auth_probe_gettoken_active_null_is_empty(self) -> None:
         probe = {
@@ -3864,6 +3954,77 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(station["label"], "RelayExample")
         self.assertEqual(station["url"], "https://relay.example.com/v1")
         self.assertEqual(station_urls["audit-relay-example-com"], {"https://relay.example.com/v1"})
+
+    def test_apply_audit_only_station_records_merges_existing_station_by_url(self) -> None:
+        stations: dict[str, dict[str, object]] = {}
+        station_urls: dict[str, set[str]] = {}
+        build_site_data.ensure_station(
+            stations,
+            "aitoken.dog",
+            label="AitokenDog",
+            url="https://aitoken.dog",
+        )
+        latest_audits = {
+            "audit-aitoken-dog": [
+                {
+                    "profile": "general",
+                    "model": "gpt-5.5",
+                    "auditedBaseUrl": "https://aitoken.dog/",
+                    "executedAt": "2026-05-30T15:43:33Z",
+                    "overallVerdict": "medium",
+                    "overallSummary": "ok",
+                    "highlights": [],
+                    "stepSummaries": [],
+                    "reportPath": "data/_audit_runs/audit-aitoken-dog/gpt-5.5/20260530T154333Z/report.md",
+                    "toolVersion": "api-relay-audit@test",
+                }
+            ]
+        }
+
+        build_site_data.apply_audit_only_station_records(stations, station_urls, latest_audits)
+
+        self.assertIn("aitoken.dog", stations)
+        self.assertNotIn("audit-aitoken-dog", stations)
+        self.assertNotIn("audit-aitoken-dog", latest_audits)
+        self.assertEqual(latest_audits["aitoken.dog"][0]["model"], "gpt-5.5")
+        self.assertEqual(station_urls["aitoken.dog"], {"https://aitoken.dog/"})
+
+    def test_apply_postgres_base_station_records_merges_existing_station_by_url(self) -> None:
+        stations: dict[str, dict[str, object]] = {}
+        station_urls: dict[str, set[str]] = {}
+        station = build_site_data.ensure_station(
+            stations,
+            "aitoken.dog",
+            label="AitokenDog",
+            url="https://aitoken.dog",
+        )
+        station["announcements"] = []
+        baseline = {
+            "audit-aitoken-dog": {
+                "key": "audit-aitoken-dog",
+                "label": "AitokenDog",
+                "url": "https://aitoken.dog",
+                "announcements": [
+                    {
+                        "title": "audit notice",
+                        "content": "ok",
+                        "sourceUrl": "https://aitoken.dog/api/v1/announcements",
+                    }
+                ],
+                "groupMultipliers": [],
+                "rechargeTiers": [],
+                "tierNotes": ["audit baseline note"],
+            }
+        }
+
+        build_site_data.apply_postgres_base_station_records(stations, station_urls, baseline)
+
+        self.assertIn("aitoken.dog", stations)
+        self.assertNotIn("audit-aitoken-dog", stations)
+        self.assertEqual(station_urls["aitoken.dog"], {"https://aitoken.dog", "https://aitoken.dog/api/v1/announcements"})
+        self.assertEqual(stations["aitoken.dog"]["announcements"][0]["content"], "ok")
+        self.assertEqual(stations["aitoken.dog"]["announcements"][0]["sourceUrl"], "https://aitoken.dog/api/v1/announcements")
+        self.assertIn("audit baseline note", stations["aitoken.dog"]["tierNotes"])
 
     def test_build_runtime_site_data_merges_audit_only_station_after_seed(self) -> None:
         required_inputs = [

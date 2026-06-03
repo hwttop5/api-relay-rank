@@ -1,0 +1,145 @@
+{
+  "data": {
+    "CustomMenu": "{\"header\":{\"enabled\":true,\"name\":\"图片视频创作\",\"url\":\"/create/\",\"target\":\"blank\"},\"sidebar\":{\"enabled\":true,\"name\":\"图片视频创作\",\"url\":\"/create/\",\"target\":\"embed\",\"icon\":\"Link\"}}",
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":false,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":false,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "ME AI 中转站官网（baseUrl）： https://api.meai.cloud\n\n\n加速地址 (访问慢或者频繁524报错用这个)： https://cn.meai.cloud\n\n\n模型列表和价格：https://api.meai.cloud/pricing\n\n\n使用文档：https://my.feishu.cn/docx/Fkd0d3FiKo2x8kx7Fzfc4vjEnsc\n\n\n自动发货购买地址：https://pay.ldxp.cn/shop/YSR74HU9\n\n\n售后群：1083561335 ",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-03-29T12:48:30.655Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "green",
+        "description": "官网",
+        "id": 2,
+        "route": "官网",
+        "url": "https://api.meai.cloud/"
+      },
+      {
+        "color": "blue",
+        "description": "加速路线",
+        "id": 3,
+        "route": "加速路线",
+        "url": "https://cn.meai.cloud"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://my.feishu.cn/docx/Fkd0d3FiKo2x8kx7Fzfc4vjEnsc",
+    "email_verification": false,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "检查配置文件中url是否为 https://cn.meai.cloud  或者 https://api.meai.cloud。或者跟其他模型配置文件冲突了",
+        "id": 1,
+        "question": "401报错"
+      },
+      {
+        "answer": "触发限速了，重开窗口即可，还原会话用/resume命令",
+        "id": 2,
+        "question": "403报错"
+      },
+      {
+        "answer": "检查是否令牌分组选错了，一般需要选默认，检查模型名称是否错了",
+        "id": 3,
+        "question": "503报错"
+      },
+      {
+        "answer": "检查模型是否设置为claude-opus-4-7",
+        "id": 4,
+        "question": "不能识别图片或者提示敏感信息"
+      },
+      {
+        "answer": "url改为使用加速地址：https://cn.meai.cloud ",
+        "id": 5,
+        "question": "524报错"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "ME AI",
+    "passkey_login": false,
+    "passkey_origins": "https://api.meai.cloud",
+    "passkey_rp_id": "api.meai.cloud",
+    "passkey_user_verification": "preferred",
+    "price": 7.3,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://api.meai.cloud",
+    "setup": true,
+    "start_time": 1780416734,
+    "stripe_unit_price": 8,
+    "system_name": "ME AI",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "top_up_link": "https://pay.ldxp.cn/shop/YSR74HU9",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": true,
+    "version": "",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

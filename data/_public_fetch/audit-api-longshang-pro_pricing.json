@@ -1,0 +1,711 @@
+{
+  "auto_groups": [],
+  "data": [
+    {
+      "model_name": "gpt-5.5-high",
+      "description": "与原模型无本质上区别，仅将推理能力拉至最高。",
+      "icon": "OpenAI",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-普通渠道",
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "qwen3-reranker-8b",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-3.3-70b",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.035,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.142857142857,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-高級渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-oss-20b",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.015,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.666666666667,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-高級渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-oss-120b",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.035,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.571428571429,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-高級渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-4.5",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.666666666667,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-高級渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemma-4-31b",
+      "quota_type": 0,
+      "model_ratio": 0.06,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.083333333333,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-高級渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "icon": "OpenAI",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "渠道-生图渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "icon": "OpenAI",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-普通渠道",
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "icon": "OpenAI",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 10,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-普通渠道",
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-embedding-8b",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "bge-reranker-v2-m3",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "jina-embeddings-v4",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-coder",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 0.055,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 7.272727272727,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-高級渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "icon": "OpenAI",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-普通渠道",
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "icon": "OpenAI",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-普通渠道",
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-high",
+      "description": "与原模型无本质上区别，仅将推理能力拉至最高。",
+      "icon": "OpenAI",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-普通渠道",
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini-high",
+      "description": "与原模型无本质上区别，仅将推理能力拉至最高。",
+      "icon": "OpenAI",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-普通渠道",
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "bge-m3",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-high",
+      "description": "与原模型无本质上区别，仅将推理能力拉至最高。",
+      "icon": "OpenAI",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-福利渠道",
+        "渠道-普通渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "icon": "OpenAI",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-普通渠道",
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-embedding-4b",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-reranker-4b",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-3.2-3b",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.025,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-高級渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-next-80b",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 0.055,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 7.454545454545,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-高級渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.6",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.475,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.210526315789,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-高級渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemma-4-26b",
+      "quota_type": 0,
+      "model_ratio": 0.03,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-高級渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "icon": "OpenAI",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "渠道-普通渠道",
+        "渠道-福利渠道"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "渠道-普通渠道": 0.5,
+    "渠道-灵车飘移": 0.01,
+    "渠道-生图渠道": 1,
+    "渠道-福利渠道": 0.25,
+    "渠道-高級渠道": 0.8
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "渠道-普通渠道": "多号池稳定均衡，日常业务与稳定使用首选。",
+    "渠道-灵车飘移": "",
+    "渠道-生图渠道": "生成图片专用，单价固定，详细请看模型价格。",
+    "渠道-福利渠道": "福利渠道无任何可用性保证，如需稳定服务请切换。",
+    "渠道-高級渠道": "企业级稳定渠道，接入多渠道稳定，延迟优化。"
+  },
+  "vendors": [
+    {
+      "id": 11,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 12,
+      "name": "Jina",
+      "icon": "Jina"
+    },
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 3,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 4,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 8,
+      "name": "智谱",
+      "icon": "Zhipu"
+    },
+    {
+      "id": 10,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 13,
+      "name": "Meta",
+      "icon": "Ollama"
+    },
+    {
+      "id": 6,
+      "name": "Google",
+      "icon": "Gemini"
+    },
+    {
+      "id": 7,
+      "name": "MiniMax",
+      "icon": "Minimax"
+    },
+    {
+      "id": 9,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":false}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
+      "announcements": [
+        {
+          "content": "因目前滥用过多，本站坚决一人一号的规则，目前已临时将注册额度修改为0，如需试用余额请至官方TG群索取，谢谢各位体谅。本规则生效时间于2026-06-01 12:00 GMP+8",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2026-05-31T19:24:25.186Z",
+          "type": "warning"
+        },
+        {
+          "content": "目前即将做出以下调整，将渠道分为三个，分别为0.75x 、1.0x、1.25x，倍数越高渠道稳定性越高，0.75x将无稳定性保证，只保证可用，1.25x为企业及稳定需求可使用，但资金消耗速度较快！",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2026-05-29T07:01:24.588Z",
+          "type": "warning"
+        },
+        {
+          "content": "目前GPT外的所有模型，因人数过多负载过高导致可用性降低，如遇此问题请切换至GPT，GPT目前是自有号池，稳定性有保证，如有任何疑虑请至TG群发表您的想法！谢谢您的参与与支持！",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-05-29T03:45:07.503Z",
+          "type": "warning"
+        },
+        {
+          "content": "目前生图功能仍在测试中，会出现Time Out或无法预期的错误，请各位尽量避免使用，待测试稳定后将会发出公告。",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-05-27T16:46:35.043Z",
+          "type": "warning"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "green",
+          "description": "CloudFlare 原生线路，但不太能生图",
+          "id": 1,
+          "route": "主要接口",
+          "url": "https://api.longshang.pro/v1"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": true,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "$ ",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": true,
+      "demo_site_enabled": false,
+      "discord_client_id": "1461262522005848151",
+      "discord_oauth": true,
+      "display_in_currency": true,
+      "docs_link": "https://t.me/longshangstudio",
+      "email_verification": true,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": false,
+      "enable_task": true,
+      "faq": [
+        {
+          "answer": "影片教学<br>\nYouTube：https://youtu.be/JBAdVr3O47A?si=9FVtS8ve5ZqrIJKI<br>\nB站：https://www.bilibili.com/video/BV1Y45m6cERp/?share_source=copy_web&vd_source=e40a217a4958d753af0d6cacaaa1744d",
+          "id": 1,
+          "question": "如何将API接入Codex使用？"
+        }
+      ],
+      "faq_enabled": true,
+      "footer_html": "© 2026 LONGSHANG 龍殤. 版权所有。",
+      "github_client_id": "Ov23liKF3kO4GAVhB3EW",
+      "github_oauth": true,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "https://i.pinimg.com/736x/1f/4a/03/1f4a03c6073eea3369011894c7e64621.jpg",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "LONGSHANG 龍商",
+      "passkey_login": false,
+      "passkey_origins": "https://longshang.pro",
+      "passkey_rp_id": "longshang.pro",
+      "passkey_user_verification": "preferred",
+      "password_login_enabled": true,
+      "password_register_enabled": true,
+      "price": 1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "USD",
+      "quota_per_unit": 500000,
+      "register_enabled": true,
+      "self_use_mode_enabled": false,
+      "server_address": "https://longshang.pro",
+      "setup": true,
+      "start_time": 1779826485,
+      "stripe_unit_price": 8,
+      "system_name": "LONGSHANG 龍殤",
+      "telegram_bot_name": "longshangtw_bot",
+      "telegram_oauth": false,
+      "theme": "default",
+      "turnstile_check": true,
+      "turnstile_site_key": "0x4AAAAAADLNAGaTzEy5uQeQ",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 1,
+      "user_agreement_enabled": false,
+      "version": "v1.0.0-rc.10",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://api.longshang.pro/api/pricing"
+}

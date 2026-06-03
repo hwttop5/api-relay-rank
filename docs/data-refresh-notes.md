@@ -180,6 +180,10 @@ Codex Manager 新日志增量更新：
 | `VoAPI` | 已浏览器核验固定钱包充值档位，可生成正式费用行；当前按默认分组 `1x` 与最高折扣固定档位采用，采用倍率 `10650 / 2000 = 5.325`。 | 登录态 API 令牌页显示 `默认分组 (x1)`；钱包页固定档位显示到账美元额度，并在支付确认区显示人民币实付金额，例如 `￥71 -> 10 USD`、`￥337.25 -> 50 USD`、`￥10650 -> 2000 USD`。 | 不能把到账美元额度反写成人民币支付金额；不能使用 `test 50x` 作为默认 Codex 采用分组；不能提交真实付款。 | 若钱包页充值面额或折扣变化，更新 `config/station_pricing_overrides.json` 中显式档位；`rmbAmount` 必须是人民币实付金额，`usdAmount` 必须是到账美元额度。 |
 | `laodog/dogcoding` | v1 支付配置关闭时使用官方外部店铺兑换码商品作为证据。 | 官方菜单指向的外部店铺商品。 | 不能在 `payment/config.enabled=false` 时生成默认钱包档位。 | 核对兑换码商品金额和到账美元额度，不按站内快捷充值处理。 |
 | `zhishu.dev` | 登录态 v1 接口可补齐 `codex-自建` 分组和公告；站内支付配置关闭，但左侧“充值”嵌入的官方链动小铺已核验 5 个 Codex 商品，可生成充值/套餐档位。 | 登录态 `/api/v1/groups/available`、`/api/v1/payment/config`、`/api/v1/payment/checkout-info`、`/api/v1/announcements`、官方外部店铺 `pay.ldxp.cn/shop/CFUOS364/ek8gty`。 | 不能只凭 `balance_recharge_multiplier` 生成站内钱包档位；不能保存店铺签名 URL 参数、用户邮箱或 token。 | 用户协助登录后脚本仍抓不到时，可用浏览器直接识别官方店铺和页面内容，再反哺脚本/配置。外部店铺顶层登录态可见 10/20/50 USD 不限时额度和 Plus/Pro 包月商品；headless 直接访问可能 403 `http_bot_simple`。 |
+| `x2app.top` | 站内“帮助和下单”指向官方链动小铺 `pay.ldxp.cn/shop/IU6GNW6R`；小铺公告写明 `x2app.top` 和全店 `x1`，商品包含不限时额度、日卡、周卡和 Pro 月卡。 | 公开配置 `custom_menu_items`、教程页 `https://x2app.top/jiaocheng.html`、链动小铺 `goodsList`、登录态 `/api/v1/groups/available`。 | 不能只因站内 `payment/config.enabled=false` 判定无充值；不能保存登录态凭据；Pro 月卡只作为可见套餐，采用倍率仍必须结合登录态 OpenAI 分组。 | 当前正式配置写入 `config/station_pricing_overrides.json`：Plus x1、Pro x1.5，最低采用 `2.8 RMB -> 35 USD` 日卡。 |
+| `chaoye.xyz` | 站内 `/custom/47fd385f7ac9c619` 嵌入官方链动小铺 `pay.ldxp.cn/shop/chaoyeapi`；商品为 25/50/100/200 USD API 额度卡。 | 公开配置 `custom_menu_items`、链动小铺 `goodsList`、登录态 `/api/v1/groups/available`。 | `balance_low_notify_recharge_url` 的 `T2XWKG42` 当前店铺不可用，不能替代 `chaoyeapi`；Claude/Kiro/Gemini 分组不能作为 Codex 采用分组。 | 当前采用 OpenAI Plus/Pro 分组，最低采用 `Plus/Pro mixed pool x0.2` 与 25 USD 额度卡。 |
+| `aitoken.dog` | 站内 `/custom/65e8232a27a8c9f1` 嵌入官方链动小铺 `pay.ldxp.cn/shop/8UTEMOWS`；商品为 10/20/30/50 USD 额度卡，文案写明实际按 `0.13` 计费。 | 公开配置 `custom_menu_items`、链动小铺 `goodsList`、登录态 `/api/v1/groups/available`。 | 站内支付配置关闭时不能生成默认钱包档位；Claude 分组不参与 Codex 采用。 | 当前采用 OpenAI `0.13` 分组与 1:1 额度卡，最低采用倍率 `0.13`。 |
+| `pointfix.xyz` | `/purchase` 和公开配置指向官方链动小铺 `pay.ldxp.cn/shop/pointfix.xyz`；正式费用行只采纳 `pointfixAPI` 25/50/100/200 USD 额度卡。 | `/purchase`、公开配置 `purchase_subscription_url`、链动小铺 `goodsList`、登录态 `/api/v1/groups/available`。 | `GPT PLUS月卡成品号` 不是 API 额度商品；`1元20刀限量秒杀` 页面显示缺货，不进入正式费用行。 | 当前采用 Plus x0.15 / Pro x0.25 分组，最低采用 `Plus channel x0.15` 与 25 USD 额度卡。 |
 | `ProdBbroot` | 当前只保留 `codex` 与 `openai` 两个 Codex 可用分组，正式榜采用 `openai` 倍率 `0.2`；公告外部卡网可见 `日卡`、`周卡`、`限时月卡`、`API额度$500`，其中只有 `API额度$500 ¥100 -> $500` 有明确额度并参与采用倍率，当前采用倍率 `0.04`。 | 浏览器登录态分组页、公告外部卡网 `pay.ldxp.cn/shop/47N31MWH`、站点公告。 | 不能恢复旧 `default`/Claude Code 分组；不能恢复旧 USDC/Solana `Starter (Weekly)` 档位；不能把无额度说明的日卡、周卡、月卡用于正式排名计算。 | 卡类商品只能以 `displayOnly=true` 写入人工 override 展示，不参与 adopted tier；`displayOnly` 不应放宽公开抓取解析，公开抓取缺 `usdAmount` 仍应视为不可生成正式费用行。 |
 
 ### 公开结构化快照
@@ -209,7 +213,8 @@ Codex Manager 新日志增量更新：
 
 | 站点 | 当前结论 | 可用证据来源 | 不能做什么 | 下次刷新注意点 |
 | --- | --- | --- | --- | --- |
-| `ICodex` | 公益站点，当前暂不要求补分组、充值档位和公告数据；已有少量请求样本也不代表具备费用证据。 | 真实页公开状态/维护信息、日志样本。 | 不能用请求样本、维护页或公告状态推断费用行。 | 暂时不作为缺口补抓目标；若后续站点提供结构化分组/充值，再按正常证据链补齐。 |
+| `ICodex` | 公益站点，用户已确认没有相关价格和充值页面；不再作为自动或人工补抓目标。已有少量请求样本也不代表具备费用证据。 | 真实页公开状态/维护信息、日志样本、2026-06-03 人工确认。 | 不能用请求样本、维护页、公告状态或登录页推断费用行；不能反复触发登录态补抓。 | 只有后续站点明确提供结构化分组/充值页面时，才重新纳入正常证据链。 |
+| `code.pndot.com` | 用户已确认站点关闭、页面不可用；不再作为自动或人工补抓目标。历史日志和旧 probe 只保留为归档证据。 | 2026-06-03 人工确认、历史日志、旧 probe。 | 不能用旧 probe、历史公告或请求样本生成新的费用行；不能让自动补抓把该站重新带入缺口队列。 | 若站点恢复并重新开放页面，再按新站点恢复流程补公开快照、登录态 probe 和费用证据。 |
 | `585016d3.u3u.dev` | 日志发现的新公网 host，按独立站点处理。 | Codex Manager 日志、公开快照、登录态补抓结果。 | 不能因 supplier 名称或菜单线索把它错误并入旧站点。 | 继续补分组、充值和公告；失败/空结果保留旧证据。 |
 | `atomflow.vip` | 日志发现的新公网 host，按独立站点处理。 | Codex Manager 日志、公开 `/api/status`、`/api/pricing`、登录态补抓结果。 | 不能只凭旧站点规则跳过候选和质量统计。 | 保持新站点发现、公开快照、登录态 probe 的固定流程。 |
 | `Euzhi` | 钱包金额来自实时换算采样。 | New API `/api/user/amount` 采样。 | 不能写成固定套餐档位。 | 文案展示为 `wallet topup sample ... RMB`，并保留采样口径。 |
@@ -262,3 +267,12 @@ rg -n "codex-log-refresh-state|full-log-rebuild|request_log_station_candidates|m
 - 质量 CSV 里样本为 0 是有效值，不能显示成无数据；只有质量行不存在才视为缺失。
 - 只看页面或只看单个 CSV 容易误判。排查排名异常必须按 DB -> quality CSV -> formal CSV -> `site-data.json` -> 页面逐层对账。
 - 纠正时段规则、站点分类、错误过滤、评分逻辑、别名归并或历史 DB 数据后，要重新生成 CSV、重建 `site-data.json`，再跑单测和构建。
+
+### Apiwarrior Manual Confirmation
+
+- `api.apiwarrior.xyz`: confirmed by the user in a logged-in browser on 2026-06-04.
+- Add-funds page shows wallet topup options `20`, `50`, and `100`; the payable amount matches the selected wallet amount.
+- Token group selector shows `OpenAi-Plus` at `0.09x` and `OpenAi-Pro` at `0.3x`; both are treated as Codex/OpenAI eligible.
+- `Claude full pool` at `1.2x` and `Reverse Claude` at `0.4x` are Claude-only and must not be adopted for Codex formal ranking.
+- Formal override uses `OpenAi-Plus pool x0.09` with `Apiwarrior wallet topup 20 USD`.
+

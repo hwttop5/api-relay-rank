@@ -1,0 +1,220 @@
+{
+  "auto_groups": [
+    "default"
+  ],
+  "data": [
+    {
+      "model_name": "gpt-5.4",
+      "description": "GPT-5.4 is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.5,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.75,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "default": 1
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "default": "默认分组"
+  },
+  "vendors": [
+    {
+      "id": 10,
+      "name": "OpenCode Zen",
+      "icon": "OpenCode"
+    },
+    {
+      "id": 2,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 3,
+      "name": "Helicone"
+    },
+    {
+      "id": 5,
+      "name": "Venice AI",
+      "icon": "VeniceAI"
+    },
+    {
+      "id": 6,
+      "name": "Vivgrid"
+    },
+    {
+      "id": 8,
+      "name": "SAP AI Core"
+    },
+    {
+      "id": 11,
+      "name": "QiHang"
+    },
+    {
+      "id": 12,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 4,
+      "name": "NanoGPT"
+    },
+    {
+      "id": 7,
+      "name": "Azure Cognitive Services"
+    },
+    {
+      "id": 9,
+      "name": "LLM Gateway"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":true,\"requireAuth\":true},\"docs\":false,\"about\":true}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true,\"subscription\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true,\"organization\":true}}",
+      "announcements_enabled": false,
+      "api_info": [
+        {
+          "color": "blue",
+          "description": "主站点",
+          "id": 1,
+          "route": "CN2",
+          "url": "https://tokenwork.app"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": true,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://docs.newapi.pro",
+      "email_verification": true,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq_enabled": false,
+      "footer_html": "© 2026 词元工坊。保留所有权利。",
+      "github_client_id": "Ov23licXCVU9cYM9v8Wi",
+      "github_oauth": true,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "https://file.vue.show/uploads/bbf790e9-62c3-4712-9bec-97a604cf895f.png",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "词元工坊",
+      "passkey_login": false,
+      "passkey_origins": "https://tokenwork.app,https://tokenwork.cc",
+      "passkey_rp_id": "tokenwork.app",
+      "passkey_user_verification": "preferred",
+      "price": 0.1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "USD",
+      "quota_per_unit": 500000,
+      "self_use_mode_enabled": false,
+      "server_address": "https://tokenwork.app",
+      "setup": true,
+      "start_time": 1780025802,
+      "stripe_unit_price": 8,
+      "system_name": "词元工坊",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "default",
+      "turnstile_check": true,
+      "turnstile_site_key": "0x4AAAAAADXL13heuV_NLSfg",
+      "uptime_kuma_enabled": false,
+      "usd_exchange_rate": 0.1,
+      "user_agreement_enabled": true,
+      "version": "deploy-1d7cd71-20260529-113445",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://tokenwork.app/api/pricing"
+}

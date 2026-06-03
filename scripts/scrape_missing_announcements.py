@@ -24,6 +24,12 @@ LOGIN_VERIFICATION_CHECKLIST_PATH = APP_ROOT / "login_verification_checklist.csv
 
 TIMEOUT = 20
 USER_AGENT = "api-relay-rank/0.1 live-announcement-capture"
+MANUAL_SKIP_STATIONS = {
+    # Confirmed manually: no pricing/recharge evidence to capture.
+    "icodex.pro",
+    # Confirmed manually: the site is offline/closed.
+    "code.pndot.com",
+}
 
 BASE_OVERRIDES = {
     "585016d3.u3u.dev": "https://585016d3.u3u.dev",
@@ -207,6 +213,8 @@ def station_rows(
     ) -> None:
         key = canonical_station_key(str(key or ""), station_aliases)
         if not key or key in skipped:
+            return
+        if key in MANUAL_SKIP_STATIONS:
             return
         if not is_public_station_key(key):
             return

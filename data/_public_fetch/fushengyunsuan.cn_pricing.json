@@ -2,7 +2,7 @@
   "auto_groups": [],
   "data": [
     {
-      "model_name": "claude-opus-4-8",
+      "model_name": "claude-opus-4-7-thinking",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -19,6 +19,100 @@
         "openai"
       ],
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.4-openai-compact",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "vip",
+        "企业生图专线"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "knowledge_cutoff": "2024-09",
+      "release_date": "2025-08-15",
+      "parameter_count": "",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "vip",
+        "企业生图专线"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-ai/deepseek-v4-flash",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "公益分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "z-ai/glm-5.1",
+      "vendor_id": 4,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0001,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "公益分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "knowledge_cutoff": "2024-09",
+      "release_date": "2025-08-15",
+      "parameter_count": "",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "vip",
+        "企业生图专线"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
     },
     {
       "model_name": "gpt-5.5-openai-compact",
@@ -54,6 +148,89 @@
       ]
     },
     {
+      "model_name": "minimaxai/minimax-m2.7",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0001,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "公益分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "moonshotai/kimi-k2.6",
+      "vendor_id": 6,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0001,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "公益分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "z-ai/glm5",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0001,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "公益分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "any外接回血",
+        "kiro",
+        "测试"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "any外接回血",
+        "kiro",
+        "测试"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
       "model_name": "minimaxai/minimax-m2.5",
       "quota_type": 1,
       "model_ratio": 0,
@@ -68,17 +245,20 @@
       ]
     },
     {
-      "model_name": "z-ai/glm-5.1",
-      "vendor_id": 4,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.0001,
+      "model_name": "claude-opus-4-8-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 0,
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "公益分组"
+        "kiro"
       ],
       "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     },
@@ -118,8 +298,15 @@
       ]
     },
     {
-      "model_name": "gpt-5.4-openai-compact",
-      "vendor_id": 10,
+      "model_name": "gpt-5.4",
+      "context_length": 400000,
+      "max_output_tokens": 128000,
+      "knowledge_cutoff": "2024-09",
+      "release_date": "2025-08-15",
+      "parameter_count": "",
+      "description": "GPT-5.4 by OpenAI",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Tools,Vision",
       "quota_type": 0,
       "model_ratio": 1.25,
       "model_price": 0,
@@ -128,139 +315,8 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1,
       "enable_groups": [
-        "vip",
-        "企业生图专线"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "deepseek-ai/deepseek-v4-flash",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 37.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "公益分组"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "moonshotai/kimi-k2.6",
-      "vendor_id": 6,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.0001,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "公益分组"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7-thinking",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "kiro"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "description": "Claude Sonnet 4.6",
-      "icon": "Claude",
-      "tags": "Reasoning,Tools,Vision,200K",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "kiro"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.2",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 0.005,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "vip",
-        "企业生图专线"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "context_length": 400000,
-      "max_output_tokens": 128000,
-      "knowledge_cutoff": "2024-09",
-      "release_date": "2025-08-15",
-      "parameter_count": "",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "vip",
-        "企业生图专线"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "context_length": 400000,
-      "max_output_tokens": 128000,
-      "knowledge_cutoff": "2024-09",
-      "release_date": "2025-08-15",
-      "parameter_count": "",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "vip",
-        "企业生图专线"
+        "企业生图专线",
+        "vip"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -291,24 +347,11 @@
       ]
     },
     {
-      "model_name": "minimaxai/minimax-m2.7",
+      "model_name": "gemini-3.5-flash",
+      "vendor_id": 8,
       "quota_type": 1,
       "model_ratio": 0,
-      "model_price": 0.0001,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "公益分组"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "z-ai/glm5",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.0001,
+      "model_price": 1e-05,
       "owner_by": "",
       "completion_ratio": 0,
       "enable_groups": [
@@ -332,6 +375,31 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
+        "any外接回血",
+        "kiro",
+        "测试"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "description": "Claude Sonnet 4.6",
+      "icon": "Claude",
+      "tags": "Reasoning,Tools,Vision,200K",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "测试",
+        "any外接回血",
         "kiro"
       ],
       "supported_endpoint_types": [
@@ -356,70 +424,10 @@
         "anthropic",
         "openai"
       ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "kiro"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-8-thinking",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "kiro"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "context_length": 400000,
-      "max_output_tokens": 128000,
-      "knowledge_cutoff": "2024-09",
-      "release_date": "2025-08-15",
-      "parameter_count": "",
-      "description": "GPT-5.4 by OpenAI",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Tools,Vision",
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "vip",
-        "企业生图专线"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
     }
   ],
   "group_ratio": {
+    "any外接回血": 0.6,
     "kiro": 0.2,
     "vip": 0.08,
     "企业生图专线": 0.08,
@@ -439,6 +447,7 @@
     }
   },
   "usable_group": {
+    "any外接回血": "anyrouter二接，模型名要配    claude-opus-4-8[1m]    大家可以自己去注册，也可以用我这的",
     "kiro": "kiro反代，禾维测不满，已做缓存优化处理，因为有内置提示词，所以大概是官转版本80%的性能。",
     "vip": "GPT分组实时波动价格",
     "企业生图专线": "企业生图专线",
@@ -447,14 +456,9 @@
   },
   "vendors": [
     {
-      "id": 2,
-      "name": "Venice AI",
-      "icon": "VeniceAI"
-    },
-    {
-      "id": 7,
-      "name": "字节跳动",
-      "icon": "Doubao.Color"
+      "id": 8,
+      "name": "Google",
+      "icon": "Gemini.Color"
     },
     {
       "id": 9,
@@ -462,9 +466,19 @@
       "icon": "Qwen.Color"
     },
     {
+      "id": 4,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
       "id": 10,
       "name": "OpenAI",
       "icon": "OpenAI"
+    },
+    {
+      "id": 11,
+      "name": "xAI",
+      "icon": "XAI"
     },
     {
       "id": 12,
@@ -482,14 +496,14 @@
       "icon": "Claude.Color"
     },
     {
+      "id": 2,
+      "name": "Venice AI",
+      "icon": "VeniceAI"
+    },
+    {
       "id": 3,
       "name": "GitHub Copilot",
       "icon": "GithubCopilot"
-    },
-    {
-      "id": 4,
-      "name": "智谱",
-      "icon": "Zhipu.Color"
     },
     {
       "id": 5,
@@ -502,14 +516,9 @@
       "icon": "Moonshot"
     },
     {
-      "id": 8,
-      "name": "Google",
-      "icon": "Gemini.Color"
-    },
-    {
-      "id": 11,
-      "name": "xAI",
-      "icon": "XAI"
+      "id": 7,
+      "name": "字节跳动",
+      "icon": "Doubao.Color"
     }
   ],
   "status_payload": {
@@ -518,6 +527,27 @@
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":true}",
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
       "announcements": [
+        {
+          "content": "wo_wuhao   大佬看到公告的话加一下群，你的扣费分组有点问题，我给你补贴一下",
+          "extra": "",
+          "id": 32,
+          "publishDate": "2026-06-01T08:30:05.571Z",
+          "type": "default"
+        },
+        {
+          "content": "有解决不了的报错可以加Q群820116443咨询解决",
+          "extra": "",
+          "id": 31,
+          "publishDate": "2026-06-01T03:58:40.028Z",
+          "type": "default"
+        },
+        {
+          "content": "kiro分组莫名其妙的没炸，又重置额度找回来很多个号，临时调到0.1x倍率了应该是能抗住并发，如果频繁报速度墙又找不到号的话会往上调调价的",
+          "extra": "",
+          "id": 30,
+          "publishDate": "2026-06-01T02:12:42.011Z",
+          "type": "default"
+        },
         {
           "content": "kiro会在这个月月底超额到期账单结算，所以可能6.1开始的一段时间kiro这条渠道不能用，或者需要点时间补新号进来，大家有需要用到opus的任务请在这两天收收尾，我尽量第一时间更新opus的特价渠道。",
           "extra": "",
@@ -859,7 +889,7 @@
       "telegram_bot_name": "",
       "telegram_oauth": false,
       "theme": "default",
-      "turnstile_check": true,
+      "turnstile_check": false,
       "turnstile_site_key": "0x4AAAAAADTk2w62SSyqiRmC",
       "uptime_kuma_enabled": true,
       "usd_exchange_rate": 6.8,

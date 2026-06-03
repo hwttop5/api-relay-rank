@@ -1,10 +1,17 @@
 {
   "data": {
     "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":false}",
-    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true}}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true}}",
     "announcements": [
       {
-        "content": "因OpenAI风控政策，自2026年5月19日23:59起\n【codex-特价】分组倍率调整为0.1(折合0.0398/刀)",
+        "content": "不停机维护公告\n为进一步提升用户体验，计划于2026年6月1日晚22:00对服务器进行不停机维护\n维护内容包括\n1、下架【gemini】、【Claude 逆向】、【free】分组\n2、取消充值折扣，现有所有用户余额*0.4，所有分组倍率*0.4\n3、试运行动态倍率模式，采用活跃用户计算分组倍率，最低8折使用优惠，详见首页",
+        "extra": "",
+        "id": 31,
+        "publishDate": "2026-06-01T12:27:47.502Z",
+        "type": "default"
+      },
+      {
+        "content": "因OpenAI风控政策，自2026年5月29日23:59起\n【codex-特价】分组倍率调整为0.1(折合0.0398/刀)",
         "extra": "",
         "id": 30,
         "publishDate": "2026-05-29T12:16:24.296Z",
@@ -306,17 +313,20 @@
     "passkey_attachment": "",
     "passkey_display_name": "New API",
     "passkey_login": false,
-    "passkey_origins": "https://code.giot.edu.kg",
-    "passkey_rp_id": "code.giot.edu.kg",
+    "passkey_origins": "https://code.huizhicode.com",
+    "passkey_rp_id": "code.huizhicode.com",
     "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
     "price": 1,
     "privacy_policy_enabled": false,
     "quota_display_type": "CNY",
     "quota_per_unit": 500000,
+    "register_enabled": true,
     "self_use_mode_enabled": false,
-    "server_address": "https://code.giot.edu.kg",
+    "server_address": "https://code.huizhicode.com",
     "setup": true,
-    "start_time": 1779029926,
+    "start_time": 1780381752,
     "stripe_unit_price": 8,
     "system_name": "慧智AI",
     "telegram_bot_name": "",
@@ -327,7 +337,7 @@
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 1,
     "user_agreement_enabled": true,
-    "version": "v1.0.0-rc.6",
+    "version": "v1.0.0-rc.10",
     "wechat_login": false,
     "wechat_qrcode": ""
   },

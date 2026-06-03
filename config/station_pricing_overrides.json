@@ -147,6 +147,339 @@
     "evidenceUrl": "https://pay.ldxp.cn/shop/47N31MWH",
     "authoritative": true
   },
+  "x2app.top": {
+    "stationTypeHint": "mixed",
+    "groupMultipliers": [
+      {
+        "groupName": "Balance Plus pool x1",
+        "groupMultiplier": 1,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "Balance Pro pool x1.5",
+        "groupMultiplier": 1.5,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "X2app daily trial 35 USD quota",
+        "billingType": "daily",
+        "rmbAmount": 2.8,
+        "usdAmount": 35,
+        "rechargeLocation": "official Help and order menu -> pay.ldxp.cn/shop/IU6GNW6R",
+        "expiresRule": "24 hour external shop package; product description says valid 24 hours after activation"
+      },
+      {
+        "rechargeName": "X2app 10 USD permanent quota",
+        "billingType": "permanent",
+        "rmbAmount": 1.5,
+        "usdAmount": 10,
+        "rechargeLocation": "official Help and order menu -> pay.ldxp.cn/shop/IU6GNW6R",
+        "expiresRule": "External shop redeem code; no expiry stated for the 10 USD balance product"
+      },
+      {
+        "rechargeName": "X2app Plus weekly 300 USD quota",
+        "billingType": "weekly",
+        "rmbAmount": 35,
+        "usdAmount": 300,
+        "rechargeLocation": "official Help and order menu -> pay.ldxp.cn/shop/IU6GNW6R",
+        "expiresRule": "7 day external shop package"
+      },
+      {
+        "rechargeName": "X2app Plus weekly 500 USD quota",
+        "billingType": "weekly",
+        "rmbAmount": 55,
+        "usdAmount": 500,
+        "rechargeLocation": "official Help and order menu -> pay.ldxp.cn/shop/IU6GNW6R",
+        "expiresRule": "7 day external shop package"
+      },
+      {
+        "rechargeName": "X2app Plus weekly 800 USD quota",
+        "billingType": "weekly",
+        "rmbAmount": 79.9,
+        "usdAmount": 800,
+        "rechargeLocation": "official Help and order menu -> pay.ldxp.cn/shop/IU6GNW6R",
+        "expiresRule": "7 day external shop package"
+      },
+      {
+        "rechargeName": "X2app Pro monthly 300 USD quota",
+        "billingType": "monthly",
+        "rmbAmount": 65,
+        "usdAmount": 300,
+        "rechargeLocation": "official Help and order menu -> pay.ldxp.cn/shop/IU6GNW6R",
+        "expiresRule": "30 day external shop Pro channel package"
+      },
+      {
+        "rechargeName": "X2app Pro monthly 500 USD quota",
+        "billingType": "monthly",
+        "rmbAmount": 100,
+        "usdAmount": 500,
+        "rechargeLocation": "official Help and order menu -> pay.ldxp.cn/shop/IU6GNW6R",
+        "expiresRule": "30 day external shop Pro channel package"
+      },
+      {
+        "rechargeName": "X2app Pro monthly 1000 USD quota",
+        "billingType": "monthly",
+        "rmbAmount": 200,
+        "usdAmount": 1000,
+        "rechargeLocation": "official Help and order menu -> pay.ldxp.cn/shop/IU6GNW6R",
+        "expiresRule": "30 day external shop Pro channel package"
+      }
+    ],
+    "forcedAdoptedTier": "Balance Plus pool x1 | X2app daily trial 35 USD quota",
+    "assumptionText": "Browser verified x2app official Help and order menu points to https://pay.ldxp.cn/shop/IU6GNW6R; shop announcement says x2app.top and all-store x1; logged-in API provides OpenAI Plus x1 and Pro x1.5 groups. Products are from the external shop goodsList API; no account, cookie, token, or email is stored.",
+    "confidence": "public_external_shop_verified",
+    "source": "official_menu_external_shop_goods_api",
+    "evidenceUrl": "https://pay.ldxp.cn/shop/IU6GNW6R",
+    "authoritative": true
+  },
+  "chaoye.xyz": {
+    "stationTypeHint": "non_subscription",
+    "groupMultipliers": [
+      {
+        "groupName": "Plus/Pro mixed pool",
+        "groupMultiplier": 0.2,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "Pure Pro pool",
+        "groupMultiplier": 0.3,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "ChaoyeAPI 25 USD quota",
+        "billingType": "permanent",
+        "rmbAmount": 25,
+        "usdAmount": 25,
+        "rechargeLocation": "official custom menu -> pay.ldxp.cn/shop/chaoyeapi",
+        "expiresRule": "External shop redeem code; product states API call quota"
+      },
+      {
+        "rechargeName": "ChaoyeAPI 50 USD quota",
+        "billingType": "permanent",
+        "rmbAmount": 50,
+        "usdAmount": 50,
+        "rechargeLocation": "official custom menu -> pay.ldxp.cn/shop/chaoyeapi",
+        "expiresRule": "External shop redeem code; product states API call quota"
+      },
+      {
+        "rechargeName": "ChaoyeAPI 100 USD quota",
+        "billingType": "permanent",
+        "rmbAmount": 100,
+        "usdAmount": 100,
+        "rechargeLocation": "official custom menu -> pay.ldxp.cn/shop/chaoyeapi",
+        "expiresRule": "External shop redeem code; product states API call quota"
+      },
+      {
+        "rechargeName": "ChaoyeAPI 200 USD quota",
+        "billingType": "permanent",
+        "rmbAmount": 200,
+        "usdAmount": 200,
+        "rechargeLocation": "official custom menu -> pay.ldxp.cn/shop/chaoyeapi",
+        "expiresRule": "External shop redeem code; product states API call quota"
+      }
+    ],
+    "forcedAdoptedTier": "Plus/Pro mixed pool | ChaoyeAPI 25 USD quota",
+    "assumptionText": "Browser verified chaoye official custom menu /custom/47fd385f7ac9c619 points to https://pay.ldxp.cn/shop/chaoyeapi. External shop goodsList exposes 25/50/100/200 USD API quota cards for Cursor, Codex, ChatBox and compatible OpenAI-format use; logged-in API provides OpenAI Plus/Pro groups.",
+    "confidence": "public_external_shop_verified",
+    "source": "official_menu_external_shop_goods_api",
+    "evidenceUrl": "https://pay.ldxp.cn/shop/chaoyeapi",
+    "authoritative": true
+  },
+  "aitoken.dog": {
+    "stationTypeHint": "non_subscription",
+    "groupMultipliers": [
+      {
+        "groupName": "0.13",
+        "groupMultiplier": 0.13,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "0.13x",
+        "groupMultiplier": 0.13,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "OPENAI",
+        "groupMultiplier": 0.13,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "GPT/PRO",
+        "groupMultiplier": 0.35,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "Aitoken 10 USD quota",
+        "billingType": "permanent",
+        "rmbAmount": 10,
+        "usdAmount": 10,
+        "rechargeLocation": "official custom menu -> pay.ldxp.cn/shop/8UTEMOWS",
+        "expiresRule": "External shop redeem code; product states 10 RMB = 10 USD quota and 0.13 billing group"
+      },
+      {
+        "rechargeName": "Aitoken 20 USD quota",
+        "billingType": "permanent",
+        "rmbAmount": 20,
+        "usdAmount": 20,
+        "rechargeLocation": "official custom menu -> pay.ldxp.cn/shop/8UTEMOWS",
+        "expiresRule": "External shop redeem code; product states 20 RMB = 20 USD quota and 0.13 billing group"
+      },
+      {
+        "rechargeName": "Aitoken 30 USD quota",
+        "billingType": "permanent",
+        "rmbAmount": 30,
+        "usdAmount": 30,
+        "rechargeLocation": "official custom menu -> pay.ldxp.cn/shop/8UTEMOWS",
+        "expiresRule": "External shop redeem code; product states 30 RMB = 30 USD quota and 0.13 billing group"
+      },
+      {
+        "rechargeName": "Aitoken 50 USD quota",
+        "billingType": "permanent",
+        "rmbAmount": 50,
+        "usdAmount": 50,
+        "rechargeLocation": "official custom menu -> pay.ldxp.cn/shop/8UTEMOWS",
+        "expiresRule": "External shop redeem code; product states 50 RMB = 50 USD quota and 0.13 billing group"
+      }
+    ],
+    "forcedAdoptedTier": "0.13 | Aitoken 10 USD quota",
+    "assumptionText": "Browser verified aitoken official custom menu /custom/65e8232a27a8c9f1 points to https://pay.ldxp.cn/shop/8UTEMOWS. External shop goodsList exposes 10/20/30/50 USD quota cards and product description states 0.13 billing; logged-in API provides OpenAI 0.13 and GPT/PRO groups.",
+    "confidence": "public_external_shop_verified",
+    "source": "official_menu_external_shop_goods_api",
+    "evidenceUrl": "https://pay.ldxp.cn/shop/8UTEMOWS",
+    "authoritative": true
+  },
+  "pointfix.xyz": {
+    "stationTypeHint": "non_subscription",
+    "groupMultipliers": [
+      {
+        "groupName": "Plus channel",
+        "groupMultiplier": 0.15,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "Pure Pro channel",
+        "groupMultiplier": 0.25,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "PointfixAPI 25 USD quota",
+        "billingType": "permanent",
+        "rmbAmount": 25,
+        "usdAmount": 25,
+        "rechargeLocation": "official purchase page -> pay.ldxp.cn/shop/pointfix.xyz",
+        "expiresRule": "External shop redeem code; product states API quota"
+      },
+      {
+        "rechargeName": "PointfixAPI 50 USD quota",
+        "billingType": "permanent",
+        "rmbAmount": 50,
+        "usdAmount": 50,
+        "rechargeLocation": "official purchase page -> pay.ldxp.cn/shop/pointfix.xyz",
+        "expiresRule": "External shop redeem code; product states API quota"
+      },
+      {
+        "rechargeName": "PointfixAPI 100 USD quota",
+        "billingType": "permanent",
+        "rmbAmount": 100,
+        "usdAmount": 100,
+        "rechargeLocation": "official purchase page -> pay.ldxp.cn/shop/pointfix.xyz",
+        "expiresRule": "External shop redeem code; product states API quota"
+      },
+      {
+        "rechargeName": "PointfixAPI 200 USD quota",
+        "billingType": "permanent",
+        "rmbAmount": 200,
+        "usdAmount": 200,
+        "rechargeLocation": "official purchase page -> pay.ldxp.cn/shop/pointfix.xyz",
+        "expiresRule": "External shop redeem code; product states API quota"
+      }
+    ],
+    "forcedAdoptedTier": "Plus channel | PointfixAPI 25 USD quota",
+    "assumptionText": "Browser verified pointfix official /purchase page and public settings point to https://pay.ldxp.cn/shop/pointfix.xyz. External shop goodsList exposes 25/50/100/200 USD API quota cards. GPT PLUS account product and out-of-stock flash-sale product are excluded from formal cost rows.",
+    "confidence": "public_external_shop_verified",
+    "source": "official_purchase_external_shop_goods_api",
+    "evidenceUrl": "https://pay.ldxp.cn/shop/pointfix.xyz",
+    "authoritative": true
+  },
+  "api.apiwarrior.xyz": {
+    "stationTypeHint": "non_subscription",
+    "groupMultipliers": [
+      {
+        "groupName": "OpenAi-Plus pool",
+        "groupMultiplier": 0.09,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "OpenAi-Pro",
+        "groupMultiplier": 0.3,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "Claude full pool",
+        "groupMultiplier": 1.2,
+        "codexEligible": false,
+        "usageLabel": "Claude"
+      },
+      {
+        "groupName": "Reverse Claude",
+        "groupMultiplier": 0.4,
+        "codexEligible": false,
+        "usageLabel": "Claude"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "Apiwarrior wallet topup 20 USD",
+        "billingType": "permanent",
+        "rmbAmount": 20,
+        "usdAmount": 20,
+        "rechargeLocation": "logged-in add funds page -> on-chain payment",
+        "expiresRule": "Browser verified wallet topup option; 20 RMB payment creates 20 USD balance; no expiry shown"
+      },
+      {
+        "rechargeName": "Apiwarrior wallet topup 50 USD",
+        "billingType": "permanent",
+        "rmbAmount": 50,
+        "usdAmount": 50,
+        "rechargeLocation": "logged-in add funds page -> on-chain payment",
+        "expiresRule": "Browser verified wallet topup option; 50 RMB payment creates 50 USD balance; no expiry shown"
+      },
+      {
+        "rechargeName": "Apiwarrior wallet topup 100 USD",
+        "billingType": "permanent",
+        "rmbAmount": 100,
+        "usdAmount": 100,
+        "rechargeLocation": "logged-in add funds page -> on-chain payment",
+        "expiresRule": "Browser verified wallet topup option; 100 RMB payment creates 100 USD balance; no expiry shown"
+      }
+    ],
+    "forcedAdoptedTier": "OpenAi-Plus pool | Apiwarrior wallet topup 20 USD",
+    "assumptionText": "User manually verified api.apiwarrior.xyz logged-in add funds page shows 20/50/100 wallet topup options with matching payable amount and no expiry shown. User also verified OpenAi-Plus pool is 0.09x and OpenAi-Pro is 0.3x for Codex/OpenAI use; Claude full pool 1.2x and Reverse Claude 0.4x are excluded from Codex formal adoption.",
+    "confidence": "manual_browser_verified",
+    "source": "user_confirmed_logged_in_browser",
+    "evidenceUrl": "https://api.apiwarrior.xyz",
+    "authoritative": true
+  },
   "voapi": {
     "groupMultipliers": [
       {

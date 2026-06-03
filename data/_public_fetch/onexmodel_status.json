@@ -1,9 +1,23 @@
 {
   "data": {
     "HeaderNavModules": "{\"home\":false,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":false,\"customLinks\":[{\"text\":\"Monitor\",\"url\":\"https://status.1xm.ai/status/models\",\"order\":0.5},{\"text\":\"在线生图\",\"url\":\"https://1xm.ai/tools/gpt-image/\",\"order\":4.6}]}",
-    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"subscriptionPlans\":true,\"distribution\":true,\"invoice\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"operation\":true,\"distribution\":true,\"marketing\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"adminInvoice\":true,\"setting\":true}}",
     "_qn": "new-api",
     "announcements": [
+      {
+        "content": "【模型分组更新通知】 为保障cc-windsurf 分组稳定好用，升级 max 订阅，成本大幅提升，普通使用倍率从 x0.65 -> x1.5,订阅日卡倍率从 x0.5 -> x1.4,订阅 周卡倍率从 x0.45 -> x1.35,订阅月卡倍率从 x0.4 -> x1.3",
+        "extra": "",
+        "id": 26,
+        "publishDate": "2026-06-01T00:43:17.302Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "【模型分组更新通知】\n\n1.gemini 分组升级优质号池，性能和稳定性大幅提升，成本大幅下降。倍率 x2.8 -> x1.4",
+        "extra": "",
+        "id": 25,
+        "publishDate": "2026-05-26T01:02:18.646Z",
+        "type": "ongoing"
+      },
       {
         "content": "cc-max 满血复活，定价 x2，纯血版 claude 最具性价比的选择，欢迎品鉴！",
         "extra": "",
@@ -38,132 +52,6 @@
         "id": 20,
         "publishDate": "2026-04-29T02:24:43.393Z",
         "type": "ongoing"
-      },
-      {
-        "content": "cc-officially渠道重新上线，换成官方直采渠道，倍率调整为x7.5，价格较贵，紧急情况兜底用",
-        "extra": "",
-        "id": 19,
-        "publishDate": "2026-04-24T07:39:31.319Z",
-        "type": "ongoing"
-      },
-      {
-        "content": "【重要通知】cc-max恢复，由于官方封控进一步提升，原版突破口被ban，成本兜不住，恢复原价（从x1.6 -> x2.6），立即生效，且用且珍惜，后面很有可能就没有cc-max渠道了\n      \n                                                   -----OneXModel 运营团队2026.4.23",
-        "extra": "",
-        "id": 18,
-        "publishDate": "2026-04-23T08:50:48.812Z",
-        "type": "ongoing"
-      },
-      {
-        "content": "【模型上新通知】opanai分组上新了 gpt-image-2 模型，实测效果很不错，0.3$/张，欢迎品鉴～",
-        "extra": "",
-        "id": 17,
-        "publishDate": "2026-04-22T02:21:24.350Z",
-        "type": "ongoing"
-      },
-      {
-        "content": "【重要通知】本着坚持为用户提供稳定/靠谱/好用的算力初心，我们在供应上一直努力突破，目前CC系列已有进展，经过几天的灰度已保持稳定，因此对CC系列定价做如下调整，立即生效：\n\n1.cc-max 大幅降价，品质不变       从x2.6 -> x1.6 \n\n2.cc-aws 官key兜底，稳定性提升    从x3   -> x3.5\n\n3.cc-sale 让利促销结束恢复原价    从x0.4 -> x0.5\n\n                               ----OneXModel 运营团队 2026.4.22",
-        "extra": "*注：cc-officially 保持x5不变        ",
-        "id": 16,
-        "publishDate": "2026-04-22T00:31:59.069Z",
-        "type": "ongoing"
-      },
-      {
-        "content": "Gemini系列模型已经大幅提升稳定性和易用性，随之带来成本的大幅上升，从明天调整定价：\n\n1.gemini分组从x1.6   ->   x2.8\n\n2.大香蕉(gemini-3-pro-image-preview)0.35元/张  ->  0.62元/张\n\n3.小香蕉(gemini-3.1-flash-image-preview)0.15元/张  ->  0.28元/张\n\n                                   --------OneXModel 运营团队 2026.4.13",
-        "extra": "",
-        "id": 15,
-        "publishDate": "2026-04-13T02:34:08.944Z",
-        "type": "ongoing"
-      },
-      {
-        "content": "重磅上架 cc-officially 分组，官方直连，稳定、低延迟、超高缓存命中，各方面无可挑剔，纵享丝滑，在高缓存命中下的成本也还能接受，欢迎用户朋友们品鉴！\n\n                                   --------OneXModel 运营团队 2026.4.12",
-        "extra": "",
-        "id": 14,
-        "publishDate": "2026-04-12T03:58:08.011Z",
-        "type": "ongoing"
-      },
-      {
-        "content": "cc-max和cc-aws分组因官方限量限速封控等不可抗力压制，服务的稳定性大幅下降，只能限量供应，不建议对稳定性有很高要求的用户使用\n\n                                 -----OneXModel运营团队 2026.4.12",
-        "extra": "服务可用性参考模型监控：https://status.1xm.ai/status/models",
-        "id": 13,
-        "publishDate": "2026-04-11T23:25:09.882Z",
-        "type": "ongoing"
-      },
-      {
-        "content": "cc-sale模型价格调整通知，倍率从原本x0.6下降至x0.4，立即生效  -----OneXModel运营团队 2026.4.6",
-        "extra": "",
-        "id": 12,
-        "publishDate": "2026-04-06T07:12:20.839Z",
-        "type": "ongoing"
-      },
-      {
-        "content": "【重要通知】Gemini系列模型已经全新升级，经过2天验证，模型可用性和稳定性已经有了非常巨大的提升，但随之带来的成本提升也非常巨大，因此做如下调整：模型分组从原本的gemini(x0.5)调整为gemini，价格从原本x0.5提升至x1.6,本次调价只影响Gemini生文类模型，nano-banana生图模型还是保持不变   ---OneXModel团队  2026.4.3",
-        "extra": "",
-        "id": 11,
-        "publishDate": "2026-04-03T08:21:40.336Z",
-        "type": "default"
-      },
-      {
-        "content": "【重要通知】受A社封控策略和额度降低造成的成本影响，1XM做CC系列模型如下调整：\n1.原claude(x2)更名为cc-max,倍率从x2->x2.6\n2.原cc-aws-m(x1.6)更名为cc-aws-m,倍率从x1.6->x2.2\n3.原cc-aws(x2.5)更名为cc-aws,倍率从x2.5->x3\n4.原cc-sale(x0.5)更名为cc-sale,倍率从0.5->x0.6\n其余分组不受影响，调整立即生效，请各位用户朋友知晓和即时更新原本key的分组，以免服务不可用而造成影响\n---OneXModel团队  2026.4.2",
-        "extra": "",
-        "id": 10,
-        "publishDate": "2026-04-02T01:00:39.722Z",
-        "type": "default"
-      },
-      {
-        "content": "因Gemini官方风控升级，模型成本上升，价格略有上涨，即刻生效。稳定性一般，暂时无法保障，具体如下：\n\n1.gemini-3.1-flash-image-preview从0.1元/张上涨至0.15元/张\n\n2.gemini-3-pro-image-preview从0.3元/张上涨至0.35元/张",
-        "extra": "",
-        "id": 9,
-        "publishDate": "2026-03-30T16:36:56.315Z",
-        "type": "default"
-      },
-      {
-        "content": "模型价格变动通知：\n\n因OpenAI官方风控升级，成本大幅提升，openai(x0.3)分组从下周一「2026.3.30」开始从x0.3倍率提升至x0.5倍率",
-        "extra": "",
-        "id": 8,
-        "publishDate": "2026-03-28T02:20:38.281Z",
-        "type": "default"
-      },
-      {
-        "content": "🎉🎉🎉上架cc-sale(x0.5)和cc-aws-m(x1.6)\n\ncc-sale是三方逆向的claude主打极致性价比，稳定性也OK\n\ncc-aws-m是aws渠道，特点是高稳定+高缓存命中率，用下来体验非常不错而且费用消耗也小\n\n两个渠道的模型满足大家不同情况的需求，欢迎品鉴～",
-        "extra": "",
-        "id": 7,
-        "publishDate": "2026-03-26T03:31:42.159Z",
-        "type": "default"
-      },
-      {
-        "content": "1、平台上线充值优惠套餐，充值立享优惠，最高省15%\n2、平台上线发票管理，可自行开票",
-        "extra": "",
-        "id": 6,
-        "publishDate": "2026-03-25T07:34:25.026Z",
-        "type": "default"
-      },
-      {
-        "content": "由于GPT官方风控趋严，提供稳定token成本增加，从明天（2026.3.23）开始GPT系列的倍率从0.2升至0.3",
-        "extra": "",
-        "id": 5,
-        "publishDate": "2026-03-22T07:04:50.031Z",
-        "type": "default"
-      },
-      {
-        "content": "由于Claude出现大面积拉闸，风控问题暂时无法解决，成本急剧上升，不得已现在必须得将模型倍率从1提升至2",
-        "extra": "",
-        "id": 4,
-        "publishDate": "2026-03-20T05:24:47.566Z",
-        "type": "default"
-      },
-      {
-        "content": "由于Cluade封禁加严，token获取成本大幅提升，明天开始cluade倍率从1提升至2",
-        "extra": "",
-        "id": 3,
-        "publishDate": "2026-03-20T03:06:02.750Z",
-        "type": "default"
-      },
-      {
-        "content": "<div style=\"line-height:1.6;font-size:14px\">\n<b>📢 计费与倍率通知</b><br>\n汇率：1 RMB = 1 USD | 1 USD = 50W Tokens<br>\n<b>⚙️ 消耗倍率：</b>Claude=2, Gemini(通用)=0.5, Gemini(生图)=1, GPT=0.2<br>\n<i>*最终消耗 = 实际 Token × 倍率</i><br>\n<b>🎨 Gemini生图按次收费：</b><br>\nNano Banana Pro (gemini-3-pro-image-preview)：$0.3/张<br>\nNano Banana 2 (gemini-3.1-flash-image-preview)：$0.1/张\n</div>",
-        "extra": "",
-        "id": 2,
-        "publishDate": "2026-03-17T10:37:25.880Z",
-        "type": "default"
       }
     ],
     "announcements_enabled": true,
@@ -256,7 +144,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://1xm.ai",
     "setup": true,
-    "start_time": 1779598079,
+    "start_time": 1780450121,
     "stripe_unit_price": 8,
     "system_name": "OneXModel",
     "telegram_bot_name": "",

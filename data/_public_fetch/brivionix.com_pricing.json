@@ -1,0 +1,292 @@
+{
+  "auto_groups": [],
+  "data": [
+    {
+      "model_name": "gpt-5.3-codex",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Tools,Vision,400K",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1.0294,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.10000114285,
+      "enable_groups": [
+        "default",
+        "max"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Tools,Files,Vision,1.1M",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 2.9411764706,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.099999999997,
+      "enable_groups": [
+        "default",
+        "max"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1.4705882353,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.100000000014,
+      "enable_groups": [
+        "default",
+        "max"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1.0294,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.10000114285,
+      "enable_groups": [
+        "default",
+        "max"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "icon": "OpenAI",
+      "tags": "reasoning,tools,files,vision,400k",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1.1705882353,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.09145728645,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "default": 1
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "default": "default - gpt-5.2, gpt-5.3-codex, gpt-5.4, gpt-5.5 (codex pro)"
+  },
+  "vendors": [
+    {
+      "id": 5,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 9,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":true}",
+      "SidebarModulesAdmin": "",
+      "announcements": [
+        {
+          "content": "⚠️ 重要声明\n\n严禁使用本平台生成危害国家安全、违法犯罪、色情或暴力内容。\n\n用户所生成内容的法律责任由用户本人承担，与本平台无关。如涉及违法行为，本平台将依法配合有关部门调查。\n\n违规者将被立即封禁。",
+          "extra": "",
+          "id": 5,
+          "publishDate": "2026-05-31T04:24:00.236Z",
+          "type": "default"
+        },
+        {
+          "content": "📢 Support Announcement\n\nIf you encounter any of the following issues:\n\n💳 Top-up not received / balance error\n🔧 API errors / model issues\n❓ Other technical problems\nPlease join our Discord server and we'll assist you as soon as possible: 👉 https://discord.gg/vCSAJ9ZAa",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2026-05-10T12:00:36.971Z",
+          "type": "default"
+        },
+        {
+          "content": "📢 客服支援公告\n\n如您在使用過程中遇到以下問題：\n\n💳 充值未到帳、餘額異常\n🔧 API 呼叫報錯、模型異常\n❓ 其他技術問題\n請加入我們的群組，我們將第一時間為您處理：\n\n👉 Discord 伺服器：https://discord.gg/vCSAJ9ZAa\n💬 微信：https://ibb.co/23Mz8pYY",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2026-05-10T11:56:51.604Z",
+          "type": "default"
+        },
+        {
+          "content": "### 📣 Stripe 付款須知\n\n**費率：** 0.85 RMB = 1 額度。\n\n因 Stripe 規定單價必須為整數美分，我們須將 0.85 RMB（約 $0.116 USD）設定為 **$0.12 USD**。\n\n因此，買 10 額度將結帳 **$1.20 USD**（約 8.70 RMB）。此差異純屬 Stripe 計費限制，感謝理解！\n",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-04-26T06:21:09.196Z",
+          "type": "default"
+        },
+        {
+          "content": "### 📣 Stripe Payment Notice\n\n**Official Rate:** 0.85 RMB = 1 API Credit. \nWhen paying via Stripe, you may notice a slight difference between the website's estimated price and the final checkout amount.\n\n**Why?** \n\nStripe strictly requires unit prices in integer USD cents. To comply with this rule, we have set our 0.85 RMB rate (approx. $0.116 USD) to **$0.12 USD** in Stripe.\n\nFor example, 10 Credits via Stripe totals **$1.20 USD** (approx. 8.70 RMB). ",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-04-26T06:02:34.140Z",
+          "type": "default"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "blue",
+          "description": "Default official endpoint with global acceleration. (官方預設高可用節點，推薦日常開發使用)",
+          "id": 1,
+          "route": "Global Official (全球官方線路)",
+          "url": "https://brivionix.com"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio (APP 客户端)": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI (APP 客户端）": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "CC Switch （APP 客户端)": "ccswitch"
+        },
+        {
+          "AI as Workspace (Web 网页)": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "OpenCat （APP 客户端）": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "custom_oauth_providers": [
+        {
+          "id": 1,
+          "name": "Google",
+          "slug": "google",
+          "icon": "https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png",
+          "client_id": "754669971709-4l61sm7r4tfhsu6al7ri3vk5l312mu2q.apps.googleusercontent.com",
+          "authorization_endpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+          "scopes": "openid profile email"
+        }
+      ],
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://docs.brivionix.com",
+      "email_verification": true,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq": [
+        {
+          "answer": "Simply replace the API endpoint in your software or framework with `https://brivionix.com/v1` and use your Brivionix API Key. \n\n*(Note: Model availability depends on your account/token **Group**. Please ensure you are assigned to the correct group to access specific premium models.)*",
+          "id": 1,
+          "question": "1. How do I integrate the Brivionix API?"
+        },
+        {
+          "answer": "We operate on a transparent pay-as-you-go model. 1 API Credit is strictly anchored to our official rate. You are only billed for the exact tokens processed by the models.",
+          "id": 2,
+          "question": "2. How does the pricing work?"
+        },
+        {
+          "answer": "We want you to be completely satisfied with our service. If you encounter any technical issues or wish to request a refund for your unused balance, please contact our customer support team at `xxx`. We are always here to help and will process your request promptly!",
+          "id": 3,
+          "question": "3. How do I request a refund?"
+        },
+        {
+          "answer": "By default, the prices shown on the model cards (e.g., `$2.57 / 1M Tokens`) represent the **Platform's Nominal Quota**, which aligns with standard API baseline scales. \nTo view your **Actual Out-of-Pocket Cost**, simply toggle the **\"Top Up price\"** switch located at the top right of the search bar. This will instantly recalculate and display the real, heavily discounted price based on our actual top-up exchange rate, showing you exactly how much you are saving!",
+          "id": 4,
+          "question": "4. How do I read the pricing in the Model Marketplace?"
+        }
+      ],
+      "faq_enabled": true,
+      "footer_html": "<style>.orig-f-lang{display:none !important;}html[data-b-lang=\"zh-CN\"] .f-zh-cn,html[data-b-lang=\"zh\"] .f-zh-cn{display:flex !important;}html[data-b-lang=\"zh-TW\"] .f-zh-tw{display:flex !important;}html[data-b-lang^=\"ja\"] .f-ja{display:flex !important;}html[data-b-lang^=\"fr\"] .f-fr{display:flex !important;}html[data-b-lang^=\"ru\"] .f-ru{display:flex !important;}html[data-b-lang^=\"vi\"] .f-vi{display:flex !important;}html[data-b-lang^=\"en\"] .f-en{display:flex !important;}html:not([data-b-lang^=\"zh\"]):not([data-b-lang^=\"ja\"]):not([data-b-lang^=\"fr\"]):not([data-b-lang^=\"ru\"]):not([data-b-lang^=\"vi\"]):not([data-b-lang^=\"en\"]) .f-en{display:flex !important;}.f-nav-row{align-items:center;flex-wrap:wrap;gap:12px;font-weight:400;font-size:14px;}.f-nav-row a{color:inherit;text-decoration:none;transition:color 0.2s;}.f-nav-row a:hover{color:var(--semi-color-primary,#0064fa);}.f-sep{opacity:0.4;user-select:none;}</style><img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" onload=\"setInterval(function(){document.documentElement.setAttribute('data-b-lang',localStorage.getItem('i18nextLng')||'zh-CN');}, 500)\" style=\"display:none;\" /><div><div class=\"orig-f-lang f-en f-nav-row\"><span>© 2026 Brivionix</span><span class=\"f-sep\">|</span><a href=\"/about\">About</a><span class=\"f-sep\">|</span><a href=\"/privacy-policy\">Privacy Policy</a><span class=\"f-sep\">|</span><a href=\"/user-agreement\">Terms of Service</a></div><div class=\"orig-f-lang f-zh-cn f-nav-row\"><span>© 2026 Brivionix</span><span class=\"f-sep\">|</span><a href=\"/about\">关于我们</a><span class=\"f-sep\">|</span><a href=\"/privacy-policy\">隐私政策</a><span class=\"f-sep\">|</span><a href=\"/user-agreement\">服务条款与用户协议</a></div><div class=\"orig-f-lang f-zh-tw f-nav-row\"><span>© 2026 Brivionix</span><span class=\"f-sep\">|</span><a href=\"/about\">關於我們</a><span class=\"f-sep\">|</span><a href=\"/privacy-policy\">隱私政策</a><span class=\"f-sep\">|</span><a href=\"/user-agreement\">服務條款與用戶協議</a></div><div class=\"orig-f-lang f-fr f-nav-row\"><span>© 2026 Brivionix</span><span class=\"f-sep\">|</span><a href=\"/about\">À propos</a><span class=\"f-sep\">|</span><a href=\"/privacy-policy\">Confidentialité</a><span class=\"f-sep\">|</span><a href=\"/user-agreement\">Conditions</a></div><div class=\"orig-f-lang f-ja f-nav-row\"><span>© 2026 Brivionix</span><span class=\"f-sep\">|</span><a href=\"/about\">私たちについて</a><span class=\"f-sep\">|</span><a href=\"/privacy-policy\">プライバシーポリシー</a><span class=\"f-sep\">|</span><a href=\"/user-agreement\">利用規約</a></div><div class=\"orig-f-lang f-ru f-nav-row\"><span>© 2026 Brivionix</span><span class=\"f-sep\">|</span><a href=\"/about\">О нас</a><span class=\"f-sep\">|</span><a href=\"/privacy-policy\">Конфиденциальность</a><span class=\"f-sep\">|</span><a href=\"/user-agreement\">Условия</a></div><div class=\"orig-f-lang f-vi f-nav-row\"><span>© 2026 Brivionix</span><span class=\"f-sep\">|</span><a href=\"/about\">Về chúng tôi</a><span class=\"f-sep\">|</span><a href=\"/privacy-policy\">Quyền riêng tư</a><span class=\"f-sep\">|</span><a href=\"/user-agreement\">Điều khoản</a></div></div>",
+      "github_client_id": "Ov23liz7JOyaiMl1agor",
+      "github_oauth": true,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "https://i.ibb.co/Df082pMb/brivionix-samll-logo.png",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "Brivionix",
+      "passkey_login": false,
+      "passkey_origins": "https://brivionix.com",
+      "passkey_rp_id": "brivionix.com",
+      "passkey_user_verification": "preferred",
+      "price": 0.85,
+      "privacy_policy_enabled": true,
+      "quota_display_type": "USD",
+      "quota_per_unit": 500000,
+      "self_use_mode_enabled": false,
+      "server_address": "https://brivionix.com",
+      "setup": true,
+      "start_time": 1777171306,
+      "stripe_unit_price": 0.85,
+      "system_name": "Brivionix",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "top_up_link": "",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": false,
+      "usd_exchange_rate": 7.3,
+      "user_agreement_enabled": true,
+      "version": "v0.12.14",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://brivionix.com/api/pricing"
+}

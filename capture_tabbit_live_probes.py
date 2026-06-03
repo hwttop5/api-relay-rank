@@ -2,16 +2,29 @@
 from __future__ import annotations
 
 import json
+import os
 import urllib.request
 from pathlib import Path
 
 from websocket import create_connection
 
-from audit_proxy_multipliers import LIVE_AUTH_PROBE_CONFIG, LIVE_AUTH_PROBE_DIR, classify_station
+from audit_proxy_multipliers import LIVE_AUTH_PROBE_CONFIG, LIVE_AUTH_PROBE_DIR, classify_station, station_key_from_public_url
 
 
 CDP_LIST_URL = "http://127.0.0.1:9222/json/list"
 IGNORE_HOST_MARKERS = ("js.stripe.com", "stripe.network")
+MANUAL_SKIP_STATIONS = {
+    # Confirmed manually: no pricing/recharge evidence to capture.
+    "icodex.pro",
+    # Confirmed manually: the site is offline/closed.
+    "code.pndot.com",
+}
+CAPTURE_STATIONS_ENV = "TABBIT_CAPTURE_STATIONS"
+
+
+def capture_station_filter() -> set[str]:
+    value = os.environ.get(CAPTURE_STATIONS_ENV, "")
+    return {item.strip() for item in value.split(",") if item.strip()}
 
 
 def load_pages() -> list[dict]:
@@ -21,14 +34,19 @@ def load_pages() -> list[dict]:
 
 def best_station_pages(pages: list[dict]) -> dict[str, dict]:
     chosen: dict[str, dict] = {}
-    priority = {"new_api": 3, "v1_auth": 3, "special": 2, "unknown": 1}
+    priority = {"new_api": 3, "v1_auth": 3, "freemodel": 3, "special": 2, "unknown": 1}
     for page in pages:
         url = str(page.get("url") or "")
         lowered = url.lower()
         if any(marker in lowered for marker in IGNORE_HOST_MARKERS):
             continue
-        station = classify_station(None, url)
+        station = classify_station(None, url) or station_key_from_public_url(url)
         if not station:
+            continue
+        if station in MANUAL_SKIP_STATIONS:
+            continue
+        station_filter = capture_station_filter()
+        if station_filter and station not in station_filter:
             continue
         details = evaluate_page_state(page)
         score = priority.get(str(details.get("probe_kind") or "unknown"), 0)
@@ -85,6 +103,9 @@ def evaluate_page_state(page: dict) -> dict:
   } else if (ls.hongmacode_token || ls.userStore) {
     probeKind = 'special';
   }
+  if ((location.hostname === 'freemodel.dev' || location.hostname.endsWith('.freemodel.dev')) && location.pathname.startsWith('/dashboard')) {
+    probeKind = 'freemodel';
+  }
   return {
     location: location.href,
     title: document.title,
@@ -122,7 +143,7 @@ def build_new_api_probe(page: dict, station: str, base: dict) -> dict:
     none: {},
     ['New-Api-User:' + String(uid)]: {}
   };
-  const authlessPaths = ['/api/user/self', '/api/user/self/groups', '/api/user/topup/info', '/api/subscription/plans', '/api/group'];
+  const authlessPaths = ['/api/user/self/groups', '/api/user/topup/info', '/api/subscription/plans', '/api/group'];
   for (const path of authlessPaths) {
     out.none[path] = await hit(path);
   }
@@ -326,6 +347,119 @@ def build_krill_probe(page: dict, base: dict) -> dict:
     return probe
 
 
+def build_freemodel_probe(page: dict, base: dict) -> dict:
+    expression = r"""(async () => {
+  function safePrimitive(value) {
+    if (typeof value === 'string') {
+      const trimmed = value.trim();
+      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(trimmed)) return '<redacted>';
+      if (trimmed.length > 240) return trimmed.slice(0, 240) + '...';
+      return trimmed;
+    }
+    if (typeof value === 'number' || typeof value === 'boolean' || value === null) return value;
+    return undefined;
+  }
+  function isSensitiveKey(key) {
+    return /email|mail|token|cookie|secret|password|authorization|session|customer|stripe|url|link/i.test(String(key || ''));
+  }
+  function scrub(value, depth = 0) {
+    const primitive = safePrimitive(value);
+    if (primitive !== undefined) return primitive;
+    if (depth >= 3) {
+      if (Array.isArray(value)) return {count: value.length};
+      if (value && typeof value === 'object') return {keys: Object.keys(value).slice(0, 20)};
+      return null;
+    }
+    if (Array.isArray(value)) {
+      return {
+        count: value.length,
+        items: value.slice(0, 8).map(item => scrub(item, depth + 1)),
+      };
+    }
+    if (value && typeof value === 'object') {
+      const out = {};
+      for (const [key, child] of Object.entries(value)) {
+        if (isSensitiveKey(key)) {
+          out[key] = '<redacted>';
+        } else {
+          out[key] = scrub(child, depth + 1);
+        }
+      }
+      return out;
+    }
+    return null;
+  }
+  function summarizeAuthMe(body) {
+    const data = body && typeof body === 'object' ? (body.data ?? body.user ?? body) : {};
+    return {
+      authenticated: Boolean(data && typeof data === 'object' && (data.id || data.user || data.username || data.name || data.email)),
+      dataKeys: data && typeof data === 'object' ? Object.keys(data).filter(key => !isSensitiveKey(key)).slice(0, 20) : [],
+      plan: scrub(data?.plan ?? data?.subscription ?? data?.membership ?? null),
+      role: safePrimitive(data?.role ?? data?.type ?? null) ?? null,
+    };
+  }
+  function numericFields(value) {
+    const out = {};
+    if (!value || typeof value !== 'object' || Array.isArray(value)) return out;
+    for (const [key, child] of Object.entries(value)) {
+      if (typeof child === 'number' && !isSensitiveKey(key)) out[key] = child;
+    }
+    return out;
+  }
+  function summarizeCollection(body) {
+    const data = body && typeof body === 'object' ? (body.data ?? body) : body;
+    if (Array.isArray(data)) return {count: data.length};
+    if (data && typeof data === 'object') {
+      const collectionKey = ['items', 'records', 'rows', 'logs', 'invoices', 'data'].find(key => Array.isArray(data[key]));
+      return {
+        keys: Object.keys(data).filter(key => !isSensitiveKey(key)).slice(0, 30),
+        numericFields: numericFields(data),
+        collectionKey: collectionKey || '',
+        count: collectionKey ? data[collectionKey].length : undefined,
+      };
+    }
+    return scrub(body);
+  }
+  function summarizeBody(path, body) {
+    if (path === '/api/auth/me') return summarizeAuthMe(body);
+    if (path === '/api/billing/invoices' || path === '/api/logs') return summarizeCollection(body);
+    return scrub(body);
+  }
+  async function hit(path) {
+    try {
+      const response = await fetch(path, {credentials: 'include', cache: 'no-store'});
+      const text = await response.text();
+      let raw = null;
+      try { raw = JSON.parse(text); } catch { raw = text.slice(0, 500); }
+      return {status: response.status, ok: response.ok, body: summarizeBody(path, raw)};
+    } catch (error) {
+      return {error: String(error)};
+    }
+  }
+  const out = {};
+  for (const path of [
+    '/api/auth/me',
+    '/api/billing',
+    '/api/billing/invoices',
+    '/api/usage',
+    '/api/logs'
+  ]) {
+    out[path] = await hit(path);
+  }
+  return out;
+})()"""
+    probe = dict(base)
+    probe["probe_type"] = "freemodel_special"
+    probe["probe_kind"] = "freemodel"
+    probe["results"] = evaluate_page(page, expression)
+    probe["announcementStatus"] = {
+        "status": "public_missing",
+        "source": "https://freemodel.dev/dashboard",
+        "message": "Logged-in dashboard exposes auth, billing, usage and logs APIs; no announcement endpoint was observed.",
+    }
+    return probe
+
+
 def capture_probe(page: dict, station: str, details: dict) -> dict:
     base = {
         "location": details.get("location") or page.get("url") or "",
@@ -343,6 +477,8 @@ def capture_probe(page: dict, station: str, details: dict) -> dict:
         return build_krill_probe(page, base)
     if station == "gettoken":
         return build_gettoken_probe(page, base)
+    if station == "freemodel":
+        return build_freemodel_probe(page, base)
     if probe_kind == "new_api":
         return build_new_api_probe(page, station, base)
     if probe_kind == "v1_auth":
@@ -350,6 +486,40 @@ def capture_probe(page: dict, station: str, details: dict) -> dict:
     if probe_kind == "special":
         return build_special_probe(page, base)
     return base
+
+
+def response_body_has_content(body: object) -> bool:
+    if body is None:
+        return False
+    if isinstance(body, str):
+        return bool(body.strip())
+    if isinstance(body, (list, tuple, set)):
+        return bool(body)
+    if isinstance(body, dict):
+        data = body.get("data")
+        if isinstance(data, (list, tuple, set, dict)) and bool(data):
+            return True
+        return any(value not in (None, "", [], {}) for value in body.values())
+    return True
+
+
+def result_has_useful_payload(value: object) -> bool:
+    if not isinstance(value, dict):
+        return False
+    if "status" in value or "ok" in value or "body" in value:
+        status = value.get("status")
+        ok = value.get("ok")
+        if ok is True and isinstance(status, int) and 200 <= status < 300:
+            return response_body_has_content(value.get("body"))
+        return False
+    return any(result_has_useful_payload(child) for child in value.values())
+
+
+def probe_has_useful_structured_result(probe: dict) -> bool:
+    results = probe.get("results")
+    if not isinstance(results, dict) or not results:
+        return False
+    return any(result_has_useful_payload(value) for value in results.values())
 
 
 def main() -> None:
@@ -361,6 +531,9 @@ def main() -> None:
     for station, payload in sorted(chosen.items()):
         try:
             probe = capture_probe(payload["page"], station, payload["details"])
+            if not probe_has_useful_structured_result(probe):
+                errors[station] = "skipped: no useful logged-in structured result"
+                continue
             out_path = LIVE_AUTH_PROBE_DIR / f"{station}-live-auth-probe.json"
             out_path.write_text(json.dumps(probe, ensure_ascii=False, indent=2), encoding="utf-8")
             written.append(str(out_path))

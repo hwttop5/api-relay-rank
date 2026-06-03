@@ -29,7 +29,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field, replace
 from html.parser import HTMLParser
 from pathlib import Path
-from typing import Any
+from typing import Any, Mapping
 
 from scripts.station_display_names import normalize_station_label
 
@@ -364,6 +364,11 @@ LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
         "station_type": "non_subscription",
         "quick_amounts": [1, 10, 20, 50, 100, 200, 500, 1000, 2000, 4000],
     },
+    "ae.carfixlab.cc": {
+        "probe_type": "v1_generic",
+        "station_type": "non_subscription",
+        "quick_amounts": [1, 10, 20, 50, 100, 200, 500, 1000],
+    },
     "api.feifeimiao.top": {
         "probe_type": "v1_generic",
         "station_type": "mixed",
@@ -440,17 +445,30 @@ LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
 
 
 DETAIL_EVIDENCE_FEE_STATIONS = {
+    "ai.nexahub.one",
     "audit-api-printcap-ai",
     "api.code-relay.com",
+    "api.nbility.dev",
     "api-slb.krill-ai.com",
+    "brivionix.com",
     "claude360.xyz",
     "cngpt.net",
+    "dddai.dev",
     "fishxcode.com",
     "fushengyunsuan.cn",
     "happycode.vip",
+    "kapibala.asia",
+    "lpgpt.us",
     "moosecloud.cc",
+    "muyuan.do",
     "muskai",
     "prod.bbroot.com",
+}
+
+
+MANUAL_EXCLUDED_STATIONS = {
+    "code.pndot.com",
+    "icodex.pro",
 }
 
 
@@ -500,10 +518,51 @@ DETAIL_EVIDENCE_FEE_META: dict[str, dict[str, Any]] = {
         "source": "krill_logged_in_shop_and_route_api",
         "notes": "Krill detail rows come from logged-in route settings plus official shop product APIs; homepage is https://www.krill-ai.com and api-slb.krill-ai.com is a route endpoint.",
     },
+    "ai.nexahub.one": {
+        "confidence": "high_tabbit_logged_in",
+        "source": "detail_page_live_probe_subscription_evidence",
+        "notes": "NexaHub detail rows come from logged-in v1 groups, payment plan, and announcement APIs.",
+    },
+    "api.nbility.dev": {
+        "confidence": "public_structured_evidence",
+        "source": "detail_page_public_subscription_evidence",
+        "notes": "Nbility detail rows come from public structured Codex subscription plan evidence and archived group evidence.",
+        "groupRows": [
+            {"groupName": "codex", "groupMultiplier": 0.4, "codexEligible": True},
+            {"groupName": "codex-pro", "groupMultiplier": 1.0, "codexEligible": True},
+        ],
+    },
+    "brivionix.com": {
+        "confidence": "public_structured_evidence",
+        "source": "detail_page_public_status_and_pricing_evidence",
+        "notes": "Brivionix detail rows come from official public status quota conversion plus archived default group evidence.",
+    },
+    "dddai.dev": {
+        "confidence": "public_structured_evidence",
+        "source": "detail_page_public_status_and_pricing_evidence",
+        "notes": "Dddai detail rows come from official public status quota conversion plus archived Codex group evidence.",
+        "groupRows": [{"groupName": "codex-plus", "groupMultiplier": 0.12, "codexEligible": True}],
+    },
+    "kapibala.asia": {
+        "confidence": "high_tabbit_logged_in",
+        "source": "detail_page_live_probe_wallet_and_subscription_evidence",
+        "notes": "Kapibala detail rows come from logged-in group, wallet conversion, and subscription plan APIs.",
+        "groupRows": [{"groupName": "codex", "groupMultiplier": 1.0, "codexEligible": True}],
+    },
+    "lpgpt.us": {
+        "confidence": "public_structured_evidence",
+        "source": "detail_page_public_status_and_archived_probe_evidence",
+        "notes": "Lpgpt detail rows come from official public status quota conversion plus archived default group evidence.",
+    },
     "moosecloud.cc": {
         "confidence": "high_tabbit_logged_in",
         "source": "detail_page_live_probe_baseline",
         "notes": "MooseCloud detail rows come from archived logged-in API group and payment plan evidence.",
+    },
+    "muyuan.do": {
+        "confidence": "public_structured_evidence",
+        "source": "detail_page_public_status_and_pricing_evidence",
+        "notes": "Muyuan detail rows come from official public status quota conversion plus archived group evidence.",
     },
     "muskai": {
         "confidence": "high_tabbit_logged_in",
@@ -711,10 +770,14 @@ def classify_station(supplier: str | None, url: str | None) -> str | None:
     checks = [
         ("nexus", ["nexus", "1982video"]),
         ("585016d3.u3u.dev", ["585016d3.u3u.dev"]),
+        ("api.apiwarrior.xyz", ["api.apiwarrior.xyz", "apiwarrior"]),
         ("atomflow.vip", ["atomflow.vip"]),
         ("hello-code", ["hello-code", "hello-code.cn"]),
         ("fishxcode.com", ["fishxcode", "fishxcode.com"]),
         ("moosecloud.cc", ["moosecloud", "moosecloud.cc"]),
+        ("kapibala.asia", ["kapibala.asia", "kapibala"]),
+        ("lpgpt.us", ["lpgpt.us", "lpgpt", "zero bug"]),
+        ("x2app.top", ["x2app.top", "x2app"]),
         ("icodex.pro", ["icodex", "icodex.pro"]),
         ("freemodel", ["freemodel"]),
         ("voapi", ["voapi"]),
@@ -772,35 +835,46 @@ def db_connection() -> sqlite3.Connection:
     return con
 
 
-def load_station_configs() -> dict[str, StationConfig]:
+def postgres_connection() -> Any:
+    database_url = os.environ.get("DATABASE_URL", "").strip()
+    if not database_url:
+        raise RuntimeError("DATABASE_URL is required when --log-source postgres is used.")
+    import psycopg
+    from psycopg.rows import dict_row
+
+    return psycopg.connect(database_url, row_factory=dict_row)
+
+
+def load_station_configs(*, log_source: str = "sqlite") -> dict[str, StationConfig]:
     stations: dict[str, StationConfig] = {
         key: StationConfig(key=key, label=station_display_label(key, label)) for key, label in LABELS.items()
     }
-    con = db_connection()
-    try:
-        query = """
-            select supplier_name, url, status, last_test_status
-            from aggregate_apis
-            where url is not null
-        """
-        for row in con.execute(query):
-            key = classify_station(row["supplier_name"], row["url"])
-            if key is None:
-                key = station_key_from_public_url(row["url"])
+    if log_source == "sqlite":
+        con = db_connection()
+        try:
+            query = """
+                select supplier_name, url, status, last_test_status
+                from aggregate_apis
+                where url is not null
+            """
+            for row in con.execute(query):
+                key = classify_station(row["supplier_name"], row["url"])
                 if key is None:
-                    continue
-            station = stations.setdefault(
-                key,
-                StationConfig(key=key, label=station_display_label(key)),
-            )
-            station.configured_suppliers.add(redact_supplier_name(row["supplier_name"]))
-            if not is_local_station_url(row["url"]):
-                station.configured_urls.add(root_url(row["url"]))
-            station.codex_status_hints.append(
-                f"status={row['status'] or ''}; last_test={row['last_test_status'] or ''}"
-            )
-    finally:
-        con.close()
+                    key = station_key_from_public_url(row["url"])
+                    if key is None:
+                        continue
+                station = stations.setdefault(
+                    key,
+                    StationConfig(key=key, label=station_display_label(key)),
+                )
+                station.configured_suppliers.add(redact_supplier_name(row["supplier_name"]))
+                if not is_local_station_url(row["url"]):
+                    station.configured_urls.add(root_url(row["url"]))
+                station.codex_status_hints.append(
+                    f"status={row['status'] or ''}; last_test={row['last_test_status'] or ''}"
+                )
+        finally:
+            con.close()
 
     for key, url in SCREENSHOT_ONLY_URLS.items():
         stations.setdefault(key, StationConfig(key=key, label=station_display_label(key, station_url=url))).configured_urls.add(url)
@@ -902,7 +976,7 @@ def cursor_tuple(cursor: dict[str, Any] | None) -> tuple[int, int]:
     )
 
 
-def row_cursor(row: sqlite3.Row) -> dict[str, int] | None:
+def row_cursor(row: Mapping[str, Any]) -> dict[str, int] | None:
     created_at = parse_int(row["created_at"])
     row_id = parse_int(row["id"])
     if created_at is None or row_id is None:
@@ -910,7 +984,7 @@ def row_cursor(row: sqlite3.Row) -> dict[str, int] | None:
     return {"createdAt": created_at, "id": row_id}
 
 
-def row_fingerprint(row: sqlite3.Row) -> str:
+def row_fingerprint(row: Mapping[str, Any]) -> str:
     payload = [
         row["supplier"] or "",
         row["url"] or "",
@@ -1142,6 +1216,13 @@ def is_billing_or_quota_error(error_text: Any) -> bool:
     return False
 
 
+def normalize_request_error(error_text: Any) -> str | None:
+    if error_text is None:
+        return None
+    text = str(error_text).strip()
+    return text or None
+
+
 def time_window_for_created_at(created_at: int | None) -> str | None:
     if created_at is None:
         return None
@@ -1170,7 +1251,7 @@ def finalize_metric_bucket(item: dict[str, Any]) -> None:
     item["last_at"] = maybe_epoch_to_iso(item["last_at_raw"])
 
 
-def add_request_metric(metrics_by_window: dict[str, dict[str, dict[str, Any]]], row: sqlite3.Row) -> bool:
+def add_request_metric(metrics_by_window: dict[str, dict[str, dict[str, Any]]], row: Mapping[str, Any]) -> bool:
     key = classify_station(row["supplier"], row["url"])
     if key is None:
         key = station_key_from_public_url(row["url"])
@@ -1179,7 +1260,7 @@ def add_request_metric(metrics_by_window: dict[str, dict[str, dict[str, Any]]], 
     created_at = parse_int(row["created_at"])
     if created_at is None:
         return False
-    error = row["error"]
+    error = normalize_request_error(row["error"])
     excluded_billing_error = is_billing_or_quota_error(error)
     target_windows = ["all_hours"]
     classified_window = time_window_for_created_at(created_at)
@@ -1218,20 +1299,33 @@ def add_request_metric(metrics_by_window: dict[str, dict[str, dict[str, Any]]], 
 
 
 def historical_public_backfill_targets(
-    con: sqlite3.Connection,
+    con: Any,
     existing_state_keys: set[str],
+    *,
+    log_source: str = "sqlite",
 ) -> dict[str, set[str]]:
     targets: dict[str, set[str]] = {}
-    query = """
-        select aggregate_api_supplier_name as supplier,
-               aggregate_api_url as url
-        from request_logs
-        where request_type='http'
-          and request_path='/v1/responses'
-          and aggregate_api_url is not null
-        group by aggregate_api_supplier_name, aggregate_api_url
-    """
-    for row in con.execute(query):
+    if log_source == "postgres":
+        query = """
+            select aggregate_api_supplier_name as supplier,
+                   aggregate_api_url as url
+            from request_log_events
+            where request_type='http'
+              and request_path='/v1/responses'
+              and aggregate_api_url is not null
+            group by aggregate_api_supplier_name, aggregate_api_url
+        """
+    else:
+        query = """
+            select aggregate_api_supplier_name as supplier,
+                   aggregate_api_url as url
+            from request_logs
+            where request_type='http'
+              and request_path='/v1/responses'
+              and aggregate_api_url is not null
+            group by aggregate_api_supplier_name, aggregate_api_url
+        """
+    for row in execute_rows(con, query, [], log_source=log_source):
         key = classify_station(row["supplier"], row["url"])
         if key is None:
             key = station_key_from_public_url(row["url"])
@@ -1245,9 +1339,11 @@ def historical_public_backfill_targets(
 
 
 def backfill_historical_public_station_metrics(
-    con: sqlite3.Connection,
+    con: Any,
     metrics_by_window: dict[str, dict[str, dict[str, Any]]],
     targets: dict[str, set[str]],
+    *,
+    log_source: str = "sqlite",
 ) -> dict[str, Any]:
     if not targets:
         return {"stations": [], "rowsSeen": 0, "rowsAccumulated": 0}
@@ -1258,28 +1354,45 @@ def backfill_historical_public_station_metrics(
 
     rows_seen = 0
     rows_accumulated = 0
-    base_query = """
-        select id,
-               aggregate_api_supplier_name as supplier,
-               aggregate_api_url as url,
-               status_code,
-               error,
-               duration_ms,
-               first_response_ms,
-               created_at
-        from request_logs
-        where request_type='http'
-          and request_path='/v1/responses'
-          and aggregate_api_url in ({placeholders})
-        order by created_at, id
-    """
+    if log_source == "postgres":
+        base_query = """
+            select source_id as id,
+                   aggregate_api_supplier_name as supplier,
+                   aggregate_api_url as url,
+                   status_code,
+                   error,
+                   duration_ms,
+                   first_response_ms,
+                   source_created_at as created_at
+            from request_log_events
+            where request_type='http'
+              and request_path='/v1/responses'
+              and aggregate_api_url in ({placeholders})
+            order by source_created_at, source_id
+        """
+    else:
+        base_query = """
+            select id,
+                   aggregate_api_supplier_name as supplier,
+                   aggregate_api_url as url,
+                   status_code,
+                   error,
+                   duration_ms,
+                   first_response_ms,
+                   created_at
+            from request_logs
+            where request_type='http'
+              and request_path='/v1/responses'
+              and aggregate_api_url in ({placeholders})
+            order by created_at, id
+        """
     for urls in targets.values():
         sorted_urls = sorted(urls)
         for start in range(0, len(sorted_urls), 400):
             chunk = sorted_urls[start : start + 400]
-            placeholders = ",".join("?" for _ in chunk)
+            placeholders = ",".join(sql_placeholder(log_source) for _ in chunk)
             query = base_query.format(placeholders=placeholders)
-            for row in con.execute(query, chunk):
+            for row in execute_rows(con, query, chunk, log_source=log_source):
                 rows_seen += 1
                 if add_request_metric(metrics_by_window, row):
                     rows_accumulated += 1
@@ -1291,7 +1404,59 @@ def backfill_historical_public_station_metrics(
     }
 
 
-def load_request_metrics(*, full_log_rebuild: bool = False) -> dict[str, dict[str, dict[str, Any]]]:
+def sql_placeholder(log_source: str) -> str:
+    return "%s" if log_source == "postgres" else "?"
+
+
+def execute_rows(con: Any, query: str, params: list[Any] | tuple[Any, ...] | None = None, *, log_source: str = "sqlite") -> list[Any] | Any:
+    if log_source == "postgres":
+        with con.cursor() as cur:
+            cur.execute(query, params or [])
+            return cur.fetchall()
+    return con.execute(query, params or [])
+
+
+def request_log_connection(log_source: str) -> Any:
+    if log_source == "postgres":
+        return postgres_connection()
+    if log_source == "sqlite":
+        return db_connection()
+    raise ValueError(f"Unsupported log source: {log_source}")
+
+
+def request_log_query(log_source: str) -> str:
+    if log_source == "postgres":
+        return """
+            select source_id as id,
+                   aggregate_api_supplier_name as supplier,
+                   aggregate_api_url as url,
+                   status_code,
+                   error,
+                   duration_ms,
+                   first_response_ms,
+                   source_created_at as created_at
+            from request_log_events
+            where request_type='http'
+              and request_path='/v1/responses'
+              and (aggregate_api_supplier_name is not null or aggregate_api_url is not null)
+        """
+    return """
+            select id,
+                   aggregate_api_supplier_name as supplier,
+                   aggregate_api_url as url,
+                   status_code,
+                   error,
+                   duration_ms,
+                   first_response_ms,
+                   created_at
+            from request_logs
+            where request_type='http'
+              and request_path='/v1/responses'
+              and (aggregate_api_supplier_name is not null or aggregate_api_url is not null)
+        """
+
+
+def load_request_metrics(*, full_log_rebuild: bool = False, log_source: str = "sqlite") -> dict[str, dict[str, dict[str, Any]]]:
     global LAST_LOG_REFRESH_INFO
     state = None if full_log_rebuild else load_log_refresh_state()
     if full_log_rebuild:
@@ -1321,28 +1486,15 @@ def load_request_metrics(*, full_log_rebuild: bool = False) -> dict[str, dict[st
     rows_added = 0
     rows_accumulated = 0
     historical_backfill = {"stations": [], "rowsSeen": 0, "rowsAccumulated": 0}
-    con = db_connection()
+    con = request_log_connection(log_source)
     try:
-        query = """
-            select id,
-                   aggregate_api_supplier_name as supplier,
-                   aggregate_api_url as url,
-                   status_code,
-                   error,
-                   duration_ms,
-                   first_response_ms,
-                   created_at
-            from request_logs
-            where request_type='http'
-              and request_path='/v1/responses'
-              and (aggregate_api_supplier_name is not null or aggregate_api_url is not null)
-        """
+        query = request_log_query(log_source)
         params: list[Any] = []
         if query_start is not None:
-            query += " and created_at >= ?"
+            query += f" and {'source_created_at' if log_source == 'postgres' else 'created_at'} >= {sql_placeholder(log_source)}"
             params.append(query_start)
-        query += " order by created_at, id"
-        for row in con.execute(query, params):
+        query += f" order by {'source_created_at' if log_source == 'postgres' else 'created_at'}, {'source_id' if log_source == 'postgres' else 'id'}"
+        for row in execute_rows(con, query, params, log_source=log_source):
             rows_seen += 1
             current_cursor = row_cursor(row)
             if current_cursor is None:
@@ -1360,7 +1512,8 @@ def load_request_metrics(*, full_log_rebuild: bool = False) -> dict[str, dict[st
             historical_backfill = backfill_historical_public_station_metrics(
                 con,
                 metrics_by_window,
-                historical_public_backfill_targets(con, existing_state_keys),
+                historical_public_backfill_targets(con, existing_state_keys, log_source=log_source),
+                log_source=log_source,
             )
     finally:
         con.close()
@@ -1380,6 +1533,7 @@ def load_request_metrics(*, full_log_rebuild: bool = False) -> dict[str, dict[st
     )
     LAST_LOG_REFRESH_INFO = {
         "mode": mode,
+        "logSource": log_source,
         "statePath": workspace_public_path(LOG_REFRESH_STATE_PATH),
         "cursor": {
             "createdAt": cursor_tuple(cursor)[0] if cursor_tuple(cursor)[0] >= 0 else None,
@@ -3766,7 +3920,7 @@ def is_codex_like_fee_tier(tier: FeeTier) -> bool:
         return False
     if "codexeligible=true" in str(tier.notes or "").strip().lower():
         return True
-    return is_codex_like_group_text(tier.group_name, tier.notes)
+    return is_codex_like_group_text(tier.group_name)
 
 
 def choose_codex_or_fallback_tier(candidates: list[FeeTier]) -> FeeTier | None:
@@ -4434,13 +4588,19 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
             "keep the default incremental mode backed by data/codex-log-refresh-state.json."
         ),
     )
+    parser.add_argument(
+        "--log-source",
+        choices=("sqlite", "postgres"),
+        default="sqlite",
+        help="Read Codex request logs from the local Codex Manager SQLite DB or from PostgreSQL request_log_events.",
+    )
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
-    stations = load_station_configs()
-    metrics_by_window = load_request_metrics(full_log_rebuild=args.full_log_rebuild)
+    stations = load_station_configs(log_source=args.log_source)
+    metrics_by_window = load_request_metrics(full_log_rebuild=args.full_log_rebuild, log_source=args.log_source)
     ensure_metric_station_configs(stations, metrics_by_window)
     primary_metrics = metrics_by_window[PRIMARY_TIME_WINDOW]
     all_hour_metrics = metrics_by_window["all_hours"]
@@ -4760,7 +4920,11 @@ def main(argv: list[str] | None = None) -> int:
     write_csv(WORKSPACE / "monthly_full_use_cost_ranking.csv", monthly_rows, tier_fieldnames)
     write_csv(WORKSPACE / "payg_cost_ranking.csv", payg_rows, tier_fieldnames)
 
-    pending_rows = [row for row in checklist_rows if row["verification_needed"]]
+    pending_rows = [
+        row
+        for row in checklist_rows
+        if row["verification_needed"] and row["station"] not in MANUAL_EXCLUDED_STATIONS
+    ]
     write_csv(
         WORKSPACE / "pending_evidence.csv",
         pending_rows,

@@ -1,0 +1,6608 @@
+{
+  "auto_groups": [
+    "default"
+  ],
+  "data": [
+    {
+      "model_name": "gemini-1.5-flash-exp-0827",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.12,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gemini-1.5-flash-latest",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.12,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwq-32b",
+      "quota_type": 0,
+      "model_ratio": 0.7286,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-chat-latest",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "gpt 特价"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "code-llama-34b",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-medium",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "codex",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4-turbo",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "microsoft/phi-3-medium-128k-instruct:free",
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-max-think",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-codex-xhigh",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "doubao-seedream-5-0",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.25,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-plus-2025-09-11-think",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-codex-low",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-high",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.1-ci",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.05,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-3-5-sonnet-20241022",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "claudecode"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-codex-high",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-medium",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-ai/DeepSeek-V3.2-Exp",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test1",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-thinking",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "vip",
+        "wind 测试分组",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4-0709",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-image-max-2025-12-30",
+      "vendor_id": 12,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.125,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "test",
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-codex-high",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4-auto",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen/qwq-72b-preview",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.7286,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "wan2.6-5s",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default",
+        "doubaoseedance"
+      ],
+      "supported_endpoint_types": [
+        "openai-video"
+      ]
+    },
+    {
+      "model_name": "gemini-3-1-pro-high",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-1-pro-low",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "google-palm",
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen2.5-72b-instruct",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.8572,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.174988334111,
+      "enable_groups": [
+        "svip",
+        "test",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwq-plus-latest-thinking",
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-codex-low",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "codex",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-thinking",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-3",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-3-deepsearch",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mistral-large-2411",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-20250514-thinking",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-fast-deepsearch",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-video",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.75,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai-video"
+      ]
+    },
+    {
+      "model_name": "o3-mini-all",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-codex-xhigh",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-3-sonnet-20240229",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "wind 测试分组",
+        "claudecode",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "test1",
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.1-fast-ci",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.03,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-4-scout",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mistral-large-2407",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-3.5-plus",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1875,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-30b-a3b-instruct-2507-search",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8-xhigh",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "wind 测试分组",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4-1-thinking-1129",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "meta-llama/llama-3.1-70b-instruct",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7-max",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-r1-searching",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o3",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default",
+        "openai"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-xhigh",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "doubao-seedance-1-5-pro-251215",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.75,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai-video"
+      ]
+    },
+    {
+      "model_name": "doubao-seedream-4-0-4k",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.25,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-preview-04-17",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-2024-05-13",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "default",
+        "gpt 特价",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "Llama-3.1-405B",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-ai/DeepSeek-V3",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test1",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "doubao-seedream-4-5-4k",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.25,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-ci",
+      "vendor_id": 8,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-3.5-turbo",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-235b-a22b-search",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "test",
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-235b-a22b-thinking-2507-search",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip",
+        "test"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwq-plus-latest",
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip",
+        "test"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-chat-latest",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gpt 特价"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.3-ci",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.05,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-codex-medium",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "codex",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-medium",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "codex",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6-thinking",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-4.5-x",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "nousresearch/hermes-3-llama-3.1-405b:free",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro-ci",
+      "vendor_id": 8,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "wind 测试分组",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-4.5-air",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-ai/DeepSeek-V3.1",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "svip",
+        "test1",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3-0324",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip",
+        "test1"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-3-5-haiku-20241022",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-3-7-sonnet-20250219",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-3.1-405b-instruct",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "meta-llama/Meta-Llama-3.1-405B-Instruct",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-20250514",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claudecode",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claudecode",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4-turbo-preview",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-420-agents",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-2-13b",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "meta-llama/llama-3.1-405b-instruct:free",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-coder-plus-thinking",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-20250514-thinking",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3-1-terminus",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test1",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "doubao-seedance-1-0-pro-250528",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.75,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai-video"
+      ]
+    },
+    {
+      "model_name": "qwen3-coder-480b-a35b-instruct-thinking",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "z-image-turbo",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.08,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-lite",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "vip",
+        "wind 测试分组",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.6",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2.285714285714,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mixtral-8x22b-instruct-v0.1",
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-2024-11-20",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "gpt 特价"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claudecode",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.5",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2.285714285714,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.1-thinking",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-vl-max",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.3,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-max",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.12,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.6-plus-preview",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1875,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "doubao-seedream-4-0-250828",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.25,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-3-ci",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.025,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-4-maverick",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o4-mini",
+      "quota_type": 0,
+      "model_ratio": 0.55,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "gpt 特价",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4-vision-preview",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-image-plus",
+      "vendor_id": 12,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.125,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-high",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "codex",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-ci",
+      "vendor_id": 8,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "wind 测试分组",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.15,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o3-mini-high",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-thinking",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3-1-250821",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test1",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.0-flash",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.2-ci",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.05,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-2-70b",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-low",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-image",
+      "vendor_id": 8,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-fast",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-4",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.1",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.15,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "meta-llama/llama-3.2-90b-vision-instruct:free",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-image-max",
+      "vendor_id": 12,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.125,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "test",
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3.2-think",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-235b-a22b-thinking-2507",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-30b-a3b-instruct-2507",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-2025-12-11",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "gpt 特价"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "claudecode",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "gpt 特价",
+        "svip",
+        "vip",
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "meta-llama/llama-3.2-90b-vision-instruct",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "Qwen/Qwen2.5-72B-Instruct",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.7286,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-coder-480b-a35b-instruct",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.171428571429,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-xhigh",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-low",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "codex",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.0-flash-lite-preview",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "default",
+        "gpt 特价",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qvq-72b-preview-0310",
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "wan2.6-video-5s",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-codex-low",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101-thinking",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-3.5-turbo-0125",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-code-fast-1",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 7.5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "Qwen/Qwen1.5-110B-Chat",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.2-fast",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929-thinking",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-ai/DeepSeek-V3-0324",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test1",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-fast-all",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-canvas",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "wind 测试分组",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4-fast-ci",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.025,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-420-fast",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.4,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "zai-org/glm-4.5-air",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-codex-high",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "codex",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "gpt 特价",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-codex-medium",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "gpt 特价",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8-max",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "wind 测试分组",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "doubao-seedream-3-0-t2i-250415",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.25,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2-0711-preview",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-chat-latest",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "gpt 特价"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-high",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "codex",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-4-opus-thinking",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-preview-09-2025",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o3-2025-04-16",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "openai",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-max-preview",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.171428571429,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "zai-org/glm-4.5",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-high",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-3-7-sonnet-20250219-thinking",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3.1-0821",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "test1",
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-deepsearch",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "meta-llama/llama-4-scout",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.5-397b-a17b",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.15,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-medium",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "codex",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-3.7-sonnet-thinking",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "doubao-seedream-5-0-4k",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.25,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-3-image",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.3",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.24,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-next-80b-a3b-thinking",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip",
+        "test"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-medium",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "codex",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-low",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "wind 测试分组",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-3-deepersearch",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.2-fast-ci",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.025,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "meta-llama/llama-4-maverick",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "Qwen-QwQ-32B-thinking",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.675,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "svip",
+        "test",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-coder-480b-a35b-instruct-search",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-codex-mini",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4-fast",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2.5,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.2",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.15,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2-instruct-0905",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-chat-latest",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "gpt 特价"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-low",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.0-flash-lite",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-420-thinking",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen/qwq-32b",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.7286,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-coder-plus",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.7286,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.20587427944,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.0-flash-exp",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-3.5-turbo-16k",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4.1",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "gpt 特价",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-vl-plus-think",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 10,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-thinking",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4.1-2025-04-14",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "gpt 特价",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2-250905-ci",
+      "vendor_id": 11,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.025,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M2.7",
+      "quota_type": 0,
+      "model_ratio": 0.4,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-3.5-plus-search",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.15,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-3.5-plus-think",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1875,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-max-2025-01-25",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.7286,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.20587427944,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-32b",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.171428571429,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-mini",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-3-reasoning",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-1-20250805",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claudecode",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-high",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-lite-preview-09-2025",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro-preview-05-06",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-4-flash",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "japanese-stable-diffusion-xl",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-codex",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7-high",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "vip",
+        "wind 测试分组",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-3.5-turbo-0613",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-3-sonar-small-32k-chat",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "Meta-Llama-3-3-70B-Instruct",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mistral-small-2407",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o3-mini",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o3-mini-2025-01-31-high",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "Dolphin3.0-R1-Mistral-24B",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0.7286,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-medium",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-3-opus-20240229",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6-thinking-1m",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-max",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.45,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.333333333333,
+      "enable_groups": [
+        "svip",
+        "test",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-plus-latest",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.3,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-turbo",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.8572,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "svip",
+        "test",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "Qwen/Qwen2.5-Coder-32B-Instruct",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.7286,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-high",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-4.7-thinking",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.2-image",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2-250905",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qvq-72b-preview-0310-thinking",
+      "quota_type": 0,
+      "model_ratio": 0.8572,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-max-search",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-plus-thinking",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "test",
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-30b-a3b-instruct-2507-thinking",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-codex-medium",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-3-7-sonnet-thinking",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-1.5-flash-002",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro-preview-03-25",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-thinking",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4-0613",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M2.5",
+      "quota_type": 0,
+      "model_ratio": 0.4,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-max-thinking",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip",
+        "test"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-3-5-sonnet-20240620",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claudecode",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-codex",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "doubao-seedream-4-5-251128",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.25,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-1.5-flash",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.12,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-image",
+      "vendor_id": 8,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-4.6-thinking",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-3.5-turbo-16k-0613",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4.1-mini-2025-04-14",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claudecode",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-xhigh",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-4-sonnet-thinking",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-4.6",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-3.5-turbo-1106",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4-1106-preview",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwq-32b-search",
+      "quota_type": 0,
+      "model_ratio": 0.7286,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "sora_image",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.15,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "doubao-seedance-1-0-pro-fast-251015",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai-video"
+      ]
+    },
+    {
+      "model_name": "gemini-2.0-flash-thinking-exp-1219",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.12,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-4-long",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4-turbo-2024-04-09",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-3-search",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4-image",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4-mini-thinking-tahoe",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.1-fast",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2.5,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3.1-think",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro-preview-06-05",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-3-sonar-large-32k-chat",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "pixtral-large-2411",
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen2.5-32b-instruct",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.8572,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip",
+        "test"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-32b-think",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.675,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-max-2025-10-30",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.12,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-max-2025-10-30-think",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "vip",
+        "claudecode",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "codex",
+        "default",
+        "gpt 特价",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-codex-max",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-all",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4-ci",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mistral-small-latest",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-plus",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.3,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-plus-search",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "svip",
+        "test",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-20250514",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claudecode",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claudecode",
+        "default",
+        "svip",
+        "vip",
+        "wind 测试分组"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-high",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "codex",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-4-airx",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5.1",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-2024-08-06",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "gpt 特价",
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o1-mini",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-1-20250805-thinking",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "doubao-seedream-5-0-260128",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.25,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-high-ci",
+      "vendor_id": 8,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "wind 测试分组",
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash-ci",
+      "vendor_id": 8,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.03,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-4.7",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4-0125-preview",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4.1-mini",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o1-mini-2024-09-12",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-codex",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "gpt 特价",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7-low",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "vip",
+        "wind 测试分组",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-3.5-turbo-0301",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.1-image",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "microsoft/phi-3-medium-128k-instruct",
+      "quota_type": 0,
+      "model_ratio": 0.825,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen2.5-vl-72b-instruct",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "chatgpt-4o-latest",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "vip",
+        "default",
+        "gpt 特价",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8-high",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "wind 测试分组",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "doubao-seedream-4-5",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.25,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "svip",
+        "test",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-fast",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-max-latest",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.7286,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.20587427944,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-plus-2025-09-11",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.3,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-vl-plus",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 10,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-openai-compact",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip",
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "doubao-seedream-4-0",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.25,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "test",
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "Meta-Llama-3.1-405B-Instruct",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mistral-large-latest",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "Qwen-QwQ-32B",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.7286,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-235b-a22b",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.15,
+      "enable_groups": [
+        "svip",
+        "test",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-30b-a3b-think",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "svip",
+        "test",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "test",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.01,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-2025-11-13",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "gpt 特价",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.6-plus",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1875,
+      "enable_groups": [
+        "default",
+        "svip",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-2025-08-07",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "codex",
+        "default",
+        "gpt 特价",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "claudecode": 2,
+    "codex": 1,
+    "default": 1,
+    "doubaoseedance": 1,
+    "gpt 特价": 0.6,
+    "test": 0.6,
+    "test1": 0.8,
+    "vip": 1,
+    "wind 测试分组": 1
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "claudecode": "用于claudecode,支持cc格式，疑似aws渠道",
+    "codex": "codex专用分组，低价分组可批量跑",
+    "default": "默认分组",
+    "doubaoseedance": "豆包视频生成模型，无水印，高清晰度",
+    "gpt 特价": "gpt 模型特价分组，支持codex使用，支持工具调用，支持cc使用",
+    "test": "测试分组，用于测试，正常使用请勿选择",
+    "test1": "测试分组，用于测试，正常使用请勿选择",
+    "vip": "vip分组",
+    "wind 测试分组": "当前测试此分组效果"
+  },
+  "vendors": [
+    {
+      "id": 8,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 10,
+      "name": "xAI",
+      "icon": "XAI"
+    },
+    {
+      "id": 11,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 1,
+      "name": "Cloudflare",
+      "icon": "Cloudflare.Color"
+    },
+    {
+      "id": 6,
+      "name": "Mistral",
+      "icon": "Mistral.Color"
+    },
+    {
+      "id": 9,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 12,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 13,
+      "name": "即梦",
+      "icon": "Jimeng.Color"
+    },
+    {
+      "id": 2,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 3,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 4,
+      "name": "Meta",
+      "icon": "Ollama"
+    },
+    {
+      "id": 5,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 7,
+      "name": "字节跳动",
+      "icon": "Doubao.Color"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "",
+      "SidebarModulesAdmin": "",
+      "announcements": [
+        {
+          "content": "claude 4.6opus 以及claude 4.7 opus 已上线，，gemini 3.1 pro已稳定可以批量跑",
+          "extra": "",
+          "id": 46,
+          "publishDate": "2026-05-08T12:10:57.097Z",
+          "type": "default"
+        },
+        {
+          "content": "新增模型  gpt-5.4-mini",
+          "extra": "",
+          "id": 45,
+          "publishDate": "2026-03-18T05:01:41.866Z",
+          "type": "default"
+        },
+        {
+          "content": "网站支持小龙虾openclaw对接，推荐选择gpt-5.4模型，快速稳定",
+          "extra": "",
+          "id": 44,
+          "publishDate": "2026-03-08T15:23:57.423Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "gpt-5.4 gpt-5.4-high gpt-5.4-low gpt-5.4-medium gpt-5.4-xhigh已上线，倍率同步",
+          "extra": "",
+          "id": 43,
+          "publishDate": "2026-03-06T05:17:04.578Z",
+          "type": "default"
+        },
+        {
+          "content": "新增qwen-3.5系列模型，具体定价请在模型广场查看\n",
+          "extra": "",
+          "id": 42,
+          "publishDate": "2026-02-20T15:34:21.655Z",
+          "type": "default"
+        },
+        {
+          "content": "gemini-3.1-fast  gemini-3.1-thinking  gemini-3.1-pro  已上线",
+          "extra": "",
+          "id": 41,
+          "publishDate": "2026-02-20T05:06:30.978Z",
+          "type": "default"
+        },
+        {
+          "content": "gpy-5.3-codex系列已上线",
+          "extra": "",
+          "id": 40,
+          "publishDate": "2026-02-06T02:11:29.385Z",
+          "type": "default"
+        },
+        {
+          "content": "cc分组倍率调整为2倍率，相当于0.4一刀",
+          "extra": "",
+          "id": 39,
+          "publishDate": "2026-02-05T06:47:06.637Z",
+          "type": "default"
+        },
+        {
+          "content": "qwen 视频模型 wan2.6-5s 已上线，首周免费调用，调用方式同首页的豆包视频一样\n\n新增gemini-3-pro-canvas可以制作ppt",
+          "extra": "",
+          "id": 38,
+          "publishDate": "2026-01-13T05:59:48.352Z",
+          "type": "default"
+        },
+        {
+          "content": "qwen 绘图模型已添加，模型名qwen-image-max qwen-image-max-2025-12-30  qwen-image-plus  z-image-turbo，支持chat格式 和标准dalle格式",
+          "extra": "",
+          "id": 37,
+          "publishDate": "2026-01-04T13:13:09.301Z",
+          "type": "default"
+        },
+        {
+          "content": "gemini-2.5-pro  gemini-3-pro 以及对应的带-ci的均替换为新谷歌渠道，保留原来的例如gemini-3-pro-high这些仍然为官逆，新渠道修复了上下文不足(现在的上下文有1M左右)，修复了回复内容重复问题。",
+          "extra": "",
+          "id": 36,
+          "publishDate": "2025-12-31T07:31:46.191Z",
+          "type": "default"
+        },
+        {
+          "content": "豆包视频新模型上线，  \"doubao-seedance-1-0-pro-fast-251015\"\n  \"doubao-seedance-1-0-pro-250528\"\n  \"doubao-seedance-1-5-pro-251215\" 具体使用方式可参考网站首页使用文档，上面有详细的参数介绍和使用说明，格式兼容newapi视频生成格式。",
+          "extra": "",
+          "id": 35,
+          "publishDate": "2025-12-23T18:06:01.096Z",
+          "type": "default"
+        },
+        {
+          "content": "gemini-3-flash-preview已上线",
+          "extra": "",
+          "id": 34,
+          "publishDate": "2025-12-18T01:59:40.606Z",
+          "type": "default"
+        },
+        {
+          "content": "doubao-seedream-4-5-251128\n已上线",
+          "extra": "",
+          "id": 33,
+          "publishDate": "2025-12-03T12:32:24.144Z",
+          "type": "default"
+        },
+        {
+          "content": "谷歌模型gemini 3以支持谷歌标准格式调用",
+          "extra": "",
+          "id": 32,
+          "publishDate": "2025-11-26T13:44:51.645Z",
+          "type": "default"
+        },
+        {
+          "content": "gemini-3-pro-low gemini-3-pro-high 已上线，，gemini2.5 pro暂时会定向到gemini3pro",
+          "extra": "",
+          "id": 31,
+          "publishDate": "2025-11-20T03:14:15.921Z",
+          "type": "default"
+        },
+        {
+          "content": "已支持香蕉模型绘画，无水印，支持chat格式和dalle格式gemini-2.5-flash-image-preview  nano-banana",
+          "extra": "",
+          "id": 30,
+          "publishDate": "2025-10-13T10:18:40.225Z",
+          "type": "default"
+        },
+        {
+          "content": "claude code 分组重新增加，请有需要的用户创建分组时直接选用claude code即可",
+          "extra": "",
+          "id": 29,
+          "publishDate": "2025-10-12T06:27:04.648Z",
+          "type": "default"
+        },
+        {
+          "content": "Claude4.5 模型已添加",
+          "extra": "",
+          "id": 28,
+          "publishDate": "2025-10-07T08:01:24.687Z",
+          "type": "default"
+        },
+        {
+          "content": "新增模型glm-4.6 和 glm-4.6-thinking   支持工具调用，，同时只是参数控制思考于不思考。",
+          "extra": "",
+          "id": 27,
+          "publishDate": "2025-10-01T16:29:54.733Z",
+          "type": "error"
+        },
+        {
+          "content": "\nglm 4.5 系列模型已支持工具调用！！",
+          "extra": "",
+          "id": 26,
+          "publishDate": "2025-09-23T19:03:15.740Z",
+          "type": "default"
+        },
+        {
+          "content": "豆包绘画模型已支持，模型名  doubao-seedream-4-0-250828   doubao-seedream-3-0-t2i-250415",
+          "extra": "",
+          "id": 25,
+          "publishDate": "2025-09-18T08:00:15.658Z",
+          "type": "default"
+        },
+        {
+          "content": "qwen系列新增模型 qwen-plus-2025-09-11 qwen3-max-preview qwen3-max-preview-think qwen3-max-preview-search",
+          "extra": "",
+          "id": 24,
+          "publishDate": "2025-09-15T04:48:32.727Z",
+          "type": "default"
+        },
+        {
+          "content": "kimi-k2-250905 已上线",
+          "extra": "",
+          "id": 23,
+          "publishDate": "2025-09-14T03:14:11.156Z",
+          "type": "default"
+        },
+        {
+          "content": "新增 gemini-2.5-pro-ci 按次计算，，，满上下文，，，",
+          "extra": "",
+          "id": 22,
+          "publishDate": "2025-09-02T07:37:38.729Z",
+          "type": "default"
+        },
+        {
+          "content": "谷歌香蕉模型已上线，支持chat格式和dalle格式，支持修改图片，叠图等等，具体格式详情请查看网站主页，模型名gemini-2.5-flash-imagen  gemini-2.5-flash-image-preview，定价2分钱一次",
+          "extra": "",
+          "id": 21,
+          "publishDate": "2025-08-31T13:27:24.901Z",
+          "type": "default"
+        },
+        {
+          "content": "flux 系列绘画已支持 v1/images/generations  v1/images/edits路由，该路由具体使用方法请见首页！！",
+          "extra": "",
+          "id": 20,
+          "publishDate": "2025-08-30T09:33:55.241Z",
+          "type": "default"
+        },
+        {
+          "content": "deepseek-v3.1 新增思考过程，模型名deepseek-v3.1-think  deepseek-ai/DeepSeek-V3.1-Think  非火山渠道，目前测试中...\n\n非思考模型 deepseek-ai/DeepSeek-V3.1  deepseek-v3.1 火山渠道，速度快稳定！！！！",
+          "extra": "",
+          "id": 19,
+          "publishDate": "2025-08-30T06:35:50.099Z",
+          "type": "default"
+        },
+        {
+          "content": "gpt5 系列更新官key新渠道，支持/v1/responses  v1/chat/completions  支持工具调用,全部都支持，支持模型有 gpt5系列模型",
+          "extra": "",
+          "id": 18,
+          "publishDate": "2025-08-29T16:30:45.703Z",
+          "type": "default"
+        },
+        {
+          "content": "新增模型 doubao-1-5-pro-256k-250115-search  doubao-1-5-pro-256k-250115",
+          "extra": "",
+          "id": 17,
+          "publishDate": "2025-08-24T05:51:42.924Z",
+          "type": "default"
+        },
+        {
+          "content": "新增火山豆包模型 新增豆包模型 doubao-seed-1-6-250615 doubao-seed-1-6-thinking-250715",
+          "extra": "",
+          "id": 16,
+          "publishDate": "2025-08-23T03:49:52.959Z",
+          "type": "default"
+        },
+        {
+          "content": "deepseek-v3.1 已上线",
+          "extra": "",
+          "id": 15,
+          "publishDate": "2025-08-22T02:15:35.188Z",
+          "type": "default"
+        },
+        {
+          "content": "grok-4已支持思考内容输出，联网等功能。新增grok-4-auto模型grok-3：快速回应模式\ngrok-4-auto：最佳模式，智能调用思考、画图、联网搜索等能力\ngrok-4：专家模式，智能调用思考、画图、联网搜索等能力",
+          "extra": "",
+          "id": 14,
+          "publishDate": "2025-08-09T18:52:38.727Z",
+          "type": "default"
+        },
+        {
+          "content": "新增谷歌模型  gemini-2.0-flash-exp-image-generation， 支持图片生成",
+          "extra": "",
+          "id": 13,
+          "publishDate": "2025-08-09T12:34:43.412Z",
+          "type": "default"
+        },
+        {
+          "content": "新增 gpt-5-2025-08-07 与 gpt-5 模型",
+          "extra": "",
+          "id": 12,
+          "publishDate": "2025-08-08T03:25:17.987Z",
+          "type": "default"
+        },
+        {
+          "content": "新增claude模型，模型名 claude-opus-4-1-20250805 ，claude最新模型，最智能",
+          "extra": "",
+          "id": 11,
+          "publishDate": "2025-08-07T05:21:51.721Z",
+          "type": "default"
+        },
+        {
+          "content": "新增 gpt-oss-120b 模型，openai开源模型，带思考内容，性能与o3-mini差不多",
+          "extra": "",
+          "id": 10,
+          "publishDate": "2025-08-06T17:27:07.120Z",
+          "type": "default"
+        },
+        {
+          "content": "claudecode 分组新增glm4.5,支持在claudecode使用",
+          "extra": "",
+          "id": 9,
+          "publishDate": "2025-08-01T02:39:46.832Z",
+          "type": "default"
+        },
+        {
+          "content": "新增 glm-4.5和glm-4.5-air 模型，oai格式不支持claudecode格式。非视觉",
+          "extra": "",
+          "id": 8,
+          "publishDate": "2025-07-28T16:52:40.796Z",
+          "type": "default"
+        },
+        {
+          "content": "Claude  code可用",
+          "extra": "",
+          "id": 7,
+          "publishDate": "2025-07-28T12:25:56.386Z",
+          "type": "default"
+        },
+        {
+          "content": "【废弃】kimi新增联网模型，在模型后添加-search即可触发联网搜索\n【更新】kimi 模型渠道替换为 together",
+          "extra": "",
+          "id": 6,
+          "publishDate": "2025-07-24T06:52:42.016Z",
+          "type": "default"
+        },
+        {
+          "content": "deepseek-ai/DeepSeek-R1-0528-Turbo  deepseek-ai/DeepSeek-V3-0324-Turbo 新增模型，，kimi2 速度提升了，可以稳定刷",
+          "extra": "",
+          "id": 5,
+          "publishDate": "2025-07-23T01:08:14.624Z",
+          "type": "default"
+        },
+        {
+          "content": "新增mistral系列模型，官网逆向，可联网",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2025-07-16T11:03:48.789Z",
+          "type": "default"
+        },
+        {
+          "content": "新增kimi-k2-0711-preview\t模型，官方模型，不支持视觉",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2025-07-13T10:34:11.031Z",
+          "type": "default"
+        },
+        {
+          "content": "新增grok-4模型，grok系列最新模型",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2025-07-13T10:33:44.104Z",
+          "type": "default"
+        },
+        {
+          "content": "新增claude code 分组， 此分组可直接再claude  code cli里面使用，创建apikey时请选择claudecode 分组即可",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2025-07-13T10:32:56.213Z",
+          "type": "default"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "ChatGPT Next Web": "https://www.hpapi.top/#/?settings={\"key\":\"{key}\",\"url\":\"{address}\"}"
+        }
+      ],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://happyapi.org/",
+      "email_verification": true,
+      "enable_batch_update": false,
+      "enable_data_export": true,
+      "enable_drawing": false,
+      "enable_task": true,
+      "faq": [
+        {
+          "answer": "> 绘图为 chat 标准格式，即和会话一样只需要改变模型名即可\n\nflux 新模型上架，支持 `flux-kontext-pro` `flux-pro` `flux.1-dev` `flux.1-kontext-dev` `flux.1-kontext-pro` 等，具体模型名可在设置里面查看，flux生图说明。\n\n1. 支持文生图，即通过描述生成图片，请尽量使用英文，对中文的理解可能不太好。\n2. 绘图宽高设置。绘图设置宽高只需要在描述中加入宽高比即可，例如\"帮我画一只猫，[1024:1024]\". tips: 宽高比仅支持像素，不支持比例，例如1:1这种不支持,后台宽高检测`[]`,请携带此符号，支持宽高比如下\n\n```\n        '1024:1024',\n        '1024:768',\n        '1280:720',\n        '1280:960',\n        '640:480'   // 反之，例如高比宽一样也支持，例如720:1280\n```\n\n3. 支持叠图。即和oai一样在type=image_url里面设置底图即可。",
+          "id": 1,
+          "question": "绘图支持什么格式，怎么使用？？"
+        }
+      ],
+      "faq_enabled": true,
+      "footer_html": "",
+      "github_client_id": "7e00581085df4497c05a",
+      "github_oauth": true,
+      "linuxdo_client_id": "JA238wQL8RWLmQ6imoLwqPNjzNeDPbd2",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": true,
+      "logo": "",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "New API",
+      "passkey_login": false,
+      "passkey_origins": "https://cn.happyapi.org",
+      "passkey_rp_id": "cn.happyapi.org",
+      "passkey_user_verification": "preferred",
+      "password_register_enabled": true,
+      "price": 0.2,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "USD",
+      "quota_per_unit": 500000,
+      "register_enabled": true,
+      "self_use_mode_enabled": false,
+      "server_address": "https://cn.happyapi.org",
+      "setup": true,
+      "start_time": 1779677770,
+      "stripe_unit_price": 8,
+      "system_name": "Happy API",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "classic",
+      "turnstile_check": false,
+      "turnstile_site_key": "0x4AAAAAABclJlfNIGAB4IJq",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 7.3,
+      "user_agreement_enabled": false,
+      "version": "v1.0.0-rc.8",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://cn.happyapi.org/api/pricing"
+}

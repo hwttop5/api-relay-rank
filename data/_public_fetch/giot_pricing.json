@@ -2,118 +2,6 @@
   "auto_groups": [],
   "data": [
     {
-      "model_name": "gemini-3-flash",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini",
-        "测试分组"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "claude-AmazonQ",
-        "claude-逆向",
-        "claude-code-高速",
-        "测试分组",
-        "claude-code-特价"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "测试分组",
-        "claude-code-特价",
-        "claude-AmazonQ",
-        "claude-逆向",
-        "default",
-        "claude-code-高速"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-image-preview-16-9-4K",
-      "vendor_id": 3,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 1.5,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.045,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 7.888889,
-      "enable_groups": [
-        "gemini",
-        "测试分组"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash-lite",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.045,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4,
-      "enable_groups": [
-        "gemini",
-        "测试分组"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
       "model_name": "claude-haiku-4-5-20251001",
       "vendor_id": 1,
       "quota_type": 0,
@@ -124,15 +12,54 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "claude-code-特价",
-        "claude-AmazonQ",
-        "claude-逆向",
         "default",
         "claude-code-高速",
-        "测试分组"
+        "测试分组",
+        "claude-code-特价",
+        "claude-AmazonQ",
+        "claude-逆向"
       ],
       "supported_endpoint_types": [
         "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "测试分组",
+        "claude-code-特价",
+        "claude-AmazonQ",
+        "claude-逆向",
+        "claude-code-高速"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex-超特价",
+        "codex",
+        "codex-特价"
+      ],
+      "supported_endpoint_types": [
         "openai"
       ]
     },
@@ -146,264 +73,26 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "codex"
+        "codex-特价",
+        "codex",
+        "codex-超特价"
       ],
       "supported_endpoint_types": [
         "openai"
       ]
     },
     {
-      "model_name": "gemini-2.5-pro-preview-tts",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 20,
-      "enable_groups": [
-        "测试分组",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.5-flash",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "测试分组",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-pro-thinking",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-flash-lite-preview",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.125,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "测试分组",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-flash-lite",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.125,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "测试分组",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash-preview-tts",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 20,
-      "enable_groups": [
-        "测试分组",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-flash-image-preview",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 120,
-      "enable_groups": [
-        "测试分组",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-pro-preview-customtools",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "测试分组",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-embedding-001",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.075,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "测试分组",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-preview-thinking",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "gemini",
-        "测试分组"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-openai-compact",
+      "model_name": "gpt-5.4",
       "vendor_id": 2,
       "quota_type": 0,
       "model_ratio": 1.25,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
+      "cache_ratio": 0.1,
       "enable_groups": [
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-flash-latest",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.15,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8.333333,
-      "cache_ratio": 0.25,
-      "enable_groups": [
-        "测试分组",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-flash-lite-latest",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.05,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4,
-      "cache_ratio": 0.25,
-      "enable_groups": [
-        "测试分组",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash-thinking",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8.333333333333334,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.2",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.125,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.5,
-      "enable_groups": [
-        "codex",
         "codex-超特价",
+        "codex",
         "codex-特价"
       ],
       "supported_endpoint_types": [
@@ -419,28 +108,32 @@
       "owner_by": "",
       "completion_ratio": 6,
       "enable_groups": [
-        "codex-特价",
+        "codex-超特价",
         "codex",
-        "codex-超特价"
+        "codex-特价"
       ],
       "supported_endpoint_types": [
         "openai"
       ]
     },
     {
-      "model_name": "gemini-3.1-pro-preview",
-      "vendor_id": 3,
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 1,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
       "enable_groups": [
-        "gemini",
-        "测试分组"
+        "claude-code-高速",
+        "测试分组",
+        "claude-code-特价",
+        "claude-AmazonQ",
+        "claude-逆向"
       ],
       "supported_endpoint_types": [
-        "gemini",
+        "anthropic",
         "openai"
       ]
     },
@@ -468,112 +161,13 @@
       ]
     },
     {
-      "model_name": "gpt-5.3-codex-openai-compact",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-image-preview-4k",
-      "vendor_id": 3,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 1.5,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-pro-nothinking",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-pro-latest",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "测试分组",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-image-preview-9-16-4K",
-      "vendor_id": 3,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 1.5,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-image-preview",
-      "vendor_id": 3,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 1.5,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "gemini",
-        "测试分组"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
+      "model_name": "gpt-5.4-openai-compact",
       "vendor_id": 2,
       "quota_type": 0,
       "model_ratio": 1.25,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
-      "cache_ratio": 0.1,
       "enable_groups": [
         "codex-特价",
         "codex",
@@ -584,191 +178,35 @@
       ]
     },
     {
-      "model_name": "gpt-5.5",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex-特价",
-        "codex",
-        "codex-超特价"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex-spark",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex",
-        "codex-超特价",
-        "codex-特价"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex-特价",
-        "codex",
-        "codex-超特价"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-flash-preview",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.035,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6.142857,
-      "enable_groups": [
-        "gemini",
-        "测试分组"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-8",
+      "model_name": "claude-sonnet-4-6",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 1.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "claude-code-特价",
         "claude-AmazonQ",
         "claude-逆向",
+        "default",
         "claude-code-高速",
-        "测试分组"
+        "测试分组",
+        "claude-code-特价"
       ],
       "supported_endpoint_types": [
         "anthropic",
         "openai"
       ]
-    },
-    {
-      "model_name": "gemini-2.5-flash-image",
-      "vendor_id": 3,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.15,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "gemini",
-        "测试分组"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-image-preview-1-1-4K",
-      "vendor_id": 3,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 1.5,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-preview",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.285,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6.017544,
-      "enable_groups": [
-        "gemini",
-        "测试分组"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash-nothinking",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.15,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8.333333,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-pro",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.5625,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "gemini",
-        "测试分组"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
     }
   ],
   "group_ratio": {
-    "claude-AmazonQ": 1.5,
-    "claude-code-特价": 0.1,
-    "claude-code-高速": 1.5,
-    "claude-逆向": 3.25,
-    "codex": 0.5,
-    "codex-特价": 0.1,
-    "codex-超特价": 0.06,
-    "free": 0,
-    "gemini": 2
+    "claude-AmazonQ": 0.651,
+    "claude-code-特价": 0.044,
+    "claude-code-高速": 0.655,
+    "codex": 0.218,
+    "codex-特价": 0.035,
+    "codex-超特价": 0.025
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
@@ -790,12 +228,9 @@
     "claude-AmazonQ": "推荐编程使用,5min缓存",
     "claude-code-特价": "特价!特价!",
     "claude-code-高速": "MAX&AWS混合,仅限Claudecode工具内使用",
-    "claude-逆向": "满血高智商,支持4.7",
     "codex": "CodeX分组",
     "codex-特价": "保真,速度快",
-    "codex-超特价": "随缘维护",
-    "free": "免费分组",
-    "gemini": "Gemini分组"
+    "codex-超特价": "随缘维护"
   },
   "vendors": [
     {
@@ -809,24 +244,14 @@
       "icon": "OpenAI"
     },
     {
-      "id": 4,
-      "name": "智谱",
-      "icon": "Zhipu.Color"
-    },
-    {
       "id": 5,
       "name": "xAI",
       "icon": "XAI"
     },
     {
-      "id": 9,
-      "name": "Meta",
-      "icon": "Ollama"
-    },
-    {
-      "id": 10,
-      "name": "零一万物",
-      "icon": "Yi.Color"
+      "id": 6,
+      "name": "Moonshot",
+      "icon": "Moonshot"
     },
     {
       "id": 11,
@@ -844,9 +269,9 @@
       "icon": "Gemini.Color"
     },
     {
-      "id": 6,
-      "name": "Moonshot",
-      "icon": "Moonshot"
+      "id": 4,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
     },
     {
       "id": 7,
@@ -857,15 +282,32 @@
       "id": 8,
       "name": "阿里巴巴",
       "icon": "Qwen.Color"
+    },
+    {
+      "id": 9,
+      "name": "Meta",
+      "icon": "Ollama"
+    },
+    {
+      "id": 10,
+      "name": "零一万物",
+      "icon": "Yi.Color"
     }
   ],
   "status_payload": {
     "data": {
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":false}",
-      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true}}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true}}",
       "announcements": [
         {
-          "content": "因OpenAI风控政策，自2026年5月19日23:59起\n【codex-特价】分组倍率调整为0.1(折合0.0398/刀)",
+          "content": "不停机维护公告\n为进一步提升用户体验，计划于2026年6月1日晚22:00对服务器进行不停机维护\n维护内容包括\n1、下架【gemini】、【Claude 逆向】、【free】分组\n2、取消充值折扣，现有所有用户余额*0.4，所有分组倍率*0.4\n3、试运行动态倍率模式，采用活跃用户计算分组倍率，最低8折使用优惠，详见首页",
+          "extra": "",
+          "id": 31,
+          "publishDate": "2026-06-01T12:27:47.502Z",
+          "type": "default"
+        },
+        {
+          "content": "因OpenAI风控政策，自2026年5月29日23:59起\n【codex-特价】分组倍率调整为0.1(折合0.0398/刀)",
           "extra": "",
           "id": 30,
           "publishDate": "2026-05-29T12:16:24.296Z",
@@ -1167,17 +609,20 @@
       "passkey_attachment": "",
       "passkey_display_name": "New API",
       "passkey_login": false,
-      "passkey_origins": "https://code.giot.edu.kg",
-      "passkey_rp_id": "code.giot.edu.kg",
+      "passkey_origins": "https://code.huizhicode.com",
+      "passkey_rp_id": "code.huizhicode.com",
       "passkey_user_verification": "preferred",
+      "password_login_enabled": true,
+      "password_register_enabled": true,
       "price": 1,
       "privacy_policy_enabled": false,
       "quota_display_type": "CNY",
       "quota_per_unit": 500000,
+      "register_enabled": true,
       "self_use_mode_enabled": false,
-      "server_address": "https://code.giot.edu.kg",
+      "server_address": "https://code.huizhicode.com",
       "setup": true,
-      "start_time": 1779029926,
+      "start_time": 1780381752,
       "stripe_unit_price": 8,
       "system_name": "慧智AI",
       "telegram_bot_name": "",
@@ -1188,7 +633,7 @@
       "uptime_kuma_enabled": true,
       "usd_exchange_rate": 1,
       "user_agreement_enabled": true,
-      "version": "v1.0.0-rc.6",
+      "version": "v1.0.0-rc.10",
       "wechat_login": false,
       "wechat_qrcode": ""
     },

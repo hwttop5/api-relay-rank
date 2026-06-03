@@ -4,6 +4,13 @@
     "SidebarModulesAdmin": "{\"chat\": {\"chat\": false, \"enabled\": true, \"playground\": true}, \"admin\": {\"user\": true, \"models\": true, \"channel\": true, \"enabled\": true, \"setting\": true, \"deployment\": true, \"redemption\": true, \"subscription\": true}, \"console\": {\"log\": true, \"task\": true, \"token\": true, \"detail\": true, \"enabled\": true, \"midjourney\": true}, \"personal\": {\"topup\": true, \"enabled\": true, \"personal\": true}}",
     "announcements": [
       {
+        "content": "<div style=\"padding:10px 12px;border:1px solid rgba(245,158,11,.32);border-radius:10px;background:rgba(245,158,11,.10);line-height:1.7;font-size:14px;\"><b style=\"color:#d97706;font-size:15px;\">Hermes 用户请注意</b><br>官方规格：Codex 当前为 <b>272K 输入 + 128K 最大输出</b>，合计约 <b>400K 上下文窗口</b>；Plus / Pro 规格一致。<br>使用 Hermes 时，建议上下文累计到 <b>20 万 tokens 左右</b> 进行一次<b>手动压缩或插件自动压缩</b>。长时间不压缩，可能会因上下文过大导致不输出、响应中断或无内容返回。<br>Codex 用户无需手动处理，Codex 会自动压缩上下文。</div>",
+        "extra": "",
+        "id": 1780487012797,
+        "publishDate": "2026-06-03T11:43:32.797Z",
+        "type": "warning"
+      },
+      {
         "content": "<b style=\"color:#22c55e;font-weight:800;\">Image2 服务已恢复</b><br/>目前 Image2 与 <a href=\"https://app.euzhi.com/\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"display:inline-flex;align-items:center;justify-content:center;margin:0 4px;padding:3px 12px;border-radius:999px;background:linear-gradient(135deg,#4f8cff 0%,#16c7b8 100%);color:#fff;font-size:13px;font-weight:800;line-height:1.6;text-decoration:none;box-shadow:0 6px 16px rgba(79,140,255,.28);vertical-align:baseline;\">优智图</a> 均已恢复正常访问和使用。",
         "extra": "",
         "id": 1779821350128,

@@ -4,6 +4,27 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "今天claude渠道加上迁移数据库有问题，给大家降价codex渠道为0.12！！！",
+        "extra": "",
+        "id": 20,
+        "publishDate": "2026-06-01T02:50:56.682Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "周末限时优惠已经结束了！",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-06-01T02:38:56.773Z",
+        "type": "success"
+      },
+      {
+        "content": "各位用户你好，为了提供更好的体验，请尽快迁移新域名https://lumibest.cc，旧域名在两天即将后不可用！！！",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-05-31T04:02:18.520Z",
+        "type": "warning"
+      },
+      {
         "content": "周末限时优惠，enjoy！codex 0.12, claude-kiro 0.08",
         "extra": "",
         "id": 17,
@@ -148,7 +169,7 @@
     "linuxdo_client_id": "",
     "linuxdo_minimum_trust_level": 0,
     "linuxdo_oauth": false,
-    "logo": "https://lumibest.store/tools/logo.png",
+    "logo": "https://lumibest.cc/tools/logo.png",
     "mj_notify_enabled": false,
     "oidc_authorization_endpoint": "",
     "oidc_client_id": "",
@@ -157,7 +178,7 @@
     "passkey_attachment": "",
     "passkey_display_name": "Lumi",
     "passkey_login": false,
-    "passkey_origins": "https://lumibest.store",
+    "passkey_origins": "https://lumibest.cc",
     "passkey_rp_id": "lumibest.store",
     "passkey_user_verification": "preferred",
     "password_login_enabled": true,
@@ -168,9 +189,9 @@
     "quota_per_unit": 500000,
     "register_enabled": true,
     "self_use_mode_enabled": false,
-    "server_address": "https://lumibest.store",
+    "server_address": "https://lumibest.cc",
     "setup": true,
-    "start_time": 1779847023,
+    "start_time": 1780280525,
     "stripe_unit_price": 1,
     "system_name": "Lumi",
     "telegram_bot_name": "",

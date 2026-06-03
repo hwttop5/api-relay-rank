@@ -1,0 +1,144 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
+    "SidebarModulesAdmin": "",
+    "announcements": [
+      {
+        "content": "售后qq群，欢迎大家进群交流。\n【卡皮巴拉爱AI】：https://qm.qq.com/q/i2sQgBnYcM\n",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-05-13T11:26:21.923Z",
+        "type": "default"
+      },
+      {
+        "content": "新站开业，给每位新用户提供 10$额度。",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-05-12T00:11:53.270Z",
+        "type": "default"
+      },
+      {
+        "content": "目前充值比例是 3人民币等于10美金，倍率是官方1比1的倍率，绝不掺假。\n用量大的可以订阅coding plan，更加便宜！\n支持微信和支付宝。",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-05-11T14:45:46.652Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "DE",
+        "id": 1,
+        "route": "主域名",
+        "url": "https://kapibala.asia"
+      },
+      {
+        "color": "blue",
+        "description": "test",
+        "id": 2,
+        "route": "test",
+        "url": "https://kapibala.curb0331.fun"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": true,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://docs.newapi.pro",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "官方对提示词内容有限制，如果涉及到敏感 IP 会出现中断。",
+        "id": 1,
+        "question": "image2生图返回无内容"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "aIzoRGvKxHBprQjI1YmFvr31Qz0kpgcP",
+    "linuxdo_minimum_trust_level": 1,
+    "linuxdo_oauth": false,
+    "logo": "https://a1.boltp.com/2026/05/10/69ffac0fc8c59.png",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "New API",
+    "passkey_login": false,
+    "passkey_origins": "https://kapibala.asia",
+    "passkey_rp_id": "kapibala.asia",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
+    "price": 0.3,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "register_enabled": true,
+    "self_use_mode_enabled": false,
+    "server_address": "https://kapibala.asia",
+    "setup": true,
+    "start_time": 1780345063,
+    "stripe_unit_price": 8,
+    "system_name": "卡皮巴拉API",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "default",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": false,
+    "version": "",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

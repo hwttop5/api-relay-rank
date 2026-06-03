@@ -2,7 +2,23 @@
   "auto_groups": [],
   "data": [
     {
-      "model_name": "claude-opus-4-8",
+      "model_name": "gpt-image-2",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.25,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "claude-opus-4-6",
       "vendor_id": 3,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -10,14 +26,14 @@
       "owner_by": "",
       "completion_ratio": 5,
       "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
         "claude_kiro"
       ],
       "supported_endpoint_types": [
         "anthropic",
         "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+      ]
     },
     {
       "model_name": "claude-opus-4-7",
@@ -38,7 +54,56 @@
       ]
     },
     {
-      "model_name": "gpt-5.5",
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude_kiro"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -50,6 +115,24 @@
         "codex"
       ],
       "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude_kiro"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     },
@@ -86,6 +169,22 @@
       ]
     },
     {
+      "model_name": "gpt-5.3-codex-spark",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
       "model_name": "gpt-5.4",
       "vendor_id": 1,
       "quota_type": 0,
@@ -102,111 +201,13 @@
       ]
     },
     {
-      "model_name": "gpt-5.5-openai-compact",
+      "model_name": "gpt-5.5",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "claude_kiro"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "claude_kiro"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-2",
-      "vendor_id": 1,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.25,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "codex-auto-review",
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.06,
-      "enable_groups": [
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex-spark",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
       "cache_ratio": 0.1,
       "enable_groups": [
         "codex"
@@ -217,7 +218,7 @@
     }
   ],
   "group_ratio": {
-    "claude_kiro": 0.08,
+    "claude_kiro": 0.1,
     "codex": 0.12
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
@@ -238,26 +239,6 @@
   },
   "vendors": [
     {
-      "id": 5,
-      "name": "智谱",
-      "icon": "Zhipu.Color"
-    },
-    {
-      "id": 6,
-      "name": "Moonshot",
-      "icon": "Moonshot"
-    },
-    {
-      "id": 7,
-      "name": "阿里巴巴",
-      "icon": "Qwen.Color"
-    },
-    {
-      "id": 8,
-      "name": "Google",
-      "icon": "Gemini.Color"
-    },
-    {
       "id": 1,
       "name": "OpenAI",
       "icon": "OpenAI"
@@ -276,6 +257,26 @@
       "id": 4,
       "name": "DeepSeek",
       "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 5,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 6,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 7,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 8,
+      "name": "Google",
+      "icon": "Gemini.Color"
     }
   ],
   "status_payload": {
@@ -283,6 +284,27 @@
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":false}",
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
       "announcements": [
+        {
+          "content": "今天claude渠道加上迁移数据库有问题，给大家降价codex渠道为0.12！！！",
+          "extra": "",
+          "id": 20,
+          "publishDate": "2026-06-01T02:50:56.682Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "周末限时优惠已经结束了！",
+          "extra": "",
+          "id": 19,
+          "publishDate": "2026-06-01T02:38:56.773Z",
+          "type": "success"
+        },
+        {
+          "content": "各位用户你好，为了提供更好的体验，请尽快迁移新域名https://lumibest.cc，旧域名在两天即将后不可用！！！",
+          "extra": "",
+          "id": 18,
+          "publishDate": "2026-05-31T04:02:18.520Z",
+          "type": "warning"
+        },
         {
           "content": "周末限时优惠，enjoy！codex 0.12, claude-kiro 0.08",
           "extra": "",
@@ -428,7 +450,7 @@
       "linuxdo_client_id": "",
       "linuxdo_minimum_trust_level": 0,
       "linuxdo_oauth": false,
-      "logo": "https://lumibest.store/tools/logo.png",
+      "logo": "https://lumibest.cc/tools/logo.png",
       "mj_notify_enabled": false,
       "oidc_authorization_endpoint": "",
       "oidc_client_id": "",
@@ -437,7 +459,7 @@
       "passkey_attachment": "",
       "passkey_display_name": "Lumi",
       "passkey_login": false,
-      "passkey_origins": "https://lumibest.store",
+      "passkey_origins": "https://lumibest.cc",
       "passkey_rp_id": "lumibest.store",
       "passkey_user_verification": "preferred",
       "password_login_enabled": true,
@@ -448,9 +470,9 @@
       "quota_per_unit": 500000,
       "register_enabled": true,
       "self_use_mode_enabled": false,
-      "server_address": "https://lumibest.store",
+      "server_address": "https://lumibest.cc",
       "setup": true,
-      "start_time": 1779847023,
+      "start_time": 1780280525,
       "stripe_unit_price": 1,
       "system_name": "Lumi",
       "telegram_bot_name": "",

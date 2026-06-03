@@ -122,6 +122,65 @@ jobs:
           echo "Configured GITHUB_TOKEN in $env_file"
           REMOTE_SCRIPT
 
+      - name: Configure PostgreSQL and log sync on VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        run: |
+          set -euo pipefail
+          test -n "$POSTGRES_PASSWORD"
+          encoded_password="$(printf '%s' "$POSTGRES_PASSWORD" | base64 -w 0)"
+          ssh -i ~/.ssh/deploy_key -p 22 "$VPS_USER@$VPS_HOST" \
+            "POSTGRES_PASSWORD_B64='$encoded_password' sh -s" <<'REMOTE_SCRIPT'
+          set -eu
+          env_file="/opt/stacks/api-relay-rank/deploy/.env"
+          postgres_password="$(printf '%s' "$POSTGRES_PASSWORD_B64" | base64 -d)"
+
+          mkdir -p \
+            /srv/api-relay-rank/data \
+            /srv/api-relay-rank/probes \
+            /srv/api-relay-rank/postgres \
+            /srv/api-relay-rank/log-inbox \
+            /srv/api-relay-rank/log-archive \
+            "$(dirname "$env_file")"
+          touch "$env_file"
+          chmod 600 "$env_file" || true
+
+          set_env_var() {
+            key="$1"
+            value="$2"
+            tmp_file="$(mktemp)"
+            awk -v key="$key" -v value="$value" '
+              BEGIN { found = 0 }
+              $0 ~ "^" key "=" {
+                print key "=" value
+                found = 1
+                next
+              }
+              { print }
+              END {
+                if (!found) {
+                  print key "=" value
+                }
+              }
+            ' "$env_file" > "$tmp_file"
+            cat "$tmp_file" > "$env_file"
+            rm -f "$tmp_file"
+          }
+
+          set_env_var POSTGRES_DB api_relay_rank
+          set_env_var POSTGRES_USER api_relay_rank
+          set_env_var POSTGRES_PASSWORD "$postgres_password"
+          set_env_var SITE_DATA_SOURCE postgres
+          set_env_var SITE_DATA_ALLOW_FILE_FALLBACK 0
+          set_env_var SITE_DATA_MERGE_POSTGRES_BASE 1
+          set_env_var LOG_INBOX_DIR /runtime/log-inbox
+          set_env_var LOG_ARCHIVE_DIR /runtime/log-archive
+
+          echo "Configured PostgreSQL and log sync environment in $env_file"
+          REMOTE_SCRIPT
+
       - name: Restart Docker stack
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}

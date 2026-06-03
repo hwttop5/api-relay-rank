@@ -4,6 +4,20 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "Claude分组（除Kiro）已上线opus4.8模型，欢迎体验测试。如需在Claude Code中调用，请更新到2.1.156",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-05-29T03:27:22.090Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "因自建Pro号池成本变化，5月29日0点起，Codex分组倍率调整为1.",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-05-28T09:50:06.412Z",
+        "type": "ongoing"
+      },
+      {
         "content": "1、全站所有模型价格均使用人民币计价\n2、模型价格基准价格为Claude/GPT官方定价\n3、本站基准按照使用官方定价的1美金：1人民币计价\n举例：Claude Opus 4.6/4.7。官方输入价格5美金。\n我站则为5元。\n1倍率=5元。\n2倍率=10元\n0.8倍率=4元\n\n以此类推。",
         "extra": "",
         "id": 6,
@@ -92,7 +106,7 @@
     "custom_currency_symbol": "¤",
     "data_export_default_time": "hour",
     "default_collapse_sidebar": false,
-    "default_use_auto_group": true,
+    "default_use_auto_group": false,
     "demo_site_enabled": false,
     "discord_client_id": "",
     "discord_oauth": false,
@@ -130,7 +144,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://claude360.xyz",
     "setup": true,
-    "start_time": 1779534774,
+    "start_time": 1779981408,
     "stripe_unit_price": 8,
     "system_name": "Claude 360",
     "telegram_bot_name": "",
@@ -139,7 +153,7 @@
     "top_up_link": "",
     "turnstile_check": false,
     "turnstile_site_key": "",
-    "uptime_kuma_enabled": true,
+    "uptime_kuma_enabled": false,
     "usd_exchange_rate": 1,
     "user_agreement_enabled": false,
     "version": "",

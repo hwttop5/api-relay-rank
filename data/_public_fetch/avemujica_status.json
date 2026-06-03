@@ -4,6 +4,20 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "由于openai凌晨时对gpt-5.4的临时下线，触发了我们的冷却机制，导致gpt-5.4模型持续不可用，现已修复，带来的不便敬请谅解",
+        "extra": "",
+        "id": 23,
+        "publishDate": "2026-06-03T05:43:20.679Z",
+        "type": "default"
+      },
+      {
+        "content": "OpenAI已停止该渠道的gpt-5.2和gpt-5.3-codex的供应，我们将在今晚删除该模型。",
+        "extra": "",
+        "id": 22,
+        "publishDate": "2026-06-02T04:11:54.823Z",
+        "type": "warning"
+      },
+      {
         "content": "openai在六月初就会停止该渠道的gpt-5.2以及gpt-5.3-codex的供应，建议还在用的用户提前转移",
         "extra": "",
         "id": 21,
@@ -244,6 +258,11 @@
         "answer": "本站提供 GPT 官方转发服务，请勿用于恶意网络安全活动，包括钓鱼、凭证窃取、漏洞利用、恶意扫描、绕过安全防护、生成或改造恶意代码等。\n\nOpenAI 官方会对会话进行网络安全检测。Codex 源码显示，官方返回 `cyber_policy` 时会被识别为网络安全策略事件；多次风险标记后，响应可能因额外安全检查而变慢，账号也可能被限制或封禁。\n\n## 免责声明\n\n本站只识别 OpenAI 官方返回的事件错误码或异常类型，用于提醒、限速或封禁高频触发用户。本站不会读取、保存或人工审核用户与 AI 的聊天正文内容。\n\n参考：[cyber_policy 识别](https://github.com/openai/codex/blob/12bfb57139f169c1a1822d57a6fdb2a3d08e0c53/codex-rs/codex-api/src/sse/responses.rs#L529-L535)、[变慢提示](https://github.com/openai/codex/blob/12bfb57139f169c1a1822d57a6fdb2a3d08e0c53/codex-rs/tui/src/chatwidget.rs#L189-L195)",
         "id": 6,
         "question": "防滥用说明"
+      },
+      {
+        "answer": "联系方式\xxx 滥用\xxx 工单\xxx 商业合作",
+        "id": 7,
+        "question": "有更多问题？"
       }
     ],
     "faq_enabled": true,
@@ -273,7 +292,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://api.avemujica.moe",
     "setup": true,
-    "start_time": 1779998753,
+    "start_time": 1780258681,
     "stripe_unit_price": 1,
     "system_name": "AveMujica API",
     "telegram_bot_name": "",

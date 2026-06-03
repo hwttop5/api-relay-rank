@@ -51,6 +51,7 @@ STATION_URL_OVERRIDES_PATH = APP_ROOT / "config" / "station_url_overrides.json"
 STATION_AUDIT_TARGETS_PATH = APP_ROOT / "config" / "station_audit_targets.json"
 STATION_ALIASES_PATH = APP_ROOT / "config" / "station_aliases.json"
 GENERATED_AT_ENV = "SITE_DATA_GENERATED_AT"
+POSTGRES_BASE_MERGE_ENV = "SITE_DATA_MERGE_POSTGRES_BASE"
 
 SHORT_TYPE_LABELS = {
     "subscription": "包月型",
@@ -151,6 +152,10 @@ def parse_int(value: Any) -> int:
 
 def parse_bool(value: Any) -> bool:
     return str(value or "").strip().lower() in {"1", "true", "yes", "y"}
+
+
+def postgres_base_merge_enabled() -> bool:
+    return parse_bool(os.environ.get(POSTGRES_BASE_MERGE_ENV))
 
 
 def parse_optional_bool(value: Any) -> bool | None:
@@ -606,6 +611,29 @@ def choose_best_url(urls: list[str]) -> str:
     if not candidates:
         return ""
     return max(candidates, key=score)
+
+
+def public_url_host(value: Any) -> str:
+    parsed = urlparse(sanitize_public_text(value))
+    if parsed.scheme not in {"http", "https"}:
+        return ""
+    return (parsed.hostname or "").lower().removeprefix("www.")
+
+
+def find_station_key_by_url_host(
+    stations: dict[str, dict[str, Any]],
+    station_urls: dict[str, set[str]],
+    url: Any,
+) -> str:
+    target_host = public_url_host(url)
+    if not target_host:
+        return ""
+
+    for station_key, station in stations.items():
+        candidate_urls = dedupe_strings([station.get("url", ""), *station_urls.get(station_key, set())])
+        if any(public_url_host(candidate_url) == target_host for candidate_url in candidate_urls):
+            return station_key
+    return ""
 
 
 def is_payment_evidence_url(value: Any) -> bool:
@@ -1215,6 +1243,9 @@ def probe_has_useful_detail_data(probe: dict[str, Any]) -> bool:
         "/api/plans",
         "/api/public/shop/products",
         "/api/announcements/unread",
+        "/api/auth/me",
+        "/api/billing",
+        "/api/usage",
         "/api/v1/groups/available",
         "/api/v1/payment/plans",
         "/api/v1/payment/checkout-info",
@@ -1360,6 +1391,17 @@ def normalize_live_announcement(station_key: str, item: dict[str, Any], index: i
 
 
 def live_probe_announcements_and_status(station_key: str, probe: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, str]]:
+    override = probe.get("announcementStatus")
+    if isinstance(override, dict):
+        status = sanitize_public_text(override.get("status"))
+        if status in {"captured", "empty", "failed", "missing", "login_required", "blocked", "public_missing"}:
+            return [], {
+                "status": status,
+                "source": public_source_text(override.get("source") or probe_location(probe)),
+                "message": normalize_public_text(override.get("message"))
+                or "live auth probe reported an explicit announcement status.",
+            }
+
     first_failure: dict[str, str] | None = None
     first_empty: dict[str, str] | None = None
     for api_path in (
@@ -2448,6 +2490,121 @@ def merge_tier_notes(station: dict[str, Any], notes: Any) -> None:
 def dedupe_station_tier_notes(stations: dict[str, dict[str, Any]]) -> None:
     for station in stations.values():
         station["tierNotes"] = normalized_tier_notes(station.get("tierNotes"))
+
+
+def load_postgres_base_site_snapshot(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
+    if not postgres_base_merge_enabled():
+        return {}
+    database_url = os.environ.get("DATABASE_URL", "").strip()
+    if not database_url:
+        return {}
+
+    try:
+        import psycopg
+    except ImportError:
+        return {}
+
+    try:
+        with psycopg.connect(database_url) as con:
+            with con.cursor() as cur:
+                cur.execute(
+                    """
+                    select payload
+                    from site_data_snapshots
+                    where status = 'success'
+                      and payload is not null
+                    order by created_at desc, id desc
+                    limit 1
+                    """
+                )
+                row = cur.fetchone()
+    except Exception:
+        return {}
+
+    if not row or not isinstance(row[0], dict):
+        return {}
+
+    baseline: dict[str, dict[str, Any]] = {}
+    for raw_station in row[0].get("stations", []):
+        if not isinstance(raw_station, dict):
+            continue
+        station_key = canonical_station_key(raw_station.get("key"), station_aliases)
+        if not station_key or not is_public_station_key(station_key):
+            continue
+        baseline[station_key] = raw_station
+    return baseline
+
+
+def apply_postgres_base_station_records(
+    stations: dict[str, dict[str, Any]],
+    station_urls: dict[str, set[str]],
+    baseline: dict[str, dict[str, Any]],
+    *,
+    station_aliases: dict[str, str] | None = None,
+) -> None:
+    for station_key, raw_station in baseline.items():
+        if station_key in stations:
+            continue
+        station_url = sanitize_public_text(raw_station.get("url"))
+        if not is_public_station_url(station_url):
+            continue
+
+        target_station_key = find_station_key_by_url_host(stations, station_urls, station_url)
+        if target_station_key:
+            station = stations[target_station_key]
+            if not station.get("groupMultipliers") and raw_station.get("groupMultipliers"):
+                station["groupMultipliers"] = normalized_group_rows(raw_station.get("groupMultipliers"))
+            if not station.get("rechargeTiers") and raw_station.get("rechargeTiers"):
+                station["rechargeTiers"] = normalized_recharge_rows(raw_station.get("rechargeTiers"))
+            for note in normalized_tier_notes(raw_station.get("tierNotes")):
+                if note not in station["tierNotes"]:
+                    station["tierNotes"].append(note)
+            station["announcements"] = merge_announcements(
+                station.get("announcements", []),
+                normalized_announcement_rows(raw_station.get("announcements")),
+            )
+            if isinstance(raw_station.get("quality"), dict):
+                for window_key, quality_payload in raw_station["quality"].items():
+                    if not isinstance(quality_payload, dict):
+                        continue
+                    existing_quality = station["quality"].get(window_key)
+                    station["quality"][window_key] = (
+                        merge_quality_rows(existing_quality, quality_payload)
+                        if isinstance(existing_quality, dict)
+                        else deepcopy(quality_payload)
+                    )
+            if raw_station.get("audits") and not station.get("audits"):
+                station["audits"] = deepcopy(raw_station["audits"])
+            add_exact_station_url(station_urls, target_station_key, station_url, station_aliases)
+            for announcement in station.get("announcements", []):
+                source_url = sanitize_public_text(announcement.get("sourceUrl"))
+                if source_url:
+                    add_station_url(station_urls, target_station_key, source_url, station_aliases)
+            continue
+
+        station = ensure_station(
+            stations,
+            station_key,
+            station_aliases=station_aliases,
+            label=raw_station.get("label", ""),
+            url=station_url,
+            station_type=raw_station.get("stationType", ""),
+            platform_guess=raw_station.get("platformGuess", ""),
+        )
+        station["verifiedTierCount"] = parse_int(raw_station.get("verifiedTierCount"))
+        station["groupMultipliers"] = normalized_group_rows(raw_station.get("groupMultipliers"))
+        station["rechargeTiers"] = normalized_recharge_rows(raw_station.get("rechargeTiers"))
+        station["tierNotes"] = normalized_tier_notes(raw_station.get("tierNotes"))
+        station["announcements"] = normalized_announcement_rows(raw_station.get("announcements"))
+        if isinstance(raw_station.get("quality"), dict):
+            station["quality"] = deepcopy(raw_station["quality"])
+        if raw_station.get("audits"):
+            station["audits"] = deepcopy(raw_station["audits"])
+        add_exact_station_url(station_urls, station_key, station_url, station_aliases)
+        for announcement in station.get("announcements", []):
+            source_url = sanitize_public_text(announcement.get("sourceUrl"))
+            if source_url:
+                add_station_url(station_urls, station_key, source_url, station_aliases)
 
 
 def load_existing_detail_baseline(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
@@ -3608,26 +3765,48 @@ def apply_audit_only_station_records(
     *,
     station_aliases: dict[str, str] | None = None,
 ) -> None:
-    for station_key, audit_rows in latest_audits.items():
+    for station_key, audit_rows in list(latest_audits.items()):
         if not audit_rows:
             continue
 
         audited_base_url = sanitize_public_text(audit_rows[0].get("auditedBaseUrl"))
-        if station_key in stations:
-            station = ensure_station(stations, station_key, station_aliases=station_aliases)
+        target_station_key = station_key
+        if station_key not in stations:
+            matching_station_key = find_station_key_by_url_host(stations, station_urls, audited_base_url)
+            if matching_station_key:
+                target_station_key = matching_station_key
+                existing_audits = latest_audits.setdefault(target_station_key, [])
+                seen_audits = {
+                    (row.get("model"), row.get("executedAt"), row.get("reportPath"))
+                    for row in existing_audits
+                }
+                for row in audit_rows:
+                    marker = (row.get("model"), row.get("executedAt"), row.get("reportPath"))
+                    if marker not in seen_audits:
+                        existing_audits.append(row)
+                        seen_audits.add(marker)
+                existing_audits.sort(key=lambda item: audit_sort_datetime(item.get("executedAt")), reverse=True)
+                latest_audits.pop(station_key, None)
+
+        if target_station_key in stations:
+            station = ensure_station(stations, target_station_key, station_aliases=station_aliases)
             if audited_base_url and not station.get("url"):
                 station["url"] = audited_base_url
         else:
             station = ensure_station(
                 stations,
-                station_key,
+                target_station_key,
                 station_aliases=station_aliases,
-                label=station_display_label(station_key, audit_station_label_from_base_url(audited_base_url, station_key), audited_base_url),
+                label=station_display_label(
+                    target_station_key,
+                    audit_station_label_from_base_url(audited_base_url, target_station_key),
+                    audited_base_url,
+                ),
                 url=audited_base_url,
             )
 
         if audited_base_url:
-            add_exact_station_url(station_urls, station_key, audited_base_url, station_aliases)
+            add_exact_station_url(station_urls, target_station_key, audited_base_url, station_aliases)
 
 
 def load_station_pricing_overrides(station_aliases: dict[str, str] | None = None) -> dict[str, dict[str, Any]]:
@@ -4128,6 +4307,7 @@ def main() -> int:
     ensure_runtime_dirs()
     station_aliases = load_station_aliases()
     existing_detail_baseline = load_existing_detail_baseline(station_aliases)
+    postgres_base_stations = load_postgres_base_site_snapshot(station_aliases)
 
     intro = load_summary_intro()
     required_inputs = [
@@ -4338,6 +4518,7 @@ def main() -> int:
     latest_audits = load_latest_station_audits(station_aliases)
     apply_audit_only_station_records(stations, station_urls, latest_audits, station_aliases=station_aliases)
     apply_existing_detail_baseline(stations, station_urls, existing_detail_baseline, station_aliases=station_aliases)
+    apply_postgres_base_station_records(stations, station_urls, postgres_base_stations, station_aliases=station_aliases)
     dedupe_station_tier_notes(stations)
 
     apply_authoritative_ranking_overrides(stations, rankings, overrides)
