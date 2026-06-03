@@ -5,17 +5,21 @@ import { hasDatabaseUrl, readLatestSiteDataSnapshot } from "./postgres";
 import { SITE_DATA_PATH } from "./runtime-paths";
 import type { SiteData, StationRecord } from "./types";
 
+function siteDataSource() {
+  return process.env.SITE_DATA_SOURCE?.trim().toLowerCase() || "json";
+}
+
 async function readSiteDataFile(): Promise<SiteData> {
   const raw = await readFile(SITE_DATA_PATH, "utf8");
   return JSON.parse(raw) as SiteData;
 }
 
 function allowFileFallback() {
-  return !hasDatabaseUrl() || process.env.SITE_DATA_ALLOW_FILE_FALLBACK === "1";
+  return process.env.SITE_DATA_ALLOW_FILE_FALLBACK === "1";
 }
 
 export async function getSiteData(): Promise<SiteData> {
-  if (hasDatabaseUrl()) {
+  if (siteDataSource() === "postgres" && hasDatabaseUrl()) {
     try {
       return await readLatestSiteDataSnapshot();
     } catch (error) {

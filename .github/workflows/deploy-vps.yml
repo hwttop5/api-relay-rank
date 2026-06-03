@@ -172,6 +172,7 @@ jobs:
           set_env_var POSTGRES_DB api_relay_rank
           set_env_var POSTGRES_USER api_relay_rank
           set_env_var POSTGRES_PASSWORD "$postgres_password"
+          set_env_var SITE_DATA_SOURCE json
           set_env_var SITE_DATA_ALLOW_FILE_FALLBACK 0
           set_env_var LOG_INBOX_DIR /runtime/log-inbox
           set_env_var LOG_ARCHIVE_DIR /runtime/log-archive

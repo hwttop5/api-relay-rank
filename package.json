@@ -13,7 +13,8 @@
     "site:tiers": "python scripts/fetch_public_content.py --multiplier-snapshots",
     "site:audit": "python scripts/run_station_audit.py",
     "site:refresh-manual": "python scripts/refresh_quality_rankings.py",
-    "site:jobs": "python scripts/run_tasks.py"
+    "site:jobs": "python scripts/run_tasks.py",
+    "test:site-data-source": "node tests/site-data-source.test.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.554.0",
