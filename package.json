@@ -13,13 +13,11 @@
     "site:tiers": "python scripts/fetch_public_content.py --multiplier-snapshots",
     "site:audit": "python scripts/run_station_audit.py",
     "site:refresh-manual": "python scripts/refresh_quality_rankings.py",
-    "site:jobs": "python scripts/run_tasks.py",
-    "test:site-data-source": "node tests/site-data-source.test.mjs"
+    "site:jobs": "python scripts/run_tasks.py"
   },
   "dependencies": {
     "lucide-react": "^0.554.0",
     "next": "^15.5.4",
-    "pg": "^8.21.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-markdown": "^10.1.0",
@@ -29,7 +27,6 @@
     "@commitlint/cli": "^21.0.1",
     "@commitlint/config-conventional": "^21.0.1",
     "@types/node": "^24.3.0",
-    "@types/pg": "^8.20.0",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
     "husky": "^9.1.7",

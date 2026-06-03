@@ -3,7 +3,7 @@ import { DeclarationPanels } from "@/components/ranking-dashboard";
 import { pageMetadata } from "@/lib/seo";
 import { getSiteData } from "@/lib/site-data";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export const metadata = pageMetadata({
   title: "排名口径与特别声明",

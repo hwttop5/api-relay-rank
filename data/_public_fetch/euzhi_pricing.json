@@ -4,6 +4,43 @@
   ],
   "data": [
     {
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "default",
+        "vip",
+        "sub2pilot"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip",
+        "sub2pilot"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
       "model_name": "gpt-5.4",
       "vendor_id": 2,
       "quota_type": 0,
@@ -14,14 +51,13 @@
       "cache_ratio": 1,
       "create_cache_ratio": 1,
       "enable_groups": [
+        "default",
         "vip",
-        "sub2pilot",
-        "default"
+        "sub2pilot"
       ],
       "supported_endpoint_types": [
         "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+      ]
     },
     {
       "model_name": "gpt-5.4-mini",
@@ -52,45 +88,9 @@
       "completion_ratio": 0,
       "image_ratio": 0,
       "enable_groups": [
+        "vip",
         "sub2pilot",
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "default",
-        "vip",
-        "sub2pilot"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 0.1,
-      "enable_groups": [
-        "default",
-        "vip",
-        "sub2pilot"
+        "default"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -115,11 +115,6 @@
   },
   "vendors": [
     {
-      "id": 2,
-      "name": "OpenAI",
-      "icon": "OpenAI"
-    },
-    {
       "id": 3,
       "name": "讯飞",
       "icon": "Spark.Color"
@@ -128,6 +123,11 @@
       "id": 1,
       "name": "Google",
       "icon": "Gemini.Color"
+    },
+    {
+      "id": 2,
+      "name": "OpenAI",
+      "icon": "OpenAI"
     }
   ],
   "status_payload": {

@@ -2,13 +2,85 @@
   "auto_groups": [
     "default"
   ],
-  "data": [],
+  "data": [
+    {
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.2",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.7,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
   "group_ratio": {
     "default": 1
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
-  "supported_endpoint": {},
+  "supported_endpoint": {
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
   "usable_group": {
     "default": "默认分组"
   },
@@ -38,13 +110,6 @@
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":false,\"about\":false}",
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
       "announcements": [
-        {
-          "content": "全站用户不满50额度的已经将余额重置。都统一补齐到50.",
-          "extra": "",
-          "id": 3,
-          "publishDate": "2026-05-28T06:45:39.614Z",
-          "type": "success"
-        },
         {
           "content": "API仅支持在Codex中调用",
           "extra": "",

@@ -1,20 +1,6 @@
 {
   "data": [
     {
-      "model_name": "qwen3.7-plus",
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "completion_ratio": 4
-    },
-    {
-      "model_name": "minimax-m3",
-      "quota_type": 0,
-      "model_ratio": 1.05,
-      "model_price": 0,
-      "completion_ratio": 4
-    },
-    {
       "model_name": "claude-opus-4-8",
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -388,9 +374,9 @@
     {
       "model_name": "gpt-image-2-origin",
       "quota_type": 0,
-      "model_ratio": 0.625,
+      "model_ratio": 0,
       "model_price": 0,
-      "completion_ratio": 8
+      "completion_ratio": 0
     },
     {
       "model_name": "gemini-3-pro-image-preview-4k",
@@ -699,20 +685,36 @@
       "model_ratio": 0,
       "model_price": 0,
       "completion_ratio": 0
+    },
+    {
+      "model_name": "gemma-4-26b-a4b-it",
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "completion_ratio": 0
+    },
+    {
+      "model_name": "llama-3.3-8b-instruct",
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "completion_ratio": 0
     }
   ],
   "group_ratio": {
     "Claude-AWS": 2.8,
+    "Claude-AZ&AWS": 2.6,
+    "Claude-MAX20福利": 1.15,
     "Claude-企业级": 3,
     "Claude-官转": 3.5,
     "Claude-满血MAX20": 1.75,
-    "Claude-满血MAX20(不限CC)": 1.95,
+    "Claude-满血MAX20(不限CC)": 1.75,
     "Claude-福利": 0.5,
     "Claude-高性价比": 0.95,
     "Codex-Pro-Fast": 0.3,
     "Codex-Pro-Plus": 0.2,
     "Codex-企业级": 0.35,
-    "Codex-订阅福利组": 1,
+    "Codex订阅福利组": 1,
     "Gemini-企业级": 3.5,
     "Google-Gemini": 1.5,
     "Grok-福利": 0.95,

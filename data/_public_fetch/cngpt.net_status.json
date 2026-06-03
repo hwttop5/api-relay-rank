@@ -4,13 +4,6 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
-        "content": "全站用户不满50额度的已经将余额重置。都统一补齐到50.",
-        "extra": "",
-        "id": 3,
-        "publishDate": "2026-05-28T06:45:39.614Z",
-        "type": "success"
-      },
-      {
         "content": "API仅支持在Codex中调用",
         "extra": "",
         "id": 2,

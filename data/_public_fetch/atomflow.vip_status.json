@@ -4,13 +4,6 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
-        "content": "OpenAI 官方宣布自 2026年6月2日 起，在 Codex 中停用 GPT-5.2 和 GPT-5.3-Codex 等旧版模型，将重心转向性能更强的前沿旗舰模型（如 GPT-5.4 和 GPT-5.5），请大家做相应调整",
-        "extra": "",
-        "id": 3,
-        "publishDate": "2026-06-02T11:33:53.105Z",
-        "type": "default"
-      },
-      {
         "content": "上线claude-opus-4-8",
         "extra": "",
         "id": 2,
@@ -111,7 +104,7 @@
     "password_register_enabled": true,
     "price": 1,
     "privacy_policy_enabled": true,
-    "quota_display_type": "CNY",
+    "quota_display_type": "USD",
     "quota_per_unit": 500000,
     "register_enabled": true,
     "self_use_mode_enabled": false,
@@ -126,7 +119,7 @@
     "turnstile_check": false,
     "turnstile_site_key": "",
     "uptime_kuma_enabled": false,
-    "usd_exchange_rate": 1,
+    "usd_exchange_rate": 7.3,
     "user_agreement_enabled": true,
     "version": "v1.0.0-rc.10",
     "wechat_login": false,

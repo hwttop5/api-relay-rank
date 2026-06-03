@@ -5,27 +5,6 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
-        "content": "wo_wuhao   大佬看到公告的话加一下群，你的扣费分组有点问题，我给你补贴一下",
-        "extra": "",
-        "id": 32,
-        "publishDate": "2026-06-01T08:30:05.571Z",
-        "type": "default"
-      },
-      {
-        "content": "有解决不了的报错可以加Q群820116443咨询解决",
-        "extra": "",
-        "id": 31,
-        "publishDate": "2026-06-01T03:58:40.028Z",
-        "type": "default"
-      },
-      {
-        "content": "kiro分组莫名其妙的没炸，又重置额度找回来很多个号，临时调到0.1x倍率了应该是能抗住并发，如果频繁报速度墙又找不到号的话会往上调调价的",
-        "extra": "",
-        "id": 30,
-        "publishDate": "2026-06-01T02:12:42.011Z",
-        "type": "default"
-      },
-      {
         "content": "kiro会在这个月月底超额到期账单结算，所以可能6.1开始的一段时间kiro这条渠道不能用，或者需要点时间补新号进来，大家有需要用到opus的任务请在这两天收收尾，我尽量第一时间更新opus的特价渠道。",
         "extra": "",
         "id": 29,
@@ -366,7 +345,7 @@
     "telegram_bot_name": "",
     "telegram_oauth": false,
     "theme": "default",
-    "turnstile_check": false,
+    "turnstile_check": true,
     "turnstile_site_key": "0x4AAAAAADTk2w62SSyqiRmC",
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 6.8,

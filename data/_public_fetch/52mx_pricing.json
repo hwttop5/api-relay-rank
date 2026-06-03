@@ -1,119 +1,185 @@
 {
-  "data": {
-    "HeaderNavModules": "",
-    "SidebarModulesAdmin": "",
-    "announcements": [
-      {
-        "content": "为了防止注册机，52模型网只开放了QQ邮箱注册，请使用QQ邮箱注册。",
-        "extra": "",
-        "id": 1,
-        "publishDate": "2026-05-11T18:51:46.890Z",
-        "type": "ongoing"
-      }
-    ],
-    "announcements_enabled": true,
-    "api_info": [
-      {
-        "color": "blue",
-        "description": "韩国线路",
-        "id": 1,
-        "route": "韩国线路",
-        "url": "https://52mx.net"
-      }
-    ],
-    "api_info_enabled": true,
-    "chats": [
-      {
-        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
-      },
-      {
-        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
-      },
-      {
-        "流畅阅读": "fluentread"
-      },
-      {
-        "CC Switch": "ccswitch"
-      },
-      {
-        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
-      },
-      {
-        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
-      },
-      {
-        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
-      },
-      {
-        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
-      },
-      {
-        "OpenCat": "opencat://team/join?domain={address}&token={key}"
-      }
-    ],
-    "checkin_enabled": true,
-    "custom_currency_exchange_rate": 1,
-    "custom_currency_symbol": "模元",
-    "data_export_default_time": "hour",
-    "default_collapse_sidebar": false,
-    "default_use_auto_group": false,
-    "demo_site_enabled": false,
-    "discord_client_id": "",
-    "discord_oauth": false,
-    "display_in_currency": true,
-    "docs_link": "https://www.axureshow.com/project/cg2KBHHq/",
-    "email_verification": true,
-    "enable_batch_update": false,
-    "enable_data_export": true,
-    "enable_drawing": true,
-    "enable_task": true,
-    "faq": [],
-    "faq_enabled": true,
-    "footer_html": "52模型|52mx.net",
-    "github_client_id": "",
-    "github_oauth": false,
-    "linuxdo_client_id": "",
-    "linuxdo_minimum_trust_level": 0,
-    "linuxdo_oauth": false,
-    "logo": "https://img.imgos.cn/cdn/20260512/f41fcdb44f12adadf9d5bb7968ee58e2.webp",
-    "mj_notify_enabled": false,
-    "oidc_authorization_endpoint": "",
-    "oidc_client_id": "",
-    "oidc_enabled": false,
-    "passkey_allow_insecure": false,
-    "passkey_attachment": "",
-    "passkey_display_name": "52模型|52mx.net",
-    "passkey_login": false,
-    "passkey_origins": "https://52mx.net",
-    "passkey_rp_id": "52mx.net",
-    "passkey_user_verification": "preferred",
-    "password_login_enabled": true,
-    "password_register_enabled": true,
-    "price": 1,
-    "privacy_policy_enabled": true,
-    "quota_display_type": "USD",
-    "quota_per_unit": 500000,
-    "register_enabled": true,
-    "self_use_mode_enabled": false,
-    "server_address": "https://52mx.net",
-    "setup": true,
-    "start_time": 1780379826,
-    "stripe_unit_price": 8,
-    "system_name": "52模型|52mx.net",
-    "telegram_bot_name": "",
-    "telegram_oauth": false,
-    "theme": "classic",
-    "turnstile_check": false,
-    "turnstile_site_key": "",
-    "uptime_kuma_enabled": true,
-    "usd_exchange_rate": 1,
-    "user_agreement_enabled": true,
-    "version": "v1.0.0-rc.10",
-    "wechat_login": false,
-    "wechat_qrcode": ""
+  "auto_groups": [
+    "default"
+  ],
+  "data": [
+    {
+      "model_name": "codex-auto-review",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.2",
+      "description": "GPT-5.2 is an AI model provided by qihang-ai.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.071428571428,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "description": "GPT-5.3 Codex is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Vision,400K",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "description": "GPT-5.4 is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "description": "GPT-5.4 Mini is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "default": 1
   },
-  "message": "",
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
+  "supported_endpoint": {
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "default": ""
+  },
+  "vendors": [
+    {
+      "id": 12,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 15,
+      "name": "Meta",
+      "icon": "Ollama"
+    },
+    {
+      "id": 18,
+      "name": "MiniMax",
+      "description": "MiniMax",
+      "icon": "Minimax.Avatar.type={'platform'}"
+    },
+    {
+      "id": 20,
+      "name": "Mistral",
+      "icon": "Mistral.Color"
+    },
+    {
+      "id": 21,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 22,
+      "name": "Claude",
+      "description": "Claude",
+      "icon": "Claude.Avatar.type={'platform'}"
+    },
+    {
+      "id": 23,
+      "name": "Cloudflare",
+      "icon": "Cloudflare.Color"
+    },
+    {
+      "id": 24,
+      "name": "52mx"
+    },
+    {
+      "id": 5,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 13,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 14,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 16,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 17,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 19,
+      "name": "NVIDIA",
+      "description": "英伟达",
+      "icon": "Nvidia.Avatar.type={'platform'}"
+    }
+  ],
   "status_payload": {
     "data": {
       "HeaderNavModules": "",
@@ -203,7 +269,6 @@
       "passkey_origins": "https://52mx.net",
       "passkey_rp_id": "52mx.net",
       "passkey_user_verification": "preferred",
-      "password_login_enabled": true,
       "password_register_enabled": true,
       "price": 1,
       "privacy_policy_enabled": true,
@@ -213,7 +278,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://52mx.net",
       "setup": true,
-      "start_time": 1780379826,
+      "start_time": 1779850580,
       "stripe_unit_price": 8,
       "system_name": "52模型|52mx.net",
       "telegram_bot_name": "",
@@ -224,12 +289,12 @@
       "uptime_kuma_enabled": true,
       "usd_exchange_rate": 1,
       "user_agreement_enabled": true,
-      "version": "v1.0.0-rc.10",
+      "version": "v1.0.0-rc.8",
       "wechat_login": false,
       "wechat_qrcode": ""
     },
     "message": "",
     "success": true
   },
-  "source_url": "https://52mx.net/api/status"
+  "source_url": "https://52mx.net/api/pricing"
 }

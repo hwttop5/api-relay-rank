@@ -4,32 +4,14 @@
   ],
   "data": [
     {
-      "model_name": "gpt-5.5-openai-compact",
+      "model_name": "gpt-5.2",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.2,
-      "enable_groups": [
-        "vip",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.875,
+      "model_ratio": 0.125,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 8,
-      "cache_ratio": 0.2,
+      "cache_ratio": 0.071428571428,
       "enable_groups": [
         "default",
         "vip"
@@ -39,14 +21,14 @@
       ]
     },
     {
-      "model_name": "gpt-5.4",
+      "model_name": "gpt-5.3-codex",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 1.25,
+      "model_ratio": 0.875,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.2,
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
       "enable_groups": [
         "default",
         "vip"
@@ -63,10 +45,27 @@
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
-      "cache_ratio": 0.2,
+      "cache_ratio": 0.1,
       "enable_groups": [
-        "vip",
-        "default"
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -80,7 +79,7 @@
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
-      "cache_ratio": 0.2,
+      "cache_ratio": 0.1,
       "enable_groups": [
         "default",
         "vip"
@@ -88,10 +87,27 @@
       "supported_endpoint_types": [
         "openai"
       ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
     }
   ],
   "group_ratio": {
-    "default": 2.2
+    "default": 1.8
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
@@ -236,7 +252,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://hyperapi.cc",
       "setup": true,
-      "start_time": 1780233716,
+      "start_time": 1779710514,
       "stripe_unit_price": 8,
       "system_name": "Hyper API",
       "telegram_bot_name": "",

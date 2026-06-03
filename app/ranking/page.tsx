@@ -5,7 +5,7 @@ import { getSiteData } from "@/lib/site-data";
 const PAGE_TITLE = "AI 中转站综合排名";
 const PAGE_DESCRIPTION = "查看 AI 中转站正式综合排名、Codex 采用倍率、正确率、响应时间、请求样本和未纳入正式排名的收录站点。";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export const metadata = pageMetadata({
   title: PAGE_TITLE,

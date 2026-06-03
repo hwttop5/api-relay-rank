@@ -10,7 +10,12 @@ import { localizeSiteDataAuditText, localizeStationAuditText } from "@/lib/audit
 import { absoluteUrl, findBestRanking, pageMetadata, safeJsonLd, stationMetadataDescription, stationPageTitle } from "@/lib/seo";
 import { getSiteData, getStationRecord } from "@/lib/site-data";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
+
+export async function generateStaticParams() {
+  const siteData = await getSiteData();
+  return siteData.stations.map((station) => ({ station: station.key }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ station: string }> }) {
   const resolvedParams = await params;

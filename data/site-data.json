@@ -6096,14 +6096,6 @@
           "extra": "",
           "content": "上线claude-opus-4-8",
           "sourceUrl": "https://atomflow.vip"
-        },
-        {
-          "id": "3",
-          "publishedAt": "2026-06-02T11:33:53.105Z",
-          "type": "default",
-          "extra": "",
-          "content": "OpenAI 官方宣布自 2026年6月2日 起，在 Codex 中停用 GPT-5.2 和 GPT-5.3-Codex 等旧版模型，将重心转向性能更强的前沿旗舰模型（如 GPT-5.4 和 GPT-5.5），请大家做相应调整",
-          "sourceUrl": "https://atomflow.vip"
         }
       ],
       "rankings": {
@@ -6300,10 +6292,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 3,
+          "count": 2,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 3 条，可在本详情页查看。",
+          "message": "已归档 2 条，可在本详情页查看。",
           "source": "https://atomflow.vip/api/status"
         }
       ]
@@ -8543,22 +8535,6 @@
           "extra": "",
           "content": "售后沟通QQ交流群：1087973785\n\n群中不定时发放支付宝口令红包哦~\n\n客服在线时间9:00—22:00\n\n开发票进群联系客服\n\ncodex-vip分组倍率上调至 0.12\n\n福利订阅套餐：充值6.6送10刀",
           "sourceUrl": "https://shunfen6.win/api/notice"
-        },
-        {
-          "id": "13",
-          "publishedAt": "2026-06-02T12:00:03.068Z",
-          "type": "default",
-          "extra": "",
-          "content": "这两天频繁出现断流/超时/502 思考过久之类的情况\n\n基本上都是OpenAI官方导致的\n\n说是要出5.6了 之前出5.5的时候也是有这种情况\n\n我们这边尽量维稳号池不影响大家的使用体验\n\n谢谢各位理解与支持",
-          "sourceUrl": "https://shunfen6.win"
-        },
-        {
-          "id": "12",
-          "publishedAt": "2026-06-02T02:21:43.934Z",
-          "type": "default",
-          "extra": "",
-          "content": "各位用户好：\n\n目前站点因谷歌安全检测临时显示 “不安全” 提示，\n属于正常的平台误判，站点本身完全安全，数据和服务不受影响。\n\n我们已提交申诉并优化页面，预计 1-3 天内警告会自动解除，大家可以正常使用，无需担心～",
-          "sourceUrl": "https://shunfen6.win"
         }
       ],
       "rankings": {
@@ -8755,10 +8731,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 18,
+          "count": 16,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 18 条，可在本详情页查看。",
+          "message": "已归档 16 条，可在本详情页查看。",
           "source": "https://shunfen6.win/api/status"
         }
       ]
@@ -12755,14 +12731,6 @@
           "extra": "",
           "content": "## 🎉 欢迎来到镜核 AI\n\n中文专属 AI 编程助手——无需编程基础，仅依靠自然语言就能将想法变为现实。\n\n---\n\n### 🤖 当前可用模型\n\n**GPT 系列（default / gpt 分组）**\n- gpt-5.5 · gpt-5.4 · gpt-5.4-mini · gpt-5.3-codex · gpt-5.2\n- gpt-image-2（图像生成，详见教程）\n\n**Grok 系列（grok 分组）**\n- grok-4.20-auto / fast / expert · grok-4.3-beta\n- grok-imagine-image / -lite / -pro / -edit · grok-imagine-video\n\n**国产模型（cn 分组）**\n- 智谱 GLM-5 / 5.1 · DeepSeek V3.2 / V4-Pro / V4-Flash\n- 通义 Qwen3 / Qwen3.5 · 月之暗面 Kimi K2.5 · MiniMax M2.5\n- 百度文心 4.5 Turbo · 小米 MiMo V2.5 / Pro\n\n---\n\n### 💡 分组对照\n\n| 分组 | 主营 | 推荐场景 |\n|---|---|---|\n| default | GPT 系列 + 图像 | 新用户默认 |\n| gpt | GPT 系列 + 图像 | GPT 订阅优惠 |\n| cn | 国产全套 | 国产优惠分组 |\n| grok | Grok 系列（含图/视频） | X / Grok 优惠 |\n\n---\n\n### 📚 教程入口\n\n**编程类**\n- [Codex 配置](https://ai.17nas.com/tools/codex-install/)\n- [OpenCode](https://ai.17nas.com/tools/opencode-install/)\n- [Cline (VSCode 插件)](https://ai.17nas.com/tools/cline-install/)\n\n**桌面 / 客户端**\n- [CherryStudio (含 GPT/国产/Grok 全模型)](https://ai.17nas.com/tools/cherrystudio-install/)\n- [OpenClaw](https://ai.17nas.com/tools/openclaw-install/)\n- [Hermes-agent (微信接入)](https://ai.17nas.com/tools/hermes-install/)\n\n**图像 / 国产**\n- [gpt-image-2 画质档位 API](https://ai.17nas.com/tools/gpt-image-2/)\n- [国产模型一键接入](https://ai.17nas.com/tools/cn-coding-install/)\n\n**其他**\n- [Key 余额检测](https://ai.17nas.com/tools/key-check/)\n- [会员套餐](https://ai.17nas.com/tools/pricing/)\n\n---\n\n📖 控制台 → FAQ 进入完整教程\n💬 右上角「微信客服」联系",
           "sourceUrl": "https://api.17nas.com/api/notice"
-        },
-        {
-          "id": "30",
-          "publishedAt": "2026-06-02T10:59:32.817Z",
-          "type": "default",
-          "extra": "",
-          "content": "因 OpenAI 官方已下架 gpt-5.2 与 gpt-5.3-codex 模型，将同步进行相应调整。",
-          "sourceUrl": "https://ai.17nas.com"
         }
       ],
       "rankings": {
@@ -12959,10 +12927,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 12,
+          "count": 11,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 12 条，可在本详情页查看。",
+          "message": "已归档 11 条，可在本详情页查看。",
           "source": "https://api.17nas.com/api/status"
         }
       ]
@@ -15336,14 +15304,6 @@
           "extra": "",
           "content": "gpt-image-2异步生图已上线\n\n地址：https://img.qiuqiutoken.com/\n\n备用访问地址：https://img2.qiuqiutoken.com/\n\n原生图地址：https://image.qiuqiutoken.com",
           "sourceUrl": "https://qiuqiutoken.com"
-        },
-        {
-          "id": "11",
-          "publishedAt": "2026-05-30T09:14:49.482Z",
-          "type": "default",
-          "extra": "",
-          "content": "测试gpt-image-2异步并发，现已将价格调整为0.016一张图，有高并发量用户联系站长解锁请求上限限制",
-          "sourceUrl": "https://qiuqiutoken.com"
         }
       ],
       "rankings": {
@@ -15540,10 +15500,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 11,
+          "count": 10,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 11 条，可在本详情页查看。",
+          "message": "已归档 10 条，可在本详情页查看。",
           "source": "tabbit-audit-profile/pending-stations-api-probes.json"
         }
       ]
@@ -15888,142 +15848,10 @@
       "stationTypeShortLabel": "待补证据",
       "platformGuess": "new-api",
       "verifiedTierCount": 0,
-      "groupMultipliers": [
-        {
-          "groupName": "claude",
-          "groupMultiplier": 0.5
-        },
-        {
-          "groupName": "claude-max",
-          "groupMultiplier": 1.5
-        },
-        {
-          "groupName": "default",
-          "groupMultiplier": 0.2
-        },
-        {
-          "groupName": "gpt",
-          "groupMultiplier": 0.2
-        },
-        {
-          "groupName": "gpt-free",
-          "groupMultiplier": 0.06
-        },
-        {
-          "groupName": "gpt-pro",
-          "groupMultiplier": 0.3
-        },
-        {
-          "groupName": "grok",
-          "groupMultiplier": 0.5
-        },
-        {
-          "groupName": "image",
-          "groupMultiplier": 1.0
-        }
-      ],
-      "rechargeTiers": [
-        {
-          "rechargeName": "public status 1 RMB = 1 USD credit",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 1.0,
-          "usdAmount": 1.0,
-          "rechargeLocation": "public /api/status",
-          "expiresRule": "Public status price/quota conversion; expiry not stated"
-        }
-      ],
+      "groupMultipliers": [],
+      "rechargeTiers": [],
       "tierNotes": [],
-      "announcements": [
-        {
-          "id": "11",
-          "publishedAt": "2026-05-28T04:44:45.063Z",
-          "type": "default",
-          "extra": "",
-          "content": "各位用户，gpt-free活动分组暂时不可用，请先使用其他分组。",
-          "sourceUrl": "https://api.bjxrouter.com"
-        },
-        {
-          "id": "10",
-          "publishedAt": "2026-05-24T06:44:27.290Z",
-          "type": "default",
-          "extra": "",
-          "content": "各位用户：gpt-free分组限时活动倍率下调至0.06。",
-          "sourceUrl": "https://api.bjxrouter.com"
-        },
-        {
-          "id": "9",
-          "publishedAt": "2026-05-22T13:47:36.907Z",
-          "type": "default",
-          "extra": "",
-          "content": "各位用户：因存在恶意批量注册账号刷邀请，暂停邀请自动赠送余额。",
-          "sourceUrl": "https://api.bjxrouter.com"
-        },
-        {
-          "id": "8",
-          "publishedAt": "2026-05-19T13:47:09.960Z",
-          "type": "default",
-          "extra": "",
-          "content": "各位用户：新增gpt-free分组(0.1倍率)；邀请新用户注册赠送$10余额。",
-          "sourceUrl": "https://api.bjxrouter.com"
-        },
-        {
-          "id": "7",
-          "publishedAt": "2026-05-11T15:14:42.677Z",
-          "type": "default",
-          "extra": "",
-          "content": "各位用户：gpt模型倍率由0.35下调至0.2，claude模型倍率由0.8下调至0.3，codex订阅套餐倍率由1.5下调至1。",
-          "sourceUrl": "https://api.bjxrouter.com"
-        },
-        {
-          "id": "6",
-          "publishedAt": "2026-05-08T10:28:16.851Z",
-          "type": "default",
-          "extra": "",
-          "content": "各位用户：有问题请先提交工单，工单系统：https://support.bjxrouter.com/ ，售后TG群组https://t.me/polaris0222",
-          "sourceUrl": "https://api.bjxrouter.com"
-        },
-        {
-          "id": "5",
-          "publishedAt": "2026-04-25T06:48:48.949Z",
-          "type": "default",
-          "extra": "",
-          "content": "各位用户：新增支持gpt-5.5模型。",
-          "sourceUrl": "https://api.bjxrouter.com"
-        },
-        {
-          "id": "4",
-          "publishedAt": "2026-04-22T06:17:07.691Z",
-          "type": "default",
-          "extra": "",
-          "content": "各位用户：邀请新用户奖励$5余额，新用户注册奖励$2余额！",
-          "sourceUrl": "https://api.bjxrouter.com"
-        },
-        {
-          "id": "3",
-          "publishedAt": "2026-04-17T02:20:49.111Z",
-          "type": "default",
-          "extra": "",
-          "content": "注意：claude code max分组令牌仅允许在claude code终端使用，禁止其他方式使用！",
-          "sourceUrl": "https://api.bjxrouter.com"
-        },
-        {
-          "id": "2",
-          "publishedAt": "2026-04-15T10:20:46.000Z",
-          "type": "default",
-          "extra": "",
-          "content": "各位用户：本站点default分组倍率由0.6倍率下调至0.35倍率，新增谷歌Vertex渠道 gemini-3.1-pro模型。",
-          "sourceUrl": "https://api.bjxrouter.com"
-        },
-        {
-          "id": "1",
-          "publishedAt": "2026-03-11T07:13:42.735Z",
-          "type": "default",
-          "extra": "",
-          "content": "各位用户：free codex(Codex活动专用分组)gpt-5.4模型将于2026年3月11日 23:00下线，该分组后续仅提供gpt-5.2模型，若需使用gpt-5.4模型请单独创建default分组令牌。TG:@polaris0222",
-          "sourceUrl": "https://api.bjxrouter.com"
-        }
-      ],
+      "announcements": [],
       "rankings": {},
       "quality": {
         "work_hours": {
@@ -16094,28 +15922,28 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 8,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 8 条，可在本详情页查看。",
+          "count": 0,
+          "status": "missing",
+          "statusLabel": "未抓到",
+          "message": "当前未抓到结构化分组倍率。",
           "source": ""
         },
         {
           "key": "rechargeTiers",
           "label": "充值档位",
-          "count": 1,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
+          "count": 0,
+          "status": "missing",
+          "statusLabel": "未抓到",
+          "message": "当前未抓到结构化充值档位。",
           "source": ""
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 11,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 11 条，可在本详情页查看。",
+          "count": 0,
+          "status": "public_missing",
+          "statusLabel": "未发现公开接口",
+          "message": "未发现标准公开公告接口或接口未返回公告内容。",
           "source": ""
         }
       ]
@@ -16245,7 +16073,7 @@
         },
         {
           "groupName": "Claude-AWS-Platform",
-          "groupMultiplier": 1.8
+          "groupMultiplier": 1.0
         },
         {
           "groupName": "Claude-Azure",
@@ -16261,7 +16089,7 @@
         },
         {
           "groupName": "Codex",
-          "groupMultiplier": 1.0
+          "groupMultiplier": 0.8
         },
         {
           "groupName": "Gemini-Vertex",
@@ -16269,7 +16097,7 @@
         },
         {
           "groupName": "MiMo",
-          "groupMultiplier": 0.4
+          "groupMultiplier": 1.0
         },
         {
           "groupName": "image",
@@ -17092,126 +16920,10 @@
       "stationTypeShortLabel": "待补证据",
       "platformGuess": "new-api",
       "verifiedTierCount": 0,
-      "groupMultipliers": [
-        {
-          "groupName": "claude-antigravity",
-          "groupMultiplier": 1.56
-        },
-        {
-          "groupName": "claude-api",
-          "groupMultiplier": 5.0
-        },
-        {
-          "groupName": "claude-kiro",
-          "groupMultiplier": 0.52
-        },
-        {
-          "groupName": "claude-max",
-          "groupMultiplier": 2.4
-        },
-        {
-          "groupName": "codex-plus",
-          "groupMultiplier": 0.12
-        },
-        {
-          "groupName": "default",
-          "groupMultiplier": 0.2
-        },
-        {
-          "groupName": "gemini",
-          "groupMultiplier": 1.2
-        },
-        {
-          "groupName": "image",
-          "groupMultiplier": 0.12
-        }
-      ],
-      "rechargeTiers": [
-        {
-          "rechargeName": "public status 1 RMB = 1 USD credit",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 1.0,
-          "usdAmount": 1.0,
-          "rechargeLocation": "public /api/status",
-          "expiresRule": "Public status price/quota conversion; expiry not stated"
-        }
-      ],
+      "groupMultipliers": [],
+      "rechargeTiers": [],
       "tierNotes": [],
-      "announcements": [
-        {
-          "id": "9",
-          "publishedAt": "2026-06-02T09:16:59.047Z",
-          "type": "ongoing",
-          "extra": "",
-          "content": "首 Token 响应慢的用户可以打开或者关闭梯子试试，链接也有两个可以切换试试。",
-          "sourceUrl": "https://dddai.dev"
-        },
-        {
-          "id": "8",
-          "publishedAt": "2026-06-02T08:56:22.522Z",
-          "type": "warning",
-          "extra": "",
-          "content": "Claude API 官方服务不稳定，需要Claude模型的可以晚点再试",
-          "sourceUrl": "https://dddai.dev"
-        },
-        {
-          "id": "7",
-          "publishedAt": "2026-06-02T07:16:31.605Z",
-          "type": "warning",
-          "extra": "",
-          "content": "OpenAI 提升账号风控警告，本站 自建的 Plus 号池目前可用，若需要稳定请切 default 分组使用",
-          "sourceUrl": "https://dddai.dev"
-        },
-        {
-          "id": "6",
-          "publishedAt": "2026-06-01T06:15:49.047Z",
-          "type": "success",
-          "extra": "",
-          "content": "Plus 分组已恢复",
-          "sourceUrl": "https://dddai.dev"
-        },
-        {
-          "id": "5",
-          "publishedAt": "2026-06-01T03:40:24.805Z",
-          "type": "ongoing",
-          "extra": "",
-          "content": "平台新增 Gemini 分组，欢迎体验！",
-          "sourceUrl": "https://dddai.dev"
-        },
-        {
-          "id": "4",
-          "publishedAt": "2026-05-30T12:31:26.278Z",
-          "type": "ongoing",
-          "extra": "上线 Claude",
-          "content": "由于 Claude 模型的特殊性，现上线四款不同分组的 Claude 模型，从倍率排序低到高分别为：Claude-Kiro 分组(逆向 kiro)，Claude-Antigravity 分组(逆向Antigravity)，Claude-Max 分组(逆向 CCMAX，仅限于 CC 使用),Claude-API 分组(官方满血 API)",
-          "sourceUrl": "https://dddai.dev"
-        },
-        {
-          "id": "3",
-          "publishedAt": "2026-05-30T10:36:32.797Z",
-          "type": "default",
-          "extra": "周体验订阅使用提醒",
-          "content": "已获得周体验订阅的用户，请尽快登录 dddAI 开始使用。周体验订阅有有效期限制，过期后权益将自动失效，建议你尽早体验模型调用、控制台和相关功能。",
-          "sourceUrl": "https://dddai.dev"
-        },
-        {
-          "id": "2",
-          "publishedAt": "2026-05-30T06:21:39.515Z",
-          "type": "success",
-          "extra": "",
-          "content": "默认 Pro 号池：0.24 倍率\nPlus 性价比组：0.12 倍率\n充值 ¥1 = $1 余额，模型按官方美元价计费。\n按 $1 ≈ ¥7 估算：\n默认 Pro 号池约 2 毛 4，可使用约 7 元官方模型额度；\nPlus 性价比组约 1 毛 2，可使用约 7 元官方模型额度。\n余额和扣费均按美元显示，无需再换算\n充值倍率 × 分组倍率 × 汇率，价格透明直观。",
-          "sourceUrl": "https://dddai.dev"
-        },
-        {
-          "id": "1",
-          "publishedAt": "2026-05-29T16:24:15.859Z",
-          "type": "ongoing",
-          "extra": "",
-          "content": "前100位新注册用户赠送订阅周体验卡，钱包-订阅查看！",
-          "sourceUrl": "https://dddai.dev"
-        }
-      ],
+      "announcements": [],
       "rankings": {},
       "quality": {
         "work_hours": {
@@ -17282,28 +16994,28 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 8,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 8 条，可在本详情页查看。",
+          "count": 0,
+          "status": "missing",
+          "statusLabel": "未抓到",
+          "message": "当前未抓到结构化分组倍率。",
           "source": ""
         },
         {
           "key": "rechargeTiers",
           "label": "充值档位",
-          "count": 1,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
+          "count": 0,
+          "status": "missing",
+          "statusLabel": "未抓到",
+          "message": "当前未抓到结构化充值档位。",
           "source": ""
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 9,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 9 条，可在本详情页查看。",
+          "count": 0,
+          "status": "public_missing",
+          "statusLabel": "未发现公开接口",
+          "message": "未发现标准公开公告接口或接口未返回公告内容。",
           "source": ""
         }
       ]
@@ -18064,11 +17776,7 @@
         },
         {
           "groupName": "cc-max",
-          "groupMultiplier": 2.8
-        },
-        {
-          "groupName": "cc-max-cheap",
-          "groupMultiplier": 99.0
+          "groupMultiplier": 2.6
         },
         {
           "groupName": "cc_export",
@@ -18076,43 +17784,43 @@
         },
         {
           "groupName": "cc_max",
-          "groupMultiplier": 1.8
+          "groupMultiplier": 1.5
+        },
+        {
+          "groupName": "china",
+          "groupMultiplier": 1.0
         },
         {
           "groupName": "claude-max-特价-满血",
-          "groupMultiplier": 0.91
+          "groupMultiplier": 0.81
+        },
+        {
+          "groupName": "claude_sub",
+          "groupMultiplier": 1.0
         },
         {
           "groupName": "codex",
           "groupMultiplier": 1.0
         },
         {
-          "groupName": "codex_plus",
-          "groupMultiplier": 0.4
-        },
-        {
           "groupName": "codex_pro",
           "groupMultiplier": 0.5
         },
         {
-          "groupName": "codex_sale",
-          "groupMultiplier": 0.25
-        },
-        {
-          "groupName": "codex_sub",
-          "groupMultiplier": 0.5
-        },
-        {
-          "groupName": "codex_team",
+          "groupName": "codex包月",
           "groupMultiplier": 1.0
         },
         {
           "groupName": "deepseek",
-          "groupMultiplier": 0.5
+          "groupMultiplier": 1.0
         },
         {
           "groupName": "default",
           "groupMultiplier": 1.7
+        },
+        {
+          "groupName": "ds_api_pro",
+          "groupMultiplier": 1.0
         },
         {
           "groupName": "gemini",
@@ -18133,6 +17841,54 @@
         {
           "groupName": "kiro_svip",
           "groupMultiplier": 0.35
+        },
+        {
+          "groupName": "reverse",
+          "groupMultiplier": 0.4
+        },
+        {
+          "groupName": "reverse_anti_new",
+          "groupMultiplier": 0.7
+        },
+        {
+          "groupName": "reverse_new",
+          "groupMultiplier": 0.7
+        },
+        {
+          "groupName": "reverse_wf",
+          "groupMultiplier": 0.6
+        },
+        {
+          "groupName": "sub_plan_claude_lite",
+          "groupMultiplier": 1.0
+        },
+        {
+          "groupName": "sub_plan_claude_mini_max",
+          "groupMultiplier": 1.0
+        },
+        {
+          "groupName": "sub_plan_claude_mini_plus",
+          "groupMultiplier": 1.0
+        },
+        {
+          "groupName": "sub_plan_claude_nano_day",
+          "groupMultiplier": 1.0
+        },
+        {
+          "groupName": "sub_plan_claude_premium",
+          "groupMultiplier": 1.0
+        },
+        {
+          "groupName": "sub_plan_claude_premium_max",
+          "groupMultiplier": 1.0
+        },
+        {
+          "groupName": "sub_plan_claude_premium_plus",
+          "groupMultiplier": 1.0
+        },
+        {
+          "groupName": "sub_plan_claude_ultimate",
+          "groupMultiplier": 1.0
         }
       ],
       "rechargeTiers": [
@@ -18178,6 +17934,15 @@
           "billingTypeLabel": "月卡",
           "rmbAmount": 999.0,
           "usdAmount": 90.0,
+          "rechargeLocation": "public /api/subscription/plans",
+          "expiresRule": "1 month subscription; quota resets daily"
+        },
+        {
+          "rechargeName": "Codex Pro 套餐",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "rmbAmount": 1688.0,
+          "usdAmount": 200.0,
           "rechargeLocation": "public /api/subscription/plans",
           "expiresRule": "1 month subscription; quota resets daily"
         }
@@ -18265,22 +18030,6 @@
           "extra": "",
           "content": "[分发 对接 请使用上游站点](https://api.20apixa.cn/)",
           "sourceUrl": "https://fishxcode.com"
-        },
-        {
-          "id": "13",
-          "publishedAt": "2026-06-01T06:00:31.652Z",
-          "type": "default",
-          "extra": "",
-          "content": "claude 官方账号什么时候出问题直接百分比退款\n  - x5质保掉会员/封号：799元\n  - x5质保封号掉会员/封号：899元\n  - x20质保掉会员/封号：1299元\n  - x20质保封号掉会员/封号：1399元",
-          "sourceUrl": "https://api.fishxcode.com"
-        },
-        {
-          "id": "12",
-          "publishedAt": "2026-05-31T16:00:00.914Z",
-          "type": "default",
-          "extra": "",
-          "content": "> 📢 六月九折福利 仅限首周\n> 全套餐通用折扣码：FXCDISC2606SGW2\n> ⏰ 首周有效！\n> 👉 仅限套餐购买，下单即享9折",
-          "sourceUrl": "https://api.fishxcode.com"
         }
       ],
       "rankings": {},
@@ -18353,28 +18102,28 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 19,
+          "count": 30,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 19 条，可在本详情页查看。",
+          "message": "已归档 30 条，可在本详情页查看。",
           "source": "tabbit-audit-profile/fishxcode.com-live-auth-probe.json"
         },
         {
           "key": "rechargeTiers",
           "label": "充值档位",
-          "count": 5,
+          "count": 6,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 5 条，可在本详情页查看。",
+          "message": "已归档 6 条，可在本详情页查看。",
           "source": "tabbit-audit-profile/fishxcode.com-live-auth-probe.json"
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 12,
+          "count": 10,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 12 条，可在本详情页查看。",
+          "message": "已归档 10 条，可在本详情页查看。",
           "source": "https://fishxcode.com/api/status"
         }
       ]
@@ -18389,10 +18138,6 @@
       "platformGuess": "new-api",
       "verifiedTierCount": 5,
       "groupMultipliers": [
-        {
-          "groupName": "any外接回血",
-          "groupMultiplier": 0.6
-        },
         {
           "groupName": "kiro",
           "groupMultiplier": 0.2
@@ -18660,30 +18405,6 @@
           "extra": "",
           "content": "gpt价格临时下调至0.06x\n连续两天没封号了，不知道在憋什么大的，先少下调点吧，临时下调，遇到大封还是会调整回来的。",
           "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "32",
-          "publishedAt": "2026-06-01T08:30:05.571Z",
-          "type": "default",
-          "extra": "",
-          "content": "wo_wuhao   大佬看到公告的话加一下群，你的扣费分组有点问题，我给你补贴一下",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "31",
-          "publishedAt": "2026-06-01T03:58:40.028Z",
-          "type": "default",
-          "extra": "",
-          "content": "有解决不了的报错可以加Q群820116443咨询解决",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "30",
-          "publishedAt": "2026-06-01T02:12:42.011Z",
-          "type": "default",
-          "extra": "",
-          "content": "kiro分组莫名其妙的没炸，又重置额度找回来很多个号，临时调到0.1x倍率了应该是能抗住并发，如果频繁报速度墙又找不到号的话会往上调调价的",
-          "sourceUrl": "https://fushengyunsuan.com"
         }
       ],
       "rankings": {
@@ -18827,10 +18548,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 6,
+          "count": 5,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 6 条，可在本详情页查看。",
+          "message": "已归档 5 条，可在本详情页查看。",
           "source": "tabbit-audit-profile/fushengyunsuan.cn-live-auth-probe.json"
         },
         {
@@ -18845,10 +18566,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 32,
+          "count": 29,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 32 条，可在本详情页查看。",
+          "message": "已归档 29 条，可在本详情页查看。",
           "source": "https://fushengyunsuan.cn/api/status"
         }
       ]
@@ -18862,294 +18583,10 @@
       "stationTypeShortLabel": "待补证据",
       "platformGuess": "new-api",
       "verifiedTierCount": 0,
-      "groupMultipliers": [
-        {
-          "groupName": "any外接回血",
-          "groupMultiplier": 0.6
-        },
-        {
-          "groupName": "kiro",
-          "groupMultiplier": 0.2
-        },
-        {
-          "groupName": "vip",
-          "groupMultiplier": 0.08
-        },
-        {
-          "groupName": "企业生图专线",
-          "groupMultiplier": 0.08
-        },
-        {
-          "groupName": "公益分组",
-          "groupMultiplier": 0.0001
-        },
-        {
-          "groupName": "测试",
-          "groupMultiplier": 1.2
-        }
-      ],
-      "rechargeTiers": [
-        {
-          "rechargeName": "public status 1 RMB = 1 USD credit",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 1.0,
-          "usdAmount": 1.0,
-          "rechargeLocation": "public /api/status",
-          "expiresRule": "Public status price/quota conversion; expiry not stated"
-        }
-      ],
+      "groupMultipliers": [],
+      "rechargeTiers": [],
       "tierNotes": [],
-      "announcements": [
-        {
-          "id": "32",
-          "publishedAt": "2026-06-01T08:30:05.571Z",
-          "type": "default",
-          "extra": "",
-          "content": "wo_wuhao   大佬看到公告的话加一下群，你的扣费分组有点问题，我给你补贴一下",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "31",
-          "publishedAt": "2026-06-01T03:58:40.028Z",
-          "type": "default",
-          "extra": "",
-          "content": "有解决不了的报错可以加Q群820116443咨询解决",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "30",
-          "publishedAt": "2026-06-01T02:12:42.011Z",
-          "type": "default",
-          "extra": "",
-          "content": "kiro分组莫名其妙的没炸，又重置额度找回来很多个号，临时调到0.1x倍率了应该是能抗住并发，如果频繁报速度墙又找不到号的话会往上调调价的",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "29",
-          "publishedAt": "2026-05-30T07:19:08.036Z",
-          "type": "default",
-          "extra": "",
-          "content": "kiro会在这个月月底超额到期账单结算，所以可能6.1开始的一段时间kiro这条渠道不能用，或者需要点时间补新号进来，大家有需要用到opus的任务请在这两天收收尾，我尽量第一时间更新opus的特价渠道。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "28",
-          "publishedAt": "2026-05-29T02:53:39.384Z",
-          "type": "default",
-          "extra": "",
-          "content": "kiro反代的opus4.8已上新，没试过的小伙伴可以试一下，ide容器反代出来的所以禾维测不满，提前提醒一下。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "27",
-          "publishedAt": "2026-05-28T05:11:26.781Z",
-          "type": "default",
-          "extra": "",
-          "content": "plus又5块了，价格上调至0.08x，一点半调价",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "26",
-          "publishedAt": "2026-05-26T22:12:54.608Z",
-          "type": "default",
-          "extra": "",
-          "content": "gpt价格临时下调至0.06x\n连续两天没封号了，不知道在憋什么大的，先少下调点吧，临时下调，遇到大封还是会调整回来的。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "25",
-          "publishedAt": "2026-05-25T07:13:59.491Z",
-          "type": "default",
-          "extra": "",
-          "content": "下午四点要调一下gpt的价格了，4-6块区间/号的话，得先调到0.08x了，四点调价，找到便宜的号才能降下来，大家有任务切换或者有更便宜备用站的注意下切换时间。库存再蹬两个小时蹬完了，得补号了- -\ngpt0.08x\ngpt0.08x\ngpt0.08x",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "24",
-          "publishedAt": "2026-05-24T17:15:56.607Z",
-          "type": "default",
-          "extra": "",
-          "content": "工作日价格调整回gpt0.05x，kiro分组的opus0.2x（带满缓存实际体验价格下降三分之二）",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "23",
-          "publishedAt": "2026-05-24T09:32:38.179Z",
-          "type": "default",
-          "extra": "",
-          "content": "最近plus号跌到8毛到5毛5一个号了，周末搞点限时活动，gpt分组0.0075x倍率，opus0.1x倍率，搞到今晚凌晨大封，下批号补进来为止。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "22",
-          "publishedAt": "2026-05-23T22:37:05.461Z",
-          "type": "default",
-          "extra": "",
-          "content": "原材料成本下移，gpt分组临时下调价格至0.03x，祝大家用的愉快",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "21",
-          "publishedAt": "2026-05-22T17:07:42.047Z",
-          "type": "default",
-          "extra": "",
-          "content": "最新价格，gpt0.052x，kiro分组的opus闲鱼缺货上浮至0.2x",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "20",
-          "publishedAt": "2026-05-19T06:29:49.228Z",
-          "type": "default",
-          "extra": "",
-          "content": "重回gpt的0.08x时代\nkiro分组的opus定价是0.1x，大家用用试试就知道了，风味缓存的加持下，相当于0.06x-0.04x区间，无敌了。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "19",
-          "publishedAt": "2026-05-18T02:14:46.529Z",
-          "type": "default",
-          "extra": "",
-          "content": "新上的opus4.7、opus4.6定价为0.08x的kiro渠道，原生是不带缓存的，为了计费费率更准，做了缓存优化处理了，整体比不做缓存应该是能再便宜50%。在kiro分组。建议控制一下上下文，模型原生支持百万，但是用在30-25万以内速度快，性能强。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "18",
-          "publishedAt": "2026-05-15T21:49:58.339Z",
-          "type": "default",
-          "extra": "",
-          "content": "价格暂定0.13x，今天上午8点调价。也就是模型定价0.1，vip分组调整成1.3x，综合下来就是0.13，大家临时休息休息吧，只剩下1200个free号了，支撑不了太久，6.5的plus补进来只能来到0.13x\n\n每次涨价都开通退款通道，实在是燃尽了，货太少了",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "17",
-          "publishedAt": "2026-05-15T14:32:43.031Z",
-          "type": "ongoing",
-          "extra": "",
-          "content": "本来寻思周末搞点活动的，现在号都凑不齐gpt活动量了\n我给deepseek官网充50，单独开个活动deepseek分组，周六上午十点限量开放\n大家体验体验正价官网国产吧，真gpt拉闸了也有个切换的渠道，今晚睡前可以配在claude code里边了",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "16",
-          "publishedAt": "2026-05-15T10:05:42.343Z",
-          "type": "default",
-          "extra": "",
-          "content": "过了今晚12点image2生图调整到0.04/张了，参照4.8/个plus号来定价了，等plus号便宜的时候再调整",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "15",
-          "publishedAt": "2026-05-14T12:51:09.885Z",
-          "type": "default",
-          "extra": "",
-          "content": "今晚12点得将价格上调至0.1x了，没有补号来源，做点利润准备随时外接别的站保证不拉闸。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "14",
-          "publishedAt": "2026-05-14T12:51:06.748Z",
-          "type": "default",
-          "extra": "",
-          "content": "今晚12点得将价格上调至0.1x了，没有补号来源，做点利润准备随时外接别的站保证不拉闸。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "13",
-          "publishedAt": "2026-05-14T12:51:00.297Z",
-          "type": "default",
-          "extra": "",
-          "content": "今晚12点得将价格上调至0.1x了，没有补号来源，做点利润准备随时外接别的站保证不拉闸。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "12",
-          "publishedAt": "2026-05-11T19:18:44.999Z",
-          "type": "warning",
-          "extra": "",
-          "content": "公益分组全面升级\nkimik2.6\ndeepseekv4pro\nglm5.1\nminimaxm2.7\n以上四款已经配置了400次/分钟的调用量储备，这次接的不是公益分组，是英伟达官方直连，如果卡顿或者连不上，那就是英伟达拉闸了，大家想要用的，需要按照模型广场的新名字配置一下。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "10",
-          "publishedAt": "2026-05-09T08:29:31.880Z",
-          "type": "success",
-          "extra": "",
-          "content": "为了维护用户体验，防止无序扩张，现暂停新用户注册，我综合根据这段时间的使用情况，将后续增长人数调优与号池管理进行详细统计后开放注册。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "9",
-          "publishedAt": "2026-05-08T16:29:46.707Z",
-          "type": "error",
-          "extra": "",
-          "content": "价格已经上调至0.08x，每次价格调整我都会提前且重复提醒大家。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "8",
-          "publishedAt": "2026-05-08T16:29:41.696Z",
-          "type": "error",
-          "extra": "",
-          "content": "价格已经上调至0.08x，每次价格调整我都会提前且重复提醒大家。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "7",
-          "publishedAt": "2026-05-08T16:28:31.924Z",
-          "type": "error",
-          "extra": "",
-          "content": "价格已经上调至0.08x，每次价格调整我都会提前且重复提醒大家。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "6",
-          "publishedAt": "2026-05-07T09:32:00.433Z",
-          "type": "error",
-          "extra": "",
-          "content": "国产模型为福利分组，价格理论上而言几乎是免费的，主要是为了让大家能够多尝试一下各种模型，所以不太建议单人高并发，或者外接使用。\n\n我再按照现在的模式敞开运行几天，如果后续仍然额度跑的太快的话，可能就需要麻烦点单独创建个令牌，我把国产模型统一归到公益分组，但是需要遵守公益分组公约。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "5",
-          "publishedAt": "2026-05-06T21:24:24.437Z",
-          "type": "ongoing",
-          "extra": "",
-          "content": "预计5月8日23:59分从现在的定价0.06x上调至0.08x，提前通知一下。征求一下大家的意见，后续调价可能波动的更灵活一些，提前6H-12H告知可以么？",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "4",
-          "publishedAt": "2026-05-05T22:02:51.420Z",
-          "type": "ongoing",
-          "extra": "",
-          "content": "原定的价格从0.06x调整回0.08x的计划推延三天，祝大家工作日能产出更多的创意。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "3",
-          "publishedAt": "2026-05-05T08:25:38.146Z",
-          "type": "default",
-          "extra": "",
-          "content": "没想到人数增加的这么快，正在扩充第二台服务器加大带宽，请加一下QQ群820116443，应该是无感负载迁移",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "2",
-          "publishedAt": "2026-05-04T08:29:53.191Z",
-          "type": "default",
-          "extra": "",
-          "content": "计划于5月5日23:59分调整回原0.08x计费倍率。依然保持满缓存，缓存读取定价为0.008x计费倍率。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        },
-        {
-          "id": "1",
-          "publishedAt": "2026-05-02T23:14:44.506Z",
-          "type": "default",
-          "extra": "",
-          "content": "大家在中转站单次少充，勤充，最近封控比较严，现在推出的大额充值优惠，所谓的锁定价格可能是跑路的信号。你盯别人的优惠，别人盯你的本金。\n目前号池延续0.06x的价格到五一假期应该是没什么问题，五一之后预计调整回0.08x，价格随时波动，每次调整我都在Q群和网页置顶公告，大家注意观看。不会出现后台暗调倍率或者暗调缓存那些套路。",
-          "sourceUrl": "https://fushengyunsuan.com"
-        }
-      ],
+      "announcements": [],
       "rankings": {},
       "quality": {
         "work_hours": {
@@ -19220,28 +18657,28 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 6,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 6 条，可在本详情页查看。",
+          "count": 0,
+          "status": "missing",
+          "statusLabel": "未抓到",
+          "message": "当前未抓到结构化分组倍率。",
           "source": ""
         },
         {
           "key": "rechargeTiers",
           "label": "充值档位",
-          "count": 1,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
+          "count": 0,
+          "status": "missing",
+          "statusLabel": "未抓到",
+          "message": "当前未抓到结构化充值档位。",
           "source": ""
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 31,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 31 条，可在本详情页查看。",
+          "count": 0,
+          "status": "public_missing",
+          "statusLabel": "未发现公开接口",
+          "message": "未发现标准公开公告接口或接口未返回公告内容。",
           "source": ""
         }
       ]
@@ -20586,66 +20023,10 @@
       "stationTypeShortLabel": "待补证据",
       "platformGuess": "new-api",
       "verifiedTierCount": 0,
-      "groupMultipliers": [
-        {
-          "groupName": "default",
-          "groupMultiplier": 1.0
-        }
-      ],
-      "rechargeTiers": [
-        {
-          "rechargeName": "public status 7.3 RMB = 1 USD credit",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 7.3,
-          "usdAmount": 1.0,
-          "rechargeLocation": "public /api/status",
-          "expiresRule": "Public status price/quota conversion; expiry not stated"
-        }
-      ],
+      "groupMultipliers": [],
+      "rechargeTiers": [],
       "tierNotes": [],
-      "announcements": [
-        {
-          "id": "5",
-          "publishedAt": "2026-06-02T16:14:18.272Z",
-          "type": "default",
-          "extra": "",
-          "content": "夜间省点Token，明天白天跑。\n今天拉闸，明早9点左右恢复。",
-          "sourceUrl": "https://lpgpt.us"
-        },
-        {
-          "id": "4",
-          "publishedAt": "2026-06-01T06:07:20.583Z",
-          "type": "ongoing",
-          "extra": "",
-          "content": "16.00开始有个渠道要停了。上游号池耗尽。",
-          "sourceUrl": "https://lpgpt.us"
-        },
-        {
-          "id": "3",
-          "publishedAt": "2026-06-01T02:37:51.393Z",
-          "type": "ongoing",
-          "extra": "",
-          "content": "公益站在Linux.do的帖子被人举报移除了。\n以后本站的动态就在站内的公告发布",
-          "sourceUrl": "https://lpgpt.us"
-        },
-        {
-          "id": "2",
-          "publishedAt": "2026-05-31T14:51:34.497Z",
-          "type": "default",
-          "extra": "",
-          "content": "5.5模型已恢复",
-          "sourceUrl": "https://lpgpt.us"
-        },
-        {
-          "id": "1",
-          "publishedAt": "2026-05-27T03:19:19.100Z",
-          "type": "ongoing",
-          "extra": "",
-          "content": "本站只支持Codex编码模型，不支持图片生成，请勿重复尝试，发现立即封禁。\n使用过程中，养成良好习惯，注意控制上下文长度。\n经常/compact",
-          "sourceUrl": "https://lpgpt.us"
-        }
-      ],
+      "announcements": [],
       "rankings": {},
       "quality": {
         "work_hours": {
@@ -20716,28 +20097,28 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 1,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
+          "count": 0,
+          "status": "missing",
+          "statusLabel": "未抓到",
+          "message": "当前未抓到结构化分组倍率。",
           "source": ""
         },
         {
           "key": "rechargeTiers",
           "label": "充值档位",
-          "count": 1,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
+          "count": 0,
+          "status": "missing",
+          "statusLabel": "未抓到",
+          "message": "当前未抓到结构化充值档位。",
           "source": ""
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 5,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 5 条，可在本详情页查看。",
+          "count": 0,
+          "status": "public_missing",
+          "statusLabel": "未发现公开接口",
+          "message": "未发现标准公开公告接口或接口未返回公告内容。",
           "source": ""
         }
       ]
@@ -21360,209 +20741,10 @@
       "stationTypeShortLabel": "待补证据",
       "platformGuess": "unknown",
       "verifiedTierCount": 0,
-      "groupMultipliers": [
-        {
-          "groupName": "azure-gpt",
-          "groupMultiplier": 5.6
-        },
-        {
-          "groupName": "banana",
-          "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "claude",
-          "groupMultiplier": 0.8
-        },
-        {
-          "groupName": "claude-aws",
-          "groupMultiplier": 4.0
-        },
-        {
-          "groupName": "claude-max",
-          "groupMultiplier": 2.4
-        },
-        {
-          "groupName": "claude-max-cheap",
-          "groupMultiplier": 1.2
-        },
-        {
-          "groupName": "claude-mix",
-          "groupMultiplier": 1.6
-        },
-        {
-          "groupName": "codex",
-          "groupMultiplier": 0.4
-        },
-        {
-          "groupName": "codex-pro",
-          "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "deepseek",
-          "groupMultiplier": 0.8
-        },
-        {
-          "groupName": "default",
-          "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "gemini",
-          "groupMultiplier": 3.2
-        },
-        {
-          "groupName": "image",
-          "groupMultiplier": 1.0
-        },
-        {
-          "groupName": "seedance",
-          "groupMultiplier": 1.0
-        }
-      ],
-      "rechargeTiers": [
-        {
-          "rechargeName": "Codex 天卡",
-          "billingType": "daily",
-          "billingTypeLabel": "日卡",
-          "rmbAmount": 9.0,
-          "usdAmount": 10.0,
-          "rechargeLocation": "public /api/subscription/plans",
-          "expiresRule": "1 day subscription; total quota pool, no periodic reset"
-        },
-        {
-          "rechargeName": "Codex 周卡",
-          "billingType": "weekly",
-          "billingTypeLabel": "周卡",
-          "rmbAmount": 59.0,
-          "usdAmount": 10.0,
-          "rechargeLocation": "public /api/subscription/plans",
-          "expiresRule": "1 week subscription; quota resets daily"
-        },
-        {
-          "rechargeName": "Codex Mini 套餐",
-          "billingType": "monthly",
-          "billingTypeLabel": "月卡",
-          "rmbAmount": 199.0,
-          "usdAmount": 7.0,
-          "rechargeLocation": "public /api/subscription/plans",
-          "expiresRule": "1 month subscription; quota resets daily"
-        },
-        {
-          "rechargeName": "Codex Basic 套餐",
-          "billingType": "monthly",
-          "billingTypeLabel": "月卡",
-          "rmbAmount": 699.0,
-          "usdAmount": 30.0,
-          "rechargeLocation": "public /api/subscription/plans",
-          "expiresRule": "1 month subscription; quota resets daily"
-        }
-      ],
+      "groupMultipliers": [],
+      "rechargeTiers": [],
       "tierNotes": [],
-      "announcements": [
-        {
-          "id": "14",
-          "publishedAt": "2026-06-02T08:04:09.722Z",
-          "type": "default",
-          "extra": "",
-          "content": "Nbility 提供 claude awsb、 max企业专属渠道，3000rpm+，价格美丽，量大可谈折扣，可用于蒸馏，详情请联系客服 xxx",
-          "sourceUrl": "https://nbility.dev"
-        },
-        {
-          "id": "13",
-          "publishedAt": "2026-05-31T12:38:04.013Z",
-          "type": "default",
-          "extra": "",
-          "content": "为进一步提升平台性能与服务体验，我们计划于下周一对网站服务器进行扩容升级。维护期间，部分服务可能出现短暂波动或访问延迟，预计影响时间较短。",
-          "sourceUrl": "https://nbility.dev"
-        },
-        {
-          "id": "12",
-          "publishedAt": "2026-05-29T01:59:24.117Z",
-          "type": "success",
-          "extra": "npm install -g @anthropic-ai/claude-code@2.1.154",
-          "content": "- `claude-max group` is now available in the fully functional version of Claude Opus 4.8. Please use the following command to upgrade your local terminal to v2.1.154\n- Max 分组现已上线 Claude Opus 4.8 满血版。请使用以下命令将本地终端升级至 v2.1.154",
-          "sourceUrl": "https://nbility.dev"
-        },
-        {
-          "id": "11",
-          "publishedAt": "2026-05-28T07:41:28.339Z",
-          "type": "default",
-          "extra": "[服务监控：实时接口状态请查看](https://status.nbility.dev)",
-          "content": "- Azure GPT 企业接入：Nbility 已通过 Azure GPT 官方企业通道提供服务，支持 GPT-5.5 模型。如需接入，请联系 xxx 或提交 [工单](https://nbility.dev/console/tickets)，价格在官方原价基础上有折扣\n- 开票申请：请通过 [工单系统](https://nbility.dev/console/tickets) 提交开票申请。默认开具增值税普通发票（税率 1%），开票金额 1,000 元起。",
-          "sourceUrl": "https://nbility.dev"
-        },
-        {
-          "id": "10",
-          "publishedAt": "2026-05-28T05:51:23.174Z",
-          "type": "default",
-          "extra": "Gemini 分组通知调整：旧渠道已下线，新渠道不限并发，分组倍率已上调。",
-          "content": "Gemini Group Update: Legacy channels retired. New channels feature unlimited concurrency with adjusted group rate multipliers.",
-          "sourceUrl": "https://nbility.dev"
-        },
-        {
-          "id": "9",
-          "publishedAt": "2026-05-25T07:26:46.357Z",
-          "type": "success",
-          "extra": "⚠️注意，claude相关分组目前仅限于在 “Claude Code” 或官方开发的插件中使用，若需外接请联系站长。",
-          "content": "-  Claude Max is offering a limited-time special discount with a multiplier of 1.2x. When creating a token, please select the \"claude-max-cheap\" group\n- 新上架 Claude Max 限时特价倍率 1.2x，创建令牌时选择claude-max-cheap 分组。",
-          "sourceUrl": "https://nbility.dev"
-        },
-        {
-          "id": "8",
-          "publishedAt": "2026-05-19T14:13:49.627Z",
-          "type": "success",
-          "extra": "Nbility 已支持邀请充值返佣；已上架 seedance-2-480p、seedance-2-720p 按秒计费模型，支持人脸、免排队。",
-          "content": "Nbility now supports the seedance-2-480p and seedance-2-720p pay-per-second models, as well as face recognition and skip-the-line features. See  [seedance 2.0 docs](https://nbility.dev/docs/api/videos/seedance) to get start.",
-          "sourceUrl": "https://nbility.dev"
-        },
-        {
-          "id": "6",
-          "publishedAt": "2026-05-17T14:52:07.000Z",
-          "type": "success",
-          "extra": "claude-max 分组倍率从 3.2x 降到 2.4x，感谢各位一直以来的支持。",
-          "content": "Anthropic just bumped up the Claude Max limits! We're passing that on to you: the claude-max group multiplier is dropping from 3.2x to 2.4x costs.",
-          "sourceUrl": "https://nbility.dev"
-        },
-        {
-          "id": "1",
-          "publishedAt": "2026-05-13T03:44:56.000Z",
-          "type": "default",
-          "extra": "说明一下，本站的“$”不是真美金，仅仅是一个额度单位，这个单位可以是$，也可以是¥，还可以是🤓，充值时 ¥1 = 1 站内额度。",
-          "content": "The \"$\" symbolis not real USD—it′s simply a display unit for quota. It may appear as ‘¥, or even 🤓‘.  ¥1 = 1 site credit.",
-          "sourceUrl": "https://nbility.dev"
-        },
-        {
-          "id": "3",
-          "publishedAt": "2026-05-11T03:51:39.000Z",
-          "type": "default",
-          "extra": "图片生成后会在 CDN 中保存 3 天，可在生图日志详情中获取图片地址，请及时下载。",
-          "content": "Images are stored on CDN for 3 days. Grab the URL from your generation log and download promptly.",
-          "sourceUrl": "https://nbility.dev"
-        },
-        {
-          "id": "2",
-          "publishedAt": "2026-05-10T03:49:03.000Z",
-          "type": "warning",
-          "extra": "调用 gpt-image-2 相关模型时，高分辨率、高质量模式延迟较高，出图成功率较低。若失败，请在客户端自行实现重试逻辑。",
-          "content": "For gpt-image-2 models, async mode is recommended for higher success rates. See the [API docs](https://nbility.dev/docs/api/images) for details. Please implement client-side retry logic. Note that high-res / high-quality modes have higher latency and lower success rates.",
-          "sourceUrl": "https://nbility.dev"
-        },
-        {
-          "id": "4",
-          "publishedAt": "2026-04-24T03:52:11.000Z",
-          "type": "success",
-          "extra": "Nbility 已支持 gpt-5.5、gpt-image-2。API 文档：https://nbility.dev/docs/api/images",
-          "content": "[Nbility now supports gpt-5.5 and gpt-image-2. API docs:](https://nbility.dev/docs/api/images)",
-          "sourceUrl": "https://nbility.dev"
-        },
-        {
-          "id": "5",
-          "publishedAt": "2026-04-01T05:54:53.000Z",
-          "type": "success",
-          "extra": "",
-          "content": "Nbility is officially launched, with support for Codex, Claude Code, and Gemini.\n\nNbility 正式发布，支持 Codex、Claude Code、Gemini。Nbility 的目标不是做大做强，而是各位朋友、家人们能在有需要的时候，能方便、快捷的用上这些AI工具，感受技术对工作、生活的改变，哪怕你不常用，在下次突然想起这个工具时，打开敲下回车，Nbility 依然给予你最快捷的回复！",
-          "sourceUrl": "https://nbility.dev"
-        }
-      ],
+      "announcements": [],
       "rankings": {},
       "quality": {
         "work_hours": {
@@ -21633,28 +20815,28 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 14,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 14 条，可在本详情页查看。",
+          "count": 0,
+          "status": "missing",
+          "statusLabel": "未抓到",
+          "message": "当前未抓到结构化分组倍率。",
           "source": ""
         },
         {
           "key": "rechargeTiers",
           "label": "充值档位",
-          "count": 4,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 4 条，可在本详情页查看。",
+          "count": 0,
+          "status": "missing",
+          "statusLabel": "未抓到",
+          "message": "当前未抓到结构化充值档位。",
           "source": ""
         },
         {
           "key": "announcements",
           "label": "公告",
-          "count": 13,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 13 条，可在本详情页查看。",
+          "count": 0,
+          "status": "public_missing",
+          "statusLabel": "未发现公开接口",
+          "message": "未发现标准公开公告接口或接口未返回公告内容。",
           "source": ""
         }
       ]
@@ -22486,14 +21668,6 @@
           "extra": "",
           "content": "【模型分组更新通知】\n\n1.gemini 分组升级优质号池，性能和稳定性大幅提升，成本大幅下降。倍率 x2.8 -> x1.4",
           "sourceUrl": "https://1xm.ai"
-        },
-        {
-          "id": "26",
-          "publishedAt": "2026-06-01T00:43:17.302Z",
-          "type": "ongoing",
-          "extra": "",
-          "content": "【模型分组更新通知】 为保障cc-windsurf 分组稳定好用，升级 max 订阅，成本大幅提升，普通使用倍率从 x0.65 -> x1.5,订阅日卡倍率从 x0.5 -> x1.4,订阅 周卡倍率从 x0.45 -> x1.35,订阅月卡倍率从 x0.4 -> x1.3",
-          "sourceUrl": "https://1xm.ai"
         }
       ],
       "rankings": {},
@@ -22584,10 +21758,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 25,
+          "count": 24,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 25 条，可在本详情页查看。",
+          "message": "已归档 24 条，可在本详情页查看。",
           "source": "tabbit-audit-profile/pending-stations-api-probes.json"
         }
       ]
@@ -23827,22 +23001,6 @@
           "extra": "",
           "content": "@keyframes shimmer{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}\n@keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-12deg)}75%{\ntransform:rotate(12deg)}}\n@keyframes gold{0%,100%{filter:brightness(1)}50%{filter:brightness(1.5)\ndrop-shadow(0 0 4px #ffd700)}}\n@keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.3)\nrotate(10deg)}}\n.hl{color:#ef4444;animation:shimmer 4s linear infinite;font-weight:bold}\n.shake{display:inline-block;animation:shake .6s ease-in-out infinite}\n.gold{display:inline-block;animation:gold 1.5s ease-in-out infinite}\n.pop{display:inline-block;animation:pop 1s ease-in-out infinite}\n.fn{color:#c9a84c;cursor:pointer;font-weight:bold}\n\n[📊 服务状态监控 👉](https://status.vbcode.io)\n分组\n倍率\n特性\n说明\n\ncc-cx-to-cc\n0.12 * 花费¥10购$10额度 · 倍率\n0.12 · 等效约$83.3 · 永久有效\ncodex转claude, 可直接在Claude中使用\nplus/pro账户号池, 响应快, 缓存命中极高, 可外接三方工具\n\ncodex\n0.2 * 花费¥10购$10额度 · 倍率0.2 ·\n等效$50 · 永久有效\n支持 gpt-5.4,\ngpt-5.3-codex, gpt-5.3-codex-spark\nplus/pro账户号池, 响应快, 缓存命中极高. 可外接三方工具\n\n📚 文档更新通知\n👉 文档地址：https://docs.vbcode.io\n🍒Cherry Studio 配置教程, 🦞OpenClaw 配置教程\n\n📢自助充值已上线💰\n🔹 入口：控制台 → 钱包管理\n🔹 最低充值 10元，RMB : USD = 1:1，花费¥10 = 购$10额度\n🔹 即用即付（Pay as you\ngo），余额不过期，用多少充多少\n🔹 如需退款: 退款金额=实际充值-实际消耗",
           "sourceUrl": "https://vbcode.io/api/notice"
-        },
-        {
-          "id": "34",
-          "publishedAt": "2026-06-02T01:34:02.190Z",
-          "type": "warning",
-          "extra": "",
-          "content": "Codex 从6月2日起，下线GPT-5.2 / 5.3-Codex 模型",
-          "sourceUrl": "https://vbcode.io"
-        },
-        {
-          "id": "33",
-          "publishedAt": "2026-06-01T02:30:02.591Z",
-          "type": "success",
-          "extra": "",
-          "content": "cc-aws, cc-mix, cc-max 分组 claude-opus-4-8 已支持",
-          "sourceUrl": "https://vbcode.io"
         }
       ],
       "rankings": {},
@@ -23933,10 +23091,10 @@
         {
           "key": "announcements",
           "label": "公告",
-          "count": 36,
+          "count": 34,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 36 条，可在本详情页查看。",
+          "message": "已归档 34 条，可在本详情页查看。",
           "source": "https://vbcode.io/api/status"
         }
       ]
