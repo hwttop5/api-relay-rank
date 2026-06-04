@@ -417,7 +417,7 @@ jobs:
           site_url="$(printf '%s\n' "$remote_output" | awk -F= '/^SITE_URL=/{print $2; exit}')"
           audit_count="$(printf '%s\n' "$remote_output" | awk -F= '/^AUDIT_COUNT=/{print $2; exit}')"
           snapshot_row="$(printf '%s\n' "$remote_output" | awk -F= '/^SNAPSHOT_ROW=/{print $2; exit}')"
-          report_path="$(printf '%s\n' "$remote_output" | awk -F= '/^REPORT_PATH=/{print $2; exit}')"
+          report_path="$(printf '%s\n' "$remote_output" | sed -n 's/^REPORT_PATH=//p' | head -n 1)"
           test -n "$site_url"
           test -n "$audit_count"
           test -n "$snapshot_row"
