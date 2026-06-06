@@ -30,6 +30,20 @@ def maybe_run_login_probe_refresh(steps: list[str]) -> None:
         )
 
 
+def maybe_run_invite_link_refresh(steps: list[str]) -> None:
+    has_invite_credentials = any(name.startswith("API_RELAY_INVITE_") and name.endswith("_EMAIL") for name in os.environ)
+    command = ["python", "scripts/refresh_invite_links.py", "--write"]
+    if not has_invite_credentials:
+        result = run(["python", "scripts/refresh_invite_links.py"], cwd=APP_ROOT, check=False)
+        steps.append(f"scripts/refresh_invite_links.py skipped (missing invite credentials, exit={result.returncode})")
+        return
+    result = run(command, cwd=APP_ROOT, check=False)
+    if result.returncode == 0:
+        steps.append("scripts/refresh_invite_links.py --write")
+    else:
+        steps.append(f"scripts/refresh_invite_links.py --write failed with exit {result.returncode}; preserved existing invite links")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="手动刷新 Codex Manager 排名与质量数据。")
     parser.add_argument(
@@ -65,6 +79,7 @@ def main() -> int:
     steps.append("scripts/fetch_public_content.py --skip-build")
 
     maybe_run_login_probe_refresh(steps)
+    maybe_run_invite_link_refresh(steps)
 
     run(audit_command, cwd=APP_ROOT)
     steps.append("audit_proxy_multipliers.py (post-fetch)")

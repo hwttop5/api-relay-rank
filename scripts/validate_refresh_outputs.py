@@ -6,11 +6,12 @@ import json
 import os
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 try:
-    from scripts.runtime_paths import LIVE_AUTH_PROBE_DIR, SITE_DATA_PATH
+    from scripts.runtime_paths import APP_ROOT, LIVE_AUTH_PROBE_DIR, SITE_DATA_PATH
 except ModuleNotFoundError:
-    from runtime_paths import LIVE_AUTH_PROBE_DIR, SITE_DATA_PATH
+    from runtime_paths import APP_ROOT, LIVE_AUTH_PROBE_DIR, SITE_DATA_PATH
 
 REQUIRED_NEXUS_ENDPOINTS = (
     "/api/v1/groups/available",
@@ -32,6 +33,8 @@ SENSITIVE_SECRET_KEYS = {
     "password",
     "secret",
 }
+STATION_INVITE_LINKS_PATH = APP_ROOT / "config" / "station_invite_links.json"
+DEFAULT_INVITE_REPORT_PATH = APP_ROOT / ".local-artifacts" / "station-invite-link-report.json"
 
 
 def read_json(path: Path) -> Any:
@@ -52,14 +55,20 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--site-data", type=Path, default=SITE_DATA_PATH)
     parser.add_argument("--scrape-report", type=Path)
     parser.add_argument("--probe-dir", type=Path, default=LIVE_AUTH_PROBE_DIR)
+    parser.add_argument("--invite-links", type=Path, default=STATION_INVITE_LINKS_PATH)
+    parser.add_argument("--invite-report", type=Path, default=DEFAULT_INVITE_REPORT_PATH)
     parser.add_argument("--skip-scrape-validation", action="store_true")
     return parser.parse_args()
 
 
 def secret_values_from_env() -> list[str]:
     values = []
-    for name in ("API_RELAY_SCRAPE_EMAIL", "API_RELAY_SCRAPE_PASSWORD"):
-        value = os.environ.get(name, "").strip()
+    for name, raw_value in os.environ.items():
+        if name not in {"API_RELAY_SCRAPE_EMAIL", "API_RELAY_SCRAPE_PASSWORD"} and not (
+            name.startswith("API_RELAY_INVITE_") and name.endswith(("_EMAIL", "_PASSWORD"))
+        ):
+            continue
+        value = raw_value.strip()
         if len(value) >= 6:
             values.append(value)
     return values
@@ -133,7 +142,53 @@ def find_station(site_data: dict[str, Any], key: str) -> dict[str, Any]:
     raise SystemExit(f"Missing station in site-data: {key}")
 
 
-def validate_site_data(path: Path) -> None:
+def public_url(value: Any) -> bool:
+    text = str(value or "").strip()
+    if not text:
+        return False
+    parsed = urlparse(text)
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        return False
+    host = parsed.netloc.lower()
+    return host not in {"localhost", "127.0.0.1", "[::1]"} and not host.startswith("127.0.0.1:")
+
+
+def validate_invite_link_coverage(site_data: dict[str, Any], invite_links_path: Path, invite_report_path: Path) -> dict[str, Any]:
+    if invite_links_path.exists():
+        invite_links = read_json(invite_links_path)
+        if not isinstance(invite_links, dict):
+            raise SystemExit("station invite links file is not a JSON object.")
+    else:
+        invite_links = {}
+    assert_no_secret_leak(invite_links)
+
+    for station_key, invite_url in invite_links.items():
+        if not public_url(invite_url):
+            raise SystemExit(f"Invalid invite URL for {station_key}.")
+
+    ranked_keys = sorted(
+        {
+            str(row.get("station") or "").strip()
+            for rows in site_data.get("rankings", {}).values()
+            if isinstance(rows, list)
+            for row in rows
+            if isinstance(row, dict) and str(row.get("station") or "").strip()
+        }
+    )
+    fallback = [{"station": key, "status": "fallback_official_url"} for key in ranked_keys if key not in invite_links]
+    report = {
+        "validated": True,
+        "rankedStationCount": len(ranked_keys),
+        "configuredInviteCount": len(invite_links),
+        "fallbackOfficialUrlCount": len(fallback),
+        "fallbackOfficialUrl": fallback,
+    }
+    invite_report_path.parent.mkdir(parents=True, exist_ok=True)
+    invite_report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    return report
+
+
+def validate_site_data(path: Path) -> dict[str, Any]:
     site_data = read_json(path)
     if not isinstance(site_data, dict):
         raise SystemExit("site-data is not a JSON object.")
@@ -165,6 +220,7 @@ def validate_site_data(path: Path) -> None:
             status = item.get("status")
             if status not in ALLOWED_EVIDENCE_STATUSES:
                 raise SystemExit(f"Unexpected evidence status for {station.get('key')}:{item.get('key')} = {status}")
+    return site_data
 
 
 def main() -> int:
@@ -177,8 +233,19 @@ def main() -> int:
             raise SystemExit("--scrape-report is required unless --skip-scrape-validation is set.")
         validate_scrape_report(args.scrape_report)
         validate_nexus_probe(args.probe_dir)
-    validate_site_data(args.site_data)
-    print(json.dumps({"validated": True, "skipScrapeValidation": bool(args.skip_scrape_validation)}, ensure_ascii=False))
+    site_data = validate_site_data(args.site_data)
+    invite_report = validate_invite_link_coverage(site_data, args.invite_links, args.invite_report)
+    print(
+        json.dumps(
+            {
+                "validated": True,
+                "skipScrapeValidation": bool(args.skip_scrape_validation),
+                "inviteLinkFallbackOfficialUrl": invite_report["fallbackOfficialUrlCount"],
+                "inviteReport": str(args.invite_report),
+            },
+            ensure_ascii=False,
+        )
+    )
     return 0
 
 

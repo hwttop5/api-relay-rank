@@ -189,7 +189,7 @@ SITE_URL_OVERRIDES: dict[str, str] = {
     "icodex.pro": "https://icodex.pro",
     "loomex": "https://www.loomex.top",
     "moosecloud.cc": "https://moosecloud.cc",
-    "muskai": "https://aiapi.muskpay.top",
+    "muskai": "https://muskapi.cc",
     "onexmodel": "https://1xm.ai",
     "opentk": "https://opentk.ai",
     "prod.bbroot.com": "https://prod.bbroot.com",
@@ -4441,7 +4441,7 @@ def write_markdown(
     lines.append("- 采用倍率计算公式：实际倍率 = 分组倍率 × 实付人民币 ÷ 到账美元额度。")
     lines.append("- 正式采用倍率 = 该站点所有已核验、非 0、可参与排名档位中的最低实际倍率。")
     lines.append("- 综合评分权重：正确响应率 40% + 响应时间 35% + 实际倍率 25%。")
-    lines.append("- 环境说明：本次数据来自本机 Codex Manager 对多家中转站 Codex API Key 的聚合调用日志。费用口径统一按各站当前可核验的最低倍率档位计算，这通常也是最便宜、但往往延迟更高且更不稳定的一档。由于所有请求都先经过 Codex Manager 再转发给各中转站，因此相较直连会天然增加一层延迟。日志样本来自实际开发 1 到 2 个小项目期间的调用记录，网络环境为昆明广电宽带。以下排名仅基于 2026-05-15 当天、当前账号状态与当前网络环境的观测结果，无任何利益相关，仅供参考。")
+    lines.append("- 环境说明：本次数据来自本机 Codex Manager 对多家中转站 Codex API Key 的聚合调用日志。费用口径统一按各站当前可核验的最低倍率档位计算，这通常也是最便宜、但往往延迟更高且更不稳定的一档。由于所有请求都先经过 Codex Manager 再转发给各中转站，因此相较直连会天然增加一层延迟。日志样本来自实际开发 1 到 2 个小项目期间的调用记录，网络环境为昆明广电宽带。以下排名仅基于 2026-05-15 当天、当前账号状态与当前网络环境的观测结果；部分中转站外链可能为邀请链接，可以给测试账号带来一些额度以保持持续的测试和产生更多的数据，付费测试的话真伤不起啊QAQ；排名数据、评分和排序不受邀请链接影响，仅供参考。")
     lines.append("")
     lines.extend(ranking_markdown_section("正式综合排名（工作时段）", formal_work_ranking))
     lines.extend(ranking_markdown_section("正式综合排名（非工作时段）", formal_off_ranking))

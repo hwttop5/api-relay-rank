@@ -22,6 +22,7 @@ from scripts import fetch_public_content as fetch_public_content
 from scripts import run_station_audit as run_station_audit
 from scripts import run_server_refresh as run_server_refresh
 from scripts import rebuild_runtime_site_data as rebuild_runtime_site_data
+from scripts import refresh_invite_links as refresh_invite_links
 from scripts import scrape_missing_announcements as scrape_missing_announcements
 from scripts import seed_runtime_data as seed_runtime_data
 from scripts import validate_refresh_outputs as validate_refresh_outputs
@@ -611,7 +612,7 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertFalse(build_site_data.contains_han(ranking["label"]))
 
     def test_private_station_identifiers_are_not_public(self) -> None:
-        self.assertFalse(build_site_data.is_public_station_key("printcap.ai-ttop5@qq.com"))
+        self.assertFalse(build_site_data.is_public_station_key("printcap.ai-private-account"))
         self.assertFalse(build_site_data.is_public_station_key("printcap.ai-2026-05-17-01"))
         self.assertFalse(build_site_data.is_public_station_key("atomflow-hw693ttop5-1"))
         self.assertFalse(build_site_data.is_public_station_url(""))
@@ -642,6 +643,65 @@ class BuildSiteDataTests(unittest.TestCase):
         )
 
         self.assertEqual(chosen, "https://www.hi-code.cc")
+
+    def test_invite_links_override_ranking_rows_and_add_station_display_link(self) -> None:
+        stations = {
+            "demo": {
+                "key": "demo",
+                "label": "Demo",
+                "url": "https://demo.example",
+                "rankings": {},
+            }
+        }
+        rankings = {
+            "work_hours": [
+                {
+                    "station": "demo",
+                    "stationUrl": "https://demo.example",
+                    "timeWindow": "work_hours",
+                }
+            ],
+            "off_hours": [],
+            "all_hours": [],
+        }
+
+        build_site_data.sync_station_rankings_from_rankings(stations, rankings)
+        build_site_data.apply_invite_links_to_stations(stations, {"demo": "https://demo.example/register?aff=abc"})
+        build_site_data.detach_station_ranking_rows(stations)
+        report = build_site_data.apply_invite_links_to_rankings(rankings, {"demo": "https://demo.example/register?aff=abc"})
+
+        self.assertEqual(rankings["work_hours"][0]["stationUrl"], "https://demo.example/register?aff=abc")
+        self.assertEqual(stations["demo"]["rankings"]["work_hours"]["stationUrl"], "https://demo.example")
+        self.assertEqual(stations["demo"]["url"], "https://demo.example")
+        self.assertEqual(stations["demo"]["inviteUrl"], "https://demo.example/register?aff=abc")
+        self.assertEqual(report["fallbackOfficialUrlCount"], 0)
+
+    def test_missing_invite_link_removes_stale_station_display_link(self) -> None:
+        stations = {
+            "demo": {
+                "key": "demo",
+                "label": "Demo",
+                "url": "https://demo.example",
+                "inviteUrl": "https://demo.example/register?aff=old",
+            }
+        }
+
+        build_site_data.apply_invite_links_to_stations(stations, {})
+
+        self.assertNotIn("inviteUrl", stations["demo"])
+
+    def test_invite_link_report_records_missing_ranked_station_as_fallback(self) -> None:
+        report = build_site_data.apply_invite_links_to_rankings(
+            {
+                "work_hours": [{"station": "demo", "stationUrl": "https://demo.example"}],
+                "off_hours": [],
+                "all_hours": [],
+            },
+            {},
+        )
+
+        self.assertEqual(report["fallbackOfficialUrlCount"], 1)
+        self.assertEqual(report["fallbackOfficialUrl"], [{"station": "demo", "status": "fallback_official_url"}])
 
     def test_sub2api_app_config_type_hint_does_not_create_recharge_tiers(self) -> None:
         html = (
@@ -1384,6 +1444,155 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(accounts[1]["email"], "fallback-account")
         self.assertEqual(accounts[1]["password"], "primary-password")
 
+    def test_refresh_invite_links_discovers_formal_ranking_station_rows(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            site_data_path = root / "site-data.json"
+            site_data_path.write_text(
+                json.dumps(
+                    {
+                        "rankings": {
+                            "work_hours": [{"station": "demo"}],
+                            "off_hours": [{"station": "demo"}],
+                            "all_hours": [{"station": "other"}],
+                        },
+                        "stations": [
+                            {"key": "demo", "label": "Demo", "url": "https://demo.example", "platformGuess": "new-api"},
+                            {"key": "other", "label": "Other", "url": "https://other.example", "platformGuess": "sub2api"},
+                            {"key": "unranked", "label": "Unranked", "url": "https://unranked.example", "platformGuess": "new-api"},
+                        ],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+
+            with mock.patch.object(refresh_invite_links, "SITE_DATA_PATH", site_data_path):
+                rows = refresh_invite_links.ranked_station_rows(None, {})
+
+        self.assertEqual([row["key"] for row in rows], ["demo", "other"])
+
+    def test_refresh_invite_links_missing_credentials_reports_fallback(self) -> None:
+        with mock.patch.dict(refresh_invite_links.os.environ, {}, clear=True):
+            capture = refresh_invite_links.capture_invite_link(
+                {"key": "demo", "label": "Demo", "base": "https://demo.example", "platform": "new-api"}
+            )
+
+        self.assertEqual(capture["status"], "missing_credentials")
+        self.assertEqual(capture["inviteUrl"], "")
+
+    def test_refresh_invite_links_extracts_and_scores_invite_urls(self) -> None:
+        candidates = refresh_invite_links.extract_urls(
+            {
+                "data": {
+                    "invite_link": "https://demo.example/register?aff=abc",
+                    "profile": "https://demo.example/profile",
+                }
+            }
+        )
+
+        self.assertEqual(refresh_invite_links.best_invite_url(candidates, "https://demo.example"), "https://demo.example/register?aff=abc")
+
+    def test_refresh_invite_links_ignores_boolean_like_invite_codes(self) -> None:
+        candidates = refresh_invite_links.invite_urls_from_codes(
+            refresh_invite_links.extract_invite_codes({"data": {"aff": True, "invite_code": "O1w8"}}),
+            "https://demo.example",
+        )
+
+        self.assertIn("https://demo.example/register?aff=O1w8", candidates)
+        self.assertNotIn("https://demo.example/register?aff=True", candidates)
+
+    def test_refresh_invite_links_skips_configured_stations_by_default(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            site_data_path = root / "site-data.json"
+            invite_links_path = root / "station_invite_links.json"
+            report_path = root / "capture-report.json"
+            site_data_path.write_text(
+                json.dumps(
+                    {
+                        "rankings": {"work_hours": [{"station": "demo"}], "off_hours": [{"station": "other"}], "all_hours": []},
+                        "stations": [
+                            {"key": "demo", "label": "Demo", "url": "https://demo.example", "platformGuess": "new-api"},
+                            {"key": "other", "label": "Other", "url": "https://other.example", "platformGuess": "sub2api"},
+                        ],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+            invite_links_path.write_text(json.dumps({"demo": "https://demo.example/invite?aff=old"}), encoding="utf-8")
+            captured: list[str] = []
+
+            def fake_capture(station: dict[str, str]) -> dict[str, object]:
+                captured.append(station["key"])
+                return {"station": station["key"], "status": "missing_credentials", "inviteUrl": ""}
+
+            with (
+                mock.patch.object(refresh_invite_links, "SITE_DATA_PATH", site_data_path),
+                mock.patch.object(refresh_invite_links, "STATION_INVITE_LINKS_PATH", invite_links_path),
+                mock.patch.object(refresh_invite_links, "capture_invite_link", side_effect=fake_capture),
+                mock.patch.object(refresh_invite_links, "load_station_aliases", return_value={}),
+                mock.patch("sys.argv", ["refresh_invite_links.py", "--report", str(report_path)]),
+                mock.patch("sys.stdout", new=io.StringIO()),
+            ):
+                exit_code = refresh_invite_links.main()
+
+            report = json.loads(report_path.read_text(encoding="utf-8"))
+
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(captured, ["other"])
+        self.assertEqual(report["attempted"], 1)
+        self.assertEqual(report["skippedConfiguredCount"], 1)
+        self.assertEqual(
+            report["skippedConfigured"],
+            [{"station": "demo", "status": "skipped_configured", "inviteUrl": "https://demo.example/invite?aff=old"}],
+        )
+        self.assertEqual(report["fallbackOfficialUrl"], [{"station": "other", "status": "missing_credentials"}])
+
+    def test_refresh_invite_links_force_recaptures_configured_station(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            site_data_path = root / "site-data.json"
+            invite_links_path = root / "station_invite_links.json"
+            report_path = root / "capture-report.json"
+            site_data_path.write_text(
+                json.dumps(
+                    {
+                        "rankings": {"work_hours": [{"station": "demo"}], "off_hours": [], "all_hours": []},
+                        "stations": [{"key": "demo", "label": "Demo", "url": "https://demo.example", "platformGuess": "new-api"}],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+            invite_links_path.write_text(json.dumps({"demo": "https://demo.example/invite?aff=old"}), encoding="utf-8")
+            captured: list[str] = []
+
+            def fake_capture(station: dict[str, str]) -> dict[str, object]:
+                captured.append(station["key"])
+                return {"station": station["key"], "status": "captured", "inviteUrl": "https://demo.example/invite?aff=new"}
+
+            with (
+                mock.patch.object(refresh_invite_links, "SITE_DATA_PATH", site_data_path),
+                mock.patch.object(refresh_invite_links, "STATION_INVITE_LINKS_PATH", invite_links_path),
+                mock.patch.object(refresh_invite_links, "capture_invite_link", side_effect=fake_capture),
+                mock.patch.object(refresh_invite_links, "load_station_aliases", return_value={}),
+                mock.patch("sys.argv", ["refresh_invite_links.py", "--stations", "demo", "--write", "--force", "--report", str(report_path)]),
+                mock.patch("sys.stdout", new=io.StringIO()),
+            ):
+                exit_code = refresh_invite_links.main()
+
+            report = json.loads(report_path.read_text(encoding="utf-8"))
+            invite_links = json.loads(invite_links_path.read_text(encoding="utf-8"))
+
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(captured, ["demo"])
+        self.assertTrue(report["force"])
+        self.assertEqual(report["attempted"], 1)
+        self.assertEqual(report["skippedConfiguredCount"], 0)
+        self.assertEqual(invite_links, {"demo": "https://demo.example/invite?aff=new"})
+
     def test_scrape_summary_keeps_successful_fallback_attempt(self) -> None:
         attempts = [
             {"account": "primary", "tokenLength": 0, "ok": False},
@@ -2007,7 +2216,7 @@ class BuildSiteDataTests(unittest.TestCase):
                 {
                     "key": "muskai",
                     "label": "MuskAI",
-                    "url": "https://aiapi.muskpay.top",
+                    "url": "https://muskapi.cc",
                     "stationType": "mixed",
                     "groupMultipliers": [
                         {"groupName": "Codex-Pro-Plus", "groupMultiplier": 0.2},
@@ -5285,6 +5494,11 @@ One or more audit steps **crashed**.
             site_data_path.write_text(
                 json.dumps(
                     {
+                        "rankings": {
+                            "work_hours": [{"station": "nexus"}],
+                            "off_hours": [],
+                            "all_hours": [],
+                        },
                         "stations": [
                             {
                                 "key": "nexus",
@@ -5301,18 +5515,36 @@ One or more audit steps **crashed**.
                 ),
                 encoding="utf-8",
             )
+            invite_links_path = root / "station_invite_links.json"
+            invite_links_path.write_text("{}", encoding="utf-8")
+            invite_report_path = root / "invite-report.json"
 
             with (
-                mock.patch("sys.argv", ["validate_refresh_outputs.py", "--site-data", str(site_data_path), "--skip-scrape-validation"]),
+                mock.patch(
+                    "sys.argv",
+                    [
+                        "validate_refresh_outputs.py",
+                        "--site-data",
+                        str(site_data_path),
+                        "--invite-links",
+                        str(invite_links_path),
+                        "--invite-report",
+                        str(invite_report_path),
+                        "--skip-scrape-validation",
+                    ],
+                ),
                 mock.patch("sys.stdout", new=io.StringIO()) as stdout,
                 mock.patch.dict(validate_refresh_outputs.os.environ, {}, clear=True),
             ):
                 exit_code = validate_refresh_outputs.main()
 
             payload = json.loads(stdout.getvalue())
+            invite_report = json.loads(invite_report_path.read_text(encoding="utf-8"))
             self.assertEqual(exit_code, 0)
             self.assertTrue(payload["validated"])
             self.assertTrue(payload["skipScrapeValidation"])
+            self.assertEqual(payload["inviteLinkFallbackOfficialUrl"], 1)
+            self.assertEqual(invite_report["fallbackOfficialUrl"], [{"station": "nexus", "status": "fallback_official_url"}])
 
     def test_run_server_refresh_without_scrape_credentials_uses_degraded_validation(self) -> None:
         commands: list[list[str]] = []
@@ -5343,10 +5575,12 @@ One or more audit steps **crashed**.
         self.assertEqual(exit_code, 0)
         self.assertTrue(payload["degraded"])
         self.assertEqual(commands[0], ["python", "scripts/fetch_public_content.py", "--announcements", "--multiplier-snapshots", "--skip-build"])
-        self.assertEqual(commands[1], ["python", "scripts/build_site_data.py"])
+        self.assertEqual(commands[1][0:3], ["python", "scripts/refresh_invite_links.py", "--report"])
+        self.assertEqual(commands[2], ["python", "scripts/build_site_data.py"])
         self.assertEqual(build_generated_at_values, ["2026-05-25 18:20:00 +0800"])
         self.assertEqual(payload["generatedAt"], "2026-05-25 18:20:00 +0800")
-        self.assertIn("--skip-scrape-validation", commands[2])
+        self.assertIn("--skip-scrape-validation", commands[3])
+        self.assertIn("--invite-report", commands[3])
         self.assertEqual(payload["removedAuditRuns"], ["old-run"])
 
     def test_run_server_refresh_with_scrape_credentials_runs_full_validation(self) -> None:
@@ -5375,7 +5609,11 @@ One or more audit steps **crashed**.
                 mock.patch.object(run_server_refresh.subprocess, "run", side_effect=fake_subprocess_run),
                 mock.patch.dict(
                     run_server_refresh.os.environ,
-                    {"API_RELAY_SCRAPE_EMAIL": "demo@example.com", "API_RELAY_SCRAPE_PASSWORD": "secret-pass"},
+                    {
+                        "API_RELAY_SCRAPE_EMAIL": "demo@example.com",
+                        "API_RELAY_SCRAPE_PASSWORD": "secret-pass",
+                        "API_RELAY_INVITE_NEXUS_EMAIL": "demo@example.com",
+                    },
                     clear=True,
                 ),
                 mock.patch("sys.stdout", new=io.StringIO()) as stdout,
@@ -5387,8 +5625,10 @@ One or more audit steps **crashed**.
         self.assertFalse(payload["degraded"])
         self.assertEqual(scrape_commands[0], ["python", "scripts/scrape_missing_announcements.py", "--all-stations", "--write-probes"])
         self.assertEqual(commands[0], ["python", "scripts/fetch_public_content.py", "--announcements", "--multiplier-snapshots", "--skip-build"])
-        self.assertEqual(commands[1], ["python", "scripts/build_site_data.py"])
-        self.assertIn("--scrape-report", commands[2])
+        self.assertEqual(commands[1][0:3], ["python", "scripts/refresh_invite_links.py", "--write"])
+        self.assertEqual(commands[2], ["python", "scripts/build_site_data.py"])
+        self.assertIn("--scrape-report", commands[3])
+        self.assertIn("--invite-report", commands[3])
 
     def test_run_server_refresh_postgres_publishes_audit_history_before_site_snapshot(self) -> None:
         commands: list[list[str]] = []

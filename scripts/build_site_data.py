@@ -48,6 +48,8 @@ except ModuleNotFoundError:
 SOURCE_ROOTS = [APP_ROOT]
 STATION_PRICING_OVERRIDES_PATH = APP_ROOT / "config" / "station_pricing_overrides.json"
 STATION_URL_OVERRIDES_PATH = APP_ROOT / "config" / "station_url_overrides.json"
+STATION_INVITE_LINKS_PATH = APP_ROOT / "config" / "station_invite_links.json"
+INVITE_LINK_REPORT_PATH = APP_ROOT / ".local-artifacts" / "station-invite-link-report.json"
 STATION_AUDIT_TARGETS_PATH = APP_ROOT / "config" / "station_audit_targets.json"
 STATION_ALIASES_PATH = APP_ROOT / "config" / "station_aliases.json"
 GENERATED_AT_ENV = "SITE_DATA_GENERATED_AT"
@@ -84,7 +86,7 @@ TIME_WINDOWS = {
 }
 
 HIGHLIGHT_PHRASE = "所以本排名更关注各中转站的服务下限。"
-DISCLAIMER_EMPHASIS = "本排名无任何利益相关，仅供参考。"
+DISCLAIMER_EMPHASIS = "部分中转站外链使用邀请链接，可能为测试账号带来少量额度奖励。这些额度将用于维持长期测试、扩大数据样本并持续更新排名；排名数据、评分和排序不受邀请链接影响，仅供参考。"
 EMAIL_PATTERN = re.compile(r"\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}\b")
 PATH_PATTERN = re.compile(r"([A-Za-z]:\\Users\\)([^\\`]+)")
 LOCALHOST_PATTERN = re.compile(r"^(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$", re.IGNORECASE)
@@ -3841,6 +3843,100 @@ def load_station_url_overrides(station_aliases: dict[str, str] | None = None) ->
     return overrides
 
 
+def load_station_invite_links(station_aliases: dict[str, str] | None = None) -> dict[str, str]:
+    if not STATION_INVITE_LINKS_PATH.exists():
+        return {}
+    payload = json.loads(STATION_INVITE_LINKS_PATH.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict):
+        return {}
+    invite_links: dict[str, str] = {}
+    for station_key, value in payload.items():
+        canonical_key = canonical_station_key(station_key, station_aliases)
+        invite_url = sanitize_public_text(value)
+        if canonical_key and is_public_station_url(invite_url):
+            invite_links[canonical_key] = invite_url
+    return invite_links
+
+
+def formal_ranked_station_keys(rankings: dict[str, list[dict[str, Any]]]) -> set[str]:
+    return {
+        str(row.get("station") or "").strip()
+        for rows in rankings.values()
+        for row in rows
+        if str(row.get("station") or "").strip()
+    }
+
+
+def apply_invite_links_to_rankings(
+    rankings: dict[str, list[dict[str, Any]]],
+    invite_links: dict[str, str],
+) -> dict[str, Any]:
+    ranked_keys = formal_ranked_station_keys(rankings)
+    applied: list[dict[str, str]] = []
+    fallback: list[dict[str, str]] = []
+
+    for rows in rankings.values():
+        for row in rows:
+            station_key = str(row.get("station") or "").strip()
+            if not station_key:
+                continue
+            invite_url = invite_links.get(station_key, "")
+            if invite_url:
+                original_url = sanitize_public_text(row.get("stationUrl"))
+                row["stationUrl"] = invite_url
+                applied.append(
+                    {
+                        "station": station_key,
+                        "timeWindow": str(row.get("timeWindow") or ""),
+                        "originalUrl": original_url,
+                        "inviteUrl": invite_url,
+                    }
+                )
+
+    for station_key in sorted(ranked_keys):
+        if station_key not in invite_links:
+            fallback.append({"station": station_key, "status": "fallback_official_url"})
+
+    configured_not_ranked = sorted(key for key in invite_links if key not in ranked_keys)
+    return {
+        "rankedStationCount": len(ranked_keys),
+        "configuredInviteCount": len(invite_links),
+        "appliedRowCount": len(applied),
+        "fallbackOfficialUrlCount": len(fallback),
+        "fallbackOfficialUrl": fallback,
+        "configuredNotRanked": configured_not_ranked,
+    }
+
+
+def apply_invite_links_to_stations(
+    stations: dict[str, dict[str, Any]],
+    invite_links: dict[str, str],
+) -> None:
+    for station_key, station in stations.items():
+        invite_url = invite_links.get(station_key, "")
+        if invite_url:
+            station["inviteUrl"] = invite_url
+        else:
+            station.pop("inviteUrl", None)
+
+
+def detach_station_ranking_rows(stations: dict[str, dict[str, Any]]) -> None:
+    for station in stations.values():
+        rankings = station.get("rankings")
+        if not isinstance(rankings, dict):
+            continue
+        station["rankings"] = {
+            window_key: deepcopy(row)
+            for window_key, row in rankings.items()
+            if isinstance(row, dict)
+        }
+
+
+def write_invite_link_report(report: dict[str, Any]) -> None:
+    INVITE_LINK_REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    INVITE_LINK_REPORT_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
 def apply_public_pricing_snapshots(
     stations: dict[str, dict[str, Any]],
     station_urls: dict[str, set[str]],
@@ -4512,6 +4608,7 @@ def main() -> int:
 
     overrides = load_station_pricing_overrides(station_aliases)
     url_overrides = load_station_url_overrides(station_aliases)
+    invite_links = load_station_invite_links(station_aliases)
     apply_station_pricing_overrides(stations, overrides, station_aliases=station_aliases)
 
     audit_targets = load_station_audit_targets(station_aliases)
@@ -4532,6 +4629,8 @@ def main() -> int:
             current_url=station.get("url", ""),
         )
         station["label"] = station_display_label(station["key"], station.get("label"), station.get("url"))
+
+    apply_invite_links_to_stations(stations, invite_links)
 
     station_list = sorted(
         [
@@ -4574,6 +4673,9 @@ def main() -> int:
         station.pop("_publicProbeSnapshot", None)
 
     sync_station_metadata_into_rows(stations, rankings)
+    detach_station_ranking_rows(stations)
+    invite_link_report = apply_invite_links_to_rankings(rankings, invite_links)
+    write_invite_link_report(invite_link_report)
 
     site_data = {
         "siteName": "AI中转站监视者",
@@ -4601,6 +4703,8 @@ def main() -> int:
                 "off_hours_ranked": len(rankings["off_hours"]),
                 "reused_existing": use_existing_base,
                 "missing_sources": missing_inputs,
+                "invite_link_report": logical_data_path(INVITE_LINK_REPORT_PATH),
+                "invite_link_fallback_official_url": invite_link_report["fallbackOfficialUrlCount"],
                 "data_gaps": data_gap_summary(station_list),
             },
             ensure_ascii=False,

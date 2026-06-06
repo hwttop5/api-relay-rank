@@ -35,7 +35,8 @@ npm run site:refresh-manual
 2. 运行 `scripts/build_site_data.py`，重建 `data/site-data.json`。
 3. 运行 `scripts/fetch_public_content.py --announcements --multiplier-snapshots --skip-build --quiet`，刷新公开快照。
 4. 如果存在 `API_RELAY_SCRAPE_EMAIL` 和 `API_RELAY_SCRAPE_PASSWORD`，运行 `scripts/scrape_missing_announcements.py --all-stations --write-probes`；缺凭据时跳过登录态补抓。
-5. 再次运行审计脚本和 `scripts/build_site_data.py`，把新快照和 probe 纳入最终输出。
+5. 运行 `scripts/refresh_invite_links.py --write`，用 `API_RELAY_INVITE_<STATION_KEY>_EMAIL/PASSWORD` 尝试补齐正式榜邀请链接；缺凭据或抓取失败时保留官网原链并生成 fallback 报告。
+6. 再次运行审计脚本和 `scripts/build_site_data.py`，把新快照、probe 和邀请链接覆盖纳入最终输出。
 
 可选命令：
 
@@ -47,11 +48,21 @@ python scripts/refresh_quality_rankings.py --full-log-rebuild
 - `--capture-live-probes` 会先调用 `capture_tabbit_live_probes.py` 抓当前已登录浏览器页。只有确认当前浏览器登录态可用时才使用，避免空状态覆盖旧证据。
 - `--full-log-rebuild` 只在 Codex Manager DB 仍保留完整历史日志时使用。旧日志已清理后，必须保持默认增量模式。
 
+### 2026-06-06 正式榜邀请链接规则
+
+- `config/station_invite_links.json` 是正式榜邀请链接配置，结构为 `{ "<station_key>": "<invite_url>" }`。该文件只保存公开邀请 URL，不保存账号、密码、Cookie 或 token。
+- `scripts/build_site_data.py` 会把邀请链接覆盖到 `/ranking` 三个正式榜单的 `RankingRow.stationUrl`，并写入站点展示字段 `station.inviteUrl`，供详情页顶部按钮和未入榜收录列表的可点击站点入口使用。
+- `station.url` 仍保留官网链接，用于站点基础资料、详情证据、公告来源、审计报告、SEO JSON-LD 和审计运行目标；这些数据来源不能改用邀请链接。
+- `scripts/refresh_invite_links.py --write` 默认只处理 `work_hours`、`off_hours`、`all_hours` 任一正式榜中尚未配置邀请链接的站点；已配置站点会记录为 `skipped_configured` 并跳过，只有显式传 `--force` 才重新抓取。站点凭据通过 `API_RELAY_INVITE_<STATION_KEY>_EMAIL` 和 `API_RELAY_INVITE_<STATION_KEY>_PASSWORD` 提供，`<STATION_KEY>` 规则为站点 key 大写，非字母数字替换为 `_`。
+- 新入榜站点没有邀请链接时不阻断刷新或发布；`scripts/build_site_data.py` 和 `scripts/validate_refresh_outputs.py` 会把它记录为 `fallback_official_url`，页面临时保留官网原链。默认报告位于 `.local-artifacts/station-invite-link-report.json`，服务器刷新会写到 `output/server-refresh-invite-links-summary.json`。
+- Playwright 人工补采按批执行：每批最多 10 个站点，逐个登录和检查，不并发打开大量标签；每批结束后更新 `config/station_invite_links.json`、关闭无用标签，并汇总 `captured`、`skipped_configured`、`fallback_official_url`、验证码/2FA/风控阻断和凭据失败站点。`sub2api` / `new-api` 优先查固定邀请、推广、返利、affiliate、referral、promotion、用户中心和充值页入口；`special` / `unknown` 需要人工辅助定位。
+- `/statement` 保留邀请链接披露文案：部分中转站外链使用邀请链接，可能为测试账号带来少量额度奖励。这些额度将用于维持长期测试、扩大数据样本并持续更新排名；排名数据、评分和排序不受邀请链接影响，仅供参考。`/ranking` 正式综合排名标题区不再重复展示橙色邀请链接说明。
+
 线上每日刷新：
 
 - 运行位置：Linux 服务器上的 `scheduler` 容器，入口脚本为 `scripts/run_server_refresh.py`。
 - 定时：北京时间每天 04:00，由 `deploy/cron/refresh.cron` + `supercronic` 触发；cron 文件显式声明 `CRON_TZ=Asia/Shanghai`。
-- 顺序：`fetch_public_content --announcements --multiplier-snapshots --skip-build` -> `scrape_missing_announcements --all-stations --write-probes`（仅凭据存在时）-> `build_site_data.py` -> `validate_refresh_outputs.py` -> `prune_audit_runs`。
+- 顺序：`fetch_public_content --announcements --multiplier-snapshots --skip-build` -> `scrape_missing_announcements --all-stations --write-probes`（仅凭据存在时）-> `refresh_invite_links.py --write`（仅邀请凭据存在时）-> `build_site_data.py` -> `validate_refresh_outputs.py` -> `prune_audit_runs`。
 - `run_server_refresh.py` 会为 `build_site_data.py` 注入本次服务器刷新完成时的 `SITE_DATA_GENERATED_AT`，因此线上“数据生成于”表示最近一次服务器刷新写入时间。
 - 缺少 `API_RELAY_SCRAPE_EMAIL/API_RELAY_SCRAPE_PASSWORD` 时走 degraded 模式：跳过登录态补抓，但公开快照、站点重建和校验仍需成功。
 - 服务器手动触发命令：`docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec scheduler python scripts/run_server_refresh.py`。
@@ -72,11 +83,12 @@ DB 模式服务器刷新顺序：
 1. `scripts/import_log_batches.py --fail-on-error` 导入 `LOG_INBOX_DIR` 中的脱敏日志包，成功后归档到 `LOG_ARCHIVE_DIR`。
 2. `scripts/fetch_public_content.py --announcements --multiplier-snapshots --skip-build` 刷新公开公告和公开价格/倍率快照。
 3. 若抓取凭据存在，执行 `scripts/scrape_missing_announcements.py --all-stations --write-probes`。
-4. 执行 `scripts/build_site_data.py` 重建 runtime `site-data.json`。
-5. 执行 `scripts/validate_refresh_outputs.py` 校验输出。
-6. 执行 audit run 清理。
-7. 执行 `scripts/publish_audit_history.py --delete-missing`，把仍被文件保留策略保留的成功审计历史同步到 `station_audit_runs`，并删除已被 prune 的 DB 行。
-8. 执行 `scripts/publish_site_data_snapshot.py` 发布最新成功 DB snapshot。
+4. 若邀请凭据存在，执行 `scripts/refresh_invite_links.py --write`；缺失的正式榜邀请链接只记录为 `fallback_official_url`，不阻断发布。
+5. 执行 `scripts/build_site_data.py` 重建 runtime `site-data.json`。
+6. 执行 `scripts/validate_refresh_outputs.py` 校验输出，并生成邀请链接覆盖报告。
+7. 执行 audit run 清理。
+8. 执行 `scripts/publish_audit_history.py --delete-missing`，把仍被文件保留策略保留的成功审计历史同步到 `station_audit_runs`，并删除已被 prune 的 DB 行。
+9. 执行 `scripts/publish_site_data_snapshot.py` 发布最新成功 DB snapshot。
 
 审计历史回填与本地校验：
 

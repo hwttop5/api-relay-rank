@@ -42,7 +42,7 @@ BASE_OVERRIDES = {
     "gettoken": "https://gettoken.dev",
     "hongmacc": "https://hongmacc.com",
     "hi-code": "https://www.hi-code.cc",
-    "muskai": "https://aiapi.muskpay.top",
+    "muskai": "https://muskapi.cc",
     "printcap": "https://printcap.ai",
     "audit-api-printcap-ai": "https://printcap.ai",
 }

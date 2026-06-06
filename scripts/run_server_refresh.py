@@ -31,6 +31,10 @@ def has_scrape_credentials() -> bool:
     return bool(os.environ.get("API_RELAY_SCRAPE_EMAIL")) and bool(os.environ.get("API_RELAY_SCRAPE_PASSWORD"))
 
 
+def has_invite_credentials() -> bool:
+    return any(name.startswith("API_RELAY_INVITE_") and name.endswith("_EMAIL") for name in os.environ)
+
+
 def postgres_site_data_enabled() -> bool:
     return process_env("SITE_DATA_SOURCE") == "postgres" and bool(os.environ.get("DATABASE_URL", "").strip())
 
@@ -82,6 +86,21 @@ def main() -> int:
             degraded = True
             steps.append("scrape_missing_announcements skipped (missing scrape credentials)")
 
+        invite_report_path = APP_ROOT / "output" / "server-refresh-invite-links-summary.json"
+        invite_report_path.parent.mkdir(parents=True, exist_ok=True)
+        invite_command = ["python", "scripts/refresh_invite_links.py", "--write", "--report", str(invite_report_path)]
+        if has_invite_credentials():
+            completed = run(invite_command, check=False)
+            if completed.returncode != 0:
+                degraded = True
+                steps.append(f"refresh_invite_links failed with exit {completed.returncode}; preserved existing invite links")
+            else:
+                steps.append("refresh_invite_links")
+        else:
+            degraded = True
+            run(["python", "scripts/refresh_invite_links.py", "--report", str(invite_report_path)], check=False)
+            steps.append("refresh_invite_links skipped (missing invite credentials)")
+
         with exclusive_lock("site-data-rebuild", stale_seconds=60 * 60):
             generated_at = generated_at_now()
             os.environ["SITE_DATA_GENERATED_AT"] = generated_at
@@ -93,6 +112,7 @@ def main() -> int:
             validate_command.extend(["--scrape-report", str(scrape_report_path)])
         else:
             validate_command.append("--skip-scrape-validation")
+        validate_command.extend(["--invite-report", str(invite_report_path)])
         run(validate_command)
         steps.append("validate_refresh_outputs")
 

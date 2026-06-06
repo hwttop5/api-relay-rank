@@ -19,7 +19,7 @@
       "正式综合排名仅使用高置信度或人工核验的费用证据；0 倍率分组不参与排名。",
       "正式采用倍率优先使用 Codex 口径分组中的最小非 0 倍率；有明确用途标记时先排除非 Codex 分组。",
       "sub2api 站点的公告、分组倍率、订阅和充值计划通常需要登录后查看；公开抓取只作为首页配置、文档链接和菜单项补充。",
-      "本排名无任何利益相关，仅供参考。"
+      "部分中转站外链使用邀请链接，可能为测试账号带来少量额度奖励。这些额度将用于维持长期测试、扩大数据样本并持续更新排名；排名数据、评分和排序不受邀请链接影响，仅供参考。"
     ],
     "environment": "本次数据来自本人电脑上 Codex Manager 对多家中转站 Codex API Key 的聚合调用日志，使用场景为 Codex 接入开发。\n\n由于所有请求均先经过 Codex Manager，再转发至各中转站，相比直连会天然增加一层延迟。\n\n日志样本来自本人实际开发个人小项目期间的调用记录，网络环境为昆明广电宽带。以下排名仅反映本人使用时间点、当时账号状态与当时网络环境下的观测结果。\n\n费用口径统一按各站当前可核验的 Codex 口径最小非 0 分组倍率计算；有明确用途标记时先排除非 Codex 分组，未显式区分时再回退到最低非 Claude 分组。该档位通常价格最低，但也往往延迟更高、稳定性更差，所以本排名更关注各中转站的服务下限。",
     "coreItems": [
@@ -59,7 +59,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "nexus",
         "label": "Nexus",
-        "stationUrl": "https://nexus.1982video.cn",
+        "stationUrl": "https://nexus.1982video.cn/register?aff=MSHYH25H6QK4",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -94,7 +94,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "zhima",
         "label": "Zhima",
-        "stationUrl": "https://next.zhima.world",
+        "stationUrl": "https://next.zhima.world/register?aff=XSEXUNU66CNG",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -129,7 +129,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "happycode.vip",
         "label": "Happycode",
-        "stationUrl": "https://happycode.vip",
+        "stationUrl": "https://happycode.vip/register?aff=JNQNAZG7R2Q8",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -164,7 +164,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "api.xiaoxin.best",
         "label": "Xiaoxin",
-        "stationUrl": "https://api.xiaoxin.best",
+        "stationUrl": "https://api.xiaoxin.best/register?aff=LLVGAU54L3J8",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -199,7 +199,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "aicodelink",
         "label": "AICodeLink",
-        "stationUrl": "https://aicodelink.top",
+        "stationUrl": "https://aicodelink.top/register?aff=7r8u",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -234,7 +234,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "brivionix.com",
         "label": "Brivionix",
-        "stationUrl": "https://brivionix.com",
+        "stationUrl": "https://brivionix.com/register?aff=WpPH",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -269,7 +269,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "relayai.asia",
         "label": "RelayAI",
-        "stationUrl": "https://relayai.asia",
+        "stationUrl": "https://relayai.asia/register?aff=LY2SHV8DFWU3",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -304,7 +304,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "muyuan.do",
         "label": "MuyuanDo",
-        "stationUrl": "https://muyuan.do",
+        "stationUrl": "https://muyuan.do/register?aff=uytq",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -374,7 +374,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "moosecloud.cc",
         "label": "MooseCloud",
-        "stationUrl": "https://moosecloud.cc",
+        "stationUrl": "https://moosecloud.cc/register?aff=AKFDN6XHSLXP",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -409,7 +409,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "kapibala.asia",
         "label": "KapibalaAsia",
-        "stationUrl": "https://kapibala.asia",
+        "stationUrl": "https://kapibala.asia/sign-up?aff=CS8O",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -444,7 +444,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "giot",
         "label": "GIOT",
-        "stationUrl": "https://code.giot.edu.kg",
+        "stationUrl": "https://code.giot.edu.kg/register?aff=Ymsh",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -479,7 +479,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "freemodel",
         "label": "FreeModel",
-        "stationUrl": "https://freemodel.dev",
+        "stationUrl": "https://freemodel.dev/invite/FRE-46259029",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -549,7 +549,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "aitoken.dog",
         "label": "AitokenDog",
-        "stationUrl": "https://aitoken.dog",
+        "stationUrl": "https://aitoken.dog/register?aff=8DGLYVLCZFYL",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -584,7 +584,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "dogcoding",
         "label": "DogCoding",
-        "stationUrl": "https://ai.laodog.top",
+        "stationUrl": "https://ai.laodog.top/register?aff=NS3ATQBH5FMN",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -619,7 +619,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "gettoken",
         "label": "GetToken",
-        "stationUrl": "https://gettoken.dev",
+        "stationUrl": "https://xxx.gettoken.dev",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -654,7 +654,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "opentk",
         "label": "OpenTK",
-        "stationUrl": "https://opentk.ai",
+        "stationUrl": "https://opentk.ai/register?aff=SMDBXJ6VCW9R",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -724,7 +724,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "prod.bbroot.com",
         "label": "ProdBbroot",
-        "stationUrl": "https://prod.bbroot.com",
+        "stationUrl": "https://prod.bbroot.com/register?aff=PH9CD2EWCYSW",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -759,7 +759,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "newcli",
         "label": "NewCLI",
-        "stationUrl": "https://business.newcli.com",
+        "stationUrl": "https://business.newcli.com/register?aff=RTWj",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -794,7 +794,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "atomflow.vip",
         "label": "AtomFlow",
-        "stationUrl": "https://atomflow.vip",
+        "stationUrl": "https://atomflow.vip/register?aff=BzQ0",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -864,7 +864,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "4router",
         "label": "4Router",
-        "stationUrl": "https://4Router.net",
+        "stationUrl": "https://4router.net/register?aff=ZvkO",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -899,7 +899,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "nbtoken.ai567.asia",
         "label": "NBToken",
-        "stationUrl": "https://nbtoken.ai567.asia",
+        "stationUrl": "https://nbtoken.ai567.asia/register?aff=mxSl",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -934,7 +934,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "flymux",
         "label": "FlyMux",
-        "stationUrl": "https://106.75.146.14",
+        "stationUrl": "https://api.flymux.com/register?aff=4K5KKK9565K2",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1004,7 +1004,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "585016d3.u3u.dev",
         "label": "U3U",
-        "stationUrl": "https://585016d3.u3u.dev",
+        "stationUrl": "https://585016d3.u3u.dev/register?aff=5M92Z8VT6D28",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -1039,7 +1039,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "hello-code",
         "label": "HelloCode",
-        "stationUrl": "http://hello-code.cn",
+        "stationUrl": "http://hello-code.cn/register?aff=D524TQ3DRHSH",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1109,7 +1109,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "hyperapi",
         "label": "HyperAPI",
-        "stationUrl": "https://hyperapi.cc",
+        "stationUrl": "https://hyperapi.cc/register?aff=YxVA",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -1144,7 +1144,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "ae.carfixlab.cc",
         "label": "AeCarfixlab",
-        "stationUrl": "https://ae.carfixlab.cc",
+        "stationUrl": "https://ae.carfixlab.cc/register?aff=C9THLNNCKFR4",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1179,7 +1179,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "bytecat",
         "label": "ByteCat",
-        "stationUrl": "https://codecdn.bytecatcode.org",
+        "stationUrl": "https://codecdn.bytecatcode.org/register?aff=Vhkn",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1284,7 +1284,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "17nas",
         "label": "17Nas",
-        "stationUrl": "https://api.17nas.com",
+        "stationUrl": "https://api.17nas.com/register?aff=srmm",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -1319,7 +1319,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "hongmacc",
         "label": "HongMaCC",
-        "stationUrl": "https://hongmacc.com",
+        "stationUrl": "https://hongmacc.com/?ref=HONGMACC-4654AFB2",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1354,7 +1354,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "claude360.xyz",
         "label": "Claude360",
-        "stationUrl": "https://claude360.xyz",
+        "stationUrl": "https://claude360.xyz/register?aff=Mupw",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1424,7 +1424,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "claude-api",
         "label": "ClaudeAPI",
-        "stationUrl": "https://claude-api.org",
+        "stationUrl": "https://claude-api.org/register?aff=U6384UJEMEHV",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1459,7 +1459,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "voapi",
         "label": "VoAPI",
-        "stationUrl": "https://demo.voapi.top",
+        "stationUrl": "https://demo.voapi.top/auth?type=register&invite=Y4EQTPEI",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1494,7 +1494,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "ai.nexahub.one",
         "label": "AINexahubOne",
-        "stationUrl": "https://ai.nexahub.one",
+        "stationUrl": "https://ai.nexahub.one/register?aff=D378KRACMMH8",
         "stationType": "subscription",
         "stationTypeLabel": "包月型中转站",
         "stationTypeShortLabel": "包月型",
@@ -1529,7 +1529,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "goapis",
         "label": "GoAPIs",
-        "stationUrl": "https://goapis.vip",
+        "stationUrl": "https://goapis.vip/register?aff=vdwx",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -1564,7 +1564,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "cnrouter",
         "label": "CNRouter",
-        "stationUrl": "https://api.chrouter.com",
+        "stationUrl": "https://api.chrouter.com/register?aff=Pt9z",
         "stationType": "subscription",
         "stationTypeLabel": "包月型中转站",
         "stationTypeShortLabel": "包月型",
@@ -1599,7 +1599,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "bossclaw",
         "label": "BossClaw",
-        "stationUrl": "https://www.bossclaw.org",
+        "stationUrl": "https://www.bossclaw.org/register?aff=TUX38BG4YQAH",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1634,7 +1634,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "dddai.dev",
         "label": "Dddai",
-        "stationUrl": "https://dddai.dev",
+        "stationUrl": "https://dddai.dev/sign-up?aff=hBuH",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1669,7 +1669,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "pointfix.xyz",
         "label": "Pointfix",
-        "stationUrl": "https://pointfix.xyz",
+        "stationUrl": "https://pointfix.xyz/register?aff=AGANZYXJX3KU",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1704,7 +1704,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "chaoye.xyz",
         "label": "Chaoye",
-        "stationUrl": "https://chaoye.xyz",
+        "stationUrl": "https://chaoye.xyz/register?aff=ZMYFYFL39A3K",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1739,7 +1739,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "qiuqiutoken",
         "label": "QiuqiuToken",
-        "stationUrl": "https://api.qiuqiutoken.com",
+        "stationUrl": "https://api.qiuqiutoken.com/register?aff=sCqg",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -1774,7 +1774,7 @@
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "api.nbility.dev",
         "label": "Nbility",
-        "stationUrl": "https://api.nbility.dev",
+        "stationUrl": "https://api.nbility.dev/signup?aff=O1w8",
         "stationType": "subscription",
         "stationTypeLabel": "包月型中转站",
         "stationTypeShortLabel": "包月型",
@@ -1811,7 +1811,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "kapibala.asia",
         "label": "KapibalaAsia",
-        "stationUrl": "https://kapibala.asia",
+        "stationUrl": "https://kapibala.asia/sign-up?aff=CS8O",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -1846,7 +1846,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "claude360.xyz",
         "label": "Claude360",
-        "stationUrl": "https://claude360.xyz",
+        "stationUrl": "https://claude360.xyz/register?aff=Mupw",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1881,7 +1881,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "fushengyunsuan.cn",
         "label": "Fushengyunsuan",
-        "stationUrl": "https://fushengyunsuan.cn",
+        "stationUrl": "https://fushengyunsuan.cn/sign-up?aff=ri2P",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1916,7 +1916,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "giot",
         "label": "GIOT",
-        "stationUrl": "https://code.giot.edu.kg",
+        "stationUrl": "https://code.giot.edu.kg/register?aff=Ymsh",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -1986,7 +1986,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "ai.nexahub.one",
         "label": "AINexahubOne",
-        "stationUrl": "https://ai.nexahub.one",
+        "stationUrl": "https://ai.nexahub.one/register?aff=D378KRACMMH8",
         "stationType": "subscription",
         "stationTypeLabel": "包月型中转站",
         "stationTypeShortLabel": "包月型",
@@ -2021,7 +2021,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "muyuan.do",
         "label": "MuyuanDo",
-        "stationUrl": "https://muyuan.do",
+        "stationUrl": "https://muyuan.do/register?aff=uytq",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2091,7 +2091,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "relayai.asia",
         "label": "RelayAI",
-        "stationUrl": "https://relayai.asia",
+        "stationUrl": "https://relayai.asia/register?aff=LY2SHV8DFWU3",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2126,7 +2126,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "moosecloud.cc",
         "label": "MooseCloud",
-        "stationUrl": "https://moosecloud.cc",
+        "stationUrl": "https://moosecloud.cc/register?aff=AKFDN6XHSLXP",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -2196,7 +2196,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "585016d3.u3u.dev",
         "label": "U3U",
-        "stationUrl": "https://585016d3.u3u.dev",
+        "stationUrl": "https://585016d3.u3u.dev/register?aff=5M92Z8VT6D28",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -2231,7 +2231,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "freemodel",
         "label": "FreeModel",
-        "stationUrl": "https://freemodel.dev",
+        "stationUrl": "https://freemodel.dev/invite/FRE-46259029",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -2266,7 +2266,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "bytecat",
         "label": "ByteCat",
-        "stationUrl": "https://codecdn.bytecatcode.org",
+        "stationUrl": "https://codecdn.bytecatcode.org/register?aff=Vhkn",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2301,7 +2301,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "dogcoding",
         "label": "DogCoding",
-        "stationUrl": "https://ai.laodog.top",
+        "stationUrl": "https://ai.laodog.top/register?aff=NS3ATQBH5FMN",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2336,7 +2336,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "atomflow.vip",
         "label": "AtomFlow",
-        "stationUrl": "https://atomflow.vip",
+        "stationUrl": "https://atomflow.vip/register?aff=BzQ0",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2371,7 +2371,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "zhima",
         "label": "Zhima",
-        "stationUrl": "https://next.zhima.world",
+        "stationUrl": "https://next.zhima.world/register?aff=XSEXUNU66CNG",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -2406,7 +2406,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "gettoken",
         "label": "GetToken",
-        "stationUrl": "https://gettoken.dev",
+        "stationUrl": "https://xxx.gettoken.dev",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2441,7 +2441,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "prod.bbroot.com",
         "label": "ProdBbroot",
-        "stationUrl": "https://prod.bbroot.com",
+        "stationUrl": "https://prod.bbroot.com/register?aff=PH9CD2EWCYSW",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2476,7 +2476,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "api.xiaoxin.best",
         "label": "Xiaoxin",
-        "stationUrl": "https://api.xiaoxin.best",
+        "stationUrl": "https://api.xiaoxin.best/register?aff=LLVGAU54L3J8",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -2511,7 +2511,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "hello-code",
         "label": "HelloCode",
-        "stationUrl": "http://hello-code.cn",
+        "stationUrl": "http://hello-code.cn/register?aff=D524TQ3DRHSH",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2546,7 +2546,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "opentk",
         "label": "OpenTK",
-        "stationUrl": "https://opentk.ai",
+        "stationUrl": "https://opentk.ai/register?aff=SMDBXJ6VCW9R",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2581,7 +2581,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "hyperapi",
         "label": "HyperAPI",
-        "stationUrl": "https://hyperapi.cc",
+        "stationUrl": "https://hyperapi.cc/register?aff=YxVA",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -2616,7 +2616,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "x2app.top",
         "label": "X2app",
-        "stationUrl": "https://x2app.top",
+        "stationUrl": "https://x2app.top/register?aff=95DE9XURG3PP",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -2651,7 +2651,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "aicodelink",
         "label": "AICodeLink",
-        "stationUrl": "https://aicodelink.top",
+        "stationUrl": "https://aicodelink.top/register?aff=7r8u",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2686,7 +2686,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "hi-code",
         "label": "HiCode",
-        "stationUrl": "https://www.hi-code.cc",
+        "stationUrl": "https://www.hi-code.cc/register?aff=Y43CUENV7Y8T",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2721,7 +2721,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "4router",
         "label": "4Router",
-        "stationUrl": "https://4Router.net",
+        "stationUrl": "https://4router.net/register?aff=ZvkO",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2826,7 +2826,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "nbtoken.ai567.asia",
         "label": "NBToken",
-        "stationUrl": "https://nbtoken.ai567.asia",
+        "stationUrl": "https://nbtoken.ai567.asia/register?aff=mxSl",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -2861,7 +2861,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "flymux",
         "label": "FlyMux",
-        "stationUrl": "https://106.75.146.14",
+        "stationUrl": "https://api.flymux.com/register?aff=4K5KKK9565K2",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2931,7 +2931,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "ae.carfixlab.cc",
         "label": "AeCarfixlab",
-        "stationUrl": "https://ae.carfixlab.cc",
+        "stationUrl": "https://ae.carfixlab.cc/register?aff=C9THLNNCKFR4",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -2966,7 +2966,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "17nas",
         "label": "17Nas",
-        "stationUrl": "https://api.17nas.com",
+        "stationUrl": "https://api.17nas.com/register?aff=srmm",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -3001,7 +3001,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "guodongapi",
         "label": "GuodongAPI",
-        "stationUrl": "https://guodongapi.site",
+        "stationUrl": "https://guodongapi.site/register?aff=828M3VURDDYL",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -3036,7 +3036,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "muskai",
         "label": "MuskAI",
-        "stationUrl": "https://aiapi.muskpay.top",
+        "stationUrl": "https://muskapi.cc/signup?aff=4RR8BLVL",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -3071,7 +3071,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "voapi",
         "label": "VoAPI",
-        "stationUrl": "https://demo.voapi.top",
+        "stationUrl": "https://demo.voapi.top/auth?type=register&invite=Y4EQTPEI",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -3106,7 +3106,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "euzhi",
         "label": "Euzhi",
-        "stationUrl": "https://admin.euzhi.com",
+        "stationUrl": "https://admin.euzhi.com/register?aff=eMnS",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -3176,7 +3176,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "goapis",
         "label": "GoAPIs",
-        "stationUrl": "https://goapis.vip",
+        "stationUrl": "https://goapis.vip/register?aff=vdwx",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -3211,7 +3211,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "cnrouter",
         "label": "CNRouter",
-        "stationUrl": "https://api.chrouter.com",
+        "stationUrl": "https://api.chrouter.com/register?aff=Pt9z",
         "stationType": "subscription",
         "stationTypeLabel": "包月型中转站",
         "stationTypeShortLabel": "包月型",
@@ -3246,7 +3246,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "newcli",
         "label": "NewCLI",
-        "stationUrl": "https://business.newcli.com",
+        "stationUrl": "https://business.newcli.com/register?aff=RTWj",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -3316,7 +3316,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "bossclaw",
         "label": "BossClaw",
-        "stationUrl": "https://www.bossclaw.org",
+        "stationUrl": "https://www.bossclaw.org/register?aff=TUX38BG4YQAH",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -3351,7 +3351,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "aitoken.dog",
         "label": "AitokenDog",
-        "stationUrl": "https://aitoken.dog",
+        "stationUrl": "https://aitoken.dog/register?aff=8DGLYVLCZFYL",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -3386,7 +3386,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "pointfix.xyz",
         "label": "Pointfix",
-        "stationUrl": "https://pointfix.xyz",
+        "stationUrl": "https://pointfix.xyz/register?aff=AGANZYXJX3KU",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -3421,7 +3421,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "api.feifeimiao.top",
         "label": "Feifeimiao",
-        "stationUrl": "https://api.feifeimiao.top",
+        "stationUrl": "https://api.feifeimiao.top/register?aff=JWLAQWRWU9QC",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -3456,7 +3456,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "chaoye.xyz",
         "label": "Chaoye",
-        "stationUrl": "https://chaoye.xyz",
+        "stationUrl": "https://chaoye.xyz/register?aff=ZMYFYFL39A3K",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -3491,7 +3491,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "hongmacc",
         "label": "HongMaCC",
-        "stationUrl": "https://hongmacc.com",
+        "stationUrl": "https://hongmacc.com/?ref=HONGMACC-4654AFB2",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -3526,7 +3526,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "fishxcode.com",
         "label": "FishXCode",
-        "stationUrl": "https://fishxcode.com",
+        "stationUrl": "https://fishxcode.com/register?aff=jnqA",
         "stationType": "subscription",
         "stationTypeLabel": "包月型中转站",
         "stationTypeShortLabel": "包月型",
@@ -3596,7 +3596,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "qiuqiutoken",
         "label": "QiuqiuToken",
-        "stationUrl": "https://api.qiuqiutoken.com",
+        "stationUrl": "https://api.qiuqiutoken.com/register?aff=sCqg",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -3631,7 +3631,7 @@
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "claude-api",
         "label": "ClaudeAPI",
-        "stationUrl": "https://claude-api.org",
+        "stationUrl": "https://claude-api.org/register?aff=U6384UJEMEHV",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -3668,7 +3668,7 @@
         "timeWindowLabel": "全部时段",
         "station": "nexus",
         "label": "Nexus",
-        "stationUrl": "https://nexus.1982video.cn",
+        "stationUrl": "https://nexus.1982video.cn/register?aff=MSHYH25H6QK4",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -3703,7 +3703,7 @@
         "timeWindowLabel": "全部时段",
         "station": "zhima",
         "label": "Zhima",
-        "stationUrl": "https://next.zhima.world",
+        "stationUrl": "https://next.zhima.world/register?aff=XSEXUNU66CNG",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -3738,7 +3738,7 @@
         "timeWindowLabel": "全部时段",
         "station": "fushengyunsuan.cn",
         "label": "Fushengyunsuan",
-        "stationUrl": "https://fushengyunsuan.cn",
+        "stationUrl": "https://fushengyunsuan.cn/sign-up?aff=ri2P",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -3773,7 +3773,7 @@
         "timeWindowLabel": "全部时段",
         "station": "happycode.vip",
         "label": "Happycode",
-        "stationUrl": "https://happycode.vip",
+        "stationUrl": "https://happycode.vip/register?aff=JNQNAZG7R2Q8",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -3808,7 +3808,7 @@
         "timeWindowLabel": "全部时段",
         "station": "kapibala.asia",
         "label": "KapibalaAsia",
-        "stationUrl": "https://kapibala.asia",
+        "stationUrl": "https://kapibala.asia/sign-up?aff=CS8O",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -3843,7 +3843,7 @@
         "timeWindowLabel": "全部时段",
         "station": "giot",
         "label": "GIOT",
-        "stationUrl": "https://code.giot.edu.kg",
+        "stationUrl": "https://code.giot.edu.kg/register?aff=Ymsh",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -3878,7 +3878,7 @@
         "timeWindowLabel": "全部时段",
         "station": "ai.nexahub.one",
         "label": "AINexahubOne",
-        "stationUrl": "https://ai.nexahub.one",
+        "stationUrl": "https://ai.nexahub.one/register?aff=D378KRACMMH8",
         "stationType": "subscription",
         "stationTypeLabel": "包月型中转站",
         "stationTypeShortLabel": "包月型",
@@ -3913,7 +3913,7 @@
         "timeWindowLabel": "全部时段",
         "station": "api.xiaoxin.best",
         "label": "Xiaoxin",
-        "stationUrl": "https://api.xiaoxin.best",
+        "stationUrl": "https://api.xiaoxin.best/register?aff=LLVGAU54L3J8",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -3948,7 +3948,7 @@
         "timeWindowLabel": "全部时段",
         "station": "brivionix.com",
         "label": "Brivionix",
-        "stationUrl": "https://brivionix.com",
+        "stationUrl": "https://brivionix.com/register?aff=WpPH",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -3983,7 +3983,7 @@
         "timeWindowLabel": "全部时段",
         "station": "muyuan.do",
         "label": "MuyuanDo",
-        "stationUrl": "https://muyuan.do",
+        "stationUrl": "https://muyuan.do/register?aff=uytq",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4053,7 +4053,7 @@
         "timeWindowLabel": "全部时段",
         "station": "relayai.asia",
         "label": "RelayAI",
-        "stationUrl": "https://relayai.asia",
+        "stationUrl": "https://relayai.asia/register?aff=LY2SHV8DFWU3",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4088,7 +4088,7 @@
         "timeWindowLabel": "全部时段",
         "station": "moosecloud.cc",
         "label": "MooseCloud",
-        "stationUrl": "https://moosecloud.cc",
+        "stationUrl": "https://moosecloud.cc/register?aff=AKFDN6XHSLXP",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -4158,7 +4158,7 @@
         "timeWindowLabel": "全部时段",
         "station": "freemodel",
         "label": "FreeModel",
-        "stationUrl": "https://freemodel.dev",
+        "stationUrl": "https://freemodel.dev/invite/FRE-46259029",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -4193,7 +4193,7 @@
         "timeWindowLabel": "全部时段",
         "station": "585016d3.u3u.dev",
         "label": "U3U",
-        "stationUrl": "https://585016d3.u3u.dev",
+        "stationUrl": "https://585016d3.u3u.dev/register?aff=5M92Z8VT6D28",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -4228,7 +4228,7 @@
         "timeWindowLabel": "全部时段",
         "station": "dogcoding",
         "label": "DogCoding",
-        "stationUrl": "https://ai.laodog.top",
+        "stationUrl": "https://ai.laodog.top/register?aff=NS3ATQBH5FMN",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4263,7 +4263,7 @@
         "timeWindowLabel": "全部时段",
         "station": "atomflow.vip",
         "label": "AtomFlow",
-        "stationUrl": "https://atomflow.vip",
+        "stationUrl": "https://atomflow.vip/register?aff=BzQ0",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4298,7 +4298,7 @@
         "timeWindowLabel": "全部时段",
         "station": "gettoken",
         "label": "GetToken",
-        "stationUrl": "https://gettoken.dev",
+        "stationUrl": "https://xxx.gettoken.dev",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4333,7 +4333,7 @@
         "timeWindowLabel": "全部时段",
         "station": "aicodelink",
         "label": "AICodeLink",
-        "stationUrl": "https://aicodelink.top",
+        "stationUrl": "https://aicodelink.top/register?aff=7r8u",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4368,7 +4368,7 @@
         "timeWindowLabel": "全部时段",
         "station": "opentk",
         "label": "OpenTK",
-        "stationUrl": "https://opentk.ai",
+        "stationUrl": "https://opentk.ai/register?aff=SMDBXJ6VCW9R",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4403,7 +4403,7 @@
         "timeWindowLabel": "全部时段",
         "station": "prod.bbroot.com",
         "label": "ProdBbroot",
-        "stationUrl": "https://prod.bbroot.com",
+        "stationUrl": "https://prod.bbroot.com/register?aff=PH9CD2EWCYSW",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4438,7 +4438,7 @@
         "timeWindowLabel": "全部时段",
         "station": "bytecat",
         "label": "ByteCat",
-        "stationUrl": "https://codecdn.bytecatcode.org",
+        "stationUrl": "https://codecdn.bytecatcode.org/register?aff=Vhkn",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4473,7 +4473,7 @@
         "timeWindowLabel": "全部时段",
         "station": "newcli",
         "label": "NewCLI",
-        "stationUrl": "https://business.newcli.com",
+        "stationUrl": "https://business.newcli.com/register?aff=RTWj",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4508,7 +4508,7 @@
         "timeWindowLabel": "全部时段",
         "station": "x2app.top",
         "label": "X2app",
-        "stationUrl": "https://x2app.top",
+        "stationUrl": "https://x2app.top/register?aff=95DE9XURG3PP",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -4543,7 +4543,7 @@
         "timeWindowLabel": "全部时段",
         "station": "hello-code",
         "label": "HelloCode",
-        "stationUrl": "http://hello-code.cn",
+        "stationUrl": "http://hello-code.cn/register?aff=D524TQ3DRHSH",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4578,7 +4578,7 @@
         "timeWindowLabel": "全部时段",
         "station": "hyperapi",
         "label": "HyperAPI",
-        "stationUrl": "https://hyperapi.cc",
+        "stationUrl": "https://hyperapi.cc/register?aff=YxVA",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -4613,7 +4613,7 @@
         "timeWindowLabel": "全部时段",
         "station": "claude360.xyz",
         "label": "Claude360",
-        "stationUrl": "https://claude360.xyz",
+        "stationUrl": "https://claude360.xyz/register?aff=Mupw",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4648,7 +4648,7 @@
         "timeWindowLabel": "全部时段",
         "station": "hi-code",
         "label": "HiCode",
-        "stationUrl": "https://www.hi-code.cc",
+        "stationUrl": "https://www.hi-code.cc/register?aff=Y43CUENV7Y8T",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4683,7 +4683,7 @@
         "timeWindowLabel": "全部时段",
         "station": "nbtoken.ai567.asia",
         "label": "NBToken",
-        "stationUrl": "https://nbtoken.ai567.asia",
+        "stationUrl": "https://nbtoken.ai567.asia/register?aff=mxSl",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -4718,7 +4718,7 @@
         "timeWindowLabel": "全部时段",
         "station": "4router",
         "label": "4Router",
-        "stationUrl": "https://4Router.net",
+        "stationUrl": "https://4router.net/register?aff=ZvkO",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4928,7 +4928,7 @@
         "timeWindowLabel": "全部时段",
         "station": "flymux",
         "label": "FlyMux",
-        "stationUrl": "https://106.75.146.14",
+        "stationUrl": "https://api.flymux.com/register?aff=4K5KKK9565K2",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -4963,7 +4963,7 @@
         "timeWindowLabel": "全部时段",
         "station": "ae.carfixlab.cc",
         "label": "AeCarfixlab",
-        "stationUrl": "https://ae.carfixlab.cc",
+        "stationUrl": "https://ae.carfixlab.cc/register?aff=C9THLNNCKFR4",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -5033,7 +5033,7 @@
         "timeWindowLabel": "全部时段",
         "station": "17nas",
         "label": "17Nas",
-        "stationUrl": "https://api.17nas.com",
+        "stationUrl": "https://api.17nas.com/register?aff=srmm",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -5068,7 +5068,7 @@
         "timeWindowLabel": "全部时段",
         "station": "guodongapi",
         "label": "GuodongAPI",
-        "stationUrl": "https://guodongapi.site",
+        "stationUrl": "https://guodongapi.site/register?aff=828M3VURDDYL",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -5138,7 +5138,7 @@
         "timeWindowLabel": "全部时段",
         "station": "hongmacc",
         "label": "HongMaCC",
-        "stationUrl": "https://hongmacc.com",
+        "stationUrl": "https://hongmacc.com/?ref=HONGMACC-4654AFB2",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -5173,7 +5173,7 @@
         "timeWindowLabel": "全部时段",
         "station": "aitoken.dog",
         "label": "AitokenDog",
-        "stationUrl": "https://aitoken.dog",
+        "stationUrl": "https://aitoken.dog/register?aff=8DGLYVLCZFYL",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -5208,7 +5208,7 @@
         "timeWindowLabel": "全部时段",
         "station": "claude-api",
         "label": "ClaudeAPI",
-        "stationUrl": "https://claude-api.org",
+        "stationUrl": "https://claude-api.org/register?aff=U6384UJEMEHV",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -5243,7 +5243,7 @@
         "timeWindowLabel": "全部时段",
         "station": "muskai",
         "label": "MuskAI",
-        "stationUrl": "https://aiapi.muskpay.top",
+        "stationUrl": "https://muskapi.cc/signup?aff=4RR8BLVL",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -5278,7 +5278,7 @@
         "timeWindowLabel": "全部时段",
         "station": "euzhi",
         "label": "Euzhi",
-        "stationUrl": "https://admin.euzhi.com",
+        "stationUrl": "https://admin.euzhi.com/register?aff=eMnS",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -5313,7 +5313,7 @@
         "timeWindowLabel": "全部时段",
         "station": "goapis",
         "label": "GoAPIs",
-        "stationUrl": "https://goapis.vip",
+        "stationUrl": "https://goapis.vip/register?aff=vdwx",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -5348,7 +5348,7 @@
         "timeWindowLabel": "全部时段",
         "station": "cnrouter",
         "label": "CNRouter",
-        "stationUrl": "https://api.chrouter.com",
+        "stationUrl": "https://api.chrouter.com/register?aff=Pt9z",
         "stationType": "subscription",
         "stationTypeLabel": "包月型中转站",
         "stationTypeShortLabel": "包月型",
@@ -5383,7 +5383,7 @@
         "timeWindowLabel": "全部时段",
         "station": "bossclaw",
         "label": "BossClaw",
-        "stationUrl": "https://www.bossclaw.org",
+        "stationUrl": "https://www.bossclaw.org/register?aff=TUX38BG4YQAH",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -5418,7 +5418,7 @@
         "timeWindowLabel": "全部时段",
         "station": "dddai.dev",
         "label": "Dddai",
-        "stationUrl": "https://dddai.dev",
+        "stationUrl": "https://dddai.dev/sign-up?aff=hBuH",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -5453,7 +5453,7 @@
         "timeWindowLabel": "全部时段",
         "station": "pointfix.xyz",
         "label": "Pointfix",
-        "stationUrl": "https://pointfix.xyz",
+        "stationUrl": "https://pointfix.xyz/register?aff=AGANZYXJX3KU",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -5488,7 +5488,7 @@
         "timeWindowLabel": "全部时段",
         "station": "api.feifeimiao.top",
         "label": "Feifeimiao",
-        "stationUrl": "https://api.feifeimiao.top",
+        "stationUrl": "https://api.feifeimiao.top/register?aff=JWLAQWRWU9QC",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -5523,7 +5523,7 @@
         "timeWindowLabel": "全部时段",
         "station": "chaoye.xyz",
         "label": "Chaoye",
-        "stationUrl": "https://chaoye.xyz",
+        "stationUrl": "https://chaoye.xyz/register?aff=ZMYFYFL39A3K",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -5558,7 +5558,7 @@
         "timeWindowLabel": "全部时段",
         "station": "fishxcode.com",
         "label": "FishXCode",
-        "stationUrl": "https://fishxcode.com",
+        "stationUrl": "https://fishxcode.com/register?aff=jnqA",
         "stationType": "subscription",
         "stationTypeLabel": "包月型中转站",
         "stationTypeShortLabel": "包月型",
@@ -5593,7 +5593,7 @@
         "timeWindowLabel": "全部时段",
         "station": "qiuqiutoken",
         "label": "QiuqiuToken",
-        "stationUrl": "https://api.qiuqiutoken.com",
+        "stationUrl": "https://api.qiuqiutoken.com/register?aff=sCqg",
         "stationType": "mixed",
         "stationTypeLabel": "混合型中转站",
         "stationTypeShortLabel": "混合型",
@@ -5628,7 +5628,7 @@
         "timeWindowLabel": "全部时段",
         "station": "api.nbility.dev",
         "label": "Nbility",
-        "stationUrl": "https://api.nbility.dev",
+        "stationUrl": "https://api.nbility.dev/signup?aff=O1w8",
         "stationType": "subscription",
         "stationTypeLabel": "包月型中转站",
         "stationTypeShortLabel": "包月型",
@@ -5663,7 +5663,7 @@
         "timeWindowLabel": "全部时段",
         "station": "voapi",
         "label": "VoAPI",
-        "stationUrl": "https://demo.voapi.top",
+        "stationUrl": "https://demo.voapi.top/auth?type=register&invite=Y4EQTPEI",
         "stationType": "non_subscription",
         "stationTypeLabel": "非包月型中转站",
         "stationTypeShortLabel": "非包月型",
@@ -6012,6 +6012,7 @@
           "lastAt": "2026-05-13 14:11:37 +0800"
         }
       },
+      "inviteUrl": "https://nexus.1982video.cn/register?aff=MSHYH25H6QK4",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -6462,6 +6463,7 @@
           "lastAt": "2026-05-22 12:58:55 +0800"
         }
       },
+      "inviteUrl": "https://next.zhima.world/register?aff=XSEXUNU66CNG",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -6703,6 +6705,7 @@
           "lastAt": "2026-06-03 14:01:26 +0800"
         }
       },
+      "inviteUrl": "https://happycode.vip/register?aff=JNQNAZG7R2Q8",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -7156,6 +7159,7 @@
           "lastAt": "2026-06-03 14:16:29 +0800"
         }
       },
+      "inviteUrl": "https://api.xiaoxin.best/register?aff=LLVGAU54L3J8",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -7516,6 +7520,7 @@
           "lastAt": "2026-05-23 00:34:13 +0800"
         }
       },
+      "inviteUrl": "https://aicodelink.top/register?aff=7r8u",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -7754,6 +7759,7 @@
           "lastAt": "2026-06-03 12:21:01 +0800"
         }
       },
+      "inviteUrl": "https://brivionix.com/register?aff=WpPH",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -8005,6 +8011,7 @@
           "lastAt": "2026-06-03 19:03:34 +0800"
         }
       },
+      "inviteUrl": "https://relayai.asia/register?aff=LY2SHV8DFWU3",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -8282,6 +8289,7 @@
           "lastAt": "2026-06-02 14:14:49 +0800"
         }
       },
+      "inviteUrl": "https://muyuan.do/register?aff=uytq",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -8934,6 +8942,7 @@
           "lastAt": "2026-06-03 13:08:01 +0800"
         }
       },
+      "inviteUrl": "https://moosecloud.cc/register?aff=AKFDN6XHSLXP",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -9249,6 +9258,7 @@
           "lastAt": "2026-06-03 10:43:02 +0800"
         }
       },
+      "inviteUrl": "https://kapibala.asia/sign-up?aff=CS8O",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -9760,6 +9770,7 @@
           "lastAt": "2026-05-16 02:24:05 +0800"
         }
       },
+      "inviteUrl": "https://code.giot.edu.kg/register?aff=Ymsh",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -10022,6 +10033,7 @@
           "lastAt": "2026-06-02 14:58:50 +0800"
         }
       },
+      "inviteUrl": "https://freemodel.dev/invite/FRE-46259029",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -10922,6 +10934,7 @@
           "lastAt": "2026-06-03 13:20:13 +0800"
         }
       },
+      "inviteUrl": "https://aitoken.dog/register?aff=8DGLYVLCZFYL",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -11389,6 +11402,7 @@
           "lastAt": "2026-05-16 17:13:34 +0800"
         }
       },
+      "inviteUrl": "https://ai.laodog.top/register?aff=NS3ATQBH5FMN",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -11772,6 +11786,7 @@
           "lastAt": "2026-05-24 20:57:49 +0800"
         }
       },
+      "inviteUrl": "https://xxx.gettoken.dev",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -12110,6 +12125,7 @@
           "lastAt": "2026-06-03 13:17:36 +0800"
         }
       },
+      "inviteUrl": "https://opentk.ai/register?aff=SMDBXJ6VCW9R",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -12708,6 +12724,7 @@
           "lastAt": "2026-06-02 13:41:47 +0800"
         }
       },
+      "inviteUrl": "https://prod.bbroot.com/register?aff=PH9CD2EWCYSW",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -13097,6 +13114,7 @@
           "lastAt": "2026-05-16 17:10:47 +0800"
         }
       },
+      "inviteUrl": "https://business.newcli.com/register?aff=RTWj",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -13378,6 +13396,7 @@
           "lastAt": "2026-06-02 22:35:15 +0800"
         }
       },
+      "inviteUrl": "https://atomflow.vip/register?aff=BzQ0",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -14143,6 +14162,7 @@
           "lastAt": "2026-05-27 16:11:02 +0800"
         }
       },
+      "inviteUrl": "https://4router.net/register?aff=ZvkO",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -14384,6 +14404,7 @@
           "lastAt": "2026-06-02 19:58:56 +0800"
         }
       },
+      "inviteUrl": "https://nbtoken.ai567.asia/register?aff=mxSl",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -14718,6 +14739,7 @@
           "lastAt": "2026-05-16 00:46:32 +0800"
         }
       },
+      "inviteUrl": "https://api.flymux.com/register?aff=4K5KKK9565K2",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -15594,6 +15616,7 @@
           "lastAt": "2026-05-22 23:44:25 +0800"
         }
       },
+      "inviteUrl": "https://585016d3.u3u.dev/register?aff=5M92Z8VT6D28",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -16109,6 +16132,7 @@
           "lastAt": "2026-05-16 01:53:01 +0800"
         }
       },
+      "inviteUrl": "http://hello-code.cn/register?aff=D524TQ3DRHSH",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -17043,6 +17067,7 @@
           "lastAt": "2026-06-02 01:30:16 +0800"
         }
       },
+      "inviteUrl": "https://hyperapi.cc/register?aff=YxVA",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -17352,6 +17377,7 @@
           "lastAt": "2026-06-02 09:30:59 +0800"
         }
       },
+      "inviteUrl": "https://ae.carfixlab.cc/register?aff=C9THLNNCKFR4",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -17738,6 +17764,7 @@
           "lastAt": "2026-05-15 20:49:51 +0800"
         }
       },
+      "inviteUrl": "https://codecdn.bytecatcode.org/register?aff=Vhkn",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -18764,6 +18791,7 @@
           "lastAt": "2026-05-23 00:20:19 +0800"
         }
       },
+      "inviteUrl": "https://api.17nas.com/register?aff=srmm",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -19201,6 +19229,7 @@
           "lastAt": "2026-06-02 01:32:27 +0800"
         }
       },
+      "inviteUrl": "https://hongmacc.com/?ref=HONGMACC-4654AFB2",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -19599,6 +19628,7 @@
           "lastAt": "2026-06-02 01:27:27 +0800"
         }
       },
+      "inviteUrl": "https://claude360.xyz/register?aff=Mupw",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -20227,6 +20257,7 @@
           "lastAt": "2026-05-29 16:35:04 +0800"
         }
       },
+      "inviteUrl": "https://claude-api.org/register?aff=U6384UJEMEHV",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -20535,6 +20566,7 @@
           "lastAt": "2026-06-02 01:27:29 +0800"
         }
       },
+      "inviteUrl": "https://demo.voapi.top/auth?type=register&invite=Y4EQTPEI",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -20901,6 +20933,7 @@
           "lastAt": "2026-06-02 14:13:43 +0800"
         }
       },
+      "inviteUrl": "https://ai.nexahub.one/register?aff=D378KRACMMH8",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -21208,6 +21241,7 @@
           "lastAt": "2026-06-01 21:06:38 +0800"
         }
       },
+      "inviteUrl": "https://goapis.vip/register?aff=vdwx",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -21463,6 +21497,7 @@
           "lastAt": "2026-05-23 00:12:06 +0800"
         }
       },
+      "inviteUrl": "https://api.chrouter.com/register?aff=Pt9z",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -21819,6 +21854,7 @@
           "lastAt": "2026-05-15 20:34:47 +0800"
         }
       },
+      "inviteUrl": "https://www.bossclaw.org/register?aff=TUX38BG4YQAH",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -22157,6 +22193,7 @@
           "lastAt": "2026-06-01 10:22:51 +0800"
         }
       },
+      "inviteUrl": "https://dddai.dev/sign-up?aff=hBuH",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -22450,6 +22487,7 @@
           "lastAt": "2026-06-03 13:13:50 +0800"
         }
       },
+      "inviteUrl": "https://pointfix.xyz/register?aff=AGANZYXJX3KU",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -22759,6 +22797,7 @@
           "lastAt": "2026-06-02 19:53:55 +0800"
         }
       },
+      "inviteUrl": "https://chaoye.xyz/register?aff=ZMYFYFL39A3K",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -23203,6 +23242,7 @@
           "lastAt": "2026-05-15 16:11:49 +0800"
         }
       },
+      "inviteUrl": "https://api.qiuqiutoken.com/register?aff=sCqg",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -23624,6 +23664,7 @@
           "lastAt": "2026-06-02 17:31:54 +0800"
         }
       },
+      "inviteUrl": "https://api.nbility.dev/signup?aff=O1w8",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -23651,115 +23692,6 @@
           "statusLabel": "已抓取",
           "message": "已归档 18 条，可在本详情页查看。",
           "source": "https://api.nbility.dev/api/status"
-        }
-      ]
-    },
-    {
-      "key": "ae.99dun.cc",
-      "label": "Ae99dun",
-      "url": "https://ae.99dun.cc",
-      "stationType": "unknown_pending",
-      "stationTypeLabel": "待补证据",
-      "stationTypeShortLabel": "待补证据",
-      "platformGuess": "sub2api",
-      "verifiedTierCount": 0,
-      "groupMultipliers": [],
-      "rechargeTiers": [],
-      "tierNotes": [],
-      "announcements": [],
-      "rankings": {},
-      "quality": {
-        "all_hours": {
-          "label": "Ae99dun",
-          "lastAt": "",
-          "correct": 0,
-          "firstAt": "",
-          "http2xx": 0,
-          "station": "ae.99dun.cc",
-          "failures": 0,
-          "avgSeconds": null,
-          "p95Seconds": null,
-          "timeWindow": "all_hours",
-          "correctRate": 0.0,
-          "nonnullError": 0,
-          "medianSeconds": null,
-          "platformGuess": "sub2api",
-          "requestSamples": 0,
-          "timeWindowLabel": "全部时段",
-          "http200WithError": 0,
-          "excludedBillingErrors": 0,
-          "avgFirstResponseSeconds": null
-        },
-        "off_hours": {
-          "label": "Ae99dun",
-          "lastAt": "",
-          "correct": 0,
-          "firstAt": "",
-          "http2xx": 0,
-          "station": "ae.99dun.cc",
-          "failures": 0,
-          "avgSeconds": null,
-          "p95Seconds": null,
-          "timeWindow": "off_hours",
-          "correctRate": 0.0,
-          "nonnullError": 0,
-          "medianSeconds": null,
-          "platformGuess": "sub2api",
-          "requestSamples": 0,
-          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
-          "http200WithError": 0,
-          "excludedBillingErrors": 0,
-          "avgFirstResponseSeconds": null
-        },
-        "work_hours": {
-          "label": "Ae99dun",
-          "lastAt": "",
-          "correct": 0,
-          "firstAt": "",
-          "http2xx": 0,
-          "station": "ae.99dun.cc",
-          "failures": 0,
-          "avgSeconds": null,
-          "p95Seconds": null,
-          "timeWindow": "work_hours",
-          "correctRate": 0.0,
-          "nonnullError": 0,
-          "medianSeconds": null,
-          "platformGuess": "sub2api",
-          "requestSamples": 0,
-          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
-          "http200WithError": 0,
-          "excludedBillingErrors": 0,
-          "avgFirstResponseSeconds": null
-        }
-      },
-      "dataEvidence": [
-        {
-          "key": "groupMultipliers",
-          "label": "分组倍率",
-          "count": 0,
-          "status": "login_required",
-          "statusLabel": "需要登录",
-          "message": "sub2api 的该类接口通常需要登录态；当前公开快照或已归档 probe 没有可用结构化数据。",
-          "source": ""
-        },
-        {
-          "key": "rechargeTiers",
-          "label": "充值档位",
-          "count": 0,
-          "status": "login_required",
-          "statusLabel": "需要登录",
-          "message": "sub2api 的该类接口通常需要登录态；当前公开快照或已归档 probe 没有可用结构化数据。",
-          "source": ""
-        },
-        {
-          "key": "announcements",
-          "label": "公告",
-          "count": 0,
-          "status": "login_required",
-          "statusLabel": "需要登录",
-          "message": "sub2api 公告通常位于登录态 /api/v1/announcements；当前没有抓到可展示内容。",
-          "source": ""
         }
       ]
     },
@@ -26020,6 +25952,7 @@
           "lastAt": "2026-05-23 00:31:22 +0800"
         }
       },
+      "inviteUrl": "https://admin.euzhi.com/register?aff=eMnS",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -26369,6 +26302,7 @@
           "lastAt": "2026-05-23 17:50:40 +0800"
         }
       },
+      "inviteUrl": "https://api.feifeimiao.top/register?aff=JWLAQWRWU9QC",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -26787,6 +26721,7 @@
           "lastAt": "2026-06-01 21:01:38 +0800"
         }
       },
+      "inviteUrl": "https://fishxcode.com/register?aff=jnqA",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -27409,6 +27344,7 @@
           "lastAt": "2026-05-23 17:35:36 +0800"
         }
       },
+      "inviteUrl": "https://fushengyunsuan.cn/sign-up?aff=ri2P",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -27685,6 +27621,7 @@
           "lastAt": "2026-05-15 01:09:04 +0800"
         }
       },
+      "inviteUrl": "https://guodongapi.site/register?aff=828M3VURDDYL",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -28078,6 +28015,7 @@
           "lastAt": "2026-05-23 00:05:16 +0800"
         }
       },
+      "inviteUrl": "https://www.hi-code.cc/register?aff=Y43CUENV7Y8T",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -28409,115 +28347,6 @@
         ],
         "latestAuditAt": "2026-05-23T19:21:14Z"
       }
-    },
-    {
-      "key": "kk.theooms.xyz",
-      "label": "KkTheooms",
-      "url": "https://kk.theooms.xyz",
-      "stationType": "unknown_pending",
-      "stationTypeLabel": "待补证据",
-      "stationTypeShortLabel": "待补证据",
-      "platformGuess": "unknown",
-      "verifiedTierCount": 0,
-      "groupMultipliers": [],
-      "rechargeTiers": [],
-      "tierNotes": [],
-      "announcements": [],
-      "rankings": {},
-      "quality": {
-        "all_hours": {
-          "label": "KkTheooms",
-          "lastAt": "",
-          "correct": 0,
-          "firstAt": "",
-          "http2xx": 0,
-          "station": "kk.theooms.xyz",
-          "failures": 0,
-          "avgSeconds": null,
-          "p95Seconds": null,
-          "timeWindow": "all_hours",
-          "correctRate": 0.0,
-          "nonnullError": 0,
-          "medianSeconds": null,
-          "platformGuess": "unknown",
-          "requestSamples": 0,
-          "timeWindowLabel": "全部时段",
-          "http200WithError": 0,
-          "excludedBillingErrors": 0,
-          "avgFirstResponseSeconds": null
-        },
-        "off_hours": {
-          "label": "KkTheooms",
-          "lastAt": "",
-          "correct": 0,
-          "firstAt": "",
-          "http2xx": 0,
-          "station": "kk.theooms.xyz",
-          "failures": 0,
-          "avgSeconds": null,
-          "p95Seconds": null,
-          "timeWindow": "off_hours",
-          "correctRate": 0.0,
-          "nonnullError": 0,
-          "medianSeconds": null,
-          "platformGuess": "unknown",
-          "requestSamples": 0,
-          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
-          "http200WithError": 0,
-          "excludedBillingErrors": 0,
-          "avgFirstResponseSeconds": null
-        },
-        "work_hours": {
-          "label": "KkTheooms",
-          "lastAt": "",
-          "correct": 0,
-          "firstAt": "",
-          "http2xx": 0,
-          "station": "kk.theooms.xyz",
-          "failures": 0,
-          "avgSeconds": null,
-          "p95Seconds": null,
-          "timeWindow": "work_hours",
-          "correctRate": 0.0,
-          "nonnullError": 0,
-          "medianSeconds": null,
-          "platformGuess": "unknown",
-          "requestSamples": 0,
-          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
-          "http200WithError": 0,
-          "excludedBillingErrors": 0,
-          "avgFirstResponseSeconds": null
-        }
-      },
-      "dataEvidence": [
-        {
-          "key": "groupMultipliers",
-          "label": "分组倍率",
-          "count": 0,
-          "status": "missing",
-          "statusLabel": "未抓到",
-          "message": "当前未抓到结构化分组倍率。",
-          "source": ""
-        },
-        {
-          "key": "rechargeTiers",
-          "label": "充值档位",
-          "count": 0,
-          "status": "missing",
-          "statusLabel": "未抓到",
-          "message": "当前未抓到结构化充值档位。",
-          "source": ""
-        },
-        {
-          "key": "announcements",
-          "label": "公告",
-          "count": 0,
-          "status": "public_missing",
-          "statusLabel": "未发现公开接口",
-          "message": "未发现标准公开公告接口或接口未返回公告内容。",
-          "source": ""
-        }
-      ]
     },
     {
       "key": "api-slb.krill-ai.com",
@@ -30155,7 +29984,7 @@
     {
       "key": "muskai",
       "label": "MuskAI",
-      "url": "https://aiapi.muskpay.top",
+      "url": "https://muskapi.cc",
       "stationType": "mixed",
       "stationTypeLabel": "混合型中转站",
       "stationTypeShortLabel": "混合型",
@@ -30389,7 +30218,7 @@
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
           "station": "muskai",
           "label": "MuskAI",
-          "stationUrl": "https://aiapi.muskpay.top",
+          "stationUrl": "https://muskapi.cc",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -30424,7 +30253,7 @@
           "timeWindowLabel": "全部时段",
           "station": "muskai",
           "label": "MuskAI",
-          "stationUrl": "https://aiapi.muskpay.top",
+          "stationUrl": "https://muskapi.cc",
           "stationType": "mixed",
           "stationTypeLabel": "混合型中转站",
           "stationTypeShortLabel": "混合型",
@@ -30518,6 +30347,7 @@
           "lastAt": "2026-05-11 20:07:52 +0800"
         }
       },
+      "inviteUrl": "https://muskapi.cc/signup?aff=4RR8BLVL",
       "dataEvidence": [
         {
           "key": "groupMultipliers",
@@ -32474,115 +32304,6 @@
       ]
     },
     {
-      "key": "api.wanfeng.me",
-      "label": "WanfengMe",
-      "url": "https://api.wanfeng.me",
-      "stationType": "unknown_pending",
-      "stationTypeLabel": "待补证据",
-      "stationTypeShortLabel": "待补证据",
-      "platformGuess": "sub2api",
-      "verifiedTierCount": 0,
-      "groupMultipliers": [],
-      "rechargeTiers": [],
-      "tierNotes": [],
-      "announcements": [],
-      "rankings": {},
-      "quality": {
-        "all_hours": {
-          "label": "WanfengMe",
-          "lastAt": "",
-          "correct": 0,
-          "firstAt": "",
-          "http2xx": 0,
-          "station": "api.wanfeng.me",
-          "failures": 0,
-          "avgSeconds": null,
-          "p95Seconds": null,
-          "timeWindow": "all_hours",
-          "correctRate": 0.0,
-          "nonnullError": 0,
-          "medianSeconds": null,
-          "platformGuess": "sub2api",
-          "requestSamples": 0,
-          "timeWindowLabel": "全部时段",
-          "http200WithError": 0,
-          "excludedBillingErrors": 0,
-          "avgFirstResponseSeconds": null
-        },
-        "off_hours": {
-          "label": "WanfengMe",
-          "lastAt": "",
-          "correct": 0,
-          "firstAt": "",
-          "http2xx": 0,
-          "station": "api.wanfeng.me",
-          "failures": 0,
-          "avgSeconds": null,
-          "p95Seconds": null,
-          "timeWindow": "off_hours",
-          "correctRate": 0.0,
-          "nonnullError": 0,
-          "medianSeconds": null,
-          "platformGuess": "sub2api",
-          "requestSamples": 0,
-          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
-          "http200WithError": 0,
-          "excludedBillingErrors": 0,
-          "avgFirstResponseSeconds": null
-        },
-        "work_hours": {
-          "label": "WanfengMe",
-          "lastAt": "",
-          "correct": 0,
-          "firstAt": "",
-          "http2xx": 0,
-          "station": "api.wanfeng.me",
-          "failures": 0,
-          "avgSeconds": null,
-          "p95Seconds": null,
-          "timeWindow": "work_hours",
-          "correctRate": 0.0,
-          "nonnullError": 0,
-          "medianSeconds": null,
-          "platformGuess": "sub2api",
-          "requestSamples": 0,
-          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
-          "http200WithError": 0,
-          "excludedBillingErrors": 0,
-          "avgFirstResponseSeconds": null
-        }
-      },
-      "dataEvidence": [
-        {
-          "key": "groupMultipliers",
-          "label": "分组倍率",
-          "count": 0,
-          "status": "login_required",
-          "statusLabel": "需要登录",
-          "message": "sub2api 的该类接口通常需要登录态；当前公开快照或已归档 probe 没有可用结构化数据。",
-          "source": ""
-        },
-        {
-          "key": "rechargeTiers",
-          "label": "充值档位",
-          "count": 0,
-          "status": "login_required",
-          "statusLabel": "需要登录",
-          "message": "sub2api 的该类接口通常需要登录态；当前公开快照或已归档 probe 没有可用结构化数据。",
-          "source": ""
-        },
-        {
-          "key": "announcements",
-          "label": "公告",
-          "count": 0,
-          "status": "login_required",
-          "statusLabel": "需要登录",
-          "message": "sub2api 公告通常位于登录态 /api/v1/announcements；当前没有抓到可展示内容。",
-          "source": ""
-        }
-      ]
-    },
-    {
       "key": "audit-api-wankey-xyz",
       "label": "Wankey",
       "url": "https://api.wankey.xyz",
@@ -32973,6 +32694,7 @@
           "lastAt": "2026-06-02 21:14:10 +0800"
         }
       },
+      "inviteUrl": "https://x2app.top/register?aff=95DE9XURG3PP",
       "dataEvidence": [
         {
           "key": "groupMultipliers",

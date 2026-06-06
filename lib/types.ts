@@ -180,6 +180,7 @@ export interface StationRecord {
   key: string;
   label: string;
   url: string;
+  inviteUrl?: string;
   stationType: StationType;
   stationTypeLabel: string;
   stationTypeShortLabel: string;

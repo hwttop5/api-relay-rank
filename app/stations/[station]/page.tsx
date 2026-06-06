@@ -38,6 +38,7 @@ export default async function StationPage({ params }: { params: Promise<{ statio
   const bestRanking = findBestRanking(station);
   const latestAnnouncements = [...station.announcements].sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1)).slice(0, 5);
   const announcementEvidence = station.dataEvidence?.find((item) => item.key === "announcements");
+  const stationExternalUrl = station.inviteUrl || station.url;
   const announcementEmptyText = announcementEvidence?.status === "empty"
     ? "暂无公告数据"
     : announcementEvidence
@@ -99,8 +100,8 @@ export default async function StationPage({ params }: { params: Promise<{ statio
                 <ArrowLeft size={13} />
                 返回排名
               </Link>
-              {station.url ? (
-                <a href={station.url} target="_blank" rel="noreferrer" className="tiny-button detail-topbar-button">
+              {stationExternalUrl ? (
+                <a href={stationExternalUrl} target="_blank" rel="noreferrer" className="tiny-button detail-topbar-button">
                   <ExternalLink size={13} />
                   打开官网
                 </a>

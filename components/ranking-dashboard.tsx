@@ -9,7 +9,7 @@ import type { RankingRow, SiteData, SortMode, TimeWindow } from "@/lib/types";
 import { AppShell, StatusChip } from "@/components/app-shell";
 
 const HIGHLIGHT_PHRASE = "所以本排名更关注各中转站的服务下限。";
-const DISCLAIMER_EMPHASIS = "本排名无任何利益相关，仅供参考。";
+const DISCLAIMER_EMPHASIS = "部分中转站外链使用邀请链接，可能为测试账号带来少量额度奖励。这些额度将用于维持长期测试、扩大数据样本并持续更新排名；排名数据、评分和排序不受邀请链接影响，仅供参考。";
 
 const TIME_WINDOW_OPTIONS: Array<{ value: TimeWindow; label: string }> = [
   { value: "all_hours", label: "全部时段" },
@@ -65,11 +65,11 @@ function StationUrlLink({ href, compact = false }: { href: string; compact?: boo
     return <span className="subtle">未记录</span>;
   }
 
-  const resolvedHref = compact ? getOfficialUrl(href) : href;
+  const displayHref = compact ? getOfficialUrl(href) : href;
 
   return (
-    <a href={resolvedHref} target="_blank" rel="noreferrer" className="station-link inline-actions">
-      <span>{resolvedHref}</span>
+    <a href={href} target="_blank" rel="noreferrer" className="station-link inline-actions">
+      <span>{displayHref}</span>
       <ExternalLink size={14} />
     </a>
   );
@@ -398,6 +398,7 @@ function MobileRankingCard({ row, index, stationMeta }: { row: RankingRow; index
 function MobileStationCard({ station }: { station: SiteData["stations"][number] }) {
   const unrankedReason = getUnrankedReason(station);
   const registryDisplay = getRegistryDisplayValues(station);
+  const stationExternalUrl = station.inviteUrl || station.url;
 
   return (
     <article className="mobile-card">
@@ -425,7 +426,7 @@ function MobileStationCard({ station }: { station: SiteData["stations"][number] 
           <ChevronDown size={14} />
         </summary>
         <div className="mobile-card-detail-grid">
-          <MobileDetail label="官方网址" value={<StationUrlLink href={station.url} compact />} />
+          <MobileDetail label="官方网址" value={<StationUrlLink href={stationExternalUrl} compact />} />
           <MobileDetail label="平台判断" value={station.platformGuess || "-"} />
           <MobileDetail label="站点类型" value={station.stationTypeLabel} />
           <MobileDetail label="未入榜原因" value={unrankedReason} />
@@ -829,7 +830,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                             </Link>
                           </td>
                           <td className="table-url-cell">
-                            <StationUrlLink href={station.url} compact />
+                            <StationUrlLink href={station.inviteUrl || station.url} compact />
                           </td>
                           <td className="table-type-cell">{station.stationTypeShortLabel}</td>
                           <td className="table-platform-cell">{station.platformGuess || "-"}</td>
