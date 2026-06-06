@@ -33,6 +33,133 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H -p 22 "$VPS_HOST" >> ~/.ssh/known_hosts
 
+      - name: Create pre-deploy backup
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          set -euo pipefail
+          backup_id="$(date -u +%Y%m%dT%H%M%SZ)-pre-${GITHUB_SHA::7}"
+          remote_output="$(
+            ssh -i ~/.ssh/deploy_key -p 22 "$VPS_USER@$VPS_HOST" \
+              "BACKUP_ID='$backup_id' COMMIT_SHA='$GITHUB_SHA' sh -s" <<'REMOTE_SCRIPT'
+          set -eu
+          backup_dir="/srv/api-relay-rank/backups/${BACKUP_ID}"
+          mkdir -p "$backup_dir"
+          chmod 700 "$backup_dir" || true
+
+          cd /opt/stacks/api-relay-rank
+
+          echo "BACKUP_STAGE=count-audits"
+          audit_count="$(
+            cat <<'PY' | python3
+          import json
+          from pathlib import Path
+
+          root = Path("/srv/api-relay-rank/data/_audit_runs")
+          count = 0
+          if root.exists():
+              for summary_path in root.glob("*/*/*/summary.json"):
+                  try:
+                      summary = json.loads(summary_path.read_text(encoding="utf-8"))
+                  except Exception:
+                      continue
+                  if str(summary.get("profile") or "").strip() != "general":
+                      continue
+                  if str(summary.get("runStatus") or "success").strip().lower() != "success":
+                      continue
+                  if not str(summary.get("executedAt") or "").strip():
+                      continue
+                  if not str(summary.get("auditedBaseUrl") or "").strip():
+                      continue
+                  if not str(summary.get("reportPath") or "").strip():
+                      continue
+                  run_path = summary_path.with_name("run.json")
+                  if run_path.exists():
+                      try:
+                          run_status = str(json.loads(run_path.read_text(encoding="utf-8")).get("status") or "success").strip().lower()
+                      except Exception:
+                          continue
+                      if run_status != "success":
+                          continue
+                  count += 1
+          print(count)
+          PY
+          )"
+          printf '%s\n' "$audit_count" > "$backup_dir/expected-audit-runs.txt"
+
+          if [ -f deploy/.env ]; then
+            echo "BACKUP_STAGE=copy-env"
+            cp deploy/.env "$backup_dir/deploy.env"
+            chmod 600 "$backup_dir/deploy.env" || true
+          fi
+
+          echo "BACKUP_STAGE=archive-app"
+          tar -czf "$backup_dir/app-stack.tgz" \
+            --exclude='api-relay-rank/.git' \
+            --exclude='api-relay-rank/.next' \
+            --exclude='api-relay-rank/.next-dev' \
+            --exclude='api-relay-rank/node_modules' \
+            -C /opt/stacks api-relay-rank
+
+          runtime_items=""
+          for item in data probes log-inbox log-archive; do
+            if [ -e "/srv/api-relay-rank/$item" ]; then
+              runtime_items="$runtime_items $item"
+            fi
+          done
+          if [ -n "$runtime_items" ]; then
+            # shellcheck disable=SC2086
+            echo "BACKUP_STAGE=archive-runtime"
+            tar -czf "$backup_dir/runtime-data.tgz" -C /srv/api-relay-rank $runtime_items
+          fi
+
+          echo "BACKUP_STAGE=pg-dump"
+          postgres_container="$(
+            docker compose --env-file deploy/.env -f deploy/docker-compose.yml ps -q postgres
+          )"
+          test -n "$postgres_container"
+          docker exec "$postgres_container" \
+            pg_dump -U api_relay_rank -d api_relay_rank -Fc > "$backup_dir/postgres.dump"
+          test -s "$backup_dir/postgres.dump"
+
+          echo "BACKUP_STAGE=manifest"
+          cat <<'PY' | BACKUP_DIR="$backup_dir" AUDIT_COUNT="$audit_count" python3
+          import json
+          import os
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          payload = {
+              "backupId": os.environ["BACKUP_ID"],
+              "commit": os.environ["COMMIT_SHA"],
+              "createdAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+              "expectedAuditRuns": int(os.environ["AUDIT_COUNT"]),
+          }
+          Path(os.environ["BACKUP_DIR"], "manifest.json").write_text(
+              json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+          echo "BACKUP_PATH=$backup_dir"
+          echo "EXPECTED_AUDIT_RUNS=$audit_count"
+          REMOTE_SCRIPT
+          )"
+          printf '%s\n' "$remote_output"
+          backup_path="$(printf '%s\n' "$remote_output" | awk -F= '/^BACKUP_PATH=/{print $2; exit}')"
+          expected_audit_runs="$(printf '%s\n' "$remote_output" | awk -F= '/^EXPECTED_AUDIT_RUNS=/{print $2; exit}')"
+          test -n "$backup_path"
+          test -n "$expected_audit_runs"
+          echo "BACKUP_PATH=$backup_path" >> "$GITHUB_ENV"
+          echo "EXPECTED_AUDIT_RUNS=$expected_audit_runs" >> "$GITHUB_ENV"
+          {
+            echo "## Pre-deploy backup"
+            echo
+            echo "- Backup path: \`$backup_path\`"
+            echo "- Expected audit summaries: \`$expected_audit_runs\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Sync code to VPS
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
@@ -189,6 +316,135 @@ jobs:
           set -euo pipefail
           ssh -i ~/.ssh/deploy_key -p 22 "$VPS_USER@$VPS_HOST" \
             "/opt/stacks/deploy-hooks/deploy-stack.sh api-relay-rank"
+
+      - name: Verify deployed site data
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          EXPECTED_AUDIT_RUNS: ${{ env.EXPECTED_AUDIT_RUNS }}
+          BACKUP_PATH: ${{ env.BACKUP_PATH }}
+        run: |
+          set -euo pipefail
+          test -n "${EXPECTED_AUDIT_RUNS:-}"
+          remote_output=""
+          for attempt in 1 2 3 4 5 6 7 8 9 10 11 12; do
+            if remote_output="$(
+              ssh -i ~/.ssh/deploy_key -p 22 "$VPS_USER@$VPS_HOST" \
+                "EXPECTED_AUDIT_RUNS='$EXPECTED_AUDIT_RUNS' sh -s" <<'REMOTE_SCRIPT'
+          set -eu
+          cd /opt/stacks/api-relay-rank
+          postgres_container="$(
+            docker compose --env-file deploy/.env -f deploy/docker-compose.yml ps -q postgres
+          )"
+          test -n "$postgres_container"
+
+          schema_v2="$(
+            docker exec "$postgres_container" \
+              psql -U api_relay_rank -d api_relay_rank -At \
+              -c "select count(*) from schema_migrations where version = 2;"
+          )"
+          if [ "$schema_v2" != "1" ]; then
+            echo "schema_migrations version 2 is missing." >&2
+            exit 1
+          fi
+
+          audit_count="$(
+            docker exec "$postgres_container" \
+              psql -U api_relay_rank -d api_relay_rank -At \
+              -c "select count(*) from station_audit_runs;"
+          )"
+          if [ "$audit_count" != "$EXPECTED_AUDIT_RUNS" ]; then
+            echo "station_audit_runs count $audit_count does not match expected $EXPECTED_AUDIT_RUNS." >&2
+            exit 1
+          fi
+
+          snapshot_row="$(
+            docker exec "$postgres_container" \
+              psql -U api_relay_rank -d api_relay_rank -At -F '|' \
+              -c "select run_id, generated_at, jsonb_array_length(payload->'stations') from site_data_snapshots where status='success' and payload is not null order by created_at desc, id desc limit 1;"
+          )"
+          station_count="$(printf '%s' "$snapshot_row" | cut -d '|' -f 3)"
+          if [ -z "$station_count" ] || [ "$station_count" -le 0 ]; then
+            echo "Latest site_data_snapshots success row is missing or empty." >&2
+            exit 1
+          fi
+
+          latest_report="$(
+            docker exec "$postgres_container" \
+              psql -U api_relay_rank -d api_relay_rank -At -F '|' \
+              -c "select station_key, model, run_id from station_audit_runs order by executed_at desc limit 1;"
+          )"
+          report_station="$(printf '%s' "$latest_report" | cut -d '|' -f 1)"
+          report_model="$(printf '%s' "$latest_report" | cut -d '|' -f 2)"
+          report_run="$(printf '%s' "$latest_report" | cut -d '|' -f 3)"
+          if [ -z "$report_station" ] || [ -z "$report_model" ] || [ -z "$report_run" ]; then
+            echo "Latest station_audit_runs row is missing." >&2
+            exit 1
+          fi
+
+          site_url="$(awk -F= '/^NEXT_PUBLIC_SITE_URL=/{print $2; exit}' deploy/.env | tr -d '\r"')"
+          app_domain="$(awk -F= '/^APP_DOMAIN=/{print $2; exit}' deploy/.env | tr -d '\r"')"
+          if [ -z "$site_url" ] && [ -n "$app_domain" ]; then
+            site_url="https://$app_domain"
+          fi
+          if [ -z "$site_url" ]; then
+            echo "NEXT_PUBLIC_SITE_URL and APP_DOMAIN are both missing." >&2
+            exit 1
+          fi
+          site_url="${site_url%/}"
+
+          echo "SITE_URL=$site_url"
+          echo "AUDIT_COUNT=$audit_count"
+          echo "SNAPSHOT_ROW=$snapshot_row"
+          echo "REPORT_PATH=/api/audit-report?station=${report_station}&model=${report_model}&run=${report_run}"
+          echo "LATEST_AUDIT_ROWS_BEGIN"
+          docker exec "$postgres_container" \
+            psql -U api_relay_rank -d api_relay_rank \
+            -c "select station_key, model, run_id, overall_verdict, report_path from station_audit_runs order by executed_at desc limit 5;"
+          echo "LATEST_AUDIT_ROWS_END"
+          REMOTE_SCRIPT
+            )"; then
+              break
+            fi
+            if [ "$attempt" -eq 12 ]; then
+              echo "Remote DB verification failed after $attempt attempts." >&2
+              exit 1
+            fi
+            echo "Remote DB verification attempt $attempt failed; retrying in 5s." >&2
+            sleep 5
+          done
+          printf '%s\n' "$remote_output"
+          site_url="$(printf '%s\n' "$remote_output" | awk -F= '/^SITE_URL=/{print $2; exit}')"
+          audit_count="$(printf '%s\n' "$remote_output" | awk -F= '/^AUDIT_COUNT=/{print $2; exit}')"
+          snapshot_row="$(printf '%s\n' "$remote_output" | awk -F= '/^SNAPSHOT_ROW=/{print $2; exit}')"
+          report_path="$(printf '%s\n' "$remote_output" | awk -F= '/^REPORT_PATH=/{print $2; exit}')"
+          test -n "$site_url"
+          test -n "$audit_count"
+          test -n "$snapshot_row"
+          test -n "$report_path"
+
+          curl --retry 12 --retry-delay 5 --retry-all-errors -fsS "$site_url/api/health" \
+            | python3 -c "import json,sys; payload=json.load(sys.stdin); assert payload.get('ok') is True, payload"
+          curl --retry 6 --retry-delay 5 --retry-all-errors -fsS "$site_url/audit" | tee audit.html >/dev/null
+          grep -q "$audit_count" audit.html
+          grep -q "/api/audit-report" audit.html
+          curl --retry 6 --retry-delay 5 --retry-all-errors -fsS "$site_url/ranking" | tee ranking.html >/dev/null
+          grep -q "registry-section" ranking.html
+          grep -q "/stations/" ranking.html
+          curl --retry 6 --retry-delay 5 --retry-all-errors -fsS "$site_url/stations/freemodel" | tee station.html >/dev/null
+          grep -q "FreeModel" station.html
+          curl --retry 6 --retry-delay 5 --retry-all-errors -fsS "$site_url$report_path" | tee audit-report.md >/dev/null
+          test -s audit-report.md
+          {
+            echo "## Deployed site verification"
+            echo
+            echo "- Backup path: \`${BACKUP_PATH:-unknown}\`"
+            echo "- Site URL: \`$site_url\`"
+            echo "- Audit runs: \`$audit_count\`"
+            echo "- Latest snapshot: \`$snapshot_row\`"
+            echo "- Latest report path: \`$report_path\`"
+            echo "- Checked: \`/api/health\`, \`/audit\`, \`/ranking\`, \`/stations/freemodel\`, latest audit report"
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Verify owner announcement sync
         env:

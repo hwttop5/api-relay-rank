@@ -1,6 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 
+import { hasDatabaseUrl, readStationAuditRunRows, type StationAuditRunRow } from "./postgres";
 import { AUDIT_RUNS_ROOT, resolveLogicalDataPath } from "./runtime-paths";
 import type { AuditVerdict, SiteData, StationAuditHistoryItem, StationAuditSummary } from "./types";
 
@@ -112,6 +113,17 @@ async function readAuditSummary(summaryPath: string) {
   }
 }
 
+function parseAuditSummaryPayload(payload: StationAuditRunRow["summary"]) {
+  if (typeof payload === "string") {
+    try {
+      return normalizeAuditSummary(JSON.parse(payload));
+    } catch {
+      return null;
+    }
+  }
+  return normalizeAuditSummary(payload);
+}
+
 function publicUrlHost(value: string) {
   try {
     const url = new URL(value);
@@ -139,7 +151,19 @@ function findStationByAuditUrl(siteData: SiteData, auditedBaseUrl: string) {
   });
 }
 
-export async function getAuditHistory(siteData: SiteData): Promise<StationAuditHistoryItem[]> {
+function siteDataSource() {
+  return process.env.SITE_DATA_SOURCE?.trim().toLowerCase() || "json";
+}
+
+function allowFileFallback() {
+  return process.env.SITE_DATA_ALLOW_FILE_FALLBACK === "1";
+}
+
+function postgresAuditHistoryEnabled() {
+  return siteDataSource() === "postgres" && hasDatabaseUrl();
+}
+
+async function readFileAuditHistory(siteData: SiteData): Promise<StationAuditHistoryItem[]> {
   const stationMap = new Map(siteData.stations.map((station) => [station.key, station]));
   const history: StationAuditHistoryItem[] = [];
 
@@ -168,4 +192,42 @@ export async function getAuditHistory(siteData: SiteData): Promise<StationAuditH
 
   history.sort((a, b) => auditSortTime(b.executedAt) - auditSortTime(a.executedAt));
   return history;
+}
+
+async function readPostgresAuditHistory(siteData: SiteData): Promise<StationAuditHistoryItem[]> {
+  const stationMap = new Map(siteData.stations.map((station) => [station.key, station]));
+  const history: StationAuditHistoryItem[] = [];
+
+  for (const row of await readStationAuditRunRows()) {
+    const summary = parseAuditSummaryPayload(row.summary);
+    if (!summary) {
+      continue;
+    }
+    const station = stationMap.get(row.station_key) || findStationByAuditUrl(siteData, summary.auditedBaseUrl);
+    const displayStationKey = station?.key || row.station_key;
+    history.push({
+      ...summary,
+      stationKey: displayStationKey,
+      stationLabel: station?.label || row.station_key,
+      stationUrl: station?.url || summary.auditedBaseUrl,
+      runId: row.run_id,
+      reportUrl: `/api/audit-report?station=${encodeURIComponent(row.station_key)}&model=${encodeURIComponent(row.model)}&run=${encodeURIComponent(row.run_id)}`,
+    });
+  }
+
+  history.sort((a, b) => auditSortTime(b.executedAt) - auditSortTime(a.executedAt));
+  return history;
+}
+
+export async function getAuditHistory(siteData: SiteData): Promise<StationAuditHistoryItem[]> {
+  if (postgresAuditHistoryEnabled()) {
+    try {
+      return await readPostgresAuditHistory(siteData);
+    } catch (error) {
+      if (!allowFileFallback()) {
+        throw error;
+      }
+    }
+  }
+  return readFileAuditHistory(siteData);
 }

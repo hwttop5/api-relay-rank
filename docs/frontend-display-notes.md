@@ -50,6 +50,13 @@
 - 公告图片一律走本地资源地址 `/api/contact-ad/assets/...`，不直接请求 GitHub 图床。二维码类图片要按表格或图片本身居中规则展示，避免移动端溢出或左右错位。
 - 弹窗交互保留通用关闭行为：点击遮罩或按 `Esc` 可关闭；空态弹窗不显示“今日已读 / 永久关闭”操作按钮。
 
+## /audit 数据源
+
+- JSON/local 模式下，`/audit` 历史列表继续扫描 `data/_audit_runs/**/summary.json`，并跳过失败 run。
+- PostgreSQL 模式下，`/audit` 优先读取 `station_audit_runs`；只有 `SITE_DATA_ALLOW_FILE_FALLBACK=1` 且 DB 读取失败时才回退文件扫描。
+- 历史列表的 `reportUrl` 仍使用 `/api/audit-report?station=...&model=...&run=...`，报告正文仍来自 `_audit_runs` 目录中的 `report.md`。
+- 页面验证时要同时确认历史记录数量、筛选、排序、分页和报告链接；不要只看站点详情页里的最新审计摘要。
+
 ## 验证清单
 
 - 运行 `npx tsc --noEmit`，确认 TSX 与类型没有回归。

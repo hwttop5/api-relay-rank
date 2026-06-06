@@ -100,6 +100,8 @@ def main() -> int:
         steps.append(f"prune_audit_runs removed={len(removed)}")
 
         if use_database:
+            run(["python", "scripts/publish_audit_history.py", "--delete-missing"])
+            steps.append("publish_audit_history")
             run(["python", "scripts/publish_site_data_snapshot.py", "--run-id", run_id, "--source", "server-refresh"])
             steps.append("publish_site_data_snapshot")
     except BaseException as exc:

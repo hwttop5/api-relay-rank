@@ -57,6 +57,96 @@ python scripts/refresh_quality_rankings.py --full-log-rebuild
 - 服务器手动触发命令：`docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec scheduler python scripts/run_server_refresh.py`。
 - `.github/workflows/refresh-site-data.yml` 只保留 `workflow_dispatch`，不再保留 `schedule`，避免与服务器刷新双写。
 
+PostgreSQL 真源模式：
+
+- 前端只有在显式设置 `SITE_DATA_SOURCE=postgres` 且存在 `DATABASE_URL` 时才读取数据库；默认仍可按 JSON 模式本地开发和回滚。
+- 生产页面读取 `site_data_snapshots` 中最新一条 `status='success'` 且 `payload` 非空的快照，保持前端数据结构与 `data/site-data.json` 一致。
+- `/audit` 在 PostgreSQL 模式下优先读取 `station_audit_runs`，该表只保存审计历史 metadata、summary JSON、`report_path` 和 `source_path`；`report.md` 正文仍以 `data/_audit_runs/<station>/<model>/<run>/report.md` 为权威来源。
+- `station_audit_runs` 主键为 `(station_key, model, run_id)`，`model` 使用目录 slug，summary JSON 中的 `model` 继续作为前端展示模型名。列表链接仍保持 `/api/audit-report?station=...&model=...&run=...`。
+- `data/site-data.json` 不删除，继续作为导出备份、种子数据和显式回滚产物；不要把它当成生产默认真源。
+- `SITE_DATA_ALLOW_FILE_FALLBACK=0` 时，数据库不可用会直接暴露错误，避免生产静默回退到过期 JSON 或 `_audit_runs` 文件列表。只有显式设置为 `1` 时，`site-data` 与 `/audit` 才允许在 DB 读取失败后回退文件。
+- `SITE_DATA_MERGE_POSTGRES_BASE=1` 用于服务器刷新时继承上一条成功 DB snapshot 中已有的历史详情和证据，降低刷新时丢失 runtime-only 数据的风险。
+
+DB 模式服务器刷新顺序：
+
+1. `scripts/import_log_batches.py --fail-on-error` 导入 `LOG_INBOX_DIR` 中的脱敏日志包，成功后归档到 `LOG_ARCHIVE_DIR`。
+2. `scripts/fetch_public_content.py --announcements --multiplier-snapshots --skip-build` 刷新公开公告和公开价格/倍率快照。
+3. 若抓取凭据存在，执行 `scripts/scrape_missing_announcements.py --all-stations --write-probes`。
+4. 执行 `scripts/build_site_data.py` 重建 runtime `site-data.json`。
+5. 执行 `scripts/validate_refresh_outputs.py` 校验输出。
+6. 执行 audit run 清理。
+7. 执行 `scripts/publish_audit_history.py --delete-missing`，把仍被文件保留策略保留的成功审计历史同步到 `station_audit_runs`，并删除已被 prune 的 DB 行。
+8. 执行 `scripts/publish_site_data_snapshot.py` 发布最新成功 DB snapshot。
+
+审计历史回填与本地校验：
+
+```powershell
+$env:SITE_DATA_SOURCE = "postgres"
+$env:DATABASE_URL = "postgresql://api_relay_rank:api_relay_rank_local_password@127.0.0.1:15432/api_relay_rank"
+python scripts/migrate_database.py
+python scripts/publish_site_data_snapshot.py --source local-backfill
+python scripts/publish_audit_history.py --delete-missing
+```
+
+审计历史 SQL 校验：
+
+```bash
+docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec -T postgres \
+  psql -U api_relay_rank -d api_relay_rank \
+  -c "select count(*) as audit_runs, min(executed_at), max(executed_at) from station_audit_runs;"
+
+docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec -T postgres \
+  psql -U api_relay_rank -d api_relay_rank \
+  -c "select overall_verdict, count(*) from station_audit_runs group by overall_verdict order by overall_verdict;"
+
+docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec -T postgres \
+  psql -U api_relay_rank -d api_relay_rank \
+  -c "select station_key, model, run_id, executed_at, overall_verdict, report_path from station_audit_runs order by executed_at desc limit 10;"
+```
+
+审计运行完成后的 DB 模式同步：
+
+- `POST /api/station-audit/run` 完成审计归档后，会在 `site-data-rebuild` 锁内先执行 `scripts/build_site_data.py`，再执行 `scripts/publish_site_data_snapshot.py --source station-audit-run` 和 `scripts/publish_audit_history.py --delete-missing`。
+- 这一步用于确保审计完成响应、`/audit` 历史列表、`/ranking` 未入榜站点和 `/stations/<station>` 详情都读取同一轮 runtime 结果。
+
+Windows Codex Manager 日志同步：
+
+- 任务名：`ApiRelayRankCodexLogSync`。
+- 时间：本机 Windows 每天 `23:59:59`。
+- 执行脚本：`scripts/run_codex_log_sync.ps1`。
+- 安装/更新脚本：`scripts/install_windows_log_sync_task.ps1`。
+- 上传目标：`github-actions-alerts-vps:/srv/api-relay-rank/log-inbox`。
+- 导出内容：只包含脱敏后的 `/v1/responses` 白名单字段，不上传完整 Codex Manager DB，不保存账号、密码、token、Cookie 或邮箱。
+- 手动同步命令示例：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\run_codex_log_sync.ps1 -UploadTarget "github-actions-alerts-vps:/srv/api-relay-rank/log-inbox"
+```
+
+04:00 后线上验收 SQL：
+
+```bash
+docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec -T postgres \
+  psql -U api_relay_rank -d api_relay_rank \
+  -c "select batch_id, status, row_count, imported_at, archive_path, error from log_batches order by imported_at desc nulls last, created_at desc limit 5;"
+
+docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec -T postgres \
+  psql -U api_relay_rank -d api_relay_rank \
+  -c "select count(*) as total_events, min(source_created_at), max(source_created_at), max(inserted_at) from request_log_events;"
+
+docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec -T postgres \
+  psql -U api_relay_rank -d api_relay_rank \
+  -c "select run_id, status, started_at, finished_at, summary from analysis_runs order by started_at desc limit 5;"
+
+docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec -T postgres \
+  psql -U api_relay_rank -d api_relay_rank \
+  -c "select id, run_id, status, generated_at, created_at, jsonb_array_length(payload->'stations') as stations from site_data_snapshots where status='success' order by created_at desc, id desc limit 5;"
+
+docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec -T postgres \
+  psql -U api_relay_rank -d api_relay_rank \
+  -c "select count(*) as audit_runs, max(executed_at) as latest_audit_at from station_audit_runs;"
+```
+
 线上部署同步与审计历史：
 
 - VPS 部署时，app 容器启动会先运行 `scripts/seed_runtime_data.py`。当仓库版 `data/site-data.json` 的 `generatedAt` 晚于 runtime 数据卷时，它会同步仓库版主数据和 `_public_fetch` 到 runtime。
@@ -64,6 +154,20 @@ python scripts/refresh_quality_rankings.py --full-log-rebuild
 - 这一步用于防止提交数据后的 deploy 把 VPS 审计历史站点从“未纳入正式排名的收录站点”和 `/stations/<station>` 详情页中冲掉。`data/_audit_runs` 仍只保留在线上数据卷，不提交进仓库。
 - 如果 `/audit` 历史仍能看到记录，但点击站点详情出现 404，优先检查 app 容器启动日志里 `rebuild_runtime_site_data.py` 是否执行成功；临时恢复可在 app 容器内执行 `python scripts/rebuild_runtime_site_data.py`，再核对 `/stations/<audit-key>` 和 `/ranking`。
 - 2026-05-25 的审计历史详情 404 事故就是这个问题：deploy seed 把仓库版 `site-data.json` 同步到 VPS runtime 后，没有把 runtime `_audit_runs` 重新合入，导致 `/audit` 仍有历史记录，但 `/stations/audit-right-codes` 和未入榜收录列表缺少对应站点。修复提交 `f6c3b2e` 后，已在线上核对 `/api/health`、`/stations/audit-right-codes` 和 `/ranking` 恢复；`/ranking` 是 ISR 页面，部署或 runtime 重建后必要时等待 5 分钟并请求两次再判断结果。
+
+### 2026-06-04 PostgreSQL 真源上线复盘
+
+- 本次上线 commit：`8a1497a feat: add local postgres ranking workflow`。
+- GitHub Actions run：`26907601030`，部署成功。
+- 上线前 VPS 备份：`/srv/api-relay-rank/backups/20260604-030923-pre-db-redeploy`。
+- 本地备份：`.local-artifacts/backups/20260604-030837-pre-db-redeploy`。
+- 本地 DB 作为上线基线同步到线上后，发布 `source=local-db-restore` 的 success snapshot；基线 `generatedAt=2026-06-04 01:59:27 +0800`，站点数 92，正式榜 `all=58 / work=50 / off=53`。
+- app/scheduler 启动时会基于线上 runtime 再发布 startup snapshot，可能出现站点数高于本地基线的中间快照；最终以前端读取的最新 success snapshot 为准。
+- 2026-06-04 04:00 自动刷新已验证跑通：`log_batches` 导入 `codex-log-20260603T194412Z-c1d55b54`，`row_count=20067`；`request_log_events=20067`；`analysis_runs` 最新 `server-refresh-20260603T200000Z-cf9987d6` 为 `success`。
+- 04:00 自动刷新发布最新 snapshot：`generatedAt=2026-06-04 04:10:00 +0800`，站点数 94，正式榜仍为 `all=58 / work=50 / off=53`。
+- `/api/health`、`/ranking`、`/audit`、`/statement`、`/stations/freemodel`、`/stations/585016d3.u3u.dev` 已在线上浏览器验收。
+- PostgreSQL 容器 `api-relay-rank-postgres-1` 只服务本项目，不公开宿主机端口，不是公用 PostgreSQL；数据目录为 `/srv/api-relay-rank/postgres`。
+- 服务器磁盘主要压力来自 Docker images 和 build cache；可安全运行 `docker builder prune -af` 与 `docker image prune -af`，不要运行带 `--volumes` 的 `docker system prune`。
 
 ## 站长公告 / 消息通知
 
@@ -184,6 +288,8 @@ Codex Manager 新日志增量更新：
 | `chaoye.xyz` | 站内 `/custom/47fd385f7ac9c619` 嵌入官方链动小铺 `pay.ldxp.cn/shop/chaoyeapi`；商品为 25/50/100/200 USD API 额度卡。 | 公开配置 `custom_menu_items`、链动小铺 `goodsList`、登录态 `/api/v1/groups/available`。 | `balance_low_notify_recharge_url` 的 `T2XWKG42` 当前店铺不可用，不能替代 `chaoyeapi`；Claude/Kiro/Gemini 分组不能作为 Codex 采用分组。 | 当前采用 OpenAI Plus/Pro 分组，最低采用 `Plus/Pro mixed pool x0.2` 与 25 USD 额度卡。 |
 | `aitoken.dog` | 站内 `/custom/65e8232a27a8c9f1` 嵌入官方链动小铺 `pay.ldxp.cn/shop/8UTEMOWS`；商品为 10/20/30/50 USD 额度卡，文案写明实际按 `0.13` 计费。 | 公开配置 `custom_menu_items`、链动小铺 `goodsList`、登录态 `/api/v1/groups/available`。 | 站内支付配置关闭时不能生成默认钱包档位；Claude 分组不参与 Codex 采用。 | 当前采用 OpenAI `0.13` 分组与 1:1 额度卡，最低采用倍率 `0.13`。 |
 | `pointfix.xyz` | `/purchase` 和公开配置指向官方链动小铺 `pay.ldxp.cn/shop/pointfix.xyz`；正式费用行只采纳 `pointfixAPI` 25/50/100/200 USD 额度卡。 | `/purchase`、公开配置 `purchase_subscription_url`、链动小铺 `goodsList`、登录态 `/api/v1/groups/available`。 | `GPT PLUS月卡成品号` 不是 API 额度商品；`1元20刀限量秒杀` 页面显示缺货，不进入正式费用行。 | 当前采用 Plus x0.15 / Pro x0.25 分组，最低采用 `Plus channel x0.15` 与 25 USD 额度卡。 |
+| `api.apiwarrior.xyz` | 用户在登录态页面确认 `OpenAi-Plus` 倍率 `0.09x`、`OpenAi-Pro` 倍率 `0.3x`，两者可用于 Codex/OpenAI；充值页有 20/50/100 钱包充值选项，付款金额与选择金额一致。 | 登录态加款页、令牌分组选择器、用户人工截图/页面确认。 | `Claude full pool`、`Reverse Claude` 等 Claude-only 分组不能用于 Codex 正式采用；不能把截图中的账号或付款信息写入文档或数据。 | 正式采用 `OpenAi-Plus pool x0.09` 与 `Apiwarrior wallet topup 20 USD`；后续若分组或加款档位变化，需重新登录核验。 |
+| `585016d3.u3u.dev` | 按独立 U3U 站点处理；公告 2 条，外部店铺兑换码档位可用，工作/非工作/全时段均有正式排名。 | Codex Manager 日志、登录态补抓、官方外部店铺、详情页线上核对。 | 不能因 supplier 名称或菜单线索并入旧站点；不能用风控失败或空抓取覆盖旧成功证据。 | 当前详情页需持续保留公告、Codex 余额分组和外部店铺永久额度/周卡/月卡档位。 |
 | `ProdBbroot` | 当前只保留 `codex` 与 `openai` 两个 Codex 可用分组，正式榜采用 `openai` 倍率 `0.2`；公告外部卡网可见 `日卡`、`周卡`、`限时月卡`、`API额度$500`，其中只有 `API额度$500 ¥100 -> $500` 有明确额度并参与采用倍率，当前采用倍率 `0.04`。 | 浏览器登录态分组页、公告外部卡网 `pay.ldxp.cn/shop/47N31MWH`、站点公告。 | 不能恢复旧 `default`/Claude Code 分组；不能恢复旧 USDC/Solana `Starter (Weekly)` 档位；不能把无额度说明的日卡、周卡、月卡用于正式排名计算。 | 卡类商品只能以 `displayOnly=true` 写入人工 override 展示，不参与 adopted tier；`displayOnly` 不应放宽公开抓取解析，公开抓取缺 `usdAmount` 仍应视为不可生成正式费用行。 |
 
 ### 公开结构化快照
@@ -215,6 +321,7 @@ Codex Manager 新日志增量更新：
 | --- | --- | --- | --- | --- |
 | `ICodex` | 公益站点，用户已确认没有相关价格和充值页面；不再作为自动或人工补抓目标。已有少量请求样本也不代表具备费用证据。 | 真实页公开状态/维护信息、日志样本、2026-06-03 人工确认。 | 不能用请求样本、维护页、公告状态或登录页推断费用行；不能反复触发登录态补抓。 | 只有后续站点明确提供结构化分组/充值页面时，才重新纳入正常证据链。 |
 | `code.pndot.com` | 用户已确认站点关闭、页面不可用；不再作为自动或人工补抓目标。历史日志和旧 probe 只保留为归档证据。 | 2026-06-03 人工确认、历史日志、旧 probe。 | 不能用旧 probe、历史公告或请求样本生成新的费用行；不能让自动补抓把该站重新带入缺口队列。 | 若站点恢复并重新开放页面，再按新站点恢复流程补公开快照、登录态 probe 和费用证据。 |
+| `freemodel` | 特殊平台，已抓取登录态账单、用量、充值和日志接口的脱敏结构化摘要；未发现公告接口。正式榜中 all/work/off 均正常显示。 | 登录态 dashboard API：auth/me、billing、billing invoices、usage、logs；线上 `/stations/freemodel` 核对。 | 不能把用户资料、账单敏感字段、token、Cookie 或邮箱写入 probe；不能伪造公告。 | 公告状态保留为 `public_missing`；费用证据以 Pro/Max 月卡和自定义余额充值结构化摘要为准。 |
 | `585016d3.u3u.dev` | 日志发现的新公网 host，按独立站点处理。 | Codex Manager 日志、公开快照、登录态补抓结果。 | 不能因 supplier 名称或菜单线索把它错误并入旧站点。 | 继续补分组、充值和公告；失败/空结果保留旧证据。 |
 | `atomflow.vip` | 日志发现的新公网 host，按独立站点处理。 | Codex Manager 日志、公开 `/api/status`、`/api/pricing`、登录态补抓结果。 | 不能只凭旧站点规则跳过候选和质量统计。 | 保持新站点发现、公开快照、登录态 probe 的固定流程。 |
 | `Euzhi` | 钱包金额来自实时换算采样。 | New API `/api/user/amount` 采样。 | 不能写成固定套餐档位。 | 文案展示为 `wallet topup sample ... RMB`，并保留采样口径。 |
@@ -268,11 +375,12 @@ rg -n "codex-log-refresh-state|full-log-rebuild|request_log_station_candidates|m
 - 只看页面或只看单个 CSV 容易误判。排查排名异常必须按 DB -> quality CSV -> formal CSV -> `site-data.json` -> 页面逐层对账。
 - 纠正时段规则、站点分类、错误过滤、评分逻辑、别名归并或历史 DB 数据后，要重新生成 CSV、重建 `site-data.json`，再跑单测和构建。
 
-### Apiwarrior Manual Confirmation
+### 2026-06-04 人工登录与上线确认
 
-- `api.apiwarrior.xyz`: confirmed by the user in a logged-in browser on 2026-06-04.
-- Add-funds page shows wallet topup options `20`, `50`, and `100`; the payable amount matches the selected wallet amount.
-- Token group selector shows `OpenAi-Plus` at `0.09x` and `OpenAi-Pro` at `0.3x`; both are treated as Codex/OpenAI eligible.
-- `Claude full pool` at `1.2x` and `Reverse Claude` at `0.4x` are Claude-only and must not be adopted for Codex formal ranking.
-- Formal override uses `OpenAi-Plus pool x0.09` with `Apiwarrior wallet topup 20 USD`.
+- `api.apiwarrior.xyz`：用户在登录态浏览器确认加款页 20/50/100 钱包充值选项可用，付款金额与选择金额一致；`OpenAi-Plus=0.09x`、`OpenAi-Pro=0.3x` 可用于 Codex/OpenAI；`Claude full pool=1.2x` 与 `Reverse Claude=0.4x` 为 Claude-only，不能用于 Codex 正式排名。正式采用 `OpenAi-Plus pool x0.09` 与 `Apiwarrior wallet topup 20 USD`。
+- `freemodel`：登录态抓取账单、用量、充值和日志结构化摘要；未发现公告接口，公告状态记录为 `public_missing`；线上详情页已核对 all/work/off 正式排名与档位展示。
+- `585016d3.u3u.dev`：按独立 U3U 站点处理，公告 2 条，外部店铺永久额度、周卡和月卡档位可用；线上详情页已核对。
+- `x2app.top`、`chaoye.xyz`、`aitoken.dog`、`pointfix.xyz`：充值入口来自官方外部页面或后台 iframe 外链；这些外链是官方证据入口，不应因站内支付配置关闭而判定无充值。
+- `icodex.pro`：用户确认无价格和充值页面，以后不再作为自动或人工补抓目标。
+- `code.pndot.com`：用户确认站点关闭，以后不再作为自动或人工补抓目标。
 

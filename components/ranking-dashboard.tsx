@@ -34,6 +34,10 @@ const TYPE_OPTIONS = [
 const PAGE_SIZE_OPTIONS = [10, 20, 50, 100] as const;
 
 type TypeFilter = (typeof TYPE_OPTIONS)[number]["key"];
+type StationRecord = SiteData["stations"][number];
+type RegistryEvidenceKey = "groupMultipliers" | "rechargeTiers" | "announcements";
+
+const CONFIRMED_EMPTY_EVIDENCE_STATUSES = new Set(["captured", "empty"]);
 
 function compareByMode(rowA: RankingRow, rowB: RankingRow, mode: SortMode): number {
   if (mode === "correct_rate") {
@@ -187,6 +191,46 @@ function getTotalSampleCount(station: SiteData["stations"][number]) {
   return (getSampleCount(station, "work_hours") ?? 0) + (getSampleCount(station, "off_hours") ?? 0);
 }
 
+function getEvidenceStatus(station: StationRecord, key: RegistryEvidenceKey) {
+  return station.dataEvidence?.find((item) => item.key === key)?.status;
+}
+
+function hasConfirmedEvidence(station: StationRecord, key: RegistryEvidenceKey) {
+  const status = getEvidenceStatus(station, key);
+  return status ? CONFIRMED_EMPTY_EVIDENCE_STATUSES.has(status) : false;
+}
+
+function formatStoredCount(value: number | null | undefined) {
+  return typeof value === "number" && Number.isFinite(value) ? String(value) : "-";
+}
+
+function formatRegistrySampleCount(station: StationRecord) {
+  return formatStoredCount(station.quality.all_hours?.requestSamples);
+}
+
+function hasVerifiedTierDisplayBasis(station: StationRecord) {
+  return (
+    station.groupMultipliers.length > 0 ||
+    station.rechargeTiers.length > 0 ||
+    hasConfirmedEvidence(station, "groupMultipliers") ||
+    hasConfirmedEvidence(station, "rechargeTiers")
+  );
+}
+
+function formatRegistryVerifiedTierCount(station: StationRecord) {
+  if (Number.isFinite(station.verifiedTierCount) && station.verifiedTierCount > 0) {
+    return String(station.verifiedTierCount);
+  }
+  return hasVerifiedTierDisplayBasis(station) ? "0" : "-";
+}
+
+function formatRegistryAnnouncementCount(station: StationRecord) {
+  if (station.announcements.length > 0) {
+    return String(station.announcements.length);
+  }
+  return hasConfirmedEvidence(station, "announcements") ? "0" : "-";
+}
+
 const NON_CODEX_GROUP_KEYWORDS = [
   "claude",
   "anthropic",
@@ -253,6 +297,21 @@ function getLowestUnrankedMultiplier(station: SiteData["stations"][number]) {
   }
 
   return effectiveMultipliers.length ? Math.min(...effectiveMultipliers) : null;
+}
+
+function getRegistryDisplayValues(station: StationRecord) {
+  const lowestMultiplier = getLowestUnrankedMultiplier(station);
+  const values = {
+    lowestMultiplier: lowestMultiplier === null ? "-" : formatMultiplier(lowestMultiplier),
+    sampleCount: formatRegistrySampleCount(station),
+    verifiedTierCount: formatRegistryVerifiedTierCount(station),
+    announcementCount: formatRegistryAnnouncementCount(station),
+  };
+
+  return {
+    ...values,
+    hasData: Object.values(values).some((value) => value !== "-"),
+  };
 }
 
 const MANUAL_FEE_REVIEW_STATIONS = new Set(["voapi"]);
@@ -337,9 +396,8 @@ function MobileRankingCard({ row, index, stationMeta }: { row: RankingRow; index
 }
 
 function MobileStationCard({ station }: { station: SiteData["stations"][number] }) {
-  const allSamples = getSampleCount(station, "all_hours");
   const unrankedReason = getUnrankedReason(station);
-  const lowestMultiplier = getLowestUnrankedMultiplier(station);
+  const registryDisplay = getRegistryDisplayValues(station);
 
   return (
     <article className="mobile-card">
@@ -356,9 +414,9 @@ function MobileStationCard({ station }: { station: SiteData["stations"][number] 
       </div>
 
       <div className="mobile-metrics-grid">
-        <MobileMetric label="最低倍率" value={lowestMultiplier === null ? "-" : formatMultiplier(lowestMultiplier)} mono />
-        <MobileMetric label="全部时段样本" value={<span className="mono">{allSamples ?? "-"}</span>} />
-        <MobileMetric label="公告数量" value={<span className="mono">{station.announcements.length}</span>} />
+        <MobileMetric label="最低倍率" value={registryDisplay.lowestMultiplier} mono />
+        <MobileMetric label="全部时段样本" value={registryDisplay.sampleCount} mono />
+        <MobileMetric label="公告数量" value={registryDisplay.announcementCount} mono />
       </div>
 
       <details className="mobile-card-details" open>
@@ -371,7 +429,7 @@ function MobileStationCard({ station }: { station: SiteData["stations"][number] 
           <MobileDetail label="平台判断" value={station.platformGuess || "-"} />
           <MobileDetail label="站点类型" value={station.stationTypeLabel} />
           <MobileDetail label="未入榜原因" value={unrankedReason} />
-          <MobileDetail label="核验档位" value={<span className="mono">{station.verifiedTierCount}</span>} />
+          <MobileDetail label="核验档位" value={<span className="mono">{registryDisplay.verifiedTierCount}</span>} />
         </div>
       </details>
 
@@ -515,7 +573,16 @@ export function RankingDashboard({ data }: { data: SiteData }) {
         .flatMap((rows) => rows.map((row) => row.station))
     );
 
-    return data.stations.filter((station) => !rankedStationKeys.has(station.key));
+    return data.stations
+      .map((station, index) => ({ station, index, registryDisplay: getRegistryDisplayValues(station) }))
+      .filter(({ station }) => !rankedStationKeys.has(station.key))
+      .sort((left, right) => {
+        if (left.registryDisplay.hasData !== right.registryDisplay.hasData) {
+          return left.registryDisplay.hasData ? -1 : 1;
+        }
+        return left.index - right.index;
+      })
+      .map(({ station }) => station);
   }, [data.rankings, data.stations]);
 
   const activeRows = useMemo(() => {
@@ -751,9 +818,8 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                   </thead>
                   <tbody>
                     {paginatedUnrankedStations.map((station) => {
-                      const allSamples = getSampleCount(station, "all_hours");
                       const unrankedReason = getUnrankedReason(station);
-                      const lowestMultiplier = getLowestUnrankedMultiplier(station);
+                      const registryDisplay = getRegistryDisplayValues(station);
 
                       return (
                         <tr key={station.key}>
@@ -768,10 +834,10 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                           <td className="table-type-cell">{station.stationTypeShortLabel}</td>
                           <td className="table-platform-cell">{station.platformGuess || "-"}</td>
                           <td>{unrankedReason}</td>
-                          <td className="mono">{lowestMultiplier === null ? "-" : formatMultiplier(lowestMultiplier)}</td>
-                          <td className="mono">{allSamples ?? "-"}</td>
-                          <td className="mono">{station.verifiedTierCount}</td>
-                          <td className="mono">{station.announcements.length}</td>
+                          <td className="mono">{registryDisplay.lowestMultiplier}</td>
+                          <td className="mono">{registryDisplay.sampleCount}</td>
+                          <td className="mono">{registryDisplay.verifiedTierCount}</td>
+                          <td className="mono">{registryDisplay.announcementCount}</td>
                           <td className="table-action-cell">
                             <Link href={`/stations/${station.key}`} className="tiny-button">
                               详情

@@ -107,6 +107,10 @@ function runPythonJson(args: string[], env?: Record<string, string>) {
   });
 }
 
+function postgresSiteDataEnabled() {
+  return process.env.SITE_DATA_SOURCE?.trim().toLowerCase() === "postgres" && Boolean(process.env.DATABASE_URL?.trim());
+}
+
 type AuditExecutedRow = { station: string; model: string; summary: string; report: string };
 type AuditProgressPayload = Record<string, unknown> & { type?: unknown; message?: unknown; executed?: unknown };
 
@@ -309,6 +313,10 @@ export async function POST(request: Request) {
                 "site-data-rebuild",
                 async () => {
                   await runPythonJson(["scripts/build_site_data.py"]);
+                  if (postgresSiteDataEnabled()) {
+                    await runPythonJson(["scripts/publish_site_data_snapshot.py", "--source", "station-audit-run"]);
+                    await runPythonJson(["scripts/publish_audit_history.py", "--delete-missing"]);
+                  }
                 },
                 1000 * 60 * 60,
               );

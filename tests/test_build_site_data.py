@@ -16,6 +16,7 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
+from scripts import database as database
 from scripts import build_site_data as build_site_data
 from scripts import fetch_public_content as fetch_public_content
 from scripts import run_station_audit as run_station_audit
@@ -3928,6 +3929,159 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(history[0]["stationLabel"], "RelayExample")
         self.assertEqual(history[0]["reportUrl"], "/api/audit-report?station=demo&model=claude-sonnet&run=20260103T000000Z")
 
+    def test_station_audit_runs_schema_is_migration_version_two(self) -> None:
+        self.assertEqual(database.MIGRATION_VERSION, 2)
+        self.assertIn("create table if not exists station_audit_runs", database.SCHEMA_SQL)
+        self.assertIn("primary key (station_key, model, run_id)", database.SCHEMA_SQL)
+        self.assertIn("station_audit_runs_executed_idx", database.SCHEMA_SQL)
+        self.assertIn("station_audit_runs_verdict_idx", database.SCHEMA_SQL)
+
+    def test_station_audit_run_from_summary_parses_successful_run(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            audit_root = Path(tmp_dir) / "_audit_runs"
+            run_dir = audit_root / "demo" / "claude-sonnet" / "20260103T000000Z"
+            run_dir.mkdir(parents=True)
+            summary = {
+                "profile": "general",
+                "model": "claude-sonnet-4",
+                "auditedBaseUrl": "https://relay.example/v1",
+                "executedAt": "2026-01-03T00:00:00Z",
+                "overallVerdict": "medium",
+                "overallSummary": "needs review",
+                "highlights": [],
+                "stepSummaries": [],
+                "reportPath": "data/_audit_runs/demo/claude-sonnet/20260103T000000Z/report.md",
+                "toolVersion": "api-relay-audit@test",
+                "durationMs": 1234,
+            }
+            summary_path = run_dir / "summary.json"
+            summary_path.write_text(json.dumps(summary), encoding="utf-8")
+            (run_dir / "run.json").write_text(json.dumps({"status": "success"}), encoding="utf-8")
+
+            row = database.station_audit_run_from_summary(summary_path, audit_runs_dir=audit_root)
+
+        self.assertIsNotNone(row)
+        assert row is not None
+        self.assertEqual(row["station_key"], "demo")
+        self.assertEqual(row["model"], "claude-sonnet")
+        self.assertEqual(row["run_id"], "20260103T000000Z")
+        self.assertEqual(row["profile"], "general")
+        self.assertEqual(row["overall_verdict"], "medium")
+        self.assertEqual(row["duration_ms"], 1234)
+        self.assertEqual(row["summary"]["model"], "claude-sonnet-4")
+        self.assertTrue(str(row["source_path"]).replace("\\", "/").endswith("_audit_runs/demo/claude-sonnet/20260103T000000Z/summary.json"))
+
+    def test_station_audit_run_from_summary_skips_failed_run(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            audit_root = Path(tmp_dir) / "_audit_runs"
+            run_dir = audit_root / "demo" / "claude-sonnet" / "20260104T000000Z"
+            run_dir.mkdir(parents=True)
+            summary = {
+                "profile": "general",
+                "model": "claude-sonnet",
+                "auditedBaseUrl": "https://relay.example/v1",
+                "executedAt": "2026-01-04T00:00:00Z",
+                "overallVerdict": "high",
+                "overallSummary": "failed run should be ignored",
+                "reportPath": "data/_audit_runs/demo/claude-sonnet/20260104T000000Z/report.md",
+                "toolVersion": "api-relay-audit@test",
+            }
+            summary_path = run_dir / "summary.json"
+            summary_path.write_text(json.dumps(summary), encoding="utf-8")
+            (run_dir / "run.json").write_text(json.dumps({"status": "failed"}), encoding="utf-8")
+
+            row = database.station_audit_run_from_summary(summary_path, audit_runs_dir=audit_root)
+
+        self.assertIsNone(row)
+
+    def test_publish_station_audit_history_upserts_and_deletes_missing_rows(self) -> None:
+        class FakeCursor:
+            def __init__(self) -> None:
+                self.statements: list[tuple[str, tuple[object, ...] | None]] = []
+                self.upserts: list[tuple[object, ...] | None] = []
+                self.deletes: list[tuple[object, ...] | None] = []
+                self.fetchall_rows = [
+                    ("demo", "claude-sonnet", "20260103T000000Z"),
+                    ("stale", "old-model", "20250101T000000Z"),
+                ]
+
+            def __enter__(self) -> "FakeCursor":
+                return self
+
+            def __exit__(self, *_args: object) -> None:
+                return None
+
+            def execute(self, sql: str, params: tuple[object, ...] | None = None) -> None:
+                normalized = " ".join(sql.lower().split())
+                self.statements.append((normalized, params))
+                if normalized.startswith("insert into station_audit_runs"):
+                    self.upserts.append(params)
+                elif normalized.startswith("delete from station_audit_runs"):
+                    self.deletes.append(params)
+
+            def fetchall(self) -> list[tuple[str, str, str]]:
+                return self.fetchall_rows
+
+        class FakeConnection:
+            def __init__(self, cursor: FakeCursor) -> None:
+                self.cursor_obj = cursor
+                self.committed = False
+
+            def __enter__(self) -> "FakeConnection":
+                return self
+
+            def __exit__(self, *_args: object) -> None:
+                return None
+
+            def cursor(self) -> FakeCursor:
+                return self.cursor_obj
+
+            def commit(self) -> None:
+                self.committed = True
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            audit_root = Path(tmp_dir) / "_audit_runs"
+            success_dir = audit_root / "demo" / "claude-sonnet" / "20260103T000000Z"
+            failed_dir = audit_root / "demo" / "claude-sonnet" / "20260104T000000Z"
+            success_dir.mkdir(parents=True)
+            failed_dir.mkdir(parents=True)
+            base_summary = {
+                "profile": "general",
+                "model": "claude-sonnet",
+                "auditedBaseUrl": "https://relay.example/v1",
+                "executedAt": "2026-01-03T00:00:00Z",
+                "overallVerdict": "low",
+                "overallSummary": "clean",
+                "reportPath": "data/_audit_runs/demo/claude-sonnet/20260103T000000Z/report.md",
+                "toolVersion": "api-relay-audit@test",
+            }
+            (success_dir / "summary.json").write_text(json.dumps(base_summary), encoding="utf-8")
+            (success_dir / "run.json").write_text(json.dumps({"status": "success"}), encoding="utf-8")
+            (failed_dir / "summary.json").write_text(
+                json.dumps(base_summary | {"executedAt": "2026-01-04T00:00:00Z", "reportPath": "data/_audit_runs/demo/claude-sonnet/20260104T000000Z/report.md"}),
+                encoding="utf-8",
+            )
+            (failed_dir / "run.json").write_text(json.dumps({"status": "failed"}), encoding="utf-8")
+
+            cursor = FakeCursor()
+            connection = FakeConnection(cursor)
+            with (
+                mock.patch.object(database, "ensure_database", return_value=None),
+                mock.patch.object(database, "connect", return_value=connection),
+                mock.patch.object(database, "_jsonb", side_effect=lambda value: value),
+            ):
+                payload = database.publish_station_audit_history(audit_runs_dir=audit_root, delete_missing=True)
+
+        self.assertEqual(payload["imported"], 1)
+        self.assertEqual(payload["skipped"], 1)
+        self.assertEqual(payload["deleted"], 1)
+        self.assertTrue(connection.committed)
+        self.assertEqual(len(cursor.upserts), 1)
+        self.assertIn("on conflict (station_key, model, run_id) do update", cursor.statements[0][0])
+        assert cursor.upserts[0] is not None
+        self.assertEqual(cursor.upserts[0][0:3], ("demo", "claude-sonnet", "20260103T000000Z"))
+        self.assertEqual(cursor.deletes, [("stale", "old-model", "20250101T000000Z")])
+
     def test_apply_audit_only_station_records_adds_unlisted_station(self) -> None:
         stations: dict[str, dict[str, object]] = {}
         station_urls: dict[str, set[str]] = {}
@@ -5235,6 +5389,51 @@ One or more audit steps **crashed**.
         self.assertEqual(commands[0], ["python", "scripts/fetch_public_content.py", "--announcements", "--multiplier-snapshots", "--skip-build"])
         self.assertEqual(commands[1], ["python", "scripts/build_site_data.py"])
         self.assertIn("--scrape-report", commands[2])
+
+    def test_run_server_refresh_postgres_publishes_audit_history_before_site_snapshot(self) -> None:
+        commands: list[list[str]] = []
+        started_runs: list[tuple[str, dict[str, object] | None]] = []
+
+        def fake_run(command: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
+            commands.append(command)
+            return subprocess.CompletedProcess(command, 0, stdout="", stderr="")
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            with (
+                mock.patch.object(run_server_refresh, "APP_ROOT", root),
+                mock.patch.object(run_server_refresh, "ensure_runtime_dirs", return_value=None),
+                mock.patch.object(run_server_refresh, "exclusive_lock", side_effect=lambda *args, **kwargs: contextlib.nullcontext()),
+                mock.patch.object(run_server_refresh, "new_run_id", return_value="server-refresh-test-run"),
+                mock.patch.object(
+                    run_server_refresh,
+                    "start_analysis_run",
+                    side_effect=lambda run_id, summary=None: started_runs.append((run_id, summary)),
+                ),
+                mock.patch.object(run_server_refresh, "run", side_effect=fake_run),
+                mock.patch.object(run_server_refresh, "prune_audit_runs", return_value=[]),
+                mock.patch.dict(
+                    run_server_refresh.os.environ,
+                    {"SITE_DATA_SOURCE": "postgres", "DATABASE_URL": "postgresql://user:pass@localhost/db"},
+                    clear=True,
+                ),
+                mock.patch("sys.stdout", new=io.StringIO()) as stdout,
+            ):
+                exit_code = run_server_refresh.main()
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(started_runs, [("server-refresh-test-run", {"source": "server-refresh", "siteDataSource": "postgres"})])
+        self.assertEqual(
+            commands[-2:],
+            [
+                ["python", "scripts/publish_audit_history.py", "--delete-missing"],
+                ["python", "scripts/publish_site_data_snapshot.py", "--run-id", "server-refresh-test-run", "--source", "server-refresh"],
+            ],
+        )
+        self.assertIn("publish_audit_history", payload["completed"])
+        self.assertIn("publish_site_data_snapshot", payload["completed"])
+        self.assertEqual(payload["runId"], "server-refresh-test-run")
 
     def test_prune_audit_runs_respects_retention_days_and_max_per_target(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:

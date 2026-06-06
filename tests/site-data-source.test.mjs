@@ -2,21 +2,44 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const siteDataSource = await readFile("lib/site-data.ts", "utf8");
+const auditHistory = await readFile("lib/audit-history.ts", "utf8");
+const postgres = await readFile("lib/postgres.ts", "utf8");
+const stationAuditRunRoute = await readFile("app/api/station-audit/run/route.ts", "utf8");
 const appStartup = await readFile("deploy/start-app.sh", "utf8");
 const schedulerStartup = await readFile("deploy/start-scheduler.sh", "utf8");
 const compose = await readFile("deploy/docker-compose.yml", "utf8");
 const refreshCron = await readFile("deploy/cron/refresh.cron", "utf8");
+const deployWorkflow = await readFile(".github/workflows/deploy-vps.yml", "utf8");
 
 assert.match(siteDataSource, /return process\.env\.SITE_DATA_SOURCE\?\.trim\(\)\.toLowerCase\(\) \|\| "json"/);
 assert.match(siteDataSource, /siteDataSource\(\) === "postgres" && hasDatabaseUrl\(\)/);
 assert.doesNotMatch(siteDataSource, /if \(hasDatabaseUrl\(\)\) \{/);
 
+assert.match(postgres, /from station_audit_runs/);
+assert.match(postgres, /order by executed_at desc/);
+assert.match(auditHistory, /siteDataSource\(\) === "postgres" && hasDatabaseUrl\(\)/);
+assert.match(auditHistory, /readStationAuditRunRows\(\)/);
+assert.match(auditHistory, /SITE_DATA_ALLOW_FILE_FALLBACK === "1"/);
+assert.match(auditHistory, /throw error/);
+assert.match(stationAuditRunRoute, /postgresSiteDataEnabled\(\)/);
+assert.match(stationAuditRunRoute, /\["scripts\/publish_site_data_snapshot\.py", "--source", "station-audit-run"\]/);
+assert.match(stationAuditRunRoute, /\["scripts\/publish_audit_history\.py", "--delete-missing"\]/);
 assert.match(appStartup, /\[ "\$\{SITE_DATA_SOURCE:-json\}" = "postgres" \]/);
 assert.match(schedulerStartup, /\[ "\$\{SITE_DATA_SOURCE:-json\}" = "postgres" \]/);
+assert.match(appStartup, /python scripts\/publish_audit_history\.py --delete-missing/);
+assert.match(schedulerStartup, /python scripts\/publish_audit_history\.py --delete-missing/);
 assert.match(compose, /SITE_DATA_SOURCE: \$\{SITE_DATA_SOURCE:-postgres\}/);
 assert.match(compose, /SITE_DATA_MERGE_POSTGRES_BASE: \$\{SITE_DATA_MERGE_POSTGRES_BASE:-1\}/);
 assert.match(compose, /DATABASE_URL: postgresql:\/\/\$\{POSTGRES_USER\}:\$\{POSTGRES_PASSWORD\}@postgres:5432\/\$\{POSTGRES_DB\}/);
 assert.match(refreshCron, /python scripts\/run_server_refresh\.py/);
 assert.doesNotMatch(refreshCron, /SITE_DATA_SOURCE/);
+assert.match(deployWorkflow, /Create pre-deploy backup/);
+assert.match(deployWorkflow, /pg_dump -U api_relay_rank -d api_relay_rank -Fc/);
+assert.match(deployWorkflow, /EXPECTED_AUDIT_RUNS/);
+assert.match(deployWorkflow, /Verify deployed site data/);
+assert.match(deployWorkflow, /select count\(\*\) from station_audit_runs/);
+assert.match(deployWorkflow, /schema_migrations where version = 2/);
+assert.match(deployWorkflow, /site_data_snapshots where status='success'/);
+assert.match(deployWorkflow, /\/api\/audit-report/);
 
-console.log("site data defaults to JSON and only uses PostgreSQL when SITE_DATA_SOURCE=postgres.");
+console.log("site and audit data only use PostgreSQL when SITE_DATA_SOURCE=postgres.");

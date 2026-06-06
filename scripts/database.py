@@ -10,12 +10,12 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from scripts.runtime_paths import SITE_DATA_PATH
+    from scripts.runtime_paths import AUDIT_RUNS_DIR, SITE_DATA_PATH, logical_data_path
 except ModuleNotFoundError:
-    from runtime_paths import SITE_DATA_PATH
+    from runtime_paths import AUDIT_RUNS_DIR, SITE_DATA_PATH, logical_data_path
 
 
-MIGRATION_VERSION = 1
+MIGRATION_VERSION = 2
 DATABASE_URL_ENV = "DATABASE_URL"
 REQUIRED_RANKING_COUNTS = {
     "all_hours": 39,
@@ -121,6 +121,34 @@ create table if not exists site_data_snapshots (
 create index if not exists site_data_snapshots_latest_success_idx
   on site_data_snapshots (created_at desc, id desc)
   where status = 'success';
+
+create table if not exists station_audit_runs (
+  station_key text not null,
+  model text not null,
+  run_id text not null,
+  profile text not null,
+  audited_base_url text not null,
+  executed_at timestamptz not null,
+  overall_verdict text not null,
+  overall_summary text not null,
+  report_path text not null,
+  tool_version text,
+  duration_ms integer,
+  summary jsonb not null,
+  source_path text not null,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  primary key (station_key, model, run_id)
+);
+
+create index if not exists station_audit_runs_executed_idx
+  on station_audit_runs (executed_at desc);
+create index if not exists station_audit_runs_station_idx
+  on station_audit_runs (station_key, executed_at desc);
+create index if not exists station_audit_runs_model_idx
+  on station_audit_runs (model);
+create index if not exists station_audit_runs_verdict_idx
+  on station_audit_runs (overall_verdict);
 """
 
 
@@ -235,6 +263,81 @@ def _read_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
+def _text(value: Any) -> str:
+    return str(value or "").strip()
+
+
+def _parse_audit_datetime(value: Any) -> datetime | None:
+    text = _text(value)
+    if not text:
+        return None
+    try:
+        parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=UTC)
+    return parsed
+
+
+def _audit_run_status(summary_path: Path) -> str:
+    run_path = summary_path.with_name("run.json")
+    if not run_path.exists():
+        return "success"
+    try:
+        payload = read_json(run_path)
+    except (OSError, json.JSONDecodeError, ValueError):
+        return "invalid"
+    return _text(payload.get("status") or "success").lower()
+
+
+def station_audit_run_from_summary(summary_path: Path, *, audit_runs_dir: Path = AUDIT_RUNS_DIR) -> dict[str, Any] | None:
+    try:
+        relative_parts = summary_path.resolve().relative_to(audit_runs_dir.resolve()).parts
+    except ValueError:
+        return None
+    if len(relative_parts) != 4 or relative_parts[-1] != "summary.json":
+        return None
+
+    station_key, model, run_id, _ = relative_parts
+    try:
+        summary = read_json(summary_path)
+    except (OSError, json.JSONDecodeError, ValueError):
+        return None
+
+    if _text(summary.get("runStatus") or "success").lower() != "success":
+        return None
+    if _audit_run_status(summary_path) != "success":
+        return None
+
+    executed_at = _parse_audit_datetime(summary.get("executedAt"))
+    profile = _text(summary.get("profile"))
+    audited_base_url = _text(summary.get("auditedBaseUrl"))
+    report_path = _text(summary.get("reportPath"))
+    if profile != "general" or not model or not run_id or not executed_at or not audited_base_url or not report_path:
+        return None
+
+    duration_ms = summary.get("durationMs")
+    if not isinstance(duration_ms, int):
+        duration_ms = None
+
+    return {
+        "station_key": station_key,
+        "model": model,
+        "run_id": run_id,
+        "profile": profile,
+        "audited_base_url": audited_base_url,
+        "executed_at": executed_at,
+        "overall_verdict": _text(summary.get("overallVerdict")) or "inconclusive",
+        "overall_summary": _text(summary.get("overallSummary")),
+        "report_path": report_path,
+        "tool_version": _text(summary.get("toolVersion")),
+        "duration_ms": duration_ms,
+        "summary": summary,
+        "source_path": logical_data_path(summary_path),
+    }
+
+
 def _ranking_counts(site_data: dict[str, Any]) -> dict[str, int]:
     rankings = site_data.get("rankings") if isinstance(site_data.get("rankings"), dict) else {}
     return {
@@ -277,6 +380,103 @@ def validate_site_data_snapshot(site_data: dict[str, Any]) -> dict[str, Any]:
     return {
         "stationCount": len(stations),
         "rankingCounts": ranking_counts,
+    }
+
+
+def upsert_station_audit_run(cur: Any, row: dict[str, Any]) -> None:
+    cur.execute(
+        """
+        insert into station_audit_runs (
+          station_key,
+          model,
+          run_id,
+          profile,
+          audited_base_url,
+          executed_at,
+          overall_verdict,
+          overall_summary,
+          report_path,
+          tool_version,
+          duration_ms,
+          summary,
+          source_path
+        )
+        values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        on conflict (station_key, model, run_id) do update
+        set profile = excluded.profile,
+            audited_base_url = excluded.audited_base_url,
+            executed_at = excluded.executed_at,
+            overall_verdict = excluded.overall_verdict,
+            overall_summary = excluded.overall_summary,
+            report_path = excluded.report_path,
+            tool_version = excluded.tool_version,
+            duration_ms = excluded.duration_ms,
+            summary = excluded.summary,
+            source_path = excluded.source_path,
+            updated_at = now()
+        """,
+        (
+            row["station_key"],
+            row["model"],
+            row["run_id"],
+            row["profile"],
+            row["audited_base_url"],
+            row["executed_at"],
+            row["overall_verdict"],
+            row["overall_summary"],
+            row["report_path"],
+            row["tool_version"],
+            row["duration_ms"],
+            _jsonb(row["summary"]),
+            row["source_path"],
+        ),
+    )
+
+
+def publish_station_audit_history(
+    *,
+    audit_runs_dir: Path = AUDIT_RUNS_DIR,
+    delete_missing: bool = False,
+    dsn: str | None = None,
+) -> dict[str, Any]:
+    ensure_database(dsn)
+    rows: list[dict[str, Any]] = []
+    skipped = 0
+    if audit_runs_dir.exists():
+        for summary_path in sorted(audit_runs_dir.glob("*/*/*/summary.json")):
+            row = station_audit_run_from_summary(summary_path, audit_runs_dir=audit_runs_dir)
+            if row is None:
+                skipped += 1
+                continue
+            rows.append(row)
+
+    seen_keys = {(row["station_key"], row["model"], row["run_id"]) for row in rows}
+    deleted = 0
+    with connect(dsn) as con:
+        with con.cursor() as cur:
+            for row in rows:
+                upsert_station_audit_run(cur, row)
+
+            if delete_missing:
+                cur.execute("select station_key, model, run_id from station_audit_runs")
+                for station_key, model, run_id in cur.fetchall():
+                    if (station_key, model, run_id) not in seen_keys:
+                        cur.execute(
+                            """
+                            delete from station_audit_runs
+                            where station_key = %s and model = %s and run_id = %s
+                            """,
+                            (station_key, model, run_id),
+                        )
+                        deleted += 1
+        con.commit()
+
+    return {
+        "auditRunsDir": logical_data_path(audit_runs_dir),
+        "imported": len(rows),
+        "skipped": skipped,
+        "deleted": deleted,
+        "deleteMissing": delete_missing,
     }
 
 
