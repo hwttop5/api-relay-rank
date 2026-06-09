@@ -989,6 +989,36 @@ def normalize_audit_step_summary(item: Any) -> dict[str, str] | None:
     return {"title": title, "summary": summary}
 
 
+def normalize_audit_detector_result(item: Any) -> dict[str, Any] | None:
+    if not isinstance(item, dict):
+        return None
+    key = sanitize_public_text(item.get("key"))
+    label = sanitize_public_text(item.get("label"))
+    category = sanitize_public_text(item.get("category"))
+    status = sanitize_public_text(item.get("status"))
+    summary = normalize_public_text(item.get("summary"))
+    if not key or not label or not category or not status:
+        return None
+    score = parse_int(item.get("score")) if item.get("score") is not None else None
+    weight = parse_int(item.get("weight")) if item.get("weight") is not None else None
+    payload: dict[str, Any] = {
+        "key": key,
+        "label": label,
+        "category": category,
+        "status": status,
+        "severity": sanitize_public_text(item.get("severity")),
+        "summary": summary,
+    }
+    if score is not None:
+        payload["score"] = score
+    if weight is not None:
+        payload["weight"] = weight
+    evidence = [normalize_public_text(value) for value in item.get("evidence", []) if normalize_public_text(value)]
+    if evidence:
+        payload["evidence"] = evidence
+    return payload
+
+
 def normalize_audit_summary(item: Any) -> dict[str, Any] | None:
     if not isinstance(item, dict):
         return None
@@ -1031,6 +1061,31 @@ def normalize_audit_summary(item: Any) -> dict[str, Any] | None:
     effective_options = item.get("effectiveOptions")
     if isinstance(effective_options, dict):
         payload["effectiveOptions"] = effective_options
+    audit_score = parse_int(item.get("auditScore")) if item.get("auditScore") is not None else None
+    if audit_score is not None:
+        payload["auditScore"] = max(0, min(100, audit_score))
+    for source_key, target_key in [
+        ("auditVerdictReason", "auditVerdictReason"),
+        ("capabilityVerdict", "capabilityVerdict"),
+        ("protocolVerdict", "protocolVerdict"),
+        ("authenticityVerdict", "authenticityVerdict"),
+        ("longContextVerdict", "longContextVerdict"),
+        ("runMode", "runMode"),
+        ("costNotice", "costNotice"),
+    ]:
+        value = normalize_public_text(item.get(source_key))
+        if value:
+            payload[target_key] = value
+    detector_results = []
+    for raw_detector in item.get("detectorResults", []):
+        detector = normalize_audit_detector_result(raw_detector)
+        if detector:
+            detector_results.append(detector)
+    if detector_results:
+        payload["detectorResults"] = detector_results
+    critical_findings = [normalize_public_text(value) for value in item.get("criticalFindings", []) if normalize_public_text(value)]
+    if critical_findings:
+        payload["criticalFindings"] = critical_findings
     return payload
 
 

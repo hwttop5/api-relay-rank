@@ -3,7 +3,7 @@ import path from "node:path";
 
 import { hasDatabaseUrl, readStationAuditRunRows, type StationAuditRunRow } from "./postgres";
 import { AUDIT_RUNS_ROOT, resolveLogicalDataPath } from "./runtime-paths";
-import type { AuditVerdict, SiteData, StationAuditHistoryItem, StationAuditSummary } from "./types";
+import type { AuditVerdict, SiteData, StationAuditDetectorResult, StationAuditHistoryItem, StationAuditSummary } from "./types";
 
 const AUDIT_SEGMENT_PATTERN = /^[A-Za-z0-9._-]+$/;
 const VALID_VERDICTS = new Set<AuditVerdict>(["low", "medium", "high", "inconclusive"]);
@@ -37,6 +37,44 @@ export function resolveArchivedReportPath(reportPath: string) {
 function normalizeAuditVerdict(value: unknown): AuditVerdict {
   const verdict = String(value || "").trim().toLowerCase();
   return VALID_VERDICTS.has(verdict as AuditVerdict) ? (verdict as AuditVerdict) : "inconclusive";
+}
+
+function stringList(value: unknown) {
+  return Array.isArray(value) ? value.map((item) => String(item || "").trim()).filter(Boolean) : [];
+}
+
+function normalizeDetectorResult(value: unknown): StationAuditDetectorResult | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return null;
+  }
+  const item = value as Record<string, unknown>;
+  const key = String(item.key || "").trim();
+  const label = String(item.label || "").trim();
+  const category = String(item.category || "").trim();
+  const status = String(item.status || "").trim();
+  const summary = String(item.summary || "").trim();
+  if (!key || !label || !category || !status) {
+    return null;
+  }
+  const output: StationAuditDetectorResult = {
+    key,
+    label,
+    category,
+    status,
+    severity: String(item.severity || "").trim(),
+    summary,
+  };
+  if (typeof item.score === "number" && Number.isFinite(item.score)) {
+    output.score = item.score;
+  }
+  if (typeof item.weight === "number" && Number.isFinite(item.weight)) {
+    output.weight = item.weight;
+  }
+  const evidence = stringList(item.evidence);
+  if (evidence.length > 0) {
+    output.evidence = evidence;
+  }
+  return output;
 }
 
 function normalizeAuditSummary(payload: unknown): StationAuditSummary | null {
@@ -87,6 +125,36 @@ function normalizeAuditSummary(payload: unknown): StationAuditSummary | null {
   }
   if (item.effectiveOptions && typeof item.effectiveOptions === "object" && !Array.isArray(item.effectiveOptions)) {
     summary.effectiveOptions = item.effectiveOptions as Record<string, unknown>;
+  }
+  if (typeof item.auditScore === "number" && Number.isFinite(item.auditScore)) {
+    summary.auditScore = Math.max(0, Math.min(100, Math.round(item.auditScore)));
+  }
+  for (const [sourceKey, targetKey] of [
+    ["auditVerdictReason", "auditVerdictReason"],
+    ["capabilityVerdict", "capabilityVerdict"],
+    ["protocolVerdict", "protocolVerdict"],
+    ["authenticityVerdict", "authenticityVerdict"],
+    ["longContextVerdict", "longContextVerdict"],
+    ["runMode", "runMode"],
+    ["costNotice", "costNotice"],
+  ] as const) {
+    const value = String(item[sourceKey] || "").trim();
+    if (value) {
+      summary[targetKey] = value;
+    }
+  }
+  const detectorResults = Array.isArray(item.detectorResults)
+    ? item.detectorResults.flatMap((detector) => {
+        const normalized = normalizeDetectorResult(detector);
+        return normalized ? [normalized] : [];
+      })
+    : [];
+  if (detectorResults.length > 0) {
+    summary.detectorResults = detectorResults;
+  }
+  const criticalFindings = stringList(item.criticalFindings);
+  if (criticalFindings.length > 0) {
+    summary.criticalFindings = criticalFindings;
   }
   return summary;
 }

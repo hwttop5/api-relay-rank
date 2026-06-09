@@ -5178,6 +5178,108 @@ No significant injection, instruction override, or leakage detected.
         self.assertIn("No significant injection", summary["overallSummary"])
         self.assertEqual(summary["stepSummaries"][0]["title"], "1. Infrastructure")
 
+    def test_build_station_audit_summary_adds_enhanced_detector_fields(self) -> None:
+        report = """
+# API Relay Security Audit Report
+
+## Risk Summary
+
+- No significant injection detected.
+
+## 3. Instruction Conflict + Identity
+
+Identity response stable and consistent.
+
+## 7. Context Length
+
+All canary markers were recalled ok.
+
+## 8. Tool-call Package Substitution
+
+Exact tool call preserved.
+
+## 9. Error Response Header Leakage
+
+No sensitive upstream details observed.
+
+## 10. Stream Integrity
+
+SSE event sequence and usage fields were clean.
+
+## 13. Latency Variance Fingerprinting
+
+Latency distribution stable.
+
+## 14. Overall Rating
+
+### LOW RISK
+
+No significant injection, instruction override, or leakage detected.
+"""
+        summary = run_station_audit.build_summary(
+            report,
+            profile="general",
+            model="claude-sonnet",
+            audited_base_url="https://relay.example/v1",
+            executed_at="2026-01-02T00:00:00Z",
+            report_path=run_station_audit.APP_ROOT / "data" / "_audit_runs" / "demo" / "claude-sonnet" / "run" / "report.md",
+            effective_options=run_station_audit.AuditRunOptions().to_payload(),
+        ).to_payload()
+
+        self.assertEqual(summary["overallVerdict"], "low")
+        self.assertGreaterEqual(summary["auditScore"], 80)
+        self.assertEqual(summary["runMode"], "standard_long_context")
+        self.assertIn("API", summary["costNotice"])
+        detectors = {item["key"]: item for item in summary["detectorResults"]}
+        self.assertEqual(detectors["stream_protocol"]["status"], "pass")
+        self.assertEqual(detectors["tool_capability"]["status"], "pass")
+        self.assertEqual(detectors["long_context"]["status"], "pass")
+        self.assertEqual(summary["protocolVerdict"], "pass")
+        self.assertEqual(summary["capabilityVerdict"], "pass")
+
+    def test_build_station_audit_summary_critical_findings_cap_verdict(self) -> None:
+        report = """
+# API Relay Security Audit Report
+
+## Risk Summary
+
+- Original report did not flag the relay as high risk.
+
+## 7. Context Length
+
+All canary markers were recalled ok.
+
+## 8. Tool-call Package Substitution
+
+Tool-call package substitution detected.
+
+## 10. Stream Integrity
+
+Stream integrity anomaly detected: non-monotonic usage.
+
+## 14. Overall Rating
+
+### LOW RISK
+
+No significant injection detected.
+"""
+        summary = run_station_audit.build_summary(
+            report,
+            profile="general",
+            model="claude-sonnet",
+            audited_base_url="https://relay.example/v1",
+            executed_at="2026-01-02T00:00:00Z",
+            report_path=run_station_audit.APP_ROOT / "data" / "_audit_runs" / "demo" / "claude-sonnet" / "run" / "report.md",
+            effective_options=run_station_audit.AuditRunOptions().to_payload(),
+        ).to_payload()
+
+        self.assertEqual(summary["overallVerdict"], "high")
+        self.assertGreaterEqual(len(summary["criticalFindings"]), 2)
+        self.assertIn("critical", summary["auditVerdictReason"])
+        detectors = {item["key"]: item for item in summary["detectorResults"]}
+        self.assertEqual(detectors["stream_protocol"]["severity"], "critical")
+        self.assertEqual(detectors["tool_capability"]["severity"], "critical")
+
     def test_build_station_audit_summary_parses_overall_rating_variants(self) -> None:
         report = """
 # API Relay Security Audit Report
@@ -5217,6 +5319,66 @@ One or more audit steps **crashed**.
         ).to_payload()
 
         self.assertEqual(summary["overallVerdict"], "inconclusive")
+
+    def test_normalize_audit_summary_preserves_enhanced_fields_and_legacy_compatibility(self) -> None:
+        legacy = {
+            "profile": "general",
+            "model": "gpt-5",
+            "auditedBaseUrl": "https://relay.example/v1",
+            "executedAt": "2026-01-02T00:00:00Z",
+            "overallVerdict": "low",
+            "overallSummary": "ok",
+            "highlights": [],
+            "stepSummaries": [],
+            "reportPath": "data/_audit_runs/demo/gpt-5/run/report.md",
+            "toolVersion": "api-relay-audit@test",
+        }
+
+        normalized_legacy = build_site_data.normalize_audit_summary(legacy)
+
+        self.assertIsNotNone(normalized_legacy)
+        assert normalized_legacy is not None
+        self.assertEqual(normalized_legacy["overallVerdict"], "low")
+        self.assertNotIn("detectorResults", normalized_legacy)
+        self.assertNotIn("criticalFindings", normalized_legacy)
+
+        enhanced = legacy | {
+            "auditScore": 105,
+            "auditVerdictReason": "combined reason",
+            "capabilityVerdict": "pass",
+            "protocolVerdict": "warn",
+            "authenticityVerdict": "pass",
+            "longContextVerdict": "fail",
+            "runMode": "standard_long_context",
+            "costNotice": "standard context probe costs extra API quota",
+            "detectorResults": [
+                {
+                    "key": "stream_protocol",
+                    "label": "Stream protocol",
+                    "category": "protocol",
+                    "status": "warn",
+                    "score": 58,
+                    "weight": 15,
+                    "severity": "medium",
+                    "summary": "needs review",
+                    "evidence": ["inconclusive"],
+                },
+                {"key": "", "label": "invalid", "category": "protocol", "status": "pass"},
+            ],
+            "criticalFindings": ["full api key echoed", ""],
+        }
+
+        normalized_enhanced = build_site_data.normalize_audit_summary(enhanced)
+
+        self.assertIsNotNone(normalized_enhanced)
+        assert normalized_enhanced is not None
+        self.assertEqual(normalized_enhanced["auditScore"], 100)
+        self.assertEqual(normalized_enhanced["auditVerdictReason"], "combined reason")
+        self.assertEqual(normalized_enhanced["protocolVerdict"], "warn")
+        self.assertEqual(normalized_enhanced["longContextVerdict"], "fail")
+        self.assertEqual(normalized_enhanced["detectorResults"][0]["key"], "stream_protocol")
+        self.assertEqual(normalized_enhanced["detectorResults"][0]["evidence"], ["inconclusive"])
+        self.assertEqual(normalized_enhanced["criticalFindings"], ["full api key echoed"])
 
     def test_runtime_paths_follow_environment_overrides(self) -> None:
         from scripts import runtime_paths as runtime_paths

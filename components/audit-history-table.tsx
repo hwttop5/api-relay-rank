@@ -42,6 +42,7 @@ const SORT_LABELS: Record<AuditHistorySortKey, string> = {
   station: "站点",
   model: "模型",
   verdict: "安全程度",
+  score: "综合分",
 };
 
 const VERDICT_ORDER: Record<AuditVerdict, number> = {
@@ -50,6 +51,13 @@ const VERDICT_ORDER: Record<AuditVerdict, number> = {
   low: 1,
   inconclusive: 0,
 };
+
+const SUMMARY_DIMENSIONS = [
+  { key: "protocol", label: "协议", field: "protocolVerdict" },
+  { key: "capability", label: "能力", field: "capabilityVerdict" },
+  { key: "authenticity", label: "真伪", field: "authenticityVerdict" },
+  { key: "long-context", label: "长上下文", field: "longContextVerdict" },
+] as const;
 
 function verdictClass(verdict: AuditVerdict) {
   if (verdict === "high") {
@@ -96,7 +104,89 @@ function compareAuditRows(a: StationAuditHistoryItem, b: StationAuditHistoryItem
   if (sortKey === "model") {
     return a.model.localeCompare(b.model, "zh-CN");
   }
+  if (sortKey === "score") {
+    return (a.auditScore ?? -1) - (b.auditScore ?? -1);
+  }
   return VERDICT_ORDER[a.overallVerdict] - VERDICT_ORDER[b.overallVerdict];
+}
+
+function summaryText(item: StationAuditHistoryItem) {
+  return item.auditVerdictReason || localizeAuditText(item.overallSummary) || "审计报告未给出摘要。";
+}
+
+function dimensionStatusLabel(value: string) {
+  if (value === "pass") {
+    return "通过";
+  }
+  if (value === "warn") {
+    return "复核";
+  }
+  if (value === "fail") {
+    return "失败";
+  }
+  if (value === "not_run") {
+    return "未跑";
+  }
+  if (value === "skip") {
+    return "跳过";
+  }
+  if (value === "error") {
+    return "异常";
+  }
+  return value;
+}
+
+function dimensionTone(value: string) {
+  if (value === "fail" || value === "error") {
+    return "fail";
+  }
+  if (value === "warn") {
+    return "warn";
+  }
+  if (value === "pass") {
+    return "pass";
+  }
+  if (value === "not_run" || value === "skip") {
+    return "skip";
+  }
+  return "neutral";
+}
+
+function summaryDimensions(item: StationAuditHistoryItem) {
+  return SUMMARY_DIMENSIONS.flatMap((dimension) => {
+    const value = String(item[dimension.field] || "").trim();
+    if (!value || value === "unknown") {
+      return [];
+    }
+    return [
+      {
+        key: dimension.key,
+        label: dimension.label,
+        value,
+      },
+    ];
+  });
+}
+
+function AuditHistorySummaryBlock({ item }: { item: StationAuditHistoryItem }) {
+  const criticalCount = item.criticalFindings?.length ?? 0;
+  const dimensions = summaryDimensions(item);
+  return (
+    <div className="audit-history-summary-block">
+      <p className="audit-history-summary-main">{summaryText(item)}</p>
+      {dimensions.length > 0 ? (
+        <div className="audit-history-summary-chips" aria-label="检测维度摘要">
+          {dimensions.map((dimension) => (
+            <span className={`audit-history-summary-chip audit-history-summary-chip-${dimensionTone(dimension.value)}`} key={dimension.key}>
+              <span>{dimension.label}</span>
+              <strong>{dimensionStatusLabel(dimension.value)}</strong>
+            </span>
+          ))}
+        </div>
+      ) : null}
+      {criticalCount > 0 ? <p className="audit-history-critical">Critical findings：{criticalCount} 个</p> : null}
+    </div>
+  );
 }
 
 function SortButton({
@@ -151,6 +241,10 @@ function AuditHistoryCard({ item }: { item: StationAuditHistoryItem }) {
       </div>
       <div className="mobile-metrics-grid">
         <div className="mobile-metric">
+          <span className="mobile-metric-label">综合分</span>
+          <span className="mobile-metric-value mono">{typeof item.auditScore === "number" ? `${item.auditScore}/100` : "-"}</span>
+        </div>
+        <div className="mobile-metric">
           <span className="mobile-metric-label">模型</span>
           <span className="mobile-metric-value mono">{item.model}</span>
         </div>
@@ -159,7 +253,7 @@ function AuditHistoryCard({ item }: { item: StationAuditHistoryItem }) {
           <span className="mobile-metric-value">{formatDateTime(item.executedAt)}</span>
         </div>
       </div>
-      <p className="audit-history-summary">{localizeAuditText(item.overallSummary) || "审计报告未给出摘要。"}</p>
+      <AuditHistorySummaryBlock item={item} />
       <div className="mobile-card-actions">
         <a href={item.reportUrl} target="_blank" rel="noreferrer" className="tiny-button mobile-card-button">
           原始报告
@@ -234,7 +328,7 @@ export function AuditHistoryTable({ history }: { history: StationAuditHistoryIte
       return;
     }
     setSortKey(nextSortKey);
-    setSortDirection(nextSortKey === "executedAt" || nextSortKey === "verdict" ? "desc" : "asc");
+    setSortDirection(nextSortKey === "executedAt" || nextSortKey === "verdict" || nextSortKey === "score" ? "desc" : "asc");
   }
 
   function updatePageSize(value: string) {
@@ -312,6 +406,7 @@ export function AuditHistoryTable({ history }: { history: StationAuditHistoryIte
                       <th>审计时间</th>
                       <th>站点</th>
                       <th>模型</th>
+                      <th>综合分</th>
                       <th>安全程度</th>
                       <th>审计地址</th>
                       <th>摘要</th>
@@ -328,11 +423,15 @@ export function AuditHistoryTable({ history }: { history: StationAuditHistoryIte
                           </Link>
                         </td>
                         <td className="mono">{item.model}</td>
+                        <td className="mono audit-history-score">{typeof item.auditScore === "number" ? `${item.auditScore}/100` : "-"}</td>
                         <td>
                           <span className={`audit-verdict-pill ${verdictClass(item.overallVerdict)}`}>{formatAuditVerdict(item.overallVerdict)}</span>
+                          {item.criticalFindings?.length ? <span className="audit-history-critical-inline">C{item.criticalFindings.length}</span> : null}
                         </td>
                         <td className="table-url-cell audit-history-url">{item.auditedBaseUrl || "-"}</td>
-                        <td className="audit-history-summary-cell">{localizeAuditText(item.overallSummary) || "审计报告未给出摘要。"}</td>
+                        <td className="audit-history-summary-cell">
+                          <AuditHistorySummaryBlock item={item} />
+                        </td>
                         <td className="table-action-cell">
                           <a href={item.reportUrl} target="_blank" rel="noreferrer" className="tiny-button">
                             <FileText size={14} />

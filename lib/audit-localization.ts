@@ -222,11 +222,19 @@ export function localizeAuditSummaryText<T extends StationAuditSummary>(summary:
   return {
     ...summary,
     overallSummary: localizeAuditText(summary.overallSummary),
+    auditVerdictReason: summary.auditVerdictReason ? localizeAuditText(summary.auditVerdictReason) : summary.auditVerdictReason,
+    costNotice: summary.costNotice ? localizeAuditText(summary.costNotice) : summary.costNotice,
     highlights: summary.highlights.map(localizeAuditText),
     stepSummaries: summary.stepSummaries.map((step) => ({
       title: localizeAuditText(step.title),
       summary: localizeAuditText(step.summary),
     })),
+    detectorResults: summary.detectorResults?.map((detector) => ({
+      ...detector,
+      summary: localizeAuditText(detector.summary),
+      evidence: detector.evidence?.map(localizeAuditText),
+    })),
+    criticalFindings: summary.criticalFindings?.map(localizeAuditText),
   };
 }
 

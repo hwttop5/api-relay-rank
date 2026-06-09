@@ -119,6 +119,18 @@ export interface StationAuditStepSummary {
   summary: string;
 }
 
+export interface StationAuditDetectorResult {
+  key: string;
+  label: string;
+  category: "security" | "protocol" | "capability" | "authenticity" | "long_context" | string;
+  status: "pass" | "warn" | "fail" | "skip" | "error" | string;
+  score?: number;
+  weight?: number;
+  severity?: "info" | "medium" | "high" | "critical" | string;
+  summary: string;
+  evidence?: string[];
+}
+
 export interface StationAuditSummary {
   profile: AuditProfile;
   model: string;
@@ -134,6 +146,16 @@ export interface StationAuditSummary {
   durationMs?: number;
   engineCommit?: string;
   effectiveOptions?: Record<string, unknown>;
+  auditScore?: number;
+  auditVerdictReason?: string;
+  capabilityVerdict?: string;
+  protocolVerdict?: string;
+  authenticityVerdict?: string;
+  longContextVerdict?: string;
+  detectorResults?: StationAuditDetectorResult[];
+  criticalFindings?: string[];
+  runMode?: string;
+  costNotice?: string;
 }
 
 export interface StationAuditHistoryItem extends StationAuditSummary {
@@ -145,7 +167,7 @@ export interface StationAuditHistoryItem extends StationAuditSummary {
 }
 
 export type AuditHistoryTimeRange = "all" | "24h" | "7d" | "30d" | "90d";
-export type AuditHistorySortKey = "executedAt" | "station" | "model" | "verdict";
+export type AuditHistorySortKey = "executedAt" | "station" | "model" | "verdict" | "score";
 export type AuditHistorySortDirection = "asc" | "desc";
 
 export interface StationAudits {

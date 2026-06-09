@@ -110,6 +110,16 @@ class StationAuditSummary:
     tool_version: str
     duration_ms: int
     effective_options: dict[str, Any]
+    audit_score: int
+    audit_verdict_reason: str
+    capability_verdict: str
+    protocol_verdict: str
+    authenticity_verdict: str
+    long_context_verdict: str
+    detector_results: list[dict[str, Any]]
+    critical_findings: list[str]
+    run_mode: str
+    cost_notice: str
 
     def to_payload(self) -> dict[str, Any]:
         return {
@@ -127,6 +137,16 @@ class StationAuditSummary:
             "durationMs": self.duration_ms,
             "engineCommit": ENGINE_COMMIT,
             "effectiveOptions": self.effective_options,
+            "auditScore": self.audit_score,
+            "auditVerdictReason": self.audit_verdict_reason,
+            "capabilityVerdict": self.capability_verdict,
+            "protocolVerdict": self.protocol_verdict,
+            "authenticityVerdict": self.authenticity_verdict,
+            "longContextVerdict": self.long_context_verdict,
+            "detectorResults": self.detector_results,
+            "criticalFindings": self.critical_findings,
+            "runMode": self.run_mode,
+            "costNotice": self.cost_notice,
         }
 
 
@@ -421,6 +441,499 @@ def extract_step_summaries(report_text: str) -> list[dict[str, str]]:
     return collected
 
 
+def section_body(report_text: str, title_pattern: str) -> str:
+    pattern = re.compile(title_pattern, flags=re.IGNORECASE)
+    for title, body in report_sections(report_text):
+        if pattern.search(strip_heading_number(title)):
+            return body
+    return ""
+
+
+def detector_result(
+    key: str,
+    label: str,
+    category: str,
+    status: str,
+    score: int,
+    weight: int,
+    summary: str,
+    *,
+    severity: str = "info",
+    evidence: list[str] | None = None,
+) -> dict[str, Any]:
+    return {
+        "key": key,
+        "label": label,
+        "category": category,
+        "status": status,
+        "score": max(0, min(100, int(score))),
+        "weight": max(0, int(weight)),
+        "severity": severity,
+        "summary": summary[:320],
+        "evidence": (evidence or [])[:5],
+    }
+
+
+def skipped_detector(key: str, label: str, category: str, weight: int, summary: str) -> dict[str, Any]:
+    return detector_result(key, label, category, "skip", 0, weight, summary, severity="info")
+
+
+def evidence_lines(body: str, patterns: list[str]) -> list[str]:
+    lines: list[str] = []
+    for raw_line in body.splitlines():
+        plain = markdown_to_plain(raw_line)
+        if not plain:
+            continue
+        lowered = plain.lower()
+        if any(pattern in lowered for pattern in patterns):
+            lines.append(plain[:220])
+    return lines
+
+
+def build_black_box_detector(overall_verdict: str, overall_summary: str) -> dict[str, Any]:
+    if overall_verdict == "high":
+        return detector_result(
+            "black_box_security",
+            "黑盒安全风险",
+            "security",
+            "fail",
+            15,
+            35,
+            overall_summary or "原始黑盒审计判定为高风险。",
+            severity="critical",
+            evidence=[overall_summary] if overall_summary else [],
+        )
+    if overall_verdict == "medium":
+        return detector_result(
+            "black_box_security",
+            "黑盒安全风险",
+            "security",
+            "warn",
+            62,
+            35,
+            overall_summary or "原始黑盒审计判定为中风险或检测不完整。",
+            severity="medium",
+            evidence=[overall_summary] if overall_summary else [],
+        )
+    if overall_verdict == "low":
+        return detector_result(
+            "black_box_security",
+            "黑盒安全风险",
+            "security",
+            "pass",
+            95,
+            35,
+            overall_summary or "原始黑盒审计未发现显著攻击面风险。",
+            severity="info",
+            evidence=[overall_summary] if overall_summary else [],
+        )
+    return detector_result(
+        "black_box_security",
+        "黑盒安全风险",
+        "security",
+        "error",
+        45,
+        35,
+        "原始黑盒审计未给出可识别总体风险等级。",
+        severity="medium",
+        evidence=[overall_summary] if overall_summary else [],
+    )
+
+
+def build_stream_protocol_detector(report_text: str, options: dict[str, Any]) -> dict[str, Any]:
+    if options.get("skipStreamIntegrity"):
+        return skipped_detector("stream_protocol", "流式协议一致性", "protocol", 15, "本次运行跳过了流式协议检测。")
+    body = section_body(report_text, r"stream integrity")
+    if not body:
+        return skipped_detector("stream_protocol", "流式协议一致性", "protocol", 15, "报告中没有流式协议检测章节，按历史报告兼容跳过。")
+    lowered = body.lower()
+    evidence = evidence_lines(body, ["anomaly", "inconclusive", "unknown", "non-monotonic", "signature", "clean"])
+    if "stream integrity anomaly detected" in lowered or "unknown sse" in lowered or "non-monotonic" in lowered:
+        return detector_result(
+            "stream_protocol",
+            "流式协议一致性",
+            "protocol",
+            "fail",
+            25,
+            15,
+            "流式响应违反关键 SSE/usage 协议不变量。",
+            severity="critical",
+            evidence=evidence,
+        )
+    if "inconclusive" in lowered or "could not be verified" in lowered:
+        return detector_result(
+            "stream_protocol",
+            "流式协议一致性",
+            "protocol",
+            "warn",
+            58,
+            15,
+            "流式协议检测未能得出确定结论。",
+            severity="medium",
+            evidence=evidence,
+        )
+    return detector_result(
+        "stream_protocol",
+        "流式协议一致性",
+        "protocol",
+        "pass",
+        92,
+        15,
+        "流式响应结构、usage 单调性和模型字段未见显著异常。",
+        severity="info",
+        evidence=evidence,
+    )
+
+
+def build_tool_capability_detector(report_text: str, options: dict[str, Any]) -> dict[str, Any]:
+    if options.get("skipToolSubstitution"):
+        return skipped_detector("tool_capability", "工具调用完整性", "capability", 15, "本次运行跳过了工具调用检测。")
+    body = section_body(report_text, r"tool-call|tool substitution")
+    if not body:
+        return skipped_detector("tool_capability", "工具调用完整性", "capability", 15, "报告中没有工具调用检测章节，按历史报告兼容跳过。")
+    lowered = body.lower()
+    evidence = evidence_lines(body, ["substitution", "inconclusive", "exact", "detected", "errored"])
+    if "substitution detected" in lowered or "tool-call package substitution detected" in lowered:
+        return detector_result(
+            "tool_capability",
+            "工具调用完整性",
+            "capability",
+            "fail",
+            20,
+            15,
+            "检测到工具调用或包安装命令被中间层改写。",
+            severity="critical",
+            evidence=evidence,
+        )
+    if "inconclusive" in lowered or "every probe errored" in lowered:
+        return detector_result(
+            "tool_capability",
+            "工具调用完整性",
+            "capability",
+            "warn",
+            58,
+            15,
+            "工具调用检测未能确认完整透传。",
+            severity="medium",
+            evidence=evidence,
+        )
+    return detector_result(
+        "tool_capability",
+        "工具调用完整性",
+        "capability",
+        "pass",
+        90,
+        15,
+        "工具调用改写探针未发现显著异常。",
+        severity="info",
+        evidence=evidence,
+    )
+
+
+def build_authenticity_detector(report_text: str) -> dict[str, Any]:
+    identity_body = section_body(report_text, r"instruction|identity")
+    latency_body = section_body(report_text, r"latency variance")
+    body = "\n".join([identity_body, latency_body]).strip()
+    if not body:
+        return skipped_detector("model_authenticity", "模型真伪线索", "authenticity", 15, "报告中没有可用于模型真伪判断的身份或延迟指纹章节。")
+    lowered = body.lower()
+    evidence = evidence_lines(body, ["identity", "non-claude", "bimodal", "high-variance", "variable", "stable", "inconclusive"])
+    if "claims non-claude identity" in lowered or "identity test failed" in lowered:
+        return detector_result(
+            "model_authenticity",
+            "模型真伪线索",
+            "authenticity",
+            "fail",
+            28,
+            15,
+            "模型身份响应与目标模型声明冲突。",
+            severity="critical",
+            evidence=evidence,
+        )
+    if "bimodal" in lowered or "high-variance" in lowered:
+        return detector_result(
+            "model_authenticity",
+            "模型真伪线索",
+            "authenticity",
+            "warn",
+            62,
+            15,
+            "延迟分布存在可能的多后端或路由不一致信号。",
+            severity="medium",
+            evidence=evidence,
+        )
+    if "inconclusive" in lowered:
+        return detector_result(
+            "model_authenticity",
+            "模型真伪线索",
+            "authenticity",
+            "warn",
+            58,
+            15,
+            "身份或指纹检测未能得出确定结论。",
+            severity="medium",
+            evidence=evidence,
+        )
+    return detector_result(
+        "model_authenticity",
+        "模型真伪线索",
+        "authenticity",
+        "pass",
+        86,
+        15,
+        "身份响应和延迟指纹未见显著真伪冲突。",
+        severity="info",
+        evidence=evidence,
+    )
+
+
+def build_context_detector(report_text: str, options: dict[str, Any]) -> dict[str, Any]:
+    if options.get("skipContext"):
+        return skipped_detector("long_context", "长上下文真实性", "long_context", 10, "本次运行跳过了长上下文检测。")
+    body = section_body(report_text, r"context length")
+    if not body:
+        return skipped_detector("long_context", "长上下文真实性", "long_context", 10, "报告中没有长上下文检测章节，按历史报告兼容跳过。")
+    lowered = body.lower()
+    evidence = evidence_lines(body, ["truncated", "boundary", "canary", "error", "ok"])
+    if "truncated" in lowered:
+        return detector_result(
+            "long_context",
+            "长上下文真实性",
+            "long_context",
+            "fail",
+            35,
+            10,
+            "标准长上下文探针发现召回截断或上下文边界。",
+            severity="high",
+            evidence=evidence,
+        )
+    if "error" in lowered or "boundary" in lowered:
+        return detector_result(
+            "long_context",
+            "长上下文真实性",
+            "long_context",
+            "warn",
+            60,
+            10,
+            "长上下文探针存在错误或边界提示，需要复核。",
+            severity="medium",
+            evidence=evidence,
+        )
+    return detector_result(
+        "long_context",
+        "长上下文真实性",
+        "long_context",
+        "pass",
+        88,
+        10,
+        "标准长上下文探针未发现明显截断。",
+        severity="info",
+        evidence=evidence,
+    )
+
+
+def build_error_surface_detector(report_text: str, options: dict[str, Any]) -> dict[str, Any]:
+    if options.get("skipErrorLeakage"):
+        return skipped_detector("error_surface", "错误面泄露", "security", 10, "本次运行跳过了错误响应泄露检测。")
+    body = section_body(report_text, r"error response|error leakage")
+    if not body:
+        return skipped_detector("error_surface", "错误面泄露", "security", 10, "报告中没有错误响应泄露章节，按历史报告兼容跳过。")
+    lowered = body.lower()
+    evidence = evidence_lines(body, ["critical", "high", "medium", "leak", "inconclusive", "credential", "stack trace"])
+    if "full api key echoed" in lowered or "critical" in lowered:
+        return detector_result(
+            "error_surface",
+            "错误面泄露",
+            "security",
+            "fail",
+            10,
+            10,
+            "错误响应疑似泄露凭据或关键上游信息。",
+            severity="critical",
+            evidence=evidence,
+        )
+    if "partial credential" in lowered or "high" in lowered:
+        return detector_result(
+            "error_surface",
+            "错误面泄露",
+            "security",
+            "fail",
+            35,
+            10,
+            "错误响应暴露上游或环境信息。",
+            severity="high",
+            evidence=evidence,
+        )
+    if "medium" in lowered or "stack trace" in lowered or "filesystem" in lowered:
+        return detector_result(
+            "error_surface",
+            "错误面泄露",
+            "security",
+            "warn",
+            62,
+            10,
+            "错误响应暴露调试信息或路径信息。",
+            severity="medium",
+            evidence=evidence,
+        )
+    if "inconclusive" in lowered:
+        return detector_result(
+            "error_surface",
+            "错误面泄露",
+            "security",
+            "warn",
+            58,
+            10,
+            "错误面检测未能覆盖到有效错误响应。",
+            severity="medium",
+            evidence=evidence,
+        )
+    return detector_result(
+        "error_surface",
+        "错误面泄露",
+        "security",
+        "pass",
+        90,
+        10,
+        "错误响应未见显著敏感信息泄露。",
+        severity="info",
+        evidence=evidence,
+    )
+
+
+def category_verdict(detectors: list[dict[str, Any]], category: str) -> str:
+    scoped = [item for item in detectors if item.get("category") == category and item.get("status") != "skip"]
+    if not scoped:
+        return "not_run"
+    if any(item.get("severity") == "critical" or item.get("status") == "fail" for item in scoped):
+        return "fail"
+    if any(item.get("status") in {"warn", "error"} for item in scoped):
+        return "warn"
+    return "pass"
+
+
+def compute_audit_score(detectors: list[dict[str, Any]]) -> int:
+    scored = [item for item in detectors if item.get("status") != "skip" and item.get("weight", 0) > 0]
+    if not scored:
+        return 0
+    weight_sum = sum(int(item.get("weight") or 0) for item in scored)
+    if weight_sum <= 0:
+        return 0
+    weighted = sum(int(item.get("score") or 0) * int(item.get("weight") or 0) for item in scored)
+    return int(round(weighted / weight_sum))
+
+
+def combined_verdict(overall_verdict: str, audit_score: int, critical_findings: list[str]) -> str:
+    if critical_findings:
+        return "high"
+    if overall_verdict == "inconclusive":
+        return "inconclusive"
+    if audit_score >= 82:
+        return "low"
+    if audit_score >= 55:
+        return "medium"
+    return "high"
+
+
+def combined_reason(verdict: str, audit_score: int, critical_findings: list[str]) -> str:
+    if critical_findings:
+        return f"发现 {len(critical_findings)} 个 critical 级问题，总体结论上限锁定为高风险。"
+    if verdict == "low":
+        return f"综合评分 {audit_score}/100，黑盒安全、协议和能力检测未发现显著高危异常。"
+    if verdict == "medium":
+        return f"综合评分 {audit_score}/100，存在需要复核的中等风险或检测不完整项。"
+    if verdict == "high":
+        return f"综合评分 {audit_score}/100，检测结果显示高风险或核心能力异常。"
+    return "原始报告未给出可确认结论，综合评分仅供参考。"
+
+
+def build_enhanced_audit_fields(
+    report_text: str,
+    *,
+    overall_verdict: str,
+    overall_summary: str,
+    model: str,
+    effective_options: dict[str, Any] | None,
+) -> dict[str, Any]:
+    options = effective_options or {}
+    detectors = [
+        build_black_box_detector(overall_verdict, overall_summary),
+        build_stream_protocol_detector(report_text, options),
+        build_tool_capability_detector(report_text, options),
+        build_authenticity_detector(report_text),
+        build_context_detector(report_text, options),
+        build_error_surface_detector(report_text, options),
+    ]
+    critical_findings = [
+        str(item.get("summary") or item.get("label") or "")
+        for item in detectors
+        if item.get("severity") == "critical"
+    ]
+    audit_score = compute_audit_score(detectors)
+    verdict = combined_verdict(overall_verdict, audit_score, critical_findings)
+    run_mode = "standard_long_context" if not options.get("skipContext") else "standard"
+    cost_notice = (
+        "标准长上下文检测默认开启，会额外消耗 API 额度；检测按层推进，发现失败后停止更深层探针。"
+        if not options.get("skipContext")
+        else "本次运行关闭了长上下文检测，成本更低但无法验证上下文窗口真实性。"
+    )
+    if model.lower().startswith(("gpt-", "o1", "o3", "o4")):
+        authenticity_note = "openai_behavioral"
+    elif model.lower().startswith(("gemini-", "models/gemini-")):
+        authenticity_note = "gemini_protocol"
+    else:
+        authenticity_note = "anthropic_behavioral"
+    return {
+        "audit_score": audit_score,
+        "audit_verdict_reason": combined_reason(verdict, audit_score, critical_findings),
+        "overall_verdict": verdict,
+        "capability_verdict": category_verdict(detectors, "capability"),
+        "protocol_verdict": category_verdict(detectors, "protocol"),
+        "authenticity_verdict": category_verdict(detectors, "authenticity") if authenticity_note != "gemini_protocol" else category_verdict(detectors, "authenticity"),
+        "long_context_verdict": category_verdict(detectors, "long_context"),
+        "detector_results": detectors,
+        "critical_findings": critical_findings,
+        "run_mode": run_mode,
+        "cost_notice": cost_notice,
+    }
+
+
+def enhanced_report_section(summary: StationAuditSummary) -> str:
+    lines = [
+        "",
+        "---",
+        "",
+        "## 15. Unified Audit Score",
+        "",
+        f"**Score**: `{summary.audit_score}/100`",
+        f"**Combined verdict**: `{summary.overall_verdict}`",
+        f"**Run mode**: `{summary.run_mode}`",
+        "",
+        summary.audit_verdict_reason,
+        "",
+        f"Cost notice: {summary.cost_notice}",
+        "",
+        "| Detector | Category | Status | Score | Severity | Summary |",
+        "|---|---|---:|---:|---|---|",
+    ]
+    for item in summary.detector_results:
+        lines.append(
+            "| {label} | {category} | {status} | {score} | {severity} | {summary} |".format(
+                label=str(item.get("label") or "").replace("|", "\\|"),
+                category=str(item.get("category") or "").replace("|", "\\|"),
+                status=str(item.get("status") or "").replace("|", "\\|"),
+                score=str(item.get("score") if item.get("status") != "skip" else "-"),
+                severity=str(item.get("severity") or "").replace("|", "\\|"),
+                summary=str(item.get("summary") or "").replace("|", "\\|"),
+            )
+        )
+    if summary.critical_findings:
+        lines.extend(["", "**Critical findings**:"])
+        for finding in summary.critical_findings:
+            lines.append(f"- {finding}")
+    return "\n".join(lines) + "\n"
+
+
 def build_summary(
     report_text: str,
     *,
@@ -433,12 +946,19 @@ def build_summary(
     effective_options: dict[str, Any] | None = None,
 ) -> StationAuditSummary:
     overall_verdict, overall_summary = parse_overall_verdict(report_text)
+    enhanced = build_enhanced_audit_fields(
+        report_text,
+        overall_verdict=overall_verdict,
+        overall_summary=overall_summary,
+        model=model,
+        effective_options=effective_options,
+    )
     return StationAuditSummary(
         profile=profile,
         model=model,
         audited_base_url=audited_base_url,
         executed_at=executed_at,
-        overall_verdict=overall_verdict,
+        overall_verdict=enhanced["overall_verdict"],
         overall_summary=overall_summary,
         highlights=extract_risk_summary(report_text),
         step_summaries=extract_step_summaries(report_text),
@@ -446,6 +966,16 @@ def build_summary(
         tool_version=f"api-relay-audit@{ENGINE_COMMIT}",
         duration_ms=duration_ms,
         effective_options=effective_options or {},
+        audit_score=enhanced["audit_score"],
+        audit_verdict_reason=enhanced["audit_verdict_reason"],
+        capability_verdict=enhanced["capability_verdict"],
+        protocol_verdict=enhanced["protocol_verdict"],
+        authenticity_verdict=enhanced["authenticity_verdict"],
+        long_context_verdict=enhanced["long_context_verdict"],
+        detector_results=enhanced["detector_results"],
+        critical_findings=enhanced["critical_findings"],
+        run_mode=enhanced["run_mode"],
+        cost_notice=enhanced["cost_notice"],
     )
 
 
@@ -727,6 +1257,7 @@ def run_single_audit(
             duration_ms=duration_ms,
             effective_options=base_options.to_payload(),
         )
+        report_path.write_text(report_text.rstrip() + enhanced_report_section(summary), encoding="utf-8")
         write_json(summary_path, summary.to_payload())
         write_json(
             run_path,

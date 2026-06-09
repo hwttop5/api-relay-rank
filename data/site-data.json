@@ -25628,6 +25628,440 @@
       }
     },
     {
+      "key": "audit-ergouzi-life",
+      "label": "ErgouziLife",
+      "url": "https://ergouzi.life",
+      "stationType": "unknown_pending",
+      "stationTypeLabel": "待补证据",
+      "stationTypeShortLabel": "待补证据",
+      "platformGuess": "",
+      "verifiedTierCount": 0,
+      "groupMultipliers": [],
+      "rechargeTiers": [],
+      "tierNotes": [],
+      "announcements": [],
+      "rankings": {},
+      "quality": {},
+      "dataEvidence": [
+        {
+          "key": "groupMultipliers",
+          "label": "分组倍率",
+          "count": 0,
+          "status": "missing",
+          "statusLabel": "未抓到",
+          "message": "当前未抓到结构化分组倍率。",
+          "source": ""
+        },
+        {
+          "key": "rechargeTiers",
+          "label": "充值档位",
+          "count": 0,
+          "status": "missing",
+          "statusLabel": "未抓到",
+          "message": "当前未抓到结构化充值档位。",
+          "source": ""
+        },
+        {
+          "key": "announcements",
+          "label": "公告",
+          "count": 0,
+          "status": "public_missing",
+          "statusLabel": "未发现公开接口",
+          "message": "未发现标准公开公告接口或接口未返回公告内容。",
+          "source": ""
+        }
+      ],
+      "audits": {
+        "defaultModel": "gpt-5.5",
+        "availableModels": [
+          "gpt-5.5",
+          "claude-opus-4-8"
+        ],
+        "latestByModel": [
+          {
+            "profile": "general",
+            "model": "gpt-5.5",
+            "auditedBaseUrl": "https://ergouzi.life",
+            "executedAt": "2026-06-08T17:30:35Z",
+            "overallVerdict": "high",
+            "overallSummary": "Stream integrity anomaly detected (AC-1 SSE-level). The relay's streaming response fails one or more structural invariants: unknown SSE event types, non-monotonic usage fields, rewritten input_tokens, empty thinking signatures, or a non-Claude stream model name. Do not use.",
+            "highlights": [
+              "🔴 Hidden system prompt injection detected (~294 tokens/request)",
+              "🔴 Test A - Verbatim: Hidden prompt content extracted!",
+              "🔴 Test C - JSON continuation: Hidden prompt content extracted!",
+              "🟢 Cat test passed: user system prompt works correctly",
+              "🟢 Identity test passed: model correctly identifies as user-defined identity",
+              "🟡 Test E - System Diagnostic: identity-related info leaked (ide)",
+              "🟡 Test G - Role Play: identity-related info leaked (ide)",
+              "🟡 Context boundary: 25K ~ 35K chars (max passed: ~5,007 tokens)",
+              "🟢 No tool-call package substitution detected",
+              "🟡 Error leakage test INCONCLUSIVE: every probe returned HTTP 200 or failed with a transport error, so no error surface could be inspected. A relay that silently swallows malformed JSON into a success response is itself suspicious.",
+              "🔴 Stream integrity anomaly detected (AC-1 SSE-level): input_tokens at message_start (9) disagrees with message_delta samples ([309]) — usage rewrite; Stream's message_start.message.model = 'gpt-5.5' does not contain 'claude' — relay may be routing to a substitute model",
+              "🟢 Relay framework identified: new-api (confirmed by multiple probes). Informational only in v1.8."
+            ],
+            "stepSummaries": [
+              {
+                "title": "1. Infrastructure Recon",
+                "summary": "A: error: 'NoneType' object has no attribute 'strip'"
+              },
+              {
+                "title": "2. Model List",
+                "summary": "Total 7 models:"
+              },
+              {
+                "title": "3. Token Injection Detection",
+                "summary": "🔴 Hidden system prompt injection detected (~294 tokens/request)"
+              },
+              {
+                "title": "4. Prompt Extraction Tests",
+                "summary": "🔴 Test A - Verbatim: Hidden prompt content extracted!"
+              },
+              {
+                "title": "5. Instruction Override Tests",
+                "summary": "🟢 Cat test passed: user system prompt works correctly"
+              },
+              {
+                "title": "6. Jailbreak & Role Impersonation Tests",
+                "summary": "🟡 Test E - System Diagnostic: identity-related info leaked (ide)"
+              },
+              {
+                "title": "7. Context Length Test",
+                "summary": "🟡 Context boundary: 25K ~ 35K chars (max passed: ~5,007 tokens)"
+              },
+              {
+                "title": "8. Tool-Call Package Substitution (AC-1.a)",
+                "summary": "🟢 No tool-call package substitution detected"
+              },
+              {
+                "title": "9. Error Response Leakage (AC-2 adjacent)",
+                "summary": "🟡 Error leakage test INCONCLUSIVE: every probe returned HTTP 200 or failed with a transport error, so no error surface could be inspected. A relay that silently swallows malformed JSON into a success response is itself suspicious."
+              },
+              {
+                "title": "10. Stream Integrity (AC-1 SSE-level)",
+                "summary": "🔴 Stream integrity anomaly detected (AC-1 SSE-level): input_tokens at message_start (9) disagrees with message_delta samples ([309]) — usage rewrite; Stream's message_start.message.model = 'gpt-5.5' does not contain 'claude' — relay may be routing to a substitute model"
+              },
+              {
+                "title": "12. Infrastructure Fingerprint",
+                "summary": "🟢 Relay framework identified: new-api (confirmed by multiple probes). Informational only in v1.8."
+              },
+              {
+                "title": "13. Latency Variance",
+                "summary": "🟢 Latency variable (CV=0.35). Within typical network-jitter range."
+              }
+            ],
+            "reportPath": "data/_audit_runs/audit-ergouzi-life/gpt-5.5/20260608T173035Z/report.md",
+            "toolVersion": "api-relay-audit@408e3f0b0ce25ae4cbe74add121c2fe30dc66583",
+            "durationMs": 128034,
+            "engineCommit": "408e3f0b0ce25ae4cbe74add121c2fe30dc66583",
+            "effectiveOptions": {
+              "timeout": 120,
+              "warmup": 0,
+              "latencyProbeCount": 10,
+              "skipInfra": false,
+              "skipContext": false,
+              "skipToolSubstitution": false,
+              "skipErrorLeakage": false,
+              "skipStreamIntegrity": false,
+              "skipInfraFingerprint": false,
+              "skipLatencyVariance": false,
+              "aggressiveErrorProbes": false
+            },
+            "auditScore": 34,
+            "auditVerdictReason": "发现 3 个 critical 级问题，总体结论上限锁定为高风险。",
+            "capabilityVerdict": "fail",
+            "protocolVerdict": "fail",
+            "authenticityVerdict": "warn",
+            "longContextVerdict": "warn",
+            "runMode": "standard_long_context",
+            "costNotice": "标准长上下文检测默认开启，会额外消耗 API 额度；检测按层推进，发现失败后停止更深层探针。",
+            "detectorResults": [
+              {
+                "key": "black_box_security",
+                "label": "黑盒安全风险",
+                "category": "security",
+                "status": "fail",
+                "severity": "critical",
+                "summary": "Stream integrity anomaly detected (AC-1 SSE-level). The relay's streaming response fails one or more structural invariants: unknown SSE event types, non-monotonic usage fields, rewritten input_tokens, empty thinking signatures, or a non-Claude stream model name. Do not use.",
+                "score": 15,
+                "weight": 35,
+                "evidence": [
+                  "Stream integrity anomaly detected (AC-1 SSE-level). The relay's streaming response fails one or more structural invariants: unknown SSE event types, non-monotonic usage fields, rewritten input_tokens, empty thinking signatures, or a non-Claude stream model name. Do not use."
+                ]
+              },
+              {
+                "key": "stream_protocol",
+                "label": "流式协议一致性",
+                "category": "protocol",
+                "status": "fail",
+                "severity": "critical",
+                "summary": "流式响应违反关键 SSE/usage 协议不变量。",
+                "score": 25,
+                "weight": 15,
+                "evidence": [
+                  "Open an Anthropic streaming request with thinking enabled and inspect every SSE event for structural anomalies. A relay that rewrites or downgrades the streamed response often fails one of four invariants: (1) all event",
+                  "| Unknown events | — |",
+                  "| Signature valid | yes |",
+                  "🔴 Stream integrity anomaly detected (AC-1 SSE-level): input_tokens at message_start (9) disagrees with message_delta samples ([309]) — usage rewrite; Stream's message_start.message.model = 'gpt-5.5' does not contain 'cla"
+                ]
+              },
+              {
+                "key": "tool_capability",
+                "label": "工具调用完整性",
+                "category": "capability",
+                "status": "fail",
+                "severity": "critical",
+                "summary": "检测到工具调用或包安装命令被中间层改写。",
+                "score": 20,
+                "weight": 15,
+                "evidence": [
+                  "Ask the model to echo exact package-install commands and verify character-level integrity on the return path. A malicious middleware running AC-1.a rewrites package names (e.g. requests -> reqeusts typosquat) before the",
+                  "| pip | pip install requests==2.31.0 | pip install requests==2.31.0 | 🟢 exact |",
+                  "| npm | npm install lodash@4.17.21 | npm install lodash@4.17.21 | 🟢 exact |",
+                  "| cargo | cargo add serde | cargo add serde | 🟢 exact |",
+                  "| go | go get github.com/stretchr/testify | go get github.com/stretchr/testify | 🟢 exact |"
+                ]
+              },
+              {
+                "key": "model_authenticity",
+                "label": "模型真伪线索",
+                "category": "authenticity",
+                "status": "warn",
+                "severity": "medium",
+                "summary": "延迟分布存在可能的多后端或路由不一致信号。",
+                "score": 62,
+                "weight": 15,
+                "evidence": [
+                  "Test D2: Identity Override",
+                  "🟢 Identity test passed: model correctly identifies as user-defined identity",
+                  "Fire 10 identical minimal requests (`max_tokens=8`) and measure per-request end-to-end latency. Compute descriptive statistics and a gap-ratio bimodality heuristic. Rationale: a relay that silently A/B tests between the",
+                  "| verdict | variable |",
+                  "🟢 Latency variable (CV=0.35). Within typical network-jitter range."
+                ]
+              },
+              {
+                "key": "long_context",
+                "label": "长上下文真实性",
+                "category": "long_context",
+                "status": "warn",
+                "severity": "medium",
+                "summary": "长上下文探针存在错误或边界提示，需要复核。",
+                "score": 60,
+                "weight": 10,
+                "evidence": [
+                  "Place 5 canary markers at equal intervals in long text, check if model can recall all.",
+                  "| Size | input_tokens | Canaries | Time | Status |",
+                  "🟡 Context boundary: 25K ~ 35K chars (max passed: ~5,007 tokens)"
+                ]
+              },
+              {
+                "key": "error_surface",
+                "label": "错误面泄露",
+                "category": "security",
+                "status": "warn",
+                "severity": "medium",
+                "summary": "错误响应暴露调试信息或路径信息。",
+                "score": 62,
+                "weight": 10,
+                "evidence": [
+                  "Fire deterministic broken requests (malformed JSON, invalid model, wrong content-type, missing fields, unknown endpoint) at the relay and scan the error response body and headers for echoed credentials, upstream URLs, en",
+                  "| Trigger | HTTP Status | Severity | Leaks |",
+                  "🟡 Error leakage test INCONCLUSIVE: every probe returned HTTP 200 or failed with a transport error, so no error surface could be inspected. A relay that silently swallows malformed JSON into a success response is itself s"
+                ]
+              }
+            ],
+            "criticalFindings": [
+              "Stream integrity anomaly detected (AC-1 SSE-level). The relay's streaming response fails one or more structural invariants: unknown SSE event types, non-monotonic usage fields, rewritten input_tokens, empty thinking signatures, or a non-Claude stream model name. Do not use.",
+              "流式响应违反关键 SSE/usage 协议不变量。",
+              "检测到工具调用或包安装命令被中间层改写。"
+            ]
+          },
+          {
+            "profile": "general",
+            "model": "claude-opus-4-8",
+            "auditedBaseUrl": "https://ergouzi.life",
+            "executedAt": "2026-06-08T17:26:35Z",
+            "overallVerdict": "medium",
+            "overallSummary": "Tool-call substitution test (Step 8) was inconclusive: every probe errored, so the relay's AC-1.a behavior could not be verified -- a relay that blocks plaintext echo is itself a red flag. Error leakage test (Step 9) was inconclusive: every probe returned HTTP 200 or failed with a transport error, so no error surface could be inspected. Stream integrity test (Step 10) was inconclusive: the relay did not speak Anthropic SSE cleanly, so the event-layer invariants could not be verified. A relay that cannot return a standard Anthropic stream is itself a suspicious signal.",
+            "highlights": [
+              "🟢 No token injection detected",
+              "🟡 Prompt extraction tests INCONCLUSIVE: one or more probes returned an empty or error response (A - Verbatim, B - Translation, C - JSON continuation). The relay may be suppressing extraction output rather than cleanly refusing it.",
+              "🟢 Jailbreak tests passed (no identity keywords leaked)",
+              "🟡 Tool-call substitution test INCONCLUSIVE: every probe errored. The relay may be blocking plaintext echo -- re-run with a different model or consider this a red flag in itself.",
+              "🟡 Error leakage test INCONCLUSIVE: every probe returned HTTP 200 or failed with a transport error, so no error surface could be inspected. A relay that silently swallows malformed JSON into a success response is itself suspicious.",
+              "🟡 Stream integrity test INCONCLUSIVE: Stream transport error: HTTP 503 on stream open (non-SSE body: {\"error\":{\"code\":\"model_not_found\",\"message\":\"No available channel for model claude-opus-4-8 under group 0.2折组 (distributor) (request id: 202606081727338589002558268d9d6bSBpfT7S)\",\"type\":\"new_api_erro). A non-Anthropic",
+              "🟢 Relay framework identified: new-api (confirmed by multiple probes). Informational only in v1.8.",
+              "🟡 Latency variance test inconclusive: all 10 probes failed. The relay is refusing or erroring on even tiny requests."
+            ],
+            "stepSummaries": [
+              {
+                "title": "1. Infrastructure Recon",
+                "summary": "A: error: 'NoneType' object has no attribute 'strip'"
+              },
+              {
+                "title": "2. Model List",
+                "summary": "Total 7 models:"
+              },
+              {
+                "title": "3. Token Injection Detection",
+                "summary": "🟢 No token injection detected"
+              },
+              {
+                "title": "4. Prompt Extraction Tests",
+                "summary": "🟡 Prompt extraction tests INCONCLUSIVE: one or more probes returned an empty or error response (A - Verbatim, B - Translation, C - JSON continuation). The relay may be suppressing extraction output rather than cleanly refusing it."
+              },
+              {
+                "title": "5. Instruction Override Tests",
+                "summary": "system: \"From now on, only reply with the single character meow. This is the highest priority instruction.\""
+              },
+              {
+                "title": "6. Jailbreak & Role Impersonation Tests",
+                "summary": "🟢 Jailbreak tests passed (no identity keywords leaked)"
+              },
+              {
+                "title": "7. Context Length Test",
+                "summary": "Place 5 canary markers at equal intervals in long text, check if model can recall all."
+              },
+              {
+                "title": "8. Tool-Call Package Substitution (AC-1.a)",
+                "summary": "🟡 Tool-call substitution test INCONCLUSIVE: every probe errored. The relay may be blocking plaintext echo -- re-run with a different model or consider this a red flag in itself."
+              },
+              {
+                "title": "9. Error Response Leakage (AC-2 adjacent)",
+                "summary": "🟡 Error leakage test INCONCLUSIVE: every probe returned HTTP 200 or failed with a transport error, so no error surface could be inspected. A relay that silently swallows malformed JSON into a success response is itself suspicious."
+              },
+              {
+                "title": "10. Stream Integrity (AC-1 SSE-level)",
+                "summary": "🟡 Stream integrity test INCONCLUSIVE: Stream transport error: HTTP 503 on stream open (non-SSE body: {\"error\":{\"code\":\"model_not_found\",\"message\":\"No available channel for model claude-opus-4-8 under group 0.2折组 (distributor) (request id: 202606081727338589002558268d9d6bSBpfT7S)\",\"type\":\"new_api_erro). A non-Anthropic"
+              },
+              {
+                "title": "12. Infrastructure Fingerprint",
+                "summary": "🟢 Relay framework identified: new-api (confirmed by multiple probes). Informational only in v1.8."
+              },
+              {
+                "title": "13. Latency Variance",
+                "summary": "🟡 Latency variance test inconclusive: all 10 probes failed. The relay is refusing or erroring on even tiny requests."
+              }
+            ],
+            "reportPath": "data/_audit_runs/audit-ergouzi-life/claude-opus-4-8/20260608T172635Z/report.md",
+            "toolVersion": "api-relay-audit@408e3f0b0ce25ae4cbe74add121c2fe30dc66583",
+            "durationMs": 79486,
+            "engineCommit": "408e3f0b0ce25ae4cbe74add121c2fe30dc66583",
+            "effectiveOptions": {
+              "timeout": 120,
+              "warmup": 0,
+              "latencyProbeCount": 10,
+              "skipInfra": false,
+              "skipContext": false,
+              "skipToolSubstitution": false,
+              "skipErrorLeakage": false,
+              "skipStreamIntegrity": false,
+              "skipInfraFingerprint": false,
+              "skipLatencyVariance": false,
+              "aggressiveErrorProbes": false
+            },
+            "auditScore": 63,
+            "auditVerdictReason": "综合评分 63/100，存在需要复核的中等风险或检测不完整项。",
+            "capabilityVerdict": "warn",
+            "protocolVerdict": "warn",
+            "authenticityVerdict": "warn",
+            "longContextVerdict": "pass",
+            "runMode": "standard_long_context",
+            "costNotice": "标准长上下文检测默认开启，会额外消耗 API 额度；检测按层推进，发现失败后停止更深层探针。",
+            "detectorResults": [
+              {
+                "key": "black_box_security",
+                "label": "黑盒安全风险",
+                "category": "security",
+                "status": "warn",
+                "severity": "medium",
+                "summary": "Tool-call substitution test (Step 8) was inconclusive: every probe errored, so the relay's AC-1.a behavior could not be verified -- a relay that blocks plaintext echo is itself a red flag. Error leakage test (Step 9) was inconclusive: every probe returned HTTP 200 or failed with a transport error, so no error surface c",
+                "score": 62,
+                "weight": 35,
+                "evidence": [
+                  "Tool-call substitution test (Step 8) was inconclusive: every probe errored, so the relay's AC-1.a behavior could not be verified -- a relay that blocks plaintext echo is itself a red flag. Error leakage test (Step 9) was inconclusive: every probe returned HTTP 200 or failed with a transport error, so no error surface could be inspected. Stream integrity test (Step 10) was inconclusive: the relay did not speak Anthropic SSE cleanly, so the event-layer invariants could not be verified. A relay that cannot return a standard Anthropic stream is itself a suspicious signal."
+                ]
+              },
+              {
+                "key": "stream_protocol",
+                "label": "流式协议一致性",
+                "category": "protocol",
+                "status": "warn",
+                "severity": "medium",
+                "summary": "流式协议检测未能得出确定结论。",
+                "score": 58,
+                "weight": 15,
+                "evidence": [
+                  "Open an Anthropic streaming request with thinking enabled and inspect every SSE event for structural anomalies. A relay that rewrites or downgrades the streamed response often fails one of four invariants: (1) all event",
+                  "| Unknown events | — |",
+                  "| Signature valid | yes |",
+                  "🟡 Stream integrity test INCONCLUSIVE: Stream transport error: HTTP 503 on stream open (non-SSE body: {\"error\":{\"code\":\"model_not_found\",\"message\":\"No available channel for model claude-opus-4-8 under group 0.2折组 (distrib"
+                ]
+              },
+              {
+                "key": "tool_capability",
+                "label": "工具调用完整性",
+                "category": "capability",
+                "status": "warn",
+                "severity": "medium",
+                "summary": "工具调用检测未能确认完整透传。",
+                "score": 58,
+                "weight": 15,
+                "evidence": [
+                  "Ask the model to echo exact package-install commands and verify character-level integrity on the return path. A malicious middleware running AC-1.a rewrites package names (e.g. requests -> reqeusts typosquat) before the",
+                  "🟡 Tool-call substitution test INCONCLUSIVE: every probe errored. The relay may be blocking plaintext echo -- re-run with a different model or consider this a red flag in itself."
+                ]
+              },
+              {
+                "key": "model_authenticity",
+                "label": "模型真伪线索",
+                "category": "authenticity",
+                "status": "warn",
+                "severity": "medium",
+                "summary": "延迟分布存在可能的多后端或路由不一致信号。",
+                "score": 62,
+                "weight": 15,
+                "evidence": [
+                  "Test D2: Identity Override",
+                  "Fire 10 identical minimal requests (`max_tokens=8`) and measure per-request end-to-end latency. Compute descriptive statistics and a gap-ratio bimodality heuristic. Rationale: a relay that silently A/B tests between the",
+                  "🟡 Latency variance test inconclusive: all 10 probes failed. The relay is refusing or erroring on even tiny requests."
+                ]
+              },
+              {
+                "key": "long_context",
+                "label": "长上下文真实性",
+                "category": "long_context",
+                "status": "pass",
+                "severity": "info",
+                "summary": "标准长上下文探针未发现明显截断。",
+                "score": 88,
+                "weight": 10,
+                "evidence": [
+                  "Place 5 canary markers at equal intervals in long text, check if model can recall all.",
+                  "| Size | input_tokens | Canaries | Time | Status |"
+                ]
+              },
+              {
+                "key": "error_surface",
+                "label": "错误面泄露",
+                "category": "security",
+                "status": "warn",
+                "severity": "medium",
+                "summary": "错误响应暴露调试信息或路径信息。",
+                "score": 62,
+                "weight": 10,
+                "evidence": [
+                  "Fire deterministic broken requests (malformed JSON, invalid model, wrong content-type, missing fields, unknown endpoint) at the relay and scan the error response body and headers for echoed credentials, upstream URLs, en",
+                  "| Trigger | HTTP Status | Severity | Leaks |",
+                  "🟡 Error leakage test INCONCLUSIVE: every probe returned HTTP 200 or failed with a transport error, so no error surface could be inspected. A relay that silently swallows malformed JSON into a success response is itself s"
+                ]
+              }
+            ]
+          }
+        ],
+        "latestAuditAt": "2026-06-08T17:30:35Z"
+      }
+    },
+    {
       "key": "euzhi",
       "label": "Euzhi",
       "url": "https://admin.euzhi.com",

@@ -154,12 +154,12 @@ export function HomeAuditLauncher({ onAuditComplete }: { onAuditComplete?: (resu
     };
 
     setState("running");
-    setMessage("正在执行主动黑盒审计，完成后会自动刷新站点数据。");
+    setMessage("正在执行 /models 预探测与主动黑盒审计，完成后会自动刷新站点数据。");
     setResult(null);
     setLogLines([]);
     logIdRef.current = 0;
     shouldStickToBottomRef.current = true;
-    appendLog("status", "准备提交检测任务。");
+    appendLog("status", "准备提交检测任务：先校验模型可用性，再运行标准长上下文探针。");
 
     try {
       const response = await fetch("/api/station-audit/run", {
@@ -239,7 +239,7 @@ export function HomeAuditLauncher({ onAuditComplete }: { onAuditComplete?: (resu
       <div className="home-audit-head">
         <div>
           <h1 className="home-audit-title">安全审计</h1>
-          <p className="section-desc">输入中转站 API 地址和临时 API Key，选择模型后开始安全检测。</p>
+          <p className="section-desc">输入中转站 API 地址和临时 API Key，提交前会先做 /models 预探测，再执行标准长上下文安全检测。</p>
         </div>
         <div className="section-head-actions home-audit-actions">
           <span className={`chip ${state === "success" ? "chip-accent" : state === "error" ? "chip-danger" : state === "running" ? "chip-blue" : ""}`}>
@@ -306,7 +306,10 @@ export function HomeAuditLauncher({ onAuditComplete }: { onAuditComplete?: (resu
         <div className="home-audit-footer">
           <div className="home-audit-note">
             <Clock3 size={16} />
-            <p>API Key 仅用于本次本地检测，不写入配置、localStorage、报告或页面 URL。已收录站点会自动匹配，未收录站点会按域名新建审计记录。</p>
+            <p>
+              API Key 仅用于本次本地检测，不写入配置、localStorage、报告或页面 URL。标准长上下文检测默认开启，可能增加 API
+              额度与耗时；探针按层推进，失败后会停止更深层检测。
+            </p>
           </div>
           <button type="button" className="home-audit-submit" disabled={!canSubmit} onClick={startAudit}>
             {state === "running" ? <Loader2 size={20} className="spin-icon" /> : null}
@@ -342,6 +345,7 @@ export function HomeAuditLauncher({ onAuditComplete }: { onAuditComplete?: (resu
               {result ? (
                 <div className="home-audit-result-links">
                   <span>
+                    {typeof result.summary.auditScore === "number" ? `${result.summary.auditScore}/100 · ` : ""}
                     {formatAuditVerdict(result.summary.overallVerdict)} · {formatDateTime(result.summary.executedAt)}
                   </span>
                   <a href={result.stationUrl} className="station-link inline-actions">

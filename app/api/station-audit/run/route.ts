@@ -11,6 +11,11 @@ const execFileAsync = promisify(execFile);
 const APP_ROOT = process.cwd();
 const AUDIT_TIMEOUT_MS = 1000 * 60 * 20;
 const MAX_AUDIT_REQUEST_BYTES = 16 * 1024;
+const AUDIT_RATE_LIMIT = 4;
+const AUDIT_RATE_WINDOW_MS = 60 * 60 * 1000;
+const MODEL_PROBE_RATE_LIMIT = 20;
+const MODEL_PROBE_RATE_WINDOW_MS = 60 * 1000;
+const MODEL_PROBE_TIMEOUT_MS = 4000;
 
 export const runtime = "nodejs";
 
@@ -113,6 +118,13 @@ function postgresSiteDataEnabled() {
 
 type AuditExecutedRow = { station: string; model: string; summary: string; report: string };
 type AuditProgressPayload = Record<string, unknown> & { type?: unknown; message?: unknown; executed?: unknown };
+type RateBucket = { hits: number[] };
+type ModelProbeResult =
+  | { supported: false; ok: true; message: string }
+  | { supported: true; ok: true; models: string[]; matched: boolean }
+  | { supported: true; ok: false; status?: number; message: string };
+
+const rateBuckets = new Map<string, RateBucket>();
 
 function sanitizeEventValue(value: unknown, secrets: string[]): unknown {
   if (typeof value === "string") {
@@ -212,6 +224,120 @@ function auditRunIdFromReportPath(reportPath: string) {
   return reportIndex > 0 ? parts[reportIndex - 1] : "";
 }
 
+function clientIp(request: Request) {
+  const forwardedFor = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  return forwardedFor || request.headers.get("x-real-ip")?.trim() || "unknown";
+}
+
+function checkRateLimit(key: string, limit: number, windowMs: number) {
+  const now = Date.now();
+  const cutoff = now - windowMs;
+  const bucket = rateBuckets.get(key) ?? { hits: [] };
+  bucket.hits = bucket.hits.filter((hit) => hit >= cutoff);
+  if (bucket.hits.length >= limit) {
+    const retryAfterMs = Math.max(1000, bucket.hits[0] + windowMs - now);
+    rateBuckets.set(key, bucket);
+    return { allowed: false, retryAfterSeconds: Math.ceil(retryAfterMs / 1000) };
+  }
+  bucket.hits.push(now);
+  rateBuckets.set(key, bucket);
+  return { allowed: true, retryAfterSeconds: 0 };
+}
+
+function modelProbeUrls(apiBaseUrl: string) {
+  const base = apiBaseUrl.replace(/\/+$/, "");
+  const urls = [`${base}/models`];
+  if (!base.endsWith("/v1") && !base.endsWith("/v1beta/openai")) {
+    urls.push(`${base}/v1/models`);
+  }
+  return urls;
+}
+
+function extractModelIds(payload: unknown) {
+  const items = Array.isArray(payload)
+    ? payload
+    : payload && typeof payload === "object"
+      ? ((payload as Record<string, unknown>).data as unknown[]) || ((payload as Record<string, unknown>).models as unknown[])
+      : [];
+  if (!Array.isArray(items)) {
+    return [];
+  }
+  const seen = new Set<string>();
+  const models: string[] = [];
+  for (const item of items) {
+    const id =
+      typeof item === "string"
+        ? item
+        : item && typeof item === "object"
+          ? String((item as Record<string, unknown>).id || (item as Record<string, unknown>).name || (item as Record<string, unknown>).model || "").trim()
+          : "";
+    if (id && !seen.has(id)) {
+      seen.add(id);
+      models.push(id);
+    }
+  }
+  return models;
+}
+
+function modelMatches(requested: string, available: string) {
+  const left = requested.trim().toLowerCase().replace(/^models\//, "");
+  const right = available.trim().toLowerCase().replace(/^models\//, "");
+  return left === right || right.startsWith(`${left}-`) || right.endsWith(`/${left}`);
+}
+
+async function probeModels(apiBaseUrl: string, apiKey: string, model: string): Promise<ModelProbeResult> {
+  const headers = {
+    authorization: `Bearer ${apiKey}`,
+    "x-api-key": apiKey,
+    "anthropic-version": "2023-06-01",
+    accept: "application/json",
+  };
+  let firstAuthFailure: Response | null = null;
+  let lastFailure: Response | null = null;
+
+  for (const url of modelProbeUrls(apiBaseUrl)) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), MODEL_PROBE_TIMEOUT_MS);
+    try {
+      const response = await fetch(url, { headers, cache: "no-store", signal: controller.signal });
+      if (response.status === 404 || response.status === 405) {
+        lastFailure = response;
+        continue;
+      }
+      if (response.status === 401 || response.status === 403) {
+        firstAuthFailure ??= response;
+        lastFailure = response;
+        continue;
+      }
+      if (!response.ok) {
+        lastFailure = response;
+        continue;
+      }
+      const payload = (await response.json().catch(() => null)) as unknown;
+      const models = extractModelIds(payload);
+      if (models.length === 0) {
+        return { supported: false, ok: true, message: "/models returned no recognizable model ids." };
+      }
+      return { supported: true, ok: true, models, matched: models.some((item) => modelMatches(model, item)) };
+    } catch (error) {
+      if (error instanceof Error && error.name !== "AbortError") {
+        lastFailure = null;
+      }
+      continue;
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
+  if (firstAuthFailure) {
+    return { supported: true, ok: false, status: firstAuthFailure.status, message: `Model preflight auth failed with HTTP ${firstAuthFailure.status}.` };
+  }
+  if (lastFailure && lastFailure.status !== 404 && lastFailure.status !== 405) {
+    return { supported: true, ok: false, status: lastFailure.status, message: `Model preflight failed with HTTP ${lastFailure.status}.` };
+  }
+  return { supported: false, ok: true, message: "Relay does not expose a compatible /models endpoint." };
+}
+
 export async function POST(request: Request) {
   await seedRuntimeDataFromRepo();
 
@@ -240,6 +366,18 @@ export async function POST(request: Request) {
   if (!apiBaseUrl || !apiKey || !model) {
     return jsonResponse({ error: "apiBaseUrl, apiKey and model are required." }, 400);
   }
+  if (apiKey.length < 8) {
+    return jsonResponse({ error: "apiKey looks too short." }, 400);
+  }
+
+  const ip = clientIp(request);
+  const auditRate = checkRateLimit(`audit:${ip}`, AUDIT_RATE_LIMIT, AUDIT_RATE_WINDOW_MS);
+  if (!auditRate.allowed) {
+    return Response.json(
+      { error: `Audit submissions are too frequent. Retry after ${auditRate.retryAfterSeconds} seconds.` },
+      { status: 429, headers: { "cache-control": "no-store", "retry-after": String(auditRate.retryAfterSeconds) } },
+    );
+  }
 
   try {
     await assertPublicAuditTarget(apiBaseUrl);
@@ -261,6 +399,24 @@ export async function POST(request: Request) {
     }
   } catch {
     return jsonResponse({ error: "apiBaseUrl must be a valid absolute URL." }, 400);
+  }
+
+  const probeRate = checkRateLimit(`model-probe:${ip}`, MODEL_PROBE_RATE_LIMIT, MODEL_PROBE_RATE_WINDOW_MS);
+  if (probeRate.allowed) {
+    const probe = await probeModels(apiBaseUrl, apiKey, model);
+    if (probe.supported && !probe.ok) {
+      return jsonResponse({ error: sanitizeAuditDetail(probe.message, [apiKey]) }, probe.status === 401 || probe.status === 403 ? 401 : 422);
+    }
+    if (probe.supported && probe.ok && !probe.matched) {
+      return jsonResponse(
+        {
+          error: `Model '${model}' was not found in the relay's /models response.`,
+          availableModelCount: probe.models.length,
+          suggestedModels: probe.models.slice(0, 8),
+        },
+        422,
+      );
+    }
   }
 
   const auditLock = await tryAcquireLock("audit-run", 1000 * 60 * 60);
