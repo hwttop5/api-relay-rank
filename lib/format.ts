@@ -30,6 +30,19 @@ export function formatCurrency(value: number | null, symbol: string): string {
   return `${symbol}${value.toFixed(2)}`;
 }
 
+export function formatCompactCount(value: number | null | undefined): string {
+  if (typeof value !== "number" || !Number.isFinite(value) || value <= 0) {
+    return "-";
+  }
+  if (value >= 100_000_000) {
+    return `${(value / 100_000_000).toFixed(1).replace(/\.0$/, "")}亿`;
+  }
+  if (value >= 100_000) {
+    return `${(value / 10_000).toFixed(1).replace(/\.0$/, "")}万`;
+  }
+  return new Intl.NumberFormat("zh-CN").format(Math.trunc(value));
+}
+
 export function formatDateTime(value: string): string {
   if (!value) {
     return "-";

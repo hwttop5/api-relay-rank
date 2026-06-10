@@ -1,6 +1,8 @@
 import { RankingDashboard } from "@/components/ranking-dashboard";
+import { getPageViewStats } from "@/lib/page-view-stats";
 import { absoluteUrl, pageMetadata, safeJsonLd, topRankingRows } from "@/lib/seo";
 import { getSiteData } from "@/lib/site-data";
+import { buildRankingPageData } from "@/lib/site-data-view";
 
 const PAGE_TITLE = "AI 中转站综合排名";
 const PAGE_DESCRIPTION = "查看 AI 中转站正式综合排名、Codex 采用倍率、正确率、响应时间、请求样本和未纳入正式排名的收录站点。";
@@ -14,7 +16,8 @@ export const metadata = pageMetadata({
 });
 
 export default async function RankingPage() {
-  const siteData = await getSiteData();
+  const [siteData, pageViewStats] = await Promise.all([getSiteData(), getPageViewStats()]);
+  const rankingPage = buildRankingPageData(siteData);
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -33,7 +36,7 @@ export default async function RankingPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(itemListJsonLd) }} />
-      <RankingDashboard data={siteData} />
+      <RankingDashboard data={rankingPage.data} shell={rankingPage.shell} pageViews={pageViewStats} />
     </>
   );
 }

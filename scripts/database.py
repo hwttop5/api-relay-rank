@@ -10,13 +10,15 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from scripts.runtime_paths import AUDIT_RUNS_DIR, SITE_DATA_PATH, logical_data_path
+    from scripts.runtime_paths import APP_ROOT, AUDIT_RUNS_DIR, SITE_DATA_PATH, logical_data_path
 except ModuleNotFoundError:
-    from runtime_paths import AUDIT_RUNS_DIR, SITE_DATA_PATH, logical_data_path
+    from runtime_paths import APP_ROOT, AUDIT_RUNS_DIR, SITE_DATA_PATH, logical_data_path
 
 
-MIGRATION_VERSION = 2
+MIGRATION_VERSION = 3
 DATABASE_URL_ENV = "DATABASE_URL"
+SITE_TOTAL_IMPORT_PATH = "__site_total__"
+PAGE_VIEW_BASELINES_PATH = APP_ROOT / "config" / "page_view_baselines.json"
 REQUIRED_RANKING_COUNTS = {
     "all_hours": 39,
     "work_hours": 32,
@@ -149,6 +151,36 @@ create index if not exists station_audit_runs_model_idx
   on station_audit_runs (model);
 create index if not exists station_audit_runs_verdict_idx
   on station_audit_runs (overall_verdict);
+
+create table if not exists page_view_events (
+  id bigserial primary key,
+  canonical_path text not null,
+  station_key text,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists page_view_events_created_idx
+  on page_view_events (created_at desc);
+create index if not exists page_view_events_station_idx
+  on page_view_events (station_key, created_at desc);
+create index if not exists page_view_events_path_idx
+  on page_view_events (canonical_path, created_at desc);
+
+create table if not exists page_view_import_rows (
+  source text not null,
+  period_start date not null,
+  period_end date not null,
+  canonical_path text not null,
+  station_key text,
+  pv_count bigint not null default 0,
+  visitor_count bigint,
+  metadata jsonb not null default '{}'::jsonb,
+  imported_at timestamptz not null default now(),
+  primary key (source, period_start, period_end, canonical_path)
+);
+
+create index if not exists page_view_import_rows_station_idx
+  on page_view_import_rows (station_key);
 """
 
 
@@ -197,12 +229,85 @@ def ensure_database(dsn: str | None = None) -> None:
             if cur.fetchone() is None:
                 cur.execute(SCHEMA_SQL)
                 cur.execute("insert into schema_migrations (version) values (%s)", (MIGRATION_VERSION,))
+            seed_page_view_baselines(cur)
         con.commit()
 
 
 def new_run_id(prefix: str = "refresh") -> str:
     timestamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
     return f"{prefix}-{timestamp}-{uuid.uuid4().hex[:8]}"
+
+
+def _parse_date(value: Any) -> str:
+    text = _text(value)
+    if not text:
+        raise ValueError("date is required.")
+    try:
+        return datetime.strptime(text, "%Y-%m-%d").date().isoformat()
+    except ValueError as exc:
+        raise ValueError(f"invalid date: {text}") from exc
+
+
+def _parse_nonnegative_int(value: Any, *, field: str) -> int:
+    if isinstance(value, int) and value >= 0:
+        return value
+    text = str(value or "").replace(",", "").strip()
+    if not text:
+        return 0
+    try:
+        parsed = int(float(text))
+    except ValueError as exc:
+        raise ValueError(f"{field} must be a non-negative integer.") from exc
+    if parsed < 0:
+        raise ValueError(f"{field} must be a non-negative integer.")
+    return parsed
+
+
+def seed_page_view_baselines(cur: Any) -> int:
+    if not PAGE_VIEW_BASELINES_PATH.exists():
+        return 0
+    try:
+        payload = json.loads(PAGE_VIEW_BASELINES_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError, ValueError):
+        return 0
+    if not isinstance(payload, list):
+        return 0
+
+    seeded = 0
+    for item in payload:
+        if not isinstance(item, dict):
+            continue
+        try:
+            source = _text(item.get("source") or "baidu")
+            period_start = _parse_date(item.get("periodStart"))
+            period_end = _parse_date(item.get("periodEnd"))
+            canonical_path = _text(item.get("canonicalPath"))
+            pv_count = _parse_nonnegative_int(item.get("pvCount"), field="pvCount")
+            visitor_count_value = item.get("visitorCount")
+            visitor_count = None if visitor_count_value in (None, "") else _parse_nonnegative_int(visitor_count_value, field="visitorCount")
+        except ValueError:
+            continue
+        if source != "baidu" or not canonical_path or pv_count <= 0:
+            continue
+        station_key = _text(item.get("stationKey")) or None
+        metadata = item.get("metadata") if isinstance(item.get("metadata"), dict) else {}
+        cur.execute(
+            """
+            insert into page_view_import_rows (
+              source, period_start, period_end, canonical_path, station_key, pv_count, visitor_count, metadata
+            )
+            values (%s, %s, %s, %s, %s, %s, %s, %s)
+            on conflict (source, period_start, period_end, canonical_path) do update
+            set station_key = excluded.station_key,
+                pv_count = excluded.pv_count,
+                visitor_count = excluded.visitor_count,
+                metadata = excluded.metadata,
+                imported_at = now()
+            """,
+            (source, period_start, period_end, canonical_path, station_key, pv_count, visitor_count, _jsonb(metadata)),
+        )
+        seeded += 1
+    return seeded
 
 
 def start_analysis_run(run_id: str, *, summary: dict[str, Any] | None = None, dsn: str | None = None) -> None:

@@ -1,6 +1,6 @@
 export type TimeWindow = "work_hours" | "off_hours" | "all_hours";
 export type SortMode = "composite" | "correct_rate" | "avg_seconds" | "effective_multiplier";
-export type StationType = "subscription" | "non_subscription" | "mixed" | "unknown_pending";
+export type StationType = "subscription" | "non_subscription" | "mixed" | "charity" | "unknown_pending";
 export type AuditProfile = "general";
 export type AuditVerdict = "low" | "medium" | "high" | "inconclusive";
 
@@ -170,6 +170,37 @@ export type AuditHistoryTimeRange = "all" | "24h" | "7d" | "30d" | "90d";
 export type AuditHistorySortKey = "executedAt" | "station" | "model" | "verdict" | "score";
 export type AuditHistorySortDirection = "asc" | "desc";
 
+export interface AuditHistoryFilters {
+  station: string;
+  model: string;
+  verdict: "all" | AuditVerdict;
+  timeRange: AuditHistoryTimeRange;
+  sort: AuditHistorySortKey;
+  direction: AuditHistorySortDirection;
+  page: number;
+  pageSize: number;
+}
+
+export interface AuditHistoryFilterOption {
+  value: string;
+  label: string;
+}
+
+export interface AuditHistoryFilterOptions {
+  stations: AuditHistoryFilterOption[];
+  models: AuditHistoryFilterOption[];
+}
+
+export interface AuditHistoryPage {
+  items: StationAuditHistoryItem[];
+  total: number;
+  page: number;
+  pageSize: number;
+  pageCount: number;
+  filters: AuditHistoryFilters;
+  options: AuditHistoryFilterOptions;
+}
+
 export interface StationAudits {
   defaultModel: string;
   availableModels: string[];
@@ -218,6 +249,60 @@ export interface StationRecord {
   audits?: StationAudits;
 }
 
+export interface ShellData {
+  siteName: string;
+  projectName: string;
+  generatedAt: string;
+  stationCount?: number;
+}
+
+export interface RankingDisplayRow {
+  rank: number;
+  station: string;
+  label: string;
+  stationUrl: string;
+  stationType: StationType;
+  stationTypeShortLabel: string;
+  totalScore: number;
+  correctRate: number;
+  avgSeconds: number;
+  effectiveMultiplier: number;
+  adoptedTier: string;
+  multiplierFullUseAssumption: string;
+  requests: number;
+}
+
+export interface RankingStationRecord {
+  key: string;
+  label: string;
+  stationExternalUrl: string;
+  stationType: StationType;
+  stationTypeLabel: string;
+  stationTypeShortLabel: string;
+  platformGuess: string;
+  unrankedReason: string;
+  registryDisplay: {
+    lowestMultiplier: string;
+    sampleCount: string;
+    verifiedTierCount: string;
+    announcementCount: string;
+    hasData: boolean;
+  };
+}
+
+export interface RankingPageData extends ShellData {
+  defaultTimeWindow: TimeWindow;
+  defaultSort: SortMode;
+  timeWindows: Record<TimeWindow, { key: TimeWindow; label: string; range: string }>;
+  rankings: Record<TimeWindow, RankingDisplayRow[]>;
+  stations: RankingStationRecord[];
+  rankedStationCount: Record<TimeWindow, number>;
+}
+
+export interface StatementPageData extends ShellData {
+  declaration: DeclarationPayload;
+}
+
 export interface SiteData {
   siteName: string;
   projectName: string;
@@ -230,4 +315,9 @@ export interface SiteData {
   rankings: Record<TimeWindow, RankingRow[]>;
   stations: StationRecord[];
   rankedStationCount: Record<TimeWindow, number>;
+}
+
+export interface PageViewStats {
+  totalPv: number;
+  stationPv: Record<string, number>;
 }

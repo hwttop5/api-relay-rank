@@ -1,7 +1,17 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
-import { DEFAULT_DESCRIPTION, SITE_TITLE, getSiteBaseUrl } from "@/lib/seo";
+import { PageViewTracker } from "@/components/page-view-tracker";
+import {
+  DEFAULT_DESCRIPTION,
+  SITE_IMAGE_HEIGHT,
+  SITE_IMAGE_PATH,
+  SITE_IMAGE_WIDTH,
+  SITE_TITLE,
+  absoluteUrl,
+  getSiteBaseUrl,
+  safeJsonLd,
+} from "@/lib/seo";
 
 import "./globals.css";
 
@@ -38,15 +48,31 @@ export const metadata: Metadata = {
     siteName: SITE_TITLE,
     locale: "zh_CN",
     type: "website",
+    images: [
+      {
+        url: SITE_IMAGE_PATH,
+        width: SITE_IMAGE_WIDTH,
+        height: SITE_IMAGE_HEIGHT,
+        alt: SITE_TITLE,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_TITLE,
     description: DEFAULT_DESCRIPTION,
+    images: [SITE_IMAGE_PATH],
   },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+  const webSiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    url: absoluteUrl("/ranking"),
+  };
   const themeScript = `
 (() => {
   try {
@@ -66,6 +92,8 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     <html lang="zh-CN" suppressHydrationWarning>
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(webSiteJsonLd) }} />
+        <PageViewTracker />
         {children}
         {baiduTongjiScript ? (
           <script id="baidu-tongji" dangerouslySetInnerHTML={{ __html: baiduTongjiScript }} />

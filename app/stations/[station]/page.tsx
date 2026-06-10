@@ -5,12 +5,30 @@ import { AppShell, StatusChip } from "@/components/app-shell";
 import { AnnouncementFeed } from "@/components/announcement-feed";
 import { StationAuditSummaryPanel } from "@/components/station-audit-summary";
 import { TierOverview } from "@/components/tier-overview";
-import { formatDateTime, formatMultiplier, formatPercent, formatScore, formatSeconds } from "@/lib/format";
-import { localizeSiteDataAuditText, localizeStationAuditText } from "@/lib/audit-localization";
+import { formatCompactCount, formatDateTime, formatMultiplier, formatPercent, formatScore, formatSeconds } from "@/lib/format";
+import { localizeStationAuditText } from "@/lib/audit-localization";
+import { getPageViewStats } from "@/lib/page-view-stats";
 import { absoluteUrl, findBestRanking, pageMetadata, safeJsonLd, stationMetadataDescription, stationPageTitle } from "@/lib/seo";
 import { getSiteData, getStationRecord } from "@/lib/site-data";
+import { buildShellData } from "@/lib/site-data-view";
 
 export const revalidate = 300;
+
+function stationTypeTone(stationType: string): "default" | "accent" | "blue" | "warn" | "success" {
+  if (stationType === "subscription") {
+    return "blue";
+  }
+  if (stationType === "non_subscription") {
+    return "warn";
+  }
+  if (stationType === "mixed") {
+    return "accent";
+  }
+  if (stationType === "charity") {
+    return "success";
+  }
+  return "default";
+}
 
 export async function generateStaticParams() {
   const siteData = await getSiteData();
@@ -29,9 +47,14 @@ export async function generateMetadata({ params }: { params: Promise<{ station: 
 
 export default async function StationPage({ params }: { params: Promise<{ station: string }> }) {
   const resolvedParams = await params;
-  const { siteData: rawSiteData, station: rawStation } = await getStationRecord(resolvedParams.station);
-  const siteData = localizeSiteDataAuditText(rawSiteData);
+  const [{ siteData: rawSiteData, station: rawStation }, pageViewStats] = await Promise.all([
+    getStationRecord(resolvedParams.station),
+    getPageViewStats(),
+  ]);
   const station = localizeStationAuditText(rawStation);
+  const shellData = buildShellData(rawSiteData, rawSiteData.stations.length);
+  const stationTone = stationTypeTone(station.stationType);
+  const stationPageViews = pageViewStats.stationPv[station.key] ?? 0;
 
   const work = station.rankings.work_hours;
   const off = station.rankings.off_hours;
@@ -73,7 +96,7 @@ export default async function StationPage({ params }: { params: Promise<{ statio
     url: absoluteUrl(`/stations/${encodeURIComponent(station.key)}`),
     isPartOf: {
       "@type": "WebSite",
-      name: siteData.siteName,
+      name: rawSiteData.siteName,
       url: absoluteUrl("/ranking"),
     },
     about: {
@@ -89,12 +112,17 @@ export default async function StationPage({ params }: { params: Promise<{ statio
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(webPageJsonLd) }} />
       <AppShell
         active="station"
-        data={siteData}
+        data={shellData}
         title={station.label}
-        subtitle={`${station.stationTypeShortLabel} · ${station.platformGuess || "平台未识别"} · ${siteData.projectName}`}
+        subtitle={`${station.stationTypeShortLabel} · ${station.platformGuess || "平台未识别"} · ${rawSiteData.projectName}`}
+        footerMeta={
+          <>
+            详情页 PV：{formatCompactCount(stationPageViews)} · PV 仅为本站访问热度参考，不参与排名、评分或排序。
+          </>
+        }
         actions={
           <>
-            <StatusChip label={station.stationTypeLabel} tone="accent" />
+            <StatusChip label={station.stationTypeLabel} tone={stationTone} />
             <div className="station-topbar-links">
               <Link href="/ranking" className="tiny-button detail-topbar-button">
                 <ArrowLeft size={13} />
@@ -116,7 +144,7 @@ export default async function StationPage({ params }: { params: Promise<{ statio
               <h1 className="section-title">{stationPageTitle(station)}</h1>
               <p className="section-desc">{stationDescription}</p>
             </div>
-            <span className="chip chip-accent">{station.stationTypeLabel}</span>
+            <StatusChip label={station.stationTypeLabel} tone={stationTone} />
           </div>
           <div className="section-body">
             <div className="detail-grid">
@@ -138,7 +166,7 @@ export default async function StationPage({ params }: { params: Promise<{ statio
               </div>
             </div>
             <div className="footer-note">
-              站点代号：{station.key} · 数据生成于 {formatDateTime(siteData.generatedAt)} · 已核验档位数：{station.verifiedTierCount}
+              站点代号：{station.key} · 数据生成于 {formatDateTime(rawSiteData.generatedAt)} · 已核验档位数：{station.verifiedTierCount}
               {bestRanking ? ` · 全时段排名 #${bestRanking.rank}` : ""}
             </div>
           </div>

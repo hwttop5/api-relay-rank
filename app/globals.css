@@ -199,9 +199,112 @@ select:focus-visible {
   font-weight: 780;
 }
 
-.brand-title svg {
-  color: var(--accent);
-  filter: drop-shadow(0 0 10px rgba(32, 211, 162, 0.34));
+.brand-logo {
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  overflow: visible;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 13px rgba(32, 211, 162, 0.28));
+  shape-rendering: geometricPrecision;
+}
+
+.brand-logo__bg {
+  fill: #101820;
+  stroke: rgba(109, 168, 255, 0.34);
+  stroke-width: 1.25;
+}
+
+.brand-logo__dish {
+  fill: rgba(8, 13, 19, 0.9);
+}
+
+.brand-logo__ring,
+.brand-logo__ping,
+.brand-logo__sweep-line,
+.brand-logo__signal {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.brand-logo__ring-outer {
+  stroke: var(--accent);
+  stroke-width: 3.2;
+}
+
+.brand-logo__ring-inner {
+  stroke: var(--accent-2);
+  stroke-width: 3;
+  opacity: 0.96;
+}
+
+.brand-logo__sweep-fill {
+  fill: rgba(32, 211, 162, 0.22);
+}
+
+.brand-logo__sweep-line {
+  stroke: var(--accent);
+  stroke-width: 4;
+}
+
+.brand-logo__ping {
+  stroke: rgba(238, 244, 239, 0.13);
+  stroke-width: 1.8;
+}
+
+.brand-logo__core {
+  fill: var(--warn);
+  stroke: rgba(16, 24, 32, 0.96);
+  stroke-width: 1.8;
+}
+
+.brand-logo__signal {
+  stroke: var(--warn);
+  stroke-width: 4.8;
+}
+
+:root[data-theme="light"] .brand-logo {
+  filter: drop-shadow(0 8px 14px rgba(0, 137, 111, 0.13));
+}
+
+:root[data-theme="light"] .brand-logo__bg {
+  fill: #e9f7f1;
+  stroke: rgba(0, 137, 111, 0.34);
+}
+
+:root[data-theme="light"] .brand-logo__dish {
+  fill: rgba(255, 253, 247, 0.78);
+}
+
+:root[data-theme="light"] .brand-logo__ring-outer {
+  stroke: #00896f;
+}
+
+:root[data-theme="light"] .brand-logo__ring-inner {
+  stroke: #2769b4;
+}
+
+:root[data-theme="light"] .brand-logo__sweep-fill {
+  fill: rgba(0, 137, 111, 0.14);
+}
+
+:root[data-theme="light"] .brand-logo__sweep-line {
+  stroke: #00896f;
+}
+
+:root[data-theme="light"] .brand-logo__ping {
+  stroke: rgba(28, 35, 36, 0.15);
+}
+
+:root[data-theme="light"] .brand-logo__core {
+  fill: #9a640c;
+  stroke: rgba(255, 253, 247, 0.92);
+}
+
+:root[data-theme="light"] .brand-logo__signal {
+  stroke: #9a640c;
 }
 
 .brand-title span {
@@ -325,6 +428,12 @@ select:focus-visible {
   border-color: rgba(255, 124, 124, 0.42);
   background: var(--danger-soft);
   color: var(--danger);
+}
+
+.chip-success {
+  border-color: rgba(62, 207, 142, 0.42);
+  background: rgba(62, 207, 142, 0.12);
+  color: #5be49e;
 }
 
 .section {
@@ -1230,7 +1339,7 @@ select:focus-visible {
 .contact-ad-markdown .announcement-table td {
   width: 50%;
   text-align: center;
-  vertical-align: top;
+  vertical-align: middle;
   overflow-wrap: anywhere;
 }
 
@@ -1382,7 +1491,7 @@ select:focus-visible {
 }
 
 .mobile-card-rank {
-  min-width: 30px;
+  min-width: 54px;
   color: var(--accent);
   font-size: 18px;
   font-weight: 700;
@@ -1530,7 +1639,7 @@ select:focus-visible {
   border-bottom: 1px solid rgba(74, 88, 97, 0.52);
   padding: 11px 10px;
   text-align: left;
-  vertical-align: top;
+  vertical-align: middle;
   font-size: 13px;
   line-height: 1.45;
 }
@@ -1576,6 +1685,7 @@ select:focus-visible {
   border-bottom: 1px solid rgba(74, 88, 97, 0.52);
   padding: 10px 9px;
   text-align: left;
+  vertical-align: middle;
   font-size: 13px;
 }
 
@@ -1740,7 +1850,7 @@ select:focus-visible {
   border: 1px solid var(--border);
   padding: 8px 10px;
   text-align: left;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .announcement-table th {
@@ -1846,6 +1956,22 @@ select:focus-visible {
   overflow-wrap: anywhere;
 }
 
+.page-footer {
+  margin-top: 18px;
+  border-top: 1px solid rgba(74, 88, 97, 0.42);
+  padding: 14px 2px 4px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.page-footer-line {
+  display: inline;
+  max-width: min(100%, 72ch);
+}
+
 .inline-actions {
   display: inline-flex;
   align-items: center;
@@ -1866,7 +1992,7 @@ select:focus-visible {
 
 .detail-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 10px;
 }
 
@@ -2582,7 +2708,7 @@ select:focus-visible {
 }
 
 .ranking-table .ranking-col-rank {
-  width: 4%;
+  width: 72px;
 }
 
 .ranking-table .ranking-col-station {
@@ -2651,6 +2777,97 @@ select:focus-visible {
   word-break: break-word;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+
+.ranking-position {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.ranking-position-number {
+  white-space: nowrap;
+}
+
+.rank-medal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  flex: 0 0 auto;
+  line-height: 1;
+  box-shadow: var(--inner-glow);
+}
+
+.rank-medal svg {
+  display: block;
+}
+
+.rank-medal-gold {
+  background: rgba(244, 196, 73, 0.16);
+  color: #f4c449;
+}
+
+.rank-medal-gold::before {
+  content: none;
+}
+
+.rank-medal-silver {
+  background: rgba(191, 203, 217, 0.16);
+  color: #c6d1de;
+}
+
+.rank-medal-silver::before {
+  content: none;
+}
+
+.rank-medal-bronze {
+  background: rgba(199, 137, 80, 0.16);
+  color: #d59a5f;
+}
+
+.rank-medal-bronze::before {
+  content: none;
+}
+
+.station-title-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  max-width: 100%;
+  line-height: 1.25;
+}
+
+.station-title-line .station-link {
+  min-width: 0;
+}
+
+.charity-badge {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  min-width: 34px;
+  height: 20px;
+  padding: 0 7px;
+  border: 1px solid rgba(62, 207, 142, 0.42);
+  border-radius: 999px;
+  background: rgba(62, 207, 142, 0.12);
+  color: #5be49e;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.charity-badge-text {
+  display: block;
+  line-height: 1;
+  transform: translateY(0.5px);
 }
 
 .ranking-table .table-action-cell .tiny-button {
@@ -2935,6 +3152,12 @@ select:focus-visible {
     padding-top: 8px;
   }
 
+  .page-footer {
+    margin-top: 14px;
+    padding-top: 12px;
+    font-size: 11px;
+  }
+
   .contact-ad-overlay {
     align-items: flex-start;
     padding: 12px 8px;
@@ -2998,6 +3221,12 @@ select:focus-visible {
   .brand-title {
     font-size: 17px;
     line-height: 1.25;
+  }
+
+  .brand-logo {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
   }
 
   .brand-subtitle {
@@ -3185,7 +3414,7 @@ select:focus-visible {
   }
 
   .mobile-card-rank {
-    min-width: 24px;
+    min-width: 50px;
     font-size: 17px;
   }
 

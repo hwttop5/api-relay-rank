@@ -1,15 +1,14 @@
 import Link from "next/link";
-import { Radar } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { formatDateTime } from "@/lib/format";
-import type { SiteData } from "@/lib/types";
+import type { ShellData } from "@/lib/types";
 import { ContactAdProvider, ContactAdTrigger } from "@/components/contact-ad";
 import { MobileNavMenu } from "@/components/mobile-nav-menu";
 import { NAV_ITEMS, type AppNavKey } from "@/components/nav-items";
 import { ThemeControls, ThemeToggle } from "@/components/theme-toggle";
 
-export function StatusChip({ label, tone = "default" }: { label: string; tone?: "default" | "accent" | "blue" | "warn" | "danger" }) {
+export function StatusChip({ label, tone = "default" }: { label: string; tone?: "default" | "accent" | "blue" | "warn" | "danger" | "success" }) {
   const cls =
     tone === "accent"
       ? "chip chip-accent"
@@ -19,14 +18,33 @@ export function StatusChip({ label, tone = "default" }: { label: string; tone?: 
           ? "chip chip-warn"
           : tone === "danger"
             ? "chip chip-danger"
-            : "chip";
+            : tone === "success"
+              ? "chip chip-success"
+              : "chip";
   return <span className={cls}>{label}</span>;
+}
+
+function BrandLogo() {
+  return (
+    <svg className="brand-logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+      <rect className="brand-logo__bg" x="4" y="4" width="56" height="56" rx="14" />
+      <circle className="brand-logo__dish" cx="32" cy="35" r="20" />
+      <circle className="brand-logo__ring brand-logo__ring-outer" cx="32" cy="35" r="20" />
+      <circle className="brand-logo__ring brand-logo__ring-inner" cx="32" cy="35" r="12" />
+      <path className="brand-logo__sweep-fill" d="M32 35L50 25A20 20 0 0 1 52 38Z" />
+      <path className="brand-logo__sweep-line" d="M32 35L50 25" />
+      <path className="brand-logo__ping" d="M18 35H24M32 15V21M44 35H50M32 47V53" />
+      <circle className="brand-logo__core" cx="32" cy="35" r="4.6" />
+      <path className="brand-logo__signal" d="M20 16H44" />
+    </svg>
+  );
 }
 
 export function AppShell({
   active,
   children,
   data,
+  footerMeta,
   subtitle,
   title,
   actions,
@@ -34,13 +52,15 @@ export function AppShell({
 }: {
   active: AppNavKey;
   children: ReactNode;
-  data: SiteData;
+  data: ShellData;
+  footerMeta?: ReactNode;
   subtitle?: ReactNode;
   title?: ReactNode;
   actions?: ReactNode;
   topbarMetaClassName?: string;
 }) {
   const topbarMetaClasses = ["topbar-meta", topbarMetaClassName].filter(Boolean).join(" ");
+  const copyrightYear = new Date().getFullYear();
 
   return (
     <ContactAdProvider>
@@ -51,7 +71,7 @@ export function AppShell({
               <div className="topbar-brand-row">
                 <div className="brand">
                   <div className="brand-title">
-                    <Radar size={18} aria-hidden="true" />
+                    <BrandLogo />
                     <span>{title ?? data.siteName}</span>
                   </div>
                   <div className="brand-subtitle">{subtitle ?? `数据生成于 ${formatDateTime(data.generatedAt)}`}</div>
@@ -82,6 +102,15 @@ export function AppShell({
             </div>
           </header>
           {children}
+          <footer className="page-footer">
+            {footerMeta ? (
+              <span className="page-footer-line">
+                {footerMeta} · Copyright © {copyrightYear} ttop5. All rights reserved.
+              </span>
+            ) : (
+              <span className="page-footer-line">Copyright © {copyrightYear} ttop5. All rights reserved.</span>
+            )}
+          </footer>
         </div>
       </main>
     </ContactAdProvider>

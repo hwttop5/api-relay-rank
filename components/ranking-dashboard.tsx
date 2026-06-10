@@ -2,14 +2,11 @@
 
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
-import { ChevronDown, ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { ChevronDown, ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, ExternalLink, Medal } from "lucide-react";
 
-import { formatMultiplier, formatPercent, formatScore, formatSeconds } from "@/lib/format";
-import type { RankingRow, SiteData, SortMode, TimeWindow } from "@/lib/types";
+import { formatCompactCount, formatMultiplier, formatPercent, formatScore, formatSeconds } from "@/lib/format";
+import type { PageViewStats, RankingDisplayRow, RankingPageData, RankingStationRecord, ShellData, SortMode, StationType, TimeWindow } from "@/lib/types";
 import { AppShell, StatusChip } from "@/components/app-shell";
-
-const HIGHLIGHT_PHRASE = "所以本排名更关注各中转站的服务下限。";
-const DISCLAIMER_EMPHASIS = "部分中转站外链使用邀请链接，可能为测试账号带来少量额度奖励。这些额度将用于维持长期测试、扩大数据样本并持续更新排名；排名数据、评分和排序不受邀请链接影响，仅供参考。";
 
 const TIME_WINDOW_OPTIONS: Array<{ value: TimeWindow; label: string }> = [
   { value: "all_hours", label: "全部时段" },
@@ -28,18 +25,21 @@ const TYPE_OPTIONS = [
   { key: "all", label: "全部类型" },
   { key: "subscription", label: "包月型" },
   { key: "non_subscription", label: "非包月型" },
-  { key: "mixed", label: "混合型" }
+  { key: "mixed", label: "混合型" },
+  { key: "charity", label: "公益站" }
 ] as const;
 
 const PAGE_SIZE_OPTIONS = [10, 20, 50, 100] as const;
+const PRIORITY_RANKING_MIN_REQUESTS = 10;
 
 type TypeFilter = (typeof TYPE_OPTIONS)[number]["key"];
-type StationRecord = SiteData["stations"][number];
-type RegistryEvidenceKey = "groupMultipliers" | "rechargeTiers" | "announcements";
+type StationRecord = RankingStationRecord;
 
-const CONFIRMED_EMPTY_EVIDENCE_STATUSES = new Set(["captured", "empty"]);
-
-function compareByMode(rowA: RankingRow, rowB: RankingRow, mode: SortMode): number {
+function compareByMode(rowA: RankingDisplayRow, rowB: RankingDisplayRow, mode: SortMode): number {
+  const samplePriority = Number(rowA.requests < PRIORITY_RANKING_MIN_REQUESTS) - Number(rowB.requests < PRIORITY_RANKING_MIN_REQUESTS);
+  if (samplePriority !== 0) {
+    return samplePriority;
+  }
   if (mode === "correct_rate") {
     return rowB.correctRate - rowA.correctRate || rowA.avgSeconds - rowB.avgSeconds || rowA.effectiveMultiplier - rowB.effectiveMultiplier || rowA.rank - rowB.rank;
   }
@@ -75,7 +75,7 @@ function StationUrlLink({ href, compact = false }: { href: string; compact?: boo
   );
 }
 
-function getStationTone(stationType: RankingRow["stationType"]): "default" | "accent" | "blue" | "warn" {
+function getStationTone(stationType: StationType): "default" | "accent" | "blue" | "warn" | "success" {
   if (stationType === "subscription") {
     return "blue";
   }
@@ -85,7 +85,44 @@ function getStationTone(stationType: RankingRow["stationType"]): "default" | "ac
   if (stationType === "mixed") {
     return "accent";
   }
+  if (stationType === "charity") {
+    return "success";
+  }
   return "default";
+}
+
+function RankMedal({ rank }: { rank: number }) {
+  if (rank < 1 || rank > 3) {
+    return null;
+  }
+  const label = rank === 1 ? "金牌" : rank === 2 ? "银牌" : "铜牌";
+  const tone = rank === 1 ? "gold" : rank === 2 ? "silver" : "bronze";
+  return (
+    <span className={`rank-medal rank-medal-${tone}`} aria-label={label} title={label}>
+      <Medal size={14} strokeWidth={2.4} aria-hidden="true" />
+    </span>
+  );
+}
+
+function RankingPosition({ rank, fallbackIndex }: { rank: number; fallbackIndex: number }) {
+  const displayRank = fallbackIndex + 1;
+  return (
+    <div className="ranking-position">
+      <span className="ranking-position-number">#{displayRank}</span>
+      <RankMedal rank={rank} />
+    </div>
+  );
+}
+
+function CharityBadge({ stationType }: { stationType: StationType }) {
+  if (stationType !== "charity") {
+    return null;
+  }
+  return (
+    <span className="charity-badge">
+      <span className="charity-badge-text">公益</span>
+    </span>
+  );
 }
 
 function MobileMetric({ label, value, mono = false }: { label: string; value: ReactNode; mono?: boolean }) {
@@ -183,182 +220,29 @@ function TablePagination({
   );
 }
 
-function getSampleCount(station: SiteData["stations"][number], window: TimeWindow) {
-  return station.quality[window]?.requestSamples ?? null;
-}
-
-function getTotalSampleCount(station: SiteData["stations"][number]) {
-  return (getSampleCount(station, "work_hours") ?? 0) + (getSampleCount(station, "off_hours") ?? 0);
-}
-
-function getEvidenceStatus(station: StationRecord, key: RegistryEvidenceKey) {
-  return station.dataEvidence?.find((item) => item.key === key)?.status;
-}
-
-function hasConfirmedEvidence(station: StationRecord, key: RegistryEvidenceKey) {
-  const status = getEvidenceStatus(station, key);
-  return status ? CONFIRMED_EMPTY_EVIDENCE_STATUSES.has(status) : false;
-}
-
-function formatStoredCount(value: number | null | undefined) {
-  return typeof value === "number" && Number.isFinite(value) ? String(value) : "-";
-}
-
-function formatRegistrySampleCount(station: StationRecord) {
-  return formatStoredCount(station.quality.all_hours?.requestSamples);
-}
-
-function hasVerifiedTierDisplayBasis(station: StationRecord) {
-  return (
-    station.groupMultipliers.length > 0 ||
-    station.rechargeTiers.length > 0 ||
-    hasConfirmedEvidence(station, "groupMultipliers") ||
-    hasConfirmedEvidence(station, "rechargeTiers")
-  );
-}
-
-function formatRegistryVerifiedTierCount(station: StationRecord) {
-  if (Number.isFinite(station.verifiedTierCount) && station.verifiedTierCount > 0) {
-    return String(station.verifiedTierCount);
-  }
-  return hasVerifiedTierDisplayBasis(station) ? "0" : "-";
-}
-
-function formatRegistryAnnouncementCount(station: StationRecord) {
-  if (station.announcements.length > 0) {
-    return String(station.announcements.length);
-  }
-  return hasConfirmedEvidence(station, "announcements") ? "0" : "-";
-}
-
-const NON_CODEX_GROUP_KEYWORDS = [
-  "claude",
-  "anthropic",
-  "sonnet",
-  "opus",
-  "haiku",
-  "kiro",
-  "cc-",
-  "国产",
-  "公益",
-  "deepseek",
-  "qwen",
-  "glm",
-  "kimi",
-  "doubao",
-  "minimax",
-] as const;
-
-function isCodexLikeGroup(group: SiteData["stations"][number]["groupMultipliers"][number]) {
-  if (group.codexEligible === false) {
-    return false;
-  }
-  if (group.codexEligible === true) {
-    return true;
-  }
-  const groupName = group.groupName;
-  const normalized = groupName.trim().toLowerCase();
-  if (!normalized) {
-    return false;
-  }
-  return !NON_CODEX_GROUP_KEYWORDS.some((keyword) => normalized.includes(keyword));
-}
-
-function getLowestUnrankedMultiplier(station: SiteData["stations"][number]) {
-  const codexGroupMultipliers = station.groupMultipliers
-    .filter((group) => isCodexLikeGroup(group))
-    .map((group) => group.groupMultiplier)
-    .filter((multiplier) => Number.isFinite(multiplier) && multiplier > 0);
-
-  if (!codexGroupMultipliers.length) {
-    return null;
-  }
-
-  const lowestGroupMultiplier = Math.min(...codexGroupMultipliers);
-  const effectiveMultipliers: number[] = [];
-
-  for (const tier of station.rechargeTiers) {
-    const rmbAmount = tier.rmbAmount;
-    const usdAmount = tier.usdAmount;
-    if (
-      rmbAmount === null ||
-      usdAmount === null ||
-      !Number.isFinite(rmbAmount) ||
-      !Number.isFinite(usdAmount) ||
-      usdAmount <= 0
-    ) {
-      continue;
-    }
-
-    const effectiveMultiplier = lowestGroupMultiplier * rmbAmount / usdAmount;
-    if (Number.isFinite(effectiveMultiplier) && effectiveMultiplier > 0) {
-      effectiveMultipliers.push(effectiveMultiplier);
-    }
-  }
-
-  return effectiveMultipliers.length ? Math.min(...effectiveMultipliers) : null;
-}
-
 function getRegistryDisplayValues(station: StationRecord) {
-  const lowestMultiplier = getLowestUnrankedMultiplier(station);
-  const values = {
-    lowestMultiplier: lowestMultiplier === null ? "-" : formatMultiplier(lowestMultiplier),
-    sampleCount: formatRegistrySampleCount(station),
-    verifiedTierCount: formatRegistryVerifiedTierCount(station),
-    announcementCount: formatRegistryAnnouncementCount(station),
-  };
-
-  return {
-    ...values,
-    hasData: Object.values(values).some((value) => value !== "-"),
-  };
+  return station.registryDisplay;
 }
 
-const MANUAL_FEE_REVIEW_STATIONS = new Set(["voapi"]);
-
-function needsManualFeeReview(station: SiteData["stations"][number]) {
-  return station.verifiedTierCount <= 0 && (
-    MANUAL_FEE_REVIEW_STATIONS.has(station.key) ||
-    station.tierNotes.some((note) => note.includes("费用待人工复核") || note.includes("待人工复核"))
-  );
+function getUnrankedReason(station: RankingStationRecord) {
+  return station.unrankedReason;
 }
 
-function getUnrankedReason(station: SiteData["stations"][number]) {
-  const hasGroupEvidence = station.groupMultipliers.length > 0;
-  const hasRechargeEvidence = station.rechargeTiers.length > 0;
-  const totalSamples = getTotalSampleCount(station);
-
-  if (!hasGroupEvidence && !hasRechargeEvidence) {
-    return "缺分组/充值证据";
-  }
-  if (!hasGroupEvidence) {
-    return "缺分组证据";
-  }
-  if (!hasRechargeEvidence) {
-    return "缺充值证据";
-  }
-  if (needsManualFeeReview(station)) {
-    return "费用待人工复核";
-  }
-  if (station.verifiedTierCount <= 0) {
-    return "缺正式费用行";
-  }
-  if (totalSamples <= 0) {
-    return "缺请求样本";
-  }
-  return "费用待人工复核";
-}
-
-function MobileRankingCard({ row, index, stationMeta }: { row: RankingRow; index: number; stationMeta?: { platformGuess: string } }) {
+function MobileRankingCard({ row, index, stationMeta }: { row: RankingDisplayRow; index: number; stationMeta?: { platformGuess: string } }) {
   return (
     <article className="mobile-card">
       <div className="mobile-card-header">
         <div className="mobile-card-lead">
-          <div className="mobile-card-rank mono">{index + 1}</div>
+          <div className="mobile-card-rank mono">
+            <RankingPosition rank={row.rank} fallbackIndex={index} />
+          </div>
           <div className="mobile-card-title-block">
-            <Link href={`/stations/${row.station}`} className="station-link mobile-card-title">
-              {row.label}
-            </Link>
+            <div className="station-title-line">
+              <Link href={`/stations/${row.station}`} prefetch={false} className="station-link mobile-card-title">
+                {row.label}
+              </Link>
+              <CharityBadge stationType={row.stationType} />
+            </div>
             <span className="mobile-card-subtitle">{stationMeta?.platformGuess || "-"}</span>
           </div>
         </div>
@@ -386,7 +270,7 @@ function MobileRankingCard({ row, index, stationMeta }: { row: RankingRow; index
       </details>
 
       <div className="mobile-card-actions">
-        <Link href={`/stations/${row.station}`} className="tiny-button mobile-card-button">
+        <Link href={`/stations/${row.station}`} prefetch={false} className="tiny-button mobile-card-button">
           详情
           <ChevronRight size={14} />
         </Link>
@@ -395,17 +279,17 @@ function MobileRankingCard({ row, index, stationMeta }: { row: RankingRow; index
   );
 }
 
-function MobileStationCard({ station }: { station: SiteData["stations"][number] }) {
+function MobileStationCard({ station }: { station: RankingStationRecord }) {
   const unrankedReason = getUnrankedReason(station);
   const registryDisplay = getRegistryDisplayValues(station);
-  const stationExternalUrl = station.inviteUrl || station.url;
+  const stationExternalUrl = station.stationExternalUrl;
 
   return (
     <article className="mobile-card">
       <div className="mobile-card-header">
         <div className="mobile-card-lead">
           <div className="mobile-card-title-block">
-            <Link href={`/stations/${station.key}`} className="station-link mobile-card-title">
+            <Link href={`/stations/${station.key}`} prefetch={false} className="station-link mobile-card-title">
               {station.label}
             </Link>
             <span className="mobile-card-subtitle">{station.platformGuess || "-"}</span>
@@ -435,7 +319,7 @@ function MobileStationCard({ station }: { station: SiteData["stations"][number] 
       </details>
 
       <div className="mobile-card-actions">
-        <Link href={`/stations/${station.key}`} className="tiny-button mobile-card-button">
+        <Link href={`/stations/${station.key}`} prefetch={false} className="tiny-button mobile-card-button">
           详情
           <ChevronRight size={14} />
         </Link>
@@ -444,121 +328,7 @@ function MobileStationCard({ station }: { station: SiteData["stations"][number] 
   );
 }
 
-function normalizeDeclarationText(text: string) {
-  return text.replace(`（${HIGHLIGHT_PHRASE}）`, HIGHLIGHT_PHRASE);
-}
-
-function renderEmphasizedText(text: string) {
-  if (text.includes(HIGHLIGHT_PHRASE)) {
-    const [before, after] = text.split(HIGHLIGHT_PHRASE, 2);
-    return (
-      <>
-        {before}
-        所以
-        <strong>本排名更关注各中转站的服务下限。</strong>
-        {after}
-      </>
-    );
-  }
-
-  if (text.includes(DISCLAIMER_EMPHASIS)) {
-    const [before, after] = text.split(DISCLAIMER_EMPHASIS, 2);
-    return (
-      <>
-        {before}
-        <strong>{DISCLAIMER_EMPHASIS}</strong>
-        {after}
-      </>
-    );
-  }
-
-  return text;
-}
-
-function splitStatementLine(item: string) {
-  for (const separator of ["：", "=", ":"]) {
-    if (item.includes(separator)) {
-      const [label, value] = item.split(separator, 2);
-      return { label: label.trim(), value: value.trim() };
-    }
-  }
-
-  return { label: "", value: item.trim() };
-}
-
-function StatementList({ items }: { items: string[] }) {
-  return (
-    <div className="statement-list">
-      {items.map((item) => {
-        const { label, value } = splitStatementLine(item);
-        return (
-          <div className="statement-row" key={item}>
-            {label ? <p className="statement-label">{label}</p> : null}
-            <p className="statement-value">{label ? renderEmphasizedText(value) : renderEmphasizedText(item)}</p>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-function BulletTextList({ items }: { items: string[] }) {
-  return (
-    <div className="bullet-list">
-      {items.map((item) => (
-        <div className="bullet-item" key={item}>
-          <span className="bullet-prefix">-</span>
-          <p className="bullet-copy">{renderEmphasizedText(item)}</p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-export function DeclarationPanels({ data }: { data: SiteData }) {
-  const coreItems =
-    data.declaration.coreItems && data.declaration.coreItems.length
-      ? data.declaration.coreItems
-      : [data.declaration.scoring, data.declaration.formula, data.declaration.adoptedMultiplierRule].filter(Boolean);
-  const conclusionItems = data.declaration.conclusion ?? [];
-  const environmentParagraphs = data.declaration.environment
-    .split(/\n{2,}/)
-    .map((item) => normalizeDeclarationText(item.trim()))
-    .filter(Boolean);
-
-  return (
-    <div className="declaration-layout">
-      {conclusionItems.length ? (
-        <div className="notice-panel notice-panel-primary declaration-hero">
-          <p className="notice-title">最终结论</p>
-          <BulletTextList items={conclusionItems} />
-        </div>
-      ) : null}
-
-      <div className="declaration-columns">
-        <div className="declaration-side">
-          <div className="notice-panel declaration-copy-panel declaration-copy-full">
-            <p className="notice-title">环境与口径</p>
-            <BulletTextList items={environmentParagraphs} />
-          </div>
-        </div>
-
-        <div className="declaration-side declaration-side-split">
-          <div className="notice-panel declaration-compact-panel">
-            <p className="notice-title">核心公式</p>
-            <StatementList items={coreItems} />
-          </div>
-          <div className="notice-panel declaration-compact-panel">
-            <p className="notice-title">补充说明</p>
-            <StatementList items={data.declaration.items} />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export function RankingDashboard({ data }: { data: SiteData }) {
+export function RankingDashboard({ data, shell, pageViews }: { data: RankingPageData; shell: ShellData; pageViews: PageViewStats }) {
   const [timeWindow, setTimeWindow] = useState<TimeWindow>(data.defaultTimeWindow);
   const [sortMode, setSortMode] = useState<SortMode>(data.defaultSort);
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("all");
@@ -624,8 +394,13 @@ export function RankingDashboard({ data }: { data: SiteData }) {
   return (
     <AppShell
       active="ranking"
-      data={data}
+      data={shell}
       topbarMetaClassName="topbar-meta-inline-mobile"
+      footerMeta={
+        <>
+          累计 PV {formatCompactCount(pageViews.totalPv)} · PV 仅为本站访问热度参考，不参与排名、评分或排序。
+        </>
+      }
       actions={
         <>
           <StatusChip label={`收录站点 ${data.stations.length}`} tone="accent" />
@@ -638,7 +413,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
           <div className="section-head">
             <div>
               <h1 className="section-title">正式综合排名</h1>
-              <p className="section-desc">支持工作时段与非工作时段切换；周末样本统一计入非工作时段。采用倍率按 Codex 口径最小非 0 分组倍率 × 实付金额 ÷ 到账美元额度计算；有明确用途标记时排除非 Codex 分组。</p>
+              <p className="section-desc">支持工作时段与非工作时段切换；周末样本统一计入非工作时段。同一时段内，请求样本数 ≥ 10 的站点优先排名，低样本站点仍保留在正式榜但整体置后。采用倍率按 Codex 口径最小非 0 分组倍率 × 实付金额 ÷ 到账美元额度计算；有明确用途标记时排除非 Codex 分组。</p>
             </div>
             <div className="controls">
               <label className="control-group">
@@ -715,12 +490,17 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                       const stationMeta = stationMap.get(row.station);
                       return (
                         <tr key={`${row.station}-${row.rank}`}>
-                          <td className="mono">{rankingPageStartIndex + index + 1}</td>
+                          <td className="mono">
+                            <RankingPosition rank={row.rank} fallbackIndex={rankingPageStartIndex + index} />
+                          </td>
                           <td>
                             <div className="table-cell-stack">
-                              <Link href={`/stations/${row.station}`} className="station-link">
-                                {row.label}
-                              </Link>
+                              <div className="station-title-line">
+                                <Link href={`/stations/${row.station}`} prefetch={false} className="station-link">
+                                  {row.label}
+                                </Link>
+                                <CharityBadge stationType={row.stationType} />
+                              </div>
                             </div>
                           </td>
                           <td className="table-url-cell">
@@ -740,7 +520,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                             </span>
                           </td>
                           <td className="table-action-cell">
-                            <Link href={`/stations/${row.station}`} className="tiny-button">
+                            <Link href={`/stations/${row.station}`} prefetch={false} className="tiny-button">
                               详情
                               <ChevronRight size={14} />
                             </Link>
@@ -825,12 +605,12 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                       return (
                         <tr key={station.key}>
                           <td>
-                            <Link href={`/stations/${station.key}`} className="station-link">
+                            <Link href={`/stations/${station.key}`} prefetch={false} className="station-link">
                               {station.label}
                             </Link>
                           </td>
                           <td className="table-url-cell">
-                            <StationUrlLink href={station.inviteUrl || station.url} compact />
+                            <StationUrlLink href={station.stationExternalUrl} compact />
                           </td>
                           <td className="table-type-cell">{station.stationTypeShortLabel}</td>
                           <td className="table-platform-cell">{station.platformGuess || "-"}</td>
@@ -840,7 +620,7 @@ export function RankingDashboard({ data }: { data: SiteData }) {
                           <td className="mono">{registryDisplay.verifiedTierCount}</td>
                           <td className="mono">{registryDisplay.announcementCount}</td>
                           <td className="table-action-cell">
-                            <Link href={`/stations/${station.key}`} className="tiny-button">
+                            <Link href={`/stations/${station.key}`} prefetch={false} className="tiny-button">
                               详情
                               <ChevronRight size={14} />
                             </Link>

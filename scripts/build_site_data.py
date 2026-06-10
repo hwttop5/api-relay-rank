@@ -59,6 +59,7 @@ SHORT_TYPE_LABELS = {
     "subscription": "包月型",
     "non_subscription": "非包月型",
     "mixed": "混合型",
+    "charity": "公益站",
     "unknown_pending": "待补证据",
 }
 
@@ -66,6 +67,7 @@ FULL_TYPE_LABELS = {
     "subscription": "包月型中转站",
     "non_subscription": "非包月型中转站",
     "mixed": "混合型中转站",
+    "charity": "公益站",
     "unknown_pending": "待补证据",
 }
 
@@ -75,9 +77,11 @@ BILLING_LABELS = {
     "daily": "日卡",
     "quarterly": "季卡",
     "permanent": "永久额度",
+    "free": "免费额度",
     "permanent_or_unknown": "按量额度",
 }
 PACKAGE_BILLING_TYPES = {"monthly", "weekly", "daily", "quarterly", "yearly"}
+PRIORITY_RANKING_MIN_REQUESTS = 10
 
 TIME_WINDOWS = {
     "work_hours": {"key": "work_hours", "label": "工作时段", "range": "工作日09:00:00-18:00:00"},
@@ -4390,11 +4394,10 @@ def recompute_ranking_window(rows: list[dict[str, Any]]) -> None:
 
     rows.sort(
         key=lambda row: (
+            0 if parse_int(row.get("requests")) >= PRIORITY_RANKING_MIN_REQUESTS else 1,
             -float(row.get("totalScore", 0.0)),
-            -float(row.get("successScore", 0.0)),
-            -float(row.get("latencyScore", 0.0)),
-            float(row.get("effectiveMultiplier", 0.0)),
-            int(row.get("_originalRank", 10**9)),
+            -parse_int(row.get("requests")),
+            str(row.get("station") or ""),
         )
     )
 
@@ -4737,7 +4740,7 @@ def main() -> int:
         "projectName": "api-relay-rank",
         "generatedAt": intro["generated_at"],
         "timezone": "Asia/Shanghai",
-        "defaultTimeWindow": "work_hours",
+        "defaultTimeWindow": "all_hours",
         "defaultSort": "composite",
         "declaration": intro["declaration"],
         "timeWindows": TIME_WINDOWS,

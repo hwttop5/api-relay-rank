@@ -1,0 +1,17 @@
+[
+  {
+    "source": "baidu",
+    "periodStart": "2026-05-11",
+    "periodEnd": "2026-06-09",
+    "canonicalPath": "__site_total__",
+    "stationKey": null,
+    "pvCount": 11099,
+    "visitorCount": 3338,
+    "metadata": {
+      "ipCount": 3291,
+      "bounceRate": "55.48%",
+      "averageVisitDuration": "00:05:30",
+      "note": "Baidu Tongji overview screenshot baseline."
+    }
+  }
+]

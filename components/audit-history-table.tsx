@@ -1,12 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import type { Route } from "next";
 import { ArrowDownAZ, ArrowUpAZ, ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, ExternalLink, FileText, ShieldAlert } from "lucide-react";
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useTransition, type ReactNode } from "react";
 
 import { localizeAuditText } from "@/lib/audit-localization";
 import { formatAuditVerdict, formatDateTime } from "@/lib/format";
 import type {
+  AuditHistoryFilters,
+  AuditHistoryPage,
   AuditHistorySortDirection,
   AuditHistorySortKey,
   AuditHistoryTimeRange,
@@ -45,11 +49,15 @@ const SORT_LABELS: Record<AuditHistorySortKey, string> = {
   score: "综合分",
 };
 
-const VERDICT_ORDER: Record<AuditVerdict, number> = {
-  high: 3,
-  medium: 2,
-  low: 1,
-  inconclusive: 0,
+const DEFAULT_FILTERS: AuditHistoryFilters = {
+  station: "all",
+  model: "all",
+  verdict: "all",
+  timeRange: "all",
+  sort: "executedAt",
+  direction: "desc",
+  page: 1,
+  pageSize: 10,
 };
 
 const SUMMARY_DIMENSIONS = [
@@ -57,7 +65,7 @@ const SUMMARY_DIMENSIONS = [
   { key: "capability", label: "能力", field: "capabilityVerdict" },
   { key: "authenticity", label: "真伪", field: "authenticityVerdict" },
   { key: "long-context", label: "长上下文", field: "longContextVerdict" },
-] as const;
+] as const satisfies ReadonlyArray<{ key: string; label: string; field: keyof StationAuditHistoryItem }>;
 
 function verdictClass(verdict: AuditVerdict) {
   if (verdict === "high") {
@@ -70,44 +78,6 @@ function verdictClass(verdict: AuditVerdict) {
     return "audit-verdict-low";
   }
   return "audit-verdict-inconclusive";
-}
-
-function timeRangeCutoff(range: AuditHistoryTimeRange) {
-  const now = Date.now();
-  if (range === "24h") {
-    return now - 24 * 60 * 60 * 1000;
-  }
-  if (range === "7d") {
-    return now - 7 * 24 * 60 * 60 * 1000;
-  }
-  if (range === "30d") {
-    return now - 30 * 24 * 60 * 60 * 1000;
-  }
-  if (range === "90d") {
-    return now - 90 * 24 * 60 * 60 * 1000;
-  }
-  return null;
-}
-
-function auditTimestamp(item: StationAuditHistoryItem) {
-  const timestamp = Date.parse(item.executedAt);
-  return Number.isNaN(timestamp) ? 0 : timestamp;
-}
-
-function compareAuditRows(a: StationAuditHistoryItem, b: StationAuditHistoryItem, sortKey: AuditHistorySortKey) {
-  if (sortKey === "executedAt") {
-    return auditTimestamp(a) - auditTimestamp(b);
-  }
-  if (sortKey === "station") {
-    return a.stationLabel.localeCompare(b.stationLabel, "zh-CN");
-  }
-  if (sortKey === "model") {
-    return a.model.localeCompare(b.model, "zh-CN");
-  }
-  if (sortKey === "score") {
-    return (a.auditScore ?? -1) - (b.auditScore ?? -1);
-  }
-  return VERDICT_ORDER[a.overallVerdict] - VERDICT_ORDER[b.overallVerdict];
 }
 
 function summaryText(item: StationAuditHistoryItem) {
@@ -232,7 +202,7 @@ function AuditHistoryCard({ item }: { item: StationAuditHistoryItem }) {
     <article className="mobile-card audit-history-card">
       <div className="mobile-card-header">
         <div className="mobile-card-title-block">
-          <Link href={`/stations/${item.stationKey}`} className="station-link mobile-card-title">
+          <Link href={`/stations/${item.stationKey}`} prefetch={false} className="station-link mobile-card-title">
             {item.stationLabel}
           </Link>
           <span className="mobile-card-subtitle">{item.auditedBaseUrl}</span>
@@ -264,76 +234,57 @@ function AuditHistoryCard({ item }: { item: StationAuditHistoryItem }) {
   );
 }
 
-export function AuditHistoryTable({ history }: { history: StationAuditHistoryItem[] }) {
-  const [stationFilter, setStationFilter] = useState("all");
-  const [modelFilter, setModelFilter] = useState("all");
-  const [verdictFilter, setVerdictFilter] = useState<"all" | AuditVerdict>("all");
-  const [timeRange, setTimeRange] = useState<AuditHistoryTimeRange>("all");
-  const [sortKey, setSortKey] = useState<AuditHistorySortKey>("executedAt");
-  const [sortDirection, setSortDirection] = useState<AuditHistorySortDirection>("desc");
-  const [pageSize, setPageSize] = useState(10);
-  const [currentPage, setCurrentPage] = useState(1);
+export function AuditHistoryTable({ historyPage }: { historyPage: AuditHistoryPage }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [isPending, startTransition] = useTransition();
+  const { filters } = historyPage;
+  const paginatedRows = historyPage.items;
+  const pageStartIndex = (historyPage.page - 1) * historyPage.pageSize;
+  const displayStart = historyPage.total > 0 ? pageStartIndex + 1 : 0;
+  const displayEnd = historyPage.total > 0 ? pageStartIndex + paginatedRows.length : 0;
 
-  const stationOptions = useMemo(() => {
-    const byKey = new Map(history.map((item) => [item.stationKey, item.stationLabel]));
-    return [...byKey.entries()].sort((a, b) => a[1].localeCompare(b[1], "zh-CN"));
-  }, [history]);
+  function updateQuery(patch: Partial<AuditHistoryFilters>) {
+    const next: AuditHistoryFilters = {
+      ...filters,
+      ...patch,
+      page: patch.page ?? 1,
+    };
+    const params = new URLSearchParams(searchParams.toString());
+    const setOrDelete = (key: keyof AuditHistoryFilters, value: string | number) => {
+      if (String(value) === String(DEFAULT_FILTERS[key])) {
+        params.delete(key);
+        return;
+      }
+      params.set(key, String(value));
+    };
+    setOrDelete("station", next.station);
+    setOrDelete("model", next.model);
+    setOrDelete("verdict", next.verdict);
+    setOrDelete("timeRange", next.timeRange);
+    setOrDelete("sort", next.sort);
+    setOrDelete("direction", next.direction);
+    setOrDelete("page", next.page);
+    setOrDelete("pageSize", next.pageSize);
 
-  const modelOptions = useMemo(() => {
-    return [...new Set(history.map((item) => item.model))].sort((a, b) => a.localeCompare(b, "zh-CN"));
-  }, [history]);
-
-  const visibleRows = useMemo(() => {
-    const cutoff = timeRangeCutoff(timeRange);
-    const rows = history.filter((item) => {
-      if (stationFilter !== "all" && item.stationKey !== stationFilter) {
-        return false;
-      }
-      if (modelFilter !== "all" && item.model !== modelFilter) {
-        return false;
-      }
-      if (verdictFilter !== "all" && item.overallVerdict !== verdictFilter) {
-        return false;
-      }
-      if (cutoff !== null && auditTimestamp(item) < cutoff) {
-        return false;
-      }
-      return true;
+    const query = params.toString();
+    startTransition(() => {
+      const nextUrl = query ? `${pathname}?${query}` : pathname;
+      router.replace(nextUrl as Route, { scroll: false });
     });
-    rows.sort((a, b) => {
-      const result = compareAuditRows(a, b, sortKey);
-      if (result !== 0) {
-        return sortDirection === "asc" ? result : -result;
-      }
-      return auditTimestamp(b) - auditTimestamp(a);
-    });
-    return rows;
-  }, [history, modelFilter, sortDirection, sortKey, stationFilter, timeRange, verdictFilter]);
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [history, modelFilter, pageSize, sortDirection, sortKey, stationFilter, timeRange, verdictFilter]);
-
-  const pageCount = Math.max(1, Math.ceil(visibleRows.length / pageSize));
-  const safeCurrentPage = Math.min(currentPage, pageCount);
-  const pageStartIndex = (safeCurrentPage - 1) * pageSize;
-  const pageEndIndex = Math.min(pageStartIndex + pageSize, visibleRows.length);
-  const paginatedRows = visibleRows.slice(pageStartIndex, pageEndIndex);
-  const displayStart = visibleRows.length > 0 ? pageStartIndex + 1 : 0;
-  const displayEnd = visibleRows.length > 0 ? pageEndIndex : 0;
-
-  function toggleSort(nextSortKey: AuditHistorySortKey) {
-    if (nextSortKey === sortKey) {
-      setSortDirection((current) => (current === "asc" ? "desc" : "asc"));
-      return;
-    }
-    setSortKey(nextSortKey);
-    setSortDirection(nextSortKey === "executedAt" || nextSortKey === "verdict" || nextSortKey === "score" ? "desc" : "asc");
   }
 
-  function updatePageSize(value: string) {
-    setPageSize(Number(value));
-    setCurrentPage(1);
+  function defaultDirection(sortKey: AuditHistorySortKey): AuditHistorySortDirection {
+    return sortKey === "executedAt" || sortKey === "verdict" || sortKey === "score" ? "desc" : "asc";
+  }
+
+  function toggleSort(nextSortKey: AuditHistorySortKey) {
+    if (nextSortKey === filters.sort) {
+      updateQuery({ direction: filters.direction === "asc" ? "desc" : "asc" });
+      return;
+    }
+    updateQuery({ sort: nextSortKey, direction: defaultDirection(nextSortKey) });
   }
 
   return (
@@ -341,34 +292,34 @@ export function AuditHistoryTable({ history }: { history: StationAuditHistoryIte
       <div className="section-head audit-history-head">
         <div>
           <h2 className="section-title">审计历史</h2>
-          <p className="section-desc">展示本地归档的全部安全审计记录，可按站点、模型、风险等级和时间区间筛选。</p>
+          <p className="section-desc">按当前筛选条件从服务端分页读取审计记录，筛选、排序和页码会同步到 URL。</p>
         </div>
         <div className="controls audit-history-controls">
           <label className="control-group">
             <span className="control-label">站点</span>
-            <select aria-label="站点" className="toolbar-select" value={stationFilter} onChange={(event) => setStationFilter(event.target.value)}>
+            <select aria-label="站点" className="toolbar-select" value={filters.station} onChange={(event) => updateQuery({ station: event.target.value })}>
               <option value="all">全部站点</option>
-              {stationOptions.map(([stationKey, label]) => (
-                <option key={stationKey} value={stationKey}>
-                  {label}
+              {historyPage.options.stations.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
                 </option>
               ))}
             </select>
           </label>
           <label className="control-group">
             <span className="control-label">模型</span>
-            <select aria-label="模型" className="toolbar-select" value={modelFilter} onChange={(event) => setModelFilter(event.target.value)}>
+            <select aria-label="模型" className="toolbar-select" value={filters.model} onChange={(event) => updateQuery({ model: event.target.value })}>
               <option value="all">全部模型</option>
-              {modelOptions.map((model) => (
-                <option key={model} value={model}>
-                  {model}
+              {historyPage.options.models.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
                 </option>
               ))}
             </select>
           </label>
           <label className="control-group">
             <span className="control-label">安全程度</span>
-            <select aria-label="安全程度" className="toolbar-select" value={verdictFilter} onChange={(event) => setVerdictFilter(event.target.value as "all" | AuditVerdict)}>
+            <select aria-label="安全程度" className="toolbar-select" value={filters.verdict} onChange={(event) => updateQuery({ verdict: event.target.value as "all" | AuditVerdict })}>
               {VERDICT_OPTIONS.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -378,7 +329,7 @@ export function AuditHistoryTable({ history }: { history: StationAuditHistoryIte
           </label>
           <label className="control-group">
             <span className="control-label">时间</span>
-            <select aria-label="时间" className="toolbar-select" value={timeRange} onChange={(event) => setTimeRange(event.target.value as AuditHistoryTimeRange)}>
+            <select aria-label="时间" className="toolbar-select" value={filters.timeRange} onChange={(event) => updateQuery({ timeRange: event.target.value as AuditHistoryTimeRange })}>
               {TIME_RANGE_OPTIONS.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -392,11 +343,12 @@ export function AuditHistoryTable({ history }: { history: StationAuditHistoryIte
       <div className="section-body">
         <div className="audit-history-sortbar" aria-label="排序">
           {(Object.keys(SORT_LABELS) as AuditHistorySortKey[]).map((key) => (
-            <SortButton key={key} active={sortKey === key} direction={sortDirection} label={SORT_LABELS[key]} onClick={() => toggleSort(key)} />
+            <SortButton key={key} active={filters.sort === key} direction={filters.direction} label={SORT_LABELS[key]} onClick={() => toggleSort(key)} />
           ))}
+          {isPending ? <span className="footer-note">正在加载...</span> : null}
         </div>
 
-        {visibleRows.length > 0 ? (
+        {paginatedRows.length > 0 ? (
           <>
             <div className="desktop-table">
               <div className="table-wrap">
@@ -418,7 +370,7 @@ export function AuditHistoryTable({ history }: { history: StationAuditHistoryIte
                       <tr key={`${item.stationKey}-${item.model}-${item.runId}`}>
                         <td className="mono audit-history-time">{formatDateTime(item.executedAt)}</td>
                         <td>
-                          <Link href={`/stations/${item.stationKey}`} className="station-link">
+                          <Link href={`/stations/${item.stationKey}`} prefetch={false} className="station-link">
                             {item.stationLabel}
                           </Link>
                         </td>
@@ -452,29 +404,29 @@ export function AuditHistoryTable({ history }: { history: StationAuditHistoryIte
             <div className="audit-history-pagination" aria-label="审计历史分页">
               <div className="audit-history-page-meta">
                 <span>
-                  第 {safeCurrentPage} / {pageCount} 页
+                  第 {historyPage.page} / {historyPage.pageCount} 页
                 </span>
                 <span>
-                  显示 {displayStart}-{displayEnd} / {visibleRows.length} 条
+                  显示 {displayStart}-{displayEnd} / {historyPage.total} 条
                 </span>
               </div>
               <div className="audit-history-page-controls">
-                <PageButton label="第一页" disabled={safeCurrentPage <= 1} onClick={() => setCurrentPage(1)}>
+                <PageButton label="第一页" disabled={historyPage.page <= 1 || isPending} onClick={() => updateQuery({ page: 1 })}>
                   <ChevronFirst size={15} />
                 </PageButton>
-                <PageButton label="上一页" disabled={safeCurrentPage <= 1} onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}>
+                <PageButton label="上一页" disabled={historyPage.page <= 1 || isPending} onClick={() => updateQuery({ page: Math.max(1, historyPage.page - 1) })}>
                   <ChevronLeft size={15} />
                 </PageButton>
-                <PageButton label="下一页" disabled={safeCurrentPage >= pageCount} onClick={() => setCurrentPage((page) => Math.min(pageCount, page + 1))}>
+                <PageButton label="下一页" disabled={historyPage.page >= historyPage.pageCount || isPending} onClick={() => updateQuery({ page: Math.min(historyPage.pageCount, historyPage.page + 1) })}>
                   <ChevronRight size={15} />
                 </PageButton>
-                <PageButton label="最后一页" disabled={safeCurrentPage >= pageCount} onClick={() => setCurrentPage(pageCount)}>
+                <PageButton label="最后一页" disabled={historyPage.page >= historyPage.pageCount || isPending} onClick={() => updateQuery({ page: historyPage.pageCount })}>
                   <ChevronLast size={15} />
                 </PageButton>
               </div>
               <label className="audit-history-page-size">
                 <span>每页显示</span>
-                <select aria-label="每页显示" className="toolbar-select" value={pageSize} onChange={(event) => updatePageSize(event.target.value)}>
+                <select aria-label="每页显示" className="toolbar-select" value={historyPage.pageSize} onChange={(event) => updateQuery({ pageSize: Number(event.target.value) })}>
                   {PAGE_SIZE_OPTIONS.map((option) => (
                     <option key={option} value={option}>
                       {option} 条
@@ -492,7 +444,7 @@ export function AuditHistoryTable({ history }: { history: StationAuditHistoryIte
         )}
 
         <div className="footer-note">
-          共 {history.length} 条历史记录，当前筛选 {visibleRows.length} 条 · 排序：{SORT_LABELS[sortKey]}（{sortDirection === "asc" ? "升序" : "降序"}）
+          当前筛选共 {historyPage.total} 条 · 排序：{SORT_LABELS[filters.sort]}（{filters.direction === "asc" ? "升序" : "降序"}）· 首屏只加载当前页
         </div>
       </div>
     </section>

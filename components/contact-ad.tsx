@@ -1,12 +1,15 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Clock, Megaphone, ShieldCheck, X } from "lucide-react";
 
-import { AnnouncementContent } from "@/components/announcement-markdown";
-
 const CONFIG_URL = "/api/contact-ad";
 const STORAGE_KEY = "api-relay-rank-contact-ad-dismissal";
+const AnnouncementContent = dynamic(
+  () => import("@/components/announcement-markdown").then((mod) => mod.AnnouncementContent),
+  { ssr: false },
+);
 
 type ContactAdDismissal =
   | {
@@ -118,7 +121,7 @@ function useContactAd() {
   return context;
 }
 
-export function ContactAdProvider({ children }: { children: ReactNode }) {
+export function ContactAdProvider({ children, autoOpen = false }: { children: ReactNode; autoOpen?: boolean }) {
   const [config, setConfig] = useState<ContactAdConfig | null>(null);
   const [dialogMode, setDialogMode] = useState<"announcement" | "empty" | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -146,6 +149,10 @@ export function ContactAdProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
+    if (!autoOpen) {
+      return;
+    }
+
     const controller = new AbortController();
 
     async function bootstrap() {
@@ -158,7 +165,7 @@ export function ContactAdProvider({ children }: { children: ReactNode }) {
     void bootstrap();
 
     return () => controller.abort();
-  }, [loadConfig]);
+  }, [autoOpen, loadConfig]);
 
   useEffect(() => {
     if (!dialogMode) {

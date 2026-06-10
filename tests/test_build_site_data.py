@@ -19,6 +19,7 @@ from unittest import mock
 from scripts import database as database
 from scripts import build_site_data as build_site_data
 from scripts import fetch_public_content as fetch_public_content
+from scripts import import_page_views as import_page_views
 from scripts import run_station_audit as run_station_audit
 from scripts import run_server_refresh as run_server_refresh
 from scripts import rebuild_runtime_site_data as rebuild_runtime_site_data
@@ -186,6 +187,53 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(row["correct"], 1)
         self.assertEqual(row["http_200_with_error"], 0)
         self.assertEqual(row["nonnull_error"], 0)
+
+    def test_sharedchat_codex_path_logs_rank_under_root_domain(self) -> None:
+        if audit_proxy_multipliers is None:
+            self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
+        metrics_by_window = {"all_hours": {}, "work_hours": {}, "off_hours": {}}
+        added = audit_proxy_multipliers.add_request_metric(
+            metrics_by_window,
+            {
+                "id": 1,
+                "supplier": "",
+                "url": "https://new.sharedchat.cc/codex",
+                "status_code": 200,
+                "error": None,
+                "duration_ms": 800,
+                "first_response_ms": 120,
+                "created_at": 1_700_000_000_000,
+            },
+        )
+
+        self.assertTrue(added)
+        self.assertIn("new.sharedchat.cc", metrics_by_window["all_hours"])
+        metric = metrics_by_window["all_hours"]["new.sharedchat.cc"]
+        audit_proxy_multipliers.finalize_metric_bucket(metric)
+        tier = self.make_fee_tier(
+            station="new.sharedchat.cc",
+            station_type="charity",
+            label="SharedChat",
+            group_name="Codex free charity route",
+            recharge_name="Sign-in free quota",
+            billing_type="free",
+            effective_multiplier=0.0,
+            notes="codexEligible=true",
+        )
+
+        chosen = audit_proxy_multipliers.choose_verified_fee([tier], allow_low_confidence=False)
+        ranking = audit_proxy_multipliers.compute_ranking(
+            metrics_by_window["all_hours"],
+            chosen,
+            "formal_high_confidence",
+            "all_hours",
+        )
+
+        self.assertEqual([row["station"] for row in ranking], ["new.sharedchat.cc"])
+        self.assertEqual(ranking[0]["station_type"], "charity")
+        self.assertEqual(ranking[0]["billing_type"], "free")
+        self.assertEqual(ranking[0]["effective_multiplier"], 0.0)
+        self.assertEqual(ranking[0]["rank"], 1)
 
     def test_log_refresh_state_initializes_from_full_db(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -502,6 +550,21 @@ class BuildSiteDataTests(unittest.TestCase):
 
         self.assertEqual(chosen["demo"].group_name, "openai")
         self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.2)
+
+    def test_charity_free_tier_can_enter_formal_fee_map(self) -> None:
+        tiers = [
+            self.make_fee_tier(station="charity", station_type="charity", group_name="Codex 免费公益线路", effective_multiplier=0.0, notes="codexEligible=true"),
+            self.make_fee_tier(station="normal-zero", effective_multiplier=0.0),
+            self.make_fee_tier(station="normal-cheap", effective_multiplier=0.0009),
+        ]
+
+        chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
+
+        self.assertIn("charity", chosen)
+        self.assertEqual(chosen["charity"].station_type, "charity")
+        self.assertEqual(chosen["charity"].effective_multiplier, 0.0)
+        self.assertNotIn("normal-zero", chosen)
+        self.assertNotIn("normal-cheap", chosen)
 
     def test_choose_verified_fee_uses_group_name_when_notes_mention_other_routes(self) -> None:
         tiers = [
@@ -2385,6 +2448,98 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertIn("boundary_high", chosen)
         self.assertIn("normal", chosen)
 
+    def test_charity_free_tier_gets_best_cost_score(self) -> None:
+        if audit_proxy_multipliers is None:
+            self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
+        charity = self.make_fee_tier(station="new.sharedchat.cc", station_type="charity", effective_multiplier=0.0, notes="codexEligible=true")
+        paid = self.make_fee_tier(station="paid", effective_multiplier=0.2)
+        metrics = {
+            "new.sharedchat.cc": {
+                "requests": 10,
+                "correct": 9,
+                "failures": 1,
+                "http_2xx": 10,
+                "http_200_with_error": 1,
+                "correct_rate": 0.9,
+                "avg_ms": 1000,
+                "median_ms": 1000,
+                "p95_ms": 1000,
+                "first_at": "",
+                "last_at": "",
+            },
+            "paid": {
+                "requests": 10,
+                "correct": 9,
+                "failures": 1,
+                "http_2xx": 10,
+                "http_200_with_error": 1,
+                "correct_rate": 0.9,
+                "avg_ms": 1000,
+                "median_ms": 1000,
+                "p95_ms": 1000,
+                "first_at": "",
+                "last_at": "",
+            },
+        }
+
+        rows = audit_proxy_multipliers.compute_ranking(
+            metrics,
+            {"new.sharedchat.cc": charity, "paid": paid},
+            "formal_high_confidence",
+            "work_hours",
+        )
+
+        row_by_station = {row["station"]: row for row in rows}
+        self.assertEqual(row_by_station["new.sharedchat.cc"]["cost_score"], 100)
+        self.assertEqual(row_by_station["paid"]["cost_score"], 0)
+        self.assertLess(row_by_station["new.sharedchat.cc"]["rank"], row_by_station["paid"]["rank"])
+
+    def test_compute_ranking_prioritizes_at_least_ten_request_samples(self) -> None:
+        if audit_proxy_multipliers is None:
+            self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
+        priority_fee = self.make_fee_tier(station="priority", effective_multiplier=0.2)
+        low_sample_fee = self.make_fee_tier(station="low_sample", effective_multiplier=0.2)
+        metrics = {
+            "priority": {
+                "requests": 10,
+                "correct": 8,
+                "failures": 2,
+                "http_2xx": 10,
+                "http_200_with_error": 0,
+                "correct_rate": 0.8,
+                "avg_ms": 1000,
+                "median_ms": 1000,
+                "p95_ms": 1000,
+                "first_at": "",
+                "last_at": "",
+            },
+            "low_sample": {
+                "requests": 9,
+                "correct": 9,
+                "failures": 0,
+                "http_2xx": 9,
+                "http_200_with_error": 0,
+                "correct_rate": 1.0,
+                "avg_ms": 100,
+                "median_ms": 100,
+                "p95_ms": 100,
+                "first_at": "",
+                "last_at": "",
+            },
+        }
+
+        rows = audit_proxy_multipliers.compute_ranking(
+            metrics,
+            {"priority": priority_fee, "low_sample": low_sample_fee},
+            "formal_high_confidence",
+            "all_hours",
+        )
+
+        by_station = {row["station"]: row for row in rows}
+        self.assertGreater(by_station["low_sample"]["total_score"], by_station["priority"]["total_score"])
+        self.assertEqual([row["station"] for row in rows], ["priority", "low_sample"])
+        self.assertEqual([row["rank"] for row in rows], [1, 2])
+
     def test_needs_manual_review_fee_stays_excluded(self) -> None:
         if audit_proxy_multipliers is None:
             self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
@@ -2408,6 +2563,34 @@ class BuildSiteDataTests(unittest.TestCase):
         rows = audit_proxy_multipliers.compute_ranking({}, {"fishxcode.com": fee}, "formal_high_confidence", "work_hours")
 
         self.assertEqual(rows, [])
+
+    def test_charity_station_type_labels_and_free_recharge_row(self) -> None:
+        stations: dict[str, dict[str, object]] = {}
+        station = build_site_data.ensure_station(
+            stations,
+            "new.sharedchat.cc",
+            label="SharedChat",
+            url="https://new.sharedchat.cc",
+            station_type="charity",
+        )
+        recharge = build_site_data.normalize_recharge_row(
+            {
+                "recharge_name": "签到免费额度",
+                "billing_type": "free",
+                "rmb_amount": "0",
+                "usd_amount": "1",
+                "recharge_location": "公益站签到额度",
+                "expires_rule": "免费公益站；无充值入口；需签到",
+            }
+        )
+
+        self.assertEqual(station["stationType"], "charity")
+        self.assertEqual(station["stationTypeLabel"], "公益站")
+        self.assertEqual(station["stationTypeShortLabel"], "公益站")
+        self.assertIsNotNone(recharge)
+        assert recharge is not None
+        self.assertEqual(recharge["billingTypeLabel"], "免费额度")
+        self.assertEqual(recharge["rmbAmount"], 0.0)
 
     def test_failed_new_api_user_bucket_is_not_useful_probe_evidence(self) -> None:
         failed_bucket = {
@@ -3847,6 +4030,7 @@ class BuildSiteDataTests(unittest.TestCase):
             {
                 "rank": 3,
                 "station": "a",
+                "requests": 10,
                 "successScore": 30.0,
                 "latencyScore": 40.0,
                 "effectiveMultiplier": 0.1,
@@ -3856,6 +4040,7 @@ class BuildSiteDataTests(unittest.TestCase):
             {
                 "rank": 2,
                 "station": "b",
+                "requests": 10,
                 "successScore": 35.0,
                 "latencyScore": 50.0,
                 "effectiveMultiplier": 1.0,
@@ -3865,6 +4050,7 @@ class BuildSiteDataTests(unittest.TestCase):
             {
                 "rank": 1,
                 "station": "c",
+                "requests": 10,
                 "successScore": 45.0,
                 "latencyScore": 55.0,
                 "effectiveMultiplier": 7.1,
@@ -3881,6 +4067,55 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertGreater(by_station["b"]["totalScore"], by_station["a"]["totalScore"])
         self.assertEqual([row["station"] for row in rows], ["b", "a", "c"])
         self.assertEqual([row["rank"] for row in rows], [1, 2, 3])
+
+    def test_recompute_ranking_window_prioritizes_at_least_ten_request_samples(self) -> None:
+        rows = [
+            {
+                "rank": 1,
+                "station": "low_sample",
+                "requests": 9,
+                "successScore": 100.0,
+                "latencyScore": 100.0,
+                "effectiveMultiplier": 0.1,
+                "totalScore": 0.0,
+                "costScore": 0.0,
+            },
+            {
+                "rank": 2,
+                "station": "priority",
+                "requests": 10,
+                "successScore": 10.0,
+                "latencyScore": 10.0,
+                "effectiveMultiplier": 0.1,
+                "totalScore": 0.0,
+                "costScore": 0.0,
+            },
+        ]
+
+        build_site_data.recompute_ranking_window(rows)
+
+        by_station = {row["station"]: row for row in rows}
+        self.assertGreater(by_station["low_sample"]["totalScore"], by_station["priority"]["totalScore"])
+        self.assertEqual([row["station"] for row in rows], ["priority", "low_sample"])
+        self.assertEqual([row["rank"] for row in rows], [1, 2])
+
+    def test_audit_history_page_uses_server_side_pagination_contract(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        audit_history_source = (root / "lib" / "audit-history.ts").read_text(encoding="utf-8")
+        postgres_source = (root / "lib" / "postgres.ts").read_text(encoding="utf-8")
+        audit_page_source = (root / "app" / "audit" / "page.tsx").read_text(encoding="utf-8")
+        table_source = (root / "components" / "audit-history-table.tsx").read_text(encoding="utf-8")
+
+        self.assertIn("parseAuditHistorySearchParams", audit_page_source)
+        self.assertIn("getAuditHistoryPage", audit_page_source)
+        self.assertIn("export async function getAuditHistoryPage", audit_history_source)
+        self.assertIn("readStationAuditRunPage(query)", audit_history_source)
+        self.assertIn("limit $", postgres_source)
+        self.assertIn("offset $", postgres_source)
+        self.assertIn("historyPage: AuditHistoryPage", table_source)
+        self.assertIn("router.replace", table_source)
+        self.assertNotIn("history.filter", table_source)
+        self.assertNotIn("visibleRows.slice", table_source)
 
     def test_load_station_audit_targets_normalizes_models(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -4138,12 +4373,63 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(history[0]["stationLabel"], "RelayExample")
         self.assertEqual(history[0]["reportUrl"], "/api/audit-report?station=demo&model=claude-sonnet&run=20260103T000000Z")
 
-    def test_station_audit_runs_schema_is_migration_version_two(self) -> None:
-        self.assertEqual(database.MIGRATION_VERSION, 2)
+    def test_station_audit_runs_schema_is_migration_version_three(self) -> None:
+        self.assertEqual(database.MIGRATION_VERSION, 3)
         self.assertIn("create table if not exists station_audit_runs", database.SCHEMA_SQL)
         self.assertIn("primary key (station_key, model, run_id)", database.SCHEMA_SQL)
         self.assertIn("station_audit_runs_executed_idx", database.SCHEMA_SQL)
         self.assertIn("station_audit_runs_verdict_idx", database.SCHEMA_SQL)
+        self.assertIn("create table if not exists page_view_events", database.SCHEMA_SQL)
+        self.assertIn("create table if not exists page_view_import_rows", database.SCHEMA_SQL)
+        self.assertIn("primary key (source, period_start, period_end, canonical_path)", database.SCHEMA_SQL)
+
+    def test_import_page_views_csv_normalizes_and_aggregates_paths(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            csv_path = Path(tmp_dir) / "baidu.csv"
+            csv_path.write_text(
+                "\n".join(
+                    [
+                        "受访页面,浏览量(PV),访客数(UV)",
+                        "https://apirank.ttop5.cc/,10,8",
+                        "https://apirank.ttop5.cc/stations/demo?from=x,20,12",
+                        "/stations/demo,7,5",
+                        "/api/health,3,2",
+                        "/favicon.ico,4,1",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+
+            rows, skipped = import_page_views.csv_import_rows(
+                csv_path,
+                source="baidu",
+                period_start="2026-05-11",
+                period_end="2026-06-09",
+            )
+
+        by_path = {row.canonical_path: row for row in rows}
+        self.assertEqual(by_path["/ranking"].pv_count, 10)
+        self.assertEqual(by_path["/stations/demo"].pv_count, 27)
+        self.assertEqual(by_path["/stations/demo"].visitor_count, 17)
+        self.assertEqual(by_path["/stations/demo"].station_key, "demo")
+        self.assertEqual(len(skipped), 2)
+
+    def test_import_page_views_total_row_and_summary(self) -> None:
+        row = import_page_views.total_import_row(
+            source="baidu",
+            period_start="2026-05-11",
+            period_end="2026-06-09",
+            total_pv=11099,
+            visitor_count=3338,
+            metadata={"ipCount": 3291, "bounceRate": "55.48%", "averageVisitDuration": "00:05:30"},
+        )
+        payload = import_page_views.summarize([row], [], write=False, baseline_config=False)
+
+        self.assertEqual(row.canonical_path, database.SITE_TOTAL_IMPORT_PATH)
+        self.assertEqual(row.pv_count, 11099)
+        self.assertEqual(row.visitor_count, 3338)
+        self.assertEqual(payload["totalPv"], 11099)
+        self.assertEqual(payload["stationPageRows"], 0)
 
     def test_station_audit_run_from_summary_parses_successful_run(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
