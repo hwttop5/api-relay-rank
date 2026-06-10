@@ -5,6 +5,10 @@ import type { RankingRow, SiteData, StationRecord } from "@/lib/types";
 
 export const SITE_TITLE = "AI中转站监视者";
 export const DEFAULT_DESCRIPTION = "api-relay-rank：查看 AI 中转站正式排名、Codex 倍率、响应质量、安全审计与公开公告。";
+export const DEFAULT_SITE_BASE_URL = "https://apirank.ttop5.cc";
+export const SITE_IMAGE_PATH = "/opengraph-image";
+export const SITE_IMAGE_WIDTH = 1200;
+export const SITE_IMAGE_HEIGHT = 630;
 
 const LOCAL_BASE_URL = "http://localhost:3000";
 
@@ -31,7 +35,8 @@ export function getSiteBaseUrl() {
     normalizeBaseUrl(process.env.NEXT_PUBLIC_SITE_URL) ??
     normalizeBaseUrl(process.env.VERCEL_PROJECT_PRODUCTION_URL) ??
     normalizeBaseUrl(process.env.VERCEL_URL) ??
-    LOCAL_BASE_URL
+    normalizeBaseUrl(process.env.APP_DOMAIN) ??
+    (process.env.NODE_ENV === "development" ? LOCAL_BASE_URL : DEFAULT_SITE_BASE_URL)
   );
 }
 
@@ -62,11 +67,20 @@ export function pageMetadata({
       siteName: SITE_TITLE,
       locale: "zh_CN",
       type: "website",
+      images: [
+        {
+          url: SITE_IMAGE_PATH,
+          width: SITE_IMAGE_WIDTH,
+          height: SITE_IMAGE_HEIGHT,
+          alt: SITE_TITLE,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [SITE_IMAGE_PATH],
     },
   };
 }
