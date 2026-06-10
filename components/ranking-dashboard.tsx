@@ -104,12 +104,12 @@ function RankMedal({ rank }: { rank: number }) {
   );
 }
 
-function RankingPosition({ rank, fallbackIndex }: { rank: number; fallbackIndex: number }) {
+function RankingPosition({ fallbackIndex }: { fallbackIndex: number }) {
   const displayRank = fallbackIndex + 1;
   return (
     <div className="ranking-position">
       <span className="ranking-position-number">#{displayRank}</span>
-      <RankMedal rank={rank} />
+      <RankMedal rank={displayRank} />
     </div>
   );
 }
@@ -234,7 +234,7 @@ function MobileRankingCard({ row, index, stationMeta }: { row: RankingDisplayRow
       <div className="mobile-card-header">
         <div className="mobile-card-lead">
           <div className="mobile-card-rank mono">
-            <RankingPosition rank={row.rank} fallbackIndex={index} />
+            <RankingPosition fallbackIndex={index} />
           </div>
           <div className="mobile-card-title-block">
             <div className="station-title-line">
@@ -491,7 +491,7 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
                       return (
                         <tr key={`${row.station}-${row.rank}`}>
                           <td className="mono">
-                            <RankingPosition rank={row.rank} fallbackIndex={rankingPageStartIndex + index} />
+                            <RankingPosition fallbackIndex={rankingPageStartIndex + index} />
                           </td>
                           <td>
                             <div className="table-cell-stack">
