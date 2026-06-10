@@ -1,8 +1,15 @@
 {
   "data": {
-    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":true}",
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":false,\"requireAuth\":true},\"docs\":true,\"about\":true}",
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true,\"risk\":true}}",
     "announcements": [
+      {
+        "content": "<b>邀请充值返利已上线</b>\n<br><br>\n<p>\n现在通过你的邀请链接注册的好友完成首次充值后，\n</p>\n<br>\n<p>\n1、邀请人可获得好友本次最终入账额度 <b>10%</b> 的返利；<br>\n2、受邀者可额外获得 <b>5%</b> 的首充奖励。<br>\n3、每位受邀用户仅触发一次，奖励按实际入账额度计算。\n</p>\n<br>\n<p>邀请人奖励进入“邀请奖励”，可在钱包页转入余额。\n</p>",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2026-06-05T13:24:35.953Z",
+        "type": "ongoing"
+      },
       {
         "content": "OpenAI 恢复",
         "extra": "",
@@ -197,7 +204,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://dddai.dev",
     "setup": true,
-    "start_time": 1780462612,
+    "start_time": 1781060305,
     "stripe_unit_price": 8,
     "system_name": "dddAI",
     "telegram_bot_name": "",

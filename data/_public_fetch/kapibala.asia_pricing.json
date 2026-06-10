@@ -2,46 +2,19 @@
   "auto_groups": [],
   "data": [
     {
-      "model_name": "gpt-5.3-codex-spark",
-      "description": "GPT-5.3 Codex Spark is an AI model provided by opencode.",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Tools,128K",
+      "model_name": "gpt-5.5-openai-compact",
       "vendor_id": 6,
       "quota_type": 0,
-      "model_ratio": 0.875,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
+      "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "vip",
-        "pro",
-        "test",
-        "default",
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "gpt-5.2",
-      "description": "GPT-5.2 is an AI model provided by qihang-ai.",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 0.125,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.07142857142857142,
-      "enable_groups": [
-        "vip",
-        "pro",
         "default",
         "codex",
-        "test"
+        "vip",
+        "pro"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -60,32 +33,10 @@
       "cache_ratio": 0.1,
       "enable_groups": [
         "test",
-        "vip",
-        "pro",
         "default",
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "description": "GPT-5.3 Codex is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Vision,400K",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.09999999999999999,
-      "enable_groups": [
-        "test",
+        "codex",
         "vip",
-        "pro",
-        "default",
-        "codex"
+        "pro"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -103,72 +54,13 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "default",
-        "codex",
-        "vip",
-        "pro",
-        "test"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-2",
-      "icon": "OpenAI",
-      "vendor_id": 6,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.23,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "codex",
-        "pro",
         "test",
-        "image",
+        "default",
+        "codex",
         "vip",
-        "default"
+        "pro"
       ],
       "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-1",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "cache_ratio": 0.01,
-      "image_ratio": 2,
-      "enable_groups": [
-        "default",
-        "codex",
-        "test"
-      ],
-      "supported_endpoint_types": [
-        "image-generation",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-1.5",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 37.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "enable_groups": [
-        "default",
-        "codex",
-        "test"
-      ],
-      "supported_endpoint_types": [
-        "image-generation",
         "openai"
       ]
     },
@@ -184,11 +76,31 @@
       "completion_ratio": 6,
       "cache_ratio": 0.09999999999999999,
       "enable_groups": [
+        "pro",
         "test",
         "default",
         "codex",
-        "vip",
-        "pro"
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "icon": "OpenAI",
+      "vendor_id": 6,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.23,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "pro",
+        "test",
+        "default",
+        "codex",
+        "vip"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -201,8 +113,8 @@
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
   "supported_endpoint": {
-    "image-generation": {
-      "path": "/v1/images/generations",
+    "gemini": {
+      "path": "/v1beta/models/{model}:generateContent",
       "method": "POST"
     },
     "openai": {
@@ -214,6 +126,11 @@
     "codex": "codex 分组"
   },
   "vendors": [
+    {
+      "id": 8,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
     {
       "id": 11,
       "name": "LLM Gateway"
@@ -228,23 +145,9 @@
       "icon": "OpenCode"
     },
     {
-      "id": 4,
-      "name": "SAP AI Core"
-    },
-    {
       "id": 5,
       "name": "cliproxyapi",
       "description": "123"
-    },
-    {
-      "id": 6,
-      "name": "OpenAI",
-      "icon": "OpenAI"
-    },
-    {
-      "id": 8,
-      "name": "Anthropic",
-      "icon": "Claude.Color"
     },
     {
       "id": 9,
@@ -261,6 +164,15 @@
       "name": "QiHang"
     },
     {
+      "id": 4,
+      "name": "SAP AI Core"
+    },
+    {
+      "id": 6,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
       "id": 7,
       "name": "xAI",
       "icon": "XAI"
@@ -268,9 +180,16 @@
   ],
   "status_payload": {
     "data": {
-      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":true,\"about\":true}",
       "SidebarModulesAdmin": "",
       "announcements": [
+        {
+          "content": "vip分组是本站重点维护分组，稳定性更有保障，提供更优质的服务与更多的模型选择。\n可通过订阅coding plan 自动升级VIP分组 或 积累消费超过80元联系客服提升分组。",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2026-06-04T15:25:42.542Z",
+          "type": "ongoing"
+        },
         {
           "content": "售后qq群，欢迎大家进群交流。\n【卡皮巴拉爱AI】：https://qm.qq.com/q/i2sQgBnYcM\n",
           "extra": "",
@@ -297,17 +216,10 @@
       "api_info": [
         {
           "color": "blue",
-          "description": "DE",
+          "description": "HK",
           "id": 1,
           "route": "主域名",
           "url": "https://kapibala.asia"
-        },
-        {
-          "color": "blue",
-          "description": "test",
-          "id": 2,
-          "route": "test",
-          "url": "https://kapibala.curb0331.fun"
         }
       ],
       "api_info_enabled": true,
@@ -392,7 +304,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://kapibala.asia",
       "setup": true,
-      "start_time": 1780345063,
+      "start_time": 1780944386,
       "stripe_unit_price": 8,
       "system_name": "卡皮巴拉API",
       "telegram_bot_name": "",

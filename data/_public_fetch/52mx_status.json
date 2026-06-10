@@ -102,7 +102,7 @@
     "system_name": "52模型|52mx.net",
     "telegram_bot_name": "",
     "telegram_oauth": false,
-    "theme": "classic",
+    "theme": "default",
     "turnstile_check": false,
     "turnstile_site_key": "",
     "uptime_kuma_enabled": true,

@@ -2,64 +2,25 @@
   "auto_groups": [],
   "data": [
     {
-      "model_name": "claude-haiku-4-5-20251001",
+      "model_name": "claude-opus-4-6",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 0.07,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "default",
+        "测试分组",
         "claude-code-高速",
-        "测试分组",
-        "claude-code-特价",
-        "claude-AmazonQ",
-        "claude-逆向"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-8",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "测试分组",
         "claude-code-特价",
         "claude-AmazonQ",
         "claude-逆向",
-        "claude-code-高速"
+        "default"
       ],
       "supported_endpoint_types": [
         "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex-超特价",
-        "codex",
-        "codex-特价"
-      ],
-      "supported_endpoint_types": [
         "openai"
       ]
     },
@@ -82,35 +43,102 @@
       ]
     },
     {
-      "model_name": "gpt-5.4",
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "claude-code-特价",
+        "测试分组",
+        "claude-code-高速",
+        "claude-AmazonQ",
+        "claude-逆向"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "claude-code-特价",
+        "测试分组",
+        "claude-code-高速",
+        "claude-AmazonQ",
+        "claude-逆向",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.07,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-逆向",
+        "default",
+        "测试分组",
+        "claude-code-高速",
+        "claude-code-特价",
+        "claude-AmazonQ"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-fable-5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "测试分组",
+        "claude-code-高速"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
       "vendor_id": 2,
       "quota_type": 0,
-      "model_ratio": 1.25,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "codex-超特价",
-        "codex",
-        "codex-特价"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "codex-超特价",
-        "codex",
-        "codex-特价"
+        "codex-特价",
+        "codex"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -127,10 +155,10 @@
       "cache_ratio": 0.1,
       "enable_groups": [
         "claude-code-高速",
-        "测试分组",
         "claude-code-特价",
         "claude-AmazonQ",
-        "claude-逆向"
+        "claude-逆向",
+        "测试分组"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -138,25 +166,35 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-6",
-      "vendor_id": 1,
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 2,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 0.375,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
+      "completion_ratio": 6,
       "enable_groups": [
-        "测试分组",
-        "claude-code-特价",
-        "claude-AmazonQ",
-        "claude-逆向",
-        "default",
-        "claude-code-高速"
+        "codex",
+        "codex-特价"
       ],
       "supported_endpoint_types": [
-        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "codex-特价"
+      ],
+      "supported_endpoint_types": [
         "openai"
       ]
     },
@@ -176,37 +214,15 @@
       "supported_endpoint_types": [
         "openai"
       ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "claude-AmazonQ",
-        "claude-逆向",
-        "default",
-        "claude-code-高速",
-        "测试分组",
-        "claude-code-特价"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
     }
   ],
   "group_ratio": {
     "claude-AmazonQ": 0.651,
     "claude-code-特价": 0.044,
-    "claude-code-高速": 0.655,
-    "codex": 0.218,
-    "codex-特价": 0.035,
-    "codex-超特价": 0.025
+    "claude-code-高速": 0.654,
+    "codex": 0.216,
+    "codex-特价": 0.033,
+    "codex-超特价": 0.026
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
@@ -234,6 +250,16 @@
   },
   "vendors": [
     {
+      "id": 11,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 12,
+      "name": "Mistral",
+      "icon": "Mistral.Color"
+    },
+    {
       "id": 1,
       "name": "Anthropic",
       "icon": "Claude.Color"
@@ -242,6 +268,26 @@
       "id": 2,
       "name": "OpenAI",
       "icon": "OpenAI"
+    },
+    {
+      "id": 4,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 8,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 9,
+      "name": "Meta",
+      "icon": "Ollama"
+    },
+    {
+      "id": 3,
+      "name": "Google",
+      "icon": "Gemini.Color"
     },
     {
       "id": 5,
@@ -254,39 +300,9 @@
       "icon": "Moonshot"
     },
     {
-      "id": 11,
-      "name": "DeepSeek",
-      "icon": "DeepSeek.Color"
-    },
-    {
-      "id": 12,
-      "name": "Mistral",
-      "icon": "Mistral.Color"
-    },
-    {
-      "id": 3,
-      "name": "Google",
-      "icon": "Gemini.Color"
-    },
-    {
-      "id": 4,
-      "name": "智谱",
-      "icon": "Zhipu.Color"
-    },
-    {
       "id": 7,
       "name": "讯飞",
       "icon": "Spark.Color"
-    },
-    {
-      "id": 8,
-      "name": "阿里巴巴",
-      "icon": "Qwen.Color"
-    },
-    {
-      "id": 9,
-      "name": "Meta",
-      "icon": "Ollama"
     },
     {
       "id": 10,

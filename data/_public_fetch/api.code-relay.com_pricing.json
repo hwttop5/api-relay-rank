@@ -4,17 +4,16 @@
   ],
   "data": [
     {
-      "model_name": "claude-opus-4-6-thinking",
+      "model_name": "claude-opus-4-6-thinking-medium",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
-      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "default",
-        "vip"
+        "vip",
+        "default"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -23,58 +22,35 @@
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
-      "model_name": "claude-sonnet-4-20250514",
-      "vendor_id": 1,
+      "model_name": "gpt-5.1-codex",
+      "vendor_id": 2,
       "quota_type": 0,
-      "model_ratio": 1.5,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "vip",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-5-20250929",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
+      "completion_ratio": 8,
       "enable_groups": [
         "default",
         "vip"
       ],
       "supported_endpoint_types": [
-        "anthropic",
         "openai"
       ]
     },
     {
-      "model_name": "claude-sonnet-4-6",
-      "vendor_id": 1,
+      "model_name": "gpt-5.5",
+      "vendor_id": 2,
       "quota_type": 0,
-      "model_ratio": 1.5,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
+      "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
         "default",
         "vip"
       ],
       "supported_endpoint_types": [
-        "anthropic",
         "openai"
       ]
     },
@@ -98,41 +74,7 @@
       ]
     },
     {
-      "model_name": "gpt-5.4",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "vip",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101",
+      "model_name": "claude-opus-4-6-thinking",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -150,13 +92,34 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-6-thinking-medium",
+      "model_name": "claude-opus-4-7",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-20250514",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
         "default",
         "vip"
@@ -184,16 +147,53 @@
       ]
     },
     {
-      "model_name": "gpt-5.1-codex",
-      "vendor_id": 2,
+      "model_name": "claude-sonnet-4-5-20250929",
+      "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 1.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
         "default",
         "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "default"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -238,15 +238,14 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-7",
+      "model_name": "claude-sonnet-4-6",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 1.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
       "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
       "enable_groups": [
         "default",
         "vip"
@@ -257,19 +256,20 @@
       ]
     },
     {
-      "model_name": "gpt-5.5",
-      "vendor_id": 2,
+      "model_name": "claude-opus-4-5-20251101",
+      "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
+      "completion_ratio": 5,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
         "default",
         "vip"
       ],
       "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     }
@@ -296,6 +296,11 @@
   },
   "vendors": [
     {
+      "id": 1,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
       "id": 2,
       "name": "OpenAI",
       "icon": "OpenAI"
@@ -304,11 +309,6 @@
       "id": 3,
       "name": "Google",
       "icon": "Gemini.Color"
-    },
-    {
-      "id": 1,
-      "name": "Anthropic",
-      "icon": "Claude.Color"
     }
   ],
   "status_payload": {
@@ -480,10 +480,10 @@
       "quota_for_invitee": 0,
       "quota_for_inviter": 10000000,
       "quota_per_unit": 500000,
-      "self_use_mode_enabled": false,
+      "self_use_mode_enabled": true,
       "server_address": "https://api.code-relay.com",
       "setup": true,
-      "start_time": 1779537523,
+      "start_time": 1781003787,
       "stripe_unit_price": 8,
       "system_name": "Code Router",
       "telegram_bot_name": "",
@@ -496,7 +496,7 @@
       "user_agreement_enabled": false,
       "version": "",
       "wechat_app_id": "wx9e340fe7892b984a",
-      "wechat_login": true,
+      "wechat_login": false,
       "wechat_qrcode": ""
     },
     "message": "",

@@ -9,71 +9,6 @@
   ],
   "data": [
     {
-      "model_name": "claude-sonnet-4-5-20250929",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude-AWS",
-        "Claude-Azure",
-        "Claude-AWS-Platform",
-        "Claude-CC-MAX",
-        "Claude-Kiro"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "description": "OpenAI GPT-5.4 通用大模型",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0,
-      "create_cache_ratio": 0.1,
-      "enable_groups": [
-        "Codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "description": "Anthropic Claude Opus 4.7 旗舰版",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude-Kiro",
-        "Claude-AWS",
-        "Claude-Azure",
-        "Claude-AWS-Platform",
-        "Claude-CC-MAX"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
       "model_name": "claude-opus-4-8",
       "description": "Anthropic Claude Opus 4.8 最新旗舰模型",
       "vendor_id": 6,
@@ -85,11 +20,11 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "Claude-Kiro",
         "Claude-AWS",
         "Claude-Azure",
+        "Claude-CC-MAX",
         "Claude-AWS-Platform",
-        "Claude-CC-MAX"
+        "Claude-Kiro"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -97,23 +32,21 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-6",
-      "description": "Anthropic Claude Opus 4.6 旗舰版",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "model_name": "claude-sonnet-4-5-20250929",
       "vendor_id": 6,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 1.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "Claude-Kiro",
-        "Claude-AWS",
+        "Claude-CC-MAX",
         "Claude-Azure",
         "Claude-AWS-Platform",
-        "Claude-CC-MAX"
+        "Claude-AWS",
+        "Claude-Kiro"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -133,32 +66,11 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "Claude-Azure",
-        "Claude-AWS-Platform",
         "Claude-CC-MAX",
-        "Claude-Kiro",
-        "Claude-AWS"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 0.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude-AWS",
         "Claude-Azure",
         "Claude-AWS-Platform",
-        "Claude-CC-MAX"
+        "Claude-AWS",
+        "Claude-Kiro"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -204,22 +116,20 @@
       ]
     },
     {
-      "model_name": "claude-sonnet-4-6",
-      "description": "Anthropic Claude Sonnet 4.6",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "model_name": "claude-opus-4-5-20251101",
       "vendor_id": 6,
       "quota_type": 0,
-      "model_ratio": 1.5,
+      "model_ratio": 0.75,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "Claude-AWS",
+        "Claude-CC-MAX",
         "Claude-Azure",
         "Claude-AWS-Platform",
-        "Claude-CC-MAX",
+        "Claude-AWS",
         "Claude-Kiro"
       ],
       "supported_endpoint_types": [
@@ -228,21 +138,23 @@
       ]
     },
     {
-      "model_name": "gpt-image-2",
-      "description": "OpenAI GPT Image 2 图像生成",
-      "tags": "Image-Generation",
-      "vendor_id": 1,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.3,
+      "model_name": "claude-fable-5",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 0,
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "image",
-        "Codex"
+        "Claude-AWS-Platform",
+        "Claude-AWS",
+        "Claude-CC-MAX",
+        "Claude-Azure"
       ],
       "supported_endpoint_types": [
-        "image-generation",
+        "anthropic",
         "openai"
       ]
     },
@@ -262,6 +174,116 @@
         "Codex"
       ],
       "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "description": "Anthropic Claude Sonnet 4.6",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-Azure",
+        "Claude-CC-MAX",
+        "Claude-AWS-Platform",
+        "Claude-Kiro",
+        "Claude-AWS"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "description": "Anthropic Claude Opus 4.7 旗舰版",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-AWS",
+        "Claude-Azure",
+        "Claude-CC-MAX",
+        "Claude-AWS-Platform",
+        "Claude-Kiro"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "description": "Anthropic Claude Opus 4.6 旗舰版",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-Azure",
+        "Claude-CC-MAX",
+        "Claude-AWS-Platform",
+        "Claude-Kiro",
+        "Claude-AWS"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "description": "OpenAI GPT-5.4 通用大模型",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0,
+      "create_cache_ratio": 0.1,
+      "enable_groups": [
+        "Codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "description": "OpenAI GPT Image 2 图像生成",
+      "tags": "Image-Generation",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "Codex",
+        "image"
+      ],
+      "supported_endpoint_types": [
+        "image-generation",
         "openai"
       ]
     }
@@ -306,18 +328,14 @@
   },
   "vendors": [
     {
-      "id": 1,
-      "name": "OpenAI",
-      "icon": "OpenAI"
-    },
-    {
-      "id": 12,
-      "name": "Xiaomi Token Plan (Singapore)"
-    },
-    {
       "id": 13,
       "name": "DeepSeek",
       "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 19,
+      "name": "Google",
+      "icon": "Gemini.Color"
     },
     {
       "id": 20,
@@ -330,19 +348,23 @@
       "icon": "Moonshot"
     },
     {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
       "id": 6,
       "name": "Anthropic",
       "icon": "Claude.Color"
     },
     {
+      "id": 12,
+      "name": "Xiaomi Token Plan (Singapore)"
+    },
+    {
       "id": 18,
       "name": "OpenCode Zen",
       "icon": "OpenCode"
-    },
-    {
-      "id": 19,
-      "name": "Google",
-      "icon": "Gemini.Color"
     },
     {
       "id": 22,
@@ -355,6 +377,13 @@
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":true}",
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
       "announcements": [
+        {
+          "content": "Codex分组号池切换回Pro。\n倍率恢复正常",
+          "extra": "",
+          "id": 9,
+          "publishDate": "2026-06-09T12:00:00.000Z",
+          "type": "ongoing"
+        },
         {
           "content": "Claude分组（除Kiro）已上线opus4.8模型，欢迎体验测试。如需在Claude Code中调用，请更新到2.1.156",
           "extra": "",
@@ -464,7 +493,7 @@
       "discord_oauth": false,
       "display_in_currency": true,
       "docs_link": "https://docs.claude360.xyz",
-      "email_verification": false,
+      "email_verification": true,
       "enable_batch_update": true,
       "enable_data_export": true,
       "enable_drawing": false,
@@ -474,7 +503,7 @@
       "footer_html": "",
       "github_client_id": "Iv23likcqiRaJPJ2dfb7",
       "github_oauth": true,
-      "linuxdo_client_id": "6LI3ZCQMKWPXtkd6yp6EUf1PedtKGZdx",
+      "linuxdo_client_id": "zYUTKlPOEF2p8YRanA0s47L9lyQQ5uAR",
       "linuxdo_minimum_trust_level": 0,
       "linuxdo_oauth": true,
       "logo": "",
@@ -496,7 +525,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://claude360.xyz",
       "setup": true,
-      "start_time": 1779981408,
+      "start_time": 1780895197,
       "stripe_unit_price": 8,
       "system_name": "Claude 360",
       "telegram_bot_name": "",

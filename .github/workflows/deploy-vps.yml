@@ -338,13 +338,13 @@ jobs:
           )"
           test -n "$postgres_container"
 
-          schema_v2="$(
+          schema_v3="$(
             docker exec "$postgres_container" \
               psql -U api_relay_rank -d api_relay_rank -At \
-              -c "select count(*) from schema_migrations where version = 2;"
+              -c "select count(*) from schema_migrations where version = 3;"
           )"
-          if [ "$schema_v2" != "1" ]; then
-            echo "schema_migrations version 2 is missing." >&2
+          if [ "$schema_v3" != "1" ]; then
+            echo "schema_migrations version 3 is missing." >&2
             exit 1
           fi
 
@@ -425,6 +425,19 @@ jobs:
 
           curl --retry 12 --retry-delay 5 --retry-all-errors -fsS "$site_url/api/health" \
             | python3 -c "import json,sys; payload=json.load(sys.stdin); assert payload.get('ok') is True, payload"
+          curl --retry 6 --retry-delay 5 --retry-all-errors -fsS "$site_url/robots.txt" | tee robots.txt >/dev/null
+          grep -Fq "Sitemap: $site_url/sitemap.xml" robots.txt
+          if grep -Fq "localhost" robots.txt; then
+            echo "robots.txt contains localhost." >&2
+            exit 1
+          fi
+          curl --retry 6 --retry-delay 5 --retry-all-errors -fsS "$site_url/sitemap.xml" | tee sitemap.xml >/dev/null
+          grep -Fq "<loc>$site_url/ranking</loc>" sitemap.xml
+          grep -Fq "<loc>$site_url/stations/" sitemap.xml
+          if grep -Fq "localhost" sitemap.xml; then
+            echo "sitemap.xml contains localhost." >&2
+            exit 1
+          fi
           curl --retry 6 --retry-delay 5 --retry-all-errors -fsS "$site_url/audit" | tee audit.html >/dev/null
           grep -q "$audit_count" audit.html
           grep -q "/api/audit-report" audit.html
@@ -443,7 +456,7 @@ jobs:
             echo "- Audit runs: \`$audit_count\`"
             echo "- Latest snapshot: \`$snapshot_row\`"
             echo "- Latest report path: \`$report_path\`"
-            echo "- Checked: \`/api/health\`, \`/audit\`, \`/ranking\`, \`/stations/freemodel\`, latest audit report"
+            echo "- Checked: \`/api/health\`, \`/robots.txt\`, \`/sitemap.xml\`, \`/audit\`, \`/ranking\`, \`/stations/freemodel\`, latest audit report"
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Verify owner announcement sync

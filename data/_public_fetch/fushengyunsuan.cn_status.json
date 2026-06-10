@@ -5,6 +5,13 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "kiro又活了",
+        "extra": "",
+        "id": 33,
+        "publishDate": "2026-06-05T06:36:24.029Z",
+        "type": "default"
+      },
+      {
         "content": "wo_wuhao   大佬看到公告的话加一下群，你的扣费分组有点问题，我给你补贴一下",
         "extra": "",
         "id": 32,
@@ -360,7 +367,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://fushengyunsuan.com",
     "setup": true,
-    "start_time": 1779912351,
+    "start_time": 1781024918,
     "stripe_unit_price": 1,
     "system_name": "浮生云算",
     "telegram_bot_name": "",

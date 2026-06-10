@@ -2,53 +2,13 @@
   "auto_groups": [
     "default"
   ],
-  "data": [
-    {
-      "model_name": "gpt-5.4",
-      "vendor_id": 4,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "create_cache_ratio": 0.1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 4,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    }
-  ],
+  "data": [],
   "group_ratio": {
     "default": 1
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
-  "supported_endpoint": {
-    "openai": {
-      "path": "/v1/chat/completions",
-      "method": "POST"
-    }
-  },
+  "supported_endpoint": {},
   "usable_group": {
     "default": "默认分组"
   },

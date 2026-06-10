@@ -1,0 +1,233 @@
+{
+  "data": {
+    "HeaderNavModules": "",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"billing_analysis\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"system_log\":true,\"setting\":true}}",
+    "aff_quota_transfer_min": 0.1,
+    "after_sales_link": "https://discord.gg/TpnqmYnKY",
+    "after_sales_qrcode": "",
+    "announcements": [
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n   限时0.1折优惠组开启\n  </div>\n  <div style=\"color:#334155;\">\n    今天有金主，开启 <strong>限时0.1折优惠</strong>，已包含所有 <strong>当终端报错不能用时，可能是优惠额度用完了</strong>，手动把令牌换回0.2折组就行\n  </div>\n</div>",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-06-08T12:27:44.270Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    0.7折极速组已新增\n  </div>\n  <div style=\"color:#334155;\">\n    平台已新增 <strong>0.7折极速组</strong>，已包含所有 <strong>GPT模型</strong>，包括 <strong>gpt-image-2</strong>，拥有全平台最快的响应速度，欢迎体验使用。\n  </div>\n</div>",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-05-26T08:20:32.505Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    0.3折快速组已新增\n  </div>\n  <div style=\"color:#334155;\">\n    平台已新增 <strong>0.3折快速组</strong>，支持 <strong>gpt-image-2</strong>，相比 <strong>0.2折组</strong> 拥有更快的响应速度，欢迎体验使用。\n  </div>\n</div>",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-05-25T20:08:15.694Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    系统升级完成通知\n  </div>\n  <div style=\"color:#334155;\">\n    平台已于 <strong>2026年5月26日 02:00</strong> 完成<strong>系统升级</strong>，当前服务已恢复正常，感谢您的理解与支持。\n  </div>\n</div>",
+        "extra": "",
+        "id": 16,
+        "publishDate": "2026-05-25T17:53:20.052Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    系统升级通知\n  </div>\n  <div style=\"color:#334155;\">\n    平台将于 <strong>2026年5月25日 24:00-次日04:00</strong> 进行<strong>系统升级</strong>，升级期间<strong>系统不可用</strong>，请提前做好安排。\n  </div>\n</div>",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2026-05-25T14:17:24.904Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    Claude模型已新增\n  </div>\n  <div style=\"color:#334155;\">\n    平台已新增 <strong>Claude模型</strong>，当前已上线至 <strong>1折分组</strong>，欢迎体验使用。\n  </div>\n</div>",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-05-23T10:41:38.340Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    系统升级已完成\n  </div>\n  <div style=\"color:#334155;\">\n    平台系统已于 <strong>5月18日 04:00</strong> 完成升级，当前服务已恢复正常。感谢大家的耐心等待与理解。\n  </div>\n</div>",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2026-05-17T16:44:52.524Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    系统升级通知\n  </div>\n  <div style=\"color:#334155;\">\n    平台将于 <strong>5月18日 0:00-04:00</strong> 进行系统升级，期间可能出现短暂不可用、登录失败或请求延迟等情况，请提前安排使用并相互转告。\n  </div>\n</div>",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-05-17T15:00:08.291Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    GPT 推理强度模型现已支持直接使用\n  </div>\n  <div style=\"color:#334155;\">\n    所有带有小括号推理强度标识的 GPT 模型，如 gpt-5.4(xhigh)，现已可直接使用 gpt-5.4，推理强度将由 Codex 自动发送。\n  </div>\n</div>\n",
+        "extra": "",
+        "id": 11,
+        "publishDate": "2026-05-10T10:01:08.074Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    0.02倍率线路已新增\n  </div>\n  <div style=\"color:#334155;\">\n    现在已经新增了0.02倍率线路，更低的费用，相同的效果和速率。\n  </div>\n</div>\n",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-05-03T13:53:44.808Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    系统升级维护完成公告\n  </div>\n  <div style=\"color:#334155;\">\n    本次系统升级维护已完成，服务现已恢复正常访问。感谢大家在维护期间的理解与支持，如遇到异常请刷新页面后重试。\n  </div>\n</div>\n",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-04-28T21:27:21.395Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\"><div style=\"font-size:18px;font-weight:800;color:#9a3412;margin-bottom:6px;\">系统升级维护公告</div><div style=\"color:#334155;\">系统将于<strong style=\"color:#9a3412;\">今日凌晨4:00</strong>进行升级维护，预计约<strong style=\"color:#b91c1c;\">2小时停机</strong>。维护期间服务可能无法访问，请提前安排，感谢理解。</div></div>\n",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-04-28T12:42:22.050Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#9a3412;margin-bottom:6px;\">\n    无限战争套餐流量已开放\n  </div>\n  <div style=\"color:#334155;\">\n    <strong style=\"color:#9a3412;\">无限战争</strong>\n    套餐流量现已可以使用。已购买或订阅的用户，可使用\n    <strong style=\"color:#b91c1c;\">无限战争分组</strong>\n    的 API Token 开始调用，欢迎体验。\n  </div>\n</div>\n",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-04-26T20:07:03.274Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#9a3412;margin-bottom:6px;\">\n    Claude 系列模型已全平台上线\n  </div>\n  <div style=\"color:#334155;\">\n    全平台现已新增\n    <strong style=\"color:#9a3412;\">Claude 系列模型</strong>\n    ，包括\n    <strong style=\"color:#b91c1c;\">2 折组</strong>\n    与\n    <strong style=\"color:#b91c1c;\">1 折组</strong>\n    ，欢迎按需选择体验。\n  </div>\n</div>\n",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-04-25T09:23:17.371Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#dc2626;margin-bottom:6px;\">\n    GPT-5.5 已正式上线\n  </div>\n  <div style=\"color:#334155;\">\n    平台现已正式上线\n    <strong style=\"color:#b91c1c;\">GPT-5.5</strong>\n    ，欢迎第一时间体验最新模型能力。\n  </div>\n</div>\n",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-04-24T17:38:54.305Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#15803d;margin-bottom:6px;\">\n    新账户赠送免费额度\n  </div>\n  <div style=\"color:#334155;\">\n    新注册账户将自动获得\n    <strong style=\"color:#15803d;\">免费额度</strong>\n    ，可用于初次体验、模型测试与接入验证。\n  </div>\n</div>\n",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-04-24T17:38:45.262Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#1d4ed8;margin-bottom:6px;\">\n    0.7 折组已新增\n  </div>\n  <div style=\"color:#334155;\">\n    平台现已新增\n    <strong style=\"color:#1d4ed8;\">0.7 折组</strong>\n    ，可按需选择对应分组使用。\n  </div>\n</div>\n",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-04-24T17:38:41.105Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#b45309;margin-bottom:6px;\">\n    服务器迁移已完成\n  </div>\n  <div style=\"color:#334155;\">\n    服务器已迁移完成。大陆用户请使用\n    <strong style=\"color:#92400e;\">科学上网访问</strong>\n    ，以获得更稳定的连接体验。\n  </div>\n</div>\n",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-04-24T17:38:28.162Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#7c3aed;margin-bottom:6px;\">\n    默认分组说明\n  </div>\n  <div style=\"color:#334155;\">\n    当前默认用户开放\n    <strong style=\"color:#7c3aed;\">2 折</strong>、\n    <strong style=\"color:#2563eb;\">0.8 折</strong>\n    和\n    <strong style=\"color:#1d4ed8;\">0.7 折</strong>\n    分组，请按需选择对应分组使用。\n  </div>\n</div>\n",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-04-24T17:38:19.265Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": true,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://doc.ergouzi.life",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://nzj13gqqmj.ufs.sh/f/7vCb7ZuKZQXM8I2IHQXhPqNEAXV4gJm0LzopUFvck3bCKG1e",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "New API",
+    "passkey_login": false,
+    "passkey_origins": "https://ergouzi.life",
+    "passkey_rp_id": "ergouzi.life",
+    "passkey_user_verification": "preferred",
+    "price": 7.3,
+    "privacy_policy_enabled": true,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://ergouzi.life",
+    "setup": true,
+    "start_time": 1781069466,
+    "stripe_unit_price": 8,
+    "system_name": "二狗子",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "top_up_link": "https://pay.ldxp.cn/shop/8C30CIW6",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "unlimited_plan_link": "https://pay.ldxp.cn/shop/8C30CIW6",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": true,
+    "version": "0.17.0",
+    "wechat_login": false,
+    "wechat_qrcode": "https://res.cloudinary.com/dufnuhipy/image/upload/f_auto,q_auto/949c45322c322b62ce031da0f2e88c98_cs91cx"
+  },
+  "message": "",
+  "success": true
+}

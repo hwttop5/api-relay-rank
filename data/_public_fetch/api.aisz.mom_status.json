@@ -1,0 +1,221 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":false,\"requireAuth\":true},\"docs\":true,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "0.04和0.08 0.1 应该是没问题的，\npro池子和image生图现在访问有问题\n排查下来应该是机房网络出问题了，只能明天了\n今晚的话可以通过    魔...--法 ，跳转香港来访问  ",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-06-07T17:32:27.272Z",
+        "type": "success"
+      },
+      {
+        "content": "claude  ccmax 限量免费 数量有限",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-06-06T10:01:09.070Z",
+        "type": "success"
+      },
+      {
+        "content": "免费分组打算提前开放，2点开始，可以喊人来玩了，祝你们玩的开心",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-06-06T05:05:24.759Z",
+        "type": "success"
+      },
+      {
+        "content": "我们将于今天维持0.04倍率到晚上六点\n晚上六点后免费（仅限GPT最后狂欢日分组，请注意你的分组情况）到晚上0点\n关注活动和通知请加最新群聊 QQ群：630222123",
+        "extra": "",
+        "id": 16,
+        "publishDate": "2026-06-06T02:16:09.081Z",
+        "type": "success"
+      },
+      {
+        "content": "0.04 倍率gpt 维持到6月6日下午",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2026-06-05T17:18:33.896Z",
+        "type": "success"
+      },
+      {
+        "content": "其他群满了，最新群l聊：621160765",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-06-03T09:39:22.244Z",
+        "type": "default"
+      },
+      {
+        "content": "我们遇到了一些技术问题, 需要临时关闭调整, 完成后将延期活动\n\n目前全站除了chat是免费分组\n其他都是临时过渡分组，价格较高，守护好自己的钱包\n进群了解最新动态：621160765",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-06-02T04:44:43.002Z",
+        "type": "default"
+      },
+      {
+        "content": "明天中午倍率会提升到0.04， 0.04这个倍率将会持续一段时间，也许三四天？看我心情吧，嘻嘻",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-06-01T15:36:06.282Z",
+        "type": "success"
+      },
+      {
+        "content": "由于本站倍率低，所以给的签到额度低，但是因此产生了我玩不起的言论，于是决定暂时关闭签到，等我活下来会开放大额签到，感谢各位义父的支持",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-06-01T10:14:53.880Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "十二点了，开业全免倍率已经修改成0.02倍率了，注意好余额消耗",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-06-01T04:01:24.391Z",
+        "type": "success"
+      },
+      {
+        "content": "开业免费即将二次开启，希望各位佬玩的开心",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-06-01T00:42:14.508Z",
+        "type": "success"
+      },
+      {
+        "content": "注意！开业全免的倍率已经变成0.02了，注意好自己的小钱包哦~",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-05-31T16:14:28.621Z",
+        "type": "warning"
+      },
+      {
+        "content": "@全体成员 我决定于0点暂时关闭免费gpt ，今日突发状况偏多，都是不可抗力因素，可能我倒霉吧，但是不管怎么样，今天的体验是不好的，于是我决定，兄弟们早点休息，照顾好自己的身体，明天上午依旧免费，不要因为一点token熬坏了身体，昨天看到个哥们一晚上没睡，我真有点怕，就这样吧，我改改东西睡觉去了 会保留0.02倍率",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-05-31T15:41:43.253Z",
+        "type": "warning"
+      },
+      {
+        "content": "我们打算十分钟后开放gpt爽蹬（请选择开业分组）\n由于目前只新增了一个号池，如果不稳定可能考虑继续维护到晚上所有机器和号池部署完毕",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-05-31T11:48:11.949Z",
+        "type": "success"
+      },
+      {
+        "content": "目前仍在维护，新群聊可以搜索到了：621160765\n\n站长准备睡觉了，加上目前在让机房组装新机器，然后扩容号池，备用号池虽然可以支持400并发，但是明显现在远超这个数量，让人觉得我这体验不好，实则又快又稳（问就是吹牛），所以我悲伤的宣布这个消息，我决定先关站维护到我睡醒再说，因此我可能延期一些福利，再议  ",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-05-31T05:27:00.462Z",
+        "type": "warning"
+      },
+      {
+        "content": "考虑到后续如果直接从免费切到 **0.08 倍率**，可能会不太适应，所以免费结束后预计会按：\n> **0.02 → 0.04 → 0.06 → 0.08**\n逐步轮换调整。具体时间和方式看实际情况，毕竟**我是站长我说了算（狗头保命）**。\n欢迎加群交流、反馈问题、接收通知：  \n**QQ群：621160765**",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-05-30T23:59:21.841Z",
+        "type": "default"
+      },
+      {
+        "content": "# 🎉 开业大庆\n\n当前已开放 **「开业全免」** 分组，**0x 倍率，免费使用**。  \n选择该分组即可开始体验。\n\n## 💸 邀请分润\n\n活动期间，邀请人可获得 **被邀请人充值额度 10%** 的分润。\n\n欢迎参与，开始体验。",
+        "extra": "限时体验哦",
+        "id": 1,
+        "publishDate": "2026-05-29T17:21:33.308Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": true,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://my.feishu.cn/wiki/W2H4wwaGEiwj3ykPODsc3szvnbe?from=from_copylink",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": false,
+    "enable_task": true,
+    "faq": [],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "词元枢阁",
+    "passkey_login": false,
+    "passkey_origins": "https://api.aisz.mom",
+    "passkey_rp_id": "api.aisz.mom",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
+    "price": 1,
+    "privacy_policy_enabled": true,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "register_enabled": true,
+    "self_use_mode_enabled": false,
+    "server_address": "https://api.aisz.mom",
+    "setup": true,
+    "start_time": 1781068163,
+    "stripe_unit_price": 8,
+    "system_name": "词元枢阁 Token Nexus",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "default",
+    "turnstile_check": false,
+    "turnstile_site_key": "0x4AAAAAADU8nFy8tSM8aQCC",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": true,
+    "version": "v1.0.0-rc10-usage-log-permission-20260610130446-6a692b07d",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

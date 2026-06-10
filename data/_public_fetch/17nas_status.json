@@ -4,6 +4,20 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "免费分组暂时无了",
+        "extra": "",
+        "id": 33,
+        "publishDate": "2026-06-09T23:18:49.549Z",
+        "type": "default"
+      },
+      {
+        "content": "上线免费不限量模型 step-3.7-flash-free",
+        "extra": "",
+        "id": 32,
+        "publishDate": "2026-06-09T01:07:46.012Z",
+        "type": "default"
+      },
+      {
         "content": "因 OpenAI 官方已下架 gpt-5.2 与 gpt-5.3-codex 模型，将同步进行相应调整。",
         "extra": "",
         "id": 30,
@@ -196,7 +210,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://ai.17nas.com",
     "setup": true,
-    "start_time": 1780490205,
+    "start_time": 1781080060,
     "stripe_unit_price": 1,
     "system_name": "镜核 AI",
     "telegram_bot_name": "",

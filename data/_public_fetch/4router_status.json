@@ -77,6 +77,7 @@
     "custom_currency_symbol": "¤",
     "custom_oauth_providers": [
       {
+        "id": 1,
         "name": "linuxDo登录",
         "slug": "linuxdo",
         "client_id": "1MxLoHSZkgzdfRcd64DmipBeHlo81ZHz",
@@ -133,7 +134,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://4router.net",
     "setup": true,
-    "start_time": 1780465613,
+    "start_time": 1780823618,
     "stripe_unit_price": 1,
     "system_name": "4Router",
     "top_up_link": "",

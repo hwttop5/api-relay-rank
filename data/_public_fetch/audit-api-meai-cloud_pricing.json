@@ -4,13 +4,12 @@
   ],
   "data": [
     {
-      "model_name": "glm-5",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
+      "model_name": "happyhorse-1.0",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 20,
       "owner_by": "",
-      "completion_ratio": 1,
+      "completion_ratio": 0,
       "enable_groups": [
         "default"
       ],
@@ -20,86 +19,45 @@
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
-      "model_name": "seedream-4.5",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 2.5,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5",
-      "vendor_id": 15,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "kimi-k2.6",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 2.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "qwen3.6",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-8",
-      "vendor_id": 15,
-      "quota_type": 0,
-      "model_ratio": 3,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "happyhorse-1.0",
+      "model_name": "seedance-2.0",
       "quota_type": 1,
       "model_ratio": 0,
       "model_price": 20,
       "owner_by": "",
       "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.666666666667,
+      "create_cache_ratio": 3.333333333333,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "mimo-v2.5",
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
       "enable_groups": [
         "default"
       ],
@@ -127,7 +85,7 @@
       ]
     },
     {
-      "model_name": "claude-opus-4.7-thinking",
+      "model_name": "claude-opus-4-7-thinking",
       "vendor_id": 15,
       "quota_type": 0,
       "model_ratio": 3,
@@ -144,7 +102,147 @@
       ]
     },
     {
-      "model_name": "claude-sonnet-4-6",
+      "model_name": "minimax-m2.5",
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mimo-v2.5-test",
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.6",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.666666666667,
+      "create_cache_ratio": 3.333333333333,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "qwen3.6-plus",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "wan2.7-image-pro",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "seedream-4.5",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 2.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "seedream-5.0",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.7-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.666666666667,
+      "create_cache_ratio": 3.333333333333,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4.6-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.666666666667,
+      "create_cache_ratio": 3.333333333333,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
       "vendor_id": 15,
       "quota_type": 0,
       "model_ratio": 3,
@@ -163,8 +261,74 @@
       ]
     },
     {
-      "model_name": "claude-sonnet-4.6",
+      "model_name": "deepseek-v4",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 2.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4.5",
       "vendor_id": 15,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.6",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 2.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.666666666667,
+      "create_cache_ratio": 3.333333333333,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4.6",
+      "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 3,
       "model_price": 0,
@@ -201,13 +365,15 @@
       ]
     },
     {
-      "model_name": "claude-haiku-4.5",
+      "model_name": "claude-haiku-4-5-20251001",
       "vendor_id": 15,
       "quota_type": 0,
       "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
+      "cache_ratio": 0.8,
+      "create_cache_ratio": 2,
       "enable_groups": [
         "default",
         "vip"
@@ -218,8 +384,102 @@
       ]
     },
     {
+      "model_name": "claude-opus-4.8",
+      "vendor_id": 15,
+      "quota_type": 0,
+      "model_ratio": 3.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mimo-v2.5-pro",
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 15,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.666666666667,
+      "create_cache_ratio": 3.333333333333,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "glm-5.1",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 2.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.6",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
       "model_name": "qwen3.5",
-      "vendor_id": 6,
+      "vendor_id": 12,
       "quota_type": 0,
       "model_ratio": 2,
       "model_price": 0,
@@ -247,12 +507,58 @@
       ]
     },
     {
-      "model_name": "wan2.7-image-pro",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 2,
+      "model_name": "glm-5",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 0,
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 2.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.7-max",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
       "enable_groups": [
         "default"
       ],
@@ -267,263 +573,6 @@
       "model_price": 18,
       "owner_by": "",
       "completion_ratio": 0,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "deepseek-v4-flash",
-      "vendor_id": 4,
-      "quota_type": 0,
-      "model_ratio": 2.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "mimo-v2.5",
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4.6-thinking",
-      "vendor_id": 15,
-      "quota_type": 0,
-      "model_ratio": 3,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.666666666667,
-      "create_cache_ratio": 3.333333333333,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "vendor_id": 15,
-      "quota_type": 0,
-      "model_ratio": 3,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.666666666667,
-      "create_cache_ratio": 3.333333333333,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 3,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.666666666667,
-      "create_cache_ratio": 3.333333333333,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "minimax-m2.5",
-      "quota_type": 0,
-      "model_ratio": 2,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "mimo-v2.5-pro",
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7-thinking",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 3,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.666666666667,
-      "create_cache_ratio": 3.333333333333,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4.6",
-      "vendor_id": 15,
-      "quota_type": 0,
-      "model_ratio": 3,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.666666666667,
-      "create_cache_ratio": 3.333333333333,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "seedream-5.0",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 3,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "mimo-v2.5-test",
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "glm-5.1",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 2.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "deepseek-v4-pro",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 3,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "deepseek-v4",
-      "vendor_id": 10,
-      "quota_type": 0,
-      "model_ratio": 2.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.8,
-      "create_cache_ratio": 2,
-      "enable_groups": [
-        "vip",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "qwen3.6-plus",
-      "vendor_id": 12,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
       "enable_groups": [
         "default"
       ],
@@ -554,14 +603,9 @@
   },
   "vendors": [
     {
-      "id": 16,
-      "name": "xAI",
-      "icon": "XAI"
-    },
-    {
-      "id": 6,
-      "name": "阿里巴巴",
-      "icon": "Qwen.Color"
+      "id": 11,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
     },
     {
       "id": 14,
@@ -569,9 +613,34 @@
       "icon": "Gemini.Color"
     },
     {
-      "id": 3,
-      "name": "Google",
-      "icon": "Gemini.Color"
+      "id": 2,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 8,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 12,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 16,
+      "name": "xAI",
+      "icon": "XAI"
+    },
+    {
+      "id": 15,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 13,
+      "name": "Moonshot",
+      "icon": "Moonshot"
     },
     {
       "id": 4,
@@ -584,9 +653,9 @@
       "icon": "Zhipu.Color"
     },
     {
-      "id": 7,
-      "name": "Moonshot",
-      "icon": "Moonshot"
+      "id": 6,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
     },
     {
       "id": 9,
@@ -594,29 +663,9 @@
       "icon": "XAI"
     },
     {
-      "id": 11,
-      "name": "智谱",
-      "icon": "Zhipu.Color"
-    },
-    {
-      "id": 15,
-      "name": "Anthropic",
-      "icon": "Claude.Color"
-    },
-    {
-      "id": 2,
-      "name": "OpenAI",
-      "icon": "OpenAI"
-    },
-    {
-      "id": 12,
-      "name": "阿里巴巴",
-      "icon": "Qwen.Color"
-    },
-    {
-      "id": 13,
-      "name": "Moonshot",
-      "icon": "Moonshot"
+      "id": 10,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
     },
     {
       "id": 1,
@@ -624,14 +673,14 @@
       "icon": "Claude.Color"
     },
     {
-      "id": 8,
-      "name": "讯飞",
-      "icon": "Spark.Color"
+      "id": 3,
+      "name": "Google",
+      "icon": "Gemini.Color"
     },
     {
-      "id": 10,
-      "name": "DeepSeek",
-      "icon": "DeepSeek.Color"
+      "id": 7,
+      "name": "Moonshot",
+      "icon": "Moonshot"
     }
   ],
   "status_payload": {
@@ -761,7 +810,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://api.meai.cloud",
       "setup": true,
-      "start_time": 1780416734,
+      "start_time": 1780766071,
       "stripe_unit_price": 8,
       "system_name": "ME AI",
       "telegram_bot_name": "",
@@ -769,7 +818,7 @@
       "top_up_link": "https://pay.ldxp.cn/shop/YSR74HU9",
       "turnstile_check": false,
       "turnstile_site_key": "",
-      "uptime_kuma_enabled": true,
+      "uptime_kuma_enabled": false,
       "usd_exchange_rate": 7.3,
       "user_agreement_enabled": true,
       "version": "",

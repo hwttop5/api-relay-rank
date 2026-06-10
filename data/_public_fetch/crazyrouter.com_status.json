@@ -1,0 +1,417 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"pricing-audit\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": {
+          "en": "",
+          "zh": "Claude Fable 5 已上线。模型名称：`claude-fable-5`。"
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 26,
+        "publishDate": "2026-06-10T03:30:39.880Z",
+        "type": "success"
+      },
+      {
+        "content": {
+          "en": "Claude Fable 5 is now online. Model name: claude-fable-5.",
+          "zh": ""
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 25,
+        "publishDate": "2026-06-10T03:30:29.326Z",
+        "type": "success"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "GPT-5.2 and GPT-5.3-Codex are no longer supported. Please switch to a currently available model."
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 24,
+        "publishDate": "2026-06-02T12:04:49.532Z",
+        "type": "warning"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "Model `claude-jupiter-v1-p` has been taken offline. Model `claude-opus-4-8` is now online."
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 23,
+        "publishDate": "2026-05-31T02:49:18.618Z",
+        "type": "success"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "Claude Opus 4.8 is now online. Model name: `claude-opus-4-8`."
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 22,
+        "publishDate": "2026-05-29T07:28:19.43Z",
+        "type": "success"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "Gemini 3.1 Pro Preview is currently experiencing high load due to limited global availability. Requests may be slower or temporarily unavailable while upstream resources remain constrained. Model name: `gemini-3.1-pro-preview`."
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 21,
+        "publishDate": "2026-05-26T16:30:11.296Z",
+        "type": "warning"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "Claude Jupiter V1 P is now online. Model name: `claude-jupiter-v1-p`."
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 20,
+        "publishDate": "2026-05-26T15:44:14.166Z",
+        "type": "success"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "Qwen3.7 Max is now online. Model name: `qwen3.7-max`."
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 19,
+        "publishDate": "2026-05-26T13:08:13.252Z",
+        "type": "success"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "GPT 系列模型的折扣将从原来的 五五折 调整为 六五折 The discount for GPT-series models will be adjusted from the previous 45% off to 35% off"
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 18,
+        "publishDate": "2026-05-15T04:00:00Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "亚洲可以使用 https://cn.crazyrouter.com 作为baseurl ，其他设置不变，进行测试，如遇故障可以切换为 https://crazyrouter.com"
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 17,
+        "publishDate": "2026-05-05T13:16:34.246Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "Gemini-3.1-pro has officially replaced gemini-3.0-pro. Please update the model name you are requesting."
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 16,
+        "publishDate": "2026-05-02T04:06:33.116Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "GPT 5.5 is online!"
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 15,
+        "publishDate": "2026-04-24T07:06:56.36Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "本站服务已经恢复！\nService has now been restored."
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 14,
+        "publishDate": "2026-04-20T15:56:58.193Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "本站遭受恶意攻击，部分端点目前不正常！\nThis site is under attack, and some endpoints are currently malfunctioning."
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 13,
+        "publishDate": "2026-04-20T15:26:25.397Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "Opus 4.7 is now online"
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 12,
+        "publishDate": "2026-04-16T20:18:12.168Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "Opus 4.7 will be released on April 17."
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 11,
+        "publishDate": "2026-04-16T16:04:52.532Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "MiMo-V2-Pro is online "
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 10,
+        "publishDate": "2026-03-19T14:11:22.667Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "RMB–USD Exchange Rate Adjustment: 1 USD = 6.91 RMB\n\n"
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 7,
+        "publishDate": "2026-02-23T10:56:49.198Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "gemini-3.1-pro-preview is on line"
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 6,
+        "publishDate": "2026-02-20T14:03:38.896Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "Claude sonnet 4.6 is on line"
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 5,
+        "publishDate": "2026-02-18T14:40:44.079Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "Claude opus 4.6 is online"
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 4,
+        "publishDate": "2026-02-06T02:32:13.758Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "RMB–USD Exchange Rate Adjustment:  1 USD = 6.95 RMB"
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 3,
+        "publishDate": "2026-02-02T12:38:05.864Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "sora2 veo3 nano banana 应用站\nsora2api.cc"
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 1,
+        "publishDate": "2026-01-06T02:27:03.388Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "East Asia",
+        "id": 1,
+        "route": "【Primary】 East Asia",
+        "url": "https://cn.crazyrouter.com"
+      },
+      {
+        "color": "blue",
+        "description": "Gloabal",
+        "id": 2,
+        "route": "【Backup】Gloabal",
+        "url": "https://crazyrouter.com"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "LOBE": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      }
+    ],
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "1478259113569030254",
+    "discord_link": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://docs.crazyrouter.com",
+    "email_verification": true,
+    "enable_batch_update": false,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "facebook_link": "",
+    "faq": [
+      {
+        "answer": "https://www.tokenmum.com/  \nUse this site to check your API token or redemption remain without logging into Crazyrouter",
+        "id": 1,
+        "question": "How to check API token or redemption remain?"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "Ov23lid7S4CmLa9TVxFb",
+    "github_oauth": true,
+    "google_client_id": "76601814396-ejnr9fkner8qkau2mlcf5ud7dn1d1bf4.apps.googleusercontent.com",
+    "google_oauth": true,
+    "instance": {
+      "hostname": "new-api-slave-6d6cc5964b-jkgvj",
+      "is_master_node": false,
+      "node_name": "",
+      "node_type": "slave",
+      "pod_ip": "",
+      "pod_name": ""
+    },
+    "linkedin_link": "",
+    "linuxdo_client_id": "WmwIAwGqPwo1fEww6hnOFbefSQjeqZ2W",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": true,
+    "logo": "https://raw.githubusercontent.com/xujfcn/images/main/logo/crazyrouter_logo.jpg",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "Crazyrouter",
+    "passkey_login": false,
+    "passkey_origins": "https://crazyrouter.com",
+    "passkey_rp_id": "https://lsky.zhongzhuan.chat/i/2025/12/09/6937e5cbd29f7.png",
+    "passkey_user_verification": "preferred",
+    "price": 7,
+    "privacy_policy_enabled": true,
+    "qq_group_link": "",
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "refund_policy_enabled": true,
+    "self_use_mode_enabled": false,
+    "seo_description_en": "Access 300+ AI models through one OpenAI-compatible API. CrazyRouter aggregates GPT-5, Claude, Gemini, Midjourney, and more with unified billing and smart routing.",
+    "seo_description_zh": "一个 API 调用 300+ AI 模型。CrazyRouter 聚合 GPT-5、Claude、Gemini、Midjourney 等主流模型，OpenAI 兼容接口，智能路由，按量计费。",
+    "seo_keywords_en": "AI API, OpenAI alternative, Claude API, Gemini API, GPT API, AI gateway",
+    "seo_keywords_zh": "AI API, API 聚合, OpenAI 替代, Claude API, Gemini API, GPT API, AI 网关",
+    "seo_title_en": "Crazyrouter - AI API Gateway | 300+ Models, One API",
+    "seo_title_zh": "Crazyrouter - AI API 聚合平台 | 300+ 模型，统一接口",
+    "server_address": "https://crazyrouter.com",
+    "setup": true,
+    "start_time": 1781061555,
+    "stripe_unit_price": 7,
+    "system_name": "Crazyrouter",
+    "telegram_bot_name": "crazyrouter_bot",
+    "telegram_link": "https://t.me/crzrouter",
+    "telegram_oauth": false,
+    "top_up_link": "",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "twitter_link": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": true,
+    "version": "",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

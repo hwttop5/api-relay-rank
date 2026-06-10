@@ -24,71 +24,6 @@
       "pricing_version": "82c4a357505fff6fee8462c3f7ec8a645bb95532669cb73b2cabee6a416ec24f"
     },
     {
-      "model_name": "gpt-5.3-codex",
-      "vendor_id": 8,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "GPT"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-5-20250929-thinking",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "CC-MAX",
-        "CC-MAX-LIMIT",
-        "CC-特价",
-        "CC-稳定",
-        "KIRO-80"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5",
-      "vendor_id": 8,
-      "quota_type": 0,
-      "model_ratio": 0.625,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "GPT"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.1",
-      "vendor_id": 8,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "GPT"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
       "model_name": "gpt-5.1-codex",
       "vendor_id": 8,
       "quota_type": 0,
@@ -104,19 +39,22 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-5-20251101-thinking",
+      "model_name": "claude-opus-4-6",
       "vendor_id": 2,
       "quota_type": 0,
-      "model_ratio": 3,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
       "enable_groups": [
-        "CC-MAX",
-        "CC-MAX-LIMIT",
+        "CC-TEST",
+        "CC-WF",
         "CC-特价",
         "CC-稳定",
-        "KIRO-80"
+        "KIRO-80",
+        "CC-MAX",
+        "CC-MAX-LIMIT",
+        "CC-MAX-UNLIMIT"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -132,11 +70,50 @@
       "owner_by": "",
       "completion_ratio": 5,
       "enable_groups": [
+        "CC-稳定",
+        "KIRO-80",
+        "CC-MAX",
         "CC-MAX-LIMIT",
+        "CC-特价"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6-thinking",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "CC-MAX",
+        "CC-MAX-LIMIT"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "CC-TEST",
+        "CC-WF",
         "CC-特价",
         "CC-稳定",
         "KIRO-80",
-        "CC-MAX"
+        "CC-MAX-LIMIT",
+        "CC-MAX-UNLIMIT"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -159,24 +136,17 @@
       ]
     },
     {
-      "model_name": "claude-haiku-4-5-20251001",
-      "vendor_id": 2,
+      "model_name": "gpt-5.5-openai-compact",
+      "vendor_id": 8,
       "quota_type": 0,
-      "model_ratio": 0.5,
+      "model_ratio": 1,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
+      "completion_ratio": 8,
       "enable_groups": [
-        "CC-特价",
-        "CC-稳定",
-        "KIRO-80",
-        "CC-MAX",
-        "CC-MAX-LIMIT",
-        "CC-TEST",
-        "CC-WF"
+        "GPT"
       ],
       "supported_endpoint_types": [
-        "anthropic",
         "openai"
       ]
     },
@@ -189,12 +159,31 @@
       "owner_by": "",
       "completion_ratio": 5,
       "enable_groups": [
+        "CC-MAX-UNLIMIT",
+        "CC-TEST",
+        "CC-特价",
+        "CC-稳定",
+        "KIRO-80",
         "CC-MAX",
+        "CC-MAX-LIMIT"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-fable-5",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
         "CC-MAX-LIMIT",
-        "CC-TEST",
-        "CC-特价",
-        "CC-稳定",
-        "KIRO-80"
+        "CC-MAX-UNLIMIT",
+        "CC-TEST"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -202,71 +191,17 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-8",
+      "model_name": "claude-haiku-4-5-20251001-thinking",
       "vendor_id": 2,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 0.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
       "enable_groups": [
-        "CC-TEST",
-        "CC-WF",
-        "CC-特价",
-        "CC-稳定",
         "KIRO-80",
-        "CC-MAX-LIMIT"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.2-codex",
-      "vendor_id": 8,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "GPT"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "vendor_id": 8,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "GPT"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "CC-TEST",
         "CC-特价",
-        "CC-稳定",
-        "KIRO-80",
-        "CC-MAX",
-        "CC-MAX-LIMIT"
+        "CC-稳定"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -304,21 +239,6 @@
       ]
     },
     {
-      "model_name": "gpt-5.3-codex-spark",
-      "vendor_id": 8,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "GPT"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
       "model_name": "gpt-5.4",
       "vendor_id": 8,
       "quota_type": 0,
@@ -334,7 +254,22 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-6",
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "GPT"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
       "vendor_id": 2,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -342,13 +277,227 @@
       "owner_by": "",
       "completion_ratio": 5,
       "enable_groups": [
+        "KIRO-80",
         "CC-MAX",
         "CC-MAX-LIMIT",
+        "CC-MAX-UNLIMIT",
+        "CC-TEST",
+        "CC-WF",
+        "CC-特价",
+        "CC-稳定"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929-thinking",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "CC-MAX-LIMIT",
+        "CC-特价",
+        "CC-稳定",
+        "KIRO-80",
+        "CC-MAX"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "GPT"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101-thinking",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "CC-特价",
+        "CC-稳定",
+        "KIRO-80",
+        "CC-MAX",
+        "CC-MAX-LIMIT"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "CC-MAX-UNLIMIT",
         "CC-TEST",
         "CC-WF",
         "CC-特价",
         "CC-稳定",
-        "KIRO-80"
+        "KIRO-80",
+        "CC-MAX",
+        "CC-MAX-LIMIT"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "GPT"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-codex-mini",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "GPT"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "GPT"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "GPT"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-codex",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "GPT"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "GPT"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "KIRO-80",
+        "CC-MAX",
+        "CC-MAX-LIMIT",
+        "CC-MAX-UNLIMIT",
+        "CC-TEST",
+        "CC-WF",
+        "CC-特价",
+        "CC-稳定"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "CC-稳定",
+        "KIRO-80",
+        "CC-MAX",
+        "CC-MAX-LIMIT",
+        "CC-MAX-UNLIMIT",
+        "CC-TEST",
+        "CC-特价"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -373,130 +522,6 @@
       ]
     },
     {
-      "model_name": "claude-sonnet-4-6",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "CC-稳定",
-        "KIRO-80",
-        "CC-MAX",
-        "CC-MAX-LIMIT",
-        "CC-TEST",
-        "CC-WF",
-        "CC-特价"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.1-codex-mini",
-      "vendor_id": 8,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "GPT"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5-openai-compact",
-      "vendor_id": 8,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "GPT"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "CC-WF",
-        "CC-特价",
-        "CC-稳定",
-        "KIRO-80",
-        "CC-MAX",
-        "CC-MAX-LIMIT",
-        "CC-TEST"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6-thinking",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "CC-MAX",
-        "CC-MAX-LIMIT"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001-thinking",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "CC-特价",
-        "CC-稳定",
-        "KIRO-80"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 8,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "GPT"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
       "model_name": "claude-opus-4-7-thinking",
       "vendor_id": 2,
       "quota_type": 0,
@@ -505,9 +530,9 @@
       "owner_by": "",
       "completion_ratio": 5,
       "enable_groups": [
+        "KIRO-80",
         "CC-特价",
-        "CC-稳定",
-        "KIRO-80"
+        "CC-稳定"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -517,8 +542,9 @@
   ],
   "group_ratio": {
     "CC-MAX-LIMIT": 1.2,
-    "CC-特价": 0.35,
-    "CC-稳定": 0.4,
+    "CC-MAX-UNLIMIT": 1.1,
+    "CC-特价": 0.2,
+    "CC-稳定": 0.25,
     "FREE": 0,
     "GPT": 0.25
   },
@@ -535,6 +561,7 @@
   },
   "usable_group": {
     "CC-MAX-LIMIT": "限制客户端访问的低价MAX",
+    "CC-MAX-UNLIMIT": "不限制客户端访问的低价MAX",
     "CC-特价": "福利，限时发放",
     "CC-稳定": "长期稳定使用，Kiro自建高缓存号池",
     "FREE": "捡破烂得到的福利，什么时候有群里会通知",
@@ -542,34 +569,19 @@
   },
   "vendors": [
     {
-      "id": 5,
-      "name": "DeepSeek",
-      "icon": "DeepSeek.Color"
-    },
-    {
-      "id": 8,
-      "name": "OpenAI",
-      "icon": "OpenAI"
-    },
-    {
-      "id": 2,
-      "name": "Anthropic",
-      "icon": "Claude.Color"
-    },
-    {
       "id": 3,
       "name": "Moonshot",
       "icon": "Moonshot"
     },
     {
+      "id": 5,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
       "id": 6,
       "name": "智谱",
       "icon": "Zhipu.Color"
-    },
-    {
-      "id": 7,
-      "name": "Google",
-      "icon": "Gemini.Color"
     },
     {
       "id": 9,
@@ -582,9 +594,24 @@
       "icon": "GithubCopilot"
     },
     {
+      "id": 2,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
       "id": 4,
       "name": "阿里巴巴",
       "icon": "Qwen.Color"
+    },
+    {
+      "id": 7,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 8,
+      "name": "OpenAI",
+      "icon": "OpenAI"
     }
   ],
   "status_payload": {

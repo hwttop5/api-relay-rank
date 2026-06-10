@@ -134,7 +134,7 @@
     "telegram_bot_name": "",
     "telegram_oauth": false,
     "theme": "classic",
-    "turnstile_check": true,
+    "turnstile_check": false,
     "turnstile_site_key": "0x4AAAAAACzwPx6xwdqhWpS7",
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 7.3,

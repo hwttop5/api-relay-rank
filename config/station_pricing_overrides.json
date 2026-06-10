@@ -572,5 +572,253 @@
     "evidenceUrl": "https://demo.voapi.top/wallet",
     "allowHighEffectiveMultiplier": true,
     "authoritative": true
+  },
+  "api.zicc.cc": {
+    "stationTypeHint": "non_subscription",
+    "groupMultipliers": [
+      {
+        "groupName": "Codex Plus号池（推荐)",
+        "groupMultiplier": 0.16,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "限时Team池",
+        "groupMultiplier": 0.001,
+        "codexEligible": false,
+        "usageLabel": "temporary_not_adopted"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "ZICC wallet topup 1 USD",
+        "billingType": "permanent",
+        "rmbAmount": 1,
+        "usdAmount": 1,
+        "rechargeLocation": "用户确认充值比例；登录态 payment 接口当前关闭",
+        "expiresRule": "用户确认 api.zicc.cc 充值比例为 1 RMB = 1 USD；页面未注明有效期"
+      }
+    ],
+    "forcedAdoptedTier": "Codex Plus号池（推荐) | ZICC wallet topup 1 USD",
+    "assumptionText": "2026-06-10 用户确认：api.zicc.cc 充值比例为 1:1；登录态分组显示 Codex Plus号池（推荐) 0.16，可用于 Codex；限时Team池 0.001 因 allow_messages_dispatch=false 且为临时分组，不参与正式采用。",
+    "confidence": "manual_verified",
+    "source": "user_confirmed_plus_logged_in_group_probe",
+    "evidenceUrl": "https://api.zicc.cc",
+    "authoritative": true
+  },
+  "www.haoyongai.xyz": {
+    "stationTypeHint": "non_subscription",
+    "groupMultipliers": [
+      {
+        "groupName": "GPT",
+        "groupMultiplier": 1,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "生图codex(也能GPT)",
+        "groupMultiplier": 1.3,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "ClaudeCode",
+        "groupMultiplier": 2,
+        "codexEligible": false,
+        "usageLabel": "Claude Code"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "HaoyongAI wallet topup 10 USD",
+        "billingType": "permanent",
+        "rmbAmount": 1,
+        "usdAmount": 10,
+        "rechargeLocation": "用户确认充值档位；站内 payment 接口当前关闭",
+        "expiresRule": "用户确认 www.haoyongai.xyz 充值档位为 1 RMB = 10 USD；页面未注明有效期"
+      }
+    ],
+    "forcedAdoptedTier": "GPT | HaoyongAI wallet topup 10 USD",
+    "assumptionText": "2026-06-10 用户确认：www.haoyongai.xyz 充值档位为 1:10；正式采用当前登录态分组 GPT 1x。公告中的临时福利口径不作为长期正式充值档位。",
+    "confidence": "manual_verified",
+    "source": "user_confirmed_recharge_plus_logged_in_group_probe",
+    "evidenceUrl": "https://www.haoyongai.xyz",
+    "authoritative": true
+  },
+  "www.thinkai.tv": {
+    "stationTypeHint": "non_subscription",
+    "groupMultipliers": [
+      {
+        "groupName": "Codex（推荐）",
+        "groupMultiplier": 1.2,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "default",
+        "groupMultiplier": 1.2,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "Claude Lite",
+        "groupMultiplier": 0.9,
+        "codexEligible": false,
+        "usageLabel": "Claude"
+      },
+      {
+        "groupName": "OpenAI-image2生图专用",
+        "groupMultiplier": 1.35,
+        "codexEligible": false,
+        "usageLabel": "image_only"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "ThinkAI wallet topup 25 USD",
+        "billingType": "permanent",
+        "rmbAmount": 12.5,
+        "usdAmount": 25,
+        "rechargeLocation": "浏览器登录态充值页截图",
+        "expiresRule": "截图显示 25 USD 充值实付 12.50 RMB；支持支付宝/USDT；页面未注明有效期"
+      },
+      {
+        "rechargeName": "ThinkAI wallet topup 50 USD",
+        "billingType": "permanent",
+        "rmbAmount": 25,
+        "usdAmount": 50,
+        "rechargeLocation": "浏览器登录态充值页截图",
+        "expiresRule": "截图显示 50 USD 充值实付 25.00 RMB；页面未注明有效期"
+      },
+      {
+        "rechargeName": "ThinkAI wallet topup 100 USD",
+        "billingType": "permanent",
+        "rmbAmount": 50,
+        "usdAmount": 100,
+        "rechargeLocation": "浏览器登录态充值页截图",
+        "expiresRule": "截图显示 100 USD 充值实付 50.00 RMB；页面未注明有效期"
+      },
+      {
+        "rechargeName": "ThinkAI wallet topup 200 USD",
+        "billingType": "permanent",
+        "rmbAmount": 100,
+        "usdAmount": 200,
+        "rechargeLocation": "浏览器登录态充值页截图",
+        "expiresRule": "截图显示 200 USD 充值实付 100.00 RMB；页面未注明有效期"
+      },
+      {
+        "rechargeName": "ThinkAI wallet topup 500 USD",
+        "billingType": "permanent",
+        "rmbAmount": 250,
+        "usdAmount": 500,
+        "rechargeLocation": "浏览器登录态充值页截图",
+        "expiresRule": "截图显示 500 USD 充值实付 250.00 RMB；页面未注明有效期"
+      }
+    ],
+    "forcedAdoptedTier": "Codex（推荐） | ThinkAI wallet topup 25 USD",
+    "assumptionText": "2026-06-10 用户截图确认：www.thinkai.tv Codex（推荐）分组倍率 1.2，25 USD 档实付 12.50 RMB，正式倍率 1.2 * 12.5 / 25 = 0.6；自动 /api/user/amount 采样返回值不作为本轮权威口径。",
+    "confidence": "manual_browser_verified",
+    "source": "user_screenshot_verified_logged_in_wallet_page",
+    "evidenceUrl": "https://www.thinkai.tv",
+    "authoritative": true
+  },
+  "api.code-relay.com": {
+    "stationTypeHint": "non_subscription",
+    "groupMultipliers": [
+      {
+        "groupName": "default",
+        "groupMultiplier": 1,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "CodeRelay wallet topup 1 USD",
+        "billingType": "permanent",
+        "rmbAmount": 1,
+        "usdAmount": 1,
+        "rechargeLocation": "用户确认账号封禁，无法登录补抓；充值比例未找到，暂按 1:1",
+        "expiresRule": "临时人工口径：未找到充值比例，暂按 1 RMB = 1 USD；后续找到账单/充值证据后覆盖"
+      }
+    ],
+    "forcedAdoptedTier": "default | CodeRelay wallet topup 1 USD",
+    "assumptionText": "2026-06-10 用户确认：api.code-relay.com 账号被封禁，无法登录抓取；分组倍率为 1；充值比例没找到，暂定 1:1。该口径覆盖旧 public plans 1.499x 结论，后续找到账单/充值证据再更新。",
+    "confidence": "manual_verified",
+    "source": "user_confirmed_account_banned_manual_assumption",
+    "evidenceUrl": "https://api.code-relay.com",
+    "authoritative": true
+  },
+  "relayai.asia": {
+    "stationTypeHint": "non_subscription",
+    "groupMultipliers": [
+      {
+        "groupName": "ChatGPT Plus",
+        "groupMultiplier": 0.15,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "ChatGPT Pro",
+        "groupMultiplier": 0.5,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "Claude Max",
+        "groupMultiplier": 2,
+        "codexEligible": false,
+        "usageLabel": "Claude"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "RelayAI wallet topup 10 USD",
+        "billingType": "permanent",
+        "rmbAmount": 10,
+        "usdAmount": 10,
+        "rechargeLocation": "RelayAI logged-in wallet topup page",
+        "expiresRule": "用户截图确认 API 密钥页分组下拉显示 ChatGPT Plus 0.15x、ChatGPT Pro 0.5x、Claude Max 2x；历史钱包充值口径为 1 RMB = 1 USD，最低充值 10 RMB；页面未注明有效期"
+      }
+    ],
+    "forcedAdoptedTier": "ChatGPT Plus | RelayAI wallet topup 10 USD",
+    "assumptionText": "2026-06-10 用户截图确认：relayai.asia API 密钥页可选分组为 ChatGPT Plus 0.15x、ChatGPT Pro 0.5x、Claude Max 2x。正式榜采用 Codex/OpenAI 可用的 ChatGPT Plus 0.15x；Claude Max 仅记录为 Claude 用途，不参与 Codex 正式采用。充值仍沿用已核验钱包口径 1 RMB = 1 USD，最低充值 10 RMB，因此最低倍率和正式采用有效倍率均为 0.15。",
+    "confidence": "manual_browser_verified",
+    "source": "user_screenshot_verified_logged_in_keys_page",
+    "evidenceUrl": "https://relayai.asia/keys",
+    "authoritative": true
+  },
+  "api.wanlai.ai": {
+    "stationTypeHint": "non_subscription",
+    "groupMultipliers": [
+      {
+        "groupName": "OpenAi-官方订阅稳定渠道",
+        "groupMultiplier": 1,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "ClaudeCode-官方订阅稳定渠道",
+        "groupMultiplier": 1,
+        "codexEligible": false,
+        "usageLabel": "Claude Code"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "Wanlai wallet topup 1 USD",
+        "billingType": "permanent",
+        "rmbAmount": 1,
+        "usdAmount": 1,
+        "rechargeLocation": "用户截图确认 https://wanlai.ai/purchase 余额充值页",
+        "expiresRule": "截图显示余额充值按量付费模式，当前比例为 1 美元≈1 人民币；页面未注明有效期"
+      }
+    ],
+    "forcedAdoptedTier": "OpenAi-官方订阅稳定渠道 | Wanlai wallet topup 1 USD",
+    "assumptionText": "2026-06-10 用户截图确认：wanlai.ai 余额充值页显示 OpenAi-官方订阅稳定渠道 1:1，1 元可用约 1.00 美元额度；公告弹窗显示暂无公告。正式榜采用 OpenAI 1x 口径，不采用横幅中未定位到具体正式渠道的低至 0.15 提示。",
+    "confidence": "manual_verified",
+    "source": "user_screenshot_verified_purchase_page",
+    "evidenceUrl": "https://wanlai.ai/purchase",
+    "authoritative": true
   }
 }

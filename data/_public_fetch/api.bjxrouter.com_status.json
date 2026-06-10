@@ -4,6 +4,41 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "各位用户：claude分组渠道号池成本上升，调整claude分组倍率至0.7",
+        "extra": "",
+        "id": 16,
+        "publishDate": "2026-06-10T07:52:04.151Z",
+        "type": "default"
+      },
+      {
+        "content": "各位用户：服务器升级完毕，有问题提交工单或加TG群反馈",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2026-06-08T14:35:26.751Z",
+        "type": "default"
+      },
+      {
+        "content": "各位用户：在线支付渠道恢复正常。",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-06-07T05:32:38.143Z",
+        "type": "default"
+      },
+      {
+        "content": "各位用户：支付渠道临时维护，恢复等通知，如急需充值可添加TG群组联系管理员",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2026-06-06T05:55:57.935Z",
+        "type": "default"
+      },
+      {
+        "content": "各位用户：gpt-huodong限时活动分组(0.06倍率)恢复，请重新创建令牌选择gpt-huodong分组。",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-06-04T03:56:06.471Z",
+        "type": "default"
+      },
+      {
         "content": "各位用户，gpt-free活动分组暂时不可用，请先使用其他分组。",
         "extra": "",
         "id": 11,
@@ -91,13 +126,6 @@
         "url": "https://api.bjxrouter.com/"
       },
       {
-        "color": "green",
-        "description": "备用地址",
-        "id": 2,
-        "route": "备用地址",
-        "url": "https://api.bybing.cc/"
-      },
-      {
         "color": "cyan",
         "description": "生图专用",
         "id": 3,
@@ -120,6 +148,9 @@
         "CC Switch": "ccswitch"
       },
       {
+        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+      },
+      {
         "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
       },
       {
@@ -132,7 +163,7 @@
         "OpenCat": "opencat://team/join?domain={address}&token={key}"
       }
     ],
-    "checkin_enabled": true,
+    "checkin_enabled": false,
     "custom_currency_exchange_rate": 1,
     "custom_currency_symbol": "¤",
     "data_export_default_time": "hour",
@@ -150,7 +181,7 @@
     "enable_task": true,
     "faq": [
       {
-        "answer": "1. **API Base URL : https://api.bybing.cc/v1** \n\n2. **OpenClaw 配置参考：**\n\n```json\n\"models\": {\n    \"providers\": {\n      \"polaris\": {\n        \"baseUrl\": \"https://api.bybing.cc/v1\",\n        \"apiKey\": \"自己的api key\",\n        \"api\": \"openai-responses\",\n        \"headers\": {\n          \"User-Agent\": \"curl/8.0\"\n        },\n        \"authHeader\": true,\n        \"models\": [\n          {\n            \"id\": \"gpt-5.4\",\n            \"name\": \"gpt-5.4\",\n            \"reasoning\": true,\n            \"input\": [\n              \"text\"\n            ],\n            \"cost\": {\n              \"input\": 0,\n              \"output\": 0,\n              \"cacheRead\": 0,\n              \"cacheWrite\": 0\n            },\n            \"contextWindow\": 200000,\n            \"maxTokens\": 16000\n          }\n        ]\n      }\n    }\n  },\n  \"agents\": {\n    \"defaults\": {\n      \"model\": {\n        \"primary\": \"polaris/gpt-5.4\"\n      }\n    }\n  },\n```\n\n",
+        "answer": "1. **API Base URL : https://api.bjxrouter.com/v1** \n\n2. **OpenClaw 配置参考：**\n\n```json\n\"models\": {\n    \"providers\": {\n      \"polaris\": {\n        \"baseUrl\": \"https://api.bjxrouter.com/v1\",\n        \"apiKey\": \"自己的api key\",\n        \"api\": \"openai-responses\",\n        \"headers\": {\n          \"User-Agent\": \"curl/8.0\"\n        },\n        \"authHeader\": true,\n        \"models\": [\n          {\n            \"id\": \"gpt-5.4\",\n            \"name\": \"gpt-5.4\",\n            \"reasoning\": true,\n            \"input\": [\n              \"text\"\n            ],\n            \"cost\": {\n              \"input\": 0,\n              \"output\": 0,\n              \"cacheRead\": 0,\n              \"cacheWrite\": 0\n            },\n            \"contextWindow\": 200000,\n            \"maxTokens\": 16000\n          }\n        ]\n      }\n    }\n  },\n  \"agents\": {\n    \"defaults\": {\n      \"model\": {\n        \"primary\": \"polaris/gpt-5.4\"\n      }\n    }\n  },\n```\n\n",
         "id": 1,
         "question": "如何对接和配置OpenClaw？"
       },
@@ -179,14 +210,17 @@
     "passkey_origins": "https://api.bjxrouter.com",
     "passkey_rp_id": "api.bjxrouter.com",
     "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
     "price": 1,
     "privacy_policy_enabled": false,
     "quota_display_type": "CNY",
     "quota_per_unit": 500000,
+    "register_enabled": true,
     "self_use_mode_enabled": false,
     "server_address": "https://api.bjxrouter.com",
     "setup": true,
-    "start_time": 1779670770,
+    "start_time": 1780927282,
     "stripe_unit_price": 8,
     "system_name": "北极星",
     "telegram_bot_name": "",
@@ -197,7 +231,7 @@
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 1,
     "user_agreement_enabled": false,
-    "version": "v1.0.0-rc.4",
+    "version": "v1.0.0-rc.10",
     "wechat_login": false,
     "wechat_qrcode": ""
   },

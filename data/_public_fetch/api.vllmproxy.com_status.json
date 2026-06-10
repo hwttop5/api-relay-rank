@@ -1,0 +1,172 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":true,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "本平台仅供内部技术研究、接口测试及系统验证使用。\n\n仅限授权人员访问\n禁止账号共享、转借、出租或转售\n禁止接口转售及任何商业化用途\n系统将记录访问日志、调用记录及异常行为用于安全审计\n\n对于接口滥用、异常请求、恶意测试、违规内容生成或泄露平台信息等行为，平台有权限制或永久封禁相关账号。\n\n非授权访问区域禁止访问\nInternal Use Only",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-06-09T08:28:11.156Z",
+        "type": "default"
+      },
+      {
+        "content": "各位大佬,最新渠道更新如下\n1. 新上claude多个渠道\n2. plus号池全部分组价格为0.1倍率\n3. gemini模型上架\n4. gpt_pro降价为0.3，vip分组降低为0.25",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-05-21T02:34:23.959Z",
+        "type": "default"
+      },
+      {
+        "content": "5/9/2026 18:00:00实行\n由于目前 GPT Pro 号池均为正价开通，整体成本大幅上涨，之前一直是亏本给大家提供服务。为了保证服务能够长期稳定运行，现对部分价格和权益做如下调整：\n1. GPT Pro 使用倍率调整为 0.35\n2. 新增订阅分组：18.8 元\n    订阅后赠送 8.8 元余额\n    订阅vip gpt_pro分组享受0.33倍率\n    定于vip cc满血特价享受0.4倍率 ",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-05-09T04:52:04.336Z",
+        "type": "default"
+      },
+      {
+        "content": "5/6/2025 0点~0点30分维护停机维护公告\n1. 服务器迁移.改为优质高防线路,访问更快\n2. 充值比例0.2:1改为1:1, 模型价格降低原来的1/4。换算问题价格和原来的一致, 11:50关闭充值入口\n3. 因gpt pro低价车掉的太快影响用户体验，现在已经上正价车pro分组倍率改为0.3(执行日期为2026年8日)\n4. 新增plus分组,倍率为0.15,接替平价车，default分组指向gpt plus号池(不支持image-2)",
+        "extra": "6日凌晨维护公告",
+        "id": 5,
+        "publishDate": "2026-05-05T02:53:41.471Z",
+        "type": "default"
+      },
+      {
+        "content": "最近很多大佬反馈模型价格不会算，最近可能需要修改下充值比例和倍率修改, 麻烦各位大佬进下群,我会在群内发出最新公式。修改后gpt和claude价格不会上涨，只是换算会变。",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-05-04T06:55:46.649Z",
+        "type": "default"
+      },
+      {
+        "content": "微信: 首页下拉微信群\nTG: https://t.me/yuntongz",
+        "extra": "加群联系方式",
+        "id": 3,
+        "publishDate": "2026-04-24T03:33:37.880Z",
+        "type": "default"
+      },
+      {
+        "content": "因用户原因退款: 退款政策为剩余额度-赠送额度-手续费，因商家责任用户投诉退款，核实后确定商家责任则全额退款",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-04-22T03:39:09.611Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "cloudflare高速线路",
+        "id": 1,
+        "route": "CF",
+        "url": "https://api.vllmproxy.com/"
+      },
+      {
+        "color": "blue",
+        "description": "生成图片、大文件推荐使用此接口",
+        "id": 2,
+        "route": "图片接口",
+        "url": "https://image.vllmproxy.com"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://api.vllmproxy.com/docs",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "https://api.vllmproxy.com/docs",
+        "id": 1,
+        "question": "帮助文档地址"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "Ov23liEGeTLQjmnAG2m6",
+    "github_oauth": true,
+    "linuxdo_client_id": "QLUffKU1V89ncUpgGJNeM9bPnHwpaSd0",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": true,
+    "logo": "https://image.ztlinux.com/i/c28c1bf8-ae5b-4607-90b7-ed2d36e20ef3.jpg",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "api.vllmproxy.com",
+    "passkey_login": false,
+    "passkey_origins": "https://api.vllmproxy.com",
+    "passkey_rp_id": "https://api.vllmproxy.com/",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
+    "price": 1,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "register_enabled": true,
+    "self_use_mode_enabled": false,
+    "server_address": "https://api.vllmproxy.com",
+    "setup": true,
+    "start_time": 1780911847,
+    "stripe_unit_price": 8,
+    "system_name": "AIGateHub",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "default",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": false,
+    "version": "v1.0.0-rc.10",
+    "wechat_login": false,
+    "wechat_qrcode": "https://api.vllmproxy.com/newapi-assets/wechat.jpg"
+  },
+  "message": "",
+  "success": true
+}

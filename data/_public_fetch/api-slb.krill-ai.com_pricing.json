@@ -17,7 +17,7 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 635,
+        "stock": 155,
         "group_rules": [
           {
             "id": 10,
@@ -60,7 +60,7 @@
         "campaign_name": null,
         "channel_name": "国产模型套餐",
         "total_credits": 9900,
-        "stock": 1070,
+        "stock": 1049,
         "group_rules": []
       },
       {
@@ -77,7 +77,7 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 907,
+        "stock": 731,
         "group_rules": [
           {
             "id": 13,
@@ -120,7 +120,7 @@
         "campaign_name": null,
         "channel_name": "国产模型套餐",
         "total_credits": 20699,
-        "stock": 114,
+        "stock": 112,
         "group_rules": []
       },
       {
@@ -138,7 +138,7 @@
         "campaign_name": null,
         "channel_name": "国产模型套餐",
         "total_credits": 43999,
-        "stock": 112,
+        "stock": 109,
         "group_rules": []
       },
       {
@@ -155,7 +155,7 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 944,
+        "stock": 871,
         "group_rules": [
           {
             "id": 31,
@@ -197,7 +197,7 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 83,
+        "stock": 1050,
         "group_rules": [
           {
             "id": 34,
@@ -239,7 +239,7 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 11,
+        "stock": 1027,
         "group_rules": [
           {
             "id": 37,
@@ -281,7 +281,7 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 18,
+        "stock": 1052,
         "group_rules": [
           {
             "id": 40,
@@ -331,6 +331,15 @@
       },
       {
         "id": 4,
+        "name": "500美元",
+        "amount_usd": "500.000000",
+        "price_cny": "500.000000",
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "余额"
+      },
+      {
+        "id": 9,
         "name": "1000美元",
         "amount_usd": "1000.000000",
         "price_cny": "1000.000000",
@@ -339,19 +348,10 @@
         "channel_name": "余额"
       },
       {
-        "id": 9,
+        "id": 10,
         "name": "2000美元",
         "amount_usd": "2000.000000",
         "price_cny": "2000.000000",
-        "campaign_price": null,
-        "campaign_name": null,
-        "channel_name": "余额"
-      },
-      {
-        "id": 10,
-        "name": "4000美元",
-        "amount_usd": "4000.000000",
-        "price_cny": "4000.000000",
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "余额"

@@ -1,6 +1,125 @@
 {
   "data": [
     {
+      "model_name": "claude-fable-5",
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "completion_ratio": 5
+    },
+    {
+      "model_name": "grok-4.3-beta",
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "completion_ratio": 2
+    },
+    {
+      "model_name": "doubao-seed-2.0-mini",
+      "quota_type": 0,
+      "model_ratio": 0.4,
+      "model_price": 0,
+      "completion_ratio": 10
+    },
+    {
+      "model_name": "qwen3-rerank",
+      "quota_type": 0,
+      "model_ratio": 0.9,
+      "model_price": 0,
+      "completion_ratio": 0
+    },
+    {
+      "model_name": "text-embedding-v4",
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "completion_ratio": 0
+    },
+    {
+      "model_name": "glm-4v-flash",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.001,
+      "completion_ratio": 0
+    },
+    {
+      "model_name": "mimo-v2.5:free",
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "completion_ratio": 0
+    },
+    {
+      "model_name": "deepseek-v4Pro",
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "completion_ratio": 0
+    },
+    {
+      "model_name": "deepseek-v4-flash:free",
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "completion_ratio": 0
+    },
+    {
+      "model_name": "omni-moderation-latest",
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "completion_ratio": 0
+    },
+    {
+      "model_name": "z-ai/glm-5.1",
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "completion_ratio": 0
+    },
+    {
+      "model_name": "gemini-3.5-flash-high",
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "completion_ratio": 0
+    },
+    {
+      "model_name": "mimo-v2.5-pro:free",
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "completion_ratio": 0
+    },
+    {
+      "model_name": "gemini-3.5-flash-low",
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "completion_ratio": 0
+    },
+    {
+      "model_name": "[正向1m]deepseek-v4Pro",
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "completion_ratio": 0
+    },
+    {
+      "model_name": "glm-4v-flash:free",
+      "quota_type": 0,
+      "model_ratio": 0,
+      "model_price": 0,
+      "completion_ratio": 0
+    },
+    {
+      "model_name": "qwen3-max-thinking",
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "completion_ratio": 4
+    },
+    {
       "model_name": "qwen3.7-plus",
       "quota_type": 0,
       "model_ratio": 1,
@@ -580,129 +699,11 @@
       "model_ratio": 0,
       "model_price": 0,
       "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-seed-code-preview-251028",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-seed-character-251128",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-seed-2-0-pro-260215",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-seed-2-0-mini-260215",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-seed-2-0-lite-260215",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-seed-2-0-code-preview-260215",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-seed-1-8-251228",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-seed-1-6-lite-251015",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-seed-1-6-flash-250828",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-seed-1-6-251015",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-embedding-vision-251215",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-embedding-vision-250615",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-1-5-vision-pro-32k-250115",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-1-5-pro-32k-character-250715",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-1-5-pro-32k-character-250228",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-1-5-pro-32k-250115",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
-    },
-    {
-      "model_name": "doubao-1-5-lite-32k-250115",
-      "quota_type": 0,
-      "model_ratio": 0,
-      "model_price": 0,
-      "completion_ratio": 0
     }
   ],
   "group_ratio": {
     "Claude-AWS": 2.8,
+    "Claude-AZ&AWS": 0.55,
     "Claude-企业级": 3,
     "Claude-官转": 3.5,
     "Claude-满血MAX20": 1.75,
@@ -715,11 +716,10 @@
     "Codex-订阅福利组": 1,
     "Gemini-企业级": 3.5,
     "Google-Gemini": 1.5,
-    "Grok-福利": 0.95,
     "中国模型-企业级": 0.78,
     "按次生图专用": 1
   },
   "message": "",
   "success": true,
-  "source_url": "https://aiapi.muskpay.top/api/pricing"
+  "source_url": "https://muskapi.cc/api/pricing"
 }

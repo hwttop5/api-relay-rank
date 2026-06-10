@@ -14,6 +14,13 @@
     "activity_lottery_join_topup_min_money": 0,
     "announcements": [
       {
+        "content": "每天注册前20位送天卡。qq群内可领额度福利。\n当前起始id：13372\n所有套餐8折优惠码FXCDISC2606RSJ5截止0610有效。",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2026-06-07T16:55:47.943Z",
+        "type": "default"
+      },
+      {
         "content": "Gemini 账号库存可能会出现临时缺货，我们每天都会持续补充账号，数量有限，请以实际库存为准。当前每日约新增 200 个账号，每日总额度约 50,000 $+。\n\n今日库存已全部发放完毕，下午将继续补充一批约 200 个账号。",
         "extra": "",
         "id": 14,
@@ -109,7 +116,7 @@
       }
     ],
     "api_info_enabled": true,
-    "blocked_page_skip_logged_in": false,
+    "blocked_page_skip_logged_in": true,
     "blocked_regions": "",
     "ccswitch_defaults": {
       "claude": {
@@ -1003,7 +1010,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://api.fishxcode.com",
     "setup": true,
-    "start_time": 1780390827,
+    "start_time": 1781081098,
     "stripe_unit_price": 8,
     "subscription_promo_badge_left": "",
     "subscription_promo_badge_right": "",

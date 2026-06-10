@@ -4,26 +4,6 @@
   ],
   "data": [
     {
-      "model_name": "gemini-3.5-flash",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 0.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 0.055553333333,
-      "enable_groups": [
-        "gemini",
-        "test"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
       "model_name": "claude-sonnet-4-6",
       "vendor_id": 5,
       "quota_type": 0,
@@ -33,125 +13,15 @@
       "completion_ratio": 5,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "test",
         "claude-aws",
-        "claude-special"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-flash-preview",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 0.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini",
-        "test"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "codex-auto-review",
-      "quota_type": 0,
-      "model_ratio": 0.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.166666666667,
-      "enable_groups": [
-        "default",
-        "codex",
-        "test"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-8",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.16,
-      "create_cache_ratio": 1.6,
-      "enable_groups": [
         "claude-special",
         "test"
       ],
       "supported_endpoint_types": [
         "anthropic",
         "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "test",
-        "default",
-        "codex"
       ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "claude-special",
-        "test",
-        "claude-aws"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "claude-special",
-        "test",
-        "claude-aws"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
       "model_name": "claude-opus-4-7",
@@ -184,9 +54,9 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
+        "claude-aws",
         "claude-special",
-        "test",
-        "claude-aws"
+        "test"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -194,17 +64,18 @@
       ]
     },
     {
-      "model_name": "claude-sonnet-4-5-20250929",
+      "model_name": "claude-haiku-4-5",
       "vendor_id": 5,
       "quota_type": 0,
-      "model_ratio": 1.5,
+      "model_ratio": 0.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
       "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "claude-aws"
+        "claude-aws",
+        "claude-special",
+        "test"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -212,20 +83,22 @@
       ]
     },
     {
-      "model_name": "gpt-5.5",
-      "vendor_id": 1,
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 5,
       "quota_type": 0,
       "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
+      "completion_ratio": 5,
+      "cache_ratio": 0.16,
+      "create_cache_ratio": 1.6,
       "enable_groups": [
-        "default",
-        "codex",
+        "claude-aws",
+        "claude-special",
         "test"
       ],
       "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     },
@@ -248,20 +121,95 @@
       ]
     },
     {
-      "model_name": "gpt-5.4",
+      "model_name": "gpt-5.4-mini",
       "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 1.25,
+      "model_ratio": 0.375,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
+        "codex-welfare",
         "default",
         "codex",
         "test"
       ],
       "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex-welfare",
+        "default",
+        "codex",
+        "test"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.166666666667,
+      "enable_groups": [
+        "default",
+        "codex",
+        "test",
+        "codex-welfare"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini",
+        "test"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.055553333333,
+      "enable_groups": [
+        "gemini",
+        "test"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
         "openai"
       ]
     },
@@ -274,11 +222,50 @@
       "owner_by": "",
       "completion_ratio": 0,
       "enable_groups": [
-        "codex",
         "default",
+        "codex",
         "test"
       ],
       "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "test",
+        "codex-welfare",
+        "default",
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-aws",
+        "claude-special",
+        "test"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     }
@@ -287,6 +274,7 @@
     "claude-aws": 2.5,
     "claude-special": 0.5,
     "codex": 0.25,
+    "codex-welfare": 0.12,
     "default": 0.25,
     "gemini": 1.5
   },
@@ -310,6 +298,7 @@
     "claude-aws": "claude aws 渠道",
     "claude-special": "claude 逆向渠道",
     "codex": "codex-pro，自建渠道",
+    "codex-welfare": "codex 优惠分组",
     "default": "不要用默认分组",
     "gemini": "gemini"
   },

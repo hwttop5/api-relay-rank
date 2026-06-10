@@ -4,161 +4,210 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
-        "content": "由于openai凌晨时对gpt-5.4的临时下线，触发了我们的冷却机制，导致gpt-5.4模型持续不可用，现已修复，带来的不便敬请谅解",
+        "content": "The aws-kiro pay-as-you-go channel has been restored. Due to cost impacts, the multiplier has been increased from 0.3 to 0.5.",
+        "extra": "",
+        "id": 30,
+        "publishDate": "2026-06-10T06:49:58.310Z",
+        "type": "default"
+      },
+      {
+        "content": "The cc group has launched the claude-fable-5 model. This model is expensive; please use it with caution.",
+        "extra": "",
+        "id": 29,
+        "publishDate": "2026-06-10T02:07:46.168Z",
+        "type": "default"
+      },
+      {
+        "content": "The aws kiro channel has been restored, but stability cannot be guaranteed for now",
+        "extra": "",
+        "id": 28,
+        "publishDate": "2026-06-07T06:20:06.694Z",
+        "type": "default"
+      },
+      {
+        "content": "We have configured a shortcut jump for the drawing feature. After creating a token that can use gpt-image-2, expand the ··· on the right, click Chat, then click Drawing to jump to the drawing website and configure it with one click to start using it.",
+        "extra": "",
+        "id": 27,
+        "publishDate": "2026-06-06T09:11:12.890Z",
+        "type": "default"
+      },
+      {
+        "content": "Due to channel supply issues, the aws kiro channel is temporarily offline",
+        "extra": "",
+        "id": 26,
+        "publishDate": "2026-06-06T05:49:41.280Z",
+        "type": "default"
+      },
+      {
+        "content": "We have reduced the price of claude on the aws channel, lowering the multiplier from 0.7 to 0.3.\nAt the same time, the ccmax account pool groups have been launched, with multipliers of 1.5 and 1.6 respectively, approximately 22% and 24% of the official price. We recommend prioritizing the groups that are only available in claudecode.",
+        "extra": "",
+        "id": 25,
+        "publishDate": "2026-06-05T19:00:04.795Z",
+        "type": "default"
+      },
+      {
+        "content": "We have upgraded the subscription feature. You can now enable auto-renewal for subscriptions, which will automatically renew when a subscription is about to expire or be used up. When enabling this feature, please ensure that your on-site balance is sufficient to avoid response interruptions caused by failed auto-renewal. In addition, changes to the configuration of the number of simultaneously active instances of a subscription type will take effect immediately, so please avoid accidentally setting too many subscriptions",
+        "extra": "",
+        "id": 24,
+        "publishDate": "2026-06-03T19:54:02.607Z",
+        "type": "default"
+      },
+      {
+        "content": "Due to openai temporarily taking gpt-5.4 offline in the early hours, our cooldown mechanism was triggered, causing the gpt-5.4 model to remain unavailable. It has now been fixed. We apologize for the inconvenience.",
         "extra": "",
         "id": 23,
         "publishDate": "2026-06-03T05:43:20.679Z",
         "type": "default"
       },
       {
-        "content": "OpenAI已停止该渠道的gpt-5.2和gpt-5.3-codex的供应，我们将在今晚删除该模型。",
+        "content": "OpenAI has stopped supplying gpt-5.2 and gpt-5.3-codex through this channel, and we will remove the model tonight.",
         "extra": "",
         "id": 22,
         "publishDate": "2026-06-02T04:11:54.823Z",
         "type": "warning"
       },
       {
-        "content": "openai在六月初就会停止该渠道的gpt-5.2以及gpt-5.3-codex的供应，建议还在用的用户提前转移",
+        "content": "openai will stop supplying gpt-5.2 and gpt-5.3-codex through this channel in early June. Users who are still using them are advised to migrate in advance.",
         "extra": "",
         "id": 21,
         "publishDate": "2026-05-28T11:02:23.899Z",
         "type": "default"
       },
       {
-        "content": "请勿使用本站 GPT 官方转发服务进行恶意网络安全活动，OpenAI 官方会对相关会话进行网络安全检测，多次风险标记后，响应可能因额外安全检查而变慢，账号也可能受到限制。对于频繁触发的用户，本站可能采取提醒、限速、暂停服务或封禁等措施，以保障其他用户的正常体验。",
+        "content": "Please do not use this site's GPT official relay service for malicious cybersecurity activities. OpenAI officially conducts cybersecurity checks on related conversations. After multiple risk flags, responses may become slower due to additional security checks, and accounts may also be restricted. For users who frequently trigger such checks, this site may take measures such as reminders, rate limiting, service suspension, or bans to ensure the normal experience of other users.",
         "extra": "",
         "id": 20,
         "publishDate": "2026-05-27T12:03:32.430Z",
         "type": "default"
       },
       {
-        "content": "由于配置错误，之前请求部分模型（gpt-5.2）价格异常，现已将基础价格上调至官方标价",
+        "content": "Due to a configuration error, the price for previous requests to some models (gpt-5.2) was abnormal. The base price has now been raised to the official listed price.",
         "extra": "",
         "id": 19,
         "publishDate": "2026-05-25T18:52:32.842Z",
         "type": "default"
       },
       {
-        "content": "受上游业务变更影响，阿里云渠道暂时下线",
+        "content": "Due to upstream business changes, the Alibaba Cloud channel is temporarily offline",
         "extra": "",
         "id": 18,
         "publishDate": "2026-05-25T04:06:49.073Z",
         "type": "default"
       },
       {
-        "content": "由于openai停止了gpt-5.3-codex的供应，我们目前对gpt-5.3-codex进行了重定向，以避免阻塞服务，使用到该模型的用户建议尽快迁移",
+        "content": "Since openai has stopped supplying gpt-5.3-codex, we have currently redirected gpt-5.3-codex to avoid service disruption. Users who are using this model are advised to migrate as soon as possible.",
         "extra": "",
         "id": 17,
         "publishDate": "2026-05-21T20:11:19.580Z",
         "type": "default"
       },
       {
-        "content": "为庆祝站内注册用户过千，我们开启了签到活动，每日签到最高可得2刀额度，访问个人资料页：https://api.avemujica.moe/profile 进行签到领取，领取后会自动得到一个签到额度订阅包，钱包页面设置优先订阅即可使用",
+        "content": "To celebrate the number of registered users on the site surpassing 1,000, we have launched a check-in event. You can receive up to $2 in credit by checking in daily. Visit your profile page: https://api.avemujica.moe/profile to check in and claim it. After claiming, you will automatically receive a check-in credit subscription package. Set it as the priority subscription on the wallet page to use it.",
         "extra": "",
         "id": 16,
         "publishDate": "2026-05-20T09:51:22.922Z",
         "type": "ongoing"
       },
       {
-        "content": "图片接口已支持webp格式返回，可以有效提高响应速度，调用时指定对应返回格式参数为webp即可，目前不传入格式也默认返回webp。\n对于使用cherry-studio或类似软件的用户，请不要直接在chat接口使用图片模型，请打开绘图功能选择绘图模型进行使用",
+        "content": "The image API now supports returning images in webp format, which can effectively improve response speed. When calling it, simply specify the corresponding return format parameter as webp. Currently, if no format is provided, webp is also returned by default.\nFor users using cherry-studio or similar software, please do not use image models directly in the chat API. Please enable the drawing feature and select a drawing model to use.",
         "extra": "",
         "id": 15,
         "publishDate": "2026-05-19T05:53:04.142Z",
         "type": "default"
       },
       {
-        "content": "为方便多渠道管理，新用户赠送额度已转为等值订阅额度包，现有用户不受影响，新用户请注意在钱包修改使用方式为优先订阅",
+        "content": "To facilitate multi-channel management, the bonus credits for new users have been converted into an equivalent subscription credit package. Existing users are not affected. New users should note that they need to change the usage method in the wallet to prioritize subscriptions.",
         "extra": "",
         "id": 14,
         "publishDate": "2026-05-18T16:21:38.373Z",
         "type": "default"
       },
       {
-        "content": "已上线阿里云百炼官方6折渠道，支持K2.6，GLM5.1等主流旗舰国产模型，创建令牌时选择百炼分组即可使用",
+        "content": "The official Alibaba Cloud Bailian 40% off channel is now online, supporting mainstream flagship domestic models such as K2.6 and GLM5.1. Select the Bailian group when creating a token to use it.",
         "extra": "",
         "id": 13,
         "publishDate": "2026-05-18T15:22:56.519Z",
         "type": "default"
       },
       {
-        "content": "网站即将进行维护升级，预计几分钟内完成，中间可能出现短暂连接断开，敬请谅解",
+        "content": "The website will soon undergo maintenance and upgrades, expected to be completed within a few minutes. There may be brief connection interruptions during this time. Thank you for your understanding.",
         "extra": "",
         "id": 12,
         "publishDate": "2026-05-18T14:49:06.960Z",
         "type": "default"
       },
       {
-        "content": "生图渠道已调整，现支持4k出图，生图时建议使用api-cn节点，主节点暂时无法保证连接稳定",
+        "content": "The image generation channel has been adjusted and now supports 4k output. It is recommended to use the api-cn node when generating images, as the main node cannot currently guarantee a stable connection.",
         "extra": "",
         "id": 11,
         "publishDate": "2026-05-17T19:02:42.822Z",
         "type": "default"
       },
       {
-        "content": "已更新订阅购买逻辑，按实际激活订阅计算限制",
+        "content": "Updated the subscription purchase logic to calculate limits based on actually activated subscriptions",
         "extra": "",
         "id": 10,
         "publishDate": "2026-05-17T12:24:44.215Z",
         "type": "default"
       },
       {
-        "content": "已上线aws渠道claude，支持claude code内调用，请在创建令牌时选择aws分组，该分组倍率0.7，约为官方1折，暂不保证该渠道稳定供应能力",
+        "content": "The aws channel for claude is now live and supports invocation within claude code. When creating a token, please select the aws group. This group has a multiplier of 0.7, approximately 10% of the official price. Stable supply capacity for this channel is not guaranteed for now.",
         "extra": "",
         "id": 9,
         "publishDate": "2026-05-16T18:55:41.212Z",
         "type": "default"
       },
       {
-        "content": "更新：现已支持使用站内余额直接购买订阅",
+        "content": "Update: Subscriptions can now be purchased directly using your on-site balance",
         "extra": "",
         "id": 8,
         "publishDate": "2026-05-16T18:41:23.487Z",
         "type": "success"
       },
       {
-        "content": "预计2:00~2:30进行网站的维护升级，同时一并完成额度的统一更新，中间可能出现请求中断，带来的不便敬请谅解。更新后您可能需要重新登录网站，但api调用不受影响（已更新完成，如有问题请邮箱联系）",
+        "content": "Website maintenance and upgrades are expected to take place from 2:00 to 2:30, during which the quota will also be uniformly updated. Requests may be interrupted during this period. We apologize for any inconvenience caused. After the update, you may need to log in to the website again, but api calls will not be affected. (The update has been completed. If you encounter any issues, please contact us by email.)",
         "extra": "",
         "id": 7,
         "publishDate": "2026-05-16T17:40:19.112Z",
         "type": "success"
       },
       {
-        "content": "为统一多提供商的接入与管理，我们近期会对额度/订阅充值进行简化，统一为1:1充值，并调整目前分组为0.15倍率分组，订阅额度也会进行调整以匹配之前的0.1倍率，预计这几天内自动完成，您的额度和分组会被自动更新，以避免阻断现有服务运行",
+        "content": "To unify access and management across multiple providers, we will soon simplify quota/subscription top-ups by standardizing them to 1:1 top-ups, and adjust the current groups to 0.15x multiplier groups. Subscription quotas will also be adjusted to match the previous 0.1x multiplier. This is expected to be completed automatically within the next few days. Your quota and groups will be automatically updated to avoid interrupting existing service operations.",
         "extra": "",
         "id": 6,
         "publishDate": "2026-05-16T13:05:37.836Z",
         "type": "default"
       },
       {
-        "content": "有的朋友可能还在使用一些传统的chatweb/chatapp，我们很推荐各位尝试一下openai官方的codex-app：https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi（当然，写代码的可能觉得codex-cli就很好了），站内也有一份文档做配置参考：https://docs.avemujica.moe/cli/3-codex 安装完成后，打开app，codex/gpt就可以直接在你的电脑上为你完成你的工作😊",
+        "content": "Some friends may still be using traditional chatweb/chatapp tools. We highly recommend that you try OpenAI’s official codex-app: https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi (of course, those who write code may feel that codex-cli is already great). There is also a document on the site for configuration reference: https://docs.avemujica.moe/cli/3-codex After installation, open the app, and codex/gpt can directly complete your work for you on your computer 😊",
         "extra": "",
         "id": 5,
         "publishDate": "2026-05-13T18:43:51.853Z",
         "type": "default"
       },
       {
-        "content": "已调整日卡订阅购买限制，现在允许同时持有5张日卡，但天数并不会叠加，而是获取新的独立额度，每个订阅仍然需要1天内用完，本意是不希望您囤积太多额度，而是在需要时购买使用",
+        "content": "The purchase limit for daily card subscriptions has been adjusted. You can now hold 5 daily cards at the same time, but the days will not be stacked; instead, you will receive new independent quotas. Each subscription still needs to be used up within 1 day. The intention is not for you to stockpile too much quota, but to purchase and use it when needed.",
         "extra": "",
         "id": 4,
         "publishDate": "2026-05-11T15:12:09.666Z",
         "type": "default"
       },
       {
-        "content": "openai官方会对会话内容进行网络安全检查，一旦会话被标记为网络安全问题，就会持续报错，无法继续使用，这并非本站可以控制的，如确有网络安全需求，请联系商务邮箱：xxx",
+        "content": "OpenAI officially conducts cybersecurity checks on conversation content. Once a conversation is flagged as a cybersecurity issue, it will keep returning errors and can no longer be used. This is not something this site can control. If you do have cybersecurity needs, please contact the business email: xxx",
         "extra": "",
         "id": 3,
         "publishDate": "2026-05-11T14:36:11.520Z",
         "type": "default"
       },
       {
-        "content": "gpt-image-2 的图像生成任务可能需要较长处理时间，并可能受 Cloudflare 基础设施限制影响而出现超时或请求中断。因此，我们暂不承诺该模型的稳定供应能力。如果确实需要生成图片，可以使用https://api-cn.avemujica.moe做为baseurl",
+        "content": "Image generation tasks for gpt-image-2 may require a longer processing time and may experience timeouts or request interruptions due to Cloudflare infrastructure limitations. Therefore, we do not currently guarantee stable availability of this model. If you do need to generate images, you can use https://api-cn.avemujica.moe as the baseurl",
         "extra": "",
         "id": 2,
         "publishDate": "2026-05-10T09:47:27.404Z",
         "type": "default"
       },
       {
-        "content": "联系方式\xxx 滥用\xxx 工单\xxx 商业合作",
+        "content": "Contact Information\xxx Abuse\xxx Support Tickets\xxx Business Cooperation",
         "extra": "",
         "id": 1,
         "publishDate": "2026-05-10T01:19:48.305Z",
@@ -168,21 +217,29 @@
     "announcements_enabled": true,
     "api_info": [
       {
-        "color": "blue",
-        "description": "CN",
-        "id": 1,
-        "route": "CN",
-        "url": "https://api-cn.avemujica.moe"
-      },
-      {
         "color": "green",
         "description": "默认",
         "id": 2,
         "route": "默认",
         "url": "https://api.avemujica.moe"
+      },
+      {
+        "color": "blue",
+        "description": "EdgeOne线路，生图可用",
+        "id": 3,
+        "route": "EdgeOne",
+        "url": "https://api-eo.avemujica.moe"
+      },
+      {
+        "color": "blue",
+        "description": "无法直连主站可用",
+        "id": 4,
+        "route": "CN",
+        "url": "https://api-cn.avemujica.moe"
       }
     ],
     "api_info_enabled": true,
+    "benefits_enabled": true,
     "chats": [
       {
         "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
@@ -210,6 +267,20 @@
       },
       {
         "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      },
+      {
+        "绘图": {
+          "key_selection_rules": [
+            {
+              "groups": [],
+              "id": "rule-1780936569998-kjvmuk",
+              "models": [
+                "gpt-image-2"
+              ]
+            }
+          ],
+          "url": "https://gpt-image-playground.cooksleep.dev?apiUrl=https://api-eo.avemujica.moe&apiKey={key}&model=gpt-image-2"
+        }
       }
     ],
     "checkin_enabled": true,
@@ -230,39 +301,49 @@
     "enable_task": true,
     "faq": [
       {
-        "answer": "## 价格说明\n\n本站采用 **1:1 充值** 规则，模型的基础价格均按官方价格配置。\n\n因此，不同模型的实际折扣计算方式如下：\n\n- **国际模型**：实际折扣约为 `倍率 ÷ 7`，具体结果会受汇率波动影响。\n- **国产模型**：实际折扣即为后台设置的倍率。\n\n示例：\n\n```text\n国际模型倍率 3.5 ≈ 实际 5 折\n国产模型倍率 0.5 = 实际 5 折\n",
+        "answer": "## Pricing Explanation\n\nThis site uses a **1:1 top-up** rule, and the base prices of models are configured according to official prices.\n\nTherefore, the actual discount calculation methods for different models are as follows:\n\n- **International models**: The actual discount is approximately `multiplier ÷ 7`; the specific result may be affected by exchange rate fluctuations.\n- **Domestic models**: The actual discount is the multiplier set in the backend.\n\nExample:\n\n```text\nInternational model multiplier 3.5 ≈ actual 50% discount\nDomestic model multiplier 0.5 = actual 50% discount",
         "id": 1,
-        "question": "折扣如何计算?"
+        "question": "How is the discount calculated?"
       },
       {
-        "answer": "我们推荐在 **Codex** 中使用，以获得最完整、最顺畅的体验。\n\n配置方法可参考：[Codex 配置教程](https://docs.avemujica.moe/cli/3-codex)\n\n日常使用场景下，推荐安装 **Codex App**：\n\n[下载 Codex App](https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi)\n\n如果你主要用于写代码，也可以使用 **Codex CLI**：\n\n```bash\nnpm install -g @openai/codex\n```\n\n如果你习惯使用 **Claude Code**，也可以根据客户端支持情况配置本站的接口使用。\n\n对于同时使用 Codex、Claude Code、Gemini CLI 等多个工具或是不想手动维护配置文件的用户，推荐使用 **CC Switch** 进行统一管理。CC Switch 支持统一管理 Provider、MCP、Skills、Prompt 等配置，也可以更方便地在不同模型服务之间切换。\n\nCC Switch 可参考：[CC Switch 官网](https://cc-switch.cc)",
+        "answer": "We recommend using it in **Codex** for the most complete and smooth experience.\n\nSetup instructions: [Codex Configuration Guide](https://docs.avemujica.moe/cli/3-codex)\n\nFor everyday use, we recommend installing the **Codex App**:\n\n[Download Codex App](https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi)\n\nIf you mainly use it for coding, you can also use **Codex CLI**:\n\n```bash\nnpm install -g @openai/codex\n```\n\nIf you prefer **Claude Code**, you can also configure the site’s API based on client support.\n\nFor users who work with multiple tools such as Codex, Claude Code, and Gemini CLI, or who do not want to maintain configuration files manually, we recommend using **CC Switch** for unified management. CC Switch supports centralized management of Provider, MCP, Skills, Prompt, and other configurations, and also makes it easier to switch between different model services.\n\nLearn more: [CC Switch Official Site](https://cc-switch.cc)",
         "id": 2,
-        "question": "如何使用？"
+        "question": "How to use?"
       },
       {
-        "answer": "我们目前优先保证gpt，其他渠道暂不做可用性保证",
+        "answer": "We are currently prioritizing the availability of gpt; availability for other channels is not guaranteed at this time.",
         "id": 3,
-        "question": "渠道供应问题"
+        "question": "Channel Supply Issues"
       },
       {
-        "answer": "openai官方对该渠道的gpt-5.5有硬上下文限制，建议不要让您的上下文超过258k，如果有长上下文需求，请使用gpt-5.4",
+        "answer": "OpenAI officially has a hard context limit for gpt-5.5 on this channel. It is recommended not to let your context exceed 258k. If you need a long context, please use gpt-5.4.",
         "id": 4,
-        "question": "为什么一直出现500报错？"
+        "question": "Why do 500 errors keep occurring?"
       },
       {
-        "answer": "生图建议使用api-cn.avemujica.moe作为端点，主节点受cf最大超时限制影响，暂时无法保证出图稳定性",
+        "answer": "For image generation, it is recommended to use api-eo.avemujica.moe as the endpoint. The main node is affected by CF's maximum timeout limit, so image generation stability cannot be guaranteed for the time being.",
         "id": 5,
-        "question": "生图模型一直报错？"
+        "question": "The image generation model keeps reporting errors?"
       },
       {
-        "answer": "本站提供 GPT 官方转发服务，请勿用于恶意网络安全活动，包括钓鱼、凭证窃取、漏洞利用、恶意扫描、绕过安全防护、生成或改造恶意代码等。\n\nOpenAI 官方会对会话进行网络安全检测。Codex 源码显示，官方返回 `cyber_policy` 时会被识别为网络安全策略事件；多次风险标记后，响应可能因额外安全检查而变慢，账号也可能被限制或封禁。\n\n## 免责声明\n\n本站只识别 OpenAI 官方返回的事件错误码或异常类型，用于提醒、限速或封禁高频触发用户。本站不会读取、保存或人工审核用户与 AI 的聊天正文内容。\n\n参考：[cyber_policy 识别](https://github.com/openai/codex/blob/12bfb57139f169c1a1822d57a6fdb2a3d08e0c53/codex-rs/codex-api/src/sse/responses.rs#L529-L535)、[变慢提示](https://github.com/openai/codex/blob/12bfb57139f169c1a1822d57a6fdb2a3d08e0c53/codex-rs/tui/src/chatwidget.rs#L189-L195)",
+        "answer": "This site provides an official GPT forwarding service. Please do not use it for malicious cybersecurity activities.\n\nOpenAI’s official systems perform cybersecurity checks on sessions. If `cyber_policy` is returned, it may lead to slower responses, additional checks, or account restrictions.\n\n## Disclaimer\n\nThis site does not read or store conversations. It only uses event error codes or exception types returned by OpenAI to warn, rate limit, or block frequent abuse.\n\nReferences: [cyber_policy](https://github.com/openai/codex/blob/12bfb57139f169c1a1822d57a6fdb2a3d08e0c53/codex-rs/codex-api/src/sse/responses.rs#L529-L535), [slowdown notice](https://github.com/openai/codex/blob/12bfb57139f169c1a1822d57a6fdb2a3d08e0c53/codex-rs/tui/src/chatwidget.rs#L189-L195)",
         "id": 6,
-        "question": "防滥用说明"
+        "question": "Anti-Abuse Notice"
       },
       {
-        "answer": "联系方式\xxx 滥用\xxx 工单\xxx 商业合作",
+        "answer": "If you need an electronic special VAT invoice, please contact xxx in advance and recharge via corporate bank transfer. Electronic special VAT invoices and ordinary invoices are supported. The invoice amount for a single issuance must be no less than 500. If you have any special requirements, please contact xxx in advance.",
+        "id": 8,
+        "question": "Invoice Issues"
+      },
+      {
+        "answer": "Contact information\xxx Abuse\xxx Support tickets\xxx Business cooperation\nIf you need an electronic special VAT invoice, please contact xxx in advance and recharge via corporate bank transfer",
         "id": 7,
-        "question": "有更多问题？"
+        "question": "Have more questions?"
+      },
+      {
+        "answer": "When transferring, please use an on-chain transfer, and make sure the payment amount matches what is displayed on the order page.",
+        "id": 9,
+        "question": "Web3 payment not received?"
       }
     ],
     "faq_enabled": true,
@@ -285,14 +366,16 @@
     "passkey_origins": "https://api.avemujica.moe,https://api-cn.avemujica.moe",
     "passkey_rp_id": "avemujica.moe",
     "passkey_user_verification": "preferred",
+    "password_register_enabled": true,
     "price": 1,
     "privacy_policy_enabled": false,
     "quota_display_type": "USD",
     "quota_per_unit": 500000,
+    "register_enabled": true,
     "self_use_mode_enabled": false,
     "server_address": "https://api.avemujica.moe",
     "setup": true,
-    "start_time": 1780258681,
+    "start_time": 1781074651,
     "stripe_unit_price": 1,
     "system_name": "AveMujica API",
     "telegram_bot_name": "",

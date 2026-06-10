@@ -1,8 +1,15 @@
 {
   "data": {
-    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":true,\"about\":true}",
     "SidebarModulesAdmin": "",
     "announcements": [
+      {
+        "content": "vip分组是本站重点维护分组，稳定性更有保障，提供更优质的服务与更多的模型选择。\n可通过订阅coding plan 自动升级VIP分组 或 积累消费超过80元联系客服提升分组。",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-06-04T15:25:42.542Z",
+        "type": "ongoing"
+      },
       {
         "content": "售后qq群，欢迎大家进群交流。\n【卡皮巴拉爱AI】：https://qm.qq.com/q/i2sQgBnYcM\n",
         "extra": "",
@@ -29,17 +36,10 @@
     "api_info": [
       {
         "color": "blue",
-        "description": "DE",
+        "description": "HK",
         "id": 1,
         "route": "主域名",
         "url": "https://kapibala.asia"
-      },
-      {
-        "color": "blue",
-        "description": "test",
-        "id": 2,
-        "route": "test",
-        "url": "https://kapibala.curb0331.fun"
       }
     ],
     "api_info_enabled": true,
@@ -124,7 +124,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://kapibala.asia",
     "setup": true,
-    "start_time": 1780345063,
+    "start_time": 1780944386,
     "stripe_unit_price": 8,
     "system_name": "卡皮巴拉API",
     "telegram_bot_name": "",

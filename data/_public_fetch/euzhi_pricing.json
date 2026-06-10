@@ -1,135 +1,132 @@
 {
-  "auto_groups": [
-    "default"
-  ],
-  "data": [
-    {
-      "model_name": "gpt-5.3-codex",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "default",
-        "vip",
-        "sub2pilot"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 0.1,
-      "enable_groups": [
-        "default",
-        "vip",
-        "sub2pilot"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "default",
-        "vip",
-        "sub2pilot"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "default",
-        "vip",
-        "sub2pilot"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-2",
-      "vendor_id": 2,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 1,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "image_ratio": 0,
-      "enable_groups": [
-        "sub2pilot",
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    }
-  ],
-  "group_ratio": {
-    "default": 1,
-    "vip": 1
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\": {\"chat\": false, \"enabled\": true, \"playground\": true}, \"admin\": {\"user\": true, \"models\": true, \"channel\": true, \"enabled\": true, \"setting\": true, \"deployment\": true, \"redemption\": true, \"subscription\": true}, \"console\": {\"log\": true, \"task\": true, \"token\": true, \"detail\": true, \"enabled\": true, \"midjourney\": true}, \"personal\": {\"topup\": true, \"enabled\": true, \"personal\": true}}",
+    "announcements": [
+      {
+        "content": "<div style=\"padding:10px 12px;border:1px solid rgba(245,158,11,.32);border-radius:10px;background:rgba(245,158,11,.10);line-height:1.7;font-size:14px;\"><b style=\"color:#d97706;font-size:15px;\">Hermes 用户请注意</b><br>官方规格：Codex 当前为 <b>272K 输入 + 128K 最大输出</b>，合计约 <b>400K 上下文窗口</b>；Plus / Pro 规格一致。<br>使用 Hermes 时，建议上下文累计到 <b>20 万 tokens 左右</b> 进行一次<b>手动压缩或插件自动压缩</b>。长时间不压缩，可能会因上下文过大导致不输出、响应中断或无内容返回。<br>Codex 用户无需手动处理，Codex 会自动压缩上下文。</div>",
+        "extra": "",
+        "id": 1780487012797,
+        "publishDate": "2026-06-03T11:43:32.797Z",
+        "type": "warning"
+      },
+      {
+        "content": "<b style=\"color:#22c55e;font-weight:800;\">Image2 服务已恢复</b><br/>目前 Image2 与 <a href=\"https://app.euzhi.com/\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"display:inline-flex;align-items:center;justify-content:center;margin:0 4px;padding:3px 12px;border-radius:999px;background:linear-gradient(135deg,#4f8cff 0%,#16c7b8 100%);color:#fff;font-size:13px;font-weight:800;line-height:1.6;text-decoration:none;box-shadow:0 6px 16px rgba(79,140,255,.28);vertical-align:baseline;\">优智图</a> 均已恢复正常访问和使用。",
+        "extra": "",
+        "id": 1779821350128,
+        "publishDate": "2026-05-26T18:49:10.128Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"padding:10px 12px;border:1px solid rgba(245,158,11,.32);border-radius:10px;background:rgba(245,158,11,.10);line-height:1.7\"><b style=\"color:#d97706\">服务线路切换通知</b><br/>本站已将 GPT 主线路切换至新的架构，以减少长尾超时和上下文中断问题。切换后系统已清理旧渠道亲和缓存，前几轮请求可能因新号池冷启动、缓存重新建立而略慢，通常会在短时间内恢复稳定。</div>",
+        "extra": "如遇单次请求异常，请稍后重试；系统会持续监控 504、空 usage 与首包耗时，并优先保障会话连续性。",
+        "id": 2,
+        "publishDate": "2026-05-27T01:40:00+08:00",
+        "type": "warning"
+      },
+      {
+        "content": "<div style=\"padding:10px 12px;border:1px solid rgba(47,107,255,.24);border-radius:10px;background:rgba(47,107,255,.08);line-height:1.7\"><b style=\"color:#4f8cff\">服务与隐私说明</b><br/>Euzhi API 公益站、优智图及相关服务均由 <b>Euzhi自有上游资源与自建服务链路</b> 统一调度。<br/>您的请求不会被转售给任何平台，也不会被用于与当前服务无关的用途。</div>",
+        "extra": "除完成模型调用、余额结算、支付处理、安全风控和故障排查等必要场景外，系统不会主动留存、窃取或挪用您的请求内容；本地工具产生的配置与使用数据仍以用户本地保存为主。",
+        "id": 1,
+        "publishDate": "2026-05-15T00:00:00+08:00",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "/docs",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "/logo.png?v=20260509c",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "Euzhi",
+    "passkey_login": false,
+    "passkey_origins": "https://api.euzhi.com",
+    "passkey_rp_id": "api.euzhi.com",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
+    "price": 0.2,
+    "privacy_policy_enabled": true,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "register_enabled": true,
+    "self_use_mode_enabled": false,
+    "server_address": "https://api.euzhi.com",
+    "setup": true,
+    "start_time": 1780909709,
+    "stripe_unit_price": 8,
+    "system_name": "Euzhi",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "classic",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": true,
+    "version": "v1.0.0-rc.10",
+    "wechat_login": false,
+    "wechat_qrcode": ""
   },
-  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "message": "",
   "success": true,
-  "supported_endpoint": {
-    "openai": {
-      "path": "/v1/chat/completions",
-      "method": "POST"
-    }
-  },
-  "usable_group": {
-    "default": "默认分组",
-    "vip": "vip分组"
-  },
-  "vendors": [
-    {
-      "id": 2,
-      "name": "OpenAI",
-      "icon": "OpenAI"
-    },
-    {
-      "id": 3,
-      "name": "讯飞",
-      "icon": "Spark.Color"
-    },
-    {
-      "id": 1,
-      "name": "Google",
-      "icon": "Gemini.Color"
-    }
-  ],
   "status_payload": {
     "data": {
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":false}",
@@ -232,14 +229,17 @@
       "passkey_origins": "https://api.euzhi.com",
       "passkey_rp_id": "api.euzhi.com",
       "passkey_user_verification": "preferred",
+      "password_login_enabled": true,
+      "password_register_enabled": true,
       "price": 0.2,
       "privacy_policy_enabled": true,
       "quota_display_type": "USD",
       "quota_per_unit": 500000,
+      "register_enabled": true,
       "self_use_mode_enabled": false,
       "server_address": "https://api.euzhi.com",
       "setup": true,
-      "start_time": 1779821928,
+      "start_time": 1780909709,
       "stripe_unit_price": 8,
       "system_name": "Euzhi",
       "telegram_bot_name": "",
@@ -250,12 +250,12 @@
       "uptime_kuma_enabled": true,
       "usd_exchange_rate": 7.3,
       "user_agreement_enabled": true,
-      "version": "v1.0.0-rc.5",
+      "version": "v1.0.0-rc.10",
       "wechat_login": false,
       "wechat_qrcode": ""
     },
     "message": "",
     "success": true
   },
-  "source_url": "https://admin.euzhi.com/api/pricing"
+  "source_url": "https://admin.euzhi.com/api/status"
 }

@@ -1,35 +1,14 @@
 {
   "data": {
-    "HeaderNavModules": "",
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":true}",
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
-      {
-        "content": "分组倍率x5",
-        "extra": "",
-        "id": 4,
-        "publishDate": "2026-06-01T10:16:08.684Z",
-        "type": "default"
-      },
       {
         "content": "限时福利-开放QQ邮箱注册！",
         "extra": "",
         "id": 3,
         "publishDate": "2026-05-31T10:55:39.010Z",
         "type": "default"
-      },
-      {
-        "content": "签到520会持续到六一儿童节，大家明天还能签到，祝大家六一儿童节快乐",
-        "extra": "",
-        "id": 2,
-        "publishDate": "2026-05-31T10:49:58.256Z",
-        "type": "default"
-      },
-      {
-        "content": "Claude，暂时下架，大家先用gpt",
-        "extra": "",
-        "id": 1,
-        "publishDate": "2026-05-31T10:49:35.839Z",
-        "type": "ongoing"
       }
     ],
     "announcements_enabled": true,
@@ -65,6 +44,7 @@
       }
     ],
     "checkin_enabled": true,
+    "conversation_log_enabled": true,
     "custom_currency_exchange_rate": 1,
     "custom_currency_symbol": "¤",
     "data_export_default_time": "hour",
@@ -107,7 +87,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://muyuan.do",
     "setup": true,
-    "start_time": 1780492732,
+    "start_time": 1781081329,
     "stripe_unit_price": 8,
     "system_name": "君の的公益",
     "telegram_bot_name": "",
@@ -118,7 +98,7 @@
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 7.3,
     "user_agreement_enabled": true,
-    "version": "dev-ac861cf",
+    "version": "dev-84a29b0",
     "wechat_login": false,
     "wechat_qrcode": ""
   },

@@ -1,6 +1,7 @@
 FROM node:20-bookworm-slim
 
 ARG SUPERCRONIC_VERSION=v0.2.29
+ARG NEXT_PUBLIC_SITE_URL=
 ARG NEXT_PUBLIC_BAIDU_TONGJI_ID=
 
 WORKDIR /app
@@ -9,6 +10,7 @@ ENV NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1 \
     TZ=Asia/Shanghai \
     PORT=3000 \
+    NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL} \
     NEXT_PUBLIC_BAIDU_TONGJI_ID=${NEXT_PUBLIC_BAIDU_TONGJI_ID} \
     PATH=/app/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 

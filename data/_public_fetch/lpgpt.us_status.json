@@ -4,18 +4,39 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
-        "content": "服务器爆了。预计停机半天维护。",
+        "content": "上游号池扛不住了，委屈大家先用5.4吧。",
         "extra": "",
-        "id": 5,
-        "publishDate": "2026-06-02T16:14:18.272Z",
-        "type": "default"
+        "id": 11,
+        "publishDate": "2026-06-10T03:21:32.691Z",
+        "type": "ongoing"
       },
       {
-        "content": "16.00开始有个渠道要停了。上游号池耗尽。\n",
+        "content": "小程序已更新：\n1、更新用户解绑（点击首页头像）\n2、关闭签到前需看广告\n3、修复签到失败的Bug\n4、修复广告结算报错的Bug\n——————————————\nlpgpt.us 更新了本站运营数据看板。",
         "extra": "",
-        "id": 4,
-        "publishDate": "2026-06-01T06:07:20.583Z",
+        "id": 10,
+        "publishDate": "2026-06-09T17:00:00.921Z",
         "type": "ongoing"
+      },
+      {
+        "content": "Bug渠道陨落，盛宴散场，倍率恢复。",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-06-09T12:00:00.000Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "封号原因：\n多IP单账号、反复多次请求图片生成、恶意滥用，提示词测活\n\n被封禁的用户支持通过微信小程序申请解封。\n不要说我无故封禁，看看自己的请求日志。\n",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-06-05T03:28:16.169Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "再次提醒，本站不支持图片生成功能，无脑调用API生成图片的，直接封禁账号。\n",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-06-04T04:01:33.444Z",
+        "type": "default"
       },
       {
         "content": "公益站在Linux.do的帖子被人举报移除了。\n以后本站的动态就在站内的公告发布",
@@ -23,13 +44,6 @@
         "id": 3,
         "publishDate": "2026-06-01T02:37:51.393Z",
         "type": "ongoing"
-      },
-      {
-        "content": "5.5模型已恢复",
-        "extra": "",
-        "id": 2,
-        "publishDate": "2026-05-31T14:51:34.497Z",
-        "type": "default"
       },
       {
         "content": "本站只支持Codex编码模型，不支持图片生成，请勿重复尝试，发现立即封禁。\n使用过程中，养成良好习惯，注意控制上下文长度。\n经常/compact",
@@ -79,6 +93,7 @@
     "checkin_enabled": true,
     "checkin_via_minip": true,
     "claude360_enabled": false,
+    "contact_admin_email": "xxx",
     "custom_currency_exchange_rate": 1,
     "custom_currency_symbol": "¤",
     "data_export_default_time": "hour",
@@ -89,7 +104,7 @@
     "discord_oauth": false,
     "display_in_currency": true,
     "docs_link": "https://docs.newapi.pro",
-    "email_verification": false,
+    "email_verification": true,
     "enable_batch_update": true,
     "enable_data_export": true,
     "enable_drawing": false,
@@ -99,7 +114,7 @@
     "footer_html": "",
     "github_client_id": "Iv23lilT60FX6ks7E2xZ",
     "github_oauth": true,
-    "linuxdo_client_id": "0bDJrqE5w5J6KTW9r65I7cVRU4cFJ9jw",
+    "linuxdo_client_id": "iL4l1TKpMNGIwUtSyvhHSSoNelrrhkpV",
     "linuxdo_minimum_trust_level": 0,
     "linuxdo_oauth": true,
     "logo": "",
@@ -116,14 +131,14 @@
     "passkey_user_verification": "preferred",
     "price": 7.3,
     "privacy_policy_enabled": false,
-    "quota_display_type": "USD",
+    "quota_display_type": "CNY",
     "quota_per_unit": 500000,
     "self_use_mode_enabled": false,
     "server_address": "https://lpgpt.us",
     "setup": true,
-    "start_time": 1780481540,
+    "start_time": 1781081836,
     "stripe_unit_price": 8,
-    "system_name": "Zero Bug公益站",
+    "system_name": "Zero Bug",
     "telegram_bot_name": "",
     "telegram_oauth": false,
     "theme": "classic",
@@ -131,7 +146,7 @@
     "turnstile_check": false,
     "turnstile_site_key": "0x4AAAAAADSgATo5UI9aMJhy",
     "uptime_kuma_enabled": true,
-    "usd_exchange_rate": 7.3,
+    "usd_exchange_rate": 1,
     "user_agreement_enabled": false,
     "version": "",
     "wechat_login": false,

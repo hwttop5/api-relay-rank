@@ -202,9 +202,12 @@ def build_new_api_probe(page: dict, station: str, base: dict) -> dict:
 
 
 def build_v1_probe(page: dict, station: str, base: dict) -> dict:
+    config = LIVE_AUTH_PROBE_CONFIG.get(station, {})
+    api_base_url = str(config.get("api_base_url") or "").rstrip("/") if isinstance(config, dict) else ""
     expression = r"""(async () => {
   const token = localStorage.getItem('auth_token') || '';
   const headers = {'Authorization': 'Bearer ' + token};
+  const apiBaseUrl = __API_BASE_URL__;
   const paths = [
     '/api/v1/groups/available',
     '/api/v1/payment/config',
@@ -217,7 +220,8 @@ def build_v1_probe(page: dict, station: str, base: dict) -> dict:
   const out = {};
   for (const path of paths) {
     try {
-      const response = await fetch(path, {headers, credentials: 'include'});
+      const url = apiBaseUrl ? apiBaseUrl + path : path;
+      const response = await fetch(url, {headers, credentials: 'include'});
       const text = await response.text();
       let body = null;
       try { body = JSON.parse(text); } catch { body = text.slice(0, 1000); }
@@ -228,10 +232,12 @@ def build_v1_probe(page: dict, station: str, base: dict) -> dict:
   }
   return out;
 })()"""
+    expression = expression.replace("__API_BASE_URL__", json.dumps(api_base_url))
     probe = dict(base)
     probe["probe_type"] = "v1_generic"
+    if api_base_url:
+        probe["apiBaseUrl"] = api_base_url
     probe["results"] = evaluate_page(page, expression)
-    config = LIVE_AUTH_PROBE_CONFIG.get(station, {})
     quick_amounts = config.get("quick_amounts") if isinstance(config, dict) else None
     if isinstance(quick_amounts, list):
         probe["quick_amounts"] = [

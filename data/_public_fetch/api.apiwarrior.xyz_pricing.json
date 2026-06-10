@@ -2,100 +2,6 @@
   "auto_groups": [],
   "data": [
     {
-      "model_name": "claude-sonnet-4-6",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.09999999999999999,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude满血",
-        "逆向Claude"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "claude-opus-4-8",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude满血",
-        "逆向Claude"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude满血",
-        "逆向Claude"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude满血",
-        "逆向Claude"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "OpenAi-Pro",
-        "OpenAi-Plus池"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
       "model_name": "claude-opus-4-7",
       "vendor_id": 1,
       "quota_type": 0,
@@ -107,24 +13,29 @@
       "create_cache_ratio": 1.25,
       "enable_groups": [
         "逆向Claude",
+        "VIP",
         "Claude满血"
       ],
       "supported_endpoint_types": [
         "anthropic",
         "openai"
-      ]
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
-      "model_name": "gpt-image-2",
+      "model_name": "gpt-5.5",
       "vendor_id": 2,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.333,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 0,
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
       "enable_groups": [
+        "VIP",
+        "Build IMG",
         "OpenAi-Pro",
-        "OpenAi-Plus池"
+        "OpenAi-Plus"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -141,24 +52,96 @@
       "cache_ratio": 0.1,
       "enable_groups": [
         "OpenAi-Pro",
-        "OpenAi-Plus池"
+        "OpenAi-Plus",
+        "VIP"
       ],
       "supported_endpoint_types": [
         "openai"
       ]
     },
     {
-      "model_name": "gpt-5.4-mini",
+      "model_name": "gpt-5.4-openai-compact",
       "vendor_id": 2,
       "quota_type": 0,
-      "model_ratio": 0.375,
+      "model_ratio": 1.25,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "OpenAi-Plus池",
-        "OpenAi-Pro"
+        "VIP",
+        "OpenAi-Pro",
+        "OpenAi-Plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "VIP",
+        "OpenAi-Pro",
+        "OpenAi-Plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-codex-auto-review",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "OpenAi-Pro",
+        "VIP",
+        "OpenAi-Plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "VIP",
+        "Claude满血",
+        "逆向Claude"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "Build IMG"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -175,8 +158,9 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "Claude满血",
-        "逆向Claude"
+        "逆向Claude",
+        "VIP",
+        "Claude满血"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -184,17 +168,78 @@
       ]
     },
     {
-      "model_name": "gpt-5.5-openai-compact",
-      "vendor_id": 2,
+      "model_name": "claude-fable-5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "逆向Claude",
+        "VIP",
+        "Claude满血"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.09999999999999999,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "逆向Claude",
+        "VIP",
+        "Claude满血"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
+      "completion_ratio": 5,
       "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "OpenAi-Plus池",
-        "OpenAi-Pro"
+        "逆向Claude",
+        "VIP",
+        "Claude满血"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 8,
+      "enable_groups": [
+        "OpenAi-Pro",
+        "OpenAi-Plus"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -209,55 +254,47 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "OpenAi-Plus池"
+        "VIP",
+        "OpenAi-Plus",
+        "OpenAi-Pro"
       ],
       "supported_endpoint_types": [
         "openai"
       ]
     },
     {
-      "model_name": "gpt-5.4-nano",
-      "vendor_id": 2,
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 0.1,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6.25,
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "OpenAi-Pro",
-        "OpenAi-Plus池"
+        "逆向Claude",
+        "VIP",
+        "Claude满血"
       ],
       "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     },
     {
-      "model_name": "gpt-5.5-codex-auto-review",
+      "model_name": "gpt-5.4-mini",
       "vendor_id": 2,
       "quota_type": 0,
-      "model_ratio": 37.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "OpenAi-Plus池"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-openai-compact",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1.25,
+      "model_ratio": 0.375,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "OpenAi-Plus池",
-        "OpenAi-Pro"
+        "OpenAi-Pro",
+        "OpenAi-Plus",
+        "VIP"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -265,8 +302,9 @@
     }
   ],
   "group_ratio": {
+    "Build IMG": 1,
     "Claude满血": 1.2,
-    "OpenAi-Plus池": 0.09,
+    "OpenAi-Plus": 0.09,
     "OpenAi-Pro": 0.3,
     "逆向Claude": 0.4
   },
@@ -283,47 +321,21 @@
     }
   },
   "usable_group": {
+    "Build IMG": "生图专用分组",
     "Claude满血": "max满血号池",
-    "OpenAi-Plus池": "plus号池",
-    "OpenAi-Pro": "pro号池-codex通用",
+    "OpenAi-Plus": "plus号池",
+    "OpenAi-Pro": "pro号池",
     "逆向Claude": ""
   },
   "vendors": [
     {
-      "id": 5,
-      "name": "Vivgrid"
-    },
-    {
-      "id": 6,
-      "name": "Azure Cognitive Services"
-    },
-    {
-      "id": 9,
-      "name": "OpenCode Zen",
-      "icon": "OpenCode"
-    },
-    {
-      "id": 10,
-      "name": "Helicone"
-    },
-    {
-      "id": 12,
-      "name": "Venice AI",
-      "icon": "VeniceAI"
-    },
-    {
-      "id": 13,
-      "name": "NanoGPT"
-    },
-    {
-      "id": 2,
-      "name": "OpenAI",
-      "icon": "OpenAI"
-    },
-    {
       "id": 4,
       "name": "Google",
       "icon": "Gemini.Color"
+    },
+    {
+      "id": 5,
+      "name": "Vivgrid"
     },
     {
       "id": 7,
@@ -334,17 +346,44 @@
       "name": "SAP AI Core"
     },
     {
+      "id": 9,
+      "name": "OpenCode Zen",
+      "icon": "OpenCode"
+    },
+    {
       "id": 11,
       "name": "QiHang"
     },
     {
-      "id": 14,
-      "name": "Qiniu"
+      "id": 12,
+      "name": "Venice AI",
+      "icon": "VeniceAI"
     },
     {
       "id": 1,
       "name": "Anthropic",
       "icon": "Claude.Color"
+    },
+    {
+      "id": 2,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 6,
+      "name": "Azure Cognitive Services"
+    },
+    {
+      "id": 10,
+      "name": "Helicone"
+    },
+    {
+      "id": 13,
+      "name": "NanoGPT"
+    },
+    {
+      "id": 14,
+      "name": "Qiniu"
     },
     {
       "id": 3,
@@ -354,8 +393,8 @@
   ],
   "status_payload": {
     "data": {
-      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":true,\"requireAuth\":true},\"docs\":false,\"about\":false}",
-      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":false,\"requireAuth\":true},\"docs\":false,\"about\":false}",
+      "SidebarModulesAdmin": "{\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
       "announcements": [
         {
           "content": "交流群：[点击加入 Telegram 群组](https://t.me/apiapiwarrior) 不定时有活动",
@@ -373,11 +412,16 @@
           "id": 1,
           "route": "默认",
           "url": "https://api.apiwarrior.xyz/"
+        },
+        {
+          "color": "green",
+          "description": "页内填入key即可生图",
+          "id": 2,
+          "route": "仅供生图使用",
+          "url": "https://img.apiwarrior.xyz"
         }
       ],
       "api_info_enabled": true,
-      "chats": [],
-      "checkin_enabled": false,
       "custom_currency_exchange_rate": 1,
       "custom_currency_symbol": "¤",
       "data_export_default_time": "hour",
@@ -391,8 +435,6 @@
       "email_verification": true,
       "enable_batch_update": true,
       "enable_data_export": true,
-      "enable_drawing": false,
-      "enable_task": true,
       "faq": [
         {
           "answer": "在 **API密钥** 页面中创建密钥（**创建时需选择对应的倍率渠道**），随后下载 [cc-switch](https://github.com/farion1231/cc-switch/releases)，点击密钥并导入即可。",
@@ -413,7 +455,6 @@
       "linuxdo_minimum_trust_level": 0,
       "linuxdo_oauth": false,
       "logo": "",
-      "mj_notify_enabled": false,
       "oidc_authorization_endpoint": "",
       "oidc_client_id": "",
       "oidc_enabled": false,
@@ -434,7 +475,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://api.apiwarrior.xyz",
       "setup": true,
-      "start_time": 1780303038,
+      "start_time": 1781077790,
       "stripe_unit_price": 8,
       "system_name": "APIWarrior",
       "telegram_bot_name": "",
@@ -443,9 +484,9 @@
       "turnstile_check": true,
       "turnstile_site_key": "0x4AAAAAADUbVFrt0kZU9jzS",
       "uptime_kuma_enabled": true,
-      "usd_exchange_rate": 7.3,
+      "usd_exchange_rate": 6.8,
       "user_agreement_enabled": true,
-      "version": "v1.0.5",
+      "version": "v1.0.15",
       "wechat_login": false,
       "wechat_qrcode": ""
     },

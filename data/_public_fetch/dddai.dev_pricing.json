@@ -2,7 +2,28 @@
   "auto_groups": [],
   "data": [
     {
-      "model_name": "gpt-5.5-fast",
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex-plus",
+        "default",
+        "codex-surprise"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response",
+        "openai-response-compact"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
       "vendor_id": 7,
       "quota_type": 0,
       "model_ratio": 37.5,
@@ -10,25 +31,26 @@
       "owner_by": "",
       "completion_ratio": 6,
       "enable_groups": [
+        "codex-surprise",
+        "codex-plus",
         "default"
       ],
       "supported_endpoint_types": [
-        "openai",
         "openai-response",
-        "openai-response-compact"
+        "openai-response-compact",
+        "openai"
       ],
       "billing_mode": "tiered_expr",
-      "billing_expr": "len <= 272000 ? tier(\"short_context\", p * 12.5 + c * 75 + cr * 0.125) : tier(\"long_context\", p * 25 + c * 112.5 + cr * 2)",
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+      "billing_expr": "(len <= 272000 ? tier(\"short_context\", p * 5 + c * 30 + cr * 0.5) : tier(\"long_context\", p * 10 + c * 45 + cr * 1)) * (param(\"service_tier\") == \"priority\" ? 2.5 : 1) * (param(\"service_tier\") == \"fast\" ? 2.5 : 1)"
     },
     {
-      "model_name": "gemini-3.5-flash",
+      "model_name": "gemini-2.5-pro-thinking",
       "vendor_id": 13,
       "quota_type": 0,
       "model_ratio": 37.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 4,
+      "completion_ratio": 8,
       "enable_groups": [
         "gemini"
       ],
@@ -37,25 +59,7 @@
         "openai"
       ],
       "billing_mode": "tiered_expr",
-      "billing_expr": "tier(\"standard\", max(875000, p * 1.5 + img * 1.5 + ai * 1.5 + c * 9 + cr * 0.15 + cc * 0.0833333333))"
-    },
-    {
-      "model_name": "gpt-5.4-mini-fast",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 0.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response",
-        "openai-response-compact"
-      ]
+      "billing_expr": "len <= 200000 ? tier(\"standard\", max(280000, p * 1.25 + img * 1.25 + ai * 1.25 + c * 10 + cr * 0.125 + cc * 0.375)) : tier(\"long_context\", max(280000, p * 2.5 + img * 2.5 + ai * 2.5 + c * 15 + cr * 0.25 + cc * 0.375))"
     },
     {
       "model_name": "gpt-5.4-fast",
@@ -66,7 +70,9 @@
       "owner_by": "",
       "completion_ratio": 6,
       "enable_groups": [
-        "default"
+        "default",
+        "codex-plus",
+        "codex-surprise"
       ],
       "supported_endpoint_types": [
         "openai",
@@ -77,7 +83,49 @@
       "billing_expr": "len <= 272000 ? tier(\"short_context\", p *5 + cr * 0.5 + c * 22.5) : tier(\"long_context\", p * 10 + cr * 1 + c * 45)"
     },
     {
-      "model_name": "gemini-2.5-pro-thinking",
+      "model_name": "gpt-5.4",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "codex-surprise",
+        "codex-plus"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response",
+        "openai-response-compact"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "((len <= 272000 ? tier(\"short_context\", p *2.5 + cr * 0.25 + c * 15) : tier(\"long_context\", p * 5 + cr * 0.5 + c * 42))* (param(\"service_tier\") == \"priority\" ? 2.5 : 1)) * (param(\"service_tier\") == \"fast\" ? 2.5 : 1)"
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-kiro",
+        "claude-max",
+        "claude-antigravity",
+        "claude-api"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro",
       "vendor_id": 13,
       "quota_type": 0,
       "model_ratio": 37.5,
@@ -131,6 +179,44 @@
       "billing_expr": "tier(\"standard\", max(35000, p * 0.1 + img * 0.1 + ai * 0.3 + c * 0.4 + cr * 0.01 + cc * 0.0833333333))"
     },
     {
+      "model_name": "gpt-5.5",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "codex-surprise",
+        "codex-plus",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response",
+        "openai-response-compact"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "(len <= 272000 ? tier(\"standard\", p * 5 + c * 30 + cr * 0.5) : tier(\"long_context\", p * 10 + c * 45 + cr * 1)) * (param(\"service_tier\") == \"priority\" ? 2.5 : 1) * (param(\"service_tier\") == \"fast\" ? 2.5 : 1)"
+    },
+    {
+      "model_name": "gpt-image-2",
+      "description": "GPT-Image-2 image generation, standard resolution tier. Billed per image request.",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "image"
+      ],
+      "supported_endpoint_types": [
+        "image-edits",
+        "image-generation"
+      ]
+    },
+    {
       "model_name": "gemini-2.5-flash",
       "vendor_id": 13,
       "quota_type": 0,
@@ -149,6 +235,45 @@
       "billing_expr": "tier(\"standard\", max(35000, p * 0.3 + img * 0.3 + ai * 1 + c * 2.5 + cr * 0.03 + cc * 0.0833333333))"
     },
     {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 2,
+      "enable_groups": [
+        "claude-api",
+        "claude-kiro",
+        "claude-max",
+        "claude-antigravity"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-fable-5",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "claude-max"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response",
+        "openai-response-compact"
+      ]
+    },
+    {
       "model_name": "claude-opus-4-8",
       "vendor_id": 12,
       "quota_type": 0,
@@ -159,9 +284,72 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "claude-antigravity",
-        "claude-kiro",
+        "claude-max",
         "claude-api",
+        "claude-antigravity",
+        "claude-kiro"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-openai-compact",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "codex-surprise",
+        "default",
+        "codex-plus"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response",
+        "openai-response-compact"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "(len <= 272000 ? tier(\"short_context\", p *2.5 + cr * 0.25 + c * 15) : tier(\"long_context\", p * 5 + cr * 0.5 + c * 42))* (param(\"service_tier\") == \"priority\" ? 2.5 : 1)"
+    },
+    {
+      "model_name": "gpt-5.5-fast",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "codex-surprise",
+        "default",
+        "codex-plus"
+      ],
+      "supported_endpoint_types": [
+        "openai-response",
+        "openai-response-compact",
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 272000 ? tier(\"short_context\", p * 12.5 + c * 75 + cr * 0.125) : tier(\"long_context\", p * 25 + c * 112.5 + cr * 2)"
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 2,
+      "enable_groups": [
+        "claude-api",
+        "claude-kiro",
+        "claude-antigravity",
         "claude-max"
       ],
       "supported_endpoint_types": [
@@ -180,25 +368,9 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 2,
       "enable_groups": [
-        "claude-kiro",
+        "claude-antigravity",
         "claude-api",
-        "claude-max",
-        "claude-antigravity"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-3.5-turbo",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 0.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "enable_groups": [
+        "claude-kiro",
         "claude-max"
       ],
       "supported_endpoint_types": [
@@ -207,92 +379,13 @@
       ]
     },
     {
-      "model_name": "gpt-5.4",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 37.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "default",
-        "codex-plus"
-      ],
-      "supported_endpoint_types": [
-        "openai-response",
-        "openai-response-compact",
-        "openai"
-      ],
-      "billing_mode": "tiered_expr",
-      "billing_expr": "((len <= 272000 ? tier(\"short_context\", p *2.5 + cr * 0.25 + c * 15) : tier(\"long_context\", p * 5 + cr * 0.5 + c * 42))* (param(\"service_tier\") == \"priority\" ? 2.5 : 1)) * (param(\"service_tier\") == \"fast\" ? 2.5 : 1)"
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 37.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "default",
-        "codex-plus"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response",
-        "openai-response-compact"
-      ],
-      "billing_mode": "tiered_expr",
-      "billing_expr": "(len <= 272000 ? tier(\"standard\", p * 5 + c * 30 + cr * 0.5) : tier(\"long_context\", p * 10 + c * 45 + cr * 1)) * (param(\"service_tier\") == \"priority\" ? 2.5 : 1) * (param(\"service_tier\") == \"fast\" ? 2.5 : 1)"
-    },
-    {
-      "model_name": "gpt-5.5-openai-compact",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 37.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "default",
-        "codex-plus"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response",
-        "openai-response-compact"
-      ],
-      "billing_mode": "tiered_expr",
-      "billing_expr": "(len <= 272000 ? tier(\"short_context\", p * 5 + c * 30 + cr * 0.5) : tier(\"long_context\", p * 10 + c * 45 + cr * 1)) * (param(\"service_tier\") == \"priority\" ? 2.5 : 1) * (param(\"service_tier\") == \"fast\" ? 2.5 : 1)"
-    },
-    {
-      "model_name": "gpt-5.4-openai-compact",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 37.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response",
-        "openai-response-compact"
-      ],
-      "billing_mode": "tiered_expr",
-      "billing_expr": "(len <= 272000 ? tier(\"short_context\", p *2.5 + cr * 0.25 + c * 15) : tier(\"long_context\", p * 5 + cr * 0.5 + c * 42))* (param(\"service_tier\") == \"priority\" ? 2.5 : 1)"
-    },
-    {
-      "model_name": "gemini-2.5-pro",
+      "model_name": "gemini-3.5-flash",
       "vendor_id": 13,
       "quota_type": 0,
       "model_ratio": 37.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
+      "completion_ratio": 4,
       "enable_groups": [
         "gemini"
       ],
@@ -301,113 +394,34 @@
         "openai"
       ],
       "billing_mode": "tiered_expr",
-      "billing_expr": "len <= 200000 ? tier(\"standard\", max(280000, p * 1.25 + img * 1.25 + ai * 1.25 + c * 10 + cr * 0.125 + cc * 0.375)) : tier(\"long_context\", max(280000, p * 2.5 + img * 2.5 + ai * 2.5 + c * 15 + cr * 0.25 + cc * 0.375))"
+      "billing_expr": "tier(\"standard\", max(875000, p * 1.5 + img * 1.5 + ai * 1.5 + c * 9 + cr * 0.15 + cc * 0.0833333333))"
     },
     {
-      "model_name": "claude-sonnet-4-6",
-      "vendor_id": 12,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 2,
-      "enable_groups": [
-        "claude-antigravity",
-        "claude-kiro",
-        "claude-api",
-        "claude-max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-2",
-      "description": "GPT-Image-2 image generation, standard resolution tier. Billed per image request.",
-      "vendor_id": 7,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 1,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "image"
-      ],
-      "supported_endpoint_types": [
-        "image-generation",
-        "image-edits"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
+      "model_name": "gpt-5.4-mini-fast",
       "vendor_id": 7,
       "quota_type": 0,
-      "model_ratio": 0.375,
+      "model_ratio": 0.75,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
         "codex-plus",
+        "codex-surprise",
         "default"
       ],
       "supported_endpoint_types": [
+        "openai-response-compact",
         "openai",
-        "openai-response",
-        "openai-response-compact"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "vendor_id": 12,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "claude-antigravity",
-        "claude-kiro",
-        "claude-api",
-        "claude-max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6",
-      "vendor_id": 12,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 2,
-      "enable_groups": [
-        "claude-antigravity",
-        "claude-kiro",
-        "claude-api",
-        "claude-max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
+        "openai-response"
       ]
     }
   ],
   "group_ratio": {
-    "claude-antigravity": 1.56,
+    "claude-antigravity": 1.5,
     "claude-api": 5,
-    "claude-kiro": 0.52,
-    "claude-max": 2.4,
+    "claude-kiro": 0.5,
+    "claude-max": 2,
     "codex-plus": 0.12,
     "default": 0.2,
     "gemini": 1.2,
@@ -450,12 +464,27 @@
     "claude-api": "Anthropic 官方 API，Claude 使用",
     "claude-kiro": "Anthropic Kiro，Claude 使用",
     "claude-max": "Anthropic Max 号池，仅限 ClaudeCode 中使用",
-    "codex-plus": "OpenAI Plus 号池，稳定性略低（若失败请切 default 分组）",
-    "default": "OpenAI Pro 号池，可靠稳定，Codex 使用",
+    "codex-plus": "OpenAI Plus 号池，稳定性略低延迟高（若失败请切 default 分组）",
+    "default": "OpenAI Pro 号池，稳定优先",
     "gemini": "Gemini",
     "image": "绘图专用"
   },
   "vendors": [
+    {
+      "id": 13,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 14,
+      "name": "xAI",
+      "icon": "XAI"
+    },
+    {
+      "id": 7,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
     {
       "id": 11,
       "name": "讯飞",
@@ -465,23 +494,20 @@
       "id": 12,
       "name": "Anthropic",
       "icon": "Claude.Color"
-    },
-    {
-      "id": 13,
-      "name": "Google",
-      "icon": "Gemini.Color"
-    },
-    {
-      "id": 7,
-      "name": "OpenAI",
-      "icon": "OpenAI"
     }
   ],
   "status_payload": {
     "data": {
-      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":true}",
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":false,\"requireAuth\":true},\"docs\":true,\"about\":true}",
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true,\"risk\":true}}",
       "announcements": [
+        {
+          "content": "<b>邀请充值返利已上线</b>\n<br><br>\n<p>\n现在通过你的邀请链接注册的好友完成首次充值后，\n</p>\n<br>\n<p>\n1、邀请人可获得好友本次最终入账额度 <b>10%</b> 的返利；<br>\n2、受邀者可额外获得 <b>5%</b> 的首充奖励。<br>\n3、每位受邀用户仅触发一次，奖励按实际入账额度计算。\n</p>\n<br>\n<p>邀请人奖励进入“邀请奖励”，可在钱包页转入余额。\n</p>",
+          "extra": "",
+          "id": 13,
+          "publishDate": "2026-06-05T13:24:35.953Z",
+          "type": "ongoing"
+        },
         {
           "content": "OpenAI 恢复",
           "extra": "",
@@ -676,7 +702,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://dddai.dev",
       "setup": true,
-      "start_time": 1780462612,
+      "start_time": 1781060305,
       "stripe_unit_price": 8,
       "system_name": "dddAI",
       "telegram_bot_name": "",

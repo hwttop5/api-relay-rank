@@ -4,11 +4,11 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":false}}",
     "announcements": [
       {
-        "content": "https://status.openai.com\n\ncodex / gpt 官方负载中",
+        "content": " claude-fable-5 已支持，终端输入: /model claude-fable-5 , \n cc-max-stable (max号池，仅限Claude客户端或官方插件使用)。\n cc-max-ext (Max号池可外接第三方使用)\n 倍率均为 1.8，请按需选择",
         "extra": "",
         "id": 35,
-        "publishDate": "2026-06-03T05:27:07.479Z",
-        "type": "warning"
+        "publishDate": "2026-06-10T00:38:51.033Z",
+        "type": "success"
       },
       {
         "content": "Codex 从6月2日起，下线GPT-5.2 / 5.3-Codex 模型",

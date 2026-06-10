@@ -1,0 +1,778 @@
+{
+  "auto_groups": [
+    "0.2折组",
+    "0.7折组",
+    "0.8折组",
+    "1折组",
+    "2折组"
+  ],
+  "data": [
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "1折组",
+        "0.5折Claude"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 5 + c * 25 + cr * 0.5 + cc * 6.25 + cc1h * 10)",
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "glm-5.1",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "稳定国产六折"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 32000\n  ? tier(\"ctx_le_32k\", p * 0.822 + c * 3.288 + cr * 0.178 + cc * 0 + cc1h * 0)\n  : tier(\"ctx_gt_32k\", p * 1.096 + c * 3.836 + cr * 0.274 + cc * 0 + cc1h * 0)"
+    },
+    {
+      "model_name": "claude-fable-5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "0.5折Claude"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 10 + c * 50 + cr * 1 + cc * 12.5 + cc1h * 20)"
+    },
+    {
+      "model_name": "kimi-k2.6",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "稳定国产六折"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 0.890411 + c * 3.698630 + cr * 0.150685 + cc * 0 + cc1h * 0)"
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "稳定国产六折",
+        "土豪"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 0.136986 + c * 0.273973 + cr * 0.002740 + cc * 0 + cc1h * 0)"
+    },
+    {
+      "model_name": "claude-haiku-4-5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "0.5折Claude"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 1 + c * 5 + cr * 0.1 + cc * 1.25 + cc1h * 2)"
+    },
+    {
+      "model_name": "codex-auto-review",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "一月无限",
+        "一周无限",
+        "限时优惠0.15折",
+        "0.7折组",
+        "0.5折组",
+        "三天无限",
+        "2折组",
+        "0.2折组",
+        "0.3折快速组",
+        "三天套餐",
+        "一周套餐",
+        "肥鱼专属",
+        "0.7折极速组",
+        "1折组",
+        "VIP",
+        "一月套餐",
+        "小米",
+        "0.8折组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 272000 ? tier(\"standard\", p * 5 + c * 30 + cr * 0.5) : tier(\"long_context\", p * 10 + c * 45 + cr * 1)"
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "稳定国产六折",
+        "土豪"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 1.643836 + c * 3.287671 + cr * 0.013699 + cc * 0 + cc1h * 0)"
+    },
+    {
+      "model_name": "MiniMax-M2.7",
+      "icon": "Minimax",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "稳定国产六折"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 0.287671 + c * 1.150685 + cr * 0.057534 + cc * 0.359589 + cc1h * 0)"
+    },
+    {
+      "model_name": "mimo-v2.5-pro",
+      "icon": "XiaomiMiMo",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "稳定国产六折"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 256000 ? tier(\"standard\", p * 1.05 + cr * 0.21 + c * 3.15 + cc * 0) : tier(\"long_context\", p * 2.10 + cr * 0.42 + c * 6.30 + cc * 0)"
+    },
+    {
+      "model_name": "qwen3.6-plus",
+      "vendor_id": 15,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "稳定国产六折"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 256000\n  ? (param(\"enable_thinking\") == true\n      ? tier(\"ctx_le_256k_thinking\", p * 1.643836 + c * 1.643836)\n      : tier(\"ctx_le_256k\", p * 0.273973 + c * 1.643836))\n  : (param(\"enable_thinking\") == true\n      ? tier(\"ctx_256k_to_1m_thinking\", p * 6.575342 + c * 6.575342)\n      : tier(\"ctx_256k_to_1m\", p * 1.095890 + c * 6.575342))"
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "0.2折组",
+        "一月套餐",
+        "0.5折组",
+        "肥鱼专属",
+        "0.8折组",
+        "0.7折组",
+        "三天无限",
+        "一周无限",
+        "限时优惠0.15折",
+        "VIP",
+        "0.7折极速组",
+        "一周套餐",
+        "三天套餐",
+        "小米",
+        "2折组",
+        "一月无限",
+        "测试专用",
+        "0.3折快速组",
+        "1折组"
+      ],
+      "supported_endpoint_types": [
+        "0"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 272000 ? tier(\"standard\", p * 5 + c * 30 + cr * 0.5) : tier(\"long_context\", p * 10 + c * 45 + cr * 1)"
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "0.5折Claude",
+        "1折组"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 5 + c * 25 + cr * 0.5 + cc * 6.25 + cc1h * 10)"
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "1折组",
+        "0.5折Claude"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 5 + c * 25 + cr * 0.5 + cc * 6.25 + cc1h * 10)"
+    },
+    {
+      "model_name": "gpt-image-2",
+      "vendor_id": 3,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.575,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "0.3折快速组",
+        "肥鱼专属",
+        "VIP",
+        "1折组",
+        "0.7折极速组"
+      ],
+      "supported_endpoint_types": [
+        "0"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "1折组",
+        "0.7折极速组",
+        "2折组",
+        "0.5折组",
+        "三天无限",
+        "VIP",
+        "一周套餐",
+        "限时优惠0.15折",
+        "0.8折组",
+        "0.7折组",
+        "一月无限",
+        "0.3折快速组",
+        "肥鱼专属",
+        "小米",
+        "一周无限",
+        "0.2折组",
+        "三天套餐",
+        "一月套餐",
+        "测试专用"
+      ],
+      "supported_endpoint_types": [
+        "0"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 272000\n  ? tier(\"standard\", p * 2.5 + c * 15 + cr * 0.25)\n  : tier(\"long_context\", p * 5 + c * 22.5 + cr * 0.5)"
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "一月无限",
+        "三天无限",
+        "一周无限",
+        "肥鱼专属",
+        "0.8折组",
+        "2折组",
+        "三天套餐",
+        "一周套餐",
+        "小米",
+        "限时优惠0.15折",
+        "0.3折快速组",
+        "0.7折极速组",
+        "1折组",
+        "0.7折组",
+        "0.5折组",
+        "测试专用",
+        "0.2折组",
+        "一月套餐",
+        "VIP"
+      ],
+      "supported_endpoint_types": [
+        "0"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 272000\n  ? tier(\"standard\", p * 2.5 + c * 15 + cr * 0.25)\n  : tier(\"long_context\", p * 5 + c * 22.5 + cr * 0.5)"
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "1折组",
+        "0.5折Claude"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 3 + c * 15 + cr * 0.3 + cc * 3.75 + cc1h * 6)"
+    }
+  ],
+  "group_ratio": {
+    "0.2折组": 0.02,
+    "0.3折快速组": 0.03,
+    "0.5折Claude": 0.05,
+    "0.5折组": 0.05,
+    "0.7折极速组": 0.07,
+    "0.7折组": 0.07,
+    "0.8折组": 0.08,
+    "1折组": 0.1,
+    "2折组": 0.2,
+    "VIP": 1,
+    "一周套餐": 1,
+    "一周无限": 1,
+    "一月套餐": 1,
+    "一月无限": 1,
+    "三天套餐": 1,
+    "三天无限": 1,
+    "小米": 0.01,
+    "测试专用": 1,
+    "稳定国产六折": 0.6,
+    "肥鱼专属": 0.07,
+    "限时优惠0.15折": 0.015,
+    "限时优惠0.1折": 0.01,
+    "限时免费": 0.001
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "0": {
+      "path": "openai",
+      "method": "POST"
+    },
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "0.2折组": "所有0.2折模型，只有gpt模型，长期供应",
+    "0.3折快速组": "只有gpt模型，含gpt-image-2(6月15日将关闭),比0.2折组有更快的响应速度，只能使用余额",
+    "0.5折Claude": "只有claude模型，只有claude模型",
+    "0.5折组": "所有0.5折模型，历史遗留，不要选",
+    "0.7折极速组": "只有gpt模型，含gpt-image-2(6月15日将关闭),全部使用pro账号具有最快的相应速度，只能使用余额",
+    "0.7折组": "所有0.7折组，历史遗留，不要选",
+    "0.8折组": "所有0.8折模型，历史遗留，不要选",
+    "1折组": "所有1折组，有gpt模型和claude模型",
+    "2折组": "所有2折模型，历史遗留，不要选",
+    "VIP": "所有VIP模型",
+    "一周套餐": "一周套餐，只会扣订阅，不会扣余额",
+    "一周无限": "一周套餐，只会扣订阅",
+    "一月套餐": "一月套餐，只会扣订阅，不会扣余额",
+    "一月无限": "一月套餐，只会扣订阅",
+    "三天套餐": "三天套餐，只会扣订阅，不会扣余额",
+    "三天无限": "三天套餐，只会扣订阅",
+    "小米": "小米定制",
+    "测试专用": "内部测试专用，请不要选择",
+    "稳定国产六折": "只有国产模型，没有gpt，没有claude",
+    "肥鱼专属": "",
+    "限时优惠0.15折": "限时优惠，限时优惠，只有gpt模型",
+    "限时优惠0.1折": "",
+    "限时免费": "只有小米模型，限时免费为0.001倍率"
+  },
+  "vendors": [
+    {
+      "id": 4,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 7,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 11,
+      "name": "OpenCode Go"
+    },
+    {
+      "id": 14,
+      "name": "OpenCode Zen",
+      "icon": "OpenCode"
+    },
+    {
+      "id": 6,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 9,
+      "name": "Vivgrid"
+    },
+    {
+      "id": 15,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 10,
+      "name": "Zhipu AI Coding Plan"
+    },
+    {
+      "id": 12,
+      "name": "MiniMax",
+      "icon": "Minimax"
+    },
+    {
+      "id": 1,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 2,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 3,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 5,
+      "name": "xAI",
+      "icon": "XAI"
+    },
+    {
+      "id": 8,
+      "name": "Venice AI",
+      "icon": "VeniceAI"
+    },
+    {
+      "id": 13,
+      "name": "Xiaomi",
+      "icon": "XiaomiMiMo"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"billing_analysis\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"system_log\":true,\"setting\":true}}",
+      "aff_quota_transfer_min": 0.1,
+      "after_sales_link": "https://discord.gg/TpnqmYnKY",
+      "after_sales_qrcode": "",
+      "announcements": [
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n   限时0.1折优惠组开启\n  </div>\n  <div style=\"color:#334155;\">\n    今天有金主，开启 <strong>限时0.1折优惠</strong>，已包含所有 <strong>当终端报错不能用时，可能是优惠额度用完了</strong>，手动把令牌换回0.2折组就行\n  </div>\n</div>",
+          "extra": "",
+          "id": 19,
+          "publishDate": "2026-06-08T12:27:44.270Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    0.7折极速组已新增\n  </div>\n  <div style=\"color:#334155;\">\n    平台已新增 <strong>0.7折极速组</strong>，已包含所有 <strong>GPT模型</strong>，包括 <strong>gpt-image-2</strong>，拥有全平台最快的响应速度，欢迎体验使用。\n  </div>\n</div>",
+          "extra": "",
+          "id": 18,
+          "publishDate": "2026-05-26T08:20:32.505Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    0.3折快速组已新增\n  </div>\n  <div style=\"color:#334155;\">\n    平台已新增 <strong>0.3折快速组</strong>，支持 <strong>gpt-image-2</strong>，相比 <strong>0.2折组</strong> 拥有更快的响应速度，欢迎体验使用。\n  </div>\n</div>",
+          "extra": "",
+          "id": 17,
+          "publishDate": "2026-05-25T20:08:15.694Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    系统升级完成通知\n  </div>\n  <div style=\"color:#334155;\">\n    平台已于 <strong>2026年5月26日 02:00</strong> 完成<strong>系统升级</strong>，当前服务已恢复正常，感谢您的理解与支持。\n  </div>\n</div>",
+          "extra": "",
+          "id": 16,
+          "publishDate": "2026-05-25T17:53:20.052Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    系统升级通知\n  </div>\n  <div style=\"color:#334155;\">\n    平台将于 <strong>2026年5月25日 24:00-次日04:00</strong> 进行<strong>系统升级</strong>，升级期间<strong>系统不可用</strong>，请提前做好安排。\n  </div>\n</div>",
+          "extra": "",
+          "id": 15,
+          "publishDate": "2026-05-25T14:17:24.904Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    Claude模型已新增\n  </div>\n  <div style=\"color:#334155;\">\n    平台已新增 <strong>Claude模型</strong>，当前已上线至 <strong>1折分组</strong>，欢迎体验使用。\n  </div>\n</div>",
+          "extra": "",
+          "id": 14,
+          "publishDate": "2026-05-23T10:41:38.340Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    系统升级已完成\n  </div>\n  <div style=\"color:#334155;\">\n    平台系统已于 <strong>5月18日 04:00</strong> 完成升级，当前服务已恢复正常。感谢大家的耐心等待与理解。\n  </div>\n</div>",
+          "extra": "",
+          "id": 13,
+          "publishDate": "2026-05-17T16:44:52.524Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    系统升级通知\n  </div>\n  <div style=\"color:#334155;\">\n    平台将于 <strong>5月18日 0:00-04:00</strong> 进行系统升级，期间可能出现短暂不可用、登录失败或请求延迟等情况，请提前安排使用并相互转告。\n  </div>\n</div>",
+          "extra": "",
+          "id": 12,
+          "publishDate": "2026-05-17T15:00:08.291Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    GPT 推理强度模型现已支持直接使用\n  </div>\n  <div style=\"color:#334155;\">\n    所有带有小括号推理强度标识的 GPT 模型，如 gpt-5.4(xhigh)，现已可直接使用 gpt-5.4，推理强度将由 Codex 自动发送。\n  </div>\n</div>\n",
+          "extra": "",
+          "id": 11,
+          "publishDate": "2026-05-10T10:01:08.074Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    0.02倍率线路已新增\n  </div>\n  <div style=\"color:#334155;\">\n    现在已经新增了0.02倍率线路，更低的费用，相同的效果和速率。\n  </div>\n</div>\n",
+          "extra": "",
+          "id": 10,
+          "publishDate": "2026-05-03T13:53:44.808Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    系统升级维护完成公告\n  </div>\n  <div style=\"color:#334155;\">\n    本次系统升级维护已完成，服务现已恢复正常访问。感谢大家在维护期间的理解与支持，如遇到异常请刷新页面后重试。\n  </div>\n</div>\n",
+          "extra": "",
+          "id": 9,
+          "publishDate": "2026-04-28T21:27:21.395Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\"><div style=\"font-size:18px;font-weight:800;color:#9a3412;margin-bottom:6px;\">系统升级维护公告</div><div style=\"color:#334155;\">系统将于<strong style=\"color:#9a3412;\">今日凌晨4:00</strong>进行升级维护，预计约<strong style=\"color:#b91c1c;\">2小时停机</strong>。维护期间服务可能无法访问，请提前安排，感谢理解。</div></div>\n",
+          "extra": "",
+          "id": 8,
+          "publishDate": "2026-04-28T12:42:22.050Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#9a3412;margin-bottom:6px;\">\n    无限战争套餐流量已开放\n  </div>\n  <div style=\"color:#334155;\">\n    <strong style=\"color:#9a3412;\">无限战争</strong>\n    套餐流量现已可以使用。已购买或订阅的用户，可使用\n    <strong style=\"color:#b91c1c;\">无限战争分组</strong>\n    的 API Token 开始调用，欢迎体验。\n  </div>\n</div>\n",
+          "extra": "",
+          "id": 7,
+          "publishDate": "2026-04-26T20:07:03.274Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#9a3412;margin-bottom:6px;\">\n    Claude 系列模型已全平台上线\n  </div>\n  <div style=\"color:#334155;\">\n    全平台现已新增\n    <strong style=\"color:#9a3412;\">Claude 系列模型</strong>\n    ，包括\n    <strong style=\"color:#b91c1c;\">2 折组</strong>\n    与\n    <strong style=\"color:#b91c1c;\">1 折组</strong>\n    ，欢迎按需选择体验。\n  </div>\n</div>\n",
+          "extra": "",
+          "id": 6,
+          "publishDate": "2026-04-25T09:23:17.371Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#dc2626;margin-bottom:6px;\">\n    GPT-5.5 已正式上线\n  </div>\n  <div style=\"color:#334155;\">\n    平台现已正式上线\n    <strong style=\"color:#b91c1c;\">GPT-5.5</strong>\n    ，欢迎第一时间体验最新模型能力。\n  </div>\n</div>\n",
+          "extra": "",
+          "id": 5,
+          "publishDate": "2026-04-24T17:38:54.305Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#15803d;margin-bottom:6px;\">\n    新账户赠送免费额度\n  </div>\n  <div style=\"color:#334155;\">\n    新注册账户将自动获得\n    <strong style=\"color:#15803d;\">免费额度</strong>\n    ，可用于初次体验、模型测试与接入验证。\n  </div>\n</div>\n",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2026-04-24T17:38:45.262Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#1d4ed8;margin-bottom:6px;\">\n    0.7 折组已新增\n  </div>\n  <div style=\"color:#334155;\">\n    平台现已新增\n    <strong style=\"color:#1d4ed8;\">0.7 折组</strong>\n    ，可按需选择对应分组使用。\n  </div>\n</div>\n",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2026-04-24T17:38:41.105Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#b45309;margin-bottom:6px;\">\n    服务器迁移已完成\n  </div>\n  <div style=\"color:#334155;\">\n    服务器已迁移完成。大陆用户请使用\n    <strong style=\"color:#92400e;\">科学上网访问</strong>\n    ，以获得更稳定的连接体验。\n  </div>\n</div>\n",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-04-24T17:38:28.162Z",
+          "type": "default"
+        },
+        {
+          "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#7c3aed;margin-bottom:6px;\">\n    默认分组说明\n  </div>\n  <div style=\"color:#334155;\">\n    当前默认用户开放\n    <strong style=\"color:#7c3aed;\">2 折</strong>、\n    <strong style=\"color:#2563eb;\">0.8 折</strong>\n    和\n    <strong style=\"color:#1d4ed8;\">0.7 折</strong>\n    分组，请按需选择对应分组使用。\n  </div>\n</div>\n",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-04-24T17:38:19.265Z",
+          "type": "default"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": true,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://doc.ergouzi.life",
+      "email_verification": true,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq": [],
+      "faq_enabled": true,
+      "footer_html": "",
+      "github_client_id": "",
+      "github_oauth": false,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "https://nzj13gqqmj.ufs.sh/f/7vCb7ZuKZQXM8I2IHQXhPqNEAXV4gJm0LzopUFvck3bCKG1e",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "New API",
+      "passkey_login": false,
+      "passkey_origins": "https://ergouzi.life",
+      "passkey_rp_id": "ergouzi.life",
+      "passkey_user_verification": "preferred",
+      "price": 7.3,
+      "privacy_policy_enabled": true,
+      "quota_display_type": "USD",
+      "quota_per_unit": 500000,
+      "self_use_mode_enabled": false,
+      "server_address": "https://ergouzi.life",
+      "setup": true,
+      "start_time": 1781069466,
+      "stripe_unit_price": 8,
+      "system_name": "二狗子",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "top_up_link": "https://pay.ldxp.cn/shop/8C30CIW6",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "unlimited_plan_link": "https://pay.ldxp.cn/shop/8C30CIW6",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 7.3,
+      "user_agreement_enabled": true,
+      "version": "0.17.0",
+      "wechat_login": false,
+      "wechat_qrcode": "https://res.cloudinary.com/dufnuhipy/image/upload/f_auto,q_auto/949c45322c322b62ce031da0f2e88c98_cs91cx"
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://ergouzi.life/api/pricing"
+}

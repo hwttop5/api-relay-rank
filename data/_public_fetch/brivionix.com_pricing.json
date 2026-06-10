@@ -18,6 +18,44 @@
       ],
       "supported_endpoint_types": [
         "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "icon": "OpenAI",
+      "tags": "reasoning,tools,files,vision,400k",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1.1705882353,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.09145728645,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1.0294,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.10000114285,
+      "enable_groups": [
+        "default",
+        "max"
+      ],
+      "supported_endpoint_types": [
+        "openai"
       ]
     },
     {
@@ -53,43 +91,6 @@
       "enable_groups": [
         "default",
         "max"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.2",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 1.0294,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.10000114285,
-      "enable_groups": [
-        "default",
-        "max"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "icon": "OpenAI",
-      "tags": "reasoning,tools,files,vision,400k",
-      "vendor_id": 5,
-      "quota_type": 0,
-      "model_ratio": 1.1705882353,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.09145728645,
-      "enable_groups": [
-        "default"
       ],
       "supported_endpoint_types": [
         "openai"

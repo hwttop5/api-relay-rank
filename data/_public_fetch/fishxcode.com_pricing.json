@@ -7,73 +7,31 @@
   ],
   "data": [
     {
-      "model_name": "claude-haiku-4-5-20251001",
-      "description": "Claude Haiku 4.5 is an AI model provided by qihang-ai.",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
+      "model_name": "gpt-image-2",
+      "description": "An advanced AI model for generating images from textual descriptions.",
+      "icon": "OpenAI",
+      "tags": "Tools,Files,Vision,1K",
+      "vendor_id": 13,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.08,
       "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
+      "completion_ratio": 0,
       "enable_groups": [
-        "aws-enterprise",
-        "reverse",
-        "cc_export",
-        "reverse_new",
-        "sub_plan_claude_nano_day",
-        "reverse_anti_new",
-        "reverse_wf",
-        "aws_api",
-        "auto",
-        "sub_plan_claude_premium",
-        "sub_plan_claude_premium_plus",
-        "kiro_svip",
-        "default",
-        "cc_max",
-        "sub_plan_claude_ultimate",
-        "cc-max-cheap",
-        "sub_plan_claude_premium_max",
-        "sub_plan_claude_mini_max",
-        "kiro_cheap",
-        "sub_plan_claude_mini_plus",
-        "claude",
-        "cc-max",
-        "sub_plan_claude_lite"
+        "gpt_image"
       ],
       "supported_endpoint_types": [
-        "anthropic",
-        "openai"
+        "image-edits",
+        "openai-response-compact",
+        "image-generation"
       ],
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
-      "model_name": "claude-sonnet-4-5-20250929-thinking",
-      "description": "claude-sonnet-4-5-20250929-thinking is an AI model provided by 302ai.",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc_export"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "veo-3.1",
+      "model_name": "sora-2-pro",
       "quota_type": 1,
       "model_ratio": 0,
-      "model_price": 0.56,
+      "model_price": 0.51,
       "owner_by": "",
       "completion_ratio": 0,
       "enable_groups": [
@@ -84,481 +42,15 @@
       ]
     },
     {
-      "model_name": "byte-plus-seedream-4",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.06,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "kling-10s",
-      "vendor_id": 72,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.12,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "kling-o3",
-      "vendor_id": 13,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.21,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101",
-      "description": "Claude Opus 4.5 is an AI model provided by qihang-ai.",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "kiro_cheap",
-        "cc_export",
-        "sub_plan_claude_premium",
-        "sub_plan_claude_nano_day",
-        "cc-max",
-        "auto",
-        "sub_plan_claude_premium_plus",
-        "kiro_svip",
-        "reverse_wf",
-        "sub_plan_claude_mini_max",
-        "sub_plan_claude_lite",
-        "reverse",
-        "sub_plan_claude_mini_plus",
-        "reverse_new",
-        "sub_plan_claude_ultimate",
-        "aws-enterprise",
-        "sub_plan_claude_premium_max",
-        "default",
-        "cc_max",
-        "aws_api",
-        "cc-max-cheap"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "description": "Claude Sonnet 4.6 is an AI model provided by venice.",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "reverse_anti_new",
-        "sub_plan_claude_lite",
-        "aws-enterprise",
-        "sub_plan_claude_premium_max",
-        "reverse",
-        "sub_plan_claude_mini_plus",
-        "sub_plan_claude_premium_plus",
-        "default",
-        "cc-max",
-        "reverse_wf",
-        "sub_plan_claude_mini_max",
-        "aws_api",
-        "cc_export",
-        "sub_plan_claude_premium",
-        "sub_plan_claude_nano_day",
-        "claude",
-        "cc_max",
-        "sub_plan_claude_ultimate",
-        "auto",
-        "cc-max-cheap",
-        "kiro_cheap",
-        "kiro_svip",
-        "reverse_new"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "description": "GPT-5.4 is an AI model provided by opencode.",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Tools,Files,Vision,1.1M",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "codex_team",
-        "codex_plus",
-        "codex",
-        "codex_sub",
-        "codex_pro",
-        "codex包月",
-        "codex_sale",
-        "auto",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash-lite",
-      "description": "gemini-2.5-flash-lite is an AI model provided by sap-ai-core.",
+      "model_name": "gemini-3.1-pro-preview",
+      "description": "Gemini 3.1 Pro Preview is an AI model provided by vivgrid.",
       "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 59,
-      "quota_type": 0,
-      "model_ratio": 0.05,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4,
-      "cache_ratio": 0.25,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "google-imagen-4",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.12,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-imagine",
-      "vendor_id": 45,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.12,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5",
-      "description": "Claude Haiku 4.5 is an AI model provided by opencode.",
-      "icon": "OpenCode",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 49,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "aws-enterprise"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "deepseek-v4-pro",
-      "description": "DeepSeek V4 Pro is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Open Weights,1M",
       "vendor_id": 50,
-      "quota_type": 0,
-      "model_ratio": 1.8,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2.125,
-      "cache_ratio": 0.008333333333,
-      "enable_groups": [
-        "china",
-        "ds_api_pro",
-        "ds_api",
-        "deepseek"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-preview",
-      "description": "Gemini 3 Pro Preview is an AI model provided by qihang-ai.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 51,
       "quota_type": 0,
       "model_ratio": 1,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6.017544,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini-特价",
-        "default",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-0309-console",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 0.625,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-1",
-      "description": "An advanced AI model for generating images from textual descriptions.",
-      "icon": "OpenAI.Color",
-      "tags": "Reasoning,Tools,Files,Open Weights,Vision,1K",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.01,
-      "image_ratio": 2,
-      "enable_groups": [
-        "codex包月",
-        "default",
-        "codex",
-        "codex_sub",
-        "codex_plus",
-        "codex_pro"
-      ],
-      "supported_endpoint_types": [
-        "openai-response-compact",
-        "image-generation"
-      ]
-    },
-    {
-      "model_name": "byte-plus-seedream-4-5",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.06,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "qwen-image-2",
-      "vendor_id": 29,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.06,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "seedance2.0-10s",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.2,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001-thinking",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 37.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "cc_export",
-        "cc-max",
-        "default",
-        "cc_max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "wan2-7-image-pro",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.05,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-5-20250929",
-      "description": "Claude Sonnet 4.5 is an AI model provided by qihang-ai.",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "aws_api",
-        "auto",
-        "aws-enterprise",
-        "cc-max-cheap",
-        "reverse",
-        "kiro_cheap",
-        "sub_plan_claude_premium",
-        "sub_plan_claude_premium_plus",
-        "kiro_svip",
-        "reverse_new",
-        "sub_plan_claude_premium_max",
-        "reverse_wf",
-        "sub_plan_claude_ultimate",
-        "sub_plan_claude_mini_plus",
-        "sub_plan_claude_nano_day",
-        "sub_plan_claude_lite",
-        "sub_plan_claude_mini_max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7-thinking",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 37.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "default",
-        "cc_max",
-        "cc_export",
-        "cc-max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash",
-      "description": "gemini-2.5-flash is an AI model provided by sap-ai-core.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 59,
-      "quota_type": 0,
-      "model_ratio": 0.15,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8.333333333333,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini-特价",
-        "default",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-pro",
-      "description": "gemini-2.5-pro is an AI model provided by sap-ai-core.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 59,
-      "quota_type": 0,
-      "model_ratio": 0.625,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
+      "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
         "gemini-特价",
@@ -586,704 +78,10 @@
       ]
     },
     {
-      "model_name": "sora-2-pro",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.51,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-flash-preview",
-      "description": "Gemini 3 Flash Preview is an AI model provided by venice.",
-      "icon": "VeniceAI",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,256K",
-      "vendor_id": 58,
-      "quota_type": 0,
-      "model_ratio": 0.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini-特价",
-        "default",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-nano",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 0.1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6.25,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex_sub",
-        "codex_plus",
-        "codex_pro",
-        "codex包月",
-        "default",
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
       "model_name": "seedance2.0-5s",
       "quota_type": 1,
       "model_ratio": 0,
       "model_price": 0.2,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "nano-banana-2",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.16,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "description": "GPT-5.3 Codex is an AI model provided by openai.",
-      "icon": "OpenAI.Color",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "codex_plus",
-        "default",
-        "codex",
-        "codex_sub",
-        "codex_pro",
-        "auto",
-        "codex_team",
-        "codex包月"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response"
-      ]
-    },
-    {
-      "model_name": "seedance1.5-5s",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.2,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-flash-lite-latest",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 0.125,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.25,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic",
-        "gemini"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-flash-lite-preview",
-      "description": "Gemini 3.1 Flash Lite Preview is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 50,
-      "quota_type": 0,
-      "model_ratio": 0.125,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5-openai-compact",
-      "description": "gpt 5.5 openai compact is an OpenAI model for reasoning and multimodal generation.",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Vision,Tools,Files,1.1M",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex",
-        "codex_pro",
-        "codex_plus",
-        "auto",
-        "codex_sub",
-        "codex包月",
-        "codex_sale",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-multi-agent-console",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "sora-2",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.3,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-pro-preview",
-      "description": "Gemini 3.1 Pro Preview is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 50,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini",
-        "gemini-特价",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "description": "GPT-5.5 is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,1.1M",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex_sale",
-        "codex_plus",
-        "codex_sub",
-        "codex_pro",
-        "codex包月",
-        "codex_team",
-        "auto",
-        "default",
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai",
-        "openai-response"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex-spark",
-      "description": "GPT-5.3 Codex Spark is an AI model provided by opencode.",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Tools,128K",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex_plus",
-        "auto"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6",
-      "description": "Claude Opus 4.6 is an AI model provided by venice.",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "sub_plan_claude_ultimate",
-        "kiro_cheap",
-        "reverse_new",
-        "sub_plan_claude_premium",
-        "sub_plan_claude_nano_day",
-        "sub_plan_claude_premium_plus",
-        "cc-max-cheap",
-        "sub_plan_claude_mini_plus",
-        "reverse_anti_new",
-        "claude",
-        "reverse_wf",
-        "sub_plan_claude_lite",
-        "sub_plan_claude_mini_max",
-        "cc_max",
-        "aws_api",
-        "kiro_svip",
-        "cc-max",
-        "auto",
-        "aws-enterprise",
-        "reverse",
-        "cc_export",
-        "sub_plan_claude_premium_max",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101-thinking",
-      "description": "claude-opus-4-5-20251101-thinking is an AI model provided by 302ai.",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc_export",
-        "cc-max",
-        "default",
-        "cc_max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-image-preview",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 60,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic",
-        "gemini"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-flash-image-preview",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 0.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 120,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-build-console",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-0309-non-reasoning-console",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-multi-agent-high",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.3-high",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 0.85,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "veo-3.1-ref",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.56,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "nano-banana-pro",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.12,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "nano-banana",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.12,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-8",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc_max",
-        "kiro_cheap",
-        "kiro_svip",
-        "default",
-        "claude",
-        "cc-max",
-        "reverse_wf",
-        "reverse_new"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "description": "GPT-5.4 Mini is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "codex_sale",
-        "codex_team",
-        "codex",
-        "codex_sub",
-        "codex包月",
-        "codex_plus",
-        "auto",
-        "default",
-        "codex_pro"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-flash-lite",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 0.125,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "codex-auto-review",
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "codex_sale"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "veo-3.1-fast",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.56,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "seedance1.5-10s",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.2,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "byte-plus-seedream-5-lite",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.06,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "description": "Claude Opus 4.7 is an AI model provided by venice.\n",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-max",
-        "sub_plan_claude_mini_max",
-        "cc_max",
-        "cc-max-cheap",
-        "aws-enterprise",
-        "cc_export",
-        "kiro_cheap",
-        "sub_plan_claude_mini_plus",
-        "reverse",
-        "sub_plan_claude_lite",
-        "aws_api",
-        "sub_plan_claude_ultimate",
-        "auto",
-        "reverse_new",
-        "sub_plan_claude_premium",
-        "sub_plan_claude_nano_day",
-        "sub_plan_claude_premium_plus",
-        "kiro_svip",
-        "default",
-        "claude",
-        "reverse_wf",
-        "sub_plan_claude_premium_max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-0309-non-reasoning",
-      "description": "Grok 4.20 (Non-Reasoning) is an AI model provided by xai.",
-      "icon": "XAI.Color",
-      "tags": "Tools,Files,Vision,2M",
-      "vendor_id": 45,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.08,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.3-medium",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 0.625,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "kling-3.0",
-      "vendor_id": 72,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.14,
       "owner_by": "",
       "completion_ratio": 0,
       "enable_groups": [
@@ -1309,133 +107,8 @@
       ]
     },
     {
-      "model_name": "wan2-7-image",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.03,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6-thinking",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "cc-max",
-        "default",
-        "cc_max",
-        "cc_export"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "deepseek-v4-flash",
-      "description": "DeepSeek V4 Flash is an AI model provided by venice.",
-      "icon": "VeniceAI",
-      "tags": "Reasoning,Tools,Open Weights,1M",
-      "vendor_id": 58,
-      "quota_type": 0,
-      "model_ratio": 0.6,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "cache_ratio": 0.02,
-      "enable_groups": [
-        "ds_api",
-        "deepseek",
-        "china",
-        "ds_api_pro"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash-image",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 0.15,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 100,
-      "cache_ratio": 0.25,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-multi-agent-xhigh",
+      "model_name": "grok-imagine",
       "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.3-console",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 0.625,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex-openai-compact",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 1.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "enable_groups": [
-        "default",
-        "codex",
-        "codex_sub",
-        "codex_plus",
-        "codex_pro",
-        "codex包月"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "kling-5s",
-      "vendor_id": 72,
       "quota_type": 1,
       "model_ratio": 0,
       "model_price": 0.12,
@@ -1449,79 +122,21 @@
       ]
     },
     {
-      "model_name": "gpt-5.4-openai-compact",
-      "description": "gpt 5.4 openai compact is an OpenAI model for reasoning and multimodal generation.",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Vision,Tools,Files,1.1M",
-      "vendor_id": 13,
+      "model_name": "claude-haiku-4-5-20251001-thinking",
+      "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 1.25,
+      "model_ratio": 37.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
+      "completion_ratio": 5,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "codex",
-        "codex_sub",
-        "codex_pro",
-        "codex_sale",
-        "codex_plus",
-        "default",
-        "codex包月",
-        "auto"
+        "cc_export",
+        "cc-max",
+        "default"
       ],
       "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.5-flash",
-      "description": "Gemini 3.5 Flash is an AI model provided by opencode.",
-      "icon": "OpenCode",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 49,
-      "quota_type": 0,
-      "model_ratio": 0.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 18,
-      "cache_ratio": 0.1,
-      "audio_ratio": 2,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-0309-reasoning-console",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-multi-agent-medium",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     },
@@ -1559,6 +174,548 @@
       ]
     },
     {
+      "model_name": "byte-plus-seedream-4-5",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.06,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "nano-banana-2",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.16,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-fable-5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.5,
+      "enable_groups": [
+        "cc_max"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "byte-plus-seedream-5-lite",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.06,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "veo-3.1",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.56,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-flash-lite-latest",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic",
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-non-reasoning",
+      "description": "Grok 4.20 (Non-Reasoning) is an AI model provided by xai.",
+      "icon": "XAI.Color",
+      "tags": "Tools,Files,Vision,2M",
+      "vendor_id": 45,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.08,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "veo-3.1-ref",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.56,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "byte-plus-seedream-4",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.06,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "sora-2",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "wan2-7-image",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.03,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-nothinking",
+      "description": "Gemini 2.5 Flash (No Thinking) is an AI model provided by nano-gpt.",
+      "tags": "Files,Vision,1M",
+      "vendor_id": 60,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333333,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini",
+        "gemini-特价",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash",
+      "description": "Gemini 3.5 Flash is an AI model provided by opencode.",
+      "icon": "OpenCode",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 49,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 18,
+      "cache_ratio": 0.1,
+      "audio_ratio": 2,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "codex_sale"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "description": "GPT-5.3 Codex is an AI model provided by openai.",
+      "icon": "OpenAI.Color",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "codex包月",
+        "auto",
+        "default",
+        "codex",
+        "codex_sub",
+        "codex_plus",
+        "codex_pro"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "kling-3.0",
+      "vendor_id": 72,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.14,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "seedance2.0-10s",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "description": "GPT-5.4 is an AI model provided by opencode.",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Tools,Files,Vision,1.1M",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "codex_plus",
+        "auto",
+        "codex_sale",
+        "default",
+        "codex",
+        "codex_sub",
+        "codex_pro",
+        "codex包月"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "description": "GPT-5.4 Mini is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "default",
+        "codex",
+        "codex_pro",
+        "auto",
+        "codex_sale",
+        "codex_sub",
+        "codex_plus",
+        "codex包月"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-image-preview",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 60,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-image-preview",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 120,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic",
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-lite",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic",
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "grok-4.3-low",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "nano-banana",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "description": "Claude Sonnet 4.6 is an AI model provided by venice.",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "sub_plan_claude_premium",
+        "sub_plan_claude_premium_max",
+        "sub_plan_claude_premium_plus",
+        "default",
+        "cc-max",
+        "reverse_wf",
+        "sub_plan_claude_mini_max",
+        "sub_plan_claude_ultimate",
+        "sub_plan_claude_nano_day",
+        "reverse_anti_new",
+        "sub_plan_claude_lite",
+        "aws_api",
+        "cc-max-cheap",
+        "aws-enterprise",
+        "reverse",
+        "kiro_cheap",
+        "sub_plan_claude_mini_plus",
+        "kiro_svip",
+        "reverse_new",
+        "claude",
+        "cc_max",
+        "cc_export",
+        "auto"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "cc_export",
+        "cc-max",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-multi-agent-console",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-multi-agent-high",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "description": "DeepSeek V4 Flash is an AI model provided by venice.",
+      "icon": "VeniceAI",
+      "tags": "Reasoning,Tools,Open Weights,1M",
+      "vendor_id": 58,
+      "quota_type": 0,
+      "model_ratio": 0.6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.02,
+      "enable_groups": [
+        "china",
+        "ds_api_pro",
+        "ds_api",
+        "deepseek"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "seedance1.5-5s",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
       "model_name": "qwen-image-plus",
       "vendor_id": 29,
       "quota_type": 1,
@@ -1574,36 +731,10 @@
       ]
     },
     {
-      "model_name": "gpt-image-2",
-      "description": "An advanced AI model for generating images from textual descriptions.",
-      "icon": "OpenAI",
-      "tags": "Tools,Files,Vision,1K",
-      "vendor_id": 13,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.08,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "codex_sub",
-        "codex_plus",
-        "codex_pro",
-        "codex包月",
-        "gpt_image",
-        "default",
-        "codex"
-      ],
-      "supported_endpoint_types": [
-        "image-edits",
-        "openai-response-compact",
-        "image-generation"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash-nothinking",
-      "description": "Gemini 2.5 Flash (No Thinking) is an AI model provided by nano-gpt.",
-      "tags": "Files,Vision,1M",
-      "vendor_id": 60,
+      "model_name": "gemini-2.5-flash",
+      "description": "gemini-2.5-flash is an AI model provided by sap-ai-core.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 59,
       "quota_type": 0,
       "model_ratio": 0.15,
       "model_price": 0,
@@ -1621,6 +752,390 @@
       ]
     },
     {
+      "model_name": "grok-build-console",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "description": "DeepSeek V4 Pro is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Open Weights,1M",
+      "vendor_id": 50,
+      "quota_type": 0,
+      "model_ratio": 1.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2.125,
+      "cache_ratio": 0.008333333333,
+      "enable_groups": [
+        "ds_api_pro",
+        "ds_api",
+        "deepseek",
+        "china"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "description": "Claude Haiku 4.5 is an AI model provided by qihang-ai.",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc_export",
+        "sub_plan_claude_mini_plus",
+        "cc-max",
+        "cc_max",
+        "reverse_new",
+        "sub_plan_claude_premium",
+        "sub_plan_claude_premium_max",
+        "sub_plan_claude_nano_day",
+        "sub_plan_claude_lite",
+        "aws_api",
+        "auto",
+        "aws-enterprise",
+        "kiro_cheap",
+        "reverse",
+        "sub_plan_claude_premium_plus",
+        "default",
+        "reverse_wf",
+        "kiro_svip",
+        "reverse_anti_new",
+        "claude",
+        "sub_plan_claude_mini_max",
+        "sub_plan_claude_ultimate",
+        "cc-max-cheap"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "description": "Claude Opus 4.8 is an AI model provided by venice.",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude",
+        "sub_plan_claude_premium_max",
+        "sub_plan_claude_lite",
+        "sub_plan_claude_ultimate",
+        "cc-max",
+        "sub_plan_claude_premium",
+        "kiro_cheap",
+        "kiro_svip",
+        "default",
+        "sub_plan_claude_nano_day",
+        "sub_plan_claude_premium_plus",
+        "reverse_wf",
+        "cc_max",
+        "sub_plan_claude_mini_max",
+        "sub_plan_claude_mini_plus",
+        "reverse_new"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview",
+      "description": "Gemini 3 Flash Preview is an AI model provided by venice.",
+      "icon": "VeniceAI",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,256K",
+      "vendor_id": 58,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini-特价",
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "google-imagen-4",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kling-o3",
+      "vendor_id": 72,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.21,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "description": "Claude Opus 4.7 is an AI model provided by venice.\n",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws_api",
+        "sub_plan_claude_ultimate",
+        "auto",
+        "cc_export",
+        "reverse_new",
+        "sub_plan_claude_premium_max",
+        "default",
+        "sub_plan_claude_lite",
+        "kiro_svip",
+        "claude",
+        "cc-max",
+        "cc-max-cheap",
+        "aws-enterprise",
+        "kiro_cheap",
+        "sub_plan_claude_nano_day",
+        "sub_plan_claude_premium_plus",
+        "reverse_wf",
+        "sub_plan_claude_mini_max",
+        "cc_max",
+        "reverse",
+        "sub_plan_claude_mini_plus",
+        "sub_plan_claude_premium"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101-thinking",
+      "description": "claude-opus-4-5-20251101-thinking is an AI model provided by 302ai.",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc_export",
+        "cc-max",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-reasoning-console",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.3-console",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "nano-banana-pro",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kling-10s",
+      "vendor_id": 72,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-max",
+        "default",
+        "cc_export"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "description": "GPT-5.5 is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,1.1M",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "sub_plan_claude_lite",
+        "codex",
+        "codex_plus",
+        "sub_plan_claude_nano_day",
+        "sub_plan_claude_ultimate",
+        "default",
+        "codex_sub",
+        "auto",
+        "codex_pro",
+        "sub_plan_claude_premium_max",
+        "sub_plan_claude_mini_plus",
+        "sub_plan_claude_premium_plus",
+        "sub_plan_claude_premium",
+        "codex包月",
+        "codex_sale",
+        "sub_plan_claude_mini_max"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-lite-preview",
+      "description": "Gemini 3.1 Flash Lite Preview is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 50,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
+      "description": "gpt 5.5 openai compact is an OpenAI model for reasoning and multimodal generation.",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Vision,Tools,Files,1.1M",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex_sale",
+        "codex_plus",
+        "auto"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
       "model_name": "gpt-5.2",
       "description": "GPT-5.2 is an AI model provided by qihang-ai.",
       "icon": "OpenAI",
@@ -1634,14 +1149,13 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1,
       "enable_groups": [
-        "codex_plus",
-        "codex包月",
-        "auto",
-        "codex_team",
-        "default",
         "codex",
         "codex_sub",
-        "codex_pro"
+        "codex_plus",
+        "codex_pro",
+        "codex包月",
+        "auto",
+        "default"
       ],
       "supported_endpoint_types": [
         "openai",
@@ -1649,13 +1163,444 @@
       ]
     },
     {
-      "model_name": "grok-4.3-low",
+      "model_name": "grok-4.3-medium",
       "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "seedance1.5-10s",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "description": "Claude Opus 4.6 is an AI model provided by venice.",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "reverse",
+        "reverse_new",
+        "reverse_anti_new",
+        "claude",
+        "reverse_wf",
+        "cc_export",
+        "kiro_cheap",
+        "sub_plan_claude_nano_day",
+        "kiro_svip",
+        "cc-max",
+        "sub_plan_claude_mini_plus",
+        "sub_plan_claude_premium",
+        "sub_plan_claude_premium_max",
+        "cc_max",
+        "aws_api",
+        "sub_plan_claude_ultimate",
+        "cc-max-cheap",
+        "sub_plan_claude_premium_plus",
+        "default",
+        "sub_plan_claude_lite",
+        "sub_plan_claude_mini_max",
+        "auto",
+        "aws-enterprise"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro",
+      "description": "gemini-2.5-pro is an AI model provided by sap-ai-core.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 59,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini-特价",
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-preview",
+      "description": "Gemini 3 Pro Preview is an AI model provided by qihang-ai.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 51,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6.017544,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini-特价",
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-lite",
+      "description": "gemini-2.5-flash-lite is an AI model provided by sap-ai-core.",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 59,
+      "quota_type": 0,
+      "model_ratio": 0.05,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-console",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-non-reasoning-console",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "veo-3.1-fast",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.56,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "description": "Claude Opus 4.5 is an AI model provided by qihang-ai.",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "reverse_wf",
+        "cc_max",
+        "auto",
+        "reverse",
+        "sub_plan_claude_premium",
+        "sub_plan_claude_premium_max",
+        "sub_plan_claude_premium_plus",
+        "cc-max",
+        "reverse_new",
+        "aws_api",
+        "sub_plan_claude_ultimate",
+        "default",
+        "sub_plan_claude_lite",
+        "sub_plan_claude_mini_max",
+        "aws-enterprise",
+        "cc-max-cheap",
+        "kiro_cheap",
+        "cc_export",
+        "sub_plan_claude_mini_plus",
+        "sub_plan_claude_nano_day",
+        "kiro_svip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929-thinking",
+      "description": "claude-sonnet-4-5-20250929-thinking is an AI model provided by 302ai.",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc_export"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-openai-compact",
+      "description": "gpt 5.4 openai compact is an OpenAI model for reasoning and multimodal generation.",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Vision,Tools,Files,1.1M",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex_sale",
+        "codex_plus",
+        "auto"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.3-high",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 0.85,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kling-5s",
+      "vendor_id": 72,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "description": "Claude Sonnet 4.5 is an AI model provided by qihang-ai.",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "sub_plan_claude_mini_plus",
+        "sub_plan_claude_mini_max",
+        "aws_api",
+        "reverse",
+        "sub_plan_claude_premium",
+        "sub_plan_claude_premium_plus",
+        "sub_plan_claude_lite",
+        "cc_max",
+        "auto",
+        "sub_plan_claude_nano_day",
+        "reverse_wf",
+        "reverse_new",
+        "sub_plan_claude_ultimate",
+        "sub_plan_claude_premium_max",
+        "kiro_svip",
+        "cc-max-cheap",
+        "aws-enterprise",
+        "kiro_cheap"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-image",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 100,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic",
+        "gemini"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "description": "GPT-5.3 Codex Spark is an AI model provided by opencode.",
+      "icon": "OpenAI",
+      "tags": "Reasoning,Tools,128K",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex_plus",
+        "auto"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "wan2-7-image-pro",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.05,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-image-2",
+      "vendor_id": 29,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.06,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-multi-agent-medium",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5",
+      "description": "Claude Haiku 4.5 is an AI model provided by opencode.",
+      "icon": "OpenCode",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 49,
       "quota_type": 0,
       "model_ratio": 0.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 2,
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws-enterprise"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-multi-agent-xhigh",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
       "enable_groups": [
         "grok"
       ],
@@ -1674,16 +1619,12 @@
     "codex": 1,
     "codex_plus": 0.4,
     "codex_pro": 0.5,
-    "codex_sale": 0.25,
     "codex_sub": 0.5,
-    "codex_team": 1,
     "deepseek": 0.5,
     "default": 1.7,
     "gemini": 1.8,
     "gpt_image": 1.2,
-    "grok": 1,
-    "kiro_cheap": 0.28,
-    "kiro_svip": 0.35
+    "grok": 1
   },
   "success": true,
   "supported_endpoint": {
@@ -1726,16 +1667,12 @@
     "codex": "codex分组 codex 专用分组缓存可达90%",
     "codex_plus": "codex_plus",
     "codex_pro": "codex_pro号池",
-    "codex_sale": "codex_sale⚠️ 上游为20apixa",
     "codex_sub": "codex_sub分组 codex plus pro team 号池专用分组缓存可达95%",
-    "codex_team": "codex_team",
     "deepseek": "deepseek",
     "default": "⚠️ ⚠️⚠️⚠️⚠️默认通用分组：可调用全站所有模型，但所有模型统一按 1.7 倍率计费",
     "gemini": "gemini",
     "gpt_image": "gpt_image",
-    "grok": "grok ⚠️ 上游为20apixa",
-    "kiro_cheap": "kiro_cheap ⚠️ 上游为20apixa",
-    "kiro_svip": "kiro_svip ⚠️ 上游为20apixa"
+    "grok": "grok ⚠️ 上游为20apixa"
   },
   "usable_group_meta": {
     "aws-enterprise": {
@@ -1783,20 +1720,10 @@
       "billing_type": "public",
       "desc": "codex_pro号池"
     },
-    "codex_sale": {
-      "billing_label": "通用",
-      "billing_type": "public",
-      "desc": "codex_sale⚠️ 上游为20apixa"
-    },
     "codex_sub": {
       "billing_label": "通用",
       "billing_type": "public",
       "desc": "codex_sub分组 codex plus pro team 号池专用分组缓存可达95%"
-    },
-    "codex_team": {
-      "billing_label": "通用",
-      "billing_type": "public",
-      "desc": "codex_team"
     },
     "deepseek": {
       "billing_label": "通用",
@@ -1822,34 +1749,30 @@
       "billing_label": "通用",
       "billing_type": "public",
       "desc": "grok ⚠️ 上游为20apixa"
-    },
-    "kiro_cheap": {
-      "billing_label": "通用",
-      "billing_type": "public",
-      "desc": "kiro_cheap ⚠️ 上游为20apixa"
-    },
-    "kiro_svip": {
-      "billing_label": "通用",
-      "billing_type": "public",
-      "desc": "kiro_svip ⚠️ 上游为20apixa"
     }
   },
   "vendors": [
     {
-      "id": 39,
-      "name": "Cohere",
-      "description": "Cohere provides models for enterprise search, embeddings, reranking, and text generation.",
-      "icon": "Cohere.Color"
+      "id": 1,
+      "name": "Anthropic",
+      "description": "Anthropic provides Claude models for reasoning, coding, tool use, and assistant workflows.",
+      "icon": "Claude.Color"
     },
     {
-      "id": 29,
-      "name": "阿里巴巴",
-      "description": "Alibaba provides Qwen models for reasoning, coding, multilingual generation, and multimodal workflows.",
+      "id": 40,
+      "name": "讯飞",
+      "description": "iFlytek provides Spark models for Chinese-language reasoning, generation, and multimodal AI workflows.",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 56,
+      "name": "Zhipu AI",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 63,
+      "name": "Alibaba",
       "icon": "Qwen.Color"
-    },
-    {
-      "id": 51,
-      "name": "QiHang"
     },
     {
       "id": 34,
@@ -1858,16 +1781,10 @@
       "icon": "DeepSeek.Color"
     },
     {
-      "id": 36,
-      "name": "百度",
-      "description": "Baidu provides ERNIE and related AI models for reasoning, generation, and multimodal workflows.",
-      "icon": "Wenxin.Color"
-    },
-    {
-      "id": 42,
-      "name": "Cloudflare",
-      "description": "Cloudflare provides hosted AI models through Workers AI for text, image, and embedding workloads.",
-      "icon": "Cloudflare.Color"
+      "id": 43,
+      "name": "字节跳动",
+      "description": "ByteDance provides Doubao models for reasoning, generation, multimodal, image, and video workflows.",
+      "icon": "Doubao.Color"
     },
     {
       "id": 41,
@@ -1876,19 +1793,67 @@
       "icon": "Jina"
     },
     {
-      "id": 37,
-      "name": "零一万物",
-      "description": "01.AI provides Yi models for reasoning, coding, and general assistant workflows.",
-      "icon": "Yi.Color"
+      "id": 51,
+      "name": "QiHang"
     },
     {
-      "id": 60,
-      "name": "NanoGPT"
+      "id": 52,
+      "name": "Xiaomi Token Plan (Singapore)"
     },
     {
-      "id": 63,
-      "name": "Alibaba",
-      "icon": "Qwen.Color"
+      "id": 68,
+      "name": "Cortecs"
+    },
+    {
+      "id": 69,
+      "name": "Scaleway"
+    },
+    {
+      "id": 71,
+      "name": "Regolo AI"
+    },
+    {
+      "id": 13,
+      "name": "OpenAI",
+      "description": "OpenAI provides GPT and multimodal models for reasoning, coding, image generation, and general AI workflows.",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 30,
+      "name": "Google",
+      "description": "Google provides Gemini models for multimodal reasoning, generation, and long-context AI workflows.",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 31,
+      "name": "智谱",
+      "description": "Zhipu AI provides GLM models for reasoning, coding, and general text generation.",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 42,
+      "name": "Cloudflare",
+      "description": "Cloudflare provides hosted AI models through Workers AI for text, image, and embedding workloads.",
+      "icon": "Cloudflare.Color"
+    },
+    {
+      "id": 38,
+      "name": "腾讯",
+      "description": "Tencent provides Hunyuan models for reasoning, generation, and multimodal AI workflows.",
+      "icon": "Hunyuan.Color"
+    },
+    {
+      "id": 50,
+      "name": "Vivgrid"
+    },
+    {
+      "id": 66,
+      "name": "Alibaba (China)"
+    },
+    {
+      "id": 72,
+      "name": "快手",
+      "icon": "Kling.Color"
     },
     {
       "id": 33,
@@ -1903,16 +1868,92 @@
       "icon": "Ai360.Color"
     },
     {
-      "id": 38,
-      "name": "腾讯",
-      "description": "Tencent provides Hunyuan models for reasoning, generation, and multimodal AI workflows.",
-      "icon": "Hunyuan.Color"
+      "id": 37,
+      "name": "零一万物",
+      "description": "01.AI provides Yi models for reasoning, coding, and general assistant workflows.",
+      "icon": "Yi.Color"
+    },
+    {
+      "id": 49,
+      "name": "OpenCode Zen",
+      "icon": "OpenCode"
+    },
+    {
+      "id": 54,
+      "name": "MiniMax Token Plan (minimax.io)"
+    },
+    {
+      "id": 67,
+      "name": "Alibaba Coding Plan (China)"
+    },
+    {
+      "id": 36,
+      "name": "百度",
+      "description": "Baidu provides ERNIE and related AI models for reasoning, generation, and multimodal workflows.",
+      "icon": "Wenxin.Color"
+    },
+    {
+      "id": 46,
+      "name": "即梦",
+      "description": "Jimeng provides image and video generation models for creative multimodal workflows.",
+      "icon": "Jimeng.Color"
+    },
+    {
+      "id": 35,
+      "name": "Meta",
+      "description": "Meta provides Llama models for reasoning, coding, and general text generation.",
+      "icon": "Ollama"
+    },
+    {
+      "id": 58,
+      "name": "Venice AI",
+      "icon": "VeniceAI"
+    },
+    {
+      "id": 62,
+      "name": "LLM Gateway"
+    },
+    {
+      "id": 32,
+      "name": "Moonshot",
+      "description": "Moonshot AI provides Kimi models for long-context reasoning and general AI workflows.",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 39,
+      "name": "Cohere",
+      "description": "Cohere provides models for enterprise search, embeddings, reranking, and text generation.",
+      "icon": "Cohere.Color"
+    },
+    {
+      "id": 29,
+      "name": "阿里巴巴",
+      "description": "Alibaba provides Qwen models for reasoning, coding, multilingual generation, and multimodal workflows.",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 60,
+      "name": "NanoGPT"
+    },
+    {
+      "id": 45,
+      "name": "xAI",
+      "description": "xAI provides Grok models for reasoning, search-aware assistance, and multimodal creative tasks.",
+      "icon": "XAI"
     },
     {
       "id": 48,
       "name": "OpenAI",
       "description": "OpenAI provides GPT and multimodal models for reasoning, coding, image generation, and general AI workflows.",
       "icon": "OpenAI"
+    },
+    {
+      "id": 53,
+      "name": "OpenCode Go"
+    },
+    {
+      "id": 55,
+      "name": "Zhipu AI Coding Plan"
     },
     {
       "id": 57,
@@ -1923,51 +1964,8 @@
       "name": "CrofAI"
     },
     {
-      "id": 67,
-      "name": "Alibaba Coding Plan (China)"
-    },
-    {
-      "id": 31,
-      "name": "智谱",
-      "description": "Zhipu AI provides GLM models for reasoning, coding, and general text generation.",
-      "icon": "Zhipu.Color"
-    },
-    {
-      "id": 32,
-      "name": "Moonshot",
-      "description": "Moonshot AI provides Kimi models for long-context reasoning and general AI workflows.",
-      "icon": "Moonshot"
-    },
-    {
-      "id": 40,
-      "name": "讯飞",
-      "description": "iFlytek provides Spark models for Chinese-language reasoning, generation, and multimodal AI workflows.",
-      "icon": "Spark.Color"
-    },
-    {
-      "id": 46,
-      "name": "即梦",
-      "description": "Jimeng provides image and video generation models for creative multimodal workflows.",
-      "icon": "Jimeng.Color"
-    },
-    {
-      "id": 49,
-      "name": "OpenCode Zen",
-      "icon": "OpenCode"
-    },
-    {
-      "id": 59,
-      "name": "SAP AI Core"
-    },
-    {
-      "id": 62,
-      "name": "LLM Gateway"
-    },
-    {
-      "id": 13,
-      "name": "OpenAI",
-      "description": "OpenAI provides GPT and multimodal models for reasoning, coding, image generation, and general AI workflows.",
-      "icon": "OpenAI"
+      "id": 65,
+      "name": "Qiniu"
     },
     {
       "id": 44,
@@ -1976,97 +1974,16 @@
       "icon": "Minimax.Color"
     },
     {
-      "id": 45,
-      "name": "xAI",
-      "description": "xAI provides Grok models for reasoning, search-aware assistance, and multimodal creative tasks.",
-      "icon": "XAI"
-    },
-    {
-      "id": 52,
-      "name": "Xiaomi Token Plan (Singapore)"
-    },
-    {
-      "id": 55,
-      "name": "Zhipu AI Coding Plan"
-    },
-    {
-      "id": 56,
-      "name": "Zhipu AI",
-      "icon": "Zhipu.Color"
-    },
-    {
-      "id": 66,
-      "name": "Alibaba (China)"
-    },
-    {
-      "id": 68,
-      "name": "Cortecs"
-    },
-    {
-      "id": 1,
-      "name": "Anthropic",
-      "description": "Anthropic provides Claude models for reasoning, coding, tool use, and assistant workflows.",
-      "icon": "Claude.Color"
-    },
-    {
-      "id": 58,
-      "name": "Venice AI",
-      "icon": "VeniceAI"
+      "id": 59,
+      "name": "SAP AI Core"
     },
     {
       "id": 61,
       "name": "aliyun-bailian"
     },
     {
-      "id": 69,
-      "name": "Scaleway"
-    },
-    {
       "id": 70,
       "name": "Moark"
-    },
-    {
-      "id": 72,
-      "name": "快手",
-      "icon": "Kling.Color"
-    },
-    {
-      "id": 30,
-      "name": "Google",
-      "description": "Google provides Gemini models for multimodal reasoning, generation, and long-context AI workflows.",
-      "icon": "Gemini.Color"
-    },
-    {
-      "id": 43,
-      "name": "字节跳动",
-      "description": "ByteDance provides Doubao models for reasoning, generation, multimodal, image, and video workflows.",
-      "icon": "Doubao.Color"
-    },
-    {
-      "id": 35,
-      "name": "Meta",
-      "description": "Meta provides Llama models for reasoning, coding, and general text generation.",
-      "icon": "Ollama"
-    },
-    {
-      "id": 50,
-      "name": "Vivgrid"
-    },
-    {
-      "id": 71,
-      "name": "Regolo AI"
-    },
-    {
-      "id": 53,
-      "name": "OpenCode Go"
-    },
-    {
-      "id": 54,
-      "name": "MiniMax Token Plan (minimax.io)"
-    },
-    {
-      "id": 65,
-      "name": "Qiniu"
     }
   ],
   "status_payload": {
@@ -2084,6 +2001,13 @@
       "activity_lottery_join_sources": "manual",
       "activity_lottery_join_topup_min_money": 0,
       "announcements": [
+        {
+          "content": "每天注册前20位送天卡。qq群内可领额度福利。\n当前起始id：13372\n所有套餐8折优惠码FXCDISC2606RSJ5截止0610有效。",
+          "extra": "",
+          "id": 15,
+          "publishDate": "2026-06-07T16:55:47.943Z",
+          "type": "default"
+        },
         {
           "content": "Gemini 账号库存可能会出现临时缺货，我们每天都会持续补充账号，数量有限，请以实际库存为准。当前每日约新增 200 个账号，每日总额度约 50,000 $+。\n\n今日库存已全部发放完毕，下午将继续补充一批约 200 个账号。",
           "extra": "",
@@ -2180,7 +2104,7 @@
         }
       ],
       "api_info_enabled": true,
-      "blocked_page_skip_logged_in": false,
+      "blocked_page_skip_logged_in": true,
       "blocked_regions": "",
       "ccswitch_defaults": {
         "claude": {
@@ -3074,7 +2998,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://api.fishxcode.com",
       "setup": true,
-      "start_time": 1780390827,
+      "start_time": 1781081098,
       "stripe_unit_price": 8,
       "subscription_promo_badge_left": "",
       "subscription_promo_badge_right": "",
@@ -3182,6 +3106,127 @@
     "data": [
       {
         "plan": {
+          "id": 22,
+          "title": "Claude Premium",
+          "subtitle": "1500次/天，月共45000次，每月重置【单次成本 ¥0.0289】",
+          "price_amount": 1299,
+          "discount_price_amount": 0,
+          "discount_deadline": 0,
+          "currency": "USD",
+          "effective_price_amount": 1299,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 80,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 0,
+          "sold_count": 24,
+          "remaining_sale_count": 0,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": true,
+          "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "upgrade_group": "sub_plan_claude_premium",
+          "total_amount": 0,
+          "resource_type": "request_count",
+          "request_count_total": 45000,
+          "request_count_period_total": 1500,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": true,
+          "quota_reset_fixed_seconds": 28800,
+          "delivery_mode": "manual_delivery",
+          "allowed_groups": [
+            "sub_plan_claude_premium"
+          ],
+          "allowed_models": [
+            "claude-haiku-4-5-20251001",
+            "claude-opus-4-5-20251101",
+            "claude-opus-4-6",
+            "claude-opus-4-7",
+            "claude-opus-4-8",
+            "claude-sonnet-4-5-20250929",
+            "claude-sonnet-4-6",
+            "gpt-5.5"
+          ],
+          "allowed_vendor_ids": [
+            1,
+            13
+          ],
+          "allowed_vendor_names": [
+            "Anthropic",
+            "OpenAI"
+          ],
+          "delivery_field_schema": [
+            {
+              "key": "ANTHROPIC_BASE_URL",
+              "label": "ANTHROPIC_BASE_URL",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 1,
+              "placeholder": "https://fishxcode.com",
+              "default_value": "https://fishxcode.com"
+            },
+            {
+              "key": "ANTHROPIC_AUTH_TOKEN",
+              "label": "ANTHROPIC_AUTH_TOKEN",
+              "type": "password",
+              "required": true,
+              "masked": true,
+              "copyable": true,
+              "sort_order": 2,
+              "placeholder": "请输入要发放给用户的 API Key"
+            },
+            {
+              "key": "usage_query_url",
+              "label": "额度使用查询地址",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 3,
+              "placeholder": "https://api-key-tool.fishxcode.com/",
+              "default_value": "https://api-key-tool.fishxcode.com/"
+            }
+          ],
+          "created_at": 1775638727,
+          "updated_at": 1781055516
+        },
+        "group_meta": {
+          "sub_plan_claude_premium": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "sub_plan_claude_premium",
+            "ratio": 1
+          }
+        }
+      },
+      {
+        "plan": {
           "id": 21,
           "title": "Claude Mini Max",
           "subtitle": "1000次/天，月共30000次，每月重置【单次成本 ¥0.0265】",
@@ -3222,7 +3267,7 @@
             ]
           },
           "purchase_window_enabled": true,
-          "purchase_window_open": false,
+          "purchase_window_open": true,
           "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
           "upgrade_group": "sub_plan_claude_mini_max",
           "total_amount": 0,
@@ -3242,14 +3287,18 @@
             "claude-opus-4-5-20251101",
             "claude-opus-4-6",
             "claude-opus-4-7",
+            "claude-opus-4-8",
             "claude-sonnet-4-5-20250929",
-            "claude-sonnet-4-6"
+            "claude-sonnet-4-6",
+            "gpt-5.5"
           ],
           "allowed_vendor_ids": [
-            1
+            1,
+            13
           ],
           "allowed_vendor_names": [
-            "Anthropic"
+            "Anthropic",
+            "OpenAI"
           ],
           "delivery_field_schema": [
             {
@@ -3285,13 +3334,133 @@
             }
           ],
           "created_at": 1775638727,
-          "updated_at": 1780379859
+          "updated_at": 1781055513
         },
         "group_meta": {
           "sub_plan_claude_mini_max": {
             "billing_label": "通用",
             "billing_type": "public",
             "desc": "sub_plan_claude_mini_max",
+            "ratio": 1
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 20,
+          "title": "Claude Mini Plus",
+          "subtitle": "500次/天，月共15000次，每月重置【单次成本 ¥0.0224】",
+          "price_amount": 336,
+          "discount_price_amount": 0,
+          "discount_deadline": 0,
+          "currency": "USD",
+          "effective_price_amount": 336,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 60,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 0,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 0,
+          "sold_count": 33,
+          "remaining_sale_count": 0,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": true,
+          "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "upgrade_group": "sub_plan_claude_mini_plus",
+          "total_amount": 0,
+          "resource_type": "request_count",
+          "request_count_total": 15000,
+          "request_count_period_total": 500,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": true,
+          "quota_reset_fixed_seconds": 28800,
+          "delivery_mode": "manual_delivery",
+          "allowed_groups": [
+            "sub_plan_claude_mini_plus"
+          ],
+          "allowed_models": [
+            "claude-haiku-4-5-20251001",
+            "claude-opus-4-5-20251101",
+            "claude-opus-4-6",
+            "claude-opus-4-7",
+            "claude-opus-4-8",
+            "claude-sonnet-4-5-20250929",
+            "claude-sonnet-4-6",
+            "gpt-5.5"
+          ],
+          "allowed_vendor_ids": [
+            1,
+            13
+          ],
+          "allowed_vendor_names": [
+            "Anthropic",
+            "OpenAI"
+          ],
+          "delivery_field_schema": [
+            {
+              "key": "base_url",
+              "label": "Base URL",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 1,
+              "placeholder": "例如：https://你的站点地址"
+            },
+            {
+              "key": "api_key",
+              "label": "API Key",
+              "type": "password",
+              "required": true,
+              "masked": true,
+              "copyable": true,
+              "sort_order": 2,
+              "placeholder": "请输入要发放给用户的 API Key"
+            },
+            {
+              "key": "usage_query_url",
+              "label": "额度使用查询地址",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 3,
+              "placeholder": "https://api-key-tool.fishxcode.com/",
+              "default_value": "https://api-key-tool.fishxcode.com/"
+            }
+          ],
+          "created_at": 1775638727,
+          "updated_at": 1781055509
+        },
+        "group_meta": {
+          "sub_plan_claude_mini_plus": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "sub_plan_claude_mini_plus",
             "ratio": 1
           }
         }
@@ -3318,7 +3487,7 @@
           "purchase_gift_quota": 0,
           "purchase_gift_quota_delay_days": 0,
           "sale_limit_count": 0,
-          "sold_count": 145,
+          "sold_count": 148,
           "remaining_sale_count": 0,
           "sold_out": false,
           "purchase_window": {
@@ -3338,7 +3507,7 @@
             ]
           },
           "purchase_window_enabled": true,
-          "purchase_window_open": false,
+          "purchase_window_open": true,
           "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
           "upgrade_group": "sub_plan_claude_nano_day",
           "total_amount": 0,
@@ -3358,14 +3527,18 @@
             "claude-opus-4-5-20251101",
             "claude-opus-4-6",
             "claude-opus-4-7",
+            "claude-opus-4-8",
             "claude-sonnet-4-5-20250929",
-            "claude-sonnet-4-6"
+            "claude-sonnet-4-6",
+            "gpt-5.5"
           ],
           "allowed_vendor_ids": [
-            1
+            1,
+            13
           ],
           "allowed_vendor_names": [
-            "Anthropic"
+            "Anthropic",
+            "OpenAI"
           ],
           "delivery_field_schema": [
             {
@@ -3401,7 +3574,7 @@
             }
           ],
           "created_at": 1775661862,
-          "updated_at": 1780362486
+          "updated_at": 1781055506
         },
         "group_meta": {
           "sub_plan_claude_nano_day": {
@@ -3416,7 +3589,7 @@
         "plan": {
           "id": 5,
           "title": "Codex Plus 套餐",
-          "subtitle": "月累计 2700 美金额度 0.3倍率消耗",
+          "subtitle": "月累计 2700 美金额度 0.5倍率消耗",
           "price_amount": 999,
           "discount_price_amount": 270,
           "discount_deadline": 1777564800,
@@ -3434,7 +3607,7 @@
           "purchase_gift_quota": 0,
           "purchase_gift_quota_delay_days": 0,
           "sale_limit_count": 0,
-          "sold_count": 23,
+          "sold_count": 24,
           "remaining_sale_count": 0,
           "sold_out": false,
           "purchase_window": {
@@ -3470,7 +3643,7 @@
             "OpenAI"
           ],
           "created_at": 1773746686,
-          "updated_at": 1780017818
+          "updated_at": 1781054666
         },
         "group_meta": {
           "codex_sub": {
@@ -3503,7 +3676,7 @@
           "purchase_gift_quota": 0,
           "purchase_gift_quota_delay_days": 0,
           "sale_limit_count": 0,
-          "sold_count": 61,
+          "sold_count": 62,
           "remaining_sale_count": 0,
           "sold_out": false,
           "purchase_window": {
@@ -3539,7 +3712,7 @@
             "OpenAI"
           ],
           "created_at": 1773746632,
-          "updated_at": 1780017822
+          "updated_at": 1781057811
         },
         "group_meta": {
           "codex_sub": {
@@ -3554,7 +3727,7 @@
         "plan": {
           "id": 3,
           "title": "Codex Mini 套餐",
-          "subtitle": "累计约 300 美金额度 0.3倍率消耗",
+          "subtitle": "累计约 300 美金额度 0.5倍率消耗",
           "price_amount": 128,
           "discount_price_amount": 9,
           "discount_deadline": 1777564800,
@@ -3572,7 +3745,7 @@
           "purchase_gift_quota": 0,
           "purchase_gift_quota_delay_days": 0,
           "sale_limit_count": 0,
-          "sold_count": 126,
+          "sold_count": 127,
           "remaining_sale_count": 0,
           "sold_out": false,
           "purchase_window": {
@@ -3608,7 +3781,7 @@
             "OpenAI"
           ],
           "created_at": 1773746508,
-          "updated_at": 1780301682
+          "updated_at": 1781054671
         },
         "group_meta": {
           "codex_sub": {
@@ -3623,12 +3796,12 @@
         "plan": {
           "id": 2,
           "title": "Codex 周卡",
-          "subtitle": "70 美金额度 0.3倍率消耗",
-          "price_amount": 46.8,
-          "discount_price_amount": 3,
-          "discount_deadline": 1777564800,
+          "subtitle": "100 美金额度 0.5倍率消耗 7天内有效",
+          "price_amount": 60,
+          "discount_price_amount": 0,
+          "discount_deadline": 0,
           "currency": "USD",
-          "effective_price_amount": 46.8,
+          "effective_price_amount": 60,
           "has_active_discount": false,
           "duration_unit": "day",
           "duration_value": 7,
@@ -3641,7 +3814,7 @@
           "purchase_gift_quota": 0,
           "purchase_gift_quota_delay_days": 0,
           "sale_limit_count": 0,
-          "sold_count": 198,
+          "sold_count": 200,
           "remaining_sale_count": 0,
           "sold_out": false,
           "purchase_window": {
@@ -3651,11 +3824,11 @@
           "purchase_window_open": true,
           "purchase_window_text": "",
           "upgrade_group": "codex_sub",
-          "total_amount": 5000000,
+          "total_amount": 50000000,
           "resource_type": "quota",
           "request_count_total": 0,
           "request_count_period_total": 0,
-          "quota_reset_period": "daily",
+          "quota_reset_period": "never",
           "quota_reset_custom_seconds": 0,
           "quota_reset_use_fixed_clock": false,
           "quota_reset_fixed_seconds": 0,
@@ -3677,7 +3850,7 @@
             "OpenAI"
           ],
           "created_at": 1773746300,
-          "updated_at": 1780417408
+          "updated_at": 1780851508
         },
         "group_meta": {
           "codex_sub": {
@@ -3691,11 +3864,11 @@
       {
         "plan": {
           "id": 1,
-          "title": "Codex 天卡",
-          "subtitle": "10 美金额度，1日有效 0.3倍率消耗",
+          "title": "Codex 10 美金额度天卡",
+          "subtitle": "10 美金额度，1日有效 0.5倍率消耗 ",
           "price_amount": 10,
-          "discount_price_amount": 6.8,
-          "discount_deadline": 1779551999,
+          "discount_price_amount": 0,
+          "discount_deadline": 0,
           "currency": "USD",
           "effective_price_amount": 10,
           "has_active_discount": false,
@@ -3710,7 +3883,7 @@
           "purchase_gift_quota": 0,
           "purchase_gift_quota_delay_days": 0,
           "sale_limit_count": 0,
-          "sold_count": 1000,
+          "sold_count": 1093,
           "remaining_sale_count": 0,
           "sold_out": false,
           "purchase_window": {
@@ -3746,7 +3919,7 @@
             "OpenAI"
           ],
           "created_at": 1773746164,
-          "updated_at": 1780459934
+          "updated_at": 1781079594
         },
         "group_meta": {
           "codex_sub": {

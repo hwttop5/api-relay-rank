@@ -4,6 +4,13 @@
     "SidebarModulesAdmin": "",
     "announcements": [
       {
+        "content": "换新站了：https://qs.szscp.com",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-06-03T16:25:16.238Z",
+        "type": "default"
+      },
+      {
         "content": "新增0.03倍率福利，限时特价",
         "extra": "",
         "id": 2,

@@ -6,7 +6,8 @@ The script separates verified cost evidence from site coverage hints:
 - verified rankings only use tiers with a concrete group multiplier and recharge
   conversion basis;
 - screenshot multipliers are ignored per the latest instruction;
-- zero-multiplier verified groups must be excluded from ranking.
+- zero-multiplier verified groups are excluded from ranking except explicit
+  charity stations that are user-confirmed free Codex routes.
 """
 
 from __future__ import annotations
@@ -15,6 +16,7 @@ import argparse
 import csv
 import datetime as dt
 import hashlib
+import http.client
 import ipaddress
 import json
 import os
@@ -137,7 +139,9 @@ LABELS: dict[str, str] = {
     "lumibest": "LumiBest",
     "moosecloud.cc": "MooseCloud",
     "muskai": "MuskAI",
+    "muyuan.do": "MuyuanDo",
     "newcli": "NewCLI",
+    "new.sharedchat.cc": "SharedChat",
     "nbtoken.ai567.asia": "NBToken",
     "nexus": "Nexus",
     "opentk": "OpenTK",
@@ -190,6 +194,8 @@ SITE_URL_OVERRIDES: dict[str, str] = {
     "loomex": "https://www.loomex.top",
     "moosecloud.cc": "https://moosecloud.cc",
     "muskai": "https://muskapi.cc",
+    "muyuan.do": "https://muyuan.do",
+    "new.sharedchat.cc": "https://new.sharedchat.cc",
     "onexmodel": "https://1xm.ai",
     "opentk": "https://opentk.ai",
     "prod.bbroot.com": "https://prod.bbroot.com",
@@ -224,6 +230,7 @@ STATION_TYPE_LABELS = {
     "subscription": "subscription",
     "non_subscription": "non_subscription",
     "mixed": "mixed",
+    "charity": "charity",
     "unknown_pending": "unknown_pending",
 }
 
@@ -232,6 +239,7 @@ STATION_TYPE_LABELS_CN = {
     "subscription": "包月中转站",
     "non_subscription": "非包月中转站",
     "mixed": "混合型中转站",
+    "charity": "公益站",
     "unknown_pending": "待补证据",
 }
 
@@ -242,6 +250,7 @@ BILLING_TYPE_LABELS_CN = {
     "daily": "日卡",
     "yearly": "年卡",
     "permanent": "永久额度",
+    "free": "免费额度",
     "permanent_or_unknown": "按量/有效期待核",
     "unknown": "未知",
 }
@@ -282,11 +291,13 @@ STATION_TYPE_OVERRIDES = {
     "hi-code": "non_subscription",
     "hongmacc": "non_subscription",
     "hyperapi": "mixed",
-    "icodex.pro": "unknown_pending",
+    "icodex.pro": "charity",
     "lumibest": "non_subscription",
     "moosecloud.cc": "subscription",
     "muskai": "mixed",
+    "muyuan.do": "charity",
     "newcli": "non_subscription",
+    "new.sharedchat.cc": "charity",
     "nbtoken.ai567.asia": "mixed",
     "nexus": "non_subscription",
     "shunfen6": "mixed",
@@ -301,6 +312,7 @@ STATION_TYPE_OVERRIDES = {
 
 PACKAGE_BILLING_TYPES = {"monthly", "weekly", "daily", "quarterly", "yearly"}
 KRILL_ROUTE_MULTIPLIER = 0.2
+PRIORITY_RANKING_MIN_REQUESTS = 10
 
 
 LIVE_AUTH_PROBE_DIR = WORKSPACE.parent / "tabbit-audit-profile"
@@ -320,9 +332,15 @@ LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
         "probe_type": "v1_generic",
         "station_type": "mixed",
     },
+    "150.242.246.223": {
+        "station_type": "non_subscription",
+    },
     "4router": {},
     "52mx": {},
     "aicodelink": {},
+    "api.aisz.mom": {
+        "station_type": "non_subscription",
+    },
     "avemujica": {},
     "newcli": {
         "station_type": "non_subscription",
@@ -359,10 +377,18 @@ LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
     },
     "cnrouter": {},
     "coai-work": {},
+    "crazyrouter.com": {
+        "station_type": "non_subscription",
+    },
     "api.baobu.xyz": {
         "probe_type": "v1_generic",
         "station_type": "non_subscription",
         "quick_amounts": [1, 10, 20, 50, 100, 200, 500, 1000, 2000, 4000],
+    },
+    "api.wanfeng.me": {
+        "probe_type": "v1_generic",
+        "station_type": "non_subscription",
+        "quick_amounts": [1, 10, 20, 50, 100, 200, 500, 1000],
     },
     "ae.carfixlab.cc": {
         "probe_type": "v1_generic",
@@ -432,6 +458,15 @@ LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
         "quick_amounts": [10, 20, 50, 100, 200, 500, 1000, 2000, 4000],
     },
     "shunfen6": {},
+    "tokenwork.app": {
+        "probe_type": "v1_generic",
+        "station_type": "mixed",
+        "quick_amounts": [10, 20, 50, 100, 200, 500, 1000],
+    },
+    "api.wanlai.ai": {
+        "probe_type": "v1_generic",
+        "api_base_url": "https://api.wanlai.ai",
+    },
     "vbcode": {},
     "zerofra": {},
     "zhishu.dev": {
@@ -468,7 +503,22 @@ DETAIL_EVIDENCE_FEE_STATIONS = {
 
 MANUAL_EXCLUDED_STATIONS = {
     "code.pndot.com",
-    "icodex.pro",
+}
+
+
+CHARITY_FREE_STATIONS: dict[str, dict[str, str]] = {
+    "muyuan.do": {
+        "evidence_url": "https://muyuan.do",
+        "notes": "用户确认 MuyuanDo 是公益站：免费、无充值入口，需要签到；codexEligible=true",
+    },
+    "new.sharedchat.cc": {
+        "evidence_url": "https://new.sharedchat.cc",
+        "notes": "用户确认 SharedChat 是公益站：免费、无充值入口，需要签到；codexEligible=true",
+    },
+    "icodex.pro": {
+        "evidence_url": "https://icodex.pro",
+        "notes": "用户确认 ICodex 是公益站：免费、无充值入口；codexEligible=true",
+    },
 }
 
 
@@ -657,7 +707,11 @@ def fetch_platform_probe(url: str) -> tuple[str, str, str]:
         },
     )
     with urllib.request.urlopen(req, timeout=PROBE_TIMEOUT_SECONDS, context=ctx) as resp:
-        body = resp.read(PLATFORM_PROBE_READ_BYTES).decode("utf-8", errors="ignore")
+        try:
+            raw_body = resp.read(PLATFORM_PROBE_READ_BYTES)
+        except http.client.IncompleteRead as exc:
+            raw_body = exc.partial
+        body = raw_body.decode("utf-8", errors="ignore")
         final_url = resp.geturl()
         status = str(getattr(resp, "status", ""))
     return body, final_url, status
@@ -778,6 +832,7 @@ def classify_station(supplier: str | None, url: str | None) -> str | None:
         ("kapibala.asia", ["kapibala.asia", "kapibala"]),
         ("lpgpt.us", ["lpgpt.us", "lpgpt", "zero bug"]),
         ("x2app.top", ["x2app.top", "x2app"]),
+        ("api.wanlai.ai", ["api.wanlai.ai", "wanlai.ai", "wanlai"]),
         ("icodex.pro", ["icodex", "icodex.pro"]),
         ("freemodel", ["freemodel"]),
         ("voapi", ["voapi"]),
@@ -3398,6 +3453,35 @@ def special_verified_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]:
     return tiers
 
 
+def charity_verified_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]:
+    tiers: list[FeeTier] = []
+    for station, meta in CHARITY_FREE_STATIONS.items():
+        label = station_display_label(station, stations.get(station, StationConfig(station, station_display_label(station))).label)
+        tiers.append(
+            FeeTier(
+                station=station,
+                label=label,
+                station_type="charity",
+                group_name="Codex 免费公益线路",
+                group_multiplier=1.0,
+                recharge_name="签到免费额度",
+                billing_type="free",
+                rmb_amount=0.0,
+                usd_amount=1.0,
+                effective_multiplier=0.0,
+                recharge_location="公益站签到额度",
+                expires_rule="免费公益站；无充值入口；需签到；免费额度以站内规则为准",
+                verified=True,
+                confidence="manual_verified",
+                source="user_confirmed_charity_free_station",
+                evidence_url=meta["evidence_url"],
+                participates_in_verified_ranking=True,
+                notes=meta["notes"],
+            )
+        )
+    return tiers
+
+
 def freemodel_verified_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]:
     rows = [
         {
@@ -3620,6 +3704,7 @@ def all_fee_rows(stations: dict[str, StationConfig]) -> list[FeeTier]:
         + public_discovered_tiers(stations)
         + known_public_shop_tiers(stations)
         + special_verified_tiers(stations)
+        + charity_verified_tiers(stations)
         + freemodel_verified_tiers(stations)
     )
     return apply_station_pricing_overrides_to_tiers(tiers)
@@ -3874,6 +3959,10 @@ def is_suspicious_effective_multiplier(value: float | None) -> bool:
     return bool(suspicious_multiplier_reason(value))
 
 
+def is_charity_free_tier(tier: FeeTier) -> bool:
+    return tier.station_type == "charity" and tier.effective_multiplier == 0
+
+
 def high_effective_multiplier_allowed_stations() -> set[str]:
     return {
         station
@@ -3926,7 +4015,10 @@ def is_codex_like_fee_tier(tier: FeeTier) -> bool:
 def choose_codex_or_fallback_tier(candidates: list[FeeTier]) -> FeeTier | None:
     codex_like_candidates = [tier for tier in candidates if is_codex_like_fee_tier(tier)]
     if codex_like_candidates:
-        return min(codex_like_candidates, key=lambda tier: tier.effective_multiplier or float("inf"))
+        return min(
+            codex_like_candidates,
+            key=lambda tier: tier.effective_multiplier if tier.effective_multiplier is not None else float("inf"),
+        )
     return None
 
 
@@ -3942,11 +4034,14 @@ def choose_verified_fee(
             continue
         if not allow_low_confidence and is_low_confidence(tier.confidence):
             continue
-        if tier.effective_multiplier is None or tier.effective_multiplier <= 0:
+        if tier.effective_multiplier is None:
+            continue
+        if tier.effective_multiplier <= 0 and not is_charity_free_tier(tier):
             continue
         if (
             not allow_low_confidence
             and tier.station not in high_multiplier_allowed
+            and not is_charity_free_tier(tier)
             and is_suspicious_effective_multiplier(tier.effective_multiplier)
         ):
             continue
@@ -4032,7 +4127,14 @@ def compute_ranking(
         row["cost_score"] = cost_score
         row["total_score"] = success_score * 0.40 + latency_score * 0.35 + cost_score * 0.25
 
-    rows.sort(key=lambda row: (-row["total_score"], -row["requests"], row["station"]))
+    rows.sort(
+        key=lambda row: (
+            0 if row["requests"] >= PRIORITY_RANKING_MIN_REQUESTS else 1,
+            -row["total_score"],
+            -row["requests"],
+            row["station"],
+        )
+    )
     for index, row in enumerate(rows, 1):
         row["rank"] = index
     return rows
@@ -4117,6 +4219,8 @@ def multiplier_sanity_review_rows(tiers: list[FeeTier]) -> list[dict[str, Any]]:
     seen: set[tuple[Any, ...]] = set()
     for tier in tiers:
         if not tier.verified or not tier.participates_in_verified_ranking:
+            continue
+        if is_charity_free_tier(tier):
             continue
         reason = suspicious_multiplier_reason(tier.effective_multiplier)
         if not reason:
@@ -4264,6 +4368,8 @@ def resolved_station_type(
         for tier in station_rows
         if tier.station_type in STATION_TYPE_LABELS and tier.station_type != "unknown_pending"
     }
+    if "charity" in explicit_row_types or fallback == "charity":
+        return "charity"
     if "mixed" in explicit_row_types:
         return "mixed"
     billing_types = {tier.billing_type for tier in station_rows}
@@ -4346,8 +4452,12 @@ def summarize_station_tiers(station_key: str, tiers: list[FeeTier]) -> tuple[str
     if not station_rows:
         return ("-", "-")
     lowest_tier = min(
-        [tier for tier in station_rows if tier.effective_multiplier and tier.effective_multiplier > 0],
-        key=lambda tier: tier.effective_multiplier or float("inf"),
+        [
+            tier
+            for tier in station_rows
+            if tier.effective_multiplier is not None and (tier.effective_multiplier > 0 or is_charity_free_tier(tier))
+        ],
+        key=lambda tier: tier.effective_multiplier if tier.effective_multiplier is not None else float("inf"),
         default=None,
     )
     if lowest_tier is None:

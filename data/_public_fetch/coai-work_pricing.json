@@ -4,25 +4,6 @@
   ],
   "data": [
     {
-      "model_name": "gpt-5.4",
-      "icon": "OpenAI",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "default",
-        "official"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
       "model_name": "gpt-5.4-mini",
       "icon": "OpenAI",
       "vendor_id": 2,
@@ -38,7 +19,8 @@
       ],
       "supported_endpoint_types": [
         "openai"
-      ]
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
       "model_name": "gpt-5.5",
@@ -51,8 +33,8 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "official",
-        "default"
+        "default",
+        "official"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -89,8 +71,8 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "official",
-        "default"
+        "default",
+        "official"
       ],
       "supported_endpoint_types": [
         "openai",
@@ -115,6 +97,24 @@
       "supported_endpoint_types": [
         "openai",
         "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "icon": "OpenAI",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "official"
+      ],
+      "supported_endpoint_types": [
+        "openai"
       ]
     }
   ],
@@ -141,6 +141,15 @@
   },
   "vendors": [
     {
+      "id": 2,
+      "name": "OpenAI"
+    },
+    {
+      "id": 3,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
       "id": 4,
       "name": "阿里巴巴",
       "icon": "Qwen.Color"
@@ -154,15 +163,6 @@
       "id": 6,
       "name": "智谱",
       "icon": "Zhipu.Color"
-    },
-    {
-      "id": 2,
-      "name": "OpenAI"
-    },
-    {
-      "id": 3,
-      "name": "Anthropic",
-      "icon": "Claude.Color"
     }
   ],
   "status_payload": {
