@@ -7,6 +7,7 @@ import { ChevronDown, ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, Exte
 import { formatCompactCount, formatMultiplier, formatPercent, formatScore, formatSeconds } from "@/lib/format";
 import type { PageViewStats, RankingDisplayRow, RankingPageData, RankingStationRecord, ShellData, SortMode, StationType, TimeWindow } from "@/lib/types";
 import { AppShell, StatusChip } from "@/components/app-shell";
+import { formatReviewSummary } from "@/lib/user-feedback";
 
 const TIME_WINDOW_OPTIONS: Array<{ value: TimeWindow; label: string }> = [
   { value: "all_hours", label: "全部时段" },
@@ -18,7 +19,8 @@ const SORT_OPTIONS: Array<{ value: SortMode; label: string }> = [
   { value: "composite", label: "综合排序" },
   { value: "correct_rate", label: "正确率优先" },
   { value: "avg_seconds", label: "响应时间优先" },
-  { value: "effective_multiplier", label: "采用倍率优先" }
+  { value: "effective_multiplier", label: "采用倍率优先" },
+  { value: "review_rating", label: "用户评分优先" }
 ];
 
 const TYPE_OPTIONS = [
@@ -31,6 +33,9 @@ const TYPE_OPTIONS = [
 
 const PAGE_SIZE_OPTIONS = [10, 20, 50, 100] as const;
 const PRIORITY_RANKING_MIN_REQUESTS = 10;
+const DISPLAY_REDACTED_URLS: Record<string, string> = {
+  "https://ttop5.gettoken.dev": "https://xxx.gettoken.dev",
+};
 
 type TypeFilter = (typeof TYPE_OPTIONS)[number]["key"];
 type StationRecord = RankingStationRecord;
@@ -49,10 +54,25 @@ function compareByMode(rowA: RankingDisplayRow, rowB: RankingDisplayRow, mode: S
   if (mode === "effective_multiplier") {
     return rowA.effectiveMultiplier - rowB.effectiveMultiplier || rowB.totalScore - rowA.totalScore || rowA.rank - rowB.rank;
   }
+  if (mode === "review_rating") {
+    const ratingPriority = Number(rowB.reviewCount > 0 && rowB.reviewAverageRating !== null) - Number(rowA.reviewCount > 0 && rowA.reviewAverageRating !== null);
+    if (ratingPriority !== 0) {
+      return ratingPriority;
+    }
+    return (
+      (rowB.reviewAverageRating ?? -1) - (rowA.reviewAverageRating ?? -1) ||
+      rowB.reviewCount - rowA.reviewCount ||
+      rowB.totalScore - rowA.totalScore ||
+      rowA.rank - rowB.rank
+    );
+  }
   return rowB.totalScore - rowA.totalScore || rowA.rank - rowB.rank;
 }
 
 function getOfficialUrl(href: string) {
+  if (DISPLAY_REDACTED_URLS[href]) {
+    return DISPLAY_REDACTED_URLS[href];
+  }
   try {
     return new URL(href).origin;
   } catch {
@@ -65,7 +85,7 @@ function StationUrlLink({ href, compact = false }: { href: string; compact?: boo
     return <span className="subtle">未记录</span>;
   }
 
-  const displayHref = compact ? getOfficialUrl(href) : href;
+  const displayHref = DISPLAY_REDACTED_URLS[href] || (compact ? getOfficialUrl(href) : href);
 
   return (
     <a href={href} target="_blank" rel="noreferrer" className="station-link inline-actions">
@@ -89,6 +109,23 @@ function getStationTone(stationType: StationType): "default" | "accent" | "blue"
     return "success";
   }
   return "default";
+}
+
+function RankingReviewSummary({
+  reviewAverageRating,
+  reviewCount,
+  stationKey,
+}: {
+  reviewAverageRating: number | null;
+  reviewCount: number;
+  stationKey: string;
+}) {
+  const hasReviewScore = reviewCount > 0 && reviewAverageRating !== null;
+  return (
+    <Link href={`/stations/${stationKey}#reviews`} prefetch={false} className={hasReviewScore ? "ranking-review-summary" : "ranking-review-summary ranking-review-empty"}>
+      {hasReviewScore ? formatReviewSummary({ station: stationKey, averageRating: reviewAverageRating, reviewCount }) : "暂无数据"}
+    </Link>
+  );
 }
 
 function RankMedal({ rank }: { rank: number }) {
@@ -264,7 +301,7 @@ function MobileRankingCard({ row, index, stationMeta }: { row: RankingDisplayRow
         <div className="mobile-card-detail-grid">
           <MobileDetail label="官方网址" value={<StationUrlLink href={row.stationUrl} compact />} />
           <MobileDetail label="采用档位" value={row.adoptedTier} />
-          <MobileDetail label="倍率口径" value={row.multiplierFullUseAssumption} />
+          <MobileDetail label="用户评分" value={<RankingReviewSummary stationKey={row.station} reviewAverageRating={row.reviewAverageRating} reviewCount={row.reviewCount} />} />
           <MobileDetail label="请求样本" value={<span className="mono">{row.requests}</span>} />
         </div>
       </details>
@@ -302,9 +339,10 @@ function MobileStationCard({ station }: { station: RankingStationRecord }) {
         <MobileMetric label="最低倍率" value={registryDisplay.lowestMultiplier} mono />
         <MobileMetric label="全部时段样本" value={registryDisplay.sampleCount} mono />
         <MobileMetric label="公告数量" value={registryDisplay.announcementCount} mono />
+        <MobileMetric label="用户评价" value={<RankingReviewSummary stationKey={station.key} reviewAverageRating={station.reviewAverageRating} reviewCount={station.reviewCount} />} />
       </div>
 
-      <details className="mobile-card-details" open>
+      <details className="mobile-card-details">
         <summary className="mobile-card-summary">
           <span>更多信息</span>
           <ChevronDown size={14} />
@@ -398,7 +436,7 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
       topbarMetaClassName="topbar-meta-inline-mobile"
       footerMeta={
         <>
-          累计 PV {formatCompactCount(pageViews.totalPv)} · PV 仅为本站访问热度参考，不参与排名、评分或排序。
+          累计 PV {formatCompactCount(pageViews.totalPv)}
         </>
       }
       actions={
@@ -413,7 +451,7 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
           <div className="section-head">
             <div>
               <h1 className="section-title">正式综合排名</h1>
-              <p className="section-desc">支持工作时段与非工作时段切换；周末样本统一计入非工作时段。同一时段内，请求样本数 ≥ 10 的站点优先排名，低样本站点仍保留在正式榜但整体置后。采用倍率按 Codex 口径最小非 0 分组倍率 × 实付金额 ÷ 到账美元额度计算；有明确用途标记时排除非 Codex 分组。</p>
+              <p className="section-desc">同一时段内，请求样本数 ≥ 10 的站点优先排名，低样本站点仍保留在正式榜但整体置后。采用倍率按 Codex 口径最小非 0 分组倍率 × 实付金额 ÷ 到账美元额度计算；有明确用途标记时排除非 Codex 分组。目前安全审计与用户评分仅作为站点口碑参考展示，不参与综合分或正式排名计算；待验证方式与数据覆盖进一步完善后，将纳入排名权重。</p>
             </div>
             <div className="controls">
               <label className="control-group">
@@ -465,7 +503,7 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
                     <col className="ranking-col-metric" />
                     <col className="ranking-col-metric" />
                     <col className="ranking-col-tier" />
-                    <col className="ranking-col-assumption" />
+                    <col className="ranking-col-review" />
                     <col className="ranking-col-action" />
                   </colgroup>
                   <thead>
@@ -481,7 +519,7 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
                       <th>平均响应时间</th>
                       <th>采用倍率</th>
                       <th>采用倍率档位</th>
-                      <th>倍率口径</th>
+                      <th>用户评分</th>
                       <th className="col-action">操作</th>
                     </tr>
                   </thead>
@@ -515,9 +553,7 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
                           <td className="mono">{formatMultiplier(row.effectiveMultiplier)}</td>
                           <td>{row.adoptedTier}</td>
                           <td>
-                            <span className="ranking-assumption-text" title={row.multiplierFullUseAssumption}>
-                              {row.multiplierFullUseAssumption}
-                            </span>
+                            <RankingReviewSummary stationKey={row.station} reviewAverageRating={row.reviewAverageRating} reviewCount={row.reviewCount} />
                           </td>
                           <td className="table-action-cell">
                             <Link href={`/stations/${row.station}`} prefetch={false} className="tiny-button">
@@ -581,6 +617,7 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
                     <col className="registry-col-sample" />
                     <col className="registry-col-tier" />
                     <col className="registry-col-announcements" />
+                    <col className="registry-col-review" />
                     <col className="registry-col-action" />
                   </colgroup>
                   <thead>
@@ -594,6 +631,7 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
                       <th>全部时段样本</th>
                       <th>核验档位</th>
                       <th>公告数</th>
+                      <th>用户评分</th>
                       <th className="col-action">操作</th>
                     </tr>
                   </thead>
@@ -619,6 +657,9 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
                           <td className="mono">{registryDisplay.sampleCount}</td>
                           <td className="mono">{registryDisplay.verifiedTierCount}</td>
                           <td className="mono">{registryDisplay.announcementCount}</td>
+                          <td>
+                            <RankingReviewSummary stationKey={station.key} reviewAverageRating={station.reviewAverageRating} reviewCount={station.reviewCount} />
+                          </td>
                           <td className="table-action-cell">
                             <Link href={`/stations/${station.key}`} prefetch={false} className="tiny-button">
                               详情

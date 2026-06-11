@@ -15,6 +15,7 @@ __pycache__/
 deploy/.env
 data/_audit_runs/
 data/_owner_announcement/
+data/_user_uploads/
 output/
 tsconfig.tsbuildinfo
 

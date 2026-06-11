@@ -1,5 +1,6 @@
 import { formatMultiplier } from "./format";
 import type { RankingDisplayRow, RankingPageData, RankingStationRecord, ShellData, SiteData, StatementPageData, TimeWindow } from "./types";
+import type { StationReviewSummary } from "./types";
 
 type StationRecord = SiteData["stations"][number];
 type RegistryEvidenceKey = "groupMultipliers" | "rechargeTiers" | "announcements";
@@ -13,7 +14,10 @@ const NON_CODEX_GROUP_KEYWORDS = [
   "opus",
   "haiku",
   "kiro",
+  "windsurf",
+  "bedrock",
   "cc-",
+  "madeinchina",
   "国产",
   "公益",
   "deepseek",
@@ -23,6 +27,8 @@ const NON_CODEX_GROUP_KEYWORDS = [
   "doubao",
   "minimax",
 ] as const;
+const WELFARE_GROUP_KEYWORDS = ["福利"] as const;
+const IMAGE_ONLY_GROUP_KEYWORDS = ["gpt-image", "image", "img", "生图", "图片", "图像", "画图", "绘图"] as const;
 
 function toShellData(siteData: SiteData, stationCount?: number): ShellData {
   return {
@@ -78,14 +84,20 @@ function formatRegistryAnnouncementCount(station: StationRecord) {
 }
 
 function isCodexLikeGroup(group: StationRecord["groupMultipliers"][number]) {
+  const normalized = group.groupName.trim().toLowerCase();
+  if (!normalized) {
+    return false;
+  }
+  if (WELFARE_GROUP_KEYWORDS.some((keyword) => normalized.includes(keyword))) {
+    return false;
+  }
   if (group.codexEligible === false) {
     return false;
   }
   if (group.codexEligible === true) {
     return true;
   }
-  const normalized = group.groupName.trim().toLowerCase();
-  if (!normalized) {
+  if (IMAGE_ONLY_GROUP_KEYWORDS.some((keyword) => normalized.includes(keyword))) {
     return false;
   }
   return !NON_CODEX_GROUP_KEYWORDS.some((keyword) => normalized.includes(keyword));
@@ -174,7 +186,7 @@ function getRegistryDisplayValues(station: StationRecord) {
   };
 }
 
-function toRankingDisplayRow(row: SiteData["rankings"][TimeWindow][number]): RankingDisplayRow {
+function toRankingDisplayRow(row: SiteData["rankings"][TimeWindow][number], reviewSummary?: StationReviewSummary): RankingDisplayRow {
   return {
     rank: row.rank,
     station: row.station,
@@ -187,12 +199,13 @@ function toRankingDisplayRow(row: SiteData["rankings"][TimeWindow][number]): Ran
     avgSeconds: row.avgSeconds,
     effectiveMultiplier: row.effectiveMultiplier,
     adoptedTier: row.adoptedTier,
-    multiplierFullUseAssumption: row.multiplierFullUseAssumption,
+    reviewAverageRating: reviewSummary?.averageRating ?? null,
+    reviewCount: reviewSummary?.reviewCount ?? 0,
     requests: row.requests,
   };
 }
 
-function toRankingStationRecord(station: StationRecord): RankingStationRecord {
+function toRankingStationRecord(station: StationRecord, reviewSummary?: StationReviewSummary): RankingStationRecord {
   const registryDisplay = getRegistryDisplayValues(station);
   return {
     key: station.key,
@@ -202,12 +215,14 @@ function toRankingStationRecord(station: StationRecord): RankingStationRecord {
     stationTypeLabel: station.stationTypeLabel,
     stationTypeShortLabel: station.stationTypeShortLabel,
     platformGuess: station.platformGuess,
+    reviewAverageRating: reviewSummary?.averageRating ?? null,
+    reviewCount: reviewSummary?.reviewCount ?? 0,
     unrankedReason: getUnrankedReason(station),
     registryDisplay,
   };
 }
 
-export function buildRankingPageData(siteData: SiteData): { shell: ShellData; data: RankingPageData } {
+export function buildRankingPageData(siteData: SiteData, reviewSummaries: Record<string, StationReviewSummary> = {}): { shell: ShellData; data: RankingPageData } {
   const shell = toShellData(siteData, siteData.stations.length);
   return {
     shell,
@@ -217,11 +232,11 @@ export function buildRankingPageData(siteData: SiteData): { shell: ShellData; da
       defaultSort: siteData.defaultSort,
       timeWindows: siteData.timeWindows,
       rankings: {
-        all_hours: siteData.rankings.all_hours.map(toRankingDisplayRow),
-        work_hours: siteData.rankings.work_hours.map(toRankingDisplayRow),
-        off_hours: siteData.rankings.off_hours.map(toRankingDisplayRow),
+        all_hours: siteData.rankings.all_hours.map((row) => toRankingDisplayRow(row, reviewSummaries[row.station])),
+        work_hours: siteData.rankings.work_hours.map((row) => toRankingDisplayRow(row, reviewSummaries[row.station])),
+        off_hours: siteData.rankings.off_hours.map((row) => toRankingDisplayRow(row, reviewSummaries[row.station])),
       },
-      stations: siteData.stations.map(toRankingStationRecord),
+      stations: siteData.stations.map((station) => toRankingStationRecord(station, reviewSummaries[station.key])),
       rankedStationCount: siteData.rankedStationCount,
     },
   };

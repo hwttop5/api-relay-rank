@@ -10,6 +10,7 @@ __pycache__
 node_modules
 output
 data/_audit_runs
+data/_user_uploads
 *.log
 .env
 deploy/.env

@@ -1,5 +1,5 @@
 export type TimeWindow = "work_hours" | "off_hours" | "all_hours";
-export type SortMode = "composite" | "correct_rate" | "avg_seconds" | "effective_multiplier";
+export type SortMode = "composite" | "correct_rate" | "avg_seconds" | "effective_multiplier" | "review_rating";
 export type StationType = "subscription" | "non_subscription" | "mixed" | "charity" | "unknown_pending";
 export type AuditProfile = "general";
 export type AuditVerdict = "low" | "medium" | "high" | "inconclusive";
@@ -268,7 +268,8 @@ export interface RankingDisplayRow {
   avgSeconds: number;
   effectiveMultiplier: number;
   adoptedTier: string;
-  multiplierFullUseAssumption: string;
+  reviewAverageRating: number | null;
+  reviewCount: number;
   requests: number;
 }
 
@@ -280,6 +281,8 @@ export interface RankingStationRecord {
   stationTypeLabel: string;
   stationTypeShortLabel: string;
   platformGuess: string;
+  reviewAverageRating: number | null;
+  reviewCount: number;
   unrankedReason: string;
   registryDisplay: {
     lowestMultiplier: string;
@@ -321,3 +324,59 @@ export interface PageViewStats {
   totalPv: number;
   stationPv: Record<string, number>;
 }
+
+export interface AuthenticatedGithubUser {
+  githubId: string;
+  githubLogin: string;
+  name: string | null;
+  avatarUrl: string | null;
+  profileUrl: string | null;
+}
+
+export interface StationReviewSummary {
+  station: string;
+  averageRating: number | null;
+  reviewCount: number;
+}
+
+export interface StationReviewItem {
+  id: number;
+  station: string;
+  rating: number;
+  comment: string;
+  githubLogin: string;
+  githubAvatarUrl: string | null;
+  githubProfileUrl: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ViewerReview {
+  rating: number;
+  comment: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface StationReviewPagination {
+  limit: number;
+  offset: number;
+  nextOffset: number | null;
+  hasMore: boolean;
+}
+
+export interface StationReviewPage {
+  summary: StationReviewSummary;
+  reviews: StationReviewItem[];
+  pagination: StationReviewPagination;
+  viewer: AuthenticatedGithubUser | null;
+  viewerReview: ViewerReview | null;
+}
+
+export type StationErrorReportCategory =
+  | "station_url"
+  | "group_multiplier"
+  | "recharge_tier"
+  | "announcement"
+  | "ranking_metric"
+  | "other";

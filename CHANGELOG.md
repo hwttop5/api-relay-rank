@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.1.3 - 2026-06-11
+
+1. 新增站点用户反馈能力：支持 GitHub 登录后公开评分、修改评价、错误上报和截图附件，并在详情页与排名页展示用户评分参考。
+2. 收口反馈数据的 PostgreSQL 表结构、错误上报周报、附件访问 token 和部署环境校验，避免 OAuth/SMTP 缺失时半启用上线。
+3. 刷新站点排名与费用口径：排除福利/生图专用临时分组对 Codex-like 采用倍率的干扰，并同步更新部署与数据刷新文档。
+4. GitHub Actions 仓库密钥使用 `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` 映射应用运行时 `GITHUB_ID` / `GITHUB_SECRET`，避开 GitHub 保留前缀限制。
+
+### English Notes
+
+1. Added station user feedback with GitHub login, public ratings, editable reviews, error reports, screenshot attachments, and rating references on station and ranking pages.
+2. Hardened feedback persistence, weekly error-report digests, attachment-token access, and deployment environment checks so OAuth/SMTP misconfiguration blocks release.
+3. Refreshed ranking data and cost rules to exclude welfare or image-only temporary groups from Codex-like adopted multipliers, with deployment and refresh docs updated.
+4. Mapped repository secrets `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` to runtime `GITHUB_ID` / `GITHUB_SECRET` to avoid GitHub's reserved secret-name prefix.
+
 ## v0.1.2 - 2026-05-20
 
 1. 统一站点品牌与页面文案为“AI中转站监视者”，同步优化综合排名/安全审计入口命名与 README 指引。

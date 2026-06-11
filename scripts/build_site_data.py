@@ -94,6 +94,7 @@ DISCLAIMER_EMPHASIS = "部分中转站外链使用邀请链接，可能为测试
 EMAIL_PATTERN = re.compile(r"\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}\b")
 PATH_PATTERN = re.compile(r"([A-Za-z]:\\Users\\)([^\\`]+)")
 LOCALHOST_PATTERN = re.compile(r"^(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$", re.IGNORECASE)
+PUBLIC_TTOP5_URLS = {"https://ttop5.gettoken.dev"}
 TOPUP_NAME_PATTERN = re.compile(r"wallet topup (\d+(?:\.\d+)?) RMB", re.IGNORECASE)
 TOPUP_HTML_PATTERN = re.compile(
     r"(wallet\s*topup\s*(\d+(?:\.\d+)?)\s*RMB).*?(\d+(?:\.\d+)?)\s*(?:USD|\$)",
@@ -208,6 +209,8 @@ def sanitize_public_text(value: Any) -> str:
     text = text.replace("\r\n", "\n").replace("\r", "\n").strip()
     text = PATH_PATTERN.sub(r"\1xxx", text)
     text = EMAIL_PATTERN.sub("xxx", text)
+    if text in PUBLIC_TTOP5_URLS:
+        return text
     text = re.sub(r"(?i)ttop5", "xxx", text)
     return text
 
@@ -749,6 +752,7 @@ def load_summary_intro() -> dict[str, Any]:
                     "本次数据来自本人电脑上 Codex Manager 对多家中转站 Codex API Key 的聚合调用日志，使用场景为 Codex 接入开发。",
                     "由于所有请求均先经过 Codex Manager，再转发至各中转站，相比直连会天然增加一层延迟。",
                     "日志样本来自本人实际开发个人小项目期间的调用记录，网络环境为昆明广电宽带。以下排名仅反映本人使用时间点、当时账号状态与当时网络环境下的观测结果。",
+                    "测试账号多由本人手动注册，额度来自新用户赠额、活动赠额、少量小额充值，及少数收录站点送测；仅用于可用性观察、扩大样本和持续更新，不影响评分、排序和费用口径。",
                     f"费用口径统一按各站当前可核验的 Codex 口径最小非 0 分组倍率计算；有明确用途标记时先排除非 Codex 分组，未显式区分时再回退到最低非 Claude 分组。该档位通常价格最低，但也往往延迟更高、稳定性更差，{HIGHLIGHT_PHRASE}",
                 ]
             ),

@@ -482,8 +482,8 @@ class BuildSiteDataTests(unittest.TestCase):
 
         chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
 
-        self.assertEqual(chosen["demo"].group_name, "image-relay")
-        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.7)
+        self.assertEqual(chosen["demo"].group_name, "GeminiAnti")
+        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.9)
 
     def test_choose_verified_fee_treats_route_names_as_codex_like(self) -> None:
         tiers = [
@@ -550,6 +550,50 @@ class BuildSiteDataTests(unittest.TestCase):
 
         self.assertEqual(chosen["demo"].group_name, "openai")
         self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.2)
+
+    def test_choose_verified_fee_excludes_image_only_group(self) -> None:
+        tiers = [
+            self.make_fee_tier(group_name="gpt-image", group_multiplier=0.075, effective_multiplier=0.075),
+            self.make_fee_tier(group_name="Codex Pro/ Team", group_multiplier=0.225, effective_multiplier=0.225),
+        ]
+
+        chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
+
+        self.assertEqual(chosen["demo"].group_name, "Codex Pro/ Team")
+        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.225)
+
+    def test_choose_verified_fee_excludes_temporary_image_group(self) -> None:
+        tiers = [
+            self.make_fee_tier(group_name="生图临时用，但是不一定安全", group_multiplier=0.01, effective_multiplier=0.01),
+            self.make_fee_tier(group_name="vip", group_multiplier=0.08, effective_multiplier=0.08),
+        ]
+
+        chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
+
+        self.assertEqual(chosen["demo"].group_name, "vip")
+        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.08)
+
+    def test_choose_verified_fee_excludes_welfare_even_when_codex_marked(self) -> None:
+        tiers = [
+            self.make_fee_tier(group_name="Codex 限时福利", group_multiplier=0.01, effective_multiplier=0.01, notes="codexEligible=true; usage=Codex"),
+            self.make_fee_tier(group_name="VIP", group_multiplier=0.07, effective_multiplier=0.07, notes="codexEligible=true; usage=Codex"),
+        ]
+
+        chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
+
+        self.assertEqual(chosen["demo"].group_name, "VIP")
+        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.07)
+
+    def test_choose_verified_fee_keeps_explicit_codex_image_named_group(self) -> None:
+        tiers = [
+            self.make_fee_tier(group_name="企业生图专线", group_multiplier=0.08, effective_multiplier=0.08, notes="codexEligible=true; usage=Codex"),
+            self.make_fee_tier(group_name="default", group_multiplier=0.2, effective_multiplier=0.2),
+        ]
+
+        chosen = audit_proxy_multipliers.choose_verified_fee(tiers, allow_low_confidence=False)
+
+        self.assertEqual(chosen["demo"].group_name, "企业生图专线")
+        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 0.08)
 
     def test_charity_free_tier_can_enter_formal_fee_map(self) -> None:
         tiers = [
@@ -738,6 +782,20 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(stations["demo"]["url"], "https://demo.example")
         self.assertEqual(stations["demo"]["inviteUrl"], "https://demo.example/register?aff=abc")
         self.assertEqual(report["fallbackOfficialUrlCount"], 0)
+
+    def test_load_station_invite_links_preserves_public_gettoken_invite_link(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            invite_links_path = Path(temp_dir) / "station_invite_links.json"
+            invite_links_path.write_text(
+                json.dumps({"gettoken": "https://ttop5.gettoken.dev"}),
+                encoding="utf-8",
+            )
+
+            with mock.patch.object(build_site_data, "STATION_INVITE_LINKS_PATH", invite_links_path):
+                links = build_site_data.load_station_invite_links({})
+
+        self.assertEqual(links["gettoken"], "https://ttop5.gettoken.dev")
+        self.assertNotIn("ttop5", build_site_data.sanitize_public_text("C:\\Users\\ttop5\\secret").lower())
 
     def test_missing_invite_link_removes_stale_station_display_link(self) -> None:
         stations = {
@@ -4373,8 +4431,8 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(history[0]["stationLabel"], "RelayExample")
         self.assertEqual(history[0]["reportUrl"], "/api/audit-report?station=demo&model=claude-sonnet&run=20260103T000000Z")
 
-    def test_station_audit_runs_schema_is_migration_version_three(self) -> None:
-        self.assertEqual(database.MIGRATION_VERSION, 3)
+    def test_feedback_schema_is_migration_version_seven(self) -> None:
+        self.assertEqual(database.MIGRATION_VERSION, 7)
         self.assertIn("create table if not exists station_audit_runs", database.SCHEMA_SQL)
         self.assertIn("primary key (station_key, model, run_id)", database.SCHEMA_SQL)
         self.assertIn("station_audit_runs_executed_idx", database.SCHEMA_SQL)
@@ -4382,6 +4440,29 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertIn("create table if not exists page_view_events", database.SCHEMA_SQL)
         self.assertIn("create table if not exists page_view_import_rows", database.SCHEMA_SQL)
         self.assertIn("primary key (source, period_start, period_end, canonical_path)", database.SCHEMA_SQL)
+        self.assertIn("create table if not exists github_users", database.SCHEMA_SQL)
+        self.assertIn("create table if not exists station_reviews", database.SCHEMA_SQL)
+        self.assertIn("unique (station_key, github_id)", database.SCHEMA_SQL)
+        self.assertIn("rating in (2, 4, 6, 8, 10)", database.SCHEMA_SQL)
+        self.assertIn(
+            "station_error_reports_category_check check (category in ('station_url', 'group_multiplier', 'recharge_tier', 'announcement', 'ranking_metric', 'other'))",
+            database.SCHEMA_SQL,
+        )
+        self.assertNotIn("delete from station_reviews", database.apply_schema_migrations.__code__.co_consts)
+        self.assertIn("alter table station_reviews drop constraint if exists station_reviews_rating_check", database.apply_schema_migrations.__code__.co_consts)
+        self.assertIn("alter table station_reviews add constraint station_reviews_rating_check check (rating in (2, 4, 6, 8, 10))", database.apply_schema_migrations.__code__.co_consts)
+        self.assertIn("insert into schema_migrations (version) values (5)", database.apply_schema_migrations.__code__.co_consts)
+        self.assertNotIn("delete from station_reviews where rating = 4", database.apply_schema_migrations.__code__.co_consts)
+        self.assertIn("insert into schema_migrations (version) values (6)", database.apply_schema_migrations.__code__.co_consts)
+        self.assertIn("alter table station_error_reports drop constraint if exists station_error_reports_category_check", database.apply_schema_migrations.__code__.co_consts)
+        self.assertIn(
+            "alter table station_error_reports add constraint station_error_reports_category_check check "
+            "(category in ('station_url', 'group_multiplier', 'recharge_tier', 'announcement', 'ranking_metric', 'other'))",
+            database.apply_schema_migrations.__code__.co_consts,
+        )
+        self.assertIn("insert into schema_migrations (version) values (7)", database.apply_schema_migrations.__code__.co_consts)
+        self.assertIn("create table if not exists station_error_reports", database.SCHEMA_SQL)
+        self.assertIn("create table if not exists station_error_report_attachments", database.SCHEMA_SQL)
 
     def test_import_page_views_csv_normalizes_and_aggregates_paths(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:

@@ -1,5 +1,7 @@
 import { AppShell, StatusChip } from "@/components/app-shell";
 import { DeclarationPanels } from "@/components/declaration-panels";
+import { formatCompactCount } from "@/lib/format";
+import { getPageViewStats } from "@/lib/page-view-stats";
 import { absoluteUrl, pageMetadata, safeJsonLd } from "@/lib/seo";
 import { getSiteData } from "@/lib/site-data";
 import { buildStatementPageData } from "@/lib/site-data-view";
@@ -16,7 +18,7 @@ export const metadata = pageMetadata({
 });
 
 export default async function StatementPage() {
-  const siteData = await getSiteData();
+  const [siteData, pageViewStats] = await Promise.all([getSiteData(), getPageViewStats()]);
   const statementPage = buildStatementPageData(siteData);
   const generatedAtLabel = statementPage.data.generatedAt.replace(/\s+[+-]\d{4}$/, "").trim() || "未知";
   const webPageJsonLd = {
@@ -33,6 +35,7 @@ export default async function StatementPage() {
       <AppShell
         active="statement"
         data={statementPage.shell}
+        footerMeta={<>累计 PV {formatCompactCount(pageViewStats.totalPv)}</>}
         topbarMetaClassName="topbar-meta-inline-mobile"
         actions={
           <>

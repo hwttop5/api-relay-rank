@@ -6,6 +6,7 @@ import type { ShellData } from "@/lib/types";
 import { ContactAdProvider, ContactAdTrigger } from "@/components/contact-ad";
 import { MobileNavMenu } from "@/components/mobile-nav-menu";
 import { NAV_ITEMS, type AppNavKey } from "@/components/nav-items";
+import { SiteUptime } from "@/components/site-uptime";
 import { ThemeControls, ThemeToggle } from "@/components/theme-toggle";
 
 export function StatusChip({ label, tone = "default" }: { label: string; tone?: "default" | "accent" | "blue" | "warn" | "danger" | "success" }) {
@@ -105,10 +106,18 @@ export function AppShell({
           <footer className="page-footer">
             {footerMeta ? (
               <span className="page-footer-line">
-                {footerMeta} · Copyright © {copyrightYear} ttop5. All rights reserved.
+                <span>{footerMeta}</span>
+                <span className="page-footer-separator">·</span>
+                <SiteUptime />
+                <span className="page-footer-separator">·</span>
+                <span>Copyright © {copyrightYear} ttop5. All rights reserved.</span>
               </span>
             ) : (
-              <span className="page-footer-line">Copyright © {copyrightYear} ttop5. All rights reserved.</span>
+              <span className="page-footer-line">
+                <SiteUptime />
+                <span className="page-footer-separator">·</span>
+                <span>Copyright © {copyrightYear} ttop5. All rights reserved.</span>
+              </span>
             )}
           </footer>
         </div>

@@ -15,7 +15,7 @@ except ModuleNotFoundError:
     from runtime_paths import APP_ROOT, AUDIT_RUNS_DIR, SITE_DATA_PATH, logical_data_path
 
 
-MIGRATION_VERSION = 3
+MIGRATION_VERSION = 7
 DATABASE_URL_ENV = "DATABASE_URL"
 SITE_TOTAL_IMPORT_PATH = "__site_total__"
 PAGE_VIEW_BASELINES_PATH = APP_ROOT / "config" / "page_view_baselines.json"
@@ -181,6 +181,87 @@ create table if not exists page_view_import_rows (
 
 create index if not exists page_view_import_rows_station_idx
   on page_view_import_rows (station_key);
+
+create table if not exists github_users (
+  github_id text primary key,
+  github_login text not null,
+  name text,
+  avatar_url text,
+  profile_url text,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  last_login_at timestamptz not null default now()
+);
+
+create index if not exists github_users_login_idx
+  on github_users (lower(github_login));
+
+create table if not exists station_reviews (
+  id bigserial primary key,
+  station_key text not null,
+  github_id text not null references github_users(github_id) on delete cascade,
+  github_login text not null,
+  rating smallint not null constraint station_reviews_rating_check check (rating in (2, 4, 6, 8, 10)),
+  comment text not null default '',
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  unique (station_key, github_id)
+);
+
+create index if not exists station_reviews_station_updated_idx
+  on station_reviews (station_key, updated_at desc);
+create index if not exists station_reviews_github_idx
+  on station_reviews (github_id, updated_at desc);
+
+create table if not exists station_error_report_digests (
+  id bigserial primary key,
+  period_start timestamptz,
+  period_end timestamptz,
+  recipient text not null,
+  report_count integer not null default 0,
+  status text not null default 'pending',
+  error text,
+  payload jsonb not null default '{}'::jsonb,
+  created_at timestamptz not null default now(),
+  sent_at timestamptz
+);
+
+create table if not exists station_error_reports (
+  id bigserial primary key,
+  station_key text not null,
+  github_id text not null references github_users(github_id) on delete cascade,
+  github_login text not null,
+  category text not null constraint station_error_reports_category_check check (category in ('station_url', 'group_multiplier', 'recharge_tier', 'announcement', 'ranking_metric', 'other')),
+  description text not null,
+  current_url text,
+  status text not null default 'open',
+  digest_id bigint references station_error_report_digests(id) on delete set null,
+  digested_at timestamptz,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create index if not exists station_error_reports_station_created_idx
+  on station_error_reports (station_key, created_at desc);
+create index if not exists station_error_reports_github_created_idx
+  on station_error_reports (github_id, created_at desc);
+create index if not exists station_error_reports_digest_idx
+  on station_error_reports (digest_id);
+
+create table if not exists station_error_report_attachments (
+  id bigserial primary key,
+  report_id bigint not null references station_error_reports(id) on delete cascade,
+  original_filename text not null,
+  stored_path text not null,
+  mime_type text not null,
+  byte_size integer not null,
+  sha256 text not null,
+  access_token text not null unique,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists station_error_report_attachments_report_idx
+  on station_error_report_attachments (report_id);
 """
 
 
@@ -213,6 +294,30 @@ def connect(dsn: str | None = None) -> Any:
     return _psycopg().connect(dsn or database_url(), autocommit=False)
 
 
+def apply_schema_migrations(cur: Any) -> None:
+    cur.execute("select 1 from schema_migrations where version = 5")
+    if cur.fetchone() is None:
+        cur.execute(SCHEMA_SQL)
+        cur.execute("alter table station_reviews drop constraint if exists station_reviews_rating_check")
+        cur.execute("alter table station_reviews add constraint station_reviews_rating_check check (rating in (2, 4, 6, 8, 10))")
+        cur.execute("insert into schema_migrations (version) values (5)")
+
+    cur.execute("select 1 from schema_migrations where version = 6")
+    if cur.fetchone() is None:
+        cur.execute(SCHEMA_SQL)
+        cur.execute("insert into schema_migrations (version) values (6)")
+
+    cur.execute("select 1 from schema_migrations where version = 7")
+    if cur.fetchone() is None:
+        cur.execute(SCHEMA_SQL)
+        cur.execute("alter table station_error_reports drop constraint if exists station_error_reports_category_check")
+        cur.execute(
+            "alter table station_error_reports add constraint station_error_reports_category_check check "
+            "(category in ('station_url', 'group_multiplier', 'recharge_tier', 'announcement', 'ranking_metric', 'other'))"
+        )
+        cur.execute("insert into schema_migrations (version) values (7)")
+
+
 def ensure_database(dsn: str | None = None) -> None:
     with connect(dsn) as con:
         with con.cursor() as cur:
@@ -225,10 +330,7 @@ def ensure_database(dsn: str | None = None) -> None:
                 )
                 """
             )
-            cur.execute("select 1 from schema_migrations where version = %s", (MIGRATION_VERSION,))
-            if cur.fetchone() is None:
-                cur.execute(SCHEMA_SQL)
-                cur.execute("insert into schema_migrations (version) values (%s)", (MIGRATION_VERSION,))
+            apply_schema_migrations(cur)
             seed_page_view_baselines(cur)
         con.commit()
 

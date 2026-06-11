@@ -3993,9 +3993,40 @@ NON_CODEX_EXCLUDED_KEYWORDS = (
 )
 
 
+WELFARE_EXCLUDED_KEYWORDS = ("福利",)
+
+
+IMAGE_ONLY_EXCLUDED_KEYWORDS = (
+    "gpt-image",
+    "image",
+    "img",
+    "生图",
+    "图片",
+    "图像",
+    "画图",
+    "绘图",
+)
+
+
+def normalize_group_filter_text(*parts: str) -> str:
+    return " ".join(str(part or "").strip().lower() for part in parts if str(part or "").strip())
+
+
+def has_welfare_group_marker(*parts: str) -> bool:
+    normalized = normalize_group_filter_text(*parts)
+    return bool(normalized) and any(keyword in normalized for keyword in WELFARE_EXCLUDED_KEYWORDS)
+
+
+def has_image_only_group_marker(*parts: str) -> bool:
+    normalized = normalize_group_filter_text(*parts)
+    return bool(normalized) and any(keyword in normalized for keyword in IMAGE_ONLY_EXCLUDED_KEYWORDS)
+
+
 def is_codex_like_group_text(*parts: str) -> bool:
-    normalized = " ".join(str(part or "").strip().lower() for part in parts if str(part or "").strip())
+    normalized = normalize_group_filter_text(*parts)
     if not normalized:
+        return False
+    if has_welfare_group_marker(normalized) or has_image_only_group_marker(normalized):
         return False
     return not any(keyword in normalized for keyword in NON_CODEX_EXCLUDED_KEYWORDS)
 
@@ -4005,10 +4036,15 @@ def is_codex_like_group_name(group_name: str) -> bool:
 
 
 def is_codex_like_fee_tier(tier: FeeTier) -> bool:
-    if "codexeligible=false" in str(tier.notes or "").strip().lower():
+    notes = str(tier.notes or "").strip().lower()
+    if has_welfare_group_marker(tier.group_name):
         return False
-    if "codexeligible=true" in str(tier.notes or "").strip().lower():
+    if "codexeligible=false" in notes:
+        return False
+    if "codexeligible=true" in notes:
         return True
+    if has_image_only_group_marker(tier.group_name):
+        return False
     return is_codex_like_group_text(tier.group_name)
 
 

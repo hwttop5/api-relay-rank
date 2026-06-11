@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import type { Route } from "next";
-import { ArrowDownAZ, ArrowUpAZ, ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, ExternalLink, FileText, ShieldAlert } from "lucide-react";
+import { ArrowDownAZ, ArrowUpAZ, ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, ExternalLink, FileText, Loader2, ShieldAlert } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useTransition, type ReactNode } from "react";
+import { useState, useTransition, type ReactNode } from "react";
 
 import { localizeAuditText } from "@/lib/audit-localization";
 import { formatAuditVerdict, formatDateTime } from "@/lib/format";
@@ -59,6 +59,22 @@ const DEFAULT_FILTERS: AuditHistoryFilters = {
   page: 1,
   pageSize: 10,
 };
+
+type AuditPendingControl =
+  | `sort:${AuditHistorySortKey}`
+  | "filter:station"
+  | "filter:model"
+  | "filter:verdict"
+  | "filter:timeRange"
+  | "page:first"
+  | "page:previous"
+  | "page:next"
+  | "page:last"
+  | "page:size";
+
+function LoadingIcon({ size = 14 }: { size?: number }) {
+  return <Loader2 size={size} className="spin-icon" aria-hidden="true" />;
+}
 
 const SUMMARY_DIMENSIONS = [
   { key: "protocol", label: "协议", field: "protocolVerdict" },
@@ -161,20 +177,24 @@ function AuditHistorySummaryBlock({ item }: { item: StationAuditHistoryItem }) {
 
 function SortButton({
   active,
+  disabled,
   direction,
   label,
+  loading,
   onClick,
 }: {
   active: boolean;
+  disabled: boolean;
   direction: AuditHistorySortDirection;
   label: string;
+  loading: boolean;
   onClick: () => void;
 }) {
   const Icon = direction === "asc" ? ArrowUpAZ : ArrowDownAZ;
   return (
-    <button type="button" className={active ? "audit-history-sort-button is-active" : "audit-history-sort-button"} onClick={onClick}>
+    <button type="button" className={active ? "audit-history-sort-button is-active" : "audit-history-sort-button"} disabled={disabled} onClick={onClick}>
       <span>{label}</span>
-      {active ? <Icon size={13} /> : null}
+      {loading ? <LoadingIcon size={13} /> : active ? <Icon size={13} /> : null}
     </button>
   );
 }
@@ -183,16 +203,18 @@ function PageButton({
   children,
   disabled,
   label,
+  loading = false,
   onClick,
 }: {
   children: ReactNode;
   disabled: boolean;
   label: string;
+  loading?: boolean;
   onClick: () => void;
 }) {
   return (
     <button type="button" className="audit-history-page-button" disabled={disabled} aria-label={label} onClick={onClick}>
-      {children}
+      {loading ? <LoadingIcon size={15} /> : children}
     </button>
   );
 }
@@ -239,13 +261,15 @@ export function AuditHistoryTable({ historyPage }: { historyPage: AuditHistoryPa
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
+  const [pendingControl, setPendingControl] = useState<AuditPendingControl | null>(null);
   const { filters } = historyPage;
   const paginatedRows = historyPage.items;
   const pageStartIndex = (historyPage.page - 1) * historyPage.pageSize;
   const displayStart = historyPage.total > 0 ? pageStartIndex + 1 : 0;
   const displayEnd = historyPage.total > 0 ? pageStartIndex + paginatedRows.length : 0;
 
-  function updateQuery(patch: Partial<AuditHistoryFilters>) {
+  function updateQuery(patch: Partial<AuditHistoryFilters>, control: AuditPendingControl) {
+    setPendingControl(control);
     const next: AuditHistoryFilters = {
       ...filters,
       ...patch,
@@ -281,10 +305,10 @@ export function AuditHistoryTable({ historyPage }: { historyPage: AuditHistoryPa
 
   function toggleSort(nextSortKey: AuditHistorySortKey) {
     if (nextSortKey === filters.sort) {
-      updateQuery({ direction: filters.direction === "asc" ? "desc" : "asc" });
+      updateQuery({ direction: filters.direction === "asc" ? "desc" : "asc" }, `sort:${nextSortKey}`);
       return;
     }
-    updateQuery({ sort: nextSortKey, direction: defaultDirection(nextSortKey) });
+    updateQuery({ sort: nextSortKey, direction: defaultDirection(nextSortKey) }, `sort:${nextSortKey}`);
   }
 
   return (
@@ -297,7 +321,7 @@ export function AuditHistoryTable({ historyPage }: { historyPage: AuditHistoryPa
         <div className="controls audit-history-controls">
           <label className="control-group">
             <span className="control-label">站点</span>
-            <select aria-label="站点" className="toolbar-select" value={filters.station} onChange={(event) => updateQuery({ station: event.target.value })}>
+            <select aria-label="站点" className="toolbar-select" value={filters.station} disabled={isPending} onChange={(event) => updateQuery({ station: event.target.value }, "filter:station")}>
               <option value="all">全部站点</option>
               {historyPage.options.stations.map((option) => (
                 <option key={option.value} value={option.value}>
@@ -308,7 +332,7 @@ export function AuditHistoryTable({ historyPage }: { historyPage: AuditHistoryPa
           </label>
           <label className="control-group">
             <span className="control-label">模型</span>
-            <select aria-label="模型" className="toolbar-select" value={filters.model} onChange={(event) => updateQuery({ model: event.target.value })}>
+            <select aria-label="模型" className="toolbar-select" value={filters.model} disabled={isPending} onChange={(event) => updateQuery({ model: event.target.value }, "filter:model")}>
               <option value="all">全部模型</option>
               {historyPage.options.models.map((option) => (
                 <option key={option.value} value={option.value}>
@@ -319,7 +343,7 @@ export function AuditHistoryTable({ historyPage }: { historyPage: AuditHistoryPa
           </label>
           <label className="control-group">
             <span className="control-label">安全程度</span>
-            <select aria-label="安全程度" className="toolbar-select" value={filters.verdict} onChange={(event) => updateQuery({ verdict: event.target.value as "all" | AuditVerdict })}>
+            <select aria-label="安全程度" className="toolbar-select" value={filters.verdict} disabled={isPending} onChange={(event) => updateQuery({ verdict: event.target.value as "all" | AuditVerdict }, "filter:verdict")}>
               {VERDICT_OPTIONS.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -329,7 +353,7 @@ export function AuditHistoryTable({ historyPage }: { historyPage: AuditHistoryPa
           </label>
           <label className="control-group">
             <span className="control-label">时间</span>
-            <select aria-label="时间" className="toolbar-select" value={filters.timeRange} onChange={(event) => updateQuery({ timeRange: event.target.value as AuditHistoryTimeRange })}>
+            <select aria-label="时间" className="toolbar-select" value={filters.timeRange} disabled={isPending} onChange={(event) => updateQuery({ timeRange: event.target.value as AuditHistoryTimeRange }, "filter:timeRange")}>
               {TIME_RANGE_OPTIONS.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -343,9 +367,22 @@ export function AuditHistoryTable({ historyPage }: { historyPage: AuditHistoryPa
       <div className="section-body">
         <div className="audit-history-sortbar" aria-label="排序">
           {(Object.keys(SORT_LABELS) as AuditHistorySortKey[]).map((key) => (
-            <SortButton key={key} active={filters.sort === key} direction={filters.direction} label={SORT_LABELS[key]} onClick={() => toggleSort(key)} />
+            <SortButton
+              key={key}
+              active={filters.sort === key}
+              disabled={isPending}
+              direction={filters.direction}
+              label={SORT_LABELS[key]}
+              loading={isPending && pendingControl === `sort:${key}`}
+              onClick={() => toggleSort(key)}
+            />
           ))}
-          {isPending ? <span className="footer-note">正在加载...</span> : null}
+          {isPending ? (
+            <span className="footer-note audit-history-loading-note">
+              <LoadingIcon size={13} />
+              正在加载...
+            </span>
+          ) : null}
         </div>
 
         {paginatedRows.length > 0 ? (
@@ -411,22 +448,32 @@ export function AuditHistoryTable({ historyPage }: { historyPage: AuditHistoryPa
                 </span>
               </div>
               <div className="audit-history-page-controls">
-                <PageButton label="第一页" disabled={historyPage.page <= 1 || isPending} onClick={() => updateQuery({ page: 1 })}>
+                <PageButton label="第一页" disabled={historyPage.page <= 1 || isPending} loading={isPending && pendingControl === "page:first"} onClick={() => updateQuery({ page: 1 }, "page:first")}>
                   <ChevronFirst size={15} />
                 </PageButton>
-                <PageButton label="上一页" disabled={historyPage.page <= 1 || isPending} onClick={() => updateQuery({ page: Math.max(1, historyPage.page - 1) })}>
+                <PageButton
+                  label="上一页"
+                  disabled={historyPage.page <= 1 || isPending}
+                  loading={isPending && pendingControl === "page:previous"}
+                  onClick={() => updateQuery({ page: Math.max(1, historyPage.page - 1) }, "page:previous")}
+                >
                   <ChevronLeft size={15} />
                 </PageButton>
-                <PageButton label="下一页" disabled={historyPage.page >= historyPage.pageCount || isPending} onClick={() => updateQuery({ page: Math.min(historyPage.pageCount, historyPage.page + 1) })}>
+                <PageButton
+                  label="下一页"
+                  disabled={historyPage.page >= historyPage.pageCount || isPending}
+                  loading={isPending && pendingControl === "page:next"}
+                  onClick={() => updateQuery({ page: Math.min(historyPage.pageCount, historyPage.page + 1) }, "page:next")}
+                >
                   <ChevronRight size={15} />
                 </PageButton>
-                <PageButton label="最后一页" disabled={historyPage.page >= historyPage.pageCount || isPending} onClick={() => updateQuery({ page: historyPage.pageCount })}>
+                <PageButton label="最后一页" disabled={historyPage.page >= historyPage.pageCount || isPending} loading={isPending && pendingControl === "page:last"} onClick={() => updateQuery({ page: historyPage.pageCount }, "page:last")}>
                   <ChevronLast size={15} />
                 </PageButton>
               </div>
               <label className="audit-history-page-size">
                 <span>每页显示</span>
-                <select aria-label="每页显示" className="toolbar-select" value={historyPage.pageSize} onChange={(event) => updateQuery({ pageSize: Number(event.target.value) })}>
+                <select aria-label="每页显示" className="toolbar-select" value={historyPage.pageSize} disabled={isPending} onChange={(event) => updateQuery({ pageSize: Number(event.target.value) }, "page:size")}>
                   {PAGE_SIZE_OPTIONS.map((option) => (
                     <option key={option} value={option}>
                       {option} 条

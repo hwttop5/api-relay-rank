@@ -1,5 +1,6 @@
 import { RankingDashboard } from "@/components/ranking-dashboard";
 import { getPageViewStats } from "@/lib/page-view-stats";
+import { hasDatabaseUrl, readStationReviewSummaryMap } from "@/lib/postgres";
 import { absoluteUrl, pageMetadata, safeJsonLd, topRankingRows } from "@/lib/seo";
 import { getSiteData } from "@/lib/site-data";
 import { buildRankingPageData } from "@/lib/site-data-view";
@@ -17,7 +18,10 @@ export const metadata = pageMetadata({
 
 export default async function RankingPage() {
   const [siteData, pageViewStats] = await Promise.all([getSiteData(), getPageViewStats()]);
-  const rankingPage = buildRankingPageData(siteData);
+  const reviewSummaries = hasDatabaseUrl()
+    ? await readStationReviewSummaryMap(siteData.stations.map((station) => station.key)).catch(() => ({}))
+    : {};
+  const rankingPage = buildRankingPageData(siteData, reviewSummaries);
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",

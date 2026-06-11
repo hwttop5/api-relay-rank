@@ -3,6 +3,8 @@ import { AuditInteraction } from "@/components/audit-interaction";
 import { AUDIT_FAQ_ITEMS, AuditFaqContent, AuditSeoContent } from "@/components/audit-seo-content";
 import { getAuditHistoryPage, parseAuditHistorySearchParams } from "@/lib/audit-history";
 import { localizeAuditHistoryItemText } from "@/lib/audit-localization";
+import { formatCompactCount } from "@/lib/format";
+import { getPageViewStats } from "@/lib/page-view-stats";
 import { absoluteUrl, pageMetadata, safeJsonLd } from "@/lib/seo";
 import { getSiteData } from "@/lib/site-data";
 import { buildShellData } from "@/lib/site-data-view";
@@ -24,7 +26,7 @@ type AuditPageProps = {
 
 export default async function AuditPage({ searchParams }: AuditPageProps) {
   const auditHistoryFilters = parseAuditHistorySearchParams(await searchParams);
-  const rawSiteData = await getSiteData();
+  const [rawSiteData, pageViewStats] = await Promise.all([getSiteData(), getPageViewStats()]);
   const shellData = buildShellData(rawSiteData, rawSiteData.stations.length);
   const auditHistoryPage = await getAuditHistoryPage(rawSiteData, auditHistoryFilters);
   const localizedAuditHistoryPage = {
@@ -58,6 +60,7 @@ export default async function AuditPage({ searchParams }: AuditPageProps) {
       <AppShell
         active="audit"
         data={shellData}
+        footerMeta={<>累计 PV {formatCompactCount(pageViewStats.totalPv)}</>}
         topbarMetaClassName="topbar-meta-inline-mobile"
         actions={
           <>

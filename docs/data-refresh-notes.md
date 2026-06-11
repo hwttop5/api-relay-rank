@@ -247,9 +247,9 @@ Codex Manager 新日志增量更新：
 - `scripts/build_site_data.py` 读取 live probe 时，会用结构化充值/套餐 `billingType` 推断站点类型；同时在存在分组证据时把有效充值/套餐计入已核验档位数。这个计数不补请求样本，也不会让无请求样本的站点进入正式排名。
 - 采用倍率统一公式：`effective_multiplier = group_multiplier × rmbAmount ÷ usdAmount`；其中 `rmbAmount` 是公式使用的实付金额数值，`usdAmount` 是到账美元额度。人民币仍直接写入 `rmbAmount`；USDC 等非人民币支付必须同时写 `paymentCurrency` / `paymentAmount`，避免详情页把真实支付币种误显示成人民币。
 - sub2api/v1 钱包充值必须同时满足 `payment/config.enabled` 未关闭、checkout 未关闭、有支付方式、`balance_recharge_multiplier > 0` 且未 `balance_disabled`；否则只记录空/失败状态，不生成正式费用行。
-- 正式排名和未排名最低倍率展示统一使用 Codex-like 分组口径：有 `codexEligible=false` 的分组先排除；否则只排除明确 Claude/Anthropic/Sonnet/Opus/Haiku/Kiro/CC 或国产/公益模型分组，其余非空有效分组默认可作为 Codex-like 候选。
+- 正式排名和未排名最低倍率展示统一使用 Codex-like 分组口径：有 `codexEligible=false` 的分组先排除；名称包含 `福利` 的分组默认硬排除；明显 image-only / 生图专用分组默认排除，但有 `codexEligible=true` 等明确 Codex 可用证据时可保留；否则只排除明确 Claude/Anthropic/Sonnet/Opus/Haiku/Kiro/CC 或国产/公益模型分组，其余非空有效分组默认可作为 Codex-like 候选。
 - sub2api 分组颜色是可用性证据：绿色分组按 Codex 可用处理并可写 `codexEligible=true`；橙色分组按 Claude Code 用途处理并写 `codexEligible=false`。如果登录态 API 只返回名称和倍率、没有颜色信息，不能猜颜色，只能保留名称规则或等待浏览器核验。
-- 不能再按“全站最低已核验倍率”直接取值，否则容易把 Claude、国产、公益或异常渠道误作为 Codex 采用倍率。
+- 不能再按“全站最低已核验倍率”直接取值，否则容易把 Claude、国产、公益、福利、生图专用或异常渠道误作为 Codex 采用倍率。
 - `multiplier_sanity_review.csv` 记录所有 `effective_multiplier < 0.001` 或 `>= 2` 的费用档位。刷新后必须核对这些档位的分组、充值换算、有效期和证据来源。
 - `high_multiplier_review.csv` 只保留正式排名采用高倍率时的兼容报告，正常应为空。
 - 费用证据齐全但请求样本为 0 的站点不会进入排行榜，只在收录站点和详情页中展示。
@@ -310,7 +310,7 @@ Codex Manager 新日志增量更新：
 | `FishXCode` | 已有结构化分组/充值证据，可生成费用行；请求样本为 0 时不入榜。 | 公开页面、公开结构化证据、详情页归档数据。 | 不能因为费用齐全就绕过请求样本门槛。 | 后续日志出现请求后，普通增量刷新即可参与排名。 |
 | `claude360.xyz` | 公开 `/api/status` + `/api/pricing` 已足够生成正式费用行；请求样本为 0 时仍不入榜。 | 公开 status 的 `price/quota_per_unit` 换算、公开 pricing 的 `group_ratio`/分组结构。 | 不能因为费用齐全绕过请求样本门槛；不能把非结构化公告文本当费用来源。 | 当前 `1 RMB = 1 USD`，公开分组含 `Codex` 0.8；详情页证据可回灌 formal CSV。 |
 | `cngpt.net` | 公开 `/api/status` + `/api/pricing` 已足够生成正式费用行；请求样本为 0 时仍不入榜；充值入口本轮暂不强行补抓。 | 公开 status 的 `price/quota_per_unit` 换算、公开 pricing 的默认分组结构。 | 不能因为费用齐全绕过请求样本门槛；不能把价格自然语言推断为固定套餐。 | 当前 `7.3 RMB = 1 USD`，`default` 分组按 Codex-like 可用分组处理；后续找到真实充值入口后再补固定档位。 |
-| `fushengyunsuan.cn` | 公开 `/api/status` 与价格页可补分组、钱包换算和公告，可作为正式费用来源；宽松 Codex-like 规则后，`vip`、`企业生图专线` 等非 Claude/非国产分组可参与最低倍率计算。 | 公开 status、公开价格页、公告快照。 | 不能只因费用齐全绕过请求样本门槛；不能让 `公益` 分组拉低 Codex-like 最低倍率；不能恢复旧的 `0.0075` 异常分组。 | 继续核对 `vip`/Codex 可用分组是否仍在公开价格页展示；当前刷新以最新分组为准，最低倍率约 `0.05x`。 |
+| `fushengyunsuan.cn` | 公开 `/api/status` 与价格页可补分组、钱包换算和公告，可作为正式费用来源；正式采用优先使用长期 Codex 可用分组，当前采用 `vip` 约 `0.08x`，`生图临时用，但是不一定安全=0.01` 只作为详情证据展示，不参与正式采用或未入榜最低倍率。 | 公开 status、公开价格页、公告快照。 | 不能只因费用齐全绕过请求样本门槛；不能让 `公益`、福利或生图临时分组拉低 Codex-like 最低倍率；不能恢复旧的 `0.0075` 异常分组。 | 继续核对 `vip`/Codex 可用分组是否仍在公开价格页展示；当前刷新以最新分组为准，最低倍率约 `0.08x`。 |
 | `api.code-relay.com` | 2026-06-10 用户确认账号被封禁，无法登录补抓；当前人工口径为分组倍率 `1`，充值比例未找到，暂按 `1 RMB = 1 USD`。 | 用户人工确认、旧公开快照和归档 probe；当前以 `config/station_pricing_overrides.json` 为权威费用覆盖。 | 不能继续沿用旧 public plans `1.499x` 结论作为当前正式口径；不能用封禁账号状态伪造登录态充值证据。 | 后续若找到账单或充值页证据，先更新人工覆盖和本文档，再重建 CSV 与 `site-data.json`。 |
 | `api-slb.krill-ai.com` | 正确官网入口是 `https://www.krill-ai.com`；API 站点键仍保留 `api-slb.krill-ai.com`。当前可补齐分组和充值，公告接口真实为空；线路分组按 Codex-like 可用候选计算最低倍率。 | `config/station_url_overrides.json`、登录态 `/api/endpoint-settings/me`、公开 `/api/public/shop/products`、登录态 `/api/announcements/unread`。 | 不能继续用旧入口 404 结论；不能把空公告接口伪造成公告内容。 | Krill route/group 从 endpoint settings 归一化，商品从 shop products 归一化；`/api/announcements/unread` 空列表作为已核对状态，最低倍率约 `0.0395238x`。 |
 

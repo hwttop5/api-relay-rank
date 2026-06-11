@@ -308,6 +308,113 @@ jobs:
           echo "Configured PostgreSQL and log sync environment in $env_file"
           REMOTE_SCRIPT
 
+      - name: Configure user feedback secrets on VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          AUTH_GITHUB_ID: ${{ secrets.AUTH_GITHUB_ID }}
+          AUTH_GITHUB_SECRET: ${{ secrets.AUTH_GITHUB_SECRET }}
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          SMTP_STARTTLS: ${{ secrets.SMTP_STARTTLS }}
+          ERROR_REPORT_DIGEST_TO: ${{ secrets.ERROR_REPORT_DIGEST_TO }}
+        run: |
+          set -euo pipefail
+          for name in AUTH_GITHUB_ID AUTH_GITHUB_SECRET NEXTAUTH_SECRET SMTP_HOST SMTP_FROM ERROR_REPORT_DIGEST_TO; do
+            if [ -z "${!name:-}" ]; then
+              echo "$name secret is required for user feedback deployment." >&2
+              exit 1
+            fi
+          done
+
+          b64() {
+            printf '%s' "$1" | base64 -w 0
+          }
+
+          github_id_b64="$(b64 "$AUTH_GITHUB_ID")"
+          github_secret_b64="$(b64 "$AUTH_GITHUB_SECRET")"
+          nextauth_secret_b64="$(b64 "$NEXTAUTH_SECRET")"
+          smtp_host_b64="$(b64 "$SMTP_HOST")"
+          smtp_port_b64="$(b64 "${SMTP_PORT:-}")"
+          smtp_user_b64="$(b64 "${SMTP_USER:-}")"
+          smtp_password_b64="$(b64 "${SMTP_PASSWORD:-}")"
+          smtp_from_b64="$(b64 "$SMTP_FROM")"
+          smtp_starttls_b64="$(b64 "${SMTP_STARTTLS:-}")"
+          digest_to_b64="$(b64 "$ERROR_REPORT_DIGEST_TO")"
+
+          ssh -i ~/.ssh/deploy_key -p 22 "$VPS_USER@$VPS_HOST" \
+            "GITHUB_ID_B64='$github_id_b64' GITHUB_SECRET_B64='$github_secret_b64' NEXTAUTH_SECRET_B64='$nextauth_secret_b64' SMTP_HOST_B64='$smtp_host_b64' SMTP_PORT_B64='$smtp_port_b64' SMTP_USER_B64='$smtp_user_b64' SMTP_PASSWORD_B64='$smtp_password_b64' SMTP_FROM_B64='$smtp_from_b64' SMTP_STARTTLS_B64='$smtp_starttls_b64' DIGEST_TO_B64='$digest_to_b64' sh -s" <<'REMOTE_SCRIPT'
+          set -eu
+          env_file="/opt/stacks/api-relay-rank/deploy/.env"
+          mkdir -p "$(dirname "$env_file")"
+          touch "$env_file"
+          chmod 600 "$env_file" || true
+
+          decode() {
+            printf '%s' "$1" | base64 -d
+          }
+
+          set_env_var() {
+            key="$1"
+            value="$2"
+            tmp_file="$(mktemp)"
+            awk -v key="$key" -v value="$value" '
+              BEGIN { found = 0 }
+              $0 ~ "^" key "=" {
+                print key "=" value
+                found = 1
+                next
+              }
+              { print }
+              END {
+                if (!found) {
+                  print key "=" value
+                }
+              }
+            ' "$env_file" > "$tmp_file"
+            cat "$tmp_file" > "$env_file"
+            rm -f "$tmp_file"
+          }
+
+          site_url="$(awk -F= '/^NEXT_PUBLIC_SITE_URL=/{print $2; exit}' "$env_file" | tr -d '\r"')"
+          app_domain="$(awk -F= '/^APP_DOMAIN=/{print $2; exit}' "$env_file" | tr -d '\r"')"
+          if [ -z "$site_url" ] && [ -n "$app_domain" ]; then
+            site_url="https://$app_domain"
+          fi
+          if [ -z "$site_url" ]; then
+            echo "NEXT_PUBLIC_SITE_URL or APP_DOMAIN is required for NEXTAUTH_URL." >&2
+            exit 1
+          fi
+          site_url="${site_url%/}"
+
+          smtp_port="$(decode "$SMTP_PORT_B64")"
+          smtp_starttls="$(decode "$SMTP_STARTTLS_B64")"
+          if [ -z "$smtp_port" ]; then
+            smtp_port="587"
+          fi
+          if [ -z "$smtp_starttls" ]; then
+            smtp_starttls="1"
+          fi
+
+          set_env_var NEXTAUTH_URL "$site_url"
+          set_env_var NEXTAUTH_SECRET "$(decode "$NEXTAUTH_SECRET_B64")"
+          set_env_var GITHUB_ID "$(decode "$GITHUB_ID_B64")"
+          set_env_var GITHUB_SECRET "$(decode "$GITHUB_SECRET_B64")"
+          set_env_var SMTP_HOST "$(decode "$SMTP_HOST_B64")"
+          set_env_var SMTP_PORT "$smtp_port"
+          set_env_var SMTP_USER "$(decode "$SMTP_USER_B64")"
+          set_env_var SMTP_PASSWORD "$(decode "$SMTP_PASSWORD_B64")"
+          set_env_var SMTP_FROM "$(decode "$SMTP_FROM_B64")"
+          set_env_var SMTP_STARTTLS "$smtp_starttls"
+          set_env_var ERROR_REPORT_DIGEST_TO "$(decode "$DIGEST_TO_B64")"
+
+          echo "Configured user feedback OAuth and digest environment in $env_file"
+          REMOTE_SCRIPT
+
       - name: Restart Docker stack
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
@@ -338,13 +445,13 @@ jobs:
           )"
           test -n "$postgres_container"
 
-          schema_v3="$(
+          schema_v7="$(
             docker exec "$postgres_container" \
               psql -U api_relay_rank -d api_relay_rank -At \
-              -c "select count(*) from schema_migrations where version = 3;"
+              -c "select count(*) from schema_migrations where version = 7;"
           )"
-          if [ "$schema_v3" != "1" ]; then
-            echo "schema_migrations version 3 is missing." >&2
+          if [ "$schema_v7" != "1" ]; then
+            echo "schema_migrations version 7 is missing." >&2
             exit 1
           fi
 
@@ -425,6 +532,8 @@ jobs:
 
           curl --retry 12 --retry-delay 5 --retry-all-errors -fsS "$site_url/api/health" \
             | python3 -c "import json,sys; payload=json.load(sys.stdin); assert payload.get('ok') is True, payload"
+          curl --retry 6 --retry-delay 5 --retry-all-errors -fsS "$site_url/api/auth/providers" \
+            | python3 -c "import json,sys; payload=json.load(sys.stdin); assert 'github' in payload, payload"
           curl --retry 6 --retry-delay 5 --retry-all-errors -fsS "$site_url/robots.txt" | tee robots.txt >/dev/null
           grep -Fq "Sitemap: $site_url/sitemap.xml" robots.txt
           if grep -Fq "localhost" robots.txt; then
@@ -456,7 +565,7 @@ jobs:
             echo "- Audit runs: \`$audit_count\`"
             echo "- Latest snapshot: \`$snapshot_row\`"
             echo "- Latest report path: \`$report_path\`"
-            echo "- Checked: \`/api/health\`, \`/robots.txt\`, \`/sitemap.xml\`, \`/audit\`, \`/ranking\`, \`/stations/freemodel\`, latest audit report"
+            echo "- Checked: \`/api/health\`, \`/api/auth/providers\`, \`/robots.txt\`, \`/sitemap.xml\`, \`/audit\`, \`/ranking\`, \`/stations/freemodel\`, latest audit report"
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Verify owner announcement sync
