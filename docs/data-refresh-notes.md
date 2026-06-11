@@ -86,6 +86,8 @@ python scripts/refresh_quality_rankings.py --full-log-rebuild
 - `data/site-data.json` 不删除，继续作为导出备份、种子数据和显式回滚产物；不要把它当成生产默认真源。
 - `SITE_DATA_ALLOW_FILE_FALLBACK=0` 时，数据库不可用会直接暴露错误，避免生产静默回退到过期 JSON 或 `_audit_runs` 文件列表。只有显式设置为 `1` 时，`site-data` 与 `/audit` 才允许在 DB 读取失败后回退文件。
 - `SITE_DATA_MERGE_POSTGRES_BASE=1` 用于服务器刷新时继承上一条成功 DB snapshot 中已有的历史详情和证据，降低刷新时丢失 runtime-only 数据的风险。
+- 生产 `site_data_snapshots` 可能包含仓库种子没有的 runtime-only 审计站点，因此线上 `stations[]` 数量可能高于仓库内 `data/site-data.json`。发布前应先把最新生产成功快照回填到仓库，或确认 deploy workflow 的站点数下降保护会拦截异常发布。
+- deploy workflow 会记录重启前最新成功 snapshot 的站点数，并在重启后校验新 snapshot 站点数不得下降；只有显式设置仓库变量 `ALLOW_SITE_DATA_STATION_COUNT_DROP=1` 时才允许有意减少站点数。
 
 ### DB 模式服务器刷新顺序
 

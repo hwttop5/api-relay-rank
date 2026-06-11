@@ -4719,6 +4719,45 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(latest_audits["aitoken.dog"][0]["model"], "gpt-5.5")
         self.assertEqual(station_urls["aitoken.dog"], {"https://aitoken.dog/"})
 
+    def test_apply_audit_only_station_records_preserves_baseline_runtime_only_key(self) -> None:
+        stations: dict[str, dict[str, object]] = {}
+        station_urls: dict[str, set[str]] = {}
+        build_site_data.ensure_station(
+            stations,
+            "freemodel",
+            label="FreeModel",
+            url="https://freemodel.dev",
+        )
+        latest_audits = {
+            "audit-api-freemodel-dev": [
+                {
+                    "profile": "general",
+                    "model": "gpt-5.5",
+                    "auditedBaseUrl": "https://api.freemodel.dev",
+                    "executedAt": "2026-06-10T12:45:25Z",
+                    "overallVerdict": "medium",
+                    "overallSummary": "ok",
+                    "highlights": [],
+                    "stepSummaries": [],
+                    "reportPath": "data/_audit_runs/audit-api-freemodel-dev/gpt-5.5/20260610T124525Z/report.md",
+                    "toolVersion": "api-relay-audit@test",
+                }
+            ]
+        }
+
+        build_site_data.apply_audit_only_station_records(
+            stations,
+            station_urls,
+            latest_audits,
+            preserved_station_keys={"audit-api-freemodel-dev"},
+        )
+
+        self.assertIn("freemodel", stations)
+        self.assertIn("audit-api-freemodel-dev", stations)
+        self.assertIn("audit-api-freemodel-dev", latest_audits)
+        self.assertEqual(stations["audit-api-freemodel-dev"]["url"], "https://api.freemodel.dev")
+        self.assertEqual(station_urls["audit-api-freemodel-dev"], {"https://api.freemodel.dev"})
+
     def test_apply_postgres_base_station_records_merges_existing_station_by_url(self) -> None:
         stations: dict[str, dict[str, object]] = {}
         station_urls: dict[str, set[str]] = {}
@@ -4755,6 +4794,179 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(stations["aitoken.dog"]["announcements"][0]["content"], "ok")
         self.assertEqual(stations["aitoken.dog"]["announcements"][0]["sourceUrl"], "https://aitoken.dog/api/v1/announcements")
         self.assertIn("audit baseline note", stations["aitoken.dog"]["tierNotes"])
+
+    def test_apply_postgres_base_station_records_preserves_baseline_key_when_requested(self) -> None:
+        stations: dict[str, dict[str, object]] = {}
+        station_urls: dict[str, set[str]] = {}
+        build_site_data.ensure_station(
+            stations,
+            "audit-cnapi-maolaoapi-com",
+            label="CnapiMaolaoapi",
+            url="https://cnapi.maolaoapi.com",
+        )
+        baseline = {
+            "audit-maolaoapi-com": {
+                "key": "audit-maolaoapi-com",
+                "label": "Maolaoapi",
+                "url": "https://maolaoapi.com",
+                "announcements": [
+                    {
+                        "title": "runtime notice",
+                        "content": "ok",
+                        "sourceUrl": "https://maolaoapi.com/api/announcements",
+                    }
+                ],
+                "audits": {"latestAuditAt": "2026-06-10T00:16:02Z"},
+            }
+        }
+
+        build_site_data.apply_postgres_base_station_records(
+            stations,
+            station_urls,
+            baseline,
+            preserved_station_keys={"audit-maolaoapi-com"},
+        )
+
+        self.assertIn("audit-cnapi-maolaoapi-com", stations)
+        self.assertIn("audit-maolaoapi-com", stations)
+        self.assertEqual(stations["audit-maolaoapi-com"]["url"], "https://maolaoapi.com")
+        self.assertEqual(stations["audit-maolaoapi-com"]["audits"]["latestAuditAt"], "2026-06-10T00:16:02Z")
+
+    def test_postgres_base_station_records_keep_runtime_only_stations(self) -> None:
+        stations: dict[str, dict[str, object]] = {}
+        station_urls: dict[str, set[str]] = {}
+        build_site_data.ensure_station(
+            stations,
+            "repo-seed",
+            label="RepoSeed",
+            url="https://repo-seed.example",
+        )
+        baseline = {
+            "repo-seed": {
+                "key": "repo-seed",
+                "label": "RepoSeed",
+                "url": "https://repo-seed.example",
+            },
+            "audit-runtime-only": {
+                "key": "audit-runtime-only",
+                "label": "RuntimeOnly",
+                "url": "https://runtime-only.example",
+                "stationType": "non_subscription",
+                "platformGuess": "audit",
+                "verifiedTierCount": 2,
+                "groupMultipliers": [{"groupName": "codex", "groupMultiplier": 1}],
+                "rechargeTiers": [
+                    {
+                        "rechargeName": "wallet topup 10 RMB",
+                        "rmbAmount": 10,
+                        "usdAmount": 10,
+                        "billingType": "permanent",
+                    }
+                ],
+                "tierNotes": ["runtime-only audit note"],
+                "audits": {"latestAuditAt": "2026-06-11T12:00:00Z"},
+            },
+        }
+
+        build_site_data.apply_postgres_base_station_records(stations, station_urls, baseline)
+
+        self.assertEqual(sorted(stations), ["audit-runtime-only", "repo-seed"])
+        restored = stations["audit-runtime-only"]
+        self.assertEqual(restored["url"], "https://runtime-only.example")
+        self.assertEqual(restored["verifiedTierCount"], 2)
+        self.assertEqual(restored["groupMultipliers"], [{"groupName": "codex", "groupMultiplier": 1.0}])
+        self.assertEqual(restored["rechargeTiers"][0]["rechargeName"], "wallet topup 10 RMB")
+        self.assertIn("runtime-only audit note", restored["tierNotes"])
+        self.assertEqual(restored["audits"]["latestAuditAt"], "2026-06-11T12:00:00Z")
+
+    def test_postgres_base_station_records_backfill_existing_incomplete_station_by_key(self) -> None:
+        stations: dict[str, dict[str, object]] = {}
+        station_urls: dict[str, set[str]] = {}
+        build_site_data.ensure_station(
+            stations,
+            "audit-runtime-only",
+            label="audit-runtime-only",
+        )
+        baseline = {
+            "audit-runtime-only": {
+                "key": "audit-runtime-only",
+                "label": "RuntimeOnly",
+                "url": "https://runtime-only.example",
+                "stationType": "non_subscription",
+                "platformGuess": "audit",
+                "verifiedTierCount": 2,
+                "groupMultipliers": [{"groupName": "codex", "groupMultiplier": 1}],
+                "rechargeTiers": [
+                    {
+                        "rechargeName": "wallet topup 10 RMB",
+                        "rmbAmount": 10,
+                        "usdAmount": 10,
+                        "billingType": "permanent",
+                    }
+                ],
+                "tierNotes": ["runtime-only audit note"],
+                "announcements": [
+                    {
+                        "title": "runtime notice",
+                        "content": "ok",
+                        "sourceUrl": "https://runtime-only.example/api/announcements",
+                    }
+                ],
+                "quality": {"work_hours": {"requestSamples": 1, "correct": 1}},
+                "audits": {"latestAuditAt": "2026-06-11T12:00:00Z"},
+            }
+        }
+
+        build_site_data.apply_postgres_base_station_records(stations, station_urls, baseline)
+
+        self.assertEqual(sorted(stations), ["audit-runtime-only"])
+        restored = stations["audit-runtime-only"]
+        self.assertEqual(restored["url"], "https://runtime-only.example")
+        self.assertEqual(restored["label"], "RuntimeOnlyExample")
+        self.assertEqual(restored["stationType"], "non_subscription")
+        self.assertEqual(restored["platformGuess"], "audit")
+        self.assertEqual(restored["verifiedTierCount"], 2)
+        self.assertEqual(restored["groupMultipliers"], [{"groupName": "codex", "groupMultiplier": 1.0}])
+        self.assertEqual(restored["rechargeTiers"][0]["rechargeName"], "wallet topup 10 RMB")
+        self.assertEqual(restored["announcements"][0]["sourceUrl"], "https://runtime-only.example/api/announcements")
+        self.assertIn("runtime-only audit note", restored["tierNotes"])
+        self.assertEqual(restored["quality"]["work_hours"]["requestSamples"], 1)
+        self.assertEqual(restored["audits"]["latestAuditAt"], "2026-06-11T12:00:00Z")
+        self.assertEqual(
+            station_urls["audit-runtime-only"],
+            {"https://runtime-only.example", "https://runtime-only.example/api/announcements"},
+        )
+
+    def test_existing_station_records_can_seed_runtime_only_stations(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            site_data_path = root / "site-data.json"
+            site_data_path.write_text(
+                json.dumps(
+                    {
+                        "stations": [
+                            {
+                                "key": "repo-seed",
+                                "label": "RepoSeed",
+                                "url": "https://repo-seed.example",
+                            },
+                            {
+                                "key": "audit-runtime-only",
+                                "label": "RuntimeOnly",
+                                "url": "https://runtime-only.example",
+                                "audits": {"latestAuditAt": "2026-06-11T12:00:00Z"},
+                            },
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with mock.patch.object(build_site_data, "SITE_DATA_PATH", site_data_path):
+                baseline = build_site_data.load_existing_station_records()
+
+        self.assertEqual(sorted(baseline), ["audit-runtime-only", "repo-seed"])
+        self.assertEqual(baseline["audit-runtime-only"]["url"], "https://runtime-only.example")
 
     def test_build_runtime_site_data_merges_audit_only_station_after_seed(self) -> None:
         required_inputs = [

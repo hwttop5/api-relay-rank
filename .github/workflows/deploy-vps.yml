@@ -123,6 +123,16 @@ jobs:
             pg_dump -U api_relay_rank -d api_relay_rank -Fc > "$backup_dir/postgres.dump"
           test -s "$backup_dir/postgres.dump"
 
+          pre_station_count="$(
+            docker exec "$postgres_container" \
+              psql -U api_relay_rank -d api_relay_rank -At \
+              -c "select coalesce(jsonb_array_length(payload->'stations'), 0) from site_data_snapshots where status='success' and payload is not null order by created_at desc, id desc limit 1;"
+          )"
+          case "$pre_station_count" in
+            ''|*[!0-9]*) pre_station_count=0 ;;
+          esac
+          printf '%s\n' "$pre_station_count" > "$backup_dir/pre-deploy-station-count.txt"
+
           echo "BACKUP_STAGE=manifest"
           cat <<'PY' | BACKUP_DIR="$backup_dir" AUDIT_COUNT="$audit_count" python3
           import json
@@ -144,20 +154,25 @@ jobs:
 
           echo "BACKUP_PATH=$backup_dir"
           echo "EXPECTED_AUDIT_RUNS=$audit_count"
+          echo "PRE_DEPLOY_STATION_COUNT=$pre_station_count"
           REMOTE_SCRIPT
           )"
           printf '%s\n' "$remote_output"
           backup_path="$(printf '%s\n' "$remote_output" | awk -F= '/^BACKUP_PATH=/{print $2; exit}')"
           expected_audit_runs="$(printf '%s\n' "$remote_output" | awk -F= '/^EXPECTED_AUDIT_RUNS=/{print $2; exit}')"
+          pre_deploy_station_count="$(printf '%s\n' "$remote_output" | awk -F= '/^PRE_DEPLOY_STATION_COUNT=/{print $2; exit}')"
           test -n "$backup_path"
           test -n "$expected_audit_runs"
+          test -n "$pre_deploy_station_count"
           echo "BACKUP_PATH=$backup_path" >> "$GITHUB_ENV"
           echo "EXPECTED_AUDIT_RUNS=$expected_audit_runs" >> "$GITHUB_ENV"
+          echo "PRE_DEPLOY_STATION_COUNT=$pre_deploy_station_count" >> "$GITHUB_ENV"
           {
             echo "## Pre-deploy backup"
             echo
             echo "- Backup path: \`$backup_path\`"
             echo "- Expected audit summaries: \`$expected_audit_runs\`"
+            echo "- Pre-deploy station count: \`$pre_deploy_station_count\`"
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Sync code to VPS
@@ -429,10 +444,16 @@ jobs:
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_USER: ${{ secrets.VPS_USER }}
           EXPECTED_AUDIT_RUNS: ${{ env.EXPECTED_AUDIT_RUNS }}
+          PRE_DEPLOY_STATION_COUNT: ${{ env.PRE_DEPLOY_STATION_COUNT }}
+          ALLOW_SITE_DATA_STATION_COUNT_DROP: ${{ vars.ALLOW_SITE_DATA_STATION_COUNT_DROP }}
           BACKUP_PATH: ${{ env.BACKUP_PATH }}
         run: |
           set -euo pipefail
           test -n "${EXPECTED_AUDIT_RUNS:-}"
+          pre_deploy_station_count="${PRE_DEPLOY_STATION_COUNT:-0}"
+          case "$pre_deploy_station_count" in
+            ''|*[!0-9]*) pre_deploy_station_count=0 ;;
+          esac
           remote_output=""
           for attempt in 1 2 3 4 5 6 7 8 9 10 11 12; do
             if remote_output="$(
@@ -475,6 +496,7 @@ jobs:
             echo "Latest site_data_snapshots success row is missing or empty." >&2
             exit 1
           fi
+          echo "STATION_COUNT=$station_count"
 
           latest_report="$(
             docker exec "$postgres_container" \
@@ -524,16 +546,49 @@ jobs:
           site_url="$(printf '%s\n' "$remote_output" | awk -F= '/^SITE_URL=/{print $2; exit}')"
           audit_count="$(printf '%s\n' "$remote_output" | awk -F= '/^AUDIT_COUNT=/{print $2; exit}')"
           snapshot_row="$(printf '%s\n' "$remote_output" | awk -F= '/^SNAPSHOT_ROW=/{print $2; exit}')"
+          station_count="$(printf '%s\n' "$remote_output" | awk -F= '/^STATION_COUNT=/{print $2; exit}')"
           report_path="$(printf '%s\n' "$remote_output" | sed -n 's/^REPORT_PATH=//p' | head -n 1)"
           test -n "$site_url"
           test -n "$audit_count"
           test -n "$snapshot_row"
+          test -n "$station_count"
           test -n "$report_path"
+          if [ "$station_count" -lt "$pre_deploy_station_count" ]; then
+            if [ "${ALLOW_SITE_DATA_STATION_COUNT_DROP:-0}" = "1" ]; then
+              echo "WARNING: deployed station count dropped from $pre_deploy_station_count to $station_count, allowed by ALLOW_SITE_DATA_STATION_COUNT_DROP=1." >&2
+            else
+              echo "Deployed station count dropped from $pre_deploy_station_count to $station_count. Set ALLOW_SITE_DATA_STATION_COUNT_DROP=1 only for intentional reductions." >&2
+              exit 1
+            fi
+          fi
 
           curl --retry 12 --retry-delay 5 --retry-all-errors -fsS "$site_url/api/health" \
             | python3 -c "import json,sys; payload=json.load(sys.stdin); assert payload.get('ok') is True, payload"
-          curl --retry 6 --retry-delay 5 --retry-all-errors -fsS "$site_url/api/auth/providers" \
-            | python3 -c "import json,sys; payload=json.load(sys.stdin); assert 'github' in payload, payload"
+          providers_json="$(curl --retry 6 --retry-delay 5 --retry-all-errors -fsS "$site_url/api/auth/providers")"
+          expected_github_callback="$site_url/api/auth/callback/github"
+          printf '%s' "$providers_json" \
+            | EXPECTED_GITHUB_CALLBACK="$expected_github_callback" python3 -c 'import json, os, sys; payload=json.load(sys.stdin); github=payload.get("github"); assert github, payload; actual=github.get("callbackUrl"); expected=os.environ["EXPECTED_GITHUB_CALLBACK"]; assert actual == expected, {"expected": expected, "actual": actual}'
+
+          cookie_jar="$(mktemp)"
+          trap 'rm -f "$cookie_jar"' EXIT
+          csrf_json="$(curl --retry 6 --retry-delay 5 --retry-all-errors -fsS -c "$cookie_jar" "$site_url/api/auth/csrf")"
+          csrf_token="$(printf '%s' "$csrf_json" | python3 -c 'import json, sys; print(json.load(sys.stdin)["csrfToken"])')"
+          signin_json="$(
+            curl --retry 6 --retry-delay 5 --retry-all-errors -fsS \
+              -b "$cookie_jar" \
+              -c "$cookie_jar" \
+              -H "Accept: application/json" \
+              -H "Content-Type: application/x-www-form-urlencoded" \
+              --data-urlencode "csrfToken=$csrf_token" \
+              --data-urlencode "callbackUrl=$site_url/ranking" \
+              --data-urlencode "json=true" \
+              "$site_url/api/auth/signin/github"
+          )"
+          github_authorize_url="$(
+            printf '%s' "$signin_json" \
+              | EXPECTED_GITHUB_CALLBACK="$expected_github_callback" python3 -c 'import json, os, sys; from urllib.parse import parse_qs, urlparse; payload=json.load(sys.stdin); url=payload.get("url", ""); parsed=urlparse(url); assert parsed.scheme == "https" and parsed.netloc == "github.com" and parsed.path == "/login/oauth/authorize", payload; redirect_uri=parse_qs(parsed.query).get("redirect_uri", [""])[0]; expected=os.environ["EXPECTED_GITHUB_CALLBACK"]; assert redirect_uri == expected, {"expected": expected, "actual": redirect_uri}; print(url)'
+          )"
+          test -n "$github_authorize_url"
           curl --retry 6 --retry-delay 5 --retry-all-errors -fsS "$site_url/robots.txt" | tee robots.txt >/dev/null
           grep -Fq "Sitemap: $site_url/sitemap.xml" robots.txt
           if grep -Fq "localhost" robots.txt; then
@@ -563,9 +618,10 @@ jobs:
             echo "- Backup path: \`${BACKUP_PATH:-unknown}\`"
             echo "- Site URL: \`$site_url\`"
             echo "- Audit runs: \`$audit_count\`"
+            echo "- Station count: \`$station_count\` (pre-deploy: \`$pre_deploy_station_count\`)"
             echo "- Latest snapshot: \`$snapshot_row\`"
             echo "- Latest report path: \`$report_path\`"
-            echo "- Checked: \`/api/health\`, \`/api/auth/providers\`, \`/robots.txt\`, \`/sitemap.xml\`, \`/audit\`, \`/ranking\`, \`/stations/freemodel\`, latest audit report"
+            echo "- Checked: \`/api/health\`, \`/api/auth/providers\`, GitHub OAuth authorize redirect, \`/robots.txt\`, \`/sitemap.xml\`, \`/audit\`, \`/ranking\`, \`/stations/freemodel\`, latest audit report"
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Verify owner announcement sync
