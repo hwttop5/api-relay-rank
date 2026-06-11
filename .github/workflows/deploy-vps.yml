@@ -345,6 +345,10 @@ jobs:
               exit 1
             fi
           done
+          if [ "$NEXTAUTH_SECRET" = "local-dev-only-nextauth-secret-for-api-relay-rank-please-do-not-use-in-production" ]; then
+            echo "NEXTAUTH_SECRET must not use the local development placeholder." >&2
+            exit 1
+          fi
 
           b64() {
             printf '%s' "$1" | base64 -w 0
