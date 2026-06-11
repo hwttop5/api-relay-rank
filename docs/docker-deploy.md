@@ -167,7 +167,7 @@ docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec -T postg
 - `api_relay_rank` 的 `pg_dump -Fc` 逻辑备份
 - 当前可导入 `_audit_runs/**/summary.json` 数量，用于部署后比对 `station_audit_runs`
 
-同一个 workflow 在重启 Docker stack 后会强制校验：`schema_migrations.version=6`、`station_audit_runs` 行数、最新成功 `site_data_snapshots`、`/api/health`、`/api/auth/providers`、`/audit`、`/ranking`、`/stations/freemodel` 和最新审计报告链接。任一关键检查失败时 workflow 会失败，不继续标记部署成功。
+同一个 workflow 在重启 Docker stack 后会强制校验：`schema_migrations.version=7`、`station_audit_runs` 行数、最新成功 `site_data_snapshots`、`/api/health`、`/api/auth/providers`、`/audit`、`/ranking`、`/stations/freemodel` 和最新审计报告链接。任一关键检查失败时 workflow 会失败，不继续标记部署成功。
 
 部署前至少备份：
 
