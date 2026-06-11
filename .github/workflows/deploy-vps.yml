@@ -593,6 +593,27 @@ jobs:
               | EXPECTED_GITHUB_CALLBACK="$expected_github_callback" python3 -c 'import json, os, sys; from urllib.parse import parse_qs, urlparse; payload=json.load(sys.stdin); url=payload.get("url", ""); parsed=urlparse(url); assert parsed.scheme == "https" and parsed.netloc == "github.com" and parsed.path == "/login/oauth/authorize", payload; redirect_uri=parse_qs(parsed.query).get("redirect_uri", [""])[0]; expected=os.environ["EXPECTED_GITHUB_CALLBACK"]; assert redirect_uri == expected, {"expected": expected, "actual": redirect_uri}; print(url)'
           )"
           test -n "$github_authorize_url"
+
+          review_probe='{"station":"freemodel","rating":8,"comment":"origin smoke test"}'
+          same_origin_status="$(
+            curl --retry 6 --retry-delay 5 --retry-all-errors -sS -o same-origin-review.json -w "%{http_code}" \
+              -X POST "$site_url/api/station-reviews" \
+              -H "Origin: $site_url" \
+              -H "Content-Type: application/json" \
+              --data "$review_probe"
+          )"
+          test "$same_origin_status" = "401"
+          grep -Fq "GitHub login is required" same-origin-review.json
+          cross_origin_status="$(
+            curl --retry 6 --retry-delay 5 --retry-all-errors -sS -o cross-origin-review.json -w "%{http_code}" \
+              -X POST "$site_url/api/station-reviews" \
+              -H "Origin: https://evil.example" \
+              -H "Content-Type: application/json" \
+              --data "$review_probe"
+          )"
+          test "$cross_origin_status" = "403"
+          grep -Fq "Invalid request origin" cross-origin-review.json
+
           curl --retry 6 --retry-delay 5 --retry-all-errors -fsS "$site_url/robots.txt" | tee robots.txt >/dev/null
           grep -Fq "Sitemap: $site_url/sitemap.xml" robots.txt
           if grep -Fq "localhost" robots.txt; then
@@ -625,7 +646,7 @@ jobs:
             echo "- Station count: \`$station_count\` (pre-deploy: \`$pre_deploy_station_count\`)"
             echo "- Latest snapshot: \`$snapshot_row\`"
             echo "- Latest report path: \`$report_path\`"
-            echo "- Checked: \`/api/health\`, \`/api/auth/providers\`, GitHub OAuth authorize redirect, \`/robots.txt\`, \`/sitemap.xml\`, \`/audit\`, \`/ranking\`, \`/stations/freemodel\`, latest audit report"
+            echo "- Checked: \`/api/health\`, \`/api/auth/providers\`, GitHub OAuth authorize redirect, station review origin guard, \`/robots.txt\`, \`/sitemap.xml\`, \`/audit\`, \`/ranking\`, \`/stations/freemodel\`, latest audit report"
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Verify owner announcement sync

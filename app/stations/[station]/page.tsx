@@ -139,7 +139,7 @@ export default async function StationPage({ params }: { params: Promise<{ statio
           subtitle={`${station.stationTypeShortLabel} · ${station.platformGuess || "平台未识别"} · ${rawSiteData.projectName}`}
           footerMeta={
             <>
-              {station.label}详情页 PV：{formatCompactCount(stationPageViews)} · PV 仅为本站访问热度参考，不参与排名、评分或排序。
+              累计 PV {formatCompactCount(pageViewStats.totalPv)}
             </>
           }
           actions={
@@ -177,6 +177,10 @@ export default async function StationPage({ params }: { params: Promise<{ statio
                 <div className="detail-card">
                   <h3>公告数量</h3>
                   <p>{station.announcements.length}</p>
+                </div>
+                <div className="detail-card">
+                  <h3>详情页 PV</h3>
+                  <p>{formatCompactCount(stationPageViews)}</p>
                 </div>
                 <div className="detail-card">
                   <h3>工作时段排名</h3>

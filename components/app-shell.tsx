@@ -106,9 +106,9 @@ export function AppShell({
           <footer className="page-footer">
             {footerMeta ? (
               <span className="page-footer-line">
-                <span>{footerMeta}</span>
-                <span className="page-footer-separator">·</span>
                 <SiteUptime />
+                <span className="page-footer-separator">·</span>
+                <span>{footerMeta}</span>
                 <span className="page-footer-separator">·</span>
                 <span>Copyright © {copyrightYear} ttop5. All rights reserved.</span>
               </span>
