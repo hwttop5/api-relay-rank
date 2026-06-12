@@ -4937,6 +4937,118 @@ class BuildSiteDataTests(unittest.TestCase):
             {"https://runtime-only.example", "https://runtime-only.example/api/announcements"},
         )
 
+    def test_postgres_base_quality_does_not_accumulate_over_current_csv_quality(self) -> None:
+        stations: dict[str, dict[str, object]] = {}
+        station_urls: dict[str, set[str]] = {}
+        station = build_site_data.ensure_station(
+            stations,
+            "api.bjxrouter.com",
+            label="Bjxrouter",
+            url="https://api.bjxrouter.com",
+            platform_guess="new-api",
+        )
+        station["quality"]["all_hours"] = {
+            "station": "api.bjxrouter.com",
+            "label": "Bjxrouter",
+            "platformGuess": "new-api",
+            "timeWindow": "all_hours",
+            "requestSamples": 1,
+            "correct": 1,
+            "failures": 0,
+            "correctRate": 1.0,
+            "http2xx": 1,
+            "http200WithError": 0,
+            "nonnullError": 0,
+            "excludedBillingErrors": 0,
+        }
+        baseline = {
+            "api.bjxrouter.com": {
+                "key": "api.bjxrouter.com",
+                "label": "Bjxrouter",
+                "url": "https://api.bjxrouter.com",
+                "quality": {
+                    "all_hours": {
+                        "station": "api.bjxrouter.com",
+                        "label": "Bjxrouter",
+                        "platformGuess": "new-api",
+                        "timeWindow": "all_hours",
+                        "requestSamples": 728,
+                        "correct": 728,
+                        "failures": 0,
+                        "correctRate": 1.0,
+                        "http2xx": 728,
+                        "http200WithError": 0,
+                        "nonnullError": 0,
+                        "excludedBillingErrors": 0,
+                    }
+                },
+            }
+        }
+
+        build_site_data.apply_postgres_base_station_records(stations, station_urls, baseline)
+
+        quality = stations["api.bjxrouter.com"]["quality"]["all_hours"]
+        self.assertEqual(quality["requestSamples"], 1)
+        self.assertEqual(quality["correct"], 1)
+        self.assertEqual(quality["http2xx"], 1)
+
+    def test_postgres_base_quality_fills_missing_window_only(self) -> None:
+        stations: dict[str, dict[str, object]] = {}
+        station_urls: dict[str, set[str]] = {}
+        station = build_site_data.ensure_station(
+            stations,
+            "code.pndot.com",
+            label="Pndot",
+            url="https://code.pndot.com",
+            platform_guess="unknown",
+        )
+        station["quality"]["all_hours"] = {
+            "station": "code.pndot.com",
+            "label": "Pndot",
+            "platformGuess": "unknown",
+            "timeWindow": "all_hours",
+            "requestSamples": 6,
+            "correct": 0,
+            "failures": 6,
+            "correctRate": 0.0,
+            "http2xx": 0,
+            "http200WithError": 0,
+            "nonnullError": 6,
+            "excludedBillingErrors": 0,
+        }
+        baseline = {
+            "code.pndot.com": {
+                "key": "code.pndot.com",
+                "label": "Pndot",
+                "url": "https://code.pndot.com",
+                "quality": {
+                    "work_hours": {
+                        "station": "code.pndot.com",
+                        "label": "Pndot",
+                        "platformGuess": "unknown",
+                        "timeWindow": "work_hours",
+                        "requestSamples": 5,
+                        "correct": 0,
+                        "failures": 5,
+                    },
+                    "all_hours": {
+                        "station": "code.pndot.com",
+                        "label": "Pndot",
+                        "platformGuess": "unknown",
+                        "timeWindow": "all_hours",
+                        "requestSamples": 48,
+                        "correct": 0,
+                        "failures": 48,
+                    },
+                },
+            }
+        }
+
+        build_site_data.apply_postgres_base_station_records(stations, station_urls, baseline)
+
+        self.assertEqual(stations["code.pndot.com"]["quality"]["all_hours"]["requestSamples"], 6)
+        self.assertEqual(stations["code.pndot.com"]["quality"]["work_hours"]["requestSamples"], 5)
+
     def test_existing_station_records_can_seed_runtime_only_stations(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = Path(tmp_dir)

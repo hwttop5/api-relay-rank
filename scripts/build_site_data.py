@@ -2722,12 +2722,9 @@ def merge_baseline_station_record(
         for window_key, quality_payload in raw_station["quality"].items():
             if not isinstance(quality_payload, dict):
                 continue
-            existing_quality = station["quality"].get(window_key)
-            station["quality"][window_key] = (
-                merge_quality_rows(existing_quality, quality_payload)
-                if isinstance(existing_quality, dict)
-                else deepcopy(quality_payload)
-            )
+            if isinstance(station["quality"].get(window_key), dict):
+                continue
+            station["quality"][window_key] = deepcopy(quality_payload)
     if raw_station.get("audits") and not station.get("audits"):
         station["audits"] = deepcopy(raw_station["audits"])
 
