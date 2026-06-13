@@ -1656,12 +1656,12 @@ textarea:focus-visible {
 .contact-ad-action-today:hover {
   border-color: rgba(32, 211, 162, 0.66);
   background: var(--accent);
-  color: #061511;
+  color: #061511 !important;
 }
 
 :root[data-theme="light"] .contact-ad-action-today,
 :root[data-theme="light"] .contact-ad-action-today:hover {
-  color: #ffffff;
+  color: #04110d !important;
 }
 
 .table-wrap {

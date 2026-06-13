@@ -532,8 +532,24 @@ export function StationFeedbackProvider({ stationKey, stationLabel, initialRevie
   useEffect(() => {
     let cancelled = false;
     setAuthChecking(true);
-    fetchReviewPage(0)
-      .then((page) => {
+
+    // 检查是否是从浏览器后退导航进来的
+    const isBackNavigation = window.performance &&
+      window.performance.getEntriesByType('navigation')[0] &&
+      (window.performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming).type === 'back_forward';
+
+    // 如果是后退导航，强制重新获取数据
+    const cacheMode = isBackNavigation ? 'reload' : 'no-store';
+
+    fetch(
+      `/api/station-reviews?station=${encodeURIComponent(stationKey)}&limit=${REVIEW_PAGE_SIZE}&offset=0`,
+      {
+        headers: { accept: "application/json" },
+        cache: cacheMode,
+      }
+    )
+      .then(response => response.json())
+      .then((page: StationReviewPage) => {
         if (!cancelled) {
           setReviewPage(page);
         }
@@ -546,10 +562,11 @@ export function StationFeedbackProvider({ stationKey, stationLabel, initialRevie
           setAuthChecking(false);
         }
       });
+
     return () => {
       cancelled = true;
     };
-  }, [fetchReviewPage]);
+  }, [stationKey, fetchReviewPage]);
 
   const loadMoreReviews = useCallback(async () => {
     if (reviewsLoading || !reviewPage.pagination.hasMore || reviewPage.pagination.nextOffset === null) {
@@ -650,9 +667,19 @@ export function StationFeedbackActions() {
 export function StationReviewSection() {
   const { reviewPage, openReviewModal, refreshFirstPage, loadMoreReviews, reviewsLoading } = useStationFeedback();
   const reviewButtonRef = useRef<HTMLButtonElement | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const reviewLabel = reviewPage.viewerReview ? "修改评价" : "写评价";
   const [refreshing, setRefreshing] = useState(false);
   const [loadError, setLoadError] = useState("");
+
+  // 页面加载时检查 URL hash，如果是 #reviews 则滚动到评论区
+  useEffect(() => {
+    if (window.location.hash === '#reviews' && sectionRef.current) {
+      setTimeout(() => {
+        sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
+  }, []);
 
   async function onRefresh() {
     setRefreshing(true);
@@ -676,7 +703,7 @@ export function StationReviewSection() {
   }
 
   return (
-    <section id="reviews" className="section feedback-review-section">
+    <section ref={sectionRef} id="reviews" className="section feedback-review-section">
       <div className="section-head">
         <div>
           <h2 className="section-title">用户评价</h2>

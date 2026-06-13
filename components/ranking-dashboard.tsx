@@ -184,8 +184,28 @@ function RankingReviewSummary({
   stationKey: string;
 }) {
   const hasReviewScore = reviewCount > 0 && reviewAverageRating !== null;
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const url = `/stations/${stationKey}#reviews`;
+    window.location.href = url;
+
+    // 确保页面跳转后滚动到评论区
+    setTimeout(() => {
+      const reviewSection = document.getElementById('reviews');
+      if (reviewSection) {
+        reviewSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  };
+
   return (
-    <Link href={`/stations/${stationKey}#reviews`} prefetch={false} className={hasReviewScore ? "ranking-review-summary" : "ranking-review-summary ranking-review-empty"}>
+    <Link
+      href={`/stations/${stationKey}#reviews`}
+      prefetch={false}
+      className={hasReviewScore ? "ranking-review-summary" : "ranking-review-summary ranking-review-empty"}
+      onClick={handleClick}
+    >
       {hasReviewScore ? formatReviewSummary({ station: stationKey, averageRating: reviewAverageRating, reviewCount }) : "暂无数据"}
     </Link>
   );
