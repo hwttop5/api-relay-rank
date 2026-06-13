@@ -687,7 +687,7 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
                     <tr>
                       <th>站点</th>
                       <th className="col-url">网址</th>
-                      <th className="col-type">未入榜原因</th>
+                      <th className="col-type">类型</th>
                       <th className="col-platform">平台判断</th>
                       <th>未入榜原因</th>
                       <th>请求样本数</th>

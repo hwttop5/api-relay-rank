@@ -1,12 +1,23 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 
 import { AppShell, StatusChip } from "@/components/app-shell";
 import { AnnouncementFeed } from "@/components/announcement-feed";
 import { StationAuditSummaryPanel } from "@/components/station-audit-summary";
-import { StationFeedbackActions, StationFeedbackProvider, StationReviewSection } from "@/components/station-feedback-panel";
+import { StationFeedbackActions, StationFeedbackProvider } from "@/components/station-feedback-panel";
+import { StationPvDisplay } from "@/components/station-pv-display";
 import { TierOverview } from "@/components/tier-overview";
 import { formatCompactCount, formatDateTime, formatMultiplier, formatPercent, formatScore, formatSeconds } from "@/lib/format";
+
+// 动态导入大型组件
+const StationReviewSection = dynamic(
+  () => import("@/components/station-feedback-panel").then((mod) => ({ default: mod.StationReviewSection })),
+  {
+    loading: () => <div style={{ minHeight: "200px" }}>加载评价区...</div>,
+    ssr: true,
+  }
+);
 import { localizeStationAuditText } from "@/lib/audit-localization";
 import { getPageViewStats } from "@/lib/page-view-stats";
 import { hasDatabaseUrl, readStationReviewPage } from "@/lib/postgres";
@@ -180,7 +191,7 @@ export default async function StationPage({ params }: { params: Promise<{ statio
                 </div>
                 <div className="detail-card">
                   <h3>详情页 PV</h3>
-                  <p>{formatCompactCount(stationPageViews)}</p>
+                  <p><StationPvDisplay stationKey={station.key} fallbackValue={stationPageViews} /></p>
                 </div>
                 <div className="detail-card">
                   <h3>工作时段排名</h3>

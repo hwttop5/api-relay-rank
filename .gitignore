@@ -4,29 +4,48 @@ node_modules/
 .codex-tmp/
 .playwright-mcp/
 .playwright-cli/
-*auth-capture.json
-*.log
-.next-*.log
-devserver.log
 __pycache__/
 *.pyc
+.vercel
+output/
+
+# Environment variables and secrets
 .env
 .env.local
 deploy/.env
-data/_audit_runs/
-data/_owner_announcement/
-data/_user_uploads/
-output/
+*auth-capture.json
+
+# Build artifacts
 tsconfig.tsbuildinfo
+*.tsbuildinfo
 
-.vercel
+# Logs
+*.log
+.dev-*.log
+.next-dev-*.log
+.next-dev-*.err.log
+.next-dev-*.out.log
+.next-dev-server.err.log
+.next-dev-verify.*.log
+.next-*.log
+dev-server*.log
+devserver*.log
+devserver*.err.log
+devserver*.out.log
 
-# Local refresh inputs and generated audit/ranking outputs.
+# Backup files
+*.bak
+*.backup
+*.tmp
+
+# Local refresh inputs and generated audit/ranking outputs
 .local-artifacts/
 composite_ranking_*.csv
+high_multiplier_review.csv
 login_verification_checklist.csv
 monthly_full_use_cost_ranking.csv
 multiplier_audit_summary.md
+multiplier_sanity_review.csv
 multiplier_tiers.csv
 package_full_use_cost_ranking.csv
 payg_cost_ranking.csv
@@ -36,3 +55,16 @@ public_probe_results.csv
 quality_metrics.csv
 verified_multiplier_inputs.csv
 verified_multiplier_inputs.csv.*
+request_log_station_candidates.csv
+
+# Temporary analysis documents
+PERFORMANCE_ANALYSIS.md
+PV_FIX_SUMMARY.md
+
+# Temporary scripts
+screenshot.js
+
+# Data directories
+data/_audit_runs/
+data/_owner_announcement/
+data/_user_uploads/

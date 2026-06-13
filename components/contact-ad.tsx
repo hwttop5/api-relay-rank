@@ -8,7 +8,10 @@ const CONFIG_URL = "/api/contact-ad";
 const STORAGE_KEY = "api-relay-rank-contact-ad-dismissal";
 const AnnouncementContent = dynamic(
   () => import("@/components/announcement-markdown").then((mod) => mod.AnnouncementContent),
-  { ssr: false },
+  {
+    ssr: false,
+    loading: () => <div className="contact-ad-loading">加载中...</div>,
+  },
 );
 
 type ContactAdDismissal =

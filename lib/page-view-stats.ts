@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
+import { statsCache } from "./cache";
 import { hasDatabaseUrl, readPageViewStats } from "./postgres";
 import { SITE_TOTAL_IMPORT_PATH, normalizePageViewPath } from "./page-view-path";
 import type { PageViewStats } from "./types";
@@ -80,12 +81,23 @@ async function readBaselinePageViewStats(): Promise<PageViewStats> {
 }
 
 export async function getPageViewStats(): Promise<PageViewStats> {
+  const cacheKey = "page-view-stats";
+  const cached = statsCache.get(cacheKey) as PageViewStats | null;
+  if (cached) {
+    return cached;
+  }
+
+  let stats: PageViewStats;
   if (hasDatabaseUrl()) {
     try {
-      return await readPageViewStats();
+      stats = await readPageViewStats();
     } catch {
-      return readBaselinePageViewStats();
+      stats = await readBaselinePageViewStats();
     }
+  } else {
+    stats = await readBaselinePageViewStats();
   }
-  return readBaselinePageViewStats();
+
+  statsCache.set(cacheKey, stats);
+  return stats;
 }

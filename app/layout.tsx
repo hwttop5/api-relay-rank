@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { ServiceWorkerRegistration } from "@/components/service-worker-registration";
+import { WebVitals } from "@/components/web-vitals";
 import {
   DEFAULT_DESCRIPTION,
   SITE_IMAGE_HEIGHT,
@@ -115,6 +116,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(webSiteJsonLd) }} />
         <ServiceWorkerRegistration />
         <PageViewTracker />
+        <WebVitals />
         {children}
         {baiduTongjiScript ? (
           <script id="baidu-tongji" dangerouslySetInnerHTML={{ __html: baiduTongjiScript }} />

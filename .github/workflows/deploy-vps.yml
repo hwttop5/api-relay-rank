@@ -185,6 +185,8 @@ jobs:
             --exclude '.git/' \
             --exclude 'node_modules/' \
             --exclude '.env' \
+            --exclude '.env.local' \
+            --exclude '.env.*.local' \
             --exclude 'deploy/.env' \
             -e "ssh -i ~/.ssh/deploy_key -p 22" \
             ./ "$VPS_USER@$VPS_HOST:/opt/stacks/api-relay-rank/"

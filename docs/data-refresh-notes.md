@@ -39,7 +39,7 @@ npm run site:refresh-manual
 
 `site:refresh-manual` 当前执行顺序：
 
-1. 运行 `audit_proxy_multipliers.py`，做增量日志分析、新站点发现和排名 CSV 生成。
+1. 运行 `scripts/audit_proxy_multipliers.py`，做增量日志分析、新站点发现和排名 CSV 生成。
 2. 运行 `scripts/build_site_data.py`，重建 `data/site-data.json`。
 3. 运行 `scripts/fetch_public_content.py --announcements --multiplier-snapshots --skip-build --quiet`，刷新公开快照。
 4. 如果存在 `API_RELAY_SCRAPE_EMAIL` 和 `API_RELAY_SCRAPE_PASSWORD`，运行 `scripts/scrape_missing_announcements.py --all-stations --write-probes`；缺凭据时跳过登录态补抓。
@@ -53,7 +53,7 @@ python scripts/refresh_quality_rankings.py --capture-live-probes
 python scripts/refresh_quality_rankings.py --full-log-rebuild
 ```
 
-- `--capture-live-probes` 会先调用 `capture_tabbit_live_probes.py` 抓当前已登录浏览器页。只有确认当前浏览器登录态可用时才使用，避免空状态覆盖旧证据。
+- `--capture-live-probes` 会先调用 `scripts/capture_tabbit_live_probes.py` 抓当前已登录浏览器页。只有确认当前浏览器登录态可用时才使用，避免空状态覆盖旧证据。
 - `--full-log-rebuild` 只在 Codex Manager DB 仍保留完整历史日志时使用。旧日志已清理后，必须保持默认增量模式。
 
 ## 邀请链接规则
@@ -221,7 +221,7 @@ Codex Manager 新日志增量更新：
 - 如果用户指定从某个历史时间点开始补算，不要直接沿用当前 `HEAD` 的 state cursor；先找到该时间点对应的 `data/codex-log-refresh-state.json` 基线版本，只临时回放这个 state 文件，其他文件不回退，再按默认增量链路补算。
 - 执行前先留证据：`git status --short --branch`、当前 state 的 `generatedAt` 和 `cursor.createdAt/id`、指定起点之后 Codex Manager DB 中可处理 `/v1/responses` 数量，以及其中符合脚本筛选条件的预估数量。
 - 第一次补算后立即记录 state 摘要：`generatedAt`、`cursor.createdAt/id`、`lastRun.rowsSeen`、`lastRun.rowsAdded`、`lastRun.historicalBackfill`。最终保留本次 state 的最新 `generatedAt` 和 cursor，作为下次默认增量起点。
-- Codex Manager 日志仍在持续写入时，最终校验前再跑一次 `audit_proxy_multipliers.py` 和 `scripts/build_site_data.py`，避免刷新过程中新增请求导致质量 CSV、正式排名 CSV 和 `data/site-data.json` 漂移。
+- Codex Manager 日志仍在持续写入时，最终校验前再跑一次 `scripts/audit_proxy_multipliers.py` 和 `scripts/build_site_data.py`，避免刷新过程中新增请求导致质量 CSV、正式排名 CSV 和 `data/site-data.json` 漂移。
 
 ## 写盘保护规则
 
@@ -234,7 +234,7 @@ Codex Manager 新日志增量更新：
 
 ## 新站点发现与收录
 
-- 每次 `audit_proxy_multipliers.py` 分析日志时都会扫描未分类公网 host，并写出 `request_log_station_candidates.csv`。
+- 每次 `scripts/audit_proxy_multipliers.py` 分析日志时都会扫描未分类公网 host，并写出 `request_log_station_candidates.csv`。
 - 显式 `classify_station()` 规则优先。新站点进入正式质量统计前，需要补站点分类、公开 URL、展示名称和必要的费用证据。
 - 私有供应商名只允许脱敏记录；公网 URL host 可以作为候选和质量统计 key。
 - 本地回环地址、私有账号、临时测试服务和只存在于本地代理项目中的条目不能写入公开站点列表或前端 JSON。
@@ -245,7 +245,7 @@ Codex Manager 新日志增量更新：
 
 - 正式费用行来源仅限结构化且可复核证据：登录态 API、公开结构化价格、官方外部店铺、人工截图核验或明确人工输入。
 - 公告文本、自然语言描述、公开配置提示、不可复核截图和推测价格不能生成正式费用行。
-- `audit_proxy_multipliers.py` 可以把详情页已归档的结构化 `groupMultipliers + rechargeTiers` 回灌成正式费用行，但仍必须经过来源 allowlist 和后续过滤。
+- `scripts/audit_proxy_multipliers.py` 可以把详情页已归档的结构化 `groupMultipliers + rechargeTiers` 回灌成正式费用行，但仍必须经过来源 allowlist 和后续过滤。
 - `scripts/build_site_data.py` 读取 live probe 时，会用结构化充值/套餐 `billingType` 推断站点类型；同时在存在分组证据时把有效充值/套餐计入已核验档位数。这个计数不补请求样本，也不会让无请求样本的站点进入正式排名。
 - 采用倍率统一公式：`effective_multiplier = group_multiplier × rmbAmount ÷ usdAmount`；其中 `rmbAmount` 是公式使用的实付金额数值，`usdAmount` 是到账美元额度。人民币仍直接写入 `rmbAmount`；USDC 等非人民币支付必须同时写 `paymentCurrency` / `paymentAmount`，避免详情页把真实支付币种误显示成人民币。
 - sub2api/v1 钱包充值必须同时满足 `payment/config.enabled` 未关闭、checkout 未关闭、有支付方式、`balance_recharge_multiplier > 0` 且未 `balance_disabled`；否则只记录空/失败状态，不生成正式费用行。
@@ -347,10 +347,10 @@ Codex Manager 新日志增量更新：
 
 ```powershell
 python -m unittest tests/test_build_site_data.py
-python audit_proxy_multipliers.py
+python scripts/audit_proxy_multipliers.py
 python scripts/build_site_data.py
 python scripts/validate_refresh_outputs.py --skip-scrape-validation
-python audit_proxy_multipliers.py --help
+python scripts/audit_proxy_multipliers.py --help
 python scripts/refresh_quality_rankings.py --help
 python scripts/scrape_missing_announcements.py --help
 npm run build

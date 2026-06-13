@@ -1,0 +1,49 @@
+/* Critical CSS - Above-the-fold styles loaded inline */
+:root {
+  --bg: #0d0f12;
+  --bg-2: #14171c;
+  --panel: #1a1f26;
+  --ink: #f2f8f4;
+  --muted: #b0beb8;
+  --line: #3a4450;
+  --accent: #1fc9a0;
+  --accent-hover: #26deb1;
+  --radius: 8px;
+  --body-gradient: linear-gradient(135deg, #0a0c0f 0%, #131720 42%, #0f1816 72%, #090b0d 100%);
+}
+
+:root[data-theme="light"] {
+  --bg: #f3f0e8;
+  --panel: #fffdf7;
+  --ink: #1c2324;
+  --muted: #556662;
+  --line: #d7d1c4;
+  --accent: #008a72;
+  --accent-hover: #00a589;
+  --body-gradient: linear-gradient(135deg, #f7f4ec 0%, #eee9df 44%, #f7f5ed 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: dark light;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--body-gradient);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  min-height: 100vh;
+  padding: 1rem;
+}

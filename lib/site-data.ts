@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { notFound } from "next/navigation";
 
+import { rankingCache, stationCache } from "./cache";
 import { hasDatabaseUrl, readLatestSiteDataSnapshot } from "./postgres";
 import { SITE_DATA_PATH } from "./runtime-paths";
 import type { SiteData, StationRecord } from "./types";
@@ -19,23 +20,44 @@ function allowFileFallback() {
 }
 
 export async function getSiteData(): Promise<SiteData> {
+  const cacheKey = "site-data-full";
+  const cached = rankingCache.get(cacheKey) as SiteData | null;
+  if (cached) {
+    return cached;
+  }
+
+  let data: SiteData;
   if (siteDataSource() === "postgres" && hasDatabaseUrl()) {
     try {
-      return await readLatestSiteDataSnapshot();
+      data = await readLatestSiteDataSnapshot();
     } catch (error) {
       if (!allowFileFallback()) {
         throw error;
       }
+      data = await readSiteDataFile();
     }
+  } else {
+    data = await readSiteDataFile();
   }
-  return readSiteDataFile();
+
+  rankingCache.set(cacheKey, data);
+  return data;
 }
 
 export async function getStationRecord(slug: string): Promise<{ siteData: SiteData; station: StationRecord }> {
+  const cacheKey = `station-record-${slug}`;
+  const cached = stationCache.get(cacheKey) as { siteData: SiteData; station: StationRecord } | null;
+  if (cached) {
+    return cached;
+  }
+
   const siteData = await getSiteData();
   const station = siteData.stations.find((item) => item.key === slug);
   if (!station) {
     notFound();
   }
-  return { siteData, station };
+
+  const result = { siteData, station };
+  stationCache.set(cacheKey, result);
+  return result;
 }

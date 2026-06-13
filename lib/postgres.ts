@@ -40,8 +40,14 @@ function pool() {
   if (!globalRef.__apiRelayRankPgPool) {
     globalRef.__apiRelayRankPgPool = new Pool({
       connectionString: url,
-      max: 5,
+      // Serverless 环境：降低连接数，避免数据库连接过载
+      max: 3,
+      // 空闲连接超时：30 秒
       idleTimeoutMillis: 30_000,
+      // 建立连接超时：10 秒
+      connectionTimeoutMillis: 10_000,
+      // 单个查询超时：15 秒
+      statement_timeout: 15_000,
     });
   }
   return globalRef.__apiRelayRankPgPool;

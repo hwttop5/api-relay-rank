@@ -63,14 +63,14 @@ def main() -> int:
 
     steps: list[str] = []
     if args.capture_live_probes:
-        run(["python", "capture_tabbit_live_probes.py"], cwd=APP_ROOT)
-        steps.append("capture_tabbit_live_probes.py")
+        run(["python", "scripts/capture_tabbit_live_probes.py"], cwd=APP_ROOT)
+        steps.append("scripts/capture_tabbit_live_probes.py")
 
-    audit_command = ["python", "audit_proxy_multipliers.py"]
+    audit_command = ["python", "scripts/audit_proxy_multipliers.py"]
     if args.full_log_rebuild:
         audit_command.append("--full-log-rebuild")
     run(audit_command, cwd=APP_ROOT)
-    steps.append("audit_proxy_multipliers.py")
+    steps.append("scripts/audit_proxy_multipliers.py")
 
     run(["python", "scripts/build_site_data.py"], cwd=APP_ROOT)
     steps.append("scripts/build_site_data.py")
@@ -82,7 +82,7 @@ def main() -> int:
     maybe_run_invite_link_refresh(steps)
 
     run(audit_command, cwd=APP_ROOT)
-    steps.append("audit_proxy_multipliers.py (post-fetch)")
+    steps.append("scripts/audit_proxy_multipliers.py (post-fetch)")
 
     run(["python", "scripts/build_site_data.py"], cwd=APP_ROOT)
     steps.append("scripts/build_site_data.py (post-fetch)")

@@ -13,5 +13,7 @@ data/_audit_runs
 data/_user_uploads
 *.log
 .env
+.env.local
+.env.*.local
 deploy/.env
 tsconfig.tsbuildinfo
