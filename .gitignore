@@ -60,6 +60,17 @@ request_log_station_candidates.csv
 # Temporary analysis documents
 PERFORMANCE_ANALYSIS.md
 PV_FIX_SUMMARY.md
+PERFORMANCE_OPTIMIZATION.md
+OPTIMIZATION_SUMMARY.md
+DEPLOYMENT_CHECKLIST.md
+*_ANALYSIS.md
+*_SUMMARY.md
+*_CHECKLIST.md
+
+# Temporary task documentation directories
+docs/optimization/
+docs/tasks/
+docs/temp/
 
 # Temporary scripts
 screenshot.js
