@@ -6,6 +6,7 @@ from datetime import UTC, datetime
 from unittest import mock
 
 from scripts import send_weekly_error_report_digest as digest
+from scripts import send_weekly_station_submission_digest as submission_digest
 
 
 class UserFeedbackDigestTests(unittest.TestCase):
@@ -114,6 +115,91 @@ class UserFeedbackDigestTests(unittest.TestCase):
                 digest.main()
 
         mark_sent.assert_not_called()
+
+
+class StationSubmissionDigestTests(unittest.TestCase):
+    def make_submission(self) -> submission_digest.SubmissionRow:
+        return submission_digest.SubmissionRow(
+            id=9,
+            station_name="Demo Relay",
+            official_url="https://relay.example",
+            payment_type="non_subscription",
+            platform="new_api",
+            platform_note=None,
+            group_multiplier="最低倍率分组 0.8x，Claude Code 可用。",
+            recharge_multiplier="1:1，即 1 人民币兑换 1 美金额度。",
+            contact_email="owner@example.com",
+            test_base_url="https://api.relay.example",
+            test_api_key="sk-live-secret-123456",
+            notes="请优先测试 claude-sonnet。",
+            github_login="octocat",
+            current_url="https://rank.example.com/submit",
+            created_at=datetime(2026, 6, 12, 10, 0, tzinfo=UTC),
+            attachments=[
+                submission_digest.SubmissionAttachmentRow(
+                    kind="group_multiplier",
+                    original_filename="group.png",
+                    mime_type="image/png",
+                    byte_size=256,
+                    access_token="b" * 64,
+                )
+            ],
+        )
+
+    def test_build_submission_digest_masks_key_and_links_attachments(self) -> None:
+        payload = submission_digest.build_digest_payload([self.make_submission()], since=None, until=None, base_url="https://rank.example.com")
+
+        self.assertEqual(payload["submissionCount"], 1)
+        self.assertEqual(payload["submissions"][0]["paymentTypeLabel"], "非包月型（余额消费）")
+        self.assertEqual(payload["submissions"][0]["platformLabel"], "new-api")
+        self.assertEqual(payload["submissions"][0]["maskedTestApiKey"], "sk-l*************3456")
+        self.assertEqual(payload["submissions"][0]["attachments"][0]["url"], f"https://rank.example.com/api/station-submission-attachments/{'b' * 64}")
+
+    def test_submission_email_body_does_not_contain_full_key(self) -> None:
+        payload = submission_digest.build_digest_payload([self.make_submission()], since=None, until=None, base_url="https://rank.example.com")
+        body = submission_digest.build_email_body(payload)
+
+        self.assertIn("Demo Relay", body)
+        self.assertIn("测试 API Key：sk-l*************3456", body)
+        self.assertIn("/api/station-submission-attachments/", body)
+        self.assertNotIn("sk-live-secret-123456", body)
+
+    def test_submission_dry_run_does_not_send_or_mark(self) -> None:
+        submission = self.make_submission()
+        with (
+            mock.patch.object(submission_digest, "load_submissions", return_value=[submission]),
+            mock.patch.object(submission_digest, "send_email") as send_email,
+            mock.patch.object(submission_digest, "mark_sent") as mark_sent,
+            mock.patch.object(submission_digest, "parse_args", return_value=mock.Mock(dry_run=True, since=None, until=None)),
+            mock.patch.dict(os.environ, {"NEXT_PUBLIC_SITE_URL": "https://rank.example.com"}, clear=False),
+        ):
+            self.assertEqual(submission_digest.main(), 0)
+
+        send_email.assert_not_called()
+        mark_sent.assert_not_called()
+
+    def test_submission_successful_send_marks_digest_after_email(self) -> None:
+        submission = self.make_submission()
+        with (
+            mock.patch.object(submission_digest, "load_submissions", return_value=[submission]),
+            mock.patch.object(submission_digest, "send_email") as send_email,
+            mock.patch.object(submission_digest, "mark_sent", return_value=17) as mark_sent,
+            mock.patch.object(submission_digest, "parse_args", return_value=mock.Mock(dry_run=False, since=None, until=None)),
+            mock.patch.dict(
+                os.environ,
+                {
+                    "NEXT_PUBLIC_SITE_URL": "https://rank.example.com",
+                    "STATION_SUBMISSION_DIGEST_TO": "owner@example.com",
+                    "SMTP_HOST": "smtp.example.com",
+                    "SMTP_FROM": "rank@example.com",
+                },
+                clear=False,
+            ),
+        ):
+            self.assertEqual(submission_digest.main(), 0)
+
+        send_email.assert_called_once()
+        mark_sent.assert_called_once()
 
 
 if __name__ == "__main__":

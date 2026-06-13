@@ -15,7 +15,7 @@ except ModuleNotFoundError:
     from runtime_paths import APP_ROOT, AUDIT_RUNS_DIR, SITE_DATA_PATH, logical_data_path
 
 
-MIGRATION_VERSION = 7
+MIGRATION_VERSION = 8
 DATABASE_URL_ENV = "DATABASE_URL"
 SITE_TOTAL_IMPORT_PATH = "__site_total__"
 PAGE_VIEW_BASELINES_PATH = APP_ROOT / "config" / "page_view_baselines.json"
@@ -262,6 +262,67 @@ create table if not exists station_error_report_attachments (
 
 create index if not exists station_error_report_attachments_report_idx
   on station_error_report_attachments (report_id);
+
+create table if not exists station_submission_digests (
+  id bigserial primary key,
+  period_start timestamptz,
+  period_end timestamptz,
+  recipient text not null,
+  submission_count integer not null default 0,
+  status text not null default 'pending',
+  error text,
+  payload jsonb not null default '{}'::jsonb,
+  created_at timestamptz not null default now(),
+  sent_at timestamptz
+);
+
+create table if not exists station_submissions (
+  id bigserial primary key,
+  station_name text not null,
+  official_url text not null,
+  payment_type text not null constraint station_submissions_payment_type_check check (payment_type in ('subscription', 'non_subscription', 'mixed', 'charity')),
+  platform text not null constraint station_submissions_platform_check check (platform in ('new_api', 'sub2api', 'other')),
+  platform_note text,
+  group_multiplier text not null,
+  recharge_multiplier text not null,
+  contact_email text not null,
+  test_base_url text not null,
+  test_api_key text not null,
+  notes text not null default '',
+  github_id text not null references github_users(github_id) on delete cascade,
+  github_login text not null,
+  current_url text,
+  status text not null default 'open',
+  digest_id bigint references station_submission_digests(id) on delete set null,
+  digested_at timestamptz,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create index if not exists station_submissions_created_idx
+  on station_submissions (created_at desc);
+create index if not exists station_submissions_github_created_idx
+  on station_submissions (github_id, created_at desc);
+create index if not exists station_submissions_digest_idx
+  on station_submissions (digest_id);
+create index if not exists station_submissions_official_url_idx
+  on station_submissions (lower(official_url));
+
+create table if not exists station_submission_attachments (
+  id bigserial primary key,
+  submission_id bigint not null references station_submissions(id) on delete cascade,
+  kind text not null constraint station_submission_attachments_kind_check check (kind in ('group_multiplier', 'recharge_multiplier')),
+  original_filename text not null,
+  stored_path text not null,
+  mime_type text not null,
+  byte_size integer not null,
+  sha256 text not null,
+  access_token text not null unique,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists station_submission_attachments_submission_idx
+  on station_submission_attachments (submission_id);
 """
 
 
@@ -316,6 +377,11 @@ def apply_schema_migrations(cur: Any) -> None:
             "(category in ('station_url', 'group_multiplier', 'recharge_tier', 'announcement', 'ranking_metric', 'other'))"
         )
         cur.execute("insert into schema_migrations (version) values (7)")
+
+    cur.execute("select 1 from schema_migrations where version = 8")
+    if cur.fetchone() is None:
+        cur.execute(SCHEMA_SQL)
+        cur.execute("insert into schema_migrations (version) values (8)")
 
 
 def ensure_database(dsn: str | None = None) -> None:

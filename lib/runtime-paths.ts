@@ -15,6 +15,7 @@ export const LOCKS_DIR = path.join(DATA_DIR, "_locks");
 export const OWNER_ANNOUNCEMENT_DIR = path.join(DATA_DIR, "_owner_announcement");
 export const USER_UPLOADS_DIR = path.join(DATA_DIR, "_user_uploads");
 export const ERROR_REPORT_UPLOADS_DIR = path.join(USER_UPLOADS_DIR, "error-reports");
+export const STATION_SUBMISSION_UPLOADS_DIR = path.join(USER_UPLOADS_DIR, "station-submissions");
 export const OWNER_ANNOUNCEMENT_MANIFEST_PATH = path.join(OWNER_ANNOUNCEMENT_DIR, "manifest.json");
 export const OWNER_ANNOUNCEMENT_ASSETS_DIR = path.join(OWNER_ANNOUNCEMENT_DIR, "assets");
 export const OWNER_ANNOUNCEMENT_STATUS_PATH = path.join(OWNER_ANNOUNCEMENT_DIR, "status.json");

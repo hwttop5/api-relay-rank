@@ -28,6 +28,7 @@ import {
 
 import type { StationReviewItem, StationReviewPage, StationReviewSummary } from "@/lib/types";
 import { ERROR_REPORT_CATEGORIES, REVIEW_RATING_CHOICES, formatReviewSummary, ratingLabel, ratingToStars } from "@/lib/user-feedback";
+import { SelectControl } from "@/components/ui/select-control";
 
 interface StationFeedbackProviderProps {
   stationKey: string;
@@ -111,7 +112,7 @@ function SummaryLine({ summary }: { summary: StationReviewSummary }) {
   return (
     <div className="feedback-summary-line">
       <div>
-        <span className={hasReviewScore ? "feedback-summary-value" : "feedback-summary-value feedback-summary-empty-value"}>{formatReviewSummary(summary)}</span>
+        <span className={hasReviewScore ? "feedback-summary-value" : "feedback-summary-value feedback-summary-empty-value"}>{formatReviewSummary(summary, { includeCount: false })}</span>
         <span className="feedback-summary-label">用户评分</span>
       </div>
       <div>
@@ -336,13 +337,14 @@ function ReportModalContent({ onClose }: { onClose: () => void }) {
       <form className="feedback-form" onSubmit={submitReport}>
         <label className="feedback-field">
           <span>问题类型</span>
-          <select value={reportCategory} onChange={(event) => setReportCategory(event.target.value as typeof reportCategory)} disabled={reportSubmitting}>
-            {ERROR_REPORT_CATEGORIES.map((category) => (
-              <option key={category.value} value={category.value}>
-                {category.label}
-              </option>
-            ))}
-          </select>
+          <SelectControl
+            ariaLabel="问题类型"
+            name="category"
+            value={reportCategory}
+            disabled={reportSubmitting}
+            options={ERROR_REPORT_CATEGORIES}
+            onChange={setReportCategory}
+          />
         </label>
         <label className="feedback-field">
           <span>错误说明</span>

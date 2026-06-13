@@ -1,5 +1,5 @@
 export type TimeWindow = "work_hours" | "off_hours" | "all_hours";
-export type SortMode = "composite" | "correct_rate" | "avg_seconds" | "effective_multiplier" | "review_rating";
+export type SortMode = "composite" | "correct_rate" | "avg_seconds" | "effective_multiplier" | "security_risk" | "review_rating";
 export type StationType = "subscription" | "non_subscription" | "mixed" | "charity" | "unknown_pending";
 export type AuditProfile = "general";
 export type AuditVerdict = "low" | "medium" | "high" | "inconclusive";
@@ -263,6 +263,8 @@ export interface RankingDisplayRow {
   stationUrl: string;
   stationType: StationType;
   stationTypeShortLabel: string;
+  auditVerdict: AuditVerdict | null;
+  auditScore: number | null;
   totalScore: number;
   correctRate: number;
   avgSeconds: number;
@@ -281,6 +283,8 @@ export interface RankingStationRecord {
   stationTypeLabel: string;
   stationTypeShortLabel: string;
   platformGuess: string;
+  auditVerdict: AuditVerdict | null;
+  auditScore: number | null;
   reviewAverageRating: number | null;
   reviewCount: number;
   unrankedReason: string;
@@ -380,3 +384,18 @@ export type StationErrorReportCategory =
   | "announcement"
   | "ranking_metric"
   | "other";
+
+export type StationSubmissionPaymentType =
+  | "subscription"
+  | "non_subscription"
+  | "mixed"
+  | "charity";
+
+export type StationSubmissionPlatform =
+  | "new_api"
+  | "sub2api"
+  | "other";
+
+export type StationSubmissionAttachmentKind =
+  | "group_multiplier"
+  | "recharge_multiplier";

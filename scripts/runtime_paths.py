@@ -20,6 +20,7 @@ PUBLIC_FETCH_DIR = Path(os.environ.get("PUBLIC_FETCH_DIR", DATA_DIR / "_public_f
 AUDIT_RUNS_DIR = DATA_DIR / "_audit_runs"
 USER_UPLOADS_DIR = DATA_DIR / "_user_uploads"
 ERROR_REPORT_UPLOADS_DIR = USER_UPLOADS_DIR / "error-reports"
+STATION_SUBMISSION_UPLOADS_DIR = USER_UPLOADS_DIR / "station-submissions"
 OWNER_ANNOUNCEMENT_DIR = DATA_DIR / "_owner_announcement"
 OWNER_ANNOUNCEMENT_MANIFEST_PATH = OWNER_ANNOUNCEMENT_DIR / "manifest.json"
 OWNER_ANNOUNCEMENT_ASSETS_DIR = OWNER_ANNOUNCEMENT_DIR / "assets"
@@ -52,6 +53,7 @@ def ensure_runtime_dirs() -> None:
     AUDIT_RUNS_DIR.mkdir(parents=True, exist_ok=True)
     USER_UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
     ERROR_REPORT_UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
+    STATION_SUBMISSION_UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
     OWNER_ANNOUNCEMENT_DIR.mkdir(parents=True, exist_ok=True)
     OWNER_ANNOUNCEMENT_ASSETS_DIR.mkdir(parents=True, exist_ok=True)
     LIVE_AUTH_PROBE_DIR.mkdir(parents=True, exist_ok=True)

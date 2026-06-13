@@ -5,3 +5,4 @@ CRON_TZ=Asia/Shanghai
 */5 * * * * cd /app && python scripts/refresh_owner_announcement.py
 0 4 * * * cd /app && python scripts/run_server_refresh.py
 0 22 * * 5 cd /app && python scripts/send_weekly_error_report_digest.py
+5 22 * * 5 cd /app && python scripts/send_weekly_station_submission_digest.py

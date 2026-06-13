@@ -4,7 +4,7 @@ export function GET() {
       <rect width="64" height="64" rx="14" fill="#111827"/>
       <circle cx="32" cy="34" r="20" fill="#0f172a"/>
       <circle cx="32" cy="34" r="20" fill="none" stroke="#20d3a2" stroke-width="3"/>
-      <circle cx="32" cy="34" r="12" fill="none" stroke="#1d4ed8" stroke-width="3" opacity="0.9"/>
+      <circle cx="32" cy="34" r="12" fill="none" stroke="#7adfbc" stroke-width="3" opacity="0.9"/>
       <path d="M32 34 L49 24 A20 20 0 0 1 52 34 Z" fill="#20d3a2" opacity="0.26"/>
       <path d="M32 34 L49 24" stroke="#20d3a2" stroke-width="4" stroke-linecap="round"/>
       <circle cx="32" cy="34" r="4" fill="#fbbf24"/>

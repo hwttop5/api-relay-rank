@@ -49,6 +49,7 @@ cp deploy/.env.example deploy/.env
 - `SMTP_HOST`
 - `SMTP_FROM`
 - `ERROR_REPORT_DIGEST_TO`
+- `STATION_SUBMISSION_DIGEST_TO`（可选，未填时复用 `ERROR_REPORT_DIGEST_TO`）
 
 可选抓取凭据：
 
@@ -59,8 +60,8 @@ cp deploy/.env.example deploy/.env
 
 不提供抓取凭据时，scheduler 会进入 degraded 模式：公开快照与 `site-data.json` 仍刷新，登录态补抓会跳过并写日志，但整次任务不会失败。
 
-用户反馈功能需要 GitHub OAuth 与 SMTP。GitHub OAuth 回调地址为 `https://<your-domain>/api/auth/callback/github`。错误上报截图保存在 `/srv/api-relay-rank/data/_user_uploads/error-reports`，每周五 22:00 北京时间由 scheduler 执行 `scripts/send_weekly_error_report_digest.py`，将未汇总过的错误上报发送到 `ERROR_REPORT_DIGEST_TO`。
-GitHub Actions 部署需要配置仓库 Secrets：`AUTH_GITHUB_ID`、`AUTH_GITHUB_SECRET`、`NEXTAUTH_SECRET`、`SMTP_HOST`、`SMTP_FROM`、`ERROR_REPORT_DIGEST_TO`；workflow 会把 `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` 写成应用运行时需要的 `GITHUB_ID` / `GITHUB_SECRET`。缺少必填项时 workflow 会失败，避免用户反馈功能半启用上线。
+用户反馈和申请收录功能需要 GitHub OAuth 与 SMTP。GitHub OAuth 回调地址为 `https://<your-domain>/api/auth/callback/github`。错误上报截图保存在 `/srv/api-relay-rank/data/_user_uploads/error-reports`，每周五 22:00 北京时间由 scheduler 执行 `scripts/send_weekly_error_report_digest.py`，将未汇总过的错误上报发送到 `ERROR_REPORT_DIGEST_TO`。站长申请截图保存在 `/srv/api-relay-rank/data/_user_uploads/station-submissions`，每周五 22:05 北京时间由 scheduler 执行 `scripts/send_weekly_station_submission_digest.py`，邮件只包含申请摘要、截图链接和打码后的测试 Key。
+GitHub Actions 部署需要配置仓库 Secrets：`AUTH_GITHUB_ID`、`AUTH_GITHUB_SECRET`、`NEXTAUTH_SECRET`、`SMTP_HOST`、`SMTP_FROM`、`ERROR_REPORT_DIGEST_TO`；workflow 会把 `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` 写成应用运行时需要的 `GITHUB_ID` / `GITHUB_SECRET`。可选配置 `STATION_SUBMISSION_DIGEST_TO` 单独接收收录申请，未配置时复用 `ERROR_REPORT_DIGEST_TO`。缺少必填项时 workflow 会失败，避免用户反馈功能半启用上线。
 
 PostgreSQL 只服务本项目。容器 `api-relay-rank-postgres-1` 只在 `api-relay-rank_default` 网络内提供 `5432/tcp`，不向宿主机公开端口，数据目录固定为 `/srv/api-relay-rank/postgres`。核心表包括 `site_data_snapshots`、`ranking_rows`、`quality_metrics`、`evidence_snapshots` 和 `station_audit_runs`；审计报告正文仍保存在 `/srv/api-relay-rank/data/_audit_runs`。
 
@@ -167,7 +168,7 @@ docker compose --env-file deploy/.env -f deploy/docker-compose.yml exec -T postg
 - `api_relay_rank` 的 `pg_dump -Fc` 逻辑备份
 - 当前可导入 `_audit_runs/**/summary.json` 数量，用于部署后比对 `station_audit_runs`
 
-同一个 workflow 在重启 Docker stack 后会强制校验：`schema_migrations.version=7`、`station_audit_runs` 行数、最新成功 `site_data_snapshots`、`/api/health`、`/api/auth/providers`、`/audit`、`/ranking`、`/stations/freemodel` 和最新审计报告链接。任一关键检查失败时 workflow 会失败，不继续标记部署成功。
+同一个 workflow 在重启 Docker stack 后会强制校验：`schema_migrations.version=8`、`station_audit_runs` 行数、最新成功 `site_data_snapshots`、`/api/health`、`/api/auth/providers`、`/audit`、`/ranking`、`/stations/freemodel` 和最新审计报告链接。任一关键检查失败时 workflow 会失败，不继续标记部署成功。
 
 部署前至少备份：
 

@@ -8,6 +8,7 @@ import { useState, useTransition, type ReactNode } from "react";
 
 import { localizeAuditText } from "@/lib/audit-localization";
 import { formatAuditVerdict, formatDateTime } from "@/lib/format";
+import { SelectControl } from "@/components/ui/select-control";
 import type {
   AuditHistoryFilters,
   AuditHistoryPage,
@@ -321,45 +322,33 @@ export function AuditHistoryTable({ historyPage }: { historyPage: AuditHistoryPa
         <div className="controls audit-history-controls">
           <label className="control-group">
             <span className="control-label">站点</span>
-            <select aria-label="站点" className="toolbar-select" value={filters.station} disabled={isPending} onChange={(event) => updateQuery({ station: event.target.value }, "filter:station")}>
-              <option value="all">全部站点</option>
-              {historyPage.options.stations.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
+            <SelectControl
+              ariaLabel="站点"
+              className="toolbar-select"
+              value={filters.station}
+              disabled={isPending}
+              options={[{ value: "all", label: "全部站点" }, ...historyPage.options.stations]}
+              onChange={(value) => updateQuery({ station: value }, "filter:station")}
+            />
           </label>
           <label className="control-group">
             <span className="control-label">模型</span>
-            <select aria-label="模型" className="toolbar-select" value={filters.model} disabled={isPending} onChange={(event) => updateQuery({ model: event.target.value }, "filter:model")}>
-              <option value="all">全部模型</option>
-              {historyPage.options.models.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
+            <SelectControl
+              ariaLabel="模型"
+              className="toolbar-select"
+              value={filters.model}
+              disabled={isPending}
+              options={[{ value: "all", label: "全部模型" }, ...historyPage.options.models]}
+              onChange={(value) => updateQuery({ model: value }, "filter:model")}
+            />
           </label>
           <label className="control-group">
             <span className="control-label">安全程度</span>
-            <select aria-label="安全程度" className="toolbar-select" value={filters.verdict} disabled={isPending} onChange={(event) => updateQuery({ verdict: event.target.value as "all" | AuditVerdict }, "filter:verdict")}>
-              {VERDICT_OPTIONS.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
+            <SelectControl ariaLabel="安全程度" className="toolbar-select" value={filters.verdict} disabled={isPending} options={VERDICT_OPTIONS} onChange={(value) => updateQuery({ verdict: value }, "filter:verdict")} />
           </label>
           <label className="control-group">
             <span className="control-label">时间</span>
-            <select aria-label="时间" className="toolbar-select" value={filters.timeRange} disabled={isPending} onChange={(event) => updateQuery({ timeRange: event.target.value as AuditHistoryTimeRange }, "filter:timeRange")}>
-              {TIME_RANGE_OPTIONS.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
+            <SelectControl ariaLabel="时间" className="toolbar-select" value={filters.timeRange} disabled={isPending} options={TIME_RANGE_OPTIONS} onChange={(value) => updateQuery({ timeRange: value }, "filter:timeRange")} />
           </label>
         </div>
       </div>
@@ -473,13 +462,14 @@ export function AuditHistoryTable({ historyPage }: { historyPage: AuditHistoryPa
               </div>
               <label className="audit-history-page-size">
                 <span>每页显示</span>
-                <select aria-label="每页显示" className="toolbar-select" value={historyPage.pageSize} disabled={isPending} onChange={(event) => updateQuery({ pageSize: Number(event.target.value) }, "page:size")}>
-                  {PAGE_SIZE_OPTIONS.map((option) => (
-                    <option key={option} value={option}>
-                      {option} 条
-                    </option>
-                  ))}
-                </select>
+                <SelectControl
+                  ariaLabel="每页显示"
+                  className="toolbar-select"
+                  value={historyPage.pageSize}
+                  disabled={isPending}
+                  options={PAGE_SIZE_OPTIONS.map((option) => ({ value: option, label: `${option} 条` }))}
+                  onChange={(value) => updateQuery({ pageSize: value }, "page:size")}
+                />
               </label>
             </div>
           </>

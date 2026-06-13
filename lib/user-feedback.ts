@@ -58,9 +58,12 @@ export function emptyReviewSummary(station: string): StationReviewSummary {
   };
 }
 
-export function formatReviewSummary(summary: StationReviewSummary) {
+export function formatReviewSummary(summary: StationReviewSummary, options: { includeCount?: boolean } = {}) {
   if (!summary.reviewCount || summary.averageRating === null) {
     return "暂无";
+  }
+  if (options.includeCount === false) {
+    return `${summary.averageRating.toFixed(1)} 分`;
   }
   return `${summary.averageRating.toFixed(1)} 分 / ${summary.reviewCount} 条`;
 }

@@ -1,5 +1,5 @@
 import { formatMultiplier } from "./format";
-import type { RankingDisplayRow, RankingPageData, RankingStationRecord, ShellData, SiteData, StatementPageData, TimeWindow } from "./types";
+import type { AuditVerdict, RankingDisplayRow, RankingPageData, RankingStationRecord, ShellData, SiteData, StatementPageData, TimeWindow } from "./types";
 import type { StationReviewSummary } from "./types";
 
 type StationRecord = SiteData["stations"][number];
@@ -186,7 +186,16 @@ function getRegistryDisplayValues(station: StationRecord) {
   };
 }
 
-function toRankingDisplayRow(row: SiteData["rankings"][TimeWindow][number], reviewSummary?: StationReviewSummary): RankingDisplayRow {
+function getLatestAuditDisplay(station: StationRecord | undefined): { auditVerdict: AuditVerdict | null; auditScore: number | null } {
+  const latestAudit = station?.audits?.latestByModel[0];
+  return {
+    auditVerdict: latestAudit?.overallVerdict ?? null,
+    auditScore: typeof latestAudit?.auditScore === "number" && Number.isFinite(latestAudit.auditScore) ? latestAudit.auditScore : null,
+  };
+}
+
+function toRankingDisplayRow(row: SiteData["rankings"][TimeWindow][number], station: StationRecord | undefined, reviewSummary?: StationReviewSummary): RankingDisplayRow {
+  const latestAudit = getLatestAuditDisplay(station);
   return {
     rank: row.rank,
     station: row.station,
@@ -194,6 +203,8 @@ function toRankingDisplayRow(row: SiteData["rankings"][TimeWindow][number], revi
     stationUrl: row.stationUrl,
     stationType: row.stationType,
     stationTypeShortLabel: row.stationTypeShortLabel,
+    auditVerdict: latestAudit.auditVerdict,
+    auditScore: latestAudit.auditScore,
     totalScore: row.totalScore,
     correctRate: row.correctRate,
     avgSeconds: row.avgSeconds,
@@ -207,6 +218,7 @@ function toRankingDisplayRow(row: SiteData["rankings"][TimeWindow][number], revi
 
 function toRankingStationRecord(station: StationRecord, reviewSummary?: StationReviewSummary): RankingStationRecord {
   const registryDisplay = getRegistryDisplayValues(station);
+  const latestAudit = getLatestAuditDisplay(station);
   return {
     key: station.key,
     label: station.label,
@@ -215,6 +227,8 @@ function toRankingStationRecord(station: StationRecord, reviewSummary?: StationR
     stationTypeLabel: station.stationTypeLabel,
     stationTypeShortLabel: station.stationTypeShortLabel,
     platformGuess: station.platformGuess,
+    auditVerdict: latestAudit.auditVerdict,
+    auditScore: latestAudit.auditScore,
     reviewAverageRating: reviewSummary?.averageRating ?? null,
     reviewCount: reviewSummary?.reviewCount ?? 0,
     unrankedReason: getUnrankedReason(station),
@@ -224,6 +238,7 @@ function toRankingStationRecord(station: StationRecord, reviewSummary?: StationR
 
 export function buildRankingPageData(siteData: SiteData, reviewSummaries: Record<string, StationReviewSummary> = {}): { shell: ShellData; data: RankingPageData } {
   const shell = toShellData(siteData, siteData.stations.length);
+  const stationMap = new Map(siteData.stations.map((station) => [station.key, station]));
   return {
     shell,
     data: {
@@ -232,9 +247,9 @@ export function buildRankingPageData(siteData: SiteData, reviewSummaries: Record
       defaultSort: siteData.defaultSort,
       timeWindows: siteData.timeWindows,
       rankings: {
-        all_hours: siteData.rankings.all_hours.map((row) => toRankingDisplayRow(row, reviewSummaries[row.station])),
-        work_hours: siteData.rankings.work_hours.map((row) => toRankingDisplayRow(row, reviewSummaries[row.station])),
-        off_hours: siteData.rankings.off_hours.map((row) => toRankingDisplayRow(row, reviewSummaries[row.station])),
+        all_hours: siteData.rankings.all_hours.map((row) => toRankingDisplayRow(row, stationMap.get(row.station), reviewSummaries[row.station])),
+        work_hours: siteData.rankings.work_hours.map((row) => toRankingDisplayRow(row, stationMap.get(row.station), reviewSummaries[row.station])),
+        off_hours: siteData.rankings.off_hours.map((row) => toRankingDisplayRow(row, stationMap.get(row.station), reviewSummaries[row.station])),
       },
       stations: siteData.stations.map((station) => toRankingStationRecord(station, reviewSummaries[station.key])),
       rankedStationCount: siteData.rankedStationCount,

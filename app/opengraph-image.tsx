@@ -55,7 +55,7 @@ export default function Image() {
           </div>
           <div
             style={{
-              color: "#6da8ff",
+              color: "#7adfbc",
               display: "flex",
               fontSize: "30px",
               fontWeight: 700,

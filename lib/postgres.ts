@@ -13,6 +13,9 @@ import type {
   StationReviewItem,
   StationReviewPage,
   StationReviewSummary,
+  StationSubmissionAttachmentKind,
+  StationSubmissionPaymentType,
+  StationSubmissionPlatform,
   ViewerReview,
 } from "./types";
 
@@ -376,6 +379,179 @@ export async function readErrorReportAttachmentByToken(token: string): Promise<E
   return {
     id: Number(row.id),
     reportId: Number(row.report_id),
+    originalFilename: row.original_filename,
+    storedPath: row.stored_path,
+    mimeType: row.mime_type,
+    byteSize: Number(row.byte_size),
+  };
+}
+
+export async function countRecentStationSubmissions({
+  githubId,
+  officialUrl,
+  since,
+}: {
+  githubId: string;
+  officialUrl: string;
+  since: Date;
+}): Promise<{ url: number; total: number }> {
+  const result = await pool().query<{ url_count: string | number; total_count: string | number }>(
+    `
+      select
+        count(*) filter (where lower(official_url) = lower($2))::int as url_count,
+        count(*)::int as total_count
+      from station_submissions
+      where github_id = $1
+        and created_at >= $3
+    `,
+    [githubId, officialUrl, since],
+  );
+  const row = result.rows[0];
+  return {
+    url: Number(row?.url_count || 0),
+    total: Number(row?.total_count || 0),
+  };
+}
+
+export interface StoredStationSubmissionAttachment {
+  kind: StationSubmissionAttachmentKind;
+  originalFilename: string;
+  storedPath: string;
+  mimeType: string;
+  byteSize: number;
+  sha256: string;
+  accessToken: string;
+}
+
+export async function createStationSubmission({
+  stationName,
+  officialUrl,
+  paymentType,
+  platform,
+  platformNote,
+  groupMultiplier,
+  rechargeMultiplier,
+  contactEmail,
+  testBaseUrl,
+  testApiKey,
+  notes,
+  currentUrl,
+  user,
+  attachments,
+}: {
+  stationName: string;
+  officialUrl: string;
+  paymentType: StationSubmissionPaymentType;
+  platform: StationSubmissionPlatform;
+  platformNote: string | null;
+  groupMultiplier: string;
+  rechargeMultiplier: string;
+  contactEmail: string;
+  testBaseUrl: string;
+  testApiKey: string;
+  notes: string;
+  currentUrl: string | null;
+  user: AuthenticatedGithubUser;
+  attachments: StoredStationSubmissionAttachment[];
+}): Promise<{ submissionId: number }> {
+  await upsertGithubUser(user);
+  const client = await pool().connect();
+  try {
+    await client.query("begin");
+    const result = await client.query<{ id: string | number }>(
+      `
+        insert into station_submissions (
+          station_name, official_url, payment_type, platform, platform_note,
+          group_multiplier, recharge_multiplier, contact_email,
+          test_base_url, test_api_key, notes, github_id, github_login, current_url
+        )
+        values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+        returning id
+      `,
+      [
+        stationName,
+        officialUrl,
+        paymentType,
+        platform,
+        platformNote,
+        groupMultiplier,
+        rechargeMultiplier,
+        contactEmail,
+        testBaseUrl,
+        testApiKey,
+        notes,
+        user.githubId,
+        user.githubLogin,
+        currentUrl,
+      ],
+    );
+    const submissionId = Number(result.rows[0]?.id);
+    for (const attachment of attachments) {
+      await client.query(
+        `
+          insert into station_submission_attachments (
+            submission_id, kind, original_filename, stored_path, mime_type, byte_size, sha256, access_token
+          )
+          values ($1, $2, $3, $4, $5, $6, $7, $8)
+        `,
+        [
+          submissionId,
+          attachment.kind,
+          attachment.originalFilename,
+          attachment.storedPath,
+          attachment.mimeType,
+          attachment.byteSize,
+          attachment.sha256,
+          attachment.accessToken,
+        ],
+      );
+    }
+    await client.query("commit");
+    return { submissionId };
+  } catch (error) {
+    await client.query("rollback");
+    throw error;
+  } finally {
+    client.release();
+  }
+}
+
+export interface StationSubmissionAttachmentRow {
+  id: number;
+  submissionId: number;
+  kind: StationSubmissionAttachmentKind;
+  originalFilename: string;
+  storedPath: string;
+  mimeType: string;
+  byteSize: number;
+}
+
+export async function readStationSubmissionAttachmentByToken(token: string): Promise<StationSubmissionAttachmentRow | null> {
+  const result = await pool().query<{
+    id: string | number;
+    submission_id: string | number;
+    kind: StationSubmissionAttachmentKind;
+    original_filename: string;
+    stored_path: string;
+    mime_type: string;
+    byte_size: string | number;
+  }>(
+    `
+      select id, submission_id, kind, original_filename, stored_path, mime_type, byte_size
+      from station_submission_attachments
+      where access_token = $1
+      limit 1
+    `,
+    [token],
+  );
+  const row = result.rows[0];
+  if (!row) {
+    return null;
+  }
+  return {
+    id: Number(row.id),
+    submissionId: Number(row.submission_id),
+    kind: row.kind,
     originalFilename: row.original_filename,
     storedPath: row.stored_path,
     mimeType: row.mime_type,

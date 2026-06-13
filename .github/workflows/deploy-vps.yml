@@ -337,6 +337,7 @@ jobs:
           SMTP_FROM: ${{ secrets.SMTP_FROM }}
           SMTP_STARTTLS: ${{ secrets.SMTP_STARTTLS }}
           ERROR_REPORT_DIGEST_TO: ${{ secrets.ERROR_REPORT_DIGEST_TO }}
+          STATION_SUBMISSION_DIGEST_TO: ${{ secrets.STATION_SUBMISSION_DIGEST_TO }}
         run: |
           set -euo pipefail
           for name in AUTH_GITHUB_ID AUTH_GITHUB_SECRET NEXTAUTH_SECRET SMTP_HOST SMTP_FROM ERROR_REPORT_DIGEST_TO; do
@@ -364,9 +365,10 @@ jobs:
           smtp_from_b64="$(b64 "$SMTP_FROM")"
           smtp_starttls_b64="$(b64 "${SMTP_STARTTLS:-}")"
           digest_to_b64="$(b64 "$ERROR_REPORT_DIGEST_TO")"
+          station_submission_digest_to_b64="$(b64 "${STATION_SUBMISSION_DIGEST_TO:-}")"
 
           ssh -i ~/.ssh/deploy_key -p 22 "$VPS_USER@$VPS_HOST" \
-            "GITHUB_ID_B64='$github_id_b64' GITHUB_SECRET_B64='$github_secret_b64' NEXTAUTH_SECRET_B64='$nextauth_secret_b64' SMTP_HOST_B64='$smtp_host_b64' SMTP_PORT_B64='$smtp_port_b64' SMTP_USER_B64='$smtp_user_b64' SMTP_PASSWORD_B64='$smtp_password_b64' SMTP_FROM_B64='$smtp_from_b64' SMTP_STARTTLS_B64='$smtp_starttls_b64' DIGEST_TO_B64='$digest_to_b64' sh -s" <<'REMOTE_SCRIPT'
+            "GITHUB_ID_B64='$github_id_b64' GITHUB_SECRET_B64='$github_secret_b64' NEXTAUTH_SECRET_B64='$nextauth_secret_b64' SMTP_HOST_B64='$smtp_host_b64' SMTP_PORT_B64='$smtp_port_b64' SMTP_USER_B64='$smtp_user_b64' SMTP_PASSWORD_B64='$smtp_password_b64' SMTP_FROM_B64='$smtp_from_b64' SMTP_STARTTLS_B64='$smtp_starttls_b64' DIGEST_TO_B64='$digest_to_b64' STATION_SUBMISSION_DIGEST_TO_B64='$station_submission_digest_to_b64' sh -s" <<'REMOTE_SCRIPT'
           set -eu
           env_file="/opt/stacks/api-relay-rank/deploy/.env"
           mkdir -p "$(dirname "$env_file")"
@@ -430,6 +432,11 @@ jobs:
           set_env_var SMTP_FROM "$(decode "$SMTP_FROM_B64")"
           set_env_var SMTP_STARTTLS "$smtp_starttls"
           set_env_var ERROR_REPORT_DIGEST_TO "$(decode "$DIGEST_TO_B64")"
+          station_submission_digest_to="$(decode "$STATION_SUBMISSION_DIGEST_TO_B64")"
+          if [ -z "$station_submission_digest_to" ]; then
+            station_submission_digest_to="$(decode "$DIGEST_TO_B64")"
+          fi
+          set_env_var STATION_SUBMISSION_DIGEST_TO "$station_submission_digest_to"
 
           echo "Configured user feedback OAuth and digest environment in $env_file"
           REMOTE_SCRIPT
@@ -470,13 +477,13 @@ jobs:
           )"
           test -n "$postgres_container"
 
-          schema_v7="$(
+          schema_v8="$(
             docker exec "$postgres_container" \
               psql -U api_relay_rank -d api_relay_rank -At \
-              -c "select count(*) from schema_migrations where version = 7;"
+              -c "select count(*) from schema_migrations where version = 8;"
           )"
-          if [ "$schema_v7" != "1" ]; then
-            echo "schema_migrations version 7 is missing." >&2
+          if [ "$schema_v8" != "1" ]; then
+            echo "schema_migrations version 8 is missing." >&2
             exit 1
           fi
 

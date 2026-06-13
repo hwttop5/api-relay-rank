@@ -5,9 +5,10 @@ import Link from "next/link";
 import { ChevronDown, ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, ExternalLink, Medal } from "lucide-react";
 
 import { formatCompactCount, formatMultiplier, formatPercent, formatScore, formatSeconds } from "@/lib/format";
-import type { PageViewStats, RankingDisplayRow, RankingPageData, RankingStationRecord, ShellData, SortMode, StationType, TimeWindow } from "@/lib/types";
+import type { AuditVerdict, PageViewStats, RankingDisplayRow, RankingPageData, RankingStationRecord, ShellData, SortMode, StationType, TimeWindow } from "@/lib/types";
 import { AppShell, StatusChip } from "@/components/app-shell";
 import { formatReviewSummary } from "@/lib/user-feedback";
+import { SelectControl } from "@/components/ui/select-control";
 
 const TIME_WINDOW_OPTIONS: Array<{ value: TimeWindow; label: string }> = [
   { value: "all_hours", label: "全部时段" },
@@ -20,6 +21,7 @@ const SORT_OPTIONS: Array<{ value: SortMode; label: string }> = [
   { value: "correct_rate", label: "正确率优先" },
   { value: "avg_seconds", label: "响应时间优先" },
   { value: "effective_multiplier", label: "采用倍率优先" },
+  { value: "security_risk", label: "安全风险优先" },
   { value: "review_rating", label: "用户评分优先" }
 ];
 
@@ -36,9 +38,19 @@ const PRIORITY_RANKING_MIN_REQUESTS = 10;
 const DISPLAY_REDACTED_URLS: Record<string, string> = {
   "https://ttop5.gettoken.dev": "https://xxx.gettoken.dev",
 };
+const AUDIT_RISK_ORDER: Record<AuditVerdict, number> = {
+  low: 0,
+  medium: 1,
+  high: 2,
+  inconclusive: 3,
+};
 
 type TypeFilter = (typeof TYPE_OPTIONS)[number]["key"];
 type StationRecord = RankingStationRecord;
+
+function auditRiskRank(verdict: AuditVerdict | null) {
+  return verdict === null ? 4 : AUDIT_RISK_ORDER[verdict];
+}
 
 function compareByMode(rowA: RankingDisplayRow, rowB: RankingDisplayRow, mode: SortMode): number {
   const samplePriority = Number(rowA.requests < PRIORITY_RANKING_MIN_REQUESTS) - Number(rowB.requests < PRIORITY_RANKING_MIN_REQUESTS);
@@ -53,6 +65,9 @@ function compareByMode(rowA: RankingDisplayRow, rowB: RankingDisplayRow, mode: S
   }
   if (mode === "effective_multiplier") {
     return rowA.effectiveMultiplier - rowB.effectiveMultiplier || rowB.totalScore - rowA.totalScore || rowA.rank - rowB.rank;
+  }
+  if (mode === "security_risk") {
+    return auditRiskRank(rowA.auditVerdict) - auditRiskRank(rowB.auditVerdict) || (rowB.auditScore ?? -1) - (rowA.auditScore ?? -1) || rowB.totalScore - rowA.totalScore || rowA.rank - rowB.rank;
   }
   if (mode === "review_rating") {
     const ratingPriority = Number(rowB.reviewCount > 0 && rowB.reviewAverageRating !== null) - Number(rowA.reviewCount > 0 && rowA.reviewAverageRating !== null);
@@ -80,12 +95,20 @@ function getOfficialUrl(href: string) {
   }
 }
 
-function StationUrlLink({ href, compact = false }: { href: string; compact?: boolean }) {
+function StationUrlLink({ href, compact = false, iconOnly = false }: { href: string; compact?: boolean; iconOnly?: boolean }) {
   if (!href) {
     return <span className="subtle">未记录</span>;
   }
 
   const displayHref = DISPLAY_REDACTED_URLS[href] || (compact ? getOfficialUrl(href) : href);
+
+  if (iconOnly) {
+    return (
+      <a href={href} target="_blank" rel="noreferrer" className="station-link station-url-icon-link" aria-label={`打开网址：${displayHref}`} title={displayHref}>
+        <ExternalLink size={15} aria-hidden="true" />
+      </a>
+    );
+  }
 
   return (
     <a href={href} target="_blank" rel="noreferrer" className="station-link inline-actions">
@@ -109,6 +132,46 @@ function getStationTone(stationType: StationType): "default" | "accent" | "blue"
     return "success";
   }
   return "default";
+}
+
+function auditVerdictClass(verdict: AuditVerdict) {
+  if (verdict === "high") {
+    return "audit-verdict-high";
+  }
+  if (verdict === "medium") {
+    return "audit-verdict-medium";
+  }
+  if (verdict === "low") {
+    return "audit-verdict-low";
+  }
+  return "audit-verdict-inconclusive";
+}
+
+function formatAuditRiskLabel(verdict: AuditVerdict) {
+  if (verdict === "high") {
+    return "高";
+  }
+  if (verdict === "medium") {
+    return "中";
+  }
+  if (verdict === "low") {
+    return "低";
+  }
+  return "未定";
+}
+
+function RankingAuditSummary({ auditScore, auditVerdict }: { auditScore: number | null; auditVerdict: AuditVerdict | null }) {
+  if (!auditVerdict) {
+    return <span className="ranking-audit-empty">暂无数据</span>;
+  }
+
+  return (
+    <span className="ranking-audit-summary">
+      <span className={`audit-verdict-pill ranking-audit-verdict ${auditVerdictClass(auditVerdict)}`}>{formatAuditRiskLabel(auditVerdict)}</span>
+      <span className="ranking-audit-separator">·</span>
+      <span className="ranking-audit-score mono">{auditScore === null ? "-" : `${auditScore}/100`}</span>
+    </span>
+  );
 }
 
 function RankingReviewSummary({
@@ -245,13 +308,13 @@ function TablePagination({
       </div>
       <label className="table-page-size">
         <span>每页显示</span>
-        <select aria-label="每页显示" className="toolbar-select" value={pageSize} onChange={(event) => onPageSizeChange(Number(event.target.value))}>
-          {PAGE_SIZE_OPTIONS.map((option) => (
-            <option key={option} value={option}>
-              {option} 条
-            </option>
-          ))}
-        </select>
+        <SelectControl
+          ariaLabel="每页显示"
+          className="toolbar-select"
+          value={pageSize}
+          options={PAGE_SIZE_OPTIONS.map((option) => ({ value: option, label: `${option} 条` }))}
+          onChange={onPageSizeChange}
+        />
       </label>
     </div>
   );
@@ -287,7 +350,7 @@ function MobileRankingCard({ row, index, stationMeta }: { row: RankingDisplayRow
       </div>
 
       <div className="mobile-metrics-grid">
-        <MobileMetric label="总分" value={formatScore(row.totalScore)} mono />
+        <MobileMetric label="综合得分" value={<span className="ranking-score-value">{formatScore(row.totalScore)}</span>} mono />
         <MobileMetric label="正确率" value={formatPercent(row.correctRate)} mono />
         <MobileMetric label="平均响应" value={formatSeconds(row.avgSeconds)} mono />
         <MobileMetric label="采用倍率" value={formatMultiplier(row.effectiveMultiplier)} mono />
@@ -301,6 +364,7 @@ function MobileRankingCard({ row, index, stationMeta }: { row: RankingDisplayRow
         <div className="mobile-card-detail-grid">
           <MobileDetail label="官方网址" value={<StationUrlLink href={row.stationUrl} compact />} />
           <MobileDetail label="采用档位" value={row.adoptedTier} />
+          <MobileDetail label="安全审计" value={<RankingAuditSummary auditVerdict={row.auditVerdict} auditScore={row.auditScore} />} />
           <MobileDetail label="用户评分" value={<RankingReviewSummary stationKey={row.station} reviewAverageRating={row.reviewAverageRating} reviewCount={row.reviewCount} />} />
           <MobileDetail label="请求样本" value={<span className="mono">{row.requests}</span>} />
         </div>
@@ -337,7 +401,7 @@ function MobileStationCard({ station }: { station: RankingStationRecord }) {
 
       <div className="mobile-metrics-grid">
         <MobileMetric label="最低倍率" value={registryDisplay.lowestMultiplier} mono />
-        <MobileMetric label="全部时段样本" value={registryDisplay.sampleCount} mono />
+        <MobileMetric label="核验档位" value={registryDisplay.verifiedTierCount} mono />
         <MobileMetric label="公告数量" value={registryDisplay.announcementCount} mono />
         <MobileMetric label="用户评价" value={<RankingReviewSummary stationKey={station.key} reviewAverageRating={station.reviewAverageRating} reviewCount={station.reviewCount} />} />
       </div>
@@ -352,7 +416,8 @@ function MobileStationCard({ station }: { station: RankingStationRecord }) {
           <MobileDetail label="平台判断" value={station.platformGuess || "-"} />
           <MobileDetail label="站点类型" value={station.stationTypeLabel} />
           <MobileDetail label="未入榜原因" value={unrankedReason} />
-          <MobileDetail label="核验档位" value={<span className="mono">{registryDisplay.verifiedTierCount}</span>} />
+          <MobileDetail label="安全审计" value={<RankingAuditSummary auditVerdict={station.auditVerdict} auditScore={station.auditScore} />} />
+          <MobileDetail label="请求样本数" value={<span className="mono">{registryDisplay.sampleCount}</span>} />
         </div>
       </details>
 
@@ -451,38 +516,30 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
           <div className="section-head">
             <div>
               <h1 className="section-title">正式综合排名</h1>
-              <p className="section-desc">同一时段内，请求样本数 ≥ 10 的站点优先排名，低样本站点仍保留在正式榜但整体置后。采用倍率按 Codex 口径最小非 0 分组倍率 × 实付金额 ÷ 到账美元额度计算；有明确用途标记时排除非 Codex 分组。目前安全审计与用户评分仅作为站点口碑参考展示，不参与综合分或正式排名计算；待验证方式与数据覆盖进一步完善后，将纳入排名权重。</p>
+              <p className="section-desc">
+                同一时段内，请求样本数 ≥ 10 的站点优先排名，低样本站点仍保留在正式榜但整体置后。采用倍率按 Codex 口径最小非 0 分组倍率 × 实付金额 ÷ 到账美元额度计算；有明确用途标记时排除非 Codex 分组。
+                <br />
+                <strong>目前安全审计与用户评分仅作为站点口碑参考展示，不参与综合分或正式排名计算；待验证方式与数据覆盖进一步完善后，将纳入排名权重。</strong>
+              </p>
             </div>
-            <div className="controls">
+            <div className="controls ranking-controls">
               <label className="control-group">
                 <span className="control-label">时段</span>
-                <select aria-label="时段" className="toolbar-select" value={timeWindow} onChange={(event) => setTimeWindow(event.target.value as TimeWindow)}>
-                  {TIME_WINDOW_OPTIONS.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
+                <SelectControl ariaLabel="时段" className="toolbar-select" value={timeWindow} options={TIME_WINDOW_OPTIONS} onChange={setTimeWindow} />
               </label>
               <label className="control-group">
                 <span className="control-label">类型</span>
-                <select aria-label="类型" className="toolbar-select" value={typeFilter} onChange={(event) => setTypeFilter(event.target.value as TypeFilter)}>
-                  {TYPE_OPTIONS.map((option) => (
-                    <option key={option.key} value={option.key}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
+                <SelectControl
+                  ariaLabel="类型"
+                  className="toolbar-select"
+                  value={typeFilter}
+                  options={TYPE_OPTIONS.map((option) => ({ value: option.key, label: option.label }))}
+                  onChange={setTypeFilter}
+                />
               </label>
               <label className="control-group">
                 <span className="control-label">排序</span>
-                <select aria-label="排序" className="toolbar-select" value={sortMode} onChange={(event) => setSortMode(event.target.value as SortMode)}>
-                  {SORT_OPTIONS.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
+                <SelectControl ariaLabel="排序" className="toolbar-select" value={sortMode} options={SORT_OPTIONS} onChange={setSortMode} />
               </label>
             </div>
           </div>
@@ -503,6 +560,7 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
                     <col className="ranking-col-metric" />
                     <col className="ranking-col-metric" />
                     <col className="ranking-col-tier" />
+                    <col className="ranking-col-audit" />
                     <col className="ranking-col-review" />
                     <col className="ranking-col-action" />
                   </colgroup>
@@ -513,12 +571,13 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
                       <th className="col-url">网址</th>
                       <th className="col-type">类型</th>
                       <th className="col-platform">平台判断</th>
-                      <th>总分</th>
+                      <th>综合得分</th>
                       <th>请求样本数</th>
                       <th>正确率</th>
                       <th>平均响应时间</th>
                       <th>采用倍率</th>
                       <th>采用倍率档位</th>
+                      <th>安全风险</th>
                       <th>用户评分</th>
                       <th className="col-action">操作</th>
                     </tr>
@@ -542,16 +601,19 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
                             </div>
                           </td>
                           <td className="table-url-cell">
-                            <StationUrlLink href={row.stationUrl} compact />
+                            <StationUrlLink href={row.stationUrl} compact iconOnly />
                           </td>
                           <td className="table-type-cell">{row.stationTypeShortLabel}</td>
                           <td className="table-platform-cell">{stationMeta?.platformGuess || "-"}</td>
-                          <td className="mono">{formatScore(row.totalScore)}</td>
+                          <td className="mono ranking-score-value">{formatScore(row.totalScore)}</td>
                           <td className="mono">{row.requests}</td>
                           <td className="mono">{formatPercent(row.correctRate)}</td>
                           <td className="mono">{formatSeconds(row.avgSeconds)}s</td>
                           <td className="mono">{formatMultiplier(row.effectiveMultiplier)}</td>
                           <td>{row.adoptedTier}</td>
+                          <td>
+                            <RankingAuditSummary auditVerdict={row.auditVerdict} auditScore={row.auditScore} />
+                          </td>
                           <td>
                             <RankingReviewSummary stationKey={row.station} reviewAverageRating={row.reviewAverageRating} reviewCount={row.reviewCount} />
                           </td>
@@ -613,10 +675,11 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
                     <col className="registry-col-type" />
                     <col className="registry-col-platform" />
                     <col className="registry-col-reason" />
-                    <col className="registry-col-lowest-multiplier" />
                     <col className="registry-col-sample" />
+                    <col className="registry-col-lowest-multiplier" />
                     <col className="registry-col-tier" />
                     <col className="registry-col-announcements" />
+                    <col className="registry-col-audit" />
                     <col className="registry-col-review" />
                     <col className="registry-col-action" />
                   </colgroup>
@@ -624,13 +687,14 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
                     <tr>
                       <th>站点</th>
                       <th className="col-url">网址</th>
-                      <th className="col-type">类型</th>
+                      <th className="col-type">未入榜原因</th>
                       <th className="col-platform">平台判断</th>
                       <th>未入榜原因</th>
+                      <th>请求样本数</th>
                       <th>最低倍率</th>
-                      <th>全部时段样本</th>
                       <th>核验档位</th>
                       <th>公告数</th>
+                      <th>安全风险</th>
                       <th>用户评分</th>
                       <th className="col-action">操作</th>
                     </tr>
@@ -648,15 +712,18 @@ export function RankingDashboard({ data, shell, pageViews }: { data: RankingPage
                             </Link>
                           </td>
                           <td className="table-url-cell">
-                            <StationUrlLink href={station.stationExternalUrl} compact />
+                            <StationUrlLink href={station.stationExternalUrl} compact iconOnly />
                           </td>
                           <td className="table-type-cell">{station.stationTypeShortLabel}</td>
                           <td className="table-platform-cell">{station.platformGuess || "-"}</td>
                           <td>{unrankedReason}</td>
-                          <td className="mono">{registryDisplay.lowestMultiplier}</td>
                           <td className="mono">{registryDisplay.sampleCount}</td>
+                          <td className="mono">{registryDisplay.lowestMultiplier}</td>
                           <td className="mono">{registryDisplay.verifiedTierCount}</td>
                           <td className="mono">{registryDisplay.announcementCount}</td>
+                          <td>
+                            <RankingAuditSummary auditVerdict={station.auditVerdict} auditScore={station.auditScore} />
+                          </td>
                           <td>
                             <RankingReviewSummary stationKey={station.key} reviewAverageRating={station.reviewAverageRating} reviewCount={station.reviewCount} />
                           </td>

@@ -32,7 +32,7 @@ export function MobileNavMenu({ active }: { active: AppNavKey }) {
               return (
                 <Link
                   key={item.key}
-                  href={item.href}
+                  href={{ pathname: item.href }}
                   className={active === item.key ? "mobile-nav-link is-active" : "mobile-nav-link"}
                   onClick={() => setIsOpen(false)}
                 >

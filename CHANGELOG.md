@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.2.0 - 2026-06-13
+
+1. 新增站长申请收录入口：支持 GitHub 登录后提交站点官网、付费类型、平台判断、倍率说明、截图附件、测试 BaseURL 和临时 API Key。
+2. 补齐申请收录的 PostgreSQL schema v8、附件 token 访问、每周收录申请周报和部署环境校验，确保申请资料可入库、可汇总、可追踪。
+3. 新增 PWA manifest、离线页面与 Service Worker 注册，优化移动端安装与弱网访问体验。
+4. 升级 VPS 部署校验：部署前自动备份，部署后校验 schema v8、OAuth、站点数据、来源保护、核心页面、站点地图和最新审计报告。
+
+### English Notes
+
+1. Added a station submission entry for owners to submit official URLs, payment type, platform hints, multiplier notes, screenshots, test BaseURL, and temporary API keys after GitHub login.
+2. Completed submission persistence with PostgreSQL schema v8, attachment-token access, weekly submission digests, and deployment environment checks.
+3. Added PWA manifest, offline page, and Service Worker registration for better mobile install and weak-network behavior.
+4. Upgraded VPS deployment verification with pre-deploy backups and post-deploy checks for schema v8, OAuth, site data, origin guards, core pages, sitemap, and latest audit report.
+
 ## v0.1.3 - 2026-06-11
 
 1. 新增站点用户反馈能力：支持 GitHub 登录后公开评分、修改评价、错误上报和截图附件，并在详情页与排名页展示用户评分参考。

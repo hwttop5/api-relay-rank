@@ -4431,8 +4431,8 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(history[0]["stationLabel"], "RelayExample")
         self.assertEqual(history[0]["reportUrl"], "/api/audit-report?station=demo&model=claude-sonnet&run=20260103T000000Z")
 
-    def test_feedback_schema_is_migration_version_seven(self) -> None:
-        self.assertEqual(database.MIGRATION_VERSION, 7)
+    def test_feedback_schema_is_migration_version_eight(self) -> None:
+        self.assertEqual(database.MIGRATION_VERSION, 8)
         self.assertIn("create table if not exists station_audit_runs", database.SCHEMA_SQL)
         self.assertIn("primary key (station_key, model, run_id)", database.SCHEMA_SQL)
         self.assertIn("station_audit_runs_executed_idx", database.SCHEMA_SQL)
@@ -4463,6 +4463,12 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertIn("insert into schema_migrations (version) values (7)", database.apply_schema_migrations.__code__.co_consts)
         self.assertIn("create table if not exists station_error_reports", database.SCHEMA_SQL)
         self.assertIn("create table if not exists station_error_report_attachments", database.SCHEMA_SQL)
+        self.assertIn("create table if not exists station_submissions", database.SCHEMA_SQL)
+        self.assertIn("station_submissions_payment_type_check", database.SCHEMA_SQL)
+        self.assertIn("station_submissions_platform_check", database.SCHEMA_SQL)
+        self.assertIn("create table if not exists station_submission_attachments", database.SCHEMA_SQL)
+        self.assertIn("station_submission_attachments_kind_check", database.SCHEMA_SQL)
+        self.assertIn("insert into schema_migrations (version) values (8)", database.apply_schema_migrations.__code__.co_consts)
 
     def test_import_page_views_csv_normalizes_and_aggregates_paths(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:

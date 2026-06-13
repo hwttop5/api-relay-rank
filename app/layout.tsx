@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
 import { PageViewTracker } from "@/components/page-view-tracker";
+import { ServiceWorkerRegistration } from "@/components/service-worker-registration";
 import {
   DEFAULT_DESCRIPTION,
   SITE_IMAGE_HEIGHT,
@@ -32,6 +33,7 @@ window._hmt = _hmt;
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteBaseUrl()),
+  manifest: "/manifest.webmanifest",
   title: {
     default: SITE_TITLE,
     template: `%s | ${SITE_TITLE}`,
@@ -40,6 +42,20 @@ export const metadata: Metadata = {
   applicationName: SITE_TITLE,
   alternates: {
     canonical: "/ranking",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: SITE_TITLE,
+  },
+  icons: {
+    apple: [
+      {
+        url: "/pwa/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
   },
   openGraph: {
     title: SITE_TITLE,
@@ -63,6 +79,10 @@ export const metadata: Metadata = {
     description: DEFAULT_DESCRIPTION,
     images: [SITE_IMAGE_PATH],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#101820",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
@@ -93,6 +113,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(webSiteJsonLd) }} />
+        <ServiceWorkerRegistration />
         <PageViewTracker />
         {children}
         {baiduTongjiScript ? (

@@ -87,7 +87,7 @@ export function AppShell({
                 {NAV_ITEMS.map((item) => {
                   const Icon = item.icon;
                   return (
-                    <Link key={item.key} href={item.href} className={active === item.key ? "nav-link is-active" : "nav-link"}>
+                    <Link key={item.key} href={{ pathname: item.href }} className={active === item.key ? "nav-link is-active" : "nav-link"}>
                       <Icon size={15} aria-hidden="true" />
                       <span>{item.label}</span>
                     </Link>
