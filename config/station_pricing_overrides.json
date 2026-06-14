@@ -820,5 +820,98 @@
     "source": "user_screenshot_verified_purchase_page",
     "evidenceUrl": "https://wanlai.ai/purchase",
     "authoritative": true
+  },
+  "kapibala.asia": {
+    "stationTypeHint": "mixed",
+    "groupMultipliers": [
+      {
+        "groupName": "default",
+        "groupMultiplier": 1,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "codex",
+        "groupMultiplier": 1,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "vip",
+        "groupMultiplier": 1,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "pro",
+        "groupMultiplier": 1,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "wallet topup sample 10 RMB",
+        "billingType": "permanent",
+        "rmbAmount": 3,
+        "usdAmount": 10,
+        "rechargeLocation": "官网充值页",
+        "expiresRule": "钱包充值；截图显示充值 10 美元额度，实付 3 人民币 (Pay 3)；公告显示 3 RMB = 10 USD；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup sample 20 RMB",
+        "billingType": "permanent",
+        "rmbAmount": 6,
+        "usdAmount": 20,
+        "rechargeLocation": "官网充值页",
+        "expiresRule": "钱包充值；截图显示充值 20 美元额度，实付 6 人民币 (Pay 6)；公告显示 3 RMB = 10 USD；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup sample 50 RMB",
+        "billingType": "permanent",
+        "rmbAmount": 15,
+        "usdAmount": 50,
+        "rechargeLocation": "官网充值页",
+        "expiresRule": "钱包充值；截图显示充值 50 美元额度，实付 15 人民币 (Pay 15)；公告显示 3 RMB = 10 USD；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup sample 100 RMB",
+        "billingType": "permanent",
+        "rmbAmount": 30,
+        "usdAmount": 100,
+        "rechargeLocation": "官网充值页",
+        "expiresRule": "钱包充值；截图显示充值 100 美元额度，实付 30 人民币 (Pay 30)；公告显示 3 RMB = 10 USD；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup sample 200 RMB",
+        "billingType": "permanent",
+        "rmbAmount": 60,
+        "usdAmount": 200,
+        "rechargeLocation": "官网充值页",
+        "expiresRule": "钱包充值；公告显示 3 RMB = 10 USD，即 200 RMB ≈ 66.67 USD；页面未注明有效期"
+      },
+      {
+        "rechargeName": "Coding Plan Plus",
+        "billingType": "monthly",
+        "rmbAmount": 78,
+        "usdAmount": 400,
+        "rechargeLocation": "官网订阅页",
+        "expiresRule": "30 天订阅；总额度池；不按周期重置；公告提示订阅 coding plan 可自动升级 VIP 分组"
+      },
+      {
+        "rechargeName": "Coding Plan Pro(Plus x5)",
+        "billingType": "monthly",
+        "rmbAmount": 360,
+        "usdAmount": 2000,
+        "rechargeLocation": "官网订阅页",
+        "expiresRule": "30 天订阅；总额度池；不按周期重置；公告提示订阅 coding plan 可自动升级 VIP 分组"
+      }
+    ],
+    "forcedAdoptedTier": "codex | Coding Plan Pro(Plus x5)",
+    "assumptionText": "2026-06-14 用户截图确认：kapibala.asia 充值档位前 5 个为钱包充值，按 3 RMB = 10 USD 比例（实付人民币金额 / 美元额度之前识别反了）；后 2 个为 30 天订阅月卡（之前误识别为日卡）。codex 分组倍率 1x，可用于 Codex。",
+    "confidence": "manual_verified",
+    "source": "user_screenshot_verified_pricing_page",
+    "evidenceUrl": "https://kapibala.asia",
+    "authoritative": true
   }
 }

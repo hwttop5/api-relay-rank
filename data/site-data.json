@@ -496,9 +496,9 @@
         "adoptedTier": "codex | Coding Plan Pro(Plus x5)",
         "adoptedGroup": "codex",
         "adoptedRechargeName": "Coding Plan Pro(Plus x5)",
-        "billingType": "daily",
-        "billingTypeLabel": "日卡",
-        "multiplierFullUseAssumption": "30 day subscription；总额度池；不按周期重置",
+        "billingType": "monthly",
+        "billingTypeLabel": "月卡",
+        "multiplierFullUseAssumption": "2026-06-14 用户截图确认：kapibala.asia 充值档位前 5 个为钱包充值，按 3 RMB = 10 USD 比例（实付人民币金额 / 美元额度之前识别反了）；后 2 个为 30 天订阅月卡（之前误识别为日卡）。codex 分组倍率 1x，可用于 Codex。",
         "requests": 114,
         "correct": 101,
         "failures": 13,
@@ -2248,9 +2248,9 @@
         "adoptedTier": "codex | Coding Plan Pro(Plus x5)",
         "adoptedGroup": "codex",
         "adoptedRechargeName": "Coding Plan Pro(Plus x5)",
-        "billingType": "daily",
-        "billingTypeLabel": "日卡",
-        "multiplierFullUseAssumption": "30 day subscription；总额度池；不按周期重置",
+        "billingType": "monthly",
+        "billingTypeLabel": "月卡",
+        "multiplierFullUseAssumption": "2026-06-14 用户截图确认：kapibala.asia 充值档位前 5 个为钱包充值，按 3 RMB = 10 USD 比例（实付人民币金额 / 美元额度之前识别反了）；后 2 个为 30 天订阅月卡（之前误识别为日卡）。codex 分组倍率 1x，可用于 Codex。",
         "requests": 1089,
         "correct": 1071,
         "failures": 18,
@@ -4805,9 +4805,9 @@
         "adoptedTier": "codex | Coding Plan Pro(Plus x5)",
         "adoptedGroup": "codex",
         "adoptedRechargeName": "Coding Plan Pro(Plus x5)",
-        "billingType": "daily",
-        "billingTypeLabel": "日卡",
-        "multiplierFullUseAssumption": "30 day subscription；总额度池；不按周期重置",
+        "billingType": "monthly",
+        "billingTypeLabel": "月卡",
+        "multiplierFullUseAssumption": "2026-06-14 用户截图确认：kapibala.asia 充值档位前 5 个为钱包充值，按 3 RMB = 10 USD 比例（实付人民币金额 / 美元额度之前识别反了）；后 2 个为 30 天订阅月卡（之前误识别为日卡）。codex 分组倍率 1x，可用于 Codex。",
         "requests": 1203,
         "correct": 1172,
         "failures": 31,
@@ -11379,12 +11379,28 @@
       "verifiedTierCount": 7,
       "groupMultipliers": [
         {
-          "groupName": "codex",
-          "groupMultiplier": 1.0
+          "groupName": "default",
+          "groupMultiplier": 1.0,
+          "codexEligible": true,
+          "usageLabel": "Codex"
         },
         {
-          "groupName": "default",
-          "groupMultiplier": 1.0
+          "groupName": "codex",
+          "groupMultiplier": 1.0,
+          "codexEligible": true,
+          "usageLabel": "Codex"
+        },
+        {
+          "groupName": "vip",
+          "groupMultiplier": 1.0,
+          "codexEligible": true,
+          "usageLabel": "Codex"
+        },
+        {
+          "groupName": "pro",
+          "groupMultiplier": 1.0,
+          "codexEligible": true,
+          "usageLabel": "Codex"
         }
       ],
       "rechargeTiers": [
@@ -11392,68 +11408,69 @@
           "rechargeName": "wallet topup sample 10 RMB",
           "billingType": "permanent",
           "billingTypeLabel": "永久额度",
-          "rmbAmount": 10.0,
-          "usdAmount": 3.0,
-          "rechargeLocation": "wallet API -> /api/user/amount sample",
-          "expiresRule": "Wallet API conversion sample from /api/user/amount; not a fixed package"
+          "rmbAmount": 3.0,
+          "usdAmount": 10.0,
+          "rechargeLocation": "官网充值页",
+          "expiresRule": "钱包充值；截图显示充值 10 美元额度，实付 3 人民币 (Pay 3)；公告显示 3 RMB = 10 USD；页面未注明有效期"
         },
         {
           "rechargeName": "wallet topup sample 20 RMB",
           "billingType": "permanent",
           "billingTypeLabel": "永久额度",
-          "rmbAmount": 20.0,
-          "usdAmount": 6.0,
-          "rechargeLocation": "wallet API -> /api/user/amount sample",
-          "expiresRule": "Wallet API conversion sample from /api/user/amount; not a fixed package"
+          "rmbAmount": 6.0,
+          "usdAmount": 20.0,
+          "rechargeLocation": "官网充值页",
+          "expiresRule": "钱包充值；截图显示充值 20 美元额度，实付 6 人民币 (Pay 6)；公告显示 3 RMB = 10 USD；页面未注明有效期"
         },
         {
           "rechargeName": "wallet topup sample 50 RMB",
           "billingType": "permanent",
           "billingTypeLabel": "永久额度",
-          "rmbAmount": 50.0,
-          "usdAmount": 15.0,
-          "rechargeLocation": "wallet API -> /api/user/amount sample",
-          "expiresRule": "Wallet API conversion sample from /api/user/amount; not a fixed package"
-        },
-        {
-          "rechargeName": "Coding Plan Plus",
-          "billingType": "daily",
-          "billingTypeLabel": "日卡",
-          "rmbAmount": 78.0,
-          "usdAmount": 400.0,
-          "rechargeLocation": "subscription plans API",
-          "expiresRule": "30 day subscription; total quota pool, no periodic reset"
+          "rmbAmount": 15.0,
+          "usdAmount": 50.0,
+          "rechargeLocation": "官网充值页",
+          "expiresRule": "钱包充值；截图显示充值 50 美元额度，实付 15 人民币 (Pay 15)；公告显示 3 RMB = 10 USD；页面未注明有效期"
         },
         {
           "rechargeName": "wallet topup sample 100 RMB",
           "billingType": "permanent",
           "billingTypeLabel": "永久额度",
-          "rmbAmount": 100.0,
-          "usdAmount": 30.0,
-          "rechargeLocation": "wallet API -> /api/user/amount sample",
-          "expiresRule": "Wallet API conversion sample from /api/user/amount; not a fixed package"
+          "rmbAmount": 30.0,
+          "usdAmount": 100.0,
+          "rechargeLocation": "官网充值页",
+          "expiresRule": "钱包充值；截图显示充值 100 美元额度，实付 30 人民币 (Pay 30)；公告显示 3 RMB = 10 USD；页面未注明有效期"
         },
         {
           "rechargeName": "wallet topup sample 200 RMB",
           "billingType": "permanent",
           "billingTypeLabel": "永久额度",
-          "rmbAmount": 200.0,
-          "usdAmount": 60.0,
-          "rechargeLocation": "wallet API -> /api/user/amount sample",
-          "expiresRule": "Wallet API conversion sample from /api/user/amount; not a fixed package"
+          "rmbAmount": 60.0,
+          "usdAmount": 200.0,
+          "rechargeLocation": "官网充值页",
+          "expiresRule": "钱包充值；公告显示 3 RMB = 10 USD，即 200 RMB ≈ 66.67 USD；页面未注明有效期"
+        },
+        {
+          "rechargeName": "Coding Plan Plus",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "rmbAmount": 78.0,
+          "usdAmount": 400.0,
+          "rechargeLocation": "官网订阅页",
+          "expiresRule": "30 天订阅；总额度池；不按周期重置；公告提示订阅 coding plan 可自动升级 VIP 分组"
         },
         {
           "rechargeName": "Coding Plan Pro(Plus x5)",
-          "billingType": "daily",
-          "billingTypeLabel": "日卡",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
           "rmbAmount": 360.0,
           "usdAmount": 2000.0,
-          "rechargeLocation": "subscription plans API",
-          "expiresRule": "30 day subscription; total quota pool, no periodic reset"
+          "rechargeLocation": "官网订阅页",
+          "expiresRule": "30 天订阅；总额度池；不按周期重置；公告提示订阅 coding plan 可自动升级 VIP 分组"
         }
       ],
       "tierNotes": [
-        "Kapibala detail rows come from logged-in group, wallet conversion, and subscription plan APIs.; codexEligible=true"
+        "Kapibala detail rows come from logged-in group, wallet conversion, and subscription plan APIs.; codexEligible=true",
+        "2026-06-14 用户截图确认：kapibala.asia 充值档位前 5 个为钱包充值，按 3 RMB = 10 USD 比例（实付人民币金额 / 美元额度之前识别反了）；后 2 个为 30 天订阅月卡（之前误识别为日卡）。codex 分组倍率 1x，可用于 Codex。"
       ],
       "announcements": [
         {
@@ -11514,9 +11531,9 @@
           "adoptedTier": "codex | Coding Plan Pro(Plus x5)",
           "adoptedGroup": "codex",
           "adoptedRechargeName": "Coding Plan Pro(Plus x5)",
-          "billingType": "daily",
-          "billingTypeLabel": "日卡",
-          "multiplierFullUseAssumption": "30 day subscription；总额度池；不按周期重置",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "multiplierFullUseAssumption": "2026-06-14 用户截图确认：kapibala.asia 充值档位前 5 个为钱包充值，按 3 RMB = 10 USD 比例（实付人民币金额 / 美元额度之前识别反了）；后 2 个为 30 天订阅月卡（之前误识别为日卡）。codex 分组倍率 1x，可用于 Codex。",
           "requests": 114,
           "correct": 101,
           "failures": 13,
@@ -11549,9 +11566,9 @@
           "adoptedTier": "codex | Coding Plan Pro(Plus x5)",
           "adoptedGroup": "codex",
           "adoptedRechargeName": "Coding Plan Pro(Plus x5)",
-          "billingType": "daily",
-          "billingTypeLabel": "日卡",
-          "multiplierFullUseAssumption": "30 day subscription；总额度池；不按周期重置",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "multiplierFullUseAssumption": "2026-06-14 用户截图确认：kapibala.asia 充值档位前 5 个为钱包充值，按 3 RMB = 10 USD 比例（实付人民币金额 / 美元额度之前识别反了）；后 2 个为 30 天订阅月卡（之前误识别为日卡）。codex 分组倍率 1x，可用于 Codex。",
           "requests": 1089,
           "correct": 1071,
           "failures": 18,
@@ -11584,9 +11601,9 @@
           "adoptedTier": "codex | Coding Plan Pro(Plus x5)",
           "adoptedGroup": "codex",
           "adoptedRechargeName": "Coding Plan Pro(Plus x5)",
-          "billingType": "daily",
-          "billingTypeLabel": "日卡",
-          "multiplierFullUseAssumption": "30 day subscription；总额度池；不按周期重置",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "multiplierFullUseAssumption": "2026-06-14 用户截图确认：kapibala.asia 充值档位前 5 个为钱包充值，按 3 RMB = 10 USD 比例（实付人民币金额 / 美元额度之前识别反了）；后 2 个为 30 天订阅月卡（之前误识别为日卡）。codex 分组倍率 1x，可用于 Codex。",
           "requests": 1203,
           "correct": 1172,
           "failures": 31,
@@ -11666,10 +11683,10 @@
         {
           "key": "groupMultipliers",
           "label": "分组倍率",
-          "count": 2,
+          "count": 4,
           "status": "captured",
           "statusLabel": "已抓取",
-          "message": "已归档 2 条，可在本详情页查看。",
+          "message": "已归档 4 条，可在本详情页查看。",
           "source": "https://kapibala.asia/api/user/self/groups"
         },
         {
