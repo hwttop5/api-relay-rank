@@ -41,9 +41,6 @@ export const metadata: Metadata = {
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_TITLE,
-  alternates: {
-    canonical: "/ranking",
-  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
@@ -61,7 +58,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: SITE_TITLE,
     description: DEFAULT_DESCRIPTION,
-    url: "/ranking",
     siteName: SITE_TITLE,
     locale: "zh_CN",
     type: "website",
