@@ -1,0 +1,175 @@
+{
+  "data": {
+    "HeaderNavModules": "",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":false},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "在线充值已恢复",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-06-01T03:56:06.951Z",
+        "type": "default"
+      },
+      {
+        "content": "现推出Claude特价分组 0.7x 限量供应 先到先得",
+        "extra": "",
+        "id": 11,
+        "publishDate": "2026-05-22T09:43:35.000Z",
+        "type": "default"
+      },
+      {
+        "content": "如果您要使用分组AWS Claude官方直连并且在ClaudeCode中使用的话需要在电脑配置一下命令否则无法使用\n\nwindows cmd中运行\n\nset CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1\n\nwindows power shell中运行\n\n$env:CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=\"1\"\n\nmacos/linux中运行\n\nexport CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-05-22T07:41:44.846Z",
+        "type": "default"
+      },
+      {
+        "content": "📢 平台公告\n为保障注册顺畅，建议使用 Gmail、QQ、163 等常用邮箱完成注册。\n若您需要使用企业或自定义域名邮箱，请发送邮件至 xxx，我们将为您开通白名单后即可正常注册。",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-05-17T07:34:47.818Z",
+        "type": "default"
+      },
+      {
+        "content": "当前机房已升级完毕，前端数据显示延迟问题已修复",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-05-07T03:40:27.574Z",
+        "type": "default"
+      },
+      {
+        "content": "《关于网络系统升级期间部分数据同步延迟的公告》\n尊敬的用户，为了提供更优质的服务体验，我司计划于 2026年5月6日8点起进行机房架构升级，预计持续 12小时。升级期间，前端页面展示的数据（如余额、状态等）可能出现短暂的同步延迟或显示异常。温馨提示： 此项升级不影响您的实际业务数据与资金安全。",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-05-06T00:00:00.000Z",
+        "type": "default"
+      },
+      {
+        "content": "新用户注册赠送100万tokens",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-04-28T01:02:19.421Z",
+        "type": "default"
+      },
+      {
+        "content": "省省API将于2026年4月27日17:30至17:55进行停机更新",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-04-27T03:22:20.365Z",
+        "type": "default"
+      },
+      {
+        "content": "在线充值已恢复",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-04-22T06:48:28.761Z",
+        "type": "default"
+      },
+      {
+        "content": "Nanobanana画图独享分组开启使用  ： Gemini 图片模型请优先使用 /v1beta/models/{model}:generateContent 调用，1K/2K/4K 模型已启用分辨率不同计费，；当前价格为 Pro 1K 0.500/次、Pro 2K 0.600/次、Pro 4K 0.800/次，Flash 1K 0.300/次、Flash 2K 0.400/次、Flash 4K 0.500/次。",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-04-21T02:36:08.696Z",
+        "type": "default"
+      },
+      {
+        "content": "在线充值服务暂时关闭需要充值请联系\n【淘宝】https://e.tb.cn/h.ip49r6I4u1xIO0O?tk=7SgZ56N7YZU MF278 「Claude 官方 API 密钥 直连中转接口 Gemini api key 高效调用」\n点击链接直接打开 或者 淘宝搜索直接打开",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-04-16T12:42:34.094Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "disclaimer_enabled": true,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://my.feishu.cn/wiki/I6eIwTuqJi9hTCksA8UcwxqmnGc",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "invite_commission_percent": 10,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "省省Token",
+    "passkey_login": false,
+    "passkey_origins": "https://tokenshengsheng.com",
+    "passkey_rp_id": "tokenshengsheng.com",
+    "passkey_user_verification": "preferred",
+    "pay_money_unit": "USD",
+    "price": 0.15,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://tokenshengsheng.com",
+    "setup": true,
+    "start_time": 1781763534,
+    "system_name": "省省Token",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "top_up_link": "",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": false,
+    "version": "",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

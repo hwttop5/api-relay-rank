@@ -1,0 +1,797 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":false}}",
+    "announcements": [
+      {
+        "content": "kiro  也有点炸了 anti 还待恢复\n",
+        "extra": "",
+        "id": 201,
+        "publishDate": "2026-06-17T17:50:42.613Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro恢复",
+        "extra": "",
+        "id": 200,
+        "publishDate": "2026-06-15T08:54:05.436Z",
+        "type": "default"
+      },
+      {
+        "content": "反重力 恢复 成本激增  0.3/次 25万以上0.4 想用的可以用吧  小文本走按量-反重力",
+        "extra": "",
+        "id": 199,
+        "publishDate": "2026-06-15T08:50:34.675Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro 号又全死了 目前不稳定\n",
+        "extra": "",
+        "id": 198,
+        "publishDate": "2026-06-15T05:44:19.111Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro封号太严重了 价格调整按次0.08 按量0.2",
+        "extra": "",
+        "id": 197,
+        "publishDate": "2026-06-14T03:37:51.472Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro 号全封了 待恢复",
+        "extra": "",
+        "id": 196,
+        "publishDate": "2026-06-13T16:44:33.920Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro 正在恢复 反重力拉闸了 \u0014ċ\u0014ċ",
+        "extra": "",
+        "id": 195,
+        "publishDate": "2026-06-13T05:25:21.184Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro风控 待恢复",
+        "extra": "",
+        "id": 194,
+        "publishDate": "2026-06-13T00:10:54.026Z",
+        "type": "default"
+      },
+      {
+        "content": "codex分组补号中 稳定性下降",
+        "extra": "",
+        "id": 193,
+        "publishDate": "2026-06-12T08:51:24.187Z",
+        "type": "default"
+      },
+      {
+        "content": "反重力恢复",
+        "extra": "",
+        "id": 192,
+        "publishDate": "2026-06-11T15:06:32.988Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro 成本上升 按次调为0.05  kiro 按量0.18 反重力暂时拉闸 等待恢复\n",
+        "extra": "",
+        "id": 191,
+        "publishDate": "2026-06-10T05:24:36.681Z",
+        "type": "default"
+      },
+      {
+        "content": "claude 官转 上架 claude-fable-5",
+        "extra": "",
+        "id": 190,
+        "publishDate": "2026-06-10T02:43:12.240Z",
+        "type": "default"
+      },
+      {
+        "content": "反重力额度少量更新",
+        "extra": "",
+        "id": 189,
+        "publishDate": "2026-06-05T09:47:35.067Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro 限时降价 按量 0.12 按次 0.04\nkiro 成本波动大注意留意公告价格",
+        "extra": "",
+        "id": 188,
+        "publishDate": "2026-06-05T05:39:59.677Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro 恢复",
+        "extra": "",
+        "id": 187,
+        "publishDate": "2026-06-04T05:25:59.972Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro 号全封了 待恢复",
+        "extra": "",
+        "id": 186,
+        "publishDate": "2026-06-04T03:10:03.469Z",
+        "type": "default"
+      },
+      {
+        "content": "反重力 claude 暂时拉闸了",
+        "extra": "",
+        "id": 185,
+        "publishDate": "2026-06-03T16:51:15.131Z",
+        "type": "default"
+      },
+      {
+        "content": "Grok 恢复",
+        "extra": "",
+        "id": 184,
+        "publishDate": "2026-06-03T14:25:52.970Z",
+        "type": "default"
+      },
+      {
+        "content": "反重力 claude  kiro claude 恢复",
+        "extra": "",
+        "id": 183,
+        "publishDate": "2026-06-03T07:13:22.278Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro  anti 暂时拉闸了 等待恢复... ....",
+        "extra": "",
+        "id": 182,
+        "publishDate": "2026-06-02T21:19:34.375Z",
+        "type": "default"
+      },
+      {
+        "content": "claude-kiro-按量计费  降至0.15/$ ",
+        "extra": "",
+        "id": 181,
+        "publishDate": "2026-06-02T03:06:28.018Z",
+        "type": "default"
+      },
+      {
+        "content": "1反重力资源紧缺 按次反重力claude不可用时 可以暂时切换至按量反重力claude 恢复时会通知\n2 6.1 9折活动开启 6.2 5:00截止",
+        "extra": "",
+        "id": 180,
+        "publishDate": "2026-06-01T06:27:09.118Z",
+        "type": "default"
+      },
+      {
+        "content": "按次kiro 限时 0.01  已恢复至0.05",
+        "extra": "",
+        "id": 179,
+        "publishDate": "2026-05-31T16:41:59.104Z",
+        "type": "default"
+      },
+      {
+        "content": "按次kiro 限时 0.01   ； 6月1日0点恢复",
+        "extra": "",
+        "id": 178,
+        "publishDate": "2026-05-30T16:55:17.342Z",
+        "type": "default"
+      },
+      {
+        "content": "新增opus-4-8\n官max 1.5/$;wf:0.3/$;按次-wf 0.05/次\n按次-kiro-claude-opus-4-8 0.05\n按量kiro 0.3/$",
+        "extra": "",
+        "id": 177,
+        "publishDate": "2026-05-29T06:11:44.000Z",
+        "type": "default"
+      },
+      {
+        "content": "特价codex调整 0.08 官claude调整为1.5",
+        "extra": "",
+        "id": 176,
+        "publishDate": "2026-05-28T06:39:19.760Z",
+        "type": "default"
+      },
+      {
+        "content": "image 价格 调整 0.1/张\ncodex新增分组特价 0.06/$",
+        "extra": "",
+        "id": 175,
+        "publishDate": "2026-05-26T13:00:07.363Z",
+        "type": "default"
+      },
+      {
+        "content": "官max 限时降价 2--->1.2/$",
+        "extra": "",
+        "id": 174,
+        "publishDate": "2026-05-26T05:38:36.481Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "gemini-3.5-flash 上架 gemini官分组\n\n按次-anti-gemini-3.5-flash-low\n反重力也上了  暂定0.02\n\naws claude 暂时拉闸",
+        "extra": "",
+        "id": 172,
+        "publishDate": "2026-05-20T04:26:56.180Z",
+        "type": "default"
+      },
+      {
+        "content": "按次-anti-gemini-3-flash-preview 反重力的flash貌似在灰度成3.2 3.5flash? 可以体验测试测试 速度巨快\n",
+        "extra": "",
+        "id": 171,
+        "publishDate": "2026-05-18T18:25:02.070Z",
+        "type": "default"
+      },
+      {
+        "content": "返佣站更新 https://rebate.sisuo.de\n首充双方各得 5%\n后续你再得 10%（好友之后的每次充值）;好友首充 $100 → 你得 $5，好友得 $5;好友再充 $100 → 你得 $10",
+        "extra": "",
+        "id": 170,
+        "publishDate": "2026-05-18T10:26:26.623Z",
+        "type": "default"
+      },
+      {
+        "content": "酒馆 SillyTavern 和 tavo在使用aws模型时需要关闭top_p如图操作 不会的私我",
+        "extra": "",
+        "id": 167,
+        "publishDate": "2026-05-18T05:37:44.000Z",
+        "type": "default"
+      },
+      {
+        "content": "按次claude更名为按次-anti",
+        "extra": "",
+        "id": 168,
+        "publishDate": "2026-05-17T16:35:14.101Z",
+        "type": "default"
+      },
+      {
+        "content": "新增 按次-aws -claude 0.1/次 官方渠道(官克) 速刷",
+        "extra": "",
+        "id": 166,
+        "publishDate": "2026-05-17T11:04:12.702Z",
+        "type": "default"
+      },
+      {
+        "content": "反重力成本激增 按次claude 25万文本以上的0.35/次，代码建议使用按量\n新增codex-pro分组 更快更稳 0.3/$\n新增按量aws0.5/$ 几乎和官claude一样 AWS 与 Anthropic 深度官方战略合作，直接提供 Bedrock 托管和原生 Claude Platform 体验，无第三方中介，数据与集成都更纯正官方。",
+        "extra": "",
+        "id": 165,
+        "publishDate": "2026-05-17T09:10:00.260Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro按次价格调整0.05/次\n按量0.2/$ 支持高缓存 opus4.7",
+        "extra": "",
+        "id": 164,
+        "publishDate": "2026-05-15T20:38:33.427Z",
+        "type": "default"
+      },
+      {
+        "content": "测一下返佣系统:https://rebate.sisuo.de\n生效时间:5月14日6:00之后  历史邀请不算\n邀请好友首充，双方各得 6% 奖励\n好友通过你的链接注册并完成首次充值后：\n你获得首充金额 6% 奖励\n好友本人也获得首充金额 6% 奖励",
+        "extra": "",
+        "id": 163,
+        "publishDate": "2026-05-14T04:58:55.621Z",
+        "type": "default"
+      },
+      {
+        "content": "计费单位调整公告\n\n为方便计费、余额展示和模型价格查看，本站已将额度展示规则调整为：\n\n1 美元额度 = 1 元人民币\n\n本次调整已同步折算用户余额、历史用量记录及模型价格，调整后用户实际人民币使用成本保持不变。\n\n如发现余额或账单显示异常，请及时联系管理员核查。\n",
+        "extra": "",
+        "id": 162,
+        "publishDate": "2026-05-13T20:44:18.328Z",
+        "type": "default"
+      },
+      {
+        "content": "gpt-image-2（0.05/次）\ngrok-4.20-fast-image（0.05/次 支持 NSFW）\n生图对话软件推荐\nhttps://kelivo.psycheas.top\n",
+        "extra": "",
+        "id": 161,
+        "publishDate": "2026-05-12T18:40:51.990Z",
+        "type": "default"
+      },
+      {
+        "content": "谷歌开杀了 好日子结束  价格即将调回 0.0999→0.25   建议暂时使用kiro / wf ，反重力降价会再通知，需要退款联系我（8折回收 赠送不算）\n",
+        "extra": "",
+        "id": 160,
+        "publishDate": "2026-05-11T11:17:50.074Z",
+        "type": "default"
+      },
+      {
+        "content": "* 🐧 **QQ充值售后群 **：`195623354`  ✅ QQ充值售后群 请充值后 填写您的站点用户名或订单号进行售后申请 其他用户看公告就行 会同步消息的\n",
+        "extra": "",
+        "id": 158,
+        "publishDate": "2026-05-10T15:33:55.993Z",
+        "type": "default"
+      },
+      {
+        "content": "特价anti claude上线 0.12/次 无截断 输出限制 1M上下文 应该能坚持一段时间 \n kiro claude  0.08/次 1m 上下文 输出限制 8 千 claude 滞销帮帮我们 可用于 cc tavo SillyTavern ",
+        "extra": "",
+        "id": 156,
+        "publishDate": "2026-05-08T06:50:25.977Z",
+        "type": "default"
+      },
+      {
+        "content": "特价 claude 渠道：反重力企业 ultra 模型在按次分组 特价-anti\n暂定： 0.09/次\n1m 上下文不截断 输出超过 8k\n不确定能活多久 谨慎充值  请并发开启速用 ",
+        "extra": "",
+        "id": 153,
+        "publishDate": "2026-05-06T13:06:16.621Z",
+        "type": "default"
+      },
+      {
+        "content": "status_code=400, {\"type\":\"error\",\"error\"::\"`top_p` must be greater than or equal to 0.95 or unset \n\n出现这个报错记得关掉top_p或则设置为0.95！！！\n一些报错大家可以问问ai 也可以解决 不用一直重试的\n",
+        "extra": "",
+        "id": 144,
+        "publishDate": "2026-04-30T07:28:13.882Z",
+        "type": "default"
+      },
+      {
+        "content": " 新增 kiro 那边的 Claude 各位可以试试\n0.09/次\n输出可能要差反重力点 智力可以测测\n按次-kiro-claude-opus-4-6\n按次-kiro-claude-opus-4-5",
+        "extra": "",
+        "id": 143,
+        "publishDate": "2026-04-29T15:32:02.019Z",
+        "type": "default"
+      },
+      {
+        "content": "新增「反重力按量计费」 分组 0.8/$，新增「claude-稳定官转-按量计费计费」 分组2.5/$。所有Claude、gpt的按量分组 均按上下文长度计费（实际输入 + 输出 Token 量计费，含缓存命中），非按次计费。按次仍保留在按次分组。\n",
+        "extra": "",
+        "id": 140,
+        "publishDate": "2026-04-28T18:24:38.590Z",
+        "type": "default"
+      },
+      {
+        "content": "便宜小克 4.6 要 g 了\n反重力额度缩减 变成原来的 1/5\n且逆向风控加强，账号成本上升 \n目前还能用 但是次数没有那么多了😢",
+        "extra": "",
+        "id": 139,
+        "publishDate": "2026-04-28T09:04:03.041Z",
+        "type": "default"
+      },
+      {
+        "content": "近期谷歌风控持续加强，除去每日两次杀号外，邮箱价格、自费的会员权益以及人力成本激增，为保持可用性，claude 4.6 系列价格上调至0.12/次，若官方额度上升或市场邮箱价格降低，模型价格也会调整的，感谢理解。\ngpt生图面板：https://gptimage.sisuo.de\n近期，Gemini模型截断验证 ，使用Gemini分组或按次分组出现截断扣费的可以在第二天统计后私聊我，补额度，仅限前一天的统计。",
+        "extra": "",
+        "id": 138,
+        "publishDate": "2026-04-26T19:49:06.827Z",
+        "type": "default"
+      },
+      {
+        "content": "gpt-5.5上线",
+        "extra": "",
+        "id": 137,
+        "publishDate": "2026-04-24T03:05:57.006Z",
+        "type": "default"
+      },
+      {
+        "content": "grok-imagine-video上线 暂定0.1/次 可以进行测试",
+        "extra": "",
+        "id": 136,
+        "publishDate": "2026-04-21T07:41:59.406Z",
+        "type": "default"
+      },
+      {
+        "content": "openai 开始风控了 倍率调整 至0.25/$",
+        "extra": "",
+        "id": 135,
+        "publishDate": "2026-04-20T04:51:00.850Z",
+        "type": "default"
+      },
+      {
+        "content": "为感谢大家的支持，\n即日（发布公告）起至 2026年4月26日24时，凡 新老用户前五笔充值金额每笔超过 10 $(本站是0.45元获得1$)，均可获得 额外 20% 奖励。\n参与方式：私聊我提供您的用户名，即可领取奖励。\n温馨提示：\n请确保充值金额符合条件，奖励将在确认后及时发放。\n必须私聊我 目前暂无自助处理，错过活动时间视为放弃。",
+        "extra": "",
+        "id": 134,
+        "publishDate": "2026-04-19T05:00:25.161Z",
+        "type": "default"
+      },
+      {
+        "content": "签到迁移：进群私聊abot或者在群里 发送/绑定 ID 可以使用/签到 进行签到获取适量额度。",
+        "extra": "",
+        "id": 133,
+        "publishDate": "2026-04-17T05:05:49.850Z",
+        "type": "default"
+      },
+      {
+        "content": "官方又削减额度了 拉新奖励活动暂时停止 签到活动保留",
+        "extra": "",
+        "id": 132,
+        "publishDate": "2026-04-16T17:06:24.962Z",
+        "type": "default"
+      },
+      {
+        "content": "最近各模型风控都比较严，建议加入QQ通知群，获取最新信息。",
+        "extra": "",
+        "id": 131,
+        "publishDate": "2026-04-15T06:26:49.967Z",
+        "type": "default"
+      },
+      {
+        "content": "风控加强 Claude opus 价格上调1分 即:0.09人民币/次(0.2$)",
+        "extra": "",
+        "id": 128,
+        "publishDate": "2026-04-11T07:36:59.232Z",
+        "type": "default"
+      },
+      {
+        "content": "需要推广激励的 可以进一下小红书群",
+        "extra": "",
+        "id": 125,
+        "publishDate": "2026-04-09T10:22:59.228Z",
+        "type": "default"
+      },
+      {
+        "content": "官方逐渐恢复 🙏 大伙可以试试 昨天的大面积故障源于 Google 服务异常，全球都一样。感谢各位耐心与理解，如遇异常，请及时反馈，谢谢大家一直以来的支持。",
+        "extra": "",
+        "id": 124,
+        "publishDate": "2026-04-08T21:20:09.375Z",
+        "type": "default"
+      },
+      {
+        "content": "谷歌反重力暂时拉闸了 目前 gemini 系列 Claude4.6 暂不稳定（Claude sonnet 4.5， ChatGPT 系列 等正常） ",
+        "extra": "",
+        "id": 123,
+        "publishDate": "2026-04-08T06:14:14.650Z",
+        "type": "default"
+      },
+      {
+        "content": "最近额度都少了 遇见空回或者其他报错多重试几次或者切换其他模型  大伙用多少充多少就好 不会跑路的 有问题随时联系我",
+        "extra": "",
+        "id": 121,
+        "publishDate": "2026-03-25T07:03:59.400Z",
+        "type": "success"
+      },
+      {
+        "content": "价格调整\n按次-Gemini Pro：0.045 → 0.05 元/次\nClaude sonnet-4-5：0.045 → 0.03 元/次\nClaude sonnet-4-6：0.065 → 0.07 元/次\nClaude opus-4-6：0.07 → 0.08 元/次",
+        "extra": "",
+        "id": 120,
+        "publishDate": "2026-03-25T06:23:21.438Z",
+        "type": "warning"
+      },
+      {
+        "content": "Claude报错422 可能是参数没设置好 温度和top_k, 最大输出长度都要设置在正常的范围内,",
+        "extra": "",
+        "id": 119,
+        "publishDate": "2026-03-24T19:09:47.798Z",
+        "type": "default"
+      },
+      {
+        "content": "特价模型在每日凌晨 2 点~10 点(可能不固定 )开放 (按次分组)\n包含模型:\n特价-gemini-3.1-pro-preview- thinking  价格:0.027 元/次(0.06$)\n特价-claude-opus-4-6-thinking,价格:0.04 元/次(0.09$)\n具体可在模型广场查看",
+        "extra": "",
+        "id": 117,
+        "publishDate": "2026-03-10T16:58:53.075Z",
+        "type": "success"
+      },
+      {
+        "content": "3.10\n1.按量分钟下的2.5pro恢复按量\n2.codex分钟价格变动 0.18/$ ➡️0.25/$\n3.目前各模型都在风控 每天都在补号 可能会有不稳定 ",
+        "extra": "",
+        "id": 116,
+        "publishDate": "2026-03-10T13:48:10.133Z",
+        "type": "default"
+      },
+      {
+        "content": "gemini flash ,2.5pro  目前额度较少 统一按次计费",
+        "extra": "",
+        "id": 115,
+        "publishDate": "2026-03-08T08:29:52.486Z",
+        "type": "default"
+      },
+      {
+        "content": "各模型已稳定",
+        "extra": "",
+        "id": 114,
+        "publishDate": "2026-03-07T10:35:27.157Z",
+        "type": "default"
+      },
+      {
+        "content": "2月21近期谷歌各方面都在严查, gemini  2.5/3.0/3.1 按次pro系列 现已恢复 ,0.045元/次(thinking 0.05/次),渠道来源:aistudio vertex cli混合",
+        "extra": "",
+        "id": 109,
+        "publishDate": "2026-02-21T13:01:40.881Z",
+        "type": "success"
+      },
+      {
+        "content": "按次的 gemini pro 系列维护中 可以选择其他分组或模型",
+        "extra": "",
+        "id": 108,
+        "publishDate": "2026-02-20T14:05:01.612Z",
+        "type": "default"
+      },
+      {
+        "content": "按次 3.0 暂时可用  按量 3.1 目前还没正式发布额度较少",
+        "extra": "",
+        "id": 106,
+        "publishDate": "2026-02-19T09:59:15.047Z",
+        "type": "default"
+      },
+      {
+        "content": "谷歌新模型 gemini-3.1-pro-preview  已上架(未正式发布 额度不多) \n风控继续 gemini 按次都还待恢复",
+        "extra": "",
+        "id": 105,
+        "publishDate": "2026-02-19T08:44:42.419Z",
+        "type": "default"
+      },
+      {
+        "content": "新增claude(支持claudecode) sonnet ,opus 4.6, grok-4.2,下架gemini特价,,最近谷歌不稳定,可以多重试几次🙏  近期价格变动见首页.",
+        "extra": "",
+        "id": 104,
+        "publishDate": "2026-02-18T20:34:01.145Z",
+        "type": "warning"
+      },
+      {
+        "content": "按次分组、Claude分组新增claude-opus-4-6",
+        "extra": "",
+        "id": 101,
+        "publishDate": "2026-02-09T22:18:14.233Z",
+        "type": "success"
+      },
+      {
+        "content": "新增画图分组 使用教程间首页(docs.sisuo.de)3.2.3\nbanana\n模型价格 ¥0.045\nbanana-pro\n模型价格 ¥0.140\ngrok-imagine-1.0\n模型价格 ¥0.010",
+        "extra": "",
+        "id": 100,
+        "publishDate": "2026-02-08T23:33:10.076Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "新增Chatgpt(codex)分组，按量：￥0.25/$，按次-gpt：￥0.025/次",
+        "extra": "",
+        "id": 98,
+        "publishDate": "2026-02-03T17:31:52.570Z",
+        "type": "default"
+      },
+      {
+        "content": "按次-特价-gemini-3-pro-preview\n¥0.018/次",
+        "extra": "",
+        "id": 96,
+        "publishDate": "2026-01-14T11:03:40.231Z",
+        "type": "default"
+      },
+      {
+        "content": "已恢复",
+        "extra": "",
+        "id": 95,
+        "publishDate": "2026-01-09T08:58:48.188Z",
+        "type": "default"
+      },
+      {
+        "content": "目前Claude暂时不稳定 已下架 \n按量特价也暂时取消",
+        "extra": "",
+        "id": 94,
+        "publishDate": "2026-01-08T10:08:17.270Z",
+        "type": "default"
+      },
+      {
+        "content": "新增gemini逆向按量计费分组\n对应0.3元/$",
+        "extra": "",
+        "id": 93,
+        "publishDate": "2026-01-02T17:07:03.963Z",
+        "type": "default"
+      },
+      {
+        "content": "小香蕉恢复 \n按次-gemini-2.5-flash-image （￥0.04/次）",
+        "extra": "",
+        "id": 92,
+        "publishDate": "2025-12-28T08:07:59.876Z",
+        "type": "default"
+      },
+      {
+        "content": "claude按次降价\n按次-claude-sonnet-4-5-thinking  0.03元/次\n按次-claude-opus-4-5-thinking 0.04元/次\n接口类型选择openai格式或者Claude格式",
+        "extra": "",
+        "id": 91,
+        "publishDate": "2025-12-27T13:18:31.914Z",
+        "type": "default"
+      },
+      {
+        "content": "按次计费分组新增\n按次-特价-gemini-3-pro-preview  ¥0.02/次\n",
+        "extra": "",
+        "id": 90,
+        "publishDate": "2025-12-24T12:07:36.803Z",
+        "type": "default"
+      },
+      {
+        "content": "二、\n按次分组新增大香蕉（可能有审核  ￥0.1/次）\n按次-gemini-3-pro-image-preview \n使用方式：\n画图：一只小猫\n（一定要有画图二字，或者有完整的提示词\n一张高质量的照片，一只金毛寻回犬在夕阳西下的金色光辉中，在长满野草的田野里快乐地奔跑。逆光，毛发发光，表情极其快乐，电影感。）",
+        "extra": "",
+        "id": 89,
+        "publishDate": "2025-12-23T22:26:59.867Z",
+        "type": "default"
+      },
+      {
+        "content": "一、claude逆向分组 支持Claudecode使用(按量￥0.225/$)\n使用方法 创建claude逆向分组令牌 终端（powershell）依次输入\n$env:ANTHROPIC_BASE_URL=\"https://newapi.sisuo.de\"\n$env:ANTHROPIC_AUTH_TOKEN=\"sk-....\"\nClaude\n",
+        "extra": "",
+        "id": 88,
+        "publishDate": "2025-12-23T22:12:02.211Z",
+        "type": "default"
+      },
+      {
+        "content": "🛠 模型维护：<br>\n画图模型：由于技术维护，暂时下架。<br>\n💰 价格实时调整（按次计费）：<br>\nGemini Flash 系列 (2.5/3.0/Thinking/抗截断/Search)：0.009元/次<br>\nGemini Pro 系列 (2.5/3.0/Thinking/抗截断/Search)：0.03元/次<br>\nClaude-Opus-4.5-Thinking：0.05元/次<br>\nClaude-Sonnet-4.5-Thinking：0.035元/次<br>",
+        "extra": "",
+        "id": 87,
+        "publishDate": "2025-12-20T22:50:34.865Z",
+        "type": "default"
+      },
+      {
+        "content": "新增<br>\n按次-gemini-3-flash-preview<br>\n￥0.009/次<br>",
+        "extra": "",
+        "id": 86,
+        "publishDate": "2025-12-17T18:28:24.527Z",
+        "type": "default"
+      },
+      {
+        "content": "本站暂时无邀请收益 若真的安利成功 可以私我获取兑换码<br>\n12月17日开启限时特价！：<br>\n按次分组新增模型：\n\n按次-claude-sonnet-4-5-thinking ￥0.04/次<br>\n按次-claude-opus-4-5-thinking    ￥0.055/次<br>\n\n\n\n",
+        "extra": "",
+        "id": 85,
+        "publishDate": "2025-12-17T11:56:19.000Z",
+        "type": "success"
+      },
+      {
+        "content": "受风控影响 最新价格变动情况\n按次\n2.5pro  ￥0.02每次 →￥0.025每次\n3.0pro  ￥0.03每次→￥0.037每次\n按量\n￥0.5/$→￥0.45/$",
+        "extra": "",
+        "id": 84,
+        "publishDate": "2025-12-11T16:33:19.771Z",
+        "type": "default"
+      },
+      {
+        "content": "近期谷歌风控超级严重 可能不太稳定 多重试几次，如果一直这么风控，可能没有按次计费了或者没有这么便宜了  所以大家 充值尽量随充随用",
+        "extra": "",
+        "id": 83,
+        "publishDate": "2025-12-10T19:34:35.093Z",
+        "type": "default"
+      },
+      {
+        "content": "https://image.sisuo.de\n生图站点  可以填入  画图分组 密钥在这里使用",
+        "extra": "",
+        "id": 82,
+        "publishDate": "2025-12-02T20:58:40.026Z",
+        "type": "default"
+      },
+      {
+        "content": "分组：\"banana(谷歌画图模型)\": \"\n🍌小香蕉(gemini-2.5-flash-image)0.04元/次\n🍌大香蕉pro(gemini-3-pro-image-preview):0.15元/次(可能不稳定\n",
+        "extra": "",
+        "id": 81,
+        "publishDate": "2025-12-01T21:24:01.000Z",
+        "type": "default"
+      },
+      {
+        "content": "新增按次分组，未来将逐步迁移\n目前 \"按次计费\"分组内有模型 ： 按次-gemini3.0, 0.0299元/次 ;  按次-gemini2.5, 0.02元/次\"",
+        "extra": "",
+        "id": 79,
+        "publishDate": "2025-11-25T22:38:59.299Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "受谷歌风控影响 公益分组 暂停使用！\n各位可以先看看别的公益站点 恢复后会通知的 感谢理解🙏🙏🙏",
+        "extra": "",
+        "id": 78,
+        "publishDate": "2025-11-20T18:20:05.353Z",
+        "type": "default"
+      },
+      {
+        "content": "11月19日晚 公益分组 Gemini 暂不可用 恢复时间待定 （二百多key都死了。。",
+        "extra": "",
+        "id": 77,
+        "publishDate": "2025-11-20T14:07:00.000Z",
+        "type": "default"
+      },
+      {
+        "content": "gemini 3.0已上架gemini分组 模型名称gemini-3-pro-preview\n（按量收费0.5元每刀  计费保持官方计费同步即 2$ 每百万输入 12$每百万输出",
+        "extra": "",
+        "id": 76,
+        "publishDate": "2025-11-18T21:32:29.997Z",
+        "type": "success"
+      },
+      {
+        "content": "\n 各位  Gemini逆向要燃尽了  估计要等到周一谷歌上班才能解决了   逆向分组 以及按次分组 临时涨价 为 0.02元每次  按量 0.24元每刀  接受不了的 可以先用flash或者公益分组  等我恢复 感谢理解 之后好了会恢复原价 @全体成员\n",
+        "extra": "",
+        "id": 75,
+        "publishDate": "2025-11-15T08:46:24.838Z",
+        "type": "default"
+      },
+      {
+        "content": "gemini  逆向分组目前彻底风控  可以暂时先用 gemini 分组 顶一下 ",
+        "extra": "",
+        "id": 74,
+        "publishDate": "2025-11-15T03:13:07.798Z",
+        "type": "default"
+      },
+      {
+        "content": "gemini又一波风控 修复中",
+        "extra": "",
+        "id": 73,
+        "publishDate": "2025-11-15T02:21:27.438Z",
+        "type": "default"
+      },
+      {
+        "content": "谷歌又一轮风控 大量账号403了 目前可能不稳定 还在修复中\n",
+        "extra": "",
+        "id": 72,
+        "publishDate": "2025-11-14T06:19:29.180Z",
+        "type": "error"
+      },
+      {
+        "content": "gemini-2.5-pro-free 如果长时间出现 You exceeded your current quota,代表已经被榨干了 过一会再使用或者 等每天的下午三四点 （谷歌重置次数）",
+        "extra": "",
+        "id": 71,
+        "publishDate": "2025-11-13T19:56:21.066Z",
+        "type": "warning"
+      },
+      {
+        "content": "codex已恢复（代码使用   0.2元/$  新增gpt5.1）",
+        "extra": "",
+        "id": 70,
+        "publishDate": "2025-11-13T09:59:53.125Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "green",
+        "description": "sisuo域名",
+        "id": 1,
+        "route": "主站",
+        "url": "https://newapi.sisuo.de"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "CC Switch": "ccswitch"
+      }
+    ],
+    "checkin_enabled": true,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": true,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": false,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "重新建一个对应分组的令牌🙏，",
+        "id": 1,
+        "question": "API 提示无可用模型"
+      },
+      {
+        "answer": "free模型来源于aistudio key 上下文（仅12万~25万）、请求次数有限制 不是特别的稳定 ",
+        "id": 2,
+        "question": "free模型与不带后缀的区别？"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "VD25YEmdaJvC0JhgTSVViHpILGKWe5tW",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://pic2.ziyuan.wang/user/wlss/2026/03/favicon_84eaec8c95b51.png",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "sisuo-api",
+    "passkey_login": false,
+    "passkey_origins": "https://newapi.sisuo.de",
+    "passkey_rp_id": "newapi.sisuo.de",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
+    "price": 1,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "register_enabled": true,
+    "self_use_mode_enabled": false,
+    "server_address": "https://newapi.sisuo.de",
+    "setup": true,
+    "start_time": 1781497602,
+    "stripe_unit_price": 8,
+    "system_name": "SISUO-API",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "classic",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": false,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": false,
+    "version": "v1.0.0-rc.11",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

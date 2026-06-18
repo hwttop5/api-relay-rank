@@ -1,0 +1,291 @@
+{
+  "auto_groups": [
+    "level1"
+  ],
+  "data": [
+    {
+      "model_name": "grok-4.20-fast",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0015,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "jiankong",
+        "level1",
+        "level2",
+        "level3"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-nx",
+      "vendor_id": 4,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.001,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "level1",
+        "level2",
+        "level3"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-multi-agent-console",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0015,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "level3",
+        "jiankong",
+        "level1",
+        "level2"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-multi-agent-xhigh",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0015,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "jiankong",
+        "level1",
+        "level2",
+        "level3"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.3-console",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0015,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "jiankong",
+        "level1",
+        "level2",
+        "level3"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.3-high",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0015,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "level3",
+        "jiankong",
+        "level1",
+        "level2"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-build-console",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.0015,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "level3",
+        "jiankong",
+        "level1",
+        "level2"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "codex": 1,
+    "level1": 1,
+    "level2": 1
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "gemini": {
+      "path": "/v1beta/models/{model}:generateContent",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "codex": "Codex分组",
+    "level1": "默认分组",
+    "level2": "用户分组"
+  },
+  "vendors": [
+    {
+      "id": 3,
+      "name": "GitHub Copilot",
+      "icon": "GithubCopilot"
+    },
+    {
+      "id": 5,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 6,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 1,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 4,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 7,
+      "name": "xAI",
+      "icon": "XAI"
+    },
+    {
+      "id": 8,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 9,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 2,
+      "name": "Vertex",
+      "icon": "VertexAI.Color"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "",
+      "SidebarModulesAdmin": "",
+      "announcements_enabled": false,
+      "api_info_enabled": false,
+      "chats": [
+        {
+          "CHECK": "https://check.crond.dev/?settings={\"key\":\"{key}\",\"url\":\"{address}\",\"models\":[\"gemini-2.5-pro-exp-03-25\"],\"timeout\":10,\"concurrency\":2,\"closeAnnouncement\":true,\"closeChat\":true}"
+        },
+        {
+          "ChatGPT Next Web 官方示例": "https://app.nextchat.dev/#/?settings={\"key\":\"{key}\",\"url\":\"{address}\"}"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://docs.newapi.pro",
+      "email_verification": false,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq_enabled": false,
+      "footer_html": "本站API适用于测试和体验目的，请自觉遵守您当地法律法规，切勿用于非法用途，本站不承担任何法律责任。",
+      "github_client_id": "",
+      "github_oauth": false,
+      "linuxdo_client_id": "4OtAotK6cp4047lgPD4kPXNhWRbRdTw3",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": true,
+      "logo": "https://i.111666.best/image/UQ3YrIrF59JZfaEFGJabrr.png",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "New API",
+      "passkey_login": false,
+      "passkey_origins": "https://x666.me",
+      "passkey_rp_id": "x666.me",
+      "passkey_user_verification": "preferred",
+      "password_login_enabled": true,
+      "password_register_enabled": false,
+      "price": 7.3,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "USD",
+      "quota_per_unit": 500000,
+      "register_enabled": false,
+      "self_use_mode_enabled": false,
+      "server_address": "https://x666.me",
+      "setup": true,
+      "start_time": 1781660180,
+      "stripe_unit_price": 8,
+      "system_name": "薄荷 API",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "classic",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": false,
+      "usd_exchange_rate": 7.3,
+      "user_agreement_enabled": false,
+      "version": "v1.0.0-rc.10",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://x666.me/api/pricing"
+}

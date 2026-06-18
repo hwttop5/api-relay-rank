@@ -1,0 +1,347 @@
+{
+  "data": {
+    "HeaderNavModules": "",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "疯狂星期四，618活动。上线0.08倍率gpt，分组选择临时低价分组。说明：低价分组渠道价格低，稳定性也差一些，请按需选择，求低价用0.08倍率，要稳定可以现在0.2或者0.4倍率的gpt",
+        "extra": "",
+        "id": 42,
+        "publishDate": "2026-06-18T01:40:13.766Z",
+        "type": "default"
+      },
+      {
+        "content": "已完成订阅套餐转按量计费，相关分组已经重置，若无法使用，可新建分组试试。gpt 使用gpt分组",
+        "extra": "",
+        "id": 41,
+        "publishDate": "2026-06-16T14:05:26.433Z",
+        "type": "default"
+      },
+      {
+        "content": "今晚20:00后套餐停止支持，原订购套餐的用户全部转为按量计费。今日额度用完后，可联系QQ群联系群主，或邮件联系：xxx 今天统一处理。",
+        "extra": "",
+        "id": 40,
+        "publishDate": "2026-06-15T05:45:04.852Z",
+        "type": "default"
+      },
+      {
+        "content": "claude-cc 分组低价基本也凉了，封号太快，时断时续。其他的claude分组，分别是google aws Anthropic这几家的官方号中转，成本不一样，价格也不一样。",
+        "extra": "",
+        "id": 39,
+        "publishDate": "2026-06-15T04:56:56.772Z",
+        "type": "default"
+      },
+      {
+        "content": "成本上涨，订阅套餐停卖 , 已购买的套餐暂不影响。后续转向按量计费：https://coding101.site 。不建议本站按量计费使用文本模型，若需按量使用文本模型，可选择按量计费站",
+        "extra": "",
+        "id": 38,
+        "publishDate": "2026-06-15T00:38:22.153Z",
+        "type": "default"
+      },
+      {
+        "content": "这两天gpt codex分组不稳，可以先用codex-pro分组。也可使用其他模型。 claude模型，选择claude-cc分组。grok模型选择grok-codex分组",
+        "extra": "",
+        "id": 37,
+        "publishDate": "2026-06-12T08:20:54.490Z",
+        "type": "default"
+      },
+      {
+        "content": "claude全系列模型重新上线，包月套餐codex分组支持调用。按量付费0.05倍率，分组选择cladue-cc",
+        "extra": "",
+        "id": 36,
+        "publishDate": "2026-06-09T06:47:47.896Z",
+        "type": "default"
+      },
+      {
+        "content": "Grok系列视频生成模型上线,按量计费；​grok-imagine-video 0.1元/秒；grok-imagine-video-1.5-preview 0.25元/秒；分组选择grok-cli",
+        "extra": "",
+        "id": 35,
+        "publishDate": "2026-06-08T15:12:28.766Z",
+        "type": "default"
+      },
+      {
+        "content": "grok系列模型上线，当前gpt套餐，支持grok系列文本模型",
+        "extra": "",
+        "id": 34,
+        "publishDate": "2026-06-07T12:03:33.838Z",
+        "type": "default"
+      },
+      {
+        "content": "由于claude成本升高，用的人又少，维护下去意义不大， 目前claude已下架",
+        "extra": "",
+        "id": 33,
+        "publishDate": "2026-06-05T01:15:01.592Z",
+        "type": "default"
+      },
+      {
+        "content": "当前gpt两个分组codex cli和codex pro分组，一个plus号池，一个pro号池，稳定性上pro更好，使用以及效果没区别。大家可自由选择。",
+        "extra": "",
+        "id": 32,
+        "publishDate": "2026-06-02T07:58:00.046Z",
+        "type": "default"
+      },
+      {
+        "content": "网站支持开普票。如有需要用户，消费300元以上，请加群联系管理员，开发票。",
+        "extra": "",
+        "id": 31,
+        "publishDate": "2026-06-01T04:53:28.595Z",
+        "type": "default"
+      },
+      {
+        "content": "5月28日晚18:00—凌晨3:00，系统维护，请避开此时间段使用",
+        "extra": "",
+        "id": 30,
+        "publishDate": "2026-05-28T08:43:59.136Z",
+        "type": "default"
+      },
+      {
+        "content": "6月邀请用户充值赠送额度活动。活动时间：5月16日—6月18日晚20：00。活动内容：老用户用自己的邀请码邀请用户注册充值，根据被邀请人数量以及充值金额，可获赠天卡，周卡，月卡。活动结束后统一发放",
+        "extra": "",
+        "id": 29,
+        "publishDate": "2026-05-25T09:01:40.298Z",
+        "type": "default"
+      },
+      {
+        "content": "按量计费站上线高缓存的claude, 支持claude 4..6 ,4.7系列模型。分组选择claude-cc2, 站点地址：http://coding101.site",
+        "extra": "",
+        "id": 28,
+        "publishDate": "2026-05-18T11:23:16.541Z",
+        "type": "default"
+      },
+      {
+        "content": "Claude 4.7用量耗尽，使用Claude的用户可以换4.6。当前claude-cc1分组倍率已调至0.1",
+        "extra": "",
+        "id": 27,
+        "publishDate": "2026-05-13T12:49:17.101Z",
+        "type": "default"
+      },
+      {
+        "content": "Claude全系列模型上线，倍率低至0.2。订购包月套餐用户无权限调用，可以新注册账号按量付费",
+        "extra": "",
+        "id": 26,
+        "publishDate": "2026-05-10T12:52:40.454Z",
+        "type": "default"
+      },
+      {
+        "content": "5月邀请用户充值赠送额度活动。活动要求： 1.邀请1-3人用户充值：获赠天卡，100$/天 ；2.邀请4-7人用户充值：获赠周卡，50$/天；3.邀请8—10人用户充值：获赠周卡，100$/天；4.邀请11人以上用户充值：获赠月卡：50$/天\n 特殊奖项：部分老用户邀请人数多，或者邀请人数少，但是充值多的，都会视情况再次叠加周卡或月卡；",
+        "extra": "",
+        "id": 25,
+        "publishDate": "2026-05-10T04:20:40.223Z",
+        "type": "default"
+      },
+      {
+        "content": "目前成本依旧很高，后面可能随时调整套餐用量及价格",
+        "extra": "",
+        "id": 24,
+        "publishDate": "2026-05-09T13:17:17.717Z",
+        "type": "default"
+      },
+      {
+        "content": "关于免费的国产模型调用报错问题：国产模型是我自己花钱买的包月套餐，给大家免费用。但厂商每天，每周的调用有限制。大家可以买gpt套餐，套餐每日用量不够时候，用国产模型顶一下",
+        "extra": "",
+        "id": 23,
+        "publishDate": "2026-05-08T12:26:29.407Z",
+        "type": "default"
+      },
+      {
+        "content": "关于网站优化后，小部分用户访问慢的问题：网站支持国内用户直接访问，访问时候请关闭代理，若开代理，当部分代理节点有问题时候，会导致速度慢，甚至无法访问",
+        "extra": "",
+        "id": 22,
+        "publishDate": "2026-05-08T12:03:02.533Z",
+        "type": "default"
+      },
+      {
+        "content": "网站优化过，速度非常快。自动化长任务的用户，注意token消耗！！！ gpt-5.5价格是gpt-5.4两倍，消耗速度会更快。任务不复杂情况下，优先选用gpt-5.4性价比更高。一般编程任务，小脚本之类的gpt-5.3-codex都能胜任，性价比更高。",
+        "extra": "",
+        "id": 21,
+        "publishDate": "2026-05-08T00:51:06.306Z",
+        "type": "default"
+      },
+      {
+        "content": "本站将于5月8日凌晨升级维护，短暂关闭。",
+        "extra": "",
+        "id": 20,
+        "publishDate": "2026-05-07T16:28:23.846Z",
+        "type": "default"
+      },
+      {
+        "content": "关于近期gpt-5.5的报错问题，一方面是由于官方算力不足导致的，另一方面是晚上用网高峰大网环境较差导致时延较长。若报错，可切换5.4或5.3-codex。由于gpt-5.5价格是gpt-5.4的两倍，消耗速度也是gpt-5.4的两倍，性能上绝大多数任务两者差别不大，优选选用gpt-5.4更划算。",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-05-06T12:53:42.622Z",
+        "type": "default"
+      },
+      {
+        "content": "由于OpenAI政策收紧，成本大幅上涨，部分套餐将于五一节后涨价。",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-05-03T00:38:24.890Z",
+        "type": "default"
+      },
+      {
+        "content": "目前轻量级月卡，用量已经提升到50$/天，今晚将涨价至25元/月。gpt天卡用量将从50$，下调至40$",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-04-29T02:07:14.089Z",
+        "type": "default"
+      },
+      {
+        "content": "网站刚上线低价吸引用户，结果很多迫害妄想症人，还没用就说是假的。为感谢网安同行支持，限时上线护网攻防套餐：周卡-40元/周-额度600$/日，月卡-200元/月-额度1200$/日。 低价日子不多了，且用且珍惜。",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2026-04-26T15:39:52.408Z",
+        "type": "default"
+      },
+      {
+        "content": "gpt-5.5已更新",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-04-24T13:41:46.676Z",
+        "type": "default"
+      },
+      {
+        "content": "gpt-5.4 更新",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2026-03-05T21:25:00.481Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "通用场景，全球加速",
+        "id": 1,
+        "route": "全球加速",
+        "url": "https://codex101.site"
+      },
+      {
+        "color": "green",
+        "description": "全球加速",
+        "id": 2,
+        "route": "备用域名1",
+        "url": "https://codeai101.site"
+      },
+      {
+        "color": "yellow",
+        "description": "国内优化访问域名",
+        "id": 3,
+        "route": "国内优化访问域名",
+        "url": "https://new-cdn.dg8.site"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://www.yuque.com/laibaoerzhongjifen/ld031w/bzi5lv1cppqznwqx?singleDoc#%20%E3%80%8ACodework%E8%AE%A2%E9%98%85%E7%AB%99%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%E3%80%8B",
+    "email_verification": false,
+    "enable_batch_update": false,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "售后QQ群：1103333810，加群请填写充值或购买套餐的用户名，未消费用户不能加入\n邮件：xxx",
+        "id": 1,
+        "question": "联系方式"
+      },
+      {
+        "answer": "需求量大联系客服获取充值折扣",
+        "id": 2,
+        "question": "折扣优惠"
+      },
+      {
+        "answer": "https://codeworksta.com/",
+        "id": 3,
+        "question": "按次计费-API"
+      },
+      {
+        "answer": "https://codex101.site/",
+        "id": 4,
+        "question": "按量计费-API"
+      },
+      {
+        "answer": "https://0v0.pro/",
+        "id": 5,
+        "question": "0v0-AI助手"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "<style>   footer {     display:none;  text-align: center;     padding: 8px 0;     font-size: 12px;              /* 字体小一点 */     color: #666666;               /* 颜色柔和 */     font-family: Arial, sans-serif;   } </style>  <footer>   <p>&copy; 2023 - 2025 LLM-ALL API. All rights reserved.</p> </footer>",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/poe-color.svg",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "Codework",
+    "passkey_login": false,
+    "passkey_origins": "https://codex101.site",
+    "passkey_rp_id": "codex101.site",
+    "passkey_user_verification": "preferred",
+    "price": 1,
+    "privacy_policy_enabled": true,
+    "quota_display_type": "CNY",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://codex101.site",
+    "setup": true,
+    "start_time": 1781145399,
+    "stripe_unit_price": 8,
+    "system_name": "Codework API（内部站点）",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "top_up_link": "",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": true,
+    "version": "0.5.5",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

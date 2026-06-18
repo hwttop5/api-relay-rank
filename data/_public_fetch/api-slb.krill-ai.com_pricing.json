@@ -17,7 +17,7 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 155,
+        "stock": 1503,
         "group_rules": [
           {
             "id": 10,
@@ -60,7 +60,7 @@
         "campaign_name": null,
         "channel_name": "国产模型套餐",
         "total_credits": 9900,
-        "stock": 1049,
+        "stock": 1011,
         "group_rules": []
       },
       {
@@ -77,7 +77,7 @@
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 731,
+        "stock": 930,
         "group_rules": [
           {
             "id": 13,
@@ -120,7 +120,7 @@
         "campaign_name": null,
         "channel_name": "国产模型套餐",
         "total_credits": 20699,
-        "stock": 112,
+        "stock": 104,
         "group_rules": []
       },
       {
@@ -138,24 +138,24 @@
         "campaign_name": null,
         "channel_name": "国产模型套餐",
         "total_credits": 43999,
-        "stock": 109,
+        "stock": 108,
         "group_rules": []
       },
       {
         "id": 22,
         "name": "轻享周卡",
         "description": "<blockquote><p>入门性价比优选，适合日常体验或短期使用。</p></blockquote><p></p><p></p>",
-        "daily_quota_usd": "60.000000",
+        "daily_quota_usd": "420.000000",
         "price": "84.000000",
         "duration_days": 7,
-        "billing_type": "usd_daily",
+        "billing_type": "usd_weekly",
         "rate_limit_5h": null,
         "rate_limit_weekly": null,
         "rate_limit_monthly": null,
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 871,
+        "stock": 1868,
         "group_rules": [
           {
             "id": 31,
@@ -187,17 +187,17 @@
         "id": 4,
         "name": "尊享周卡",
         "description": "<blockquote><p>低延迟专线，适合高频使用、AI工具及开发者。</p></blockquote><p></p><p></p>",
-        "daily_quota_usd": "120.000000",
+        "daily_quota_usd": "840.000000",
         "price": "166.000000",
         "duration_days": 7,
-        "billing_type": "usd_daily",
+        "billing_type": "usd_weekly",
         "rate_limit_5h": null,
         "rate_limit_weekly": null,
         "rate_limit_monthly": null,
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 1050,
+        "stock": 960,
         "group_rules": [
           {
             "id": 34,
@@ -229,17 +229,17 @@
         "id": 43,
         "name": "轻享月卡",
         "description": null,
-        "daily_quota_usd": "60.000000",
+        "daily_quota_usd": "450.000000",
         "price": "360.000000",
         "duration_days": 30,
-        "billing_type": "usd_daily",
+        "billing_type": "usd_weekly",
         "rate_limit_5h": null,
         "rate_limit_weekly": null,
         "rate_limit_monthly": null,
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 1027,
+        "stock": 704,
         "group_rules": [
           {
             "id": 37,
@@ -271,17 +271,17 @@
         "id": 44,
         "name": "尊享月卡",
         "description": null,
-        "daily_quota_usd": "120.000000",
+        "daily_quota_usd": "900.000000",
         "price": "720.000000",
         "duration_days": 30,
-        "billing_type": "usd_daily",
+        "billing_type": "usd_weekly",
         "rate_limit_5h": null,
         "rate_limit_weekly": null,
         "rate_limit_monthly": null,
         "campaign_price": null,
         "campaign_name": null,
         "channel_name": "Codex套餐",
-        "stock": 1052,
+        "stock": 896,
         "group_rules": [
           {
             "id": 40,

@@ -913,5 +913,393 @@
     "source": "user_screenshot_verified_pricing_page",
     "evidenceUrl": "https://kapibala.asia",
     "authoritative": true
+  },
+  "ai.nexahub.one": {
+    "stationTypeHint": "mixed",
+    "groupMultipliers": [
+      {
+        "groupName": "Codex 余额计费",
+        "groupMultiplier": 0.065,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "ccmax满血（测试通过）",
+        "groupMultiplier": 0.7,
+        "codexEligible": false,
+        "usageLabel": "CCMax"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "NexaHub wallet topup 10 USD",
+        "billingType": "permanent",
+        "rmbAmount": 10,
+        "usdAmount": 10,
+        "rechargeLocation": "NexaHub 充值/订阅页余额充值",
+        "expiresRule": "用户截图确认充值页可见快捷金额；本轮按页面可见 1:1 口径，不采用接口 balance_recharge_multiplier=15；页面未注明有效期"
+      },
+      {
+        "rechargeName": "NexaHub wallet topup 20 USD",
+        "billingType": "permanent",
+        "rmbAmount": 20,
+        "usdAmount": 20,
+        "rechargeLocation": "NexaHub 充值/订阅页余额充值",
+        "expiresRule": "用户截图确认充值页可见快捷金额；本轮按页面可见 1:1 口径，不采用接口 balance_recharge_multiplier=15；页面未注明有效期"
+      },
+      {
+        "rechargeName": "NexaHub wallet topup 50 USD",
+        "billingType": "permanent",
+        "rmbAmount": 50,
+        "usdAmount": 50,
+        "rechargeLocation": "NexaHub 充值/订阅页余额充值",
+        "expiresRule": "用户截图确认充值页可见快捷金额；本轮按页面可见 1:1 口径，不采用接口 balance_recharge_multiplier=15；页面未注明有效期"
+      },
+      {
+        "rechargeName": "NexaHub wallet topup 100 USD",
+        "billingType": "permanent",
+        "rmbAmount": 100,
+        "usdAmount": 100,
+        "rechargeLocation": "NexaHub 充值/订阅页余额充值",
+        "expiresRule": "用户截图确认充值页可见快捷金额；本轮按页面可见 1:1 口径，不采用接口 balance_recharge_multiplier=15；页面未注明有效期"
+      },
+      {
+        "rechargeName": "NexaHub wallet topup 200 USD",
+        "billingType": "permanent",
+        "rmbAmount": 200,
+        "usdAmount": 200,
+        "rechargeLocation": "NexaHub 充值/订阅页余额充值",
+        "expiresRule": "用户截图确认充值页可见快捷金额；本轮按页面可见 1:1 口径，不采用接口 balance_recharge_multiplier=15；页面未注明有效期"
+      },
+      {
+        "rechargeName": "NexaHub wallet topup 500 USD",
+        "billingType": "permanent",
+        "rmbAmount": 500,
+        "usdAmount": 500,
+        "rechargeLocation": "NexaHub 充值/订阅页余额充值",
+        "expiresRule": "用户截图确认充值页可见快捷金额；本轮按页面可见 1:1 口径，不采用接口 balance_recharge_multiplier=15；页面未注明有效期"
+      },
+      {
+        "rechargeName": "NexaHub wallet topup 1000 USD",
+        "billingType": "permanent",
+        "rmbAmount": 1000,
+        "usdAmount": 1000,
+        "rechargeLocation": "NexaHub 充值/订阅页余额充值",
+        "expiresRule": "用户截图确认充值页可见快捷金额；本轮按页面可见 1:1 口径，不采用接口 balance_recharge_multiplier=15；页面未注明有效期"
+      },
+      {
+        "rechargeName": "NexaHub wallet topup 2000 USD",
+        "billingType": "permanent",
+        "rmbAmount": 2000,
+        "usdAmount": 2000,
+        "rechargeLocation": "NexaHub 充值/订阅页余额充值",
+        "expiresRule": "用户截图确认充值页可见快捷金额；本轮按页面可见 1:1 口径，不采用接口 balance_recharge_multiplier=15；页面未注明有效期"
+      },
+      {
+        "rechargeName": "NexaHub wallet topup 5000 USD",
+        "billingType": "permanent",
+        "rmbAmount": 5000,
+        "usdAmount": 5000,
+        "rechargeLocation": "NexaHub 充值/订阅页余额充值",
+        "expiresRule": "用户截图确认充值页可见快捷金额；本轮按页面可见 1:1 口径，不采用接口 balance_recharge_multiplier=15；页面未注明有效期"
+      }
+    ],
+    "forcedAdoptedTier": "Codex 余额计费 | NexaHub wallet topup 10 USD",
+    "assumptionText": "2026-06-18 用户截图确认：ai.nexahub.one API 密钥页显示 Codex 余额计费 0.065x 与 ccmax满血（测试通过）0.7x；充值页显示 10/20/50/100/200/500/1000/2000/5000 快捷金额。本轮正式口径按页面可见 1:1 写入，不采用接口 balance_recharge_multiplier=15，不再采用 Team 团队订阅。",
+    "dropTierNotePatterns": [
+      "NexaHub detail rows come from logged-in v1 groups, payment plan",
+      "balance_recharge_multiplier=15",
+      "Team 团队订阅"
+    ],
+    "confidence": "manual_browser_verified",
+    "source": "user_screenshot_verified_logged_in_purchase_and_keys_pages",
+    "evidenceUrl": "https://ai.nexahub.one/purchase | https://ai.nexahub.one/keys",
+    "authoritative": true
+  },
+  "zhima": {
+    "stationTypeHint": "mixed",
+    "rechargeTiers": [
+      {
+        "rechargeName": "wallet topup 10 RMB",
+        "billingType": "permanent",
+        "rmbAmount": 10,
+        "usdAmount": 10,
+        "rechargeLocation": "登录态钱包充值页",
+        "expiresRule": "钱包余额充值；当前详情页用于对齐正式排名采用项；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup 20 RMB",
+        "billingType": "permanent",
+        "rmbAmount": 20,
+        "usdAmount": 20,
+        "rechargeLocation": "登录态钱包充值页",
+        "expiresRule": "钱包余额充值；当前详情页用于对齐正式排名采用项；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup 50 RMB",
+        "billingType": "permanent",
+        "rmbAmount": 50,
+        "usdAmount": 50,
+        "rechargeLocation": "登录态钱包充值页",
+        "expiresRule": "钱包余额充值；当前详情页用于对齐正式排名采用项；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup 100 RMB",
+        "billingType": "permanent",
+        "rmbAmount": 100,
+        "usdAmount": 100,
+        "rechargeLocation": "登录态钱包充值页",
+        "expiresRule": "钱包余额充值；当前详情页用于对齐正式排名采用项；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup 200 RMB",
+        "billingType": "permanent",
+        "rmbAmount": 200,
+        "usdAmount": 200,
+        "rechargeLocation": "登录态钱包充值页",
+        "expiresRule": "钱包余额充值；当前详情页用于对齐正式排名采用项；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup 500 RMB",
+        "billingType": "permanent",
+        "rmbAmount": 500,
+        "usdAmount": 500,
+        "rechargeLocation": "登录态钱包充值页",
+        "expiresRule": "钱包余额充值；当前详情页用于对齐正式排名采用项；页面未注明有效期"
+      },
+      {
+        "rechargeName": "wallet topup 1000 RMB",
+        "billingType": "permanent",
+        "rmbAmount": 1000,
+        "usdAmount": 1000,
+        "rechargeLocation": "登录态钱包充值页",
+        "expiresRule": "钱包余额充值；当前详情页用于对齐正式排名采用项；页面未注明有效期"
+      }
+    ],
+    "assumptionText": "2026-06-18 前 20 复核：Zhima 正式排名采用 cx_free | wallet topup 10 RMB，详情页不能只展示订阅套餐；本覆盖仅补详情页钱包充值档位，不改变当前正式排名采用逻辑。",
+    "confidence": "manual_review",
+    "source": "front20_consistency_review",
+    "evidenceUrl": "https://next.zhima.world"
+  },
+  "aiapi1.cc.cd": {
+    "label": "dc API",
+    "stationTypeHint": "charity",
+    "groupMultipliers": [
+      {
+        "groupName": "free",
+        "groupMultiplier": 0.1,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "签到免费额度",
+        "billingType": "free",
+        "rmbAmount": 0,
+        "usdAmount": 1,
+        "rechargeLocation": "公益站签到额度",
+        "expiresRule": "公益站免费额度；用户截图确认邀请注册赠送额度且每周会将金额重置为 0；免费额度以站内规则为准"
+      }
+    ],
+    "forcedAdoptedTier": "free | 签到免费额度",
+    "assumptionText": "2026-06-18 用户截图确认：aiapi1.cc.cd 为 dc API 公益站，令牌分组 free 倍率 0.1x；公告说明邀请一人送 30 刀、永久不收费，特别标注邀请/受邀金额有效期只有一周且每周金额重置为 0。本轮按公益免费额度口径加入正式排名。",
+    "confidence": "manual_browser_verified",
+    "source": "user_screenshot_verified_logged_in_console",
+    "evidenceUrl": "https://aiapi1.cc.cd/console | https://aiapi1.cc.cd/console/token",
+    "authoritative": true
+  },
+  "freeapi.514179.xyz": {
+    "label": "Free API",
+    "stationTypeHint": "charity",
+    "groupMultipliers": [
+      {
+        "groupName": "免费公益线路",
+        "groupMultiplier": 1,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "免费公益额度",
+        "billingType": "free",
+        "rmbAmount": 0,
+        "usdAmount": 1,
+        "rechargeLocation": "公益站免费额度",
+        "expiresRule": "用户截图确认公益站；无充值档位和页面可见倍率；结构化分组仅用于正式排名计算，免费额度以站内规则为准"
+      }
+    ],
+    "forcedAdoptedTier": "免费公益线路 | 免费公益额度",
+    "assumptionText": "2026-06-18 用户截图确认：freeapi.514179.xyz 为 Free API 公益站，无充值档位和页面可见倍率；本轮沿用公益站结构化免费额度口径，以旧样本状态文件中的 3 个请求样本纳入正式综合排名。",
+    "confidence": "manual_browser_verified",
+    "source": "user_screenshot_verified_charity_station",
+    "evidenceUrl": "https://freeapi.514179.xyz",
+    "authoritative": true
+  },
+  "api.feng.cx": {
+    "label": "Feng API",
+    "stationTypeHint": "non_subscription",
+    "groupMultipliers": [
+      {
+        "groupName": "codex",
+        "groupMultiplier": 0.08,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "codex纯血PRO池",
+        "groupMultiplier": 0.15,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "default",
+        "groupMultiplier": 1,
+        "codexEligible": true
+      },
+      {
+        "groupName": "claude max",
+        "groupMultiplier": 1.3,
+        "codexEligible": false,
+        "usageLabel": "Claude"
+      },
+      {
+        "groupName": "image2分组",
+        "groupMultiplier": 1,
+        "codexEligible": false,
+        "usageLabel": "Image"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "wallet topup sample 10 RMB",
+        "billingType": "permanent",
+        "rmbAmount": 10,
+        "usdAmount": 10,
+        "rechargeLocation": "页面公告平时充值口径",
+        "expiresRule": "页面公告确认全站 1:1 充值；618 活动 0.9r 一刀仅作为公告展示，不进入正式费用计算；页面未列固定商品金额，本轮按样本档位记录"
+      }
+    ],
+    "forcedAdoptedTier": "codex | wallet topup sample 10 RMB",
+    "assumptionText": "2026-06-18 用户截图确认：api.feng.cx 分组包含 codex 0.08x、codex纯血PRO池 0.15x、default 1x、claude max 1.3x、image2分组 1x；公告中的 618 充值折扣只作为活动公告保留，正式费用按平时 1:1 样本档位计算。",
+    "dropTierNotePatterns": [
+      "public status 7\\.3 RMB",
+      "618",
+      "0\\.9r"
+    ],
+    "confidence": "manual_browser_verified",
+    "source": "user_screenshot_verified_logged_in_keys_wallet_notice",
+    "evidenceUrl": "https://api.feng.cx/keys | https://api.feng.cx/wallet",
+    "authoritative": true
+  },
+  "api.bluesminds.com": {
+    "label": "Bluesminds",
+    "stationTypeHint": "subscription",
+    "groupMultipliers": [
+      {
+        "groupName": "vip",
+        "groupMultiplier": 1,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "default",
+        "groupMultiplier": 1,
+        "codexEligible": true
+      },
+      {
+        "groupName": "claude-paid",
+        "groupMultiplier": 1,
+        "codexEligible": false,
+        "usageLabel": "Claude"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "10 Days Plan $25",
+        "billingType": "weekly",
+        "rmbAmount": 25,
+        "usdAmount": 25,
+        "rechargeLocation": "登录态 topup 套餐页",
+        "expiresRule": "用户截图确认 10 天套餐价格 $25；截图未给独立额度字段，本轮按价格型订阅 25 -> 25 口径计算",
+        "participatesInVerifiedRanking": true
+      },
+      {
+        "rechargeName": "20 days $50",
+        "billingType": "monthly",
+        "rmbAmount": 50,
+        "usdAmount": 50,
+        "rechargeLocation": "登录态 topup 套餐页",
+        "expiresRule": "用户截图确认 20 天套餐价格 $50；截图未给独立额度字段，本轮只作详情页套餐事实",
+        "participatesInVerifiedRanking": false
+      },
+      {
+        "rechargeName": "unlimted plan $60",
+        "billingType": "monthly",
+        "rmbAmount": 60,
+        "usdAmount": 60,
+        "rechargeLocation": "登录态 topup 套餐页",
+        "expiresRule": "用户截图确认 1 个月套餐价格 $60；截图未给独立额度字段，本轮只作详情页套餐事实",
+        "participatesInVerifiedRanking": false
+      },
+      {
+        "rechargeName": "60 days $120",
+        "billingType": "quarterly",
+        "rmbAmount": 120,
+        "usdAmount": 120,
+        "rechargeLocation": "登录态 topup 套餐页",
+        "expiresRule": "用户截图确认 2 个月套餐价格 $120；截图未给独立额度字段，本轮只作详情页套餐事实",
+        "participatesInVerifiedRanking": false
+      },
+      {
+        "rechargeName": "3 day claude paid $24",
+        "billingType": "daily",
+        "rmbAmount": 24,
+        "usdAmount": 800,
+        "rechargeLocation": "登录态 topup 套餐页",
+        "expiresRule": "用户截图确认 3 天 claude-paid 套餐价格 $24、总额度 $800；该套餐为 Claude 分组，不作为 Codex 正式采用项",
+        "participatesInVerifiedRanking": false
+      }
+    ],
+    "forcedAdoptedTier": "vip | 10 Days Plan $25",
+    "assumptionText": "2026-06-18 用户截图确认：api.bluesminds.com topup 页展示 10 Days Plan $25、20 days $50、unlimted plan $60、60 days $120、3 day claude paid $24/$800 等套餐；分组页显示 default 1x，通知指向 Telegram。本轮只采用截图套餐，不回退到旧 public status 1 RMB = 2 USD credit。",
+    "dropTierNotePatterns": [
+      "public status 1 RMB",
+      "1 RMB = 2 USD"
+    ],
+    "confidence": "manual_browser_verified",
+    "source": "user_screenshot_verified_logged_in_topup_groups_notice",
+    "evidenceUrl": "https://api.bluesminds.com/console/topup",
+    "authoritative": true
+  },
+  "muyuan.do": {
+    "stationTypeHint": "charity",
+    "groupMultipliers": [
+      {
+        "groupName": "Codex 免费公益线路",
+        "groupMultiplier": 1,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "签到免费额度",
+        "billingType": "free",
+        "rmbAmount": 0,
+        "usdAmount": 1,
+        "rechargeLocation": "公益站签到额度",
+        "expiresRule": "免费公益站；无充值入口；需签到；免费额度以站内规则为准"
+      }
+    ],
+    "assumptionText": "2026-06-18 前 20 复核：MuyuanDo 是用户确认公益站，详情页应展示免费签到额度，不应回落到公开 status 的付费换算口径。",
+    "dropTierNotePatterns": [
+      "Muyuan detail rows come from official public status",
+      "public status 0\\.05 RMB"
+    ],
+    "confidence": "manual_verified",
+    "source": "user_confirmed_charity_free_station",
+    "evidenceUrl": "https://muyuan.do"
   }
 }

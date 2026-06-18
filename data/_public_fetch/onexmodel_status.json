@@ -5,6 +5,13 @@
     "_qn": "new-api",
     "announcements": [
       {
+        "content": "【重要通知】为感谢长期以来支持本站的用户朋友们，我们上线来全新会员体系，详见公告，针对满足条件的用户我们已经人工升级特权倍率权益，即可开启 token 畅享～\n\n另外，同时开放了充值优惠活动，全线 9 折，活动截止 6 月 18 日。",
+        "extra": "",
+        "id": 27,
+        "publishDate": "2026-06-12T08:46:55.355Z",
+        "type": "ongoing"
+      },
+      {
         "content": "【模型分组更新通知】 为保障cc-windsurf 分组稳定好用，升级 max 订阅，成本大幅提升，普通使用倍率从 x0.65 -> x1.5,订阅日卡倍率从 x0.5 -> x1.4,订阅 周卡倍率从 x0.45 -> x1.35,订阅月卡倍率从 x0.4 -> x1.3",
         "extra": "",
         "id": 26,
@@ -118,7 +125,7 @@
     "footer_html": "<footer style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: var(--semi-color-bg-1); border-top: 1px solid var(--semi-color-border); color: var(--semi-color-text-2); padding: 24px; text-align: center;\">   <div style=\"max-width: 900px; margin: 0 auto;\">      <div style=\"display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-bottom: 12px; font-size: 13px;\">       <a href=\"/user-agreement\" target=\"_blank\" rel=\"noopener noreferrer\"         style=\"color: var(--semi-color-text-1); text-decoration: none;\"         onmouseover=\"this.style.color='var(--semi-color-primary)'\" onmouseout=\"this.style.color='var(--semi-color-text-1)'\">         用户协议 / Terms of Service       </a>       <span style=\"color: var(--semi-color-border);\">·</span>       <a href=\"/privacy-policy\" target=\"_blank\" rel=\"noopener noreferrer\"         style=\"color: var(--semi-color-text-1); text-decoration: none;\"         onmouseover=\"this.style.color='var(--semi-color-primary)'\" onmouseout=\"this.style.color='var(--semi-color-text-1)'\">         隐私政策 / Privacy Policy       </a>       <span style=\"color: var(--semi-color-border);\">·</span>       <a href=\"mailto:xxx\"         style=\"color: var(--semi-color-text-1); text-decoration: none;\"         onmouseover=\"this.style.color='var(--semi-color-primary)'\" onmouseout=\"this.style.color='var(--semi-color-text-1)'\">         联系我们 / Contact Us: xxx       </a>     </div>      <div style=\"font-size: 12px; color: var(--semi-color-text-2);\">       © 2026 1xm.ai · All rights reserved.     </div>    </div> </footer>",
     "github_client_id": "",
     "github_oauth": false,
-    "invite_code_required": true,
+    "invite_code_required": false,
     "inviter_reward_quota": 2500000,
     "linuxdo_client_id": "44T4x8QIe2iJdUxfDmp5ct3qM4XAlnIr",
     "linuxdo_minimum_trust_level": 1,
@@ -144,7 +151,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://1xm.ai",
     "setup": true,
-    "start_time": 1780450121,
+    "start_time": 1781225931,
     "stripe_unit_price": 8,
     "system_name": "OneXModel",
     "telegram_bot_name": "",

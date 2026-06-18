@@ -4,6 +4,55 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
     "announcements": [
       {
+        "content": "618端午双节活动</br>\n余额充值0.9r一刀，数额不限</br>\n充值200r以上打pro号池9折</br>\n充值500r以上打8折</br>\n0.9x0.9x0.2=0.16左右</br>\nps：充值活动截至6月18日23.59分</br>\n所有充值的金额因我们的原因导致的无法使用，皆可申请退款。</br>\n后续因为市场因素导致的成本上涨倍率增加概不退款</br>",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-06-16T13:53:16.465Z",
+        "type": "success"
+      },
+      {
+        "content": "\tcodex0.1x分组暂不可用",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-06-16T06:49:23.185Z",
+        "type": "error"
+      },
+      {
+        "content": "codex0.1x分组已恢复，可蹬",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-06-15T05:11:33.491Z",
+        "type": "success"
+      },
+      {
+        "content": "image2上线,审查很严格，我这边会拦截，请勿用于违规生图，查到大量违规，封禁不退",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-06-13T13:11:47.552Z",
+        "type": "error"
+      },
+      {
+        "content": "这两天由于上游的不可控因素影响，导致老板们使用GPT时出现不稳定的情况，我们特此推出补偿活动，以示歉意！<br>\n活动内容：调整充值比例为0.8元=1美元，每人最高限制充值100元<br>\n活动时间：立即生效至2026年6月13日23时59分结束<br>\n充值方式：联系群主或群管理进行充值<br>\n说明：充值后如果因为我方原因用不了或不稳定的情况，可以联系我们进行退款！不支持无理由！<br>",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-06-12T15:14:22.326Z",
+        "type": "success"
+      },
+      {
+        "content": "0.06x和0.1x因openai大规模封号不太稳定\n可使用0.2x高速纯血pro号池应急",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-06-11T14:08:30.235Z",
+        "type": "error"
+      },
+      {
+        "content": "claude已上线，max满血号池不掺水，随便测，高速可外接，支持claude-fable-5。暂定1.6倍率，联系q群管理充值有折扣",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-06-10T09:43:42.339Z",
+        "type": "success"
+      },
+      {
         "content": "新用户注册赠送下调至5美元",
         "extra": "",
         "id": 3,
@@ -31,15 +80,22 @@
         "color": "blue",
         "description": "本站不对中国大陆、香港等地区提供服务！",
         "id": 1,
-        "route": "亚太cdn加速",
+        "route": "亚太CDN加速",
         "url": "https://api.feng.cx"
       },
       {
         "color": "lime",
         "description": "本站不对中国大陆、香港等地区提供服务！",
         "id": 2,
-        "route": "cf优选",
+        "route": "CF优选节点",
         "url": "https://fengai.cloud"
+      },
+      {
+        "color": "orange",
+        "description": "本站不对中国大陆、香港等地区提供服务！",
+        "id": 3,
+        "route": "CF优选备用节点",
+        "url": "https://cf.feng.cx"
       }
     ],
     "api_info_enabled": true,
@@ -127,7 +183,7 @@
     "turnstile_check": true,
     "turnstile_site_key": "0x4AAAAAADYOD0-UVGps_l55",
     "uptime_kuma_enabled": false,
-    "usd_exchange_rate": 7.3,
+    "usd_exchange_rate": 1,
     "user_agreement_enabled": false,
     "version": "v1.0.0-rc.10",
     "wechat_login": false,

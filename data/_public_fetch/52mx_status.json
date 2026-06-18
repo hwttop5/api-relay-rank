@@ -1,8 +1,22 @@
 {
   "data": {
-    "HeaderNavModules": "",
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":true}",
     "SidebarModulesAdmin": "",
     "announcements": [
+      {
+        "content": "预通知一下：\n今晚（2026年6月18日0时）会再次封禁用户，\n没有过1元及以上充值记录的用户会被封禁，\n如需保号使用的请及时购买1元保号订阅套餐。\n后续解封请QQ499586090私信。",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-06-17T12:34:02.861Z",
+        "type": "warning"
+      },
+      {
+        "content": "⚠️52模型网声明：本站所有部署服务均不在中国大陆，所有服务不对中国大陆用户开放使用⚠️",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-06-14T17:52:04.411Z",
+        "type": "warning"
+      },
       {
         "content": "为了防止注册机，52模型网只开放了QQ邮箱注册，请使用QQ邮箱注册。",
         "extra": "",
@@ -97,7 +111,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://52mx.net",
     "setup": true,
-    "start_time": 1780379825,
+    "start_time": 1781457659,
     "stripe_unit_price": 8,
     "system_name": "52模型|52mx.net",
     "telegram_bot_name": "",
@@ -108,7 +122,7 @@
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 1,
     "user_agreement_enabled": true,
-    "version": "v1.0.0-rc.10",
+    "version": "v1.0.0-rc.11",
     "wechat_login": false,
     "wechat_qrcode": ""
   },

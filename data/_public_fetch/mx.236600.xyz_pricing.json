@@ -1,0 +1,121 @@
+{
+  "auto_groups": [
+    "codex-plus"
+  ],
+  "data": [],
+  "group_ratio": {
+    "codex-plus": 0,
+    "生图专用": 1
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {},
+  "usable_group": {
+    "codex-plus": "codex-plus",
+    "生图专用": "生图专用-0.07/次"
+  },
+  "vendors": [
+    {
+      "id": 4,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":true,\"requireAuth\":true},\"docs\":false,\"about\":false}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+      "announcements": [
+        {
+          "content": "<div style=\"padding:10px;border:1px solid #eee;border-radius:6px;max-width:420px;font-size:14px;margin:0 auto;\">\n<p><span style=\"color:#f5222d\">进群抽奖好礼等你来拿！</span></p>\n</div>",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-06-09T01:01:17.000Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "<div style=\"padding:10px;border:1px solid #eee;border-radius:6px;max-width:420px;font-size:14px;margin:0 auto;\">\n<p>1、<span style=\"color:#f5222d\">有什么问题请加入群聊</span></p>\n<p>2、充值比例：<span style=\"color:#1890ff\">1r=1刀额度</span></p>\n<p>3、分组倍率：<span style=\"color:#00b42a\">0.1倍率 1刀=10刀</span></p>\n</div>",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-06-07T04:15:00.000Z",
+          "type": "ongoing"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "blue",
+          "description": "大陆专用接口",
+          "id": 1,
+          "route": "大陆专用接口",
+          "url": "http://150.242.246.223:3000/v1"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [],
+      "checkin_enabled": true,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "$",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": true,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "",
+      "email_verification": false,
+      "enable_batch_update": false,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq": [],
+      "faq_enabled": true,
+      "footer_html": "<style>\nfooter .custom-footer + div { display: none !important; }\n.custom-footer,\n.custom-footer .mx-simple-footer {\n  width: 100% !important;\n}\n.custom-footer .mx-simple-footer {\n  max-width: none !important;\n  margin: 0 auto !important;\n  display: grid !important;\n  place-items: center !important;\n  text-align: center !important;\n}\n.custom-footer .mx-brand-wrap,\n.custom-footer .mx-desc-wrap,\n.custom-footer .mx-copy-wrap {\n  width: 100% !important;\n  display: grid !important;\n  place-items: center !important;\n  text-align: center !important;\n}\n.custom-footer .mx-brand {\n  display: inline-grid !important;\n  grid-auto-flow: column !important;\n  align-items: center !important;\n  justify-content: center !important;\n  column-gap: 12px !important;\n  margin: 0 auto 14px !important;\n}\n.custom-footer .mx-brand img {\n  width: 40px !important;\n  height: 40px !important;\n  border-radius: 10px !important;\n  object-fit: contain !important;\n  display: block !important;\n}\n.custom-footer .mx-name {\n  font-size: 26px !important;\n  font-weight: 700 !important;\n  line-height: 1.15 !important;\n  color: hsl(var(--foreground)) !important;\n  text-align: center !important;\n  margin: 0 auto !important;\n}\n.custom-footer .mx-desc {\n  margin: 0 auto 24px !important;\n  color: hsl(var(--muted-foreground)) !important;\n  font-size: 18px !important;\n  line-height: 1.35 !important;\n  text-align: center !important;\n}\n.custom-footer .mx-copy {\n  margin: 0 auto !important;\n  color: hsl(var(--muted-foreground)) !important;\n  font-size: 16px !important;\n  line-height: 1.4 !important;\n  text-align: center !important;\n}\n@media (max-width: 768px) {\n  .custom-footer .mx-brand { column-gap: 8px !important; margin-bottom: 12px !important; }\n  .custom-footer .mx-brand img { width: 34px !important; height: 34px !important; border-radius: 8px !important; }\n  .custom-footer .mx-name { font-size: 22px !important; }\n  .custom-footer .mx-desc { font-size: 16px !important; margin-bottom: 18px !important; }\n  .custom-footer .mx-copy { font-size: 14px !important; }\n}\n</style>\n<div class=\"mx-simple-footer\">\n  <div class=\"mx-brand-wrap\">\n    <div class=\"mx-brand\">\n      <img src=\"https://img.236600.xyz/i/2026/06/07/97c209fd805b9b430c07709fdc9b77ff.png\" alt=\"GPT模型-API\">\n      <div class=\"mx-name\">GPT模型-API</div>\n    </div>\n  </div>\n  <div class=\"mx-desc-wrap\">\n    <div class=\"mx-desc\">强大的 API 管理平台</div>\n  </div>\n  <div class=\"mx-copy-wrap\">\n    <div class=\"mx-copy\">© 2026 GPT模型-API. 版权所有。</div>\n  </div>\n</div>\n",
+      "github_client_id": "",
+      "github_oauth": false,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "https://img.236600.xyz/i/2026/06/07/97c209fd805b9b430c07709fdc9b77ff.png",
+      "mj_notify_enabled": true,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "GPT模型-API",
+      "passkey_login": false,
+      "passkey_origins": "https://mx.236600.xyz",
+      "passkey_rp_id": "mx.236600.xyz",
+      "passkey_user_verification": "preferred",
+      "password_login_enabled": true,
+      "password_register_enabled": false,
+      "price": 1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "USD",
+      "quota_per_unit": 500000,
+      "register_enabled": false,
+      "self_use_mode_enabled": false,
+      "server_address": "https://mx.236600.xyz",
+      "setup": true,
+      "start_time": 1781231131,
+      "stripe_unit_price": 8,
+      "system_name": "GPT模型-API",
+      "telegram_bot_name": "闪速⚡",
+      "telegram_oauth": false,
+      "theme": "classic",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 1,
+      "user_agreement_enabled": false,
+      "version": "v1.0.0-rc.10",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://mx.236600.xyz/api/pricing"
+}

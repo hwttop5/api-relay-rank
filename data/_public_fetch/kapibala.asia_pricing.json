@@ -21,28 +21,6 @@
       ]
     },
     {
-      "model_name": "gpt-5.4",
-      "description": "GPT-5.4 is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "test",
-        "default",
-        "codex",
-        "vip",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
       "model_name": "gpt-5.5",
       "description": "GPT-5.5 is an AI model provided by vivgrid.",
       "tags": "Reasoning,Tools,Files,Vision,1.1M",
@@ -54,8 +32,50 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "test",
         "default",
+        "codex",
+        "test",
+        "vip",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "description": "GPT-5.4 is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "pro",
+        "default",
+        "codex",
+        "test"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "icon": "OpenAI",
+      "vendor_id": 6,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.23,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "test",
         "codex",
         "vip",
         "pro"
@@ -76,31 +96,11 @@
       "completion_ratio": 6,
       "cache_ratio": 0.09999999999999999,
       "enable_groups": [
-        "pro",
         "test",
         "default",
         "codex",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-2",
-      "icon": "OpenAI",
-      "vendor_id": 6,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.23,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "pro",
-        "test",
-        "default",
-        "codex",
-        "vip"
+        "vip",
+        "pro"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -113,6 +113,14 @@
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
   "supported_endpoint": {
+    "0": {
+      "path": "openai",
+      "method": "POST"
+    },
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
     "gemini": {
       "path": "/v1beta/models/{model}:generateContent",
       "method": "POST"
@@ -127,22 +135,36 @@
   },
   "vendors": [
     {
+      "id": 2,
+      "name": "OpenCode Zen",
+      "icon": "OpenCode"
+    },
+    {
+      "id": 6,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 7,
+      "name": "xAI",
+      "icon": "XAI"
+    },
+    {
       "id": 8,
       "name": "Anthropic",
       "icon": "Claude.Color"
-    },
-    {
-      "id": 11,
-      "name": "LLM Gateway"
     },
     {
       "id": 1,
       "name": "Vivgrid"
     },
     {
-      "id": 2,
-      "name": "OpenCode Zen",
-      "icon": "OpenCode"
+      "id": 3,
+      "name": "QiHang"
+    },
+    {
+      "id": 4,
+      "name": "SAP AI Core"
     },
     {
       "id": 5,
@@ -160,28 +182,14 @@
       "icon": "Gemini.Color"
     },
     {
-      "id": 3,
-      "name": "QiHang"
-    },
-    {
-      "id": 4,
-      "name": "SAP AI Core"
-    },
-    {
-      "id": 6,
-      "name": "OpenAI",
-      "icon": "OpenAI"
-    },
-    {
-      "id": 7,
-      "name": "xAI",
-      "icon": "XAI"
+      "id": 11,
+      "name": "LLM Gateway"
     }
   ],
   "status_payload": {
     "data": {
-      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":true,\"about\":true}",
-      "SidebarModulesAdmin": "",
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":false,\"about\":true}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"imagePlayground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
       "announcements": [
         {
           "content": "vip分组是本站重点维护分组，稳定性更有保障，提供更优质的服务与更多的模型选择。\n可通过订阅coding plan 自动升级VIP分组 或 积累消费超过80元联系客服提升分组。",
@@ -220,6 +228,13 @@
           "id": 1,
           "route": "主域名",
           "url": "https://kapibala.asia"
+        },
+        {
+          "color": "blue",
+          "description": "择优选择主线路或者备用线路",
+          "id": 2,
+          "route": "备用线路",
+          "url": "https://kapibala.curb0331.cloud"
         }
       ],
       "api_info_enabled": true,
@@ -304,7 +319,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://kapibala.asia",
       "setup": true,
-      "start_time": 1780944386,
+      "start_time": 1781626495,
       "stripe_unit_price": 8,
       "system_name": "卡皮巴拉API",
       "telegram_bot_name": "",

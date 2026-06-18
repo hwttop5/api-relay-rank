@@ -13,8 +13,7 @@
       "create_cache_ratio": 1.25,
       "enable_groups": [
         "Claude kiro 企业版",
-        "claude kiro 性价比",
-        "claude 高缓存 支持 1m上下文",
+        "claude max20 官号",
         "cluade 100%缓存 api 渠道 低价耐用 无敌性价比 据说稳定（希望吧）"
       ],
       "supported_endpoint_types": [
@@ -22,6 +21,22 @@
         "openai"
       ],
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gemini-3.5-flash",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "长期免费chat模型 gemini gpt grok （只能聊天）"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
     },
     {
       "model_name": "gemini-3.1-pro",
@@ -56,6 +71,22 @@
       ]
     },
     {
+      "model_name": "codex-auto-review",
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gpt plus",
+        "gpt pro 池"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
       "model_name": "claude-opus-4-7",
       "vendor_id": 6,
       "quota_type": 0,
@@ -67,8 +98,7 @@
       "create_cache_ratio": 1.25,
       "enable_groups": [
         "Claude kiro 企业版",
-        "claude kiro 性价比",
-        "claude 高缓存 支持 1m上下文",
+        "claude max20 官号",
         "cluade 100%缓存 api 渠道 低价耐用 无敌性价比 据说稳定（希望吧）"
       ],
       "supported_endpoint_types": [
@@ -77,19 +107,74 @@
       ]
     },
     {
-      "model_name": "gpt-5.5",
+      "model_name": "gpt-5.4",
       "vendor_id": 2,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 1.25,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
         "gpt plus",
-        "gpt plus 多渠道兜底",
-        "gpt pro 池",
-        "gpt 最后狂欢日"
+        "gpt pro 池"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude kiro 企业版",
+        "claude max20 官号",
+        "cluade 100%缓存 api 渠道 低价耐用 无敌性价比 据说稳定（希望吧）"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude kiro 企业版",
+        "claude max20 官号",
+        "cluade 100%缓存 api 渠道 低价耐用 无敌性价比 据说稳定（希望吧）"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gpt plus",
+        "gpt pro 池"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -105,24 +190,23 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "gpt plus 多渠道兜底",
-        "gpt pro 池"
+        "gpt plus"
       ],
       "supported_endpoint_types": [
         "openai"
       ]
     },
     {
-      "model_name": "gemini-3.5-flash",
-      "vendor_id": 4,
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 2,
       "quota_type": 0,
-      "model_ratio": 0.75,
+      "model_ratio": 0.875,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
+      "completion_ratio": 8,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "长期免费chat模型 gemini gpt grok （只能聊天）"
+        "gpt plus"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -145,43 +229,24 @@
       ]
     },
     {
-      "model_name": "gpt-image-2",
+      "model_name": "gpt-5.5-none-fast",
       "vendor_id": 2,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 1,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "gpt image 2"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-8",
-      "vendor_id": 6,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 6.25,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
+      "completion_ratio": 6,
       "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "Claude kiro 企业版",
-        "claude kiro 性价比",
-        "claude 高缓存 支持 1m上下文",
-        "cluade 100%缓存 api 渠道 低价耐用 无敌性价比 据说稳定（希望吧）"
+        "长期免费chat模型 gemini gpt grok （只能聊天）"
       ],
       "supported_endpoint_types": [
-        "anthropic",
         "openai"
       ]
     },
     {
-      "model_name": "codex-auto-review",
+      "model_name": "gpt-5.5",
+      "vendor_id": 2,
       "quota_type": 0,
       "model_ratio": 2.5,
       "model_price": 0,
@@ -190,86 +255,7 @@
       "cache_ratio": 0.1,
       "enable_groups": [
         "gpt plus",
-        "gpt plus 多渠道兜底",
-        "gpt pro 池",
-        "gpt 最后狂欢日"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gpt plus",
-        "gpt plus 多渠道兜底",
-        "gpt 最后狂欢日"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gpt plus",
-        "gpt plus 多渠道兜底",
-        "gpt pro 池",
-        "gpt 最后狂欢日"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 1.25,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude kiro 企业版",
-        "claude kiro 性价比",
-        "claude 高缓存 支持 1m上下文",
-        "cluade 100%缓存 api 渠道 低价耐用 无敌性价比 据说稳定（希望吧）"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gpt plus",
-        "gpt plus 多渠道兜底",
-        "gpt pro 池",
-        "gpt 最后狂欢日"
+        "gpt pro 池"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -285,24 +271,7 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "gpt plus 多渠道兜底",
-        "gpt pro 池"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5-none-fast",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 6.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "长期免费chat模型 gemini gpt grok （只能聊天）"
+        "gpt plus"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -311,15 +280,10 @@
   ],
   "group_ratio": {
     "Claude kiro 企业版": 0.66,
-    "claude kiro 性价比": 0.3,
-    "claude max20 官号": 1.7,
-    "claude 高缓存 支持 1m上下文": 0.15,
+    "claude max20 官号": 0.66,
     "cluade 100%缓存 api 渠道 低价耐用 无敌性价比 据说稳定（希望吧）": 1.4,
-    "gpt image 2": 0.05,
-    "gpt plus": 0.08,
-    "gpt plus 多渠道兜底": 0.1,
-    "gpt pro 池": 0.25,
-    "gpt 最后狂欢日": 0.04,
+    "gpt plus": 0.1,
+    "gpt pro 池": 0.3,
     "长期免费chat模型 gemini gpt grok （只能聊天）": 0
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
@@ -343,18 +307,18 @@
   },
   "usable_group": {
     "Claude kiro 企业版": "",
-    "claude kiro 性价比": "",
-    "claude max20 官号": "",
-    "claude 高缓存 支持 1m上下文": "",
+    "claude max20 官号": "限时特价",
     "cluade 100%缓存 api 渠道 低价耐用 无敌性价比 据说稳定（希望吧）": "",
-    "gpt image 2": "",
     "gpt plus": "",
-    "gpt plus 多渠道兜底": "",
-    "gpt pro 池": "",
-    "gpt 最后狂欢日": "",
+    "gpt pro 池": "pro也在疯涨，不知道还能撑多久",
     "长期免费chat模型 gemini gpt grok （只能聊天）": "调用不了工具，可自行注入修复"
   },
   "vendors": [
+    {
+      "id": 2,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
     {
       "id": 4,
       "name": "Google",
@@ -374,11 +338,6 @@
       "id": 7,
       "name": "Moonshot",
       "icon": "Moonshot"
-    },
-    {
-      "id": 2,
-      "name": "OpenAI",
-      "icon": "OpenAI"
     }
   ],
   "status_payload": {
@@ -386,6 +345,27 @@
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":false,\"requireAuth\":true},\"docs\":true,\"about\":false}",
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
       "announcements": [
+        {
+          "content": "目前全站良好",
+          "extra": "",
+          "id": 22,
+          "publishDate": "2026-06-12T16:03:23.222Z",
+          "type": "success"
+        },
+        {
+          "content": "紧急通知，plus全网拉闸，请移步pro和Claude",
+          "extra": "",
+          "id": 21,
+          "publishDate": "2026-06-12T03:17:11.489Z",
+          "type": "warning"
+        },
+        {
+          "content": "记得进群看通知，比如现在0.04的got狂欢分组，暂时就用不了",
+          "extra": "",
+          "id": 20,
+          "publishDate": "2026-06-10T16:27:39.709Z",
+          "type": "warning"
+        },
         {
           "content": "0.04和0.08 0.1 应该是没问题的，\npro池子和image生图现在访问有问题\n排查下来应该是机房网络出问题了，只能明天了\n今晚的话可以通过    魔...--法 ，跳转香港来访问  ",
           "extra": "",
@@ -584,7 +564,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://api.aisz.mom",
       "setup": true,
-      "start_time": 1781068163,
+      "start_time": 1781725308,
       "stripe_unit_price": 8,
       "system_name": "词元枢阁 Token Nexus",
       "telegram_bot_name": "",

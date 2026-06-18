@@ -14,6 +14,34 @@
     "activity_lottery_join_topup_min_money": 0,
     "announcements": [
       {
+        "content": "618上新特惠分组 codex-618 倍率 0.2x，纯血 pro 号池 ",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2026-06-17T12:37:46.831Z",
+        "type": "success"
+      },
+      {
+        "content": " Claude 和 Codex 系列套餐已上线，支持按套餐额度使用，可按使用强度选择天卡、周卡或月卡。",
+        "extra": "前往 https://nbility.dev/console/package 查看可订阅套餐",
+        "id": 14,
+        "publishDate": "2026-06-15T15:04:47.680Z",
+        "type": "success"
+      },
+      {
+        "content": "**网站访问地区调整说明**\n\n近期网站页面访问区域有调整，部分地区访客打开控制台时可能看到「暂不支持你所在的地区」提示。\n\n- **API 不受影响**：调整仅针对网站页面，API 服务正常使用。\n- **页面打不开**：与当前网络环境和出口位置有关，建议切换至更稳定的国际网络环境后重试。",
+        "extra": "如果你是老用户、暂时找不到管理页面，或认为该提示是误判，请联系：📮 xxx，感谢你的理解与支持。",
+        "id": 13,
+        "publishDate": "2026-06-14T05:48:04.986Z",
+        "type": "warning"
+      },
+      {
+        "content": "claude-fable-5 is now activated !",
+        "extra": "Anthropic受US政府令影响，已暂时全面下架Fable，Mythos模型，基于此，我们已无法访问该类模型，故作下架处理，待 Anthropic 恢复后上架",
+        "id": 10,
+        "publishDate": "2026-06-10T01:00:40.497Z",
+        "type": "success"
+      },
+      {
         "content": "Azure Official Image Generation Model: gpt-image-2-official is now live with token-based pricing; existing gpt-image-2 remains on per-request pricing.",
         "extra": "已上线 Azure 官方生图模型 gpt-image-2-official，按 Token 计费；原有 gpt-image-2 继续按次计费，保持不变。",
         "id": 9,
@@ -153,7 +181,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://nbility.dev",
     "setup": true,
-    "start_time": 1780987074,
+    "start_time": 1781769735,
     "stripe_unit_price": 1,
     "subscription_promo_badge_left": "",
     "subscription_promo_badge_right": "",
@@ -177,7 +205,7 @@
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 1,
     "user_agreement_enabled": false,
-    "version": "alpha-20260609-e7f5181",
+    "version": "alpha-20260617-f6b37e1",
     "wechat_login": false,
     "wechat_qrcode": "",
     "wechat_register": false

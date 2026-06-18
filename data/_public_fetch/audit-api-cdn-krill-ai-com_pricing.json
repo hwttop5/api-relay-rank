@@ -1,0 +1,394 @@
+{
+  "success": true,
+  "code": 0,
+  "data": {
+    "plans": [
+      {
+        "id": 24,
+        "name": "轻享天卡",
+        "description": "<blockquote><p>入门性价比优选，适合日常体验或短期使用。</p></blockquote><p></p><p></p>",
+        "daily_quota_usd": "60.000000",
+        "price": "12.000000",
+        "duration_days": 1,
+        "billing_type": "usd_daily",
+        "rate_limit_5h": null,
+        "rate_limit_weekly": null,
+        "rate_limit_monthly": null,
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "Codex套餐",
+        "stock": 1503,
+        "group_rules": [
+          {
+            "id": 10,
+            "plan_id": 24,
+            "member_count": 3,
+            "effective_quota_usd": "66.000000",
+            "group_duration_minutes": 60,
+            "active": true
+          },
+          {
+            "id": 11,
+            "plan_id": 24,
+            "member_count": 5,
+            "effective_quota_usd": "70.000000",
+            "group_duration_minutes": 120,
+            "active": true
+          },
+          {
+            "id": 12,
+            "plan_id": 24,
+            "member_count": 10,
+            "effective_quota_usd": "80.000000",
+            "group_duration_minutes": 180,
+            "active": true
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "name": "Basic",
+        "description": "<p></p>",
+        "daily_quota_usd": "99.000000",
+        "price": "49.000000",
+        "duration_days": 30,
+        "billing_type": "usd_monthly",
+        "rate_limit_5h": null,
+        "rate_limit_weekly": null,
+        "rate_limit_monthly": null,
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "国产模型套餐",
+        "total_credits": 9900,
+        "stock": 1011,
+        "group_rules": []
+      },
+      {
+        "id": 29,
+        "name": "尊享天卡",
+        "description": "<blockquote><p>入门性价比优选，适合日常体验或短期使用。</p></blockquote><p></p><p></p>",
+        "daily_quota_usd": "120.000000",
+        "price": "24.000000",
+        "duration_days": 1,
+        "billing_type": "usd_daily",
+        "rate_limit_5h": null,
+        "rate_limit_weekly": null,
+        "rate_limit_monthly": null,
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "Codex套餐",
+        "stock": 930,
+        "group_rules": [
+          {
+            "id": 13,
+            "plan_id": 29,
+            "member_count": 3,
+            "effective_quota_usd": "132.000000",
+            "group_duration_minutes": 60,
+            "active": true
+          },
+          {
+            "id": 14,
+            "plan_id": 29,
+            "member_count": 5,
+            "effective_quota_usd": "140.000000",
+            "group_duration_minutes": 120,
+            "active": true
+          },
+          {
+            "id": 15,
+            "plan_id": 29,
+            "member_count": 10,
+            "effective_quota_usd": "160.000000",
+            "group_duration_minutes": 180,
+            "active": true
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "name": "Pro",
+        "description": "<p></p>",
+        "daily_quota_usd": "206.990000",
+        "price": "99.000000",
+        "duration_days": 30,
+        "billing_type": "usd_monthly",
+        "rate_limit_5h": null,
+        "rate_limit_weekly": null,
+        "rate_limit_monthly": null,
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "国产模型套餐",
+        "total_credits": 20699,
+        "stock": 104,
+        "group_rules": []
+      },
+      {
+        "id": 27,
+        "name": "Elite",
+        "description": "<p></p>",
+        "daily_quota_usd": "439.990000",
+        "price": "199.000000",
+        "duration_days": 30,
+        "billing_type": "usd_monthly",
+        "rate_limit_5h": null,
+        "rate_limit_weekly": null,
+        "rate_limit_monthly": null,
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "国产模型套餐",
+        "total_credits": 43999,
+        "stock": 108,
+        "group_rules": []
+      },
+      {
+        "id": 22,
+        "name": "轻享周卡",
+        "description": "<blockquote><p>入门性价比优选，适合日常体验或短期使用。</p></blockquote><p></p><p></p>",
+        "daily_quota_usd": "420.000000",
+        "price": "84.000000",
+        "duration_days": 7,
+        "billing_type": "usd_weekly",
+        "rate_limit_5h": null,
+        "rate_limit_weekly": null,
+        "rate_limit_monthly": null,
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "Codex套餐",
+        "stock": 1867,
+        "group_rules": [
+          {
+            "id": 31,
+            "plan_id": 22,
+            "member_count": 3,
+            "effective_quota_usd": "462.000000",
+            "group_duration_minutes": 1440,
+            "active": true
+          },
+          {
+            "id": 32,
+            "plan_id": 22,
+            "member_count": 5,
+            "effective_quota_usd": "490.000000",
+            "group_duration_minutes": 1440,
+            "active": true
+          },
+          {
+            "id": 33,
+            "plan_id": 22,
+            "member_count": 10,
+            "effective_quota_usd": "560.000000",
+            "group_duration_minutes": 1440,
+            "active": true
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "尊享周卡",
+        "description": "<blockquote><p>低延迟专线，适合高频使用、AI工具及开发者。</p></blockquote><p></p><p></p>",
+        "daily_quota_usd": "840.000000",
+        "price": "166.000000",
+        "duration_days": 7,
+        "billing_type": "usd_weekly",
+        "rate_limit_5h": null,
+        "rate_limit_weekly": null,
+        "rate_limit_monthly": null,
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "Codex套餐",
+        "stock": 960,
+        "group_rules": [
+          {
+            "id": 34,
+            "plan_id": 4,
+            "member_count": 3,
+            "effective_quota_usd": "924.000000",
+            "group_duration_minutes": 1440,
+            "active": true
+          },
+          {
+            "id": 35,
+            "plan_id": 4,
+            "member_count": 5,
+            "effective_quota_usd": "980.000000",
+            "group_duration_minutes": 1440,
+            "active": true
+          },
+          {
+            "id": 36,
+            "plan_id": 4,
+            "member_count": 10,
+            "effective_quota_usd": "1120.000000",
+            "group_duration_minutes": 1440,
+            "active": true
+          }
+        ]
+      },
+      {
+        "id": 43,
+        "name": "轻享月卡",
+        "description": null,
+        "daily_quota_usd": "450.000000",
+        "price": "360.000000",
+        "duration_days": 30,
+        "billing_type": "usd_weekly",
+        "rate_limit_5h": null,
+        "rate_limit_weekly": null,
+        "rate_limit_monthly": null,
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "Codex套餐",
+        "stock": 701,
+        "group_rules": [
+          {
+            "id": 37,
+            "plan_id": 43,
+            "member_count": 3,
+            "effective_quota_usd": "1980.000000",
+            "group_duration_minutes": 2880,
+            "active": true
+          },
+          {
+            "id": 38,
+            "plan_id": 43,
+            "member_count": 5,
+            "effective_quota_usd": "2100.000000",
+            "group_duration_minutes": 2880,
+            "active": true
+          },
+          {
+            "id": 39,
+            "plan_id": 43,
+            "member_count": 10,
+            "effective_quota_usd": "2400.000000",
+            "group_duration_minutes": 2880,
+            "active": true
+          }
+        ]
+      },
+      {
+        "id": 44,
+        "name": "尊享月卡",
+        "description": null,
+        "daily_quota_usd": "900.000000",
+        "price": "720.000000",
+        "duration_days": 30,
+        "billing_type": "usd_weekly",
+        "rate_limit_5h": null,
+        "rate_limit_weekly": null,
+        "rate_limit_monthly": null,
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "Codex套餐",
+        "stock": 896,
+        "group_rules": [
+          {
+            "id": 40,
+            "plan_id": 44,
+            "member_count": 3,
+            "effective_quota_usd": "3960.000000",
+            "group_duration_minutes": 2880,
+            "active": true
+          },
+          {
+            "id": 41,
+            "plan_id": 44,
+            "member_count": 5,
+            "effective_quota_usd": "4200.000000",
+            "group_duration_minutes": 2880,
+            "active": true
+          },
+          {
+            "id": 42,
+            "plan_id": 44,
+            "member_count": 10,
+            "effective_quota_usd": "4800.000000",
+            "group_duration_minutes": 2880,
+            "active": true
+          }
+        ]
+      }
+    ],
+    "balance_products": [
+      {
+        "id": 3,
+        "name": "50美元",
+        "amount_usd": "50.000000",
+        "price_cny": "50.000000",
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "余额"
+      },
+      {
+        "id": 5,
+        "name": "100美金",
+        "amount_usd": "100.000000",
+        "price_cny": "100.000000",
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "余额"
+      },
+      {
+        "id": 4,
+        "name": "500美元",
+        "amount_usd": "500.000000",
+        "price_cny": "500.000000",
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "余额"
+      },
+      {
+        "id": 9,
+        "name": "1000美元",
+        "amount_usd": "1000.000000",
+        "price_cny": "1000.000000",
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "余额"
+      },
+      {
+        "id": 10,
+        "name": "2000美元",
+        "amount_usd": "2000.000000",
+        "price_cny": "2000.000000",
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "余额"
+      },
+      {
+        "id": 6,
+        "name": "补足负余额-5美元（仅限余额为负数用户）",
+        "amount_usd": "5.000000",
+        "price_cny": "5.000000",
+        "campaign_price": null,
+        "campaign_name": null,
+        "channel_name": "余额"
+      }
+    ],
+    "payment_options": {
+      "default_provider": "vmipay",
+      "providers": [
+        {
+          "key": "vmipay",
+          "label": "在线支付",
+          "mode": "qrcode",
+          "enabled_methods": [
+            "alipay",
+            "wxpay"
+          ]
+        },
+        {
+          "key": "futoon",
+          "label": "Futoon",
+          "mode": "redirect",
+          "enabled_methods": [
+            "alipay",
+            "wxpay"
+          ]
+        }
+      ]
+    }
+  },
+  "source_url": "https://api.cdn-krill-ai.com/api/public/shop/products"
+}

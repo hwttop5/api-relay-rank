@@ -5,6 +5,250 @@
   ],
   "data": [
     {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-sale",
+        "cc-official",
+        "cc-fast",
+        "cc-max",
+        "cc-windsurf",
+        "cc-official-sp",
+        "cc-aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "openai(x0.5)",
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "cc-max",
+        "cc-aws",
+        "cc-official-sp",
+        "cc-official"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-max",
+        "cc-official",
+        "cc-windsurf",
+        "cc-official-sp",
+        "cc-aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview",
+      "icon": "Gemini.Avatar.type={'platform'}",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-max"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "tags": "代码推荐",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.09999999999999999,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-official-sp",
+        "cc-official",
+        "cc-fast",
+        "cc-max",
+        "cc-windsurf",
+        "cc-aws",
+        "cc-sale"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.12,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-max",
+        "cc-windsurf",
+        "cc-aws",
+        "cc-official-sp",
+        "cc-sale",
+        "cc-official",
+        "cc-fast"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.02,
+      "enable_groups": [
+        "deepseek"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.008333333333333333,
+      "enable_groups": [
+        "deepseek"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.09999999999999999,
+      "enable_groups": [
+        "codex",
+        "openai(x0.5)"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "tags": "🦞龙虾推荐",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-fast",
+        "cc-max",
+        "cc-official",
+        "cc-windsurf",
+        "cc-official-sp",
+        "cc-aws",
+        "cc-sale"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
       "model_name": "claude-opus-4-5",
       "vendor_id": 1,
       "quota_type": 0,
@@ -18,27 +262,24 @@
       "supported_endpoint_types": [
         "anthropic",
         "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+      ]
     },
     {
-      "model_name": "claude-opus-4-8",
+      "model_name": "claude-opus-4-6-high",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
-      "cache_ratio": 0.12,
+      "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "cc-officially",
-        "cc-windsurf",
         "cc-fast",
+        "cc-official",
+        "cc-windsurf",
         "cc-aws",
-        "cc-max",
-        "cc-sale",
-        "cc-officially-sp"
+        "cc-sale"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -57,13 +298,268 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "cc-officially-sp",
-        "cc-officially",
+        "cc-aws",
+        "cc-official-sp",
+        "cc-sale",
+        "cc-official"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-medium",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-official",
+        "cc-aws",
+        "cc-sale",
+        "cc-fast"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.09999999999999999,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "icon": "OpenAI.Avatar.type={'platform'}",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.09999999999999999,
+      "enable_groups": [
+        "openai(x0.5)"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929-thinking",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.09999999999999999,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-max"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "cc-official-sp"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview",
+      "icon": "Gemini.Avatar.type={'platform'}",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "icon": "OpenAI.Avatar.type={'platform'}",
+      "tags": "🦞龙虾推荐",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "openai(x0.5)",
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.09999999999999999,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-official-sp",
+        "cc-fast",
+        "cc-max",
+        "cc-official",
+        "cc-windsurf",
         "cc-aws",
         "cc-sale"
       ],
       "supported_endpoint_types": [
         "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "icon": "Claude.Avatar.type={'platform'}",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-aws",
+        "cc-sale",
+        "cc-fast",
+        "cc-max",
+        "cc-official",
+        "cc-windsurf",
+        "cc-official-sp"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-low",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-official",
+        "cc-windsurf",
+        "cc-aws",
+        "cc-sale",
+        "cc-fast"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-max",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "cc-sale",
+        "cc-official",
+        "cc-fast",
+        "cc-windsurf",
+        "cc-aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "icon": "OpenAI.Avatar.type={'platform'}",
+      "tags": "生图推荐",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "openai(x0.5)",
+        "gpt-image-2[4k]"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "image-generation"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "openai(x0.5)",
+        "codex"
+      ],
+      "supported_endpoint_types": [
         "openai"
       ]
     },
@@ -104,311 +600,6 @@
       ]
     },
     {
-      "model_name": "gpt-5.2",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.09999999999999999,
-      "enable_groups": [
-        "openai(x0.5)"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.09999999999999999,
-      "enable_groups": [
-        "openai(x0.5)"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-5",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "cc-max",
-        "cc-officially-sp",
-        "cc-officially",
-        "cc-aws"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-5-20250929-thinking",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.09999999999999999,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-officially",
-        "cc-windsurf",
-        "cc-fast",
-        "cc-aws",
-        "cc-max",
-        "cc-sale",
-        "cc-officially-sp"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6-low",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-sale",
-        "cc-officially",
-        "cc-windsurf",
-        "cc-fast",
-        "cc-aws"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6",
-      "icon": "Claude.Avatar.type={'platform'}",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-max",
-        "cc-sale",
-        "cc-officially",
-        "cc-officially-sp",
-        "cc-windsurf",
-        "cc-fast",
-        "cc-aws"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6-thinking",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-max",
-        "cc-officially",
-        "cc-officially-sp",
-        "cc-windsurf",
-        "cc-aws"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-fable-5",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-aws",
-        "cc-max",
-        "cc-officially-sp",
-        "cc-officially",
-        "cc-windsurf"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001",
-      "icon": "Claude.Avatar.type={'platform'}",
-      "tags": "🦞龙虾推荐",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-aws",
-        "cc-max",
-        "cc-sale",
-        "cc-officially",
-        "cc-officially-sp",
-        "cc-windsurf",
-        "cc-fast"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6-max",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-aws",
-        "cc-sale",
-        "cc-officially",
-        "cc-windsurf",
-        "cc-fast"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-pro-preview",
-      "icon": "Gemini.Avatar.type={'platform'}",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.8,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "openai(x0.5)"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101-thinking",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6-high",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-windsurf",
-        "cc-fast",
-        "cc-aws",
-        "cc-sale",
-        "cc-officially"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
       "model_name": "claude-sonnet-4-6-thinking",
       "vendor_id": 1,
       "quota_type": 0,
@@ -419,172 +610,13 @@
       "cache_ratio": 0.09999999999999999,
       "create_cache_ratio": 1.25,
       "enable_groups": [
+        "cc-fast",
         "cc-max",
-        "cc-sale",
-        "cc-officially",
-        "cc-officially-sp",
+        "cc-official",
         "cc-windsurf",
-        "cc-fast",
-        "cc-aws"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-2",
-      "icon": "OpenAI.Avatar.type={'platform'}",
-      "tags": "生图推荐",
-      "vendor_id": 2,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.2,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "openai(x0.5)",
-        "gpt-image-2[4k]"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "image-generation"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "icon": "OpenAI.Avatar.type={'platform'}",
-      "tags": "🦞龙虾推荐",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "openai(x0.5)"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-5-20250929",
-      "icon": "Claude.Avatar.type={'platform'}",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.09999999999999999,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-max",
-        "cc-sale",
-        "cc-officially",
-        "cc-officially-sp",
-        "cc-windsurf",
-        "cc-fast",
-        "cc-aws"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "icon": "Claude.Avatar.type={'platform'}",
-      "tags": "代码推荐",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.09999999999999999,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-sale",
-        "cc-officially-sp",
-        "cc-officially",
-        "cc-windsurf",
-        "cc-fast",
-        "cc-aws",
-        "cc-max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6-medium",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-fast",
         "cc-aws",
         "cc-sale",
-        "cc-officially"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-flash-preview",
-      "icon": "Gemini.Avatar.type={'platform'}",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.6,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.5-flash",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.09999999999999999,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "cc-officially-sp"
+        "cc-official-sp"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -596,10 +628,12 @@
     "cc-aws": 3.5,
     "cc-fast": 0.2,
     "cc-max": 2,
-    "cc-officially": 7.5,
-    "cc-officially-sp": 6,
+    "cc-official": 7.5,
+    "cc-official-sp": 6,
     "cc-sale": 0.65,
     "cc-windsurf": 1.5,
+    "codex": 0.65,
+    "deepseek": 0.5,
     "default": 1,
     "gemini": 1.4,
     "gpt-image-2[4k]": 0.8,
@@ -628,11 +662,13 @@
   "usable_group": {
     "cc-aws": "Claude 官方aws+az+vertex 的企业级API，官key兜底，稳定性升级👍",
     "cc-fast": "fast模式的逆向cc，养虾养马专用，内测中🤖",
-    "cc-max": "Claude 官方Max 号池，仅限 CC 客户端使用，高性价比👍",
-    "cc-officially": "Claude官key直连，兜底王牌，应急专用",
-    "cc-officially-sp": "Claude官key直连特价，每日限量供应，调不通就是没货了",
+    "cc-max": "Claude 官方Max 号池，仅限 CC 使用，高性价比👍",
+    "cc-official": "Claude官key直连，兜底王牌，应急专用",
+    "cc-official-sp": "Claude官key直连特价，每日限量供应，调不通就是没货了",
     "cc-sale": "gpt逆向的cc，全新升级，超高缓存命中🔥",
     "cc-windsurf": "windsurf 渠道 max 号池的 claude，好用性价比👍",
+    "codex": "优质号池，codex 专用，openai备选分组",
+    "deepseek": "官方直供，内测中🤖",
     "default": "默认分组，无可用模型，勿选❌",
     "gemini": "gemini 官方优质号池，稳定",
     "gpt-image-2[4k]": "gpt系列生图，Image API支持 4k🔥",
@@ -640,6 +676,11 @@
     "openai(x0.5)": "优质 Pro 号池，更快更稳，含1-2k生图，极致性价比🔥🔥"
   },
   "vendors": [
+    {
+      "id": 4,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
     {
       "id": 1,
       "name": "Anthropic",
@@ -662,6 +703,13 @@
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"subscriptionPlans\":true,\"distribution\":true,\"invoice\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"operation\":true,\"distribution\":true,\"marketing\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"adminInvoice\":true,\"setting\":true}}",
       "_qn": "new-api",
       "announcements": [
+        {
+          "content": "【重要通知】为感谢长期以来支持本站的用户朋友们，我们上线来全新会员体系，详见公告，针对满足条件的用户我们已经人工升级特权倍率权益，即可开启 token 畅享～\n\n另外，同时开放了充值优惠活动，全线 9 折，活动截止 6 月 18 日。",
+          "extra": "",
+          "id": 27,
+          "publishDate": "2026-06-12T08:46:55.355Z",
+          "type": "ongoing"
+        },
         {
           "content": "【模型分组更新通知】 为保障cc-windsurf 分组稳定好用，升级 max 订阅，成本大幅提升，普通使用倍率从 x0.65 -> x1.5,订阅日卡倍率从 x0.5 -> x1.4,订阅 周卡倍率从 x0.45 -> x1.35,订阅月卡倍率从 x0.4 -> x1.3",
           "extra": "",
@@ -776,7 +824,7 @@
       "footer_html": "<footer style=\"font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: var(--semi-color-bg-1); border-top: 1px solid var(--semi-color-border); color: var(--semi-color-text-2); padding: 24px; text-align: center;\">   <div style=\"max-width: 900px; margin: 0 auto;\">      <div style=\"display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-bottom: 12px; font-size: 13px;\">       <a href=\"/user-agreement\" target=\"_blank\" rel=\"noopener noreferrer\"         style=\"color: var(--semi-color-text-1); text-decoration: none;\"         onmouseover=\"this.style.color='var(--semi-color-primary)'\" onmouseout=\"this.style.color='var(--semi-color-text-1)'\">         用户协议 / Terms of Service       </a>       <span style=\"color: var(--semi-color-border);\">·</span>       <a href=\"/privacy-policy\" target=\"_blank\" rel=\"noopener noreferrer\"         style=\"color: var(--semi-color-text-1); text-decoration: none;\"         onmouseover=\"this.style.color='var(--semi-color-primary)'\" onmouseout=\"this.style.color='var(--semi-color-text-1)'\">         隐私政策 / Privacy Policy       </a>       <span style=\"color: var(--semi-color-border);\">·</span>       <a href=\"mailto:xxx\"         style=\"color: var(--semi-color-text-1); text-decoration: none;\"         onmouseover=\"this.style.color='var(--semi-color-primary)'\" onmouseout=\"this.style.color='var(--semi-color-text-1)'\">         联系我们 / Contact Us: xxx       </a>     </div>      <div style=\"font-size: 12px; color: var(--semi-color-text-2);\">       © 2026 1xm.ai · All rights reserved.     </div>    </div> </footer>",
       "github_client_id": "",
       "github_oauth": false,
-      "invite_code_required": true,
+      "invite_code_required": false,
       "inviter_reward_quota": 2500000,
       "linuxdo_client_id": "44T4x8QIe2iJdUxfDmp5ct3qM4XAlnIr",
       "linuxdo_minimum_trust_level": 1,
@@ -802,7 +850,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://1xm.ai",
       "setup": true,
-      "start_time": 1780450121,
+      "start_time": 1781225931,
       "stripe_unit_price": 8,
       "system_name": "OneXModel",
       "telegram_bot_name": "",

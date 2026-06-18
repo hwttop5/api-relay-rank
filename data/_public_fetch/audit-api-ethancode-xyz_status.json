@@ -1,0 +1,153 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "选了default分组的兄弟麻烦看下请求日志自己是不是这个default，不要选default！！！这是默认1x分组，看基础价用的！！！比如0.18x的codex选成default很亏的！！！",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-05-30T16:15:39.483Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "🎁 新用户注册送 2 元额度，够跑 100次对话\n直接联系站长领取---> 卫星：H1x1211\n小白进群，站长亲自手把手教学一切！！！",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2026-05-26T17:44:21.352Z",
+        "type": "default"
+      },
+      {
+        "content": "微信支付通道暂时下架，如需微信充值可直接联系站长！",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-05-15T11:44:31.333Z",
+        "type": "default"
+      },
+      {
+        "content": "售后与退款说明\n\nQQ交流群：1064649632\n本平台提供AI API接入、额度充值服务。\n遇充值异常、额度未到账、接口故障、账单问题或退款需求，可联系售后：\n微信：H1x1211\nQQ：1850812101",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-04-26T14:59:07.472Z",
+        "type": "default"
+      },
+      {
+        "content": "退款政策：\n\n1. 用户个人原因退款：退款金额=实付金额-已用额度费用-支付手续费，赠送额度不予退款。\n\n2. 平台责任退款：系统异常、重复扣费、充值未到账等平台问题，核实后可全额或按情况退款。\n\n3. 不予退款情况：已正常消耗的额度；用户自身操作失误、违规使用造成的问题；超售后时效的历史订单。\n\n常规售后24小时内回复，充值、退款问题1个工作日内处理完成。",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-04-25T12:30:47.272Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "境界排行榜",
+        "id": 1,
+        "route": "排行榜",
+        "url": "https://api.ethancode.xyz/leaderboard"
+      },
+      {
+        "color": "red",
+        "description": "新手小白配置看这里",
+        "id": 2,
+        "route": "小白配置教程文档",
+        "url": "https://bcnea2z9c0k4.feishu.cn/wiki/YRsfwd1cgi9i4IkQQAqcNcufngf?from=from_copylink"
+      },
+      {
+        "color": "green",
+        "description": "日/周/月套餐站",
+        "id": 3,
+        "route": "日/周/月套餐站",
+        "url": "https://sub2api.ethancode.xyz/"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://api.ethancode.xyz/docs/",
+    "email_verification": true,
+    "enable_batch_update": false,
+    "enable_data_export": true,
+    "enable_drawing": false,
+    "enable_task": true,
+    "faq": [],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://api.ethancode.xyz/docs/brand-avatar.jpg",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "New API",
+    "passkey_login": false,
+    "passkey_origins": "https://api.ethancode.xyz",
+    "passkey_rp_id": "api.ethancode.xyz",
+    "passkey_user_verification": "preferred",
+    "price": 1,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://api.ethancode.xyz",
+    "setup": true,
+    "start_time": 1781634256,
+    "stripe_unit_price": 8,
+    "system_name": "EthanCode",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "top_up_link": "",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": false,
+    "version": "",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

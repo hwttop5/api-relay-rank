@@ -2,140 +2,24 @@
   "auto_groups": [
     "default"
   ],
-  "data": [
-    {
-      "model_name": "claude-opus-4-7",
-      "description": "参与抽奖，有机率抽中本模型调用权",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "description": "参与抽奖，有机率抽中本模型调用权",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-8",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "vendor_id": 4,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.14,
-      "create_cache_ratio": 0.2,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6",
-      "description": "参与抽奖，有机率抽中本模型调用权",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    }
-  ],
+  "data": [],
   "group_ratio": {
     "Claude": 3,
-    "default": 2
+    "default": 3
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
-  "supported_endpoint": {
-    "anthropic": {
-      "path": "/v1/messages",
-      "method": "POST"
-    },
-    "openai": {
-      "path": "/v1/chat/completions",
-      "method": "POST"
-    }
-  },
+  "supported_endpoint": {},
   "usable_group": {
     "Claude": "中奖用户专用",
     "default": "默认分组"
   },
   "vendors": [
+    {
+      "id": 4,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
     {
       "id": 7,
       "name": "Anthropic",
@@ -149,11 +33,6 @@
     {
       "id": 11,
       "name": "Xiaomi Token Plan (Singapore)"
-    },
-    {
-      "id": 4,
-      "name": "OpenAI",
-      "icon": "OpenAI"
     }
   ],
   "status_payload": {
@@ -162,6 +41,41 @@
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
       "announcements": [
         {
+          "content": "采购了1000元RMB的额度。\n先给大家顶一下。",
+          "extra": "",
+          "id": 16,
+          "publishDate": "2026-06-16T08:18:18.403Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "用这几天的小程序广告收入买了12元/个*20个Plus账号。\n今日消耗完毕为止。\n如果看到请求失败，就是蹬完了。",
+          "extra": "",
+          "id": 15,
+          "publishDate": "2026-06-14T01:47:45.000Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "临时恢复。",
+          "extra": "",
+          "id": 14,
+          "publishDate": "2026-06-12T01:47:53.612Z",
+          "type": "success"
+        },
+        {
+          "content": "感谢Claude360站长赞助的2000刀Pro号池额度。\n蹬完为止",
+          "extra": "",
+          "id": 13,
+          "publishDate": "2026-06-11T10:36:41.831Z",
+          "type": "success"
+        },
+        {
+          "content": "全网渠道拉闸，今天去买Token都买不到了。\n暂时找不到合适的渠道了，今日拉闸。\n我全力找上游渠道，争取尽快恢复",
+          "extra": "",
+          "id": 12,
+          "publishDate": "2026-06-11T02:30:00.722Z",
+          "type": "warning"
+        },
+        {
           "content": "上游号池扛不住了，委屈大家先用5.4吧。",
           "extra": "",
           "id": 11,
@@ -169,7 +83,7 @@
           "type": "ongoing"
         },
         {
-          "content": "小程序已更新：\n1、更新用户解绑（点击首页头像）\n2、关闭签到前需看广告\n3、修复签到失败的Bug\n4、修复广告结算报错的Bug\n——————————————\nlpgpt.us 更新了本站运营数据看板。",
+          "content": "小程序已更新：\n1、更新用户解绑（点击首页头像）\n2、修复签到失败的Bug\n3、修复广告结算报错的Bug\n——————————————\nlpgpt.us 更新了本站运营数据看板。\n上线了账号捐赠功能",
           "extra": "",
           "id": 10,
           "publishDate": "2026-06-09T17:00:00.921Z",
@@ -294,7 +208,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://lpgpt.us",
       "setup": true,
-      "start_time": 1781081836,
+      "start_time": 1781432023,
       "stripe_unit_price": 8,
       "system_name": "Zero Bug",
       "telegram_bot_name": "",

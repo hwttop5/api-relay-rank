@@ -18,11 +18,6 @@
   },
   "vendors": [
     {
-      "id": 3,
-      "name": "讯飞",
-      "icon": "Spark.Color"
-    },
-    {
       "id": 1,
       "name": "Anthropic",
       "icon": "Claude.Color"
@@ -31,6 +26,11 @@
       "id": 2,
       "name": "OpenAI",
       "icon": "OpenAI"
+    },
+    {
+      "id": 3,
+      "name": "讯飞",
+      "icon": "Spark.Color"
     }
   ],
   "status_payload": {

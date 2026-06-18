@@ -1,0 +1,244 @@
+{
+  "data": {
+    "HeaderNavModules": "",
+    "SidebarModulesAdmin": "",
+    "announcements": [
+      {
+        "content": "ClaudeCode分组加入claude-fable-5，目前公开的最强模型，据说底层模型是Mythos",
+        "extra": "",
+        "id": 20,
+        "publishDate": "2026-06-09T17:38:38.847Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "Kiro分组已加入claude-opus-4-8",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-05-29T05:19:28.596Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "默认分组，AWS分组，官逆分组均已同步上架claude-opus-4-8，刚刚出的热乎着，Kiro的还没出，全部都是高缓存，欢迎大家来使用，倍率和4.7一样",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-05-28T17:28:47.915Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "明天中午12点上波大的，具体建议进群查看，同时这里也会通知一部分",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-05-26T12:35:51.435Z",
+        "type": "success"
+      },
+      {
+        "content": "纯MAXCC分组比例暂时从1比1提升到了1.2比1，暂时涨价0.2。\n纯AWS直连分组依旧稳定供应持续1:1，上下文1000K，个人支持并发30RPM，如需增加并发请联系管理。",
+        "extra": "",
+        "id": 16,
+        "publishDate": "2026-05-26T03:26:41.801Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "新加分组，分组名:限时特价CC纯MAX号池不限客户端 ￥1r/刀，ClaudeCode纯MAX号池，限价比例￥1:1，可跑蒸馏，高缓存，不限客户端不限并发不限酒馆，倍率接口已开，懂行量大的可以给号池管理员，欢迎大家来用",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2026-05-24T04:55:18.200Z",
+        "type": "success"
+      },
+      {
+        "content": "关于gemini-omni_flash的调用，以及最后的获取视频\n# 获取视频\ncurl -X GET \"https://openai.chatnewai.com/v1/videos/task_TNMTtWqhTYwZkLlQnWFd2OJxAD4qsgAY/content\" \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer <redacted>' \\\n--output result_video.mp4",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-05-20T15:04:34.522Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "关于gemini-omni_flash的调用\n# 创建视频\ncurl -X POST 'https://openai.chatnewai.com/v1/videos' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer <redacted>' \\\n--data-raw '{\n    \"prompt\": \"动漫打斗视频\",\n    \"model\": \"gemini-omni_flash\"\n}'\n\n# 查询进度\ncurl -X GET \"https://openai.chatnewai.com/v1/videos/task_TNMTtWqhTYwZkLlQnWFd2OJxAD4qsgAY\" \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer <redacted>'",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2026-05-20T15:04:00.150Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "由于不可控原因，Deepseek全模型更改使用策略，以后只在凌晨0点至中午12点开放，其余时间关闭",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-05-20T14:56:51.389Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "谷歌最新发布的gemini-3.5-flash已加入双版，以及同时一起更新的满血新视频模型gemini-omni_flash\n\ngemini-3.5-flash为官方网页版(可选官逆分组倍率0.6=0.3元)\n\ngemini-3.5-flash-low为Antigravity，上下文1000K\n\ngemini-omni_flash暂时为按次0.27/次，\n创建视频任务示例具体接口和获取任务请去站内公告查看，默认分组和图片视频分组均可使用。",
+        "extra": "",
+        "id": 11,
+        "publishDate": "2026-05-20T14:55:50.617Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "AWS特价继续，但后面可能会下架，我们注意到了AWS官方已经开始收紧资源",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-05-20T02:02:25.888Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "gpt-image2模型已加入，同时支持2K/4K调用，可指定参数，分组可选2K和4K分组，2K价格为0.1/次，4K价格为0.2/次。且加了一个新分组，分组名\"图片视频\"，整合了图片视频大模型，后续加入更多模型",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-05-17T14:46:31.620Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "Grok全模型已恢复，同时加入了官网画图和视频模型，并且可出NSFW\n\"gpt-image-2: 文生图，价格0.05/次\"\n\"grok-imagine-image: 图生图，价格0.05/次\"\n\"grok-imagine-image-edit: 文生图，价格/0.05次\"\n\"grok-imagine-image-lite: 文生图，价格/0.05次\"\n\"grok-imagine-image-pro: 文生图，价格/0.06次\"\n\"grok-imagine-video: 视频模型，价格0.1/次\"\n支持大并发",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-05-16T12:47:40.331Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "AWS分组再次降价，为1r/刀，高缓存，纯满血AWS，支持暴力测试",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-05-16T12:46:05.866Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "目前Codex GPT已经恢复使用。在此解释一下，由于GPT封控力度始终很大，我们也一直在加号，各种报错就是池封完了，等等就可以用了，我们尽量保证全体用户可以畅快使用",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-05-15T20:21:53.480Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "Aws-claude分组已经从2.8r/刀价格降低为1.2r/刀，纯满血Aws，支持2000+RPM，纯自建号池，可酒馆可cc，新薅的方法，欢迎大家随便测试暴力测试，新建令牌即可",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-05-15T20:09:40.000Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "\n后续准备加入画图模型，已开始准备\n\n价格根据封控环境变化，如有对接需求请联系管理员，量大可以提供管理员和号池",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-05-15T19:11:47.260Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "新加入单独分组，Claude-kiro渠道，价格也已打下来，为0.3一刀，支持500+RPM，纯自建号池Kiro，同样可酒馆可cc",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-05-15T19:11:12.115Z",
+        "type": "success"
+      },
+      {
+        "content": "先祝大家五一快乐，大家也放假了吧，这几天本站开启每日签到，所有用户都可参与签到，位置在个人设置-每日签到，最小奖励100000Token，最大1000000Token，并且我们将加入更多资源来确保这几天使用稳定\n\n海外线路加速Love.qinyan.icu\n内地线路加速Openai.chatnewai.com",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-05-02T05:09:58.778Z",
+        "type": "ongoing"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "海外地区，或者开了魔法使用此端点会更快",
+        "id": 1,
+        "route": "海外加速线路",
+        "url": "https://love.qinyan.icu"
+      },
+      {
+        "color": "green",
+        "description": "内地使用，覆盖全国可稳定使用，同时加速了cdn",
+        "id": 2,
+        "route": "内地加速线路",
+        "url": "https://openai.chatnewai.com"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": true,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://kcnawozbdd39.feishu.cn/wiki/NOOJwpG2Aiy7Ykk3dfKcQvwuntT",
+    "email_verification": true,
+    "enable_batch_update": false,
+    "enable_data_export": true,
+    "enable_drawing": false,
+    "enable_task": true,
+    "faq": [],
+    "faq_enabled": true,
+    "footer_html": "<div style=\"margin: 16px 0 8px;\">   <a href=\"https://qun.qq.com/universal-share/share?ac=1&authKey=3A%2FNFBdAmnKH%2BwMa5OBE9pBWY87C3o%2BodcEsIR%2BrnOgzbfO0m%2F8ChWwziNJ951Xg&busi_data=eyJncm91cENvZGUiOiIxMDc5NDU2MDYzIiwidG9rZW4iOiJpdEg3b09NaUZBbXZHVmtiTWJETTV0T3RPVXJ6TXB1akZheWVrK0I0S3BtU1lMdi9MaWx3N2VZd1h2T0NEZWJPIiwidWluIjoiMTk0Nzc2ODI0OCJ9&data=YZzj-pV_T7iHJ4oBHFm2PFBFqsxXVIRbTiOQNb5ds59egbi5FIWkb97D-pF5j5RplqDv5fWav2pUFfaxl-p3eg&svctype=4&tempid=h5_group_info\"      style=\"        display: inline-block;        padding: 8px 24px;        background: linear-gradient(90deg,           #ff0000, #ff8000, #ffff00,           #80ff00, #00ff80, #00ffff,           #0080ff, #0000ff, #8000ff);        background-size: 400% 400%;        color: white;        text-decoration: none;        font-weight: 600;        border-radius: 8px;        box-shadow: 0 2px 8px rgba(0,0,0,0.2);        transition: all 0.5s;        animation: rainbow 8s ease infinite;      \"      onmouseover=\"this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)'\"      onmouseout=\"this.style.boxShadow='0 2px 8px rgba(0,0,0,0.2)'\">     加入官方群   </a> </div>  <style> @keyframes rainbow {   0% { background-position: 0% 50% }   50% { background-position: 100% 50% }   100% { background-position: 0% 50% } } </style>",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://d040779c2cd49.cdn.sohucs.com/pic/20260601/1437017908017372288.PNG",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "New API",
+    "passkey_login": false,
+    "passkey_origins": "openai.chatnewai.com",
+    "passkey_rp_id": "openai.chatnewai.com",
+    "passkey_user_verification": "preferred",
+    "price": 7.3,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "openai.chatnewai.com",
+    "setup": true,
+    "start_time": 1779958635,
+    "stripe_unit_price": 8,
+    "system_name": "Qiny API",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "classic",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": false,
+    "version": "v1.0.0-rc.4",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

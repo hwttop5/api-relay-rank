@@ -4,6 +4,27 @@
     "SidebarModulesAdmin": "{\"chat\": {\"chat\": false, \"enabled\": true, \"playground\": true}, \"admin\": {\"user\": true, \"models\": true, \"channel\": true, \"enabled\": true, \"setting\": true, \"deployment\": true, \"redemption\": true, \"subscription\": true}, \"console\": {\"log\": true, \"task\": true, \"token\": true, \"detail\": true, \"enabled\": true, \"midjourney\": true}, \"personal\": {\"topup\": true, \"enabled\": true, \"personal\": true}}",
     "announcements": [
       {
+        "content": "<b style=\"color:#16a34a;font-size:18px;\">端午福利限时开启</b><br/><br/>\n现在至晚上12点，Euzhi API 公益站 default 与 VIP 分组倍率从 <b>1.0</b> 下调至 <b>0.75</b>，同样预算可获得更多调用额度，长上下文、多轮对话、批量创作更划算。<br/><br/>\n无需更换令牌，无需修改配置，继续使用原有 default / VIP 分组即可自动享受本次优惠。感谢大家的支持，祝端午安康。",
+        "extra": "",
+        "id": 1781746518431,
+        "publishDate": "2026-06-18T01:35:18.431Z",
+        "type": "default"
+      },
+      {
+        "content": "<b style=\"color:#ff7a00;\">Pro 专线倍率下调通知</b><br/><br/>\n为提升高峰期使用体验、降低大家的调用成本，Euzhi API 现已将 <b>Pro 分组倍率从 2.5 调整为 1.5</b>。<br/>\nPro 专线仍接入更高规格账号池，适合高并发、长上下文、Codex / GPT-5.5 等对稳定性和响应质量要求更高的场景。<br/><br/>\n当前分组建议：默认通道 <b>1.0 倍</b>，VIP 通道 <b>1.0 倍</b>，Pro 专线 <b>1.5 倍</b>。<br/>\n如需使用 Pro 专线，请在令牌管理中将令牌分组切换为 <b>pro</b> 后调用。",
+        "extra": "",
+        "id": 1781584957174,
+        "publishDate": "2026-06-16T04:42:37.174Z",
+        "type": "default"
+      },
+      {
+        "content": "<b style=\"font-size:18px;color:#14b8a6;\">pro渠道正式上线</b><br/>\nGPT-5.4 / GPT-5.5 已接入Pro渠道。相比普通通道，pro减少拥堵干扰，让连续输出更稳。倍率是default和vip分组的1.5倍。将「控制台- 令牌」里的可用分组切换为<b>pro</b>即可。",
+        "extra": "",
+        "id": 1781492039465,
+        "publishDate": "2026-06-15T02:53:59.465Z",
+        "type": "default"
+      },
+      {
         "content": "<div style=\"padding:10px 12px;border:1px solid rgba(245,158,11,.32);border-radius:10px;background:rgba(245,158,11,.10);line-height:1.7;font-size:14px;\"><b style=\"color:#d97706;font-size:15px;\">Hermes 用户请注意</b><br>官方规格：Codex 当前为 <b>272K 输入 + 128K 最大输出</b>，合计约 <b>400K 上下文窗口</b>；Plus / Pro 规格一致。<br>使用 Hermes 时，建议上下文累计到 <b>20 万 tokens 左右</b> 进行一次<b>手动压缩或插件自动压缩</b>。长时间不压缩，可能会因上下文过大导致不输出、响应中断或无内容返回。<br>Codex 用户无需手动处理，Codex 会自动压缩上下文。</div>",
         "extra": "",
         "id": 1780487012797,
@@ -25,7 +46,7 @@
         "type": "warning"
       },
       {
-        "content": "<div style=\"padding:10px 12px;border:1px solid rgba(47,107,255,.24);border-radius:10px;background:rgba(47,107,255,.08);line-height:1.7\"><b style=\"color:#4f8cff\">服务与隐私说明</b><br/>Euzhi API 公益站、优智图及相关服务均由 <b>Euzhi自有上游资源与自建服务链路</b> 统一调度。<br/>您的请求不会被转售给任何平台，也不会被用于与当前服务无关的用途。</div>",
+        "content": "<div style=\"padding:10px 12px;border:1px solid rgba(47,107,255,.24);border-radius:10px;background:rgba(47,107,255,.08);line-height:1.7\"><b style=\"color:#4f8cff\">服务与隐私说明</b><br/>Euzhi API 公益站、优智图及相关服务均由 <b>Euzhi自有上游资源与自建服务链路</b> 统一调度。<br/>您的请求不会被转售给任何平台，也不会被用于与当前服务无关的用途。<br/><br/>本服务不面向中国大陆地区用户开放，请在符合当地法律法规及相关政策要求的前提下合规使用。<br>\nThis service is not available to users located in mainland China. Please use it only in compliance with applicable local laws, regulations, and policies.</div>",
         "extra": "除完成模型调用、余额结算、支付处理、安全风控和故障排查等必要场景外，系统不会主动留存、窃取或挪用您的请求内容；本地工具产生的配置与使用数据仍以用户本地保存为主。",
         "id": 1,
         "publishDate": "2026-05-15T00:00:00+08:00",
@@ -110,7 +131,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://api.euzhi.com",
     "setup": true,
-    "start_time": 1780909709,
+    "start_time": 1781580169,
     "stripe_unit_price": 8,
     "system_name": "Euzhi",
     "telegram_bot_name": "",
@@ -121,7 +142,7 @@
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 7.3,
     "user_agreement_enabled": true,
-    "version": "v1.0.0-rc.10",
+    "version": "v1.0.0-rc.11",
     "wechat_login": false,
     "wechat_qrcode": ""
   },
@@ -132,6 +153,27 @@
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":false}",
       "SidebarModulesAdmin": "{\"chat\": {\"chat\": false, \"enabled\": true, \"playground\": true}, \"admin\": {\"user\": true, \"models\": true, \"channel\": true, \"enabled\": true, \"setting\": true, \"deployment\": true, \"redemption\": true, \"subscription\": true}, \"console\": {\"log\": true, \"task\": true, \"token\": true, \"detail\": true, \"enabled\": true, \"midjourney\": true}, \"personal\": {\"topup\": true, \"enabled\": true, \"personal\": true}}",
       "announcements": [
+        {
+          "content": "<b style=\"color:#16a34a;font-size:18px;\">端午福利限时开启</b><br/><br/>\n现在至晚上12点，Euzhi API 公益站 default 与 VIP 分组倍率从 <b>1.0</b> 下调至 <b>0.75</b>，同样预算可获得更多调用额度，长上下文、多轮对话、批量创作更划算。<br/><br/>\n无需更换令牌，无需修改配置，继续使用原有 default / VIP 分组即可自动享受本次优惠。感谢大家的支持，祝端午安康。",
+          "extra": "",
+          "id": 1781746518431,
+          "publishDate": "2026-06-18T01:35:18.431Z",
+          "type": "default"
+        },
+        {
+          "content": "<b style=\"color:#ff7a00;\">Pro 专线倍率下调通知</b><br/><br/>\n为提升高峰期使用体验、降低大家的调用成本，Euzhi API 现已将 <b>Pro 分组倍率从 2.5 调整为 1.5</b>。<br/>\nPro 专线仍接入更高规格账号池，适合高并发、长上下文、Codex / GPT-5.5 等对稳定性和响应质量要求更高的场景。<br/><br/>\n当前分组建议：默认通道 <b>1.0 倍</b>，VIP 通道 <b>1.0 倍</b>，Pro 专线 <b>1.5 倍</b>。<br/>\n如需使用 Pro 专线，请在令牌管理中将令牌分组切换为 <b>pro</b> 后调用。",
+          "extra": "",
+          "id": 1781584957174,
+          "publishDate": "2026-06-16T04:42:37.174Z",
+          "type": "default"
+        },
+        {
+          "content": "<b style=\"font-size:18px;color:#14b8a6;\">pro渠道正式上线</b><br/>\nGPT-5.4 / GPT-5.5 已接入Pro渠道。相比普通通道，pro减少拥堵干扰，让连续输出更稳。倍率是default和vip分组的1.5倍。将「控制台- 令牌」里的可用分组切换为<b>pro</b>即可。",
+          "extra": "",
+          "id": 1781492039465,
+          "publishDate": "2026-06-15T02:53:59.465Z",
+          "type": "default"
+        },
         {
           "content": "<div style=\"padding:10px 12px;border:1px solid rgba(245,158,11,.32);border-radius:10px;background:rgba(245,158,11,.10);line-height:1.7;font-size:14px;\"><b style=\"color:#d97706;font-size:15px;\">Hermes 用户请注意</b><br>官方规格：Codex 当前为 <b>272K 输入 + 128K 最大输出</b>，合计约 <b>400K 上下文窗口</b>；Plus / Pro 规格一致。<br>使用 Hermes 时，建议上下文累计到 <b>20 万 tokens 左右</b> 进行一次<b>手动压缩或插件自动压缩</b>。长时间不压缩，可能会因上下文过大导致不输出、响应中断或无内容返回。<br>Codex 用户无需手动处理，Codex 会自动压缩上下文。</div>",
           "extra": "",
@@ -154,7 +196,7 @@
           "type": "warning"
         },
         {
-          "content": "<div style=\"padding:10px 12px;border:1px solid rgba(47,107,255,.24);border-radius:10px;background:rgba(47,107,255,.08);line-height:1.7\"><b style=\"color:#4f8cff\">服务与隐私说明</b><br/>Euzhi API 公益站、优智图及相关服务均由 <b>Euzhi自有上游资源与自建服务链路</b> 统一调度。<br/>您的请求不会被转售给任何平台，也不会被用于与当前服务无关的用途。</div>",
+          "content": "<div style=\"padding:10px 12px;border:1px solid rgba(47,107,255,.24);border-radius:10px;background:rgba(47,107,255,.08);line-height:1.7\"><b style=\"color:#4f8cff\">服务与隐私说明</b><br/>Euzhi API 公益站、优智图及相关服务均由 <b>Euzhi自有上游资源与自建服务链路</b> 统一调度。<br/>您的请求不会被转售给任何平台，也不会被用于与当前服务无关的用途。<br/><br/>本服务不面向中国大陆地区用户开放，请在符合当地法律法规及相关政策要求的前提下合规使用。<br>\nThis service is not available to users located in mainland China. Please use it only in compliance with applicable local laws, regulations, and policies.</div>",
           "extra": "除完成模型调用、余额结算、支付处理、安全风控和故障排查等必要场景外，系统不会主动留存、窃取或挪用您的请求内容；本地工具产生的配置与使用数据仍以用户本地保存为主。",
           "id": 1,
           "publishDate": "2026-05-15T00:00:00+08:00",
@@ -239,7 +281,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://api.euzhi.com",
       "setup": true,
-      "start_time": 1780909709,
+      "start_time": 1781580169,
       "stripe_unit_price": 8,
       "system_name": "Euzhi",
       "telegram_bot_name": "",
@@ -250,7 +292,7 @@
       "uptime_kuma_enabled": true,
       "usd_exchange_rate": 7.3,
       "user_agreement_enabled": true,
-      "version": "v1.0.0-rc.10",
+      "version": "v1.0.0-rc.11",
       "wechat_login": false,
       "wechat_qrcode": ""
     },

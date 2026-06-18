@@ -1,7 +1,7 @@
 {
   "data": {
-    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":true,\"about\":true}",
-    "SidebarModulesAdmin": "",
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":false,\"about\":true}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"imagePlayground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
     "announcements": [
       {
         "content": "vip分组是本站重点维护分组，稳定性更有保障，提供更优质的服务与更多的模型选择。\n可通过订阅coding plan 自动升级VIP分组 或 积累消费超过80元联系客服提升分组。",
@@ -40,6 +40,13 @@
         "id": 1,
         "route": "主域名",
         "url": "https://kapibala.asia"
+      },
+      {
+        "color": "blue",
+        "description": "择优选择主线路或者备用线路",
+        "id": 2,
+        "route": "备用线路",
+        "url": "https://kapibala.curb0331.cloud"
       }
     ],
     "api_info_enabled": true,
@@ -124,7 +131,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://kapibala.asia",
     "setup": true,
-    "start_time": 1780944386,
+    "start_time": 1781626495,
     "stripe_unit_price": 8,
     "system_name": "卡皮巴拉API",
     "telegram_bot_name": "",

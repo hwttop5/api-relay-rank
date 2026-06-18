@@ -1,0 +1,3789 @@
+{
+  "auto_groups": [
+    "claude-lite",
+    "claude-official",
+    "codex",
+    "gemini",
+    "deepseek",
+    "chatgpt",
+    "chatgpt-hight",
+    "grok",
+    "qwen",
+    "kimi",
+    "default",
+    "minimax",
+    "glm"
+  ],
+  "data": [
+    {
+      "model_name": "gpt-5-2025-08-07",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "claude-sonnet-4-6-c",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1142,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview",
+      "description": "由 google-vertex 提供的人工智能模型。",
+      "tags": "推理,工具,文件,多模态,音频,1M",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 2,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview-c",
+      "vendor_id": 5,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.05,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o1-preview",
+      "description": "o1-preview 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,128K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "text-embedding-ada-002",
+      "description": "针对各种NLP任务优化的基于Ada的文本嵌入模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,文件,60K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.05,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-1-20250805",
+      "description": "由 anthropic 提供的人工智能模型。",
+      "icon": "Claude.Color",
+      "tags": "推理,工具,文件,多模态,200K",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-mini-realtime-preview",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "audio_ratio": 16.67,
+      "enable_groups": [
+        "chatgpt",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-chat-latest",
+      "description": "GPT-5.2 Chat 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,文件,多模态,128K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o1-preview-2024-09-12",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1",
+      "description": "GPT-5.1 是由 OpenAI提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,文件,多模态,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5.1",
+      "description": "model provided by zhipuai.",
+      "tags": "Reasoning,Tools,200K",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.2,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "glm"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "qwen3-max",
+      "description": "由 aliyun-bailian 提供的人工智能模型。",
+      "tags": "工具,256K",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 32000 ? tier(\"base\", p * 2.5 + c * 10 + cr * 0.5 + cc * 3.125) : len > 32000 && len < 128000 ? tier(\"第2档\", p * 4 + c * 16 + cr * 0.8 + cc * 5) : tier(\"第3档\", p * 7 + c * 28 + cr * 1.4 + cc * 8.75)"
+    },
+    {
+      "model_name": "gpt-4.1-nano-2025-04-14",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.05,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.075,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o1",
+      "description": "o1 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,文件,多模态,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o4-mini",
+      "description": "o4-mini 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,文件,多模态,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.55,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "default",
+        "chatgpt",
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-chat",
+      "description": "DeepSeek Chat 是由 deepseek 提供的人工智能模型。",
+      "icon": "DeepSeek.Color",
+      "tags": "工具,文件,128K",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-lite-preview",
+      "description": "由 google-vertex 提供的人工智能模型。",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.6",
+      "description": "Kimi K2.6 is an AI model provided by opencode-go.",
+      "tags": "Reasoning,Tools,Files,Open Weights,Vision,262.1K",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 3.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.153846153846,
+      "cache_ratio": 0.169230769231,
+      "enable_groups": [
+        "default",
+        "kimi"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-max-2026-01-23",
+      "description": "由 aliyun-bailian 提供的人工智能模型。",
+      "tags": "256K",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 32000 ? tier(\"base\", p * 2.5 + c * 10 + cr * 0.5 + cc * 3.125) : len > 32000 && len < 128000 ? tier(\"第2档\", p * 4 + c * 16 + cr * 0.8 + cc * 5) : tier(\"第3档\", p * 7 + c * 28 + cr * 1.4 + cc * 8.75)"
+    },
+    {
+      "model_name": "o3-2025-04-16",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "description": "由 anthropic 提供的人工智能模型。",
+      "icon": "Claude.Color",
+      "tags": "推理,工具,文件,多模态,200K",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-lite",
+        "claude-official",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-lite",
+        "claude-official",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-20250514-thinking",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929-c",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1142,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3.2",
+      "description": "由 deepseek 提供的人工智能模型。",
+      "tags": "工具,开源权重,128K",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1.5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview-thinking",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 2,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-image-preview",
+      "description": "由 google-vertex 提供的人工智能模型。",
+      "tags": "文件,多模态,32.8K",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 90,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-2024-11-20",
+      "description": "GPT-4o (2024-11-20) 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "工具,文件,多模态,128K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5",
+      "description": "GPT-5 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,文件,多模态,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-3.5-turbo-16k",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-2025-11-13",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "description": "GPT-5.2 是由 opencode 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,文件,多模态,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101-thinking",
+      "description": "由 anthropic 提供的人工智能模型。",
+      "tags": "推理,工具,文件,多模态,200K",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7-thinking",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-lite",
+        "claude-official",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "description": "由 anthropic 提供的人工智能模型。",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-lite",
+        "claude-official",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-chat",
+      "description": "GPT-5.2 Chat 是由 azure-cognitive-services 提供的人工智能模型。",
+      "tags": "推理,工具,文件,多模态,128K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-r1-0528",
+      "description": "由 deepseek 提供的人工智能模型。",
+      "tags": "推理,工具,128k",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-lite-preview-c",
+      "vendor_id": 5,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.01,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-chat-2025-08-07",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001-thinking",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "DeepSeek-V4-Flash",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 1,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "description": "由 deepseek 提供的人工智能模型。",
+      "tags": "Reasoning,Tools,Open Weights,1M",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 1,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash",
+      "description": "Gemini 2.5 Flash 是由 google-vertex 提供的人工智能模型。",
+      "icon": "Gemini.Color",
+      "tags": "推理,工具,文件,多模态,音频,1M",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333333,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 3.333333333333,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro-nothinking",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5",
+      "description": "model provided by zhipuai.",
+      "icon": "Zhipu.Color",
+      "tags": "Reasoning,Tools,Open Weights,204.8K",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.5,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "default",
+        "glm"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "grok-3",
+      "description": "由 xai 提供的人工智能模型。",
+      "icon": "Grok.Color",
+      "tags": "工具,131.1K",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-chat-latest",
+      "description": "GPT-5.1 Chat 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,文件,多模态,128K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-nano",
+      "description": "GPT-5.4 Nano is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6.25,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o3-mini",
+      "description": "o3-mini 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.55,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-20260203-c",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.4285,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929-thinking",
+      "description": "由 anthropic 提供的人工智能模型。",
+      "tags": "推理,工具,文件,多模态,200K",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "claude-lite"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-3.5-turbo",
+      "description": "GPT-3.5-turbo 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "16.4K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "chatgpt-hight",
+        "default",
+        "chatgpt"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-2024-05-13",
+      "description": "GPT-4o (2024-05-13) 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "工具,文件,多模态,128K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini-2026-03-17",
+      "description": "gpt-5.4-mini-2026-03-17 is an AI model provided by 302ai.",
+      "icon": "OpenAI.Color",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "chatgpt"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929-thinking-c",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1142,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-ocr",
+      "vendor_id": 3,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-image-2.0",
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "wan2.7-image",
+      "icon": "Qwen.Color",
+      "tags": "图像生成与编辑",
+      "vendor_id": 26,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "image-generation"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-chat",
+      "description": "GPT-5.1 Chat 是由 azure-cognitive-services 提供的人工智能模型。",
+      "tags": "推理,工具,文件,多模态,音频,128K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "text-embedding-3-large",
+      "description": "用于广泛自然语言处理任务的大型文本嵌入模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,文件,64K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.065,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "chatgpt-hight",
+        "default",
+        "chatgpt"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "description": "由 anthropic 提供的人工智能模型。",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-lite",
+        "claude-official",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4-1-fast-reasoning",
+      "description": "由 xai 提供的人工智能模型。",
+      "icon": "Grok.Color",
+      "tags": "推理,工具,多模态,2M",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2.5,
+      "enable_groups": [
+        "default",
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-image-2.0-pro",
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-4.1-nano",
+      "description": "GPT-4.1 nano 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "工具,文件,多模态,1M",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.05,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "chatgpt",
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o3-mini-2025-01-31",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.55,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-c",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.4285,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-ai/DeepSeek-V3",
+      "description": "DeepSeek V3 是由 deepseek 提供的人工智能模型。",
+      "icon": "DeepSeek.Color",
+      "tags": "推理,工具,开源权重,128k",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.4,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3",
+      "description": "由 deepseek 提供的人工智能模型。",
+      "tags": "工具,128k",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.4,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3-250324",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.4,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4.1-mini",
+      "description": "GPT-4.1 mini 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "工具,文件,多模态,1M",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "chatgpt",
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o",
+      "description": "GPT-4o 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "工具,文件,多模态,128K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o3",
+      "description": "o3 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,文件,多模态,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "icon": "OpenAI.Color",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2667,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "chatgpt-hight",
+        "codex",
+        "codex_pro",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "image-generation"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-thinking",
+      "description": "由 anthropic 提供的人工智能模型。",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-lite",
+        "claude-official",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-nothinking",
+      "description": "由 google-vertex 提供的人工智能模型。",
+      "tags": "Files,Vision,1M",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333333,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 3.333333333333,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6-thinking",
+      "description": "由 anthropic 提供的人工智能模型。",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-lite",
+        "claude-official",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4.1-mini-2025-04-14",
+      "description": "OpenAI GPT-4.1 Mini 是由 openai 提供的人工智能模型。",
+      "tags": "工具,多模态,1M",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-2025-12-11",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-20250514",
+      "description": "由 anthropic 提供的人工智能模型。",
+      "icon": "Claude.Color",
+      "tags": "推理,工具,文件,多模态,200K",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4-20-reasoning",
+      "description": "由 xai 提供的人工智能模型。",
+      "icon": "Grok.Color",
+      "tags": "Reasoning,Tools,262K",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "grok",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "z-image-turbo",
+      "description": "由 aliyun-bailian 提供的人工智能模型。",
+      "tags": "Files,Vision",
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "description": "GPT-5.4 Mini is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "chatgpt-hight",
+        "codex",
+        "codex_pro",
+        "default",
+        "chatgpt"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-pro",
+      "description": "GPT-5-Pro 是由 openai 提供的人工智能模型。",
+      "tags": "推理,工具,文件,多模态,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-r1",
+      "description": "由 deepseek 提供的人工智能模型。",
+      "tags": "推理,工具,128k",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-r1-250528",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-image-edit",
+      "description": "由 aliyun-bailian 提供的人工智能模型。",
+      "vendor_id": 9,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "qwen3.6-flash",
+      "description": "由 aliyun-bailian 提供的人工智能模型。",
+      "tags": "Reasoning,Tools,Vision,1M",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "qwen",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 256000 ? tier(\"base\", p * 1.2 + c * 7.2) : tier(\"第2档\", p * 4.8 + c * 28.8)"
+    },
+    {
+      "model_name": "gpt-3.5-turbo-1106",
+      "description": "GPT-3.5 Turbo 1106 是由 azure 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "16.4K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.1-chat-2025-11-13",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "description": "GPT-5.5 is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,1.1M",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "codex",
+        "codex_pro",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len < 272000 ? tier(\"base\", p * 5 + c * 30 + cr * 0.5) : tier(\"第2档\", p * 10 + c * 45 + cr * 1)"
+    },
+    {
+      "model_name": "text-embedding-3-small",
+      "description": "用于高效处理的小型文本嵌入模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,文件,32K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.01,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "chatgpt-hight",
+        "default",
+        "chatgpt"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "description": "由 anthropic 提供的人工智能模型。",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "claude-lite",
+        "claude-official"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6-thinking-c",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1142,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-thinking-c",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.4285,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4",
+      "description": "由 xai 提供的人工智能模型。",
+      "icon": "Grok.Color",
+      "tags": "推理,工具,256K",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default",
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-mini",
+      "description": "GPT-5 Mini 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,文件,多模态,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.12,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001-c",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.017,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "description": "由 anthropic 提供的人工智能模型。",
+      "icon": "Claude.Color",
+      "tags": "推理,工具,文件,多模态,200K",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-lite",
+        "claude-official",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M2.7",
+      "quota_type": 0,
+      "model_ratio": 1.05,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "default",
+        "minimax"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-2024-08-06",
+      "description": "GPT-4o (2024-08-06) 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "工具,文件,多模态,128K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "default",
+        "chatgpt",
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-oss-120b",
+      "description": "@cf/openai/gpt-oss-120b 是由 cloudflare-workers-ai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "开源权重,128K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.33,
+      "enable_groups": [
+        "chatgpt-hight",
+        "default",
+        "chatgpt"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-mini-2025-08-07",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.12,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3-0324",
+      "description": "由 deepseek 提供的人工智能模型。",
+      "tags": "工具,开源权重,128K",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.4,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview-thinking",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1875,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-max-2025-09-23",
+      "description": "由 aliyun-bailian 提供的人工智能模型。",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 32000 ? tier(\"base\", p * 2.5 + c * 10 + cr * 0.5 + cc * 3.125) : len > 32000 && len < 128000 ? tier(\"第2档\", p * 4 + c * 16 + cr * 0.8 + cc * 5) : tier(\"第3档\", p * 7 + c * 28 + cr * 1.4 + cc * 8.75)"
+    },
+    {
+      "model_name": "o3-pro-2025-06-10",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-preview-c",
+      "vendor_id": 5,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.05,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-chat-latest",
+      "description": "GPT-5 Chat (latest) 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,文件,多模态,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "description": "由 anthropic 提供的人工智能模型。",
+      "icon": "Claude.Color",
+      "tags": "推理,工具,文件,多模态,200K",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-official",
+        "default",
+        "claude-lite"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-image-preview",
+      "description": "由 google-vertex 提供的人工智能模型。",
+      "icon": "Gemini.Color",
+      "tags": "Reasoning,Files,Vision,131.1K",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 120,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4-20-non-reasoning",
+      "description": "由 xai 提供的人工智能模型。",
+      "icon": "Grok.Color",
+      "tags": "Tools,262K",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "default",
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.6-plus",
+      "description": "由 aliyun-bailian 提供的人工智能模型。",
+      "tags": "Reasoning,Tools,Files,Vision,262.1K",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 256000 ? tier(\"第1档\", p * 2 + c * 12) : tier(\"第2档\", p * 8 + c * 48)"
+    },
+    {
+      "model_name": "gpt-3.5-turbo-0125",
+      "description": "GPT-3.5 Turbo 0125 是由 azure 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "16.4K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-chat",
+      "description": "GPT-5.3 Chat is an AI model provided by azure.",
+      "icon": "OpenAI.Color",
+      "tags": "Reasoning,Tools,Files,Vision,128K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5",
+      "description": "由 anthropic 提供的人工智能模型。",
+      "icon": "OpenCode",
+      "tags": "推理,工具,文件,多模态,1M",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-thinking",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333333,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 3.333333333333,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-max-preview",
+      "description": "由 aliyun-bailian 提供的人工智能模型。",
+      "tags": "Tools,256K",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 32000 ? tier(\"base\", p * 2.5 + c * 10 + cr * 0.5 + cc * 3.125) : len > 32000 && len < 128000 ? tier(\"第2档\", p * 4 + c * 16 + cr * 0.8 + cc * 5) : tier(\"第3档\", p * 7 + c * 28 + cr * 1.4 + cc * 8.75)"
+    },
+    {
+      "model_name": "gpt-5-nano",
+      "description": "GPT-5 Nano 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,文件,多模态,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.025,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.12,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-mini-tts",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "audio_ratio": 25,
+      "audio_completion_ratio": 1,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-ai/DeepSeek-R1",
+      "description": "由 deepseek 提供的人工智能模型。",
+      "icon": "DeepSeek.Color",
+      "tags": "推理,开源权重,128k",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "default",
+        "deepseek"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4-fast-reasoning",
+      "description": "由 xai 提供的人工智能模型。",
+      "icon": "Grok.Color",
+      "tags": "推理,工具,多模态,2M",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2.5,
+      "enable_groups": [
+        "grok",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o4-mini-2025-04-16",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.55,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview-c",
+      "vendor_id": 5,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.016,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-3.5-turbo-instruct",
+      "description": "GPT-3.5 Turbo Instruct 是由 azure 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "4.1K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-nano-2026-03-17",
+      "description": "gpt-5.4-nano-2026-03-17 is an AI model provided by 302ai.",
+      "icon": "OpenAI.Color",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6.25,
+      "enable_groups": [
+        "chatgpt",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-nano-2025-08-07",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.025,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.12,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-preview-thinking",
+      "description": "由 google-vertex 提供的人工智能模型。",
+      "icon": "Gemini.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1875,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.6-max-preview",
+      "description": "由 aliyun-bailian 提供的人工智能模型。",
+      "tags": "245.8K",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 128000 ? tier(\"base\", p * 9 + c * 54 + cr * 0.9) : tier(\"第2档\", p * 15 + c * 90 + cr * 0.9)"
+    },
+    {
+      "model_name": "o1-2024-12-17",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 7.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101-thinking-c",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.4285,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3-coder-plus",
+      "description": "由 aliyun-bailian 提供的人工智能模型。",
+      "tags": "Tools,Open Weights,1M",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "qwen3.5-flash",
+      "description": "由 aliyun-bailian 提供的人工智能模型。",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len < 128000 ? tier(\"base\", p * 0.2 + c * 2) : len > 128000 && c < 256000 ? tier(\"第2档\", p * 0.8 + c * 8) : tier(\"第3档\", p * 1.2 + c * 12)"
+    },
+    {
+      "model_name": "qwen3.7-max",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "qwen",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-4.1-2025-04-14",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "whisper-1",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-reasoner",
+      "description": "由 deepseek 提供的人工智能模型。",
+      "icon": "DeepSeek.Color",
+      "tags": "推理,工具,文件,128K",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-image",
+      "description": "Gemini 2.5 Flash Image 是由 google 提供的人工智能模型。",
+      "icon": "Gemini.Color",
+      "tags": "推理,文件,多模态,32.8K",
+      "vendor_id": 5,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.06154,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-lite-thinking",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.05,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro-thinking",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.628,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-preview",
+      "description": "由 google-vertex 提供的人工智能模型。",
+      "icon": "Gemini.Color",
+      "tags": "推理,工具,文件,202.8K",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1875,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview",
+      "description": "由 google-vertex 提供的人工智能模型。",
+      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.1875,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-3.5-turbo-16k-0613",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro",
+      "description": "Gemini 2.5 Pro 是由 google-vertex 提供的人工智能模型。",
+      "icon": "Gemini.Color",
+      "tags": "推理,工具,文件,多模态,音频,1M",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "gemini",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash-c",
+      "vendor_id": 5,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.014,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.1",
+      "description": "由 xai 提供的人工智能模型。",
+      "icon": "Grok.Color",
+      "tags": "Tools,Files,Vision,200K",
+      "vendor_id": 7,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.004,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M3",
+      "quota_type": 0,
+      "model_ratio": 2.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "default",
+        "minimax"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-vl-ocr",
+      "description": "由 aliyun-bailian 提供的人工智能模型。",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3.1",
+      "description": "由 deepseek 提供的人工智能模型。",
+      "icon": "DeepSeek.Color",
+      "tags": "推理,工具,开源权重,128K",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "cache_ratio": 0.125,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4.1",
+      "description": "GPT-4.1 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "工具,文件,多模态,1M",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-mini",
+      "description": "GPT-4o mini 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "工具,文件,多模态,128K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.075,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "default",
+        "chatgpt",
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-chat-2025-12-11",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-2026-03-05",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len < 272000 ? tier(\"base\", p * 2.5 + c * 15 + cr * 0.25) : tier(\"第2档\", p * 5 + c * 22.5 + cr * 0.5)"
+    },
+    {
+      "model_name": "gemini-2.5-flash-lite",
+      "description": "一款经过优化、可实现高成本效益和高吞吐量的 Gemini 2.5 Flash 模型。",
+      "icon": "Gemini.Color",
+      "tags": "推理,工具,多模态,音频,1M",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.05,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4-1-fast-non-reasoning",
+      "description": "由 xai 提供的人工智能模型。",
+      "icon": "Grok.Color",
+      "tags": "工具,文件,多模态,2M",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2.5,
+      "enable_groups": [
+        "default",
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4-fast-non-reasoning",
+      "description": "由 xai 提供的人工智能模型。",
+      "icon": "Grok.Color",
+      "tags": "工具,文件,多模态,2M",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2.5,
+      "enable_groups": [
+        "default",
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-20250514-c",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1142,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-20250514-thinking-c",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1142,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-3.5-turbo-0613",
+      "description": "GPT-3.5 Turbo 0613 是由 azure 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "16.4K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "chatgpt",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o1-mini-2024-09-12",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.55,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-pro-2025-10-06",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101-c",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.4285,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "claude-lite",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.5-plus",
+      "description": "由 aliyun-bailian 提供的人工智能模型。",
+      "tags": "Reasoning,Tools,Files,Vision,262.1K",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 128000 ? tier(\"base\", p * 0.8 + c * 4.8) : len > 128000 && len < 256000 ? tier(\"第2档\", p * 2 + c * 12) : tier(\"第3档\", p * 4 + c * 24)"
+    },
+    {
+      "model_name": "gpt-5-chat",
+      "description": "GPT-5 Chat 是由 azure 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,文件,多模态,128K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "chatgpt-hight",
+        "default",
+        "chatgpt"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "description": "GPT-5.4 is an AI model provided by vivgrid.",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "chatgpt",
+        "chatgpt-hight",
+        "codex",
+        "codex_pro",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len < 272000 ? tier(\"base\", p * 2.5 + c * 15 + cr * 0.25) : tier(\"第2档\", p * 5 + c * 22.5 + cr * 0.5)"
+    },
+    {
+      "model_name": "gpt-5-chat-2025-10-03",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro-c",
+      "vendor_id": 5,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.5",
+      "description": "Kimi K2.5 是由 Moonshot 提供的人工智能模型。",
+      "icon": "Moonshot.Color",
+      "tags": "推理,工具,开源权重,多模态,262.1K",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5.25,
+      "enable_groups": [
+        "default",
+        "kimi"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-turbo",
+      "description": "由 aliyun-bailian 提供的人工智能模型。",
+      "tags": "Reasoning,Tools,1M",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.8572,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "qwen",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "wan2.7-image-pro",
+      "icon": "Qwen.Color",
+      "tags": "图像生成与编辑",
+      "vendor_id": 26,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "qwen"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "o1-mini",
+      "description": "o1-mini 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,128K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.55,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "enable_groups": [
+        "chatgpt-hight",
+        "default",
+        "chatgpt"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "o3-pro",
+      "description": "o3-pro 是由 openai 提供的人工智能模型。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具,文件,多模态,200K",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 10,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "chatgpt-hight"
+      ],
+      "supported_endpoint_types": [
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "description": "由 deepseek 提供的人工智能模型。",
+      "tags": "Reasoning,Tools,Open Weights,1M",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.008333333333,
+      "enable_groups": [
+        "deepseek",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "auto": 1,
+    "chatgpt": 0.7,
+    "chatgpt-hight": 2,
+    "claude-lite": 0.6,
+    "claude-official": 1.6,
+    "codex": 0.4,
+    "codex_pro": 0.4,
+    "deepseek": 0.8,
+    "default": 1,
+    "gemini": 0.8,
+    "glm": 0.8,
+    "grok": 2.5,
+    "kimi": 0.8,
+    "minimax": 0.8,
+    "qwen": 0.8
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "gemini": {
+      "path": "/v1beta/models/{model}:generateContent",
+      "method": "POST"
+    },
+    "image-generation": {
+      "path": "/v1/images/generations",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    },
+    "openai-response": {
+      "path": "/v1/responses",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "auto": "推荐 | 根据调用的模型ID 自动选择分组 | 全模型可用",
+    "chatgpt": "Gpt模型来源Azure【官价10%】",
+    "chatgpt-hight": "Gpt模型来源Openai【官价28.57%】",
+    "claude-lite": "高性价比Claude，有降智概率【官价8.57%】",
+    "claude-official": "100%官转Claude，支持任意检测【官价22.86%】",
+    "codex": "Codex专用，含gpt-5.5 5.4等高阶模型【官价5.71%】",
+    "codex_pro": "Codex专用，含gpt-5.5 5.4等高阶模型【官价5.71%】",
+    "deepseek": "DeepSeek系列模型，官方签约【官价80%】",
+    "default": "默认分组",
+    "gemini": "官转Gemini【官价12.86%】",
+    "glm": "Glm系列模型，官方签约【官价80%】",
+    "grok": "来源Xai官方【官价35.71%】",
+    "kimi": "Kimi系列模型，官方签约【官价80%】",
+    "minimax": "MiniMax系列模型，官方签约【官价80%】",
+    "qwen": "Qwen系列模型，官方签约【官价80%】"
+  },
+  "vendors": [
+    {
+      "id": 26,
+      "name": "阿里云百炼"
+    },
+    {
+      "id": 30,
+      "name": "Venice AI",
+      "icon": "VeniceAI"
+    },
+    {
+      "id": 31,
+      "name": "快手",
+      "icon": "Kling.Color"
+    },
+    {
+      "id": 36,
+      "name": "NanoGPT"
+    },
+    {
+      "id": 3,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 5,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 29,
+      "name": "Azure Cognitive Services"
+    },
+    {
+      "id": 6,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 11,
+      "name": "opencode",
+      "icon": "OpenCode"
+    },
+    {
+      "id": 17,
+      "name": "GitHub Copilot",
+      "icon": "GithubCopilot"
+    },
+    {
+      "id": 19,
+      "name": "Moonshot AI (China)",
+      "icon": "Moonshot.Color"
+    },
+    {
+      "id": 20,
+      "name": "opencode zen",
+      "icon": "OpenCode"
+    },
+    {
+      "id": 23,
+      "name": "Alibaba (China)"
+    },
+    {
+      "id": 35,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 39,
+      "name": "aliyun-bailian"
+    },
+    {
+      "id": 2,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 7,
+      "name": "xAI",
+      "icon": "XAI"
+    },
+    {
+      "id": 28,
+      "name": "Helicone"
+    },
+    {
+      "id": 34,
+      "name": "Abacus"
+    },
+    {
+      "id": 37,
+      "name": "OpenCode Go"
+    },
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 8,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 21,
+      "name": "Cortecs"
+    },
+    {
+      "id": 27,
+      "name": "iFlow"
+    },
+    {
+      "id": 38,
+      "name": "Qiniu"
+    },
+    {
+      "id": 10,
+      "name": "Azure",
+      "icon": "AzureAI.Color"
+    },
+    {
+      "id": 13,
+      "name": "Together AI",
+      "icon": "TogetherAI.Color"
+    },
+    {
+      "id": 18,
+      "name": "Zhipu AI",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 32,
+      "name": "302.AI"
+    },
+    {
+      "id": 33,
+      "name": "Vivgrid"
+    },
+    {
+      "id": 9,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 12,
+      "name": "Cloudflare Workers AI",
+      "icon": "Cloudflare.Color"
+    },
+    {
+      "id": 15,
+      "name": "Nvidia"
+    },
+    {
+      "id": 16,
+      "name": "Vertex",
+      "icon": "VertexAI.Color"
+    },
+    {
+      "id": 24,
+      "name": "Zhipu AI Coding Plan"
+    },
+    {
+      "id": 40,
+      "name": "LLM Gateway"
+    },
+    {
+      "id": 4,
+      "name": "字节跳动",
+      "icon": "Doubao.Color"
+    },
+    {
+      "id": 14,
+      "name": "submodel",
+      "icon": "Submodel"
+    },
+    {
+      "id": 22,
+      "name": "AIHubMix"
+    },
+    {
+      "id": 25,
+      "name": "Scaleway"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":false,\"about\":false}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true}}",
+      "announcements": [
+        {
+          "content": "Anthropic已下线claude-fable-5模型，请勿继续调用，详见下发官网公告链接",
+          "extra": "https://www.anthropic.com/news/fable-mythos-access",
+          "id": 102,
+          "publishDate": "2026-06-13T02:35:24.000Z",
+          "type": "default"
+        },
+        {
+          "content": "价格调整：codex分组倍率上调至0.4，gemini分组下调至0.8",
+          "extra": "",
+          "id": 101,
+          "publishDate": "2026-06-13T01:02:13.136Z",
+          "type": "default"
+        },
+        {
+          "content": "价格调整：codex分组倍率下调至0.3",
+          "extra": "",
+          "id": 100,
+          "publishDate": "2026-06-11T14:31:10.700Z",
+          "type": "default"
+        },
+        {
+          "content": "价格调整：受openai风控影响，为保障持续可用，codex分组倍率上调至0.55",
+          "extra": "",
+          "id": 99,
+          "publishDate": "2026-06-11T05:19:28.000Z",
+          "type": "default"
+        },
+        {
+          "content": "价格调整：自6/6 0点起，gpt-image-2模型更改计费策略为按次计费，0.08/次。\n",
+          "extra": "",
+          "id": 98,
+          "publishDate": "2026-06-06T08:04:16.000Z",
+          "type": "default"
+        },
+        {
+          "content": "codex分组：官方已下线gpt-5.3-codex、gpt-5.2相关模型，不再支持调用，请切换至gpt-5.4、gpt-5.5",
+          "extra": "",
+          "id": 97,
+          "publishDate": "2026-06-02T03:22:26.929Z",
+          "type": "default"
+        },
+        {
+          "content": "价格调整：gemini分组倍率下调至1.0",
+          "extra": "",
+          "id": 96,
+          "publishDate": "2026-05-25T14:51:20.224Z",
+          "type": "default"
+        },
+        {
+          "content": "价格调整：claude分组倍率下调至0.6，codex分组倍率下调至0.3",
+          "extra": "",
+          "id": 95,
+          "publishDate": "2026-05-24T02:04:27.230Z",
+          "type": "default"
+        },
+        {
+          "content": "Global AI × 国内大模型：8折直连，Claude Code一站式接入指南，点击下方链接查看",
+          "extra": "https://ccn7c4qmjtrb.feishu.cn/wiki/CgeRwLMeXiHLfak1ZrRcE2j3nGe",
+          "id": 94,
+          "publishDate": "2026-05-14T15:38:47.546Z",
+          "type": "default"
+        },
+        {
+          "content": "五大主流国产大模型全面焕新升级接入：Qwen、DeepSeek、GLM、MiniMax、Kimi。官方签约，统一8折，高并发稳定保障，可开发票，欢迎体验。",
+          "extra": "",
+          "id": 93,
+          "publishDate": "2026-05-09T03:45:16.708Z",
+          "type": "default"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "blue",
+          "description": "10GB大带宽，支持批量图片/文件上传",
+          "id": 1,
+          "route": "us(无需🪜)",
+          "url": "https://globalai.vip"
+        },
+        {
+          "color": "green",
+          "description": "codeing优化专线，禁大文件上传",
+          "id": 2,
+          "route": "us(无需🪜)",
+          "url": "https://api.globalai.chat"
+        },
+        {
+          "color": "cyan",
+          "description": "香港节点,备用",
+          "id": 3,
+          "route": "hk(无需🪜)",
+          "url": "https://hk.globalai.vip"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "💬 聊天": "https://cwmp.globalai.vip/#/?settings={\"key\":\"{key}\",\"url\":\"{address}\"}"
+        },
+        {
+          "🍌 绘画": "https://static.globalai.vip/gpt-image-2/?settings={\"key\":\"{key}\"}"
+        },
+        {
+          "🍒 Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "CC Switch": "ccswitch"
+        }
+      ],
+      "checkin_enabled": true,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": true,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://docs.globalai.vip",
+      "email_verification": false,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq": [
+        {
+          "answer": "可能原因包括：\nAPI密钥未正确填写（检查密钥是否完整且无空格）\n密钥已过期或被撤销（重新生成密钥）\n请求头（Header）中认证格式错误（I需Bearer [API_KEY]格式）",
+          "id": 1,
+          "question": "调用API时返回401 Unauthorized错误怎么办？"
+        },
+        {
+          "answer": "排查方向：\n检查输入的Prompt是否清晰明确（尝试添加示例或细化指令）\n调整温度（temperature）等参数控制随机性\n确认模型版本是否匹配（如gpt-3.5-turbo和gpt-4差异）",
+          "id": 2,
+          "question": "API返回内容不符合预期（如无关回答或格式错误）？​"
+        },
+        {
+          "answer": "优化建议：\n使用更小的模型（如gpt-3.5-turbo比gpt-4成本更低）\n限制返回结果长度（通过max_tokens参数控制）\n缓存频繁请求的相似内容（如FAQ类回答）\n利用免费额度或按需计费模式（避免持续高并发调用）",
+          "id": 3,
+          "question": "如何降低API调用成本？"
+        },
+        {
+          "answer": "- 400 Bad Request：请求格式错误或无效。这通常意味着你的请求参数有误，需要你检查并修正请求参数。\n- 401 Unauthorized：请求格式错误或无效。这通常意味着你的请求参数有误，需要你检查并修正请求参数。\n- 403 Forbidden：一般是余额不足。\n- 404 Not Found：请求的资源未找到。你可能正在试图访问一个不存在的端点。\n- 413 Request Entity Too Large：请求体太大。你可能需要减少你的请求数据量。\n- 429 Too Many Requests：由于短时间内发送过多的请求，你已经超过了你的速率限制。\n- 500 Internal Server Error：服务器内部错误。这可能是OpenAI服务器的问题，不是你的问题。\n- 503 Service Unavailable：服务暂时不可用。这可能是由于OpenAI正在进行维护或者服务器过载。",
+          "id": 4,
+          "question": "常见错误代码"
+        }
+      ],
+      "faq_enabled": true,
+      "footer_html": "    <p style=\"font-size:12px;text-align:center\">This service is offered globally and is not specifically directed to residents of any particular jurisdiction. Users are responsible for ensuring their use of the service complies with applicable local laws.</p> <p style=\"font-size:12px;text-align:center\">Global AI Copyright ©2023-2026 GLOBALAI.VIP</p>",
+      "github_client_id": "Ov23lii4hylFHscUMF6l",
+      "github_oauth": true,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "https://static.globalai.vip/logo/logo_20260429.png",
+      "mj_notify_enabled": true,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "全球AI",
+      "passkey_login": true,
+      "passkey_origins": "https://globalai.vip",
+      "passkey_rp_id": "globalai.vip",
+      "passkey_user_verification": "preferred",
+      "price": 1,
+      "privacy_policy_enabled": true,
+      "quota_display_type": "CNY",
+      "quota_per_unit": 500000,
+      "self_use_mode_enabled": false,
+      "server_address": "https://globalai.vip",
+      "setup": true,
+      "start_time": 1781539789,
+      "stripe_unit_price": 0,
+      "system_name": "Global AI",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "top_up_link": "https://item.taobao.com/item.htm?ft=t&id=1057367795100",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 1,
+      "user_agreement_enabled": true,
+      "version": "v0.0.0",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://globalai.vip/api/pricing"
+}

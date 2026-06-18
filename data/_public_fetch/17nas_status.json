@@ -4,24 +4,17 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
-        "content": "免费分组暂时无了",
-        "extra": "",
-        "id": 33,
-        "publishDate": "2026-06-09T23:18:49.549Z",
+        "content": "限时福利分组 fuli 已上线：glm-5.2、kimi-k2.7 暂定 1 日免费不限次，创建令牌选择 fuli 即可使用。\n接入教程参考主页客户端支持ZCode，OpenCode",
+        "extra": "glm-5.2、kimi-k2.7 免费日",
+        "id": 35,
+        "publishDate": "2026-06-17T21:35:04.544Z",
         "type": "default"
       },
       {
-        "content": "上线免费不限量模型 step-3.7-flash-free",
+        "content": "Selected model is at capacity. Please try a different model. 是官方账号账号限速，等待几分钟就好了",
         "extra": "",
-        "id": 32,
-        "publishDate": "2026-06-09T01:07:46.012Z",
-        "type": "default"
-      },
-      {
-        "content": "因 OpenAI 官方已下架 gpt-5.2 与 gpt-5.3-codex 模型，将同步进行相应调整。",
-        "extra": "",
-        "id": 30,
-        "publishDate": "2026-06-02T10:59:32.817Z",
+        "id": 34,
+        "publishDate": "2026-06-16T12:07:40.280Z",
         "type": "default"
       },
       {
@@ -39,24 +32,10 @@
         "type": "default"
       },
       {
-        "content": "系统升级完毕，default分组以添加小米大模型mimo-v2-pro，mimo-v2.5-pro，mimo-v2.5，mimo-v2-omni支持平台openclaw一键脚本使用。",
-        "extra": "小米大模型",
-        "id": 25,
-        "publishDate": "2026-05-02T07:05:11.506Z",
-        "type": "default"
-      },
-      {
         "content": "以上架deepseek-v4-pro 和 deepseek-v4-flash模型，OpenClaw一件脚本以支持快速配置，default分组",
         "extra": "deepseek-v4优惠",
         "id": 23,
         "publishDate": "2026-04-28T00:22:04.607Z",
-        "type": "default"
-      },
-      {
-        "content": "default分组倍率调整0.3，继续优惠使用GPT-5.5，gpt-5.4，性价比最高gpt-5.4-mini",
-        "extra": "",
-        "id": 22,
-        "publishDate": "2026-04-25T16:00:46.756Z",
         "type": "default"
       }
     ],
@@ -82,6 +61,13 @@
         "id": 5,
         "route": "GPT图片模型接口",
         "url": "https://api-pic.17nas.com/v1"
+      },
+      {
+        "color": "blue",
+        "description": "Claude",
+        "id": 6,
+        "route": "Claude API地址",
+        "url": "https://api.17nas.com"
       }
     ],
     "api_info_enabled": true,
@@ -99,6 +85,9 @@
         "CC Switch": "ccswitch"
       },
       {
+        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+      },
+      {
         "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
       },
       {
@@ -111,9 +100,20 @@
         "OpenCat": "opencat://team/join?domain={address}&token={key}"
       }
     ],
-    "checkin_enabled": true,
+    "checkin_enabled": false,
     "custom_currency_exchange_rate": 1,
     "custom_currency_symbol": "¤",
+    "custom_oauth_providers": [
+      {
+        "id": 1,
+        "name": "Google",
+        "slug": "google",
+        "icon": "google",
+        "client_id": "222492806608-vkvtv4ctvc3q1uki7747ggk142ee80ba.apps.googleusercontent.com",
+        "authorization_endpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+        "scopes": "openid profile email"
+      }
+    ],
     "data_export_default_time": "hour",
     "default_collapse_sidebar": false,
     "default_use_auto_group": false,
@@ -203,25 +203,28 @@
     "passkey_origins": "https://ai.17nas.com",
     "passkey_rp_id": "ai.17nas.com",
     "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
     "price": 1,
-    "privacy_policy_enabled": false,
+    "privacy_policy_enabled": true,
     "quota_display_type": "USD",
     "quota_per_unit": 500000,
+    "register_enabled": true,
     "self_use_mode_enabled": false,
     "server_address": "https://ai.17nas.com",
     "setup": true,
-    "start_time": 1781080060,
+    "start_time": 1781740950,
     "stripe_unit_price": 1,
     "system_name": "镜核 AI",
     "telegram_bot_name": "",
     "telegram_oauth": false,
     "theme": "classic",
-    "turnstile_check": false,
-    "turnstile_site_key": "",
+    "turnstile_check": true,
+    "turnstile_site_key": "0x4AAAAAACmtjPee_En_Y59c",
     "uptime_kuma_enabled": false,
     "usd_exchange_rate": 7.3,
-    "user_agreement_enabled": false,
-    "version": "v1.0.0-rc.4",
+    "user_agreement_enabled": true,
+    "version": "v1.0.0-rc.11",
     "wechat_login": false,
     "wechat_qrcode": ""
   },

@@ -1,0 +1,1096 @@
+{
+  "auto_groups": [
+    "default"
+  ],
+  "data": [
+    {
+      "model_name": "MiniMax-M2.1",
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "grok-4.20-0309-non-reasoning",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2.5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "multi-model",
+      "quota_type": 0,
+      "model_ratio": 1.74,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.48,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "Kimi-K2.6",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "vip",
+        "svip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "moonshotai/kimi-k2.6",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.14,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 0.55,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M2",
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.6-plus",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2.4,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-lite-preview",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1.5,
+      "enable_groups": [
+        "svip",
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "fallback",
+      "quota_type": 0,
+      "model_ratio": 1.74,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.48,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "race:moonshotai/kimi-k2.5|qwen/qwen3.5-397b-a17b",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.6-max-preview",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 12,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-fast",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 0.5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "stepfun-ai/step-3.5-flash",
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 0.4,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "minimax-m2.1",
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-8b-fast",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "vip",
+        "svip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "text-embedding-3-small",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "vip",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "openai/gpt-oss-120b",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.8,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-oss-20b",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "vip",
+        "svip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-mini",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 0.6,
+      "enable_groups": [
+        "claude-paid",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-mini",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M2.7",
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-nano",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.05,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen/qwen3.5-397b-a17b",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "z-ai/glm-5.1",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 0.3,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5-chat",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "claude-paid",
+        "vip",
+        "svip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "Kimi-K2.6-azure",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "svip",
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek/deepseek-reasoner",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "text-embedding-3-large",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-4-maverick",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-thinking",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-chat",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-3.5-turbo-0613",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 0.2,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.5",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.14,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 0.55,
+      "enable_groups": [
+        "vip",
+        "svip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "openai/zai-org/GLM-4.7",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 0.2,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "minimax-m2",
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "blackbox",
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 0.2,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-image-lite",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 0.5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "minimaxai/minimax-m2.7",
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1.1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.6-27b",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 0.8,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemma-4-26b",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "vip",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M2.1-lightning",
+      "quota_type": 0,
+      "model_ratio": 0.1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 0.4,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "DeepSeek-V4-Flash",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.07,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-4.6",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 0.2,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-70b-fast",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "vip",
+        "svip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 10,
+      "enable_groups": [
+        "claude-paid",
+        "default",
+        "svip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "default": 1
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "gemini": {
+      "path": "/v1beta/models/{model}:generateContent",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "default": "default"
+  },
+  "vendors": [
+    {
+      "id": 25,
+      "name": "Qiniu"
+    },
+    {
+      "id": 29,
+      "name": "MiniMax",
+      "icon": "Minimax.Color"
+    },
+    {
+      "id": 33,
+      "name": "字节跳动",
+      "icon": "Doubao.Color"
+    },
+    {
+      "id": 5,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 8,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 16,
+      "name": "OpenRouter",
+      "icon": "OpenRouter.Color"
+    },
+    {
+      "id": 17,
+      "name": "Cloudflare AI Gateway"
+    },
+    {
+      "id": 32,
+      "name": "腾讯",
+      "icon": "Hunyuan.Color"
+    },
+    {
+      "id": 11,
+      "name": "a"
+    },
+    {
+      "id": 13,
+      "name": "Poe"
+    },
+    {
+      "id": 18,
+      "name": "bedrock",
+      "description": "bedrock"
+    },
+    {
+      "id": 24,
+      "name": "Vertex (Anthropic)",
+      "icon": "VertexAI.Color"
+    },
+    {
+      "id": 30,
+      "name": "百度",
+      "icon": "Wenxin.Color"
+    },
+    {
+      "id": 35,
+      "name": "快手",
+      "icon": "Kling.Color"
+    },
+    {
+      "id": 2,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 14,
+      "name": "ZenMux"
+    },
+    {
+      "id": 22,
+      "name": "SAP AI Core"
+    },
+    {
+      "id": 3,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 4,
+      "name": "Cohere",
+      "icon": "Cohere.Color"
+    },
+    {
+      "id": 6,
+      "name": "Meta",
+      "icon": "Ollama"
+    },
+    {
+      "id": 10,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 23,
+      "name": "Zhipu AI Coding Plan"
+    },
+    {
+      "id": 31,
+      "name": "零一万物",
+      "icon": "Yi.Color"
+    },
+    {
+      "id": 34,
+      "name": "Vidu",
+      "icon": "Vidu"
+    },
+    {
+      "id": 28,
+      "name": "OpenCode Zen",
+      "icon": "OpenCode"
+    },
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 7,
+      "name": "Mistral",
+      "icon": "Mistral.Color"
+    },
+    {
+      "id": 15,
+      "name": "GitHub Models",
+      "icon": "GithubCopilot"
+    },
+    {
+      "id": 21,
+      "name": "Helicone"
+    },
+    {
+      "id": 26,
+      "name": "QiHang"
+    },
+    {
+      "id": 27,
+      "name": "Vivgrid"
+    },
+    {
+      "id": 9,
+      "name": "xAI",
+      "icon": "XAI"
+    },
+    {
+      "id": 12,
+      "name": "Vercel AI Gateway",
+      "icon": "Vercel.Color"
+    },
+    {
+      "id": 19,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 20,
+      "name": "Nvidia"
+    },
+    {
+      "id": 36,
+      "name": "Jina",
+      "icon": "Jina"
+    },
+    {
+      "id": 37,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":true}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
+      "announcements": [
+        {
+          "content": "$8 per 24 hours\n\n• Get nearly $100 worth of credits\n• Around 10% of the official API pricing\n• High-speed access with generous usage limits\n\nThese add-on plans are separate from existing subscriptions and can also be activated alongside your current plan.",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2026-05-21T17:27:35.996Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "contact for buying credit \\xxx\nVaibhavg000 -telegram",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-01-25T18:48:18.161Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "\nIf you require additional API credits, please contact us via Telegram at https://t.me/Vaibhavg000 or email us at xxx.\nPlease note that UPI payments require manual verification. For UPI-based transactions, kindly reach out to us through Telegram or email to ensure prompt processing.\n",
+          "extra": "Payments",
+          "id": 1,
+          "publishDate": "2026-01-23T14:27:53.171Z",
+          "type": "default"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "blue",
+          "description": "Offical_Base_Url",
+          "id": 1,
+          "route": "Offical_Base_Url",
+          "url": "https://api.bluesminds.com/v1"
+        },
+        {
+          "color": "green",
+          "description": "Docs",
+          "id": 2,
+          "route": "Docs",
+          "url": "https://doc.bluesminds.com/"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "π",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": true,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://api.bluesminds.com",
+      "email_verification": false,
+      "enable_batch_update": false,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq": [],
+      "faq_enabled": true,
+      "footer_html": "https://t.me/apibluesminds.                 xxx",
+      "github_client_id": "Ov23li6dIXgEIlgaZfwe",
+      "github_oauth": true,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "bluesminds",
+      "passkey_login": true,
+      "passkey_origins": "https://api.bluesminds.com",
+      "passkey_rp_id": "api.bluesminds.com",
+      "passkey_user_verification": "preferred",
+      "password_register_enabled": false,
+      "price": 1,
+      "privacy_policy_enabled": true,
+      "quota_display_type": "USD",
+      "quota_per_unit": 1000000,
+      "register_enabled": true,
+      "self_use_mode_enabled": false,
+      "server_address": "https://api.bluesminds.com",
+      "setup": true,
+      "start_time": 1781105810,
+      "stripe_unit_price": 8,
+      "system_name": "Bluesminds",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "classic",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 7.3,
+      "user_agreement_enabled": false,
+      "version": "v1.0.0-rc.8",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://api.bluesminds.com/api/pricing"
+}

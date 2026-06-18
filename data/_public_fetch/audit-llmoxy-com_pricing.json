@@ -1,0 +1,1137 @@
+{
+  "auto_groups": [
+    "default"
+  ],
+  "data": [
+    {
+      "model_name": "gemini-3-pro-image",
+      "vendor_id": 19,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.35,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "mj_variation",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_upscale",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_blend",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_inpaint",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-image-preview",
+      "vendor_id": 19,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.35,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "description": "GPT-5.4 Mini 将 GPT-5.4 的核心能力带到更快、更高效的模型中，适合高吞吐和成本敏感的工作负载。它支持文本、图像和文件输入，在推理、编码、工具使用和多模态理解方面保持强表现，并提供 400K 上下文窗口与最高 128K 输出。\n\n\nGPT-5.4 Mini brings the core capabilities of GPT-5.4 to a faster, more efficient model optimized for high-throughput and cost-sensitive workloads. It supports text, image, and file inputs with strong performance across reasoning, coding, tool use, and multimodal understanding, with a 400K context window and up to 128K output tokens.",
+      "icon": "OpenAI",
+      "tags": "学术,金融,医疗,法律,营销,SEO,编程,科学,技术,翻译,百科",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.1875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.05,
+      "create_cache_ratio": 0.625,
+      "enable_groups": [
+        "mchenmu",
+        "zovabetruong",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "description": "GPT Image 2 combines OpenAI's GPT-5.4 model with state-of-the-art image generation capabilities from GPT Image 2. It enables rich multimodal workflows, allowing users to seamlessly move between reasoning, coding, and visual generation within the same interaction.",
+      "icon": "OpenAI",
+      "tags": "营销,SEO",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.6,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "zovabetruong",
+        "default",
+        "mchenmu"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_zoom",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_edits",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-20250514",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-oss-120b",
+      "vendor_id": 21,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-high",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6-thinking",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_imagine",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-thinking",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333333334,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-low",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-thinking",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001-thinking",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_low_variation",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_high_variation",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929-thinking",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-low",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "swap_face",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-3-8b-instruct",
+      "vendor_id": 29,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-4-scout",
+      "vendor_id": 29,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-3.3-70b-instruct-fp8-fast",
+      "vendor_id": 29,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-20250514-thinking",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_modal",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_reroll",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_video",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "mchenmu",
+        "zovabetruong"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 272000 ? tier(\"standard\", p * 5 + c * 30 + cr * 0.5) : tier(\"long_context\", p * 10 + c * 45 + cr * 1)"
+    },
+    {
+      "model_name": "mj_pan",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_describe",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-high",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101-thinking",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-lite",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_custom_zoom",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-1-20250805-thinking",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-3-5-haiku-20241022",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "llama-4-scout-17b-16e-instruct",
+      "vendor_id": 29,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 21,
+      "quota_type": 0,
+      "model_ratio": 0.06265,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "mchenmu",
+        "zovabetruong"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_shorten",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "description": "GPT-5.4 是 OpenAI 最新的前沿模型，将 Codex 与 GPT 系列统一到同一个系统中。它提供 100 万以上 token 的上下文窗口（922K 输入、128K 输出），支持文本和图像输入，可在同一工作流中完成高上下文推理、编码和多模态分析。该模型在编码、文档理解、工具使用和指令遵循方面表现更强，是通用任务和软件工程的强默认选择，能够生成生产级代码、整合多来源信息，并以更少迭代和更高 token 效率执行复杂的多步骤工作流。\n\n\nGPT-5.4 is OpenAI’s latest frontier model, unifying the Codex and GPT lines into a single system. It features a 1M+ token context window (922K input, 128K output) with support for text and image inputs, enabling high-context reasoning, coding, and multimodal analysis within the same workflow. The model delivers improved performance in coding, document understanding, tool use, and instruction following. It is designed as a strong default for both general-purpose tasks and software engineering, capable of generating production-quality code, synthesizing information across multiple sources, and executing complex multi-step workflows with fewer iterations and greater token efficiency.",
+      "icon": "OpenAI",
+      "tags": "学术,金融,医疗,法律,营销,SEO,编程,角色扮演,科学,技术,翻译,百科",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.05,
+      "create_cache_ratio": 0.625,
+      "enable_groups": [
+        "default",
+        "mchenmu",
+        "zovabetruong"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mj_uploads",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-3-haiku-20240307",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-1-20250805",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "description": "GPT-5.5 是 OpenAI 最新的前沿模型，将 Codex 与 GPT 系列统一到同一个系统中。它提供 100 万以上 token 的上下文窗口（922K 输入、128K 输出），支持文本和图像输入，可在同一工作流中完成高上下文推理、编码和多模态分析。该模型在编码、文档理解、工具使用和指令遵循方面表现更强，是通用任务和软件工程的强默认选择，能够生成生产级代码、整合多来源信息，并以更少迭代和更高 token 效率执行复杂的多步骤工作流。\n\n\nGPT-5.5 is OpenAI’s latest frontier model, unifying the Codex and GPT lines into a single system. It features a 1M+ token context window (922K input, 128K output) with support for text and image inputs, enabling high-context reasoning, coding, and multimodal analysis within the same workflow. The model delivers improved performance in coding, document understanding, tool use, and instruction following. It is designed as a strong default for both general-purpose tasks and software engineering, capable of generating production-quality code, synthesizing information across multiple sources, and executing complex multi-step workflows with fewer iterations and greater token efficiency.",
+      "icon": "OpenAI.Color",
+      "tags": "学术,金融,医疗,法律,营销,SEO,编程,角色扮演,科学,技术,翻译,百科",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "mchenmu",
+        "zovabetruong",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "description": "GPT-5.2 是 GPT-5 系列的前沿通用模型，相比 GPT-5.1 在智能体能力和长上下文表现上更强。它通过自适应推理动态分配计算资源，适合专业写作、分析、编码、工具使用和复杂多步骤工作流，支持文本、图像和文件输入，提供 400K 上下文窗口与最高 128K 输出。\n\n\nGPT-5.2 is a frontier general-purpose model in the GPT-5 series, with stronger agentic and long-context performance than GPT-5.1. It uses adaptive reasoning to allocate computation dynamically and is suited for professional writing, analysis, coding, tool use, and complex multi-step workflows, with text, image, and file inputs, a 400K context window, and up to 128K output tokens.",
+      "icon": "OpenAI",
+      "tags": "学术,法律,营销,技术,百科",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.142857,
+      "enable_groups": [
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "default": 0.3
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "gemini": {
+      "path": "/v1beta/models/{model}:generateContent",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "default": "默认分组"
+  },
+  "vendors": [
+    {
+      "id": 27,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 1,
+      "name": "z-ai",
+      "icon": "ZAI"
+    },
+    {
+      "id": 23,
+      "name": "doubao",
+      "description": "Seedance 2.0 is a video generation model from ByteDance. It supports text-to-video, image-to-video with first and last frame control, and multimodal reference-to-video. It is particularly strong at preserving character consistency, visual style, and camera movement from reference material. The number of tokens is given by (height of output video * width of output video * duration * 24) / 1024",
+      "icon": "Doubao.Color"
+    },
+    {
+      "id": 25,
+      "name": "minimax",
+      "icon": "Minimax.Color"
+    },
+    {
+      "id": 26,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 29,
+      "name": "Meta",
+      "icon": "Ollama"
+    },
+    {
+      "id": 2,
+      "name": "openai",
+      "icon": "OpenAI.Color"
+    },
+    {
+      "id": 3,
+      "name": "google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 4,
+      "name": "anthropic",
+      "icon": "Anthropic.Color"
+    },
+    {
+      "id": 19,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 20,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 21,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false}}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+      "announcements_enabled": false,
+      "api_info_enabled": false,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 7,
+      "custom_currency_symbol": "₮",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "1494668325643358269",
+      "discord_oauth": true,
+      "display_in_currency": true,
+      "docs_link": "https://docs.llmoxy.com",
+      "email_verification": true,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq_enabled": false,
+      "footer_html": "",
+      "github_client_id": "Ov23li6Z0Ocg2E6OXjEg",
+      "github_oauth": true,
+      "inviter_recharge_ratio": 0.2,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "https://dev-r5x7v-m8.jp.auth0.com/authorize",
+      "oidc_client_id": "C4X0giRuDIbhVQ18dCR54Mnc3xGDTZNn",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "LLMoxy",
+      "passkey_login": false,
+      "passkey_origins": "https://llmoxy.com",
+      "passkey_rp_id": "llmoxy.com",
+      "passkey_user_verification": "preferred",
+      "price": 1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "CUSTOM",
+      "quota_per_unit": 500000,
+      "self_use_mode_enabled": false,
+      "server_address": "https://llmoxy.com",
+      "setup": true,
+      "start_time": 1779805277,
+      "stripe_unit_price": 0.14,
+      "system_name": "LLMoxy",
+      "telegram_bot_name": "LLMoxy",
+      "telegram_oauth": false,
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": false,
+      "usd_exchange_rate": 7,
+      "user_agreement_enabled": false,
+      "version": "f9ca158a6e9dd5604a2857c9201f252106a8eb50",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "subscription_plans_payload": {
+    "data": [
+      {
+        "plan": {
+          "id": 6,
+          "title": "月度高阶包",
+          "subtitle": "高强度",
+          "price_amount": 188,
+          "currency": "USD",
+          "duration_unit": "day",
+          "duration_value": 30,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 6,
+          "stripe_price_id": "price_1TZCaQBxGFPBj084WeTRLwBJ",
+          "creem_product_id": "",
+          "max_purchase_per_user": 0,
+          "upgrade_group": "",
+          "total_amount": 194000000,
+          "quota_reset_period": "never",
+          "quota_reset_custom_seconds": 0,
+          "created_at": 1779297765,
+          "updated_at": 1780067666
+        }
+      },
+      {
+        "plan": {
+          "id": 5,
+          "title": "月度专业包",
+          "subtitle": "最受欢迎",
+          "price_amount": 88,
+          "currency": "USD",
+          "duration_unit": "day",
+          "duration_value": 30,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 5,
+          "stripe_price_id": "price_1TZCaPBxGFPBj084VPk5lIHd",
+          "creem_product_id": "",
+          "max_purchase_per_user": 0,
+          "upgrade_group": "",
+          "total_amount": 84000000,
+          "quota_reset_period": "never",
+          "quota_reset_custom_seconds": 0,
+          "created_at": 1779297764,
+          "updated_at": 1780067668
+        }
+      },
+      {
+        "plan": {
+          "id": 4,
+          "title": "月度标准包",
+          "subtitle": "入门推荐",
+          "price_amount": 38,
+          "currency": "USD",
+          "duration_unit": "day",
+          "duration_value": 30,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 4,
+          "stripe_price_id": "price_1TZCaPBxGFPBj084UwOrJybM",
+          "creem_product_id": "",
+          "max_purchase_per_user": 0,
+          "upgrade_group": "",
+          "total_amount": 30000000,
+          "quota_reset_period": "never",
+          "quota_reset_custom_seconds": 0,
+          "created_at": 1779297763,
+          "updated_at": 1780067671
+        }
+      },
+      {
+        "plan": {
+          "id": 3,
+          "title": "月度轻量包",
+          "subtitle": "轻量使用",
+          "price_amount": 18,
+          "currency": "USD",
+          "duration_unit": "day",
+          "duration_value": 30,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 3,
+          "stripe_price_id": "price_1TZCaOBxGFPBj084AN4lbtbW",
+          "creem_product_id": "",
+          "max_purchase_per_user": 0,
+          "upgrade_group": "",
+          "total_amount": 12500000,
+          "quota_reset_period": "never",
+          "quota_reset_custom_seconds": 0,
+          "created_at": 1779297763,
+          "updated_at": 1780067673
+        }
+      },
+      {
+        "plan": {
+          "id": 2,
+          "title": "7日冲刺包",
+          "subtitle": "短期高强度",
+          "price_amount": 38,
+          "currency": "USD",
+          "duration_unit": "day",
+          "duration_value": 7,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 2,
+          "stripe_price_id": "price_1TZCaMBxGFPBj0849ppITyUO",
+          "creem_product_id": "",
+          "max_purchase_per_user": 0,
+          "upgrade_group": "",
+          "total_amount": 35000000,
+          "quota_reset_period": "never",
+          "quota_reset_custom_seconds": 0,
+          "created_at": 1779297759,
+          "updated_at": 1780067676
+        }
+      },
+      {
+        "plan": {
+          "id": 1,
+          "title": "7日体验包",
+          "subtitle": "新用户",
+          "price_amount": 8,
+          "currency": "USD",
+          "duration_unit": "day",
+          "duration_value": 7,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 1,
+          "stripe_price_id": "price_1TZCaHBxGFPBj084MdbYWrKz",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "upgrade_group": "",
+          "total_amount": 5000000,
+          "quota_reset_period": "never",
+          "quota_reset_custom_seconds": 0,
+          "created_at": 1779297734,
+          "updated_at": 1780067678
+        }
+      }
+    ],
+    "message": "",
+    "success": true
+  },
+  "subscription_plans_source_url": "https://llmoxy.com/api/subscription/plans",
+  "source_url": "https://llmoxy.com/api/pricing"
+}

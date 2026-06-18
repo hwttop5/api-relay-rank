@@ -13,8 +13,8 @@
       "completion_ratio": 6,
       "cache_ratio": 0.475,
       "enable_groups": [
-        "svip",
-        "default"
+        "default",
+        "svip"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -153,7 +153,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://nbtoken.ai567.asia",
       "setup": true,
-      "start_time": 1780209523,
+      "start_time": 1781487734,
       "stripe_unit_price": 8,
       "system_name": "词桥云",
       "telegram_bot_name": "",

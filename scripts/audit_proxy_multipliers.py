@@ -33,10 +33,13 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any, Mapping
 
-from scripts.station_display_names import normalize_station_label
+try:
+    from scripts.station_display_names import normalize_station_label
+except ModuleNotFoundError:
+    from station_display_names import normalize_station_label
 
 
-WORKSPACE = Path(__file__).resolve().parent
+WORKSPACE = Path(__file__).resolve().parents[1]
 DEFAULT_DB_PATH = Path(os.environ.get("APPDATA", "")) / "com.codexmanager.desktop" / "codexmanager.db"
 DB_PATH = Path(os.environ.get("CODEX_MANAGER_DB_PATH", DEFAULT_DB_PATH))
 GENERATED_AT = dt.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S %z")
@@ -109,6 +112,7 @@ LABELS: dict[str, str] = {
     "585016d3.u3u.dev": "U3U",
     "4router": "4Router",
     "aicodelink": "AICodeLink",
+    "aiapi1.cc.cd": "dc API",
     "api.xiaoxin.best": "Xiaoxin",
     "atomflow.vip": "AtomFlow",
     "avemujica": "AveMujica",
@@ -176,6 +180,7 @@ SITE_URL_OVERRIDES: dict[str, str] = {
     "52mx": "https://52mx.net",
     "aicodelink": "https://aicodelink.top",
     "api-slb.krill-ai.com": "https://www.krill-ai.com",
+    "aiapi1.cc.cd": "https://aiapi1.cc.cd",
     "api.xiaoxin.best": "https://api.xiaoxin.best",
     "atomflow.vip": "https://atomflow.vip",
     "audit-api-printcap-ai": "https://printcap.ai",
@@ -272,6 +277,7 @@ STATION_TYPE_OVERRIDES = {
     "4router": "non_subscription",
     "17nas": "mixed",
     "api.baobu.xyz": "non_subscription",
+    "aiapi1.cc.cd": "charity",
     "api-slb.krill-ai.com": "mixed",
     "api.xiaoxin.best": "mixed",
     "atomflow.vip": "non_subscription",
@@ -394,6 +400,7 @@ LIVE_AUTH_PROBE_CONFIG: dict[str, dict[str, Any]] = {
         "probe_type": "v1_generic",
         "station_type": "non_subscription",
         "quick_amounts": [1, 10, 20, 50, 100, 200, 500, 1000],
+        "allow_public_payment_disabled_wallet": True,
     },
     "api.feifeimiao.top": {
         "probe_type": "v1_generic",
@@ -3607,7 +3614,11 @@ def detail_record_tiers(stations: dict[str, StationConfig]) -> list[FeeTier]:
         label = station_display_label(station, record.get("label") or stations.get(station, StationConfig(station, station_display_label(station))).label)
         station_type = str(record.get("stationType") or stations.get(station, StationConfig(station, label)).station_type)
         if station_type not in STATION_TYPE_LABELS or station_type == "unknown_pending":
-            station_type = STATION_TYPE_OVERRIDES.get(station, "unknown_pending")
+            station_type = str(
+                override.get("stationTypeHint")
+                or override.get("station_type")
+                or STATION_TYPE_OVERRIDES.get(station, "unknown_pending")
+            ).strip() or "unknown_pending"
         evidence_url = str(record.get("url") or SITE_URL_OVERRIDES.get(station) or "").strip()
         tier_notes = record.get("tierNotes")
         note_parts: list[str] = []
@@ -3726,6 +3737,10 @@ def load_station_pricing_overrides() -> dict[str, dict[str, Any]]:
     }
 
 
+def override_value(item: Mapping[str, Any], camel_key: str, snake_key: str) -> Any:
+    return item[camel_key] if camel_key in item else item.get(snake_key)
+
+
 def apply_station_pricing_overrides_to_tiers(tiers: list[FeeTier]) -> list[FeeTier]:
     overrides = load_station_pricing_overrides()
     if not overrides:
@@ -3747,8 +3762,8 @@ def apply_station_pricing_overrides_to_tiers(tiers: list[FeeTier]) -> list[FeeTi
             for recharge in override.get("rechargeTiers", [])
             if isinstance(recharge, dict)
             and str(recharge.get("rechargeName") or recharge.get("recharge_name") or "").strip()
-            and parse_float(recharge.get("rmbAmount") or recharge.get("rmb_amount")) is not None
-            and parse_float(recharge.get("usdAmount") or recharge.get("usd_amount")) is not None
+            and parse_float(override_value(recharge, "rmbAmount", "rmb_amount")) is not None
+            and parse_float(override_value(recharge, "usdAmount", "usd_amount")) is not None
         ]
         if not explicit_recharge_rows and recharge_mode not in {
             "linear_rmb_to_usd",
@@ -3812,15 +3827,38 @@ def apply_station_pricing_overrides_to_tiers(tiers: list[FeeTier]) -> list[FeeTi
                 override.get("participatesInVerifiedRanking"),
                 default=True,
             )
-            station_type = STATION_TYPE_OVERRIDES.get(station, "unknown_pending")
+            station_type = str(
+                override.get("stationTypeHint")
+                or override.get("station_type")
+                or STATION_TYPE_OVERRIDES.get(station, "unknown_pending")
+            ).strip() or "unknown_pending"
             label = station_display_label(station)
             seen_explicit: set[tuple[str, str, float | None, float | None]] = set()
             for recharge in explicit_recharge_rows:
                 recharge_name = str(recharge.get("rechargeName") or recharge.get("recharge_name") or "").strip()
                 billing_type = str(recharge.get("billingType") or recharge.get("billing_type") or "unknown").strip() or "unknown"
-                rmb_amount = parse_float(recharge.get("rmbAmount") or recharge.get("rmb_amount"))
-                usd_amount = parse_float(recharge.get("usdAmount") or recharge.get("usd_amount"))
-                if not recharge_name or rmb_amount is None or usd_amount is None or rmb_amount <= 0 or usd_amount <= 0:
+                rmb_amount = parse_float(override_value(recharge, "rmbAmount", "rmb_amount"))
+                usd_amount = parse_float(override_value(recharge, "usdAmount", "usd_amount"))
+                tier_participates_in_verified_ranking = parse_bool(
+                    recharge.get("participatesInVerifiedRanking")
+                    if "participatesInVerifiedRanking" in recharge
+                    else recharge.get("participates_in_verified_ranking"),
+                    default=participates_in_verified_ranking,
+                )
+                allow_free_charity_tier = (
+                    str(override.get("stationTypeHint") or override.get("station_type") or station_type).strip() == "charity"
+                    and billing_type == "free"
+                    and rmb_amount == 0
+                    and usd_amount is not None
+                    and usd_amount > 0
+                )
+                if (
+                    not recharge_name
+                    or rmb_amount is None
+                    or usd_amount is None
+                    or (not allow_free_charity_tier and rmb_amount <= 0)
+                    or usd_amount <= 0
+                ):
                     continue
                 for group in group_rows:
                     group_name = str(group.get("groupName") or group.get("group_name") or "").strip()
@@ -3861,7 +3899,7 @@ def apply_station_pricing_overrides_to_tiers(tiers: list[FeeTier]) -> list[FeeTi
                             confidence=confidence,
                             source=source,
                             evidence_url=evidence_url,
-                            participates_in_verified_ranking=participates_in_verified_ranking,
+                            participates_in_verified_ranking=tier_participates_in_verified_ranking,
                             notes="; ".join(note_parts),
                         )
                     )

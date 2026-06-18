@@ -540,11 +540,16 @@ def run_build_site_data() -> None:
     subprocess.run(["python", "scripts/build_site_data.py"], cwd=APP_ROOT, check=True)
 
 
+def parse_station_filter(value: str) -> set[str]:
+    return {item.strip() for item in str(value or "").split(",") if item.strip()}
+
+
 def main() -> int:
     ensure_runtime_dirs()
     parser = argparse.ArgumentParser(description="抓取中转站公开公告与倍率快照。")
     parser.add_argument("--announcements", action="store_true", help="抓取公告快照。")
     parser.add_argument("--multiplier-snapshots", action="store_true", help="抓取公开倍率/价格快照。")
+    parser.add_argument("--stations", default="", help="逗号分隔的站点 key；默认抓取全部候选站点。")
     parser.add_argument("--skip-build", action="store_true", help="抓取完成后不重建前端 JSON。")
     parser.add_argument("--quiet", action="store_true", help="仅输出最终 JSON 报告。")
     args = parser.parse_args()
@@ -555,9 +560,12 @@ def main() -> int:
 
     client = session()
     report: list[dict[str, Any]] = []
+    selected_stations = parse_station_filter(args.stations)
 
     for station in load_stations():
         station_key = station["station"]
+        if selected_stations and station_key not in selected_stations:
+            continue
         base_url = station["urls"][0]
         row_report: dict[str, Any] = {"station": station_key, "base_url": base_url}
 

@@ -1,0 +1,195 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"rank\":{\"enabled\":true,\"requireAuth\":true},\"rankings\":{\"enabled\":true,\"requireAuth\":false},\"status\":{\"enabled\":false,\"requireAuth\":false},\"docs\":false,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
+    "announcements": [
+      {
+        "content": "【2026-6-16】因上游持续停止服务超过12小时，本站也暂时停止任何服务，现在请等待上游恢复服务！",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-06-16T10:23:15.936Z",
+        "type": "error"
+      },
+      {
+        "content": "【2026-6-15】请所有用户加社区群：https://dc.hhhl.cc/chat/room/an2rdvbtxj",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-06-15T08:15:15.982Z",
+        "type": "error"
+      },
+      {
+        "content": "【2026-6-15】最新通知！！@全体成员 大家快帮帮忙进群，群人多就不容易被删key。不删本站key我就一直开，一直免费！！https://dc.hhhl.cc/chat/room/an2rdvbtxj",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-06-15T02:39:53.589Z",
+        "type": "default"
+      },
+      {
+        "content": "【2026-6-15】根据上游最新要求，邀请一个人得30刀，被邀请者通过aff链接注册得5刀，鼓励大家多多邀请新人加入社区。",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-06-14T16:15:17.499Z",
+        "type": "error"
+      },
+      {
+        "content": "【2026-6-14】23点最新通知，上游ls老大开闸了，服务正式恢复正常！",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-06-14T15:17:09.610Z",
+        "type": "error"
+      },
+      {
+        "content": "【2026-6-14】上游故障，暂停服务，恢复与否尚不可知！",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-06-14T07:57:44.254Z",
+        "type": "error"
+      },
+      {
+        "content": "【2026-6-14】最新通知：**根据上游社区及ls的要求，截止到今天24点止，如果社区注册人数达不到2w人，将会对所有key暂停！**，希望大家能够多多宣传推广拉人，如果届时上游把key停掉，本站也将停止运营，感谢您的支持！",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-06-14T04:19:27.004Z",
+        "type": "error"
+      },
+      {
+        "content": "【2026-6-14 最新规则】根据社区及ls要求，走aff邀请注册送30，邀请一人再送30，倍率为0.1，直接注册将不再赠送30，额度用完需邀请新用户，邀请得到的无过期期限。**原则上只要上游不停本站的key，就可以一直用！本站不做任何限制，不收取任何费用，请勿私聊找我加额度！** 重要的事情说三遍，直接注册登录无奖励！直接注册登录无奖励！直接注册登录无奖励！",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-06-14T01:57:24.834Z",
+        "type": "error"
+      },
+      {
+        "content": "Sk-Free 新增排行榜功能\n\n为了方便大家查看自己在全站中的用量排名情况，特意开发了排行榜功能，地址：https://www.sk-free.com/rank ，也可以在顶部导航栏中的排行榜进行查看。\n\n祝您使用愉快！",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-06-13T10:14:55.743Z",
+        "type": "default"
+      },
+      {
+        "content": "# Sk-Free 免费公益中转站公告\n\n亲爱的用户：\n\nSk-Free 是一个**免费公益中转站**，我们始终坚持不收取任何费用，为大家提供稳定、便捷的使用体验。\n\n## 福利说明\n\n- **注册即送 30 美元额度（必须走aff邀请注册才送）**\n- **模型倍率仅为 0.1**\n- **邀请好友再送 30 美元额度**\n- **邀请奖励无上限，多邀多得**\n- **账户额度不会清空**\n\n## 特别鸣谢\n\n特别感谢 **Universe Federation 社区老大 ls** 提供稳定渠道支持，让 Sk-Free 能够持续为大家提供可靠服务。\n\n## 社区支持\n\nSk-Free 的持续运行离不开社区成员的支持与信任。希望大家多多支持社区，也欢迎邀请更多朋友一起加入使用。\n\n感谢大家的理解与支持！\n\n** Sk-Free QQ群：2627167 **\n\n—— Sk-Free",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-06-13T10:05:12.119Z",
+        "type": "success"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info_enabled": false,
+    "auth_page_announcement": "本站是纯公益网站，按上游要求，必须走aff链接注册才送额度，没有推荐链接的请务必<a href=\"https://www.sk-free.com/sign-up?aff=NBY8\">点击这里</a>进行注册，否则不送额度。",
+    "auth_page_announcement_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "custom_oauth_providers": [
+      {
+        "id": 1,
+        "name": "Universe Federation",
+        "slug": "skfree",
+        "icon": "",
+        "client_id": "anerc9mqgd",
+        "authorization_endpoint": "https://oauth.sk-free.com/authorize",
+        "scopes": "openid profile email"
+      }
+    ],
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://docs.newapi.pro",
+    "email_verification": false,
+    "enable_batch_update": false,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "访问钱包→推荐计划，可以看到自己邀请的人数和收入，点击右侧的按钮可以转为余额。",
+        "id": 1,
+        "question": "我邀请了新用户为什么余额没有增加？"
+      },
+      {
+        "answer": "本站是公益网站，不收取任何费用。同时本站升级32核64G服务器，同时优化全球CDN线路，只为能让您用到最快的Token，本站维护本人也耗费了巨大的时间和精力，所以本站没有客服，不过您可以加入社区群，有问题可以在社区群反馈，地址：https://dc.hhhl.cc/chat/room/an2rdvbtxj",
+        "id": 2,
+        "question": "怎么联系客服？"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "Sk-Free",
+    "passkey_login": false,
+    "passkey_origins": "https://www.sk-free.com",
+    "passkey_rp_id": "www.sk-free.com",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": false,
+    "password_register_enabled": false,
+    "price": 7.3,
+    "privacy_policy_enabled": true,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "register_enabled": true,
+    "self_use_mode_enabled": false,
+    "server_address": "https://www.sk-free.com",
+    "setup": true,
+    "start_time": 1781519293,
+    "stripe_unit_price": 8,
+    "system_name": "Sk-Free",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "default",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": false,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": true,
+    "version": "custom-20260615-a3cfb60",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

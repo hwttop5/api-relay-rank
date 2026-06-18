@@ -1,0 +1,495 @@
+{
+  "auto_groups": [],
+  "data": [
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "claude"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "claude"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "description": "Claude Sonnet 4.6 是由 venice 提供的人工智能模型。",
+      "icon": "VeniceAI",
+      "tags": "推理,工具,文件,多模态,1M",
+      "vendor_id": 25,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "claude"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "deepseek-v4"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "deepseek-v4"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5.2",
+      "quota_type": 0,
+      "model_ratio": 4,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.5,
+      "enable_groups": [
+        "glm"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "icon": "OpenAI",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "gpt-free",
+        "gpt-pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2:gpt-image2",
+      "vendor_id": 10,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.14,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "gpt-image2"
+      ],
+      "supported_endpoint_types": [
+        "image-generation",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 11,
+      "quota_type": 0,
+      "model_ratio": 0.2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "enable_groups": [
+        "claude"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "gpt-pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 0.3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "gpt-pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "gpt-pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "claude": 1.5,
+    "deepseek-v4": 1,
+    "glm": 1,
+    "gpt": 0.8,
+    "gpt-free": 0.4,
+    "gpt-pro": 2,
+    "gpt-team": 0.3
+  },
+  "success": true,
+  "supported_endpoint": {
+    "0": {
+      "path": "gemini",
+      "method": "POST"
+    },
+    "1": {
+      "path": "openai",
+      "method": "POST"
+    },
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "image-generation": {
+      "path": "/v1/images/generations",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "claude": "Kiro专项",
+    "deepseek-v4": "",
+    "glm": "智谱最新模型glm-5.2",
+    "gpt": "限时0.8,随时改价",
+    "gpt-free": "自建free账号,只有gpt-5.5",
+    "gpt-pro": "自建pro号池稳定专属",
+    "gpt-team": "特价team0.3"
+  },
+  "vendors": [
+    {
+      "id": 12,
+      "name": "Cohere",
+      "icon": "Cohere.Color"
+    },
+    {
+      "id": 14,
+      "name": "百度",
+      "icon": "Wenxin.Color"
+    },
+    {
+      "id": 15,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 24,
+      "name": "302.AI"
+    },
+    {
+      "id": 32,
+      "name": "Azure Cognitive Services"
+    },
+    {
+      "id": 1,
+      "name": "零一万物",
+      "icon": "Yi.Color"
+    },
+    {
+      "id": 3,
+      "name": "Cloudflare",
+      "icon": "Cloudflare.Color"
+    },
+    {
+      "id": 11,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 28,
+      "name": "LLM Gateway"
+    },
+    {
+      "id": 29,
+      "name": "Vivgrid"
+    },
+    {
+      "id": 17,
+      "name": "xAI",
+      "icon": "XAI"
+    },
+    {
+      "id": 19,
+      "name": "即梦",
+      "icon": "Jimeng.Color"
+    },
+    {
+      "id": 21,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 23,
+      "name": "QiHang"
+    },
+    {
+      "id": 26,
+      "name": "NanoGPT"
+    },
+    {
+      "id": 5,
+      "name": "Mistral",
+      "icon": "Mistral.Color"
+    },
+    {
+      "id": 6,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 7,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 9,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 33,
+      "name": "Abacus"
+    },
+    {
+      "id": 4,
+      "name": "Meta",
+      "icon": "Ollama"
+    },
+    {
+      "id": 8,
+      "name": "MiniMax",
+      "icon": "Minimax.Color"
+    },
+    {
+      "id": 18,
+      "name": "腾讯",
+      "icon": "Hunyuan.Color"
+    },
+    {
+      "id": 22,
+      "name": "OpenAi_1"
+    },
+    {
+      "id": 25,
+      "name": "Venice AI",
+      "icon": "VeniceAI"
+    },
+    {
+      "id": 16,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 20,
+      "name": "Jina",
+      "icon": "Jina"
+    },
+    {
+      "id": 30,
+      "name": "Vertex",
+      "icon": "VertexAI.Color"
+    },
+    {
+      "id": 31,
+      "name": "SAP AI Core"
+    },
+    {
+      "id": 35,
+      "name": "SiliconFlow (China)"
+    },
+    {
+      "id": 2,
+      "name": "360",
+      "icon": "Ai360.Color"
+    },
+    {
+      "id": 27,
+      "name": "OpenCode Zen",
+      "icon": "OpenCode"
+    },
+    {
+      "id": 34,
+      "name": "Tencent Coding Plan (China)"
+    },
+    {
+      "id": 13,
+      "name": "字节跳动",
+      "icon": "Doubao.Color"
+    },
+    {
+      "id": 10,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":false}",
+      "SidebarModulesAdmin": "{\"admin\":{\"channel\":true,\"channelBenchmark\":true,\"enabled\":true,\"financialOverview\":true,\"models\":true,\"redemption\":true,\"setting\":true,\"user\":true},\"chat\":{\"chat\":false,\"enabled\":true,\"geminiImageUpstream\":false,\"image2Dedicated\":true,\"image2Gpt2api\":false,\"image2Plus\":false,\"image2Studio\":false,\"image2Upstream\":false,\"imageGeneration\":false,\"playground\":true},\"console\":{\"detail\":true,\"enabled\":true,\"log\":true,\"midjourney\":false,\"task\":false,\"token\":true},\"personal\":{\"enabled\":true,\"personal\":true,\"topup\":true},\"valueAdded\":{\"captcha\":true,\"cardSystem\":true,\"enabled\":true,\"reverseProtocol\":false,\"yingdao\":false}}",
+      "announcements": [],
+      "announcements_enabled": true,
+      "api_info": [],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://docs.newapi.pro",
+      "email_verification": false,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq": [],
+      "faq_enabled": true,
+      "floating_promo_text": "随充随用!随充随用!随充随用!\nGPT分组目前正常\n邀请活动已开启，邀请充值返10%",
+      "footer_html": "",
+      "github_client_id": "",
+      "github_oauth": false,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "",
+      "maintenance_mode_enabled": false,
+      "maintenance_notice": "",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "New API",
+      "passkey_login": false,
+      "passkey_origins": "https://ai.easysu.cn",
+      "passkey_rp_id": "ai.easysu.cn",
+      "passkey_user_verification": "preferred",
+      "price": 1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "CNY",
+      "quota_per_unit": 500000,
+      "self_use_mode_enabled": false,
+      "server_address": "https://ai.easysu.cn",
+      "setup": true,
+      "sms_verification": true,
+      "start_time": 1781493269,
+      "stripe_unit_price": 8,
+      "system_name": "AMAM API",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "top_up_disabled": false,
+      "top_up_link": "",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 1,
+      "user_agreement_enabled": false,
+      "version": "v0.0.0",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://ai.easysu.cn/api/pricing"
+}

@@ -1,0 +1,175 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":false,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "Đã ra mắt model claude-fable-5 mới nhất + mạnh nhất của Claude ở cả 2 group default và Claude Ổn ĐỊnh cho mọi người test. Gần đây hệ thống Woku Shop đã update để có thể nhận context lớn hơn, mọi người sử dụng nhớ cẩn thận về chi phí.",
+        "extra": "",
+        "id": 30,
+        "publishDate": "2026-06-09T19:06:06.735Z",
+        "type": "success"
+      },
+      {
+        "content": "Đã cập nhật model Opus 4.8 trong nhóm Claude Ổn Định",
+        "extra": "",
+        "id": 29,
+        "publishDate": "2026-05-29T03:51:35.936Z",
+        "type": "default"
+      },
+      {
+        "content": "Đã cung cấp thêm model Opus 4.7 vào nhóm mặc định, cache hit cao. Mọi người sử dụng có vấn đề nhắn em qua Zalo OA nhé.",
+        "extra": "",
+        "id": 28,
+        "publishDate": "2026-05-02T15:48:02.344Z",
+        "type": "success"
+      },
+      {
+        "content": "Bên em đang mở bán Claude Team Standard và Premium, tương ứng với gói Pro và Pro x5. Bác nào cần mua nhắn em qua Zalo OA nha, nâng cấp chính chủ luôn ạ",
+        "extra": "",
+        "id": 26,
+        "publishDate": "2026-04-28T09:19:00.553Z",
+        "type": "default"
+      },
+      {
+        "content": "Đã bảo trì xong. Em tính để 12h mới bảo trì mà bị DDOS phát nên tiện tay em update luôn. Hiện hệ thống đã ổn định, quý khách có thể tiếp tục sử dụng",
+        "extra": "",
+        "id": 25,
+        "publishDate": "2026-04-27T15:49:21.281Z",
+        "type": "success"
+      },
+      {
+        "content": "Mở group Gemini giá rẻ không tưởng 2.8k/1$, không cần mua subscription, chỉ cần tạo token chọn nhóm gemini là sử dụng số dư từ ví cá nhân. Bên cạnh đó đã tối ưu lại Claude nhóm mặc định, cache hit cực cao nên sử dụng rẻ hơn cả mua subscription. ",
+        "extra": "",
+        "id": 24,
+        "publishDate": "2026-04-19T15:11:45.357Z",
+        "type": "success"
+      },
+      {
+        "content": "Đã có mô hình Claude Opus 4.7 ở Group Claude Ổn Định. Mời anh em trải nghiệm thử ạ. Các group giá rẻ và subscription em sẽ cố gắng có hàng giá tốt trong vài ngày tới nhé ạ. ",
+        "extra": "",
+        "id": 23,
+        "publishDate": "2026-04-16T16:10:51.273Z",
+        "type": "success"
+      },
+      {
+        "content": "Đã mở lại gói custom subscription, sau khi gói mới được các anh em đánh giá là GPT xài ngon hơn cả model gốc của Claude, cache hit cực cao nên chi phí siêu tối ưu. Mời anh em trải nghiệm và tiếp tục feedback ạ.",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-03-30T11:51:27.972Z",
+        "type": "default"
+      },
+      {
+        "content": "Woku Shop sau thời gian thử nghiệm và tối ưu nhận thấy Codex hoạt động rất hiệu quả trên Claude Code. Vì vậy, shop chính thức ra mắt gói subscription siêu tiết kiệm chỉ từ 2k/1$, hỗ trợ sử dụng các model Codex, kết nối với Claude Code và cache token đầy đủ. Kính mời quý khách trải nghiệm và gửi đánh giá để Woku Shop tiếp tục hoàn thiện dịch vụ tốt hơn.",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-03-26T05:33:30.923Z",
+        "type": "success"
+      },
+      {
+        "content": "Kênh Claude Mặc Định có độ ổn định khá tốt, khách hàng có thể cân nhắc sử dụng để tiết kiệm chi phí. Xin cám ơn",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-03-26T05:15:00.256Z",
+        "type": "default"
+      },
+      {
+        "content": "Mọi người lưu ý: nhóm Default và Subscription vẫn dùng Claude bình thường và là nguồn giá rẻ; nếu cần ưu tiên độ ổn định thì nên dùng nhóm Claude Ổn Định (nguồn từ Claude Code Max).",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-03-04T10:01:29.329Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "100+ nodes worldwide",
+        "id": 1,
+        "route": "Global Line",
+        "url": "https://llm.wokushop.com/"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 7000,
+    "custom_currency_symbol": "₫",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://api.wokushop.com/doc.html",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [],
+    "faq_enabled": true,
+    "footer_html": "<!-- Woku Shop API Footer --> <style>   .woku-footer {     background: var(--footer-bg, #f8f9fa);     border-top: 1px solid var(--footer-border, #e5e7eb);     color: var(--footer-text, #1a1a1a);     padding: 48px 24px 24px;     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;     font-size: 14px;   }    .woku-footer a {     color: var(--footer-text-secondary, #666);     text-decoration: none;     transition: color 0.2s;   }    .woku-footer a:hover {     color: #d60326;   }    .footer-container {     max-width: 1100px;     margin: 0 auto;   }    .footer-main {     display: grid;     grid-template-columns: 2fr 1fr 1fr;     gap: 48px;     padding-bottom: 32px;     border-bottom: 1px solid var(--footer-border, #e5e7eb);   }    .footer-brand {     max-width: 320px;   }    .footer-logo {     font-size: 18px;     font-weight: 700;     color: #d60326;     margin-bottom: 12px;   }    .footer-desc {     color: var(--footer-text-secondary, #666);     font-size: 14px;     line-height: 1.6;     margin-bottom: 16px;   }    .footer-social {     display: flex;     gap: 8px;   }    .footer-social a {     width: 36px;     height: 36px;     display: flex;     align-items: center;     justify-content: center;     background: var(--footer-card-bg, #fff);     border: 1px solid var(--footer-border, #e5e7eb);     border-radius: 8px;     color: var(--footer-text-secondary, #666);     transition: all 0.2s;   }    .footer-social a:hover {     border-color: #d60326;     color: #d60326;   }    .footer-social svg {     width: 18px;     height: 18px;   }    .footer-column h4 {     font-size: 14px;     font-weight: 600;     margin-bottom: 16px;     color: var(--footer-text, #1a1a1a);   }    .footer-links {     list-style: none;     padding: 0;     margin: 0;   }    .footer-links li {     margin-bottom: 10px;   }    .footer-links a {     color: var(--footer-text-secondary, #666);     font-size: 14px;   }    .footer-contact-item {     display: flex;     align-items: flex-start;     gap: 10px;     margin-bottom: 12px;     color: var(--footer-text-secondary, #666);     font-size: 14px;     line-height: 1.5;   }    .footer-contact-item svg {     width: 16px;     height: 16px;     flex-shrink: 0;     margin-top: 2px;     color: #d60326;   }    .footer-bottom {     padding-top: 24px;     display: flex;     flex-wrap: wrap;     justify-content: space-between;     align-items: center;     gap: 16px;   }    .footer-company {     font-size: 12px;     color: var(--footer-text-muted, #999);     line-height: 1.6;   }    .footer-company strong {     color: var(--footer-text-secondary, #666);     font-weight: 500;   }    .footer-copyright {     font-size: 12px;     color: var(--footer-text-muted, #999);   }    .footer-copyright span {     color: #d60326;   }    /* Dark mode */   .woku-footer.dark-mode {     --footer-bg: #0f0f17;     --footer-border: #2d2d3d;     --footer-text: #f1f5f9;     --footer-text-secondary: #94a3b8;     --footer-text-muted: #64748b;     --footer-card-bg: #1a1a2e;   }    @media (max-width: 768px) {     .footer-main {       grid-template-columns: 1fr 1fr;       gap: 32px;     }      .footer-brand {       grid-column: span 2;       max-width: 100%;     }   }    @media (max-width: 480px) {     .footer-main {       grid-template-columns: 1fr;       gap: 24px;     }      .footer-brand {       grid-column: span 1;     }      .footer-bottom {       flex-direction: column;       text-align: center;     }      .footer-company {       text-align: center;     }   } </style>  <footer class=\"woku-footer\" id=\"woku-footer\">   <div class=\"footer-container\">     <div class=\"footer-main\">       <!-- Brand -->       <div class=\"footer-brand\">         <div class=\"footer-logo\">Woku Shop API</div>         <p class=\"footer-desc\">           Nền tảng AI Gateway hàng đầu Việt Nam. Truy cập OpenAI, Claude, Gemini, DeepSeek, Grok với một API key duy nhất.         </p>         <div class=\"footer-social\">           <a href=\"https://zalo.me/wokushop\" target=\"_blank\" title=\"Zalo\">             <svg viewBox=\"0 0 24 24\" fill=\"currentColor\">               <path d=\"M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 14.957c-.09.267-.476.547-.792.618-.218.05-.501.09-.923-.096-.54-.238-2.178-1.04-3.507-2.754-.267-.343-.51-.728-.728-1.146-.088-.168-.01-.26.066-.344.07-.078.156-.18.236-.27.076-.088.1-.15.15-.25.05-.1.024-.188-.012-.263-.036-.076-.322-.773-.44-1.058-.116-.28-.236-.242-.322-.242h-.276c-.096 0-.252.036-.384.186-.132.15-.504.492-.504 1.2s.516 1.392.588 1.488c.072.096 1.02 1.548 2.466 2.172.345.148.614.236.824.302.346.11.66.095.91.058.278-.042.854-.35.974-.687.12-.338.12-.627.084-.687-.036-.06-.132-.096-.276-.168-.144-.072-1.236-.624-1.428-.696-.192-.072-.332-.108-.472.108-.14.216-.544.696-.668.838-.124.144-.248.162-.46.054-.211-.108-1.292-.476-2.46-1.52-.91-.812-1.524-1.815-1.702-2.12-.18-.306-.02-.47.134-.622.138-.138.306-.36.46-.54.152-.18.202-.306.306-.51.102-.204.05-.384-.026-.54-.076-.156-.67-1.62-.92-2.22-.242-.582-.488-.502-.672-.512-.174-.008-.374-.01-.574-.01-.2 0-.524.074-.798.37-.274.296-1.048 1.024-1.048 2.496s1.072 2.896 1.222 3.096c.15.2 2.112 3.228 5.118 4.524.716.31 1.274.494 1.71.632.718.228 1.372.196 1.888.119.576-.086 1.77-.724 2.02-1.424z\"/>             </svg>           </a>           <a href=\"mailto:xxx\" title=\"Email\">             <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">               <path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"/>               <polyline points=\"22,6 12,13 2,6\"/>             </svg>           </a>         </div>       </div>        <!-- Quick Links -->       <div class=\"footer-column\">         <h4>Sản phẩm</h4>         <ul class=\"footer-links\">           <li><a href=\"https://llm.wokushop.com/pricing\" target=\"_parent\">Bảng giá</a></li>           <li><a href=\"https://llm.wokushop.com/console\" target=\"_parent\">Console</a></li>           <li><a href=\"https://llm.wokushop.com/models\" target=\"_parent\">Danh sách Models</a></li>           <li><a href=\"https://llm.wokushop.com/playground\" target=\"_parent\">Playground</a></li>         </ul>       </div>        <!-- Contact -->       <div class=\"footer-column\">         <h4>Liên hệ</h4>         <div class=\"footer-contact-item\">           <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">             <path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z\"/>             <circle cx=\"12\" cy=\"10\" r=\"3\"/>           </svg>           <span>55C2 Cây Keo, KP1, Tam Bình, TP.HCM</span>         </div>         <div class=\"footer-contact-item\">           <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">             <path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/>           </svg>           <a href=\"https://zalo.me/wokushop\" target=\"_blank\">Zalo: wokushop</a>         </div>         <div class=\"footer-contact-item\">           <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\">             <path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"/>             <polyline points=\"22,6 12,13 2,6\"/>           </svg>           <a href=\"mailto:xxx\">xxx</a>         </div>       </div>     </div>      <!-- Bottom -->     <div class=\"footer-bottom\">       <div class=\"footer-company\">         <strong>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ VÀ CÔNG NGHỆ QUỐC CƯỜNG</strong><br>         MST: 0318572538 | 55C2 đường Cây Keo, Khu Phố 1, Phường Tam Bình, TP. Hồ Chí Minh       </div>       <div class=\"footer-copyright\">         © 2025 <span>Woku Shop API</span>. All rights reserved.       </div>     </div>   </div> </footer>  <script>   // Detect dark mode from parent   function detectFooterDarkMode() {     const footer = document.getElementById('woku-footer');     if (!footer) return;      try {       if (window.parent && window.parent.document) {         const parentHtml = window.parent.document.documentElement;         const parentBody = window.parent.document.body;          const isDark =           parentHtml.classList.contains('dark') ||           parentHtml.classList.contains('dark-mode') ||           parentHtml.getAttribute('data-theme') === 'dark' ||           parentBody.classList.contains('dark') ||           parentBody.classList.contains('dark-mode') ||           parentBody.getAttribute('data-theme') === 'dark' ||           parentHtml.style.colorScheme === 'dark';          if (isDark) {           footer.classList.add('dark-mode');         } else {           footer.classList.remove('dark-mode');         }       }     } catch (e) {       // Cross-origin fallback       if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {         footer.classList.add('dark-mode');       }     }   }    // Run on load and periodically   detectFooterDarkMode();   setInterval(detectFooterDarkMode, 500);    // Listen for messages from parent   window.addEventListener('message', (event) => {     const footer = document.getElementById('woku-footer');     if (!footer) return;      if (event.data.theme === 'dark') {       footer.classList.add('dark-mode');     } else if (event.data.theme === 'light') {       footer.classList.remove('dark-mode');     }   }); </script>",
+    "github_client_id": "Ov23liMcEqx8Mj1lf0zE",
+    "github_oauth": true,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://api.wokushop.com/?resource=logo",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "Woku Shop API",
+    "passkey_login": false,
+    "passkey_origins": "https://llm.wokushop.com",
+    "passkey_rp_id": "https://llm.wokushop.com/",
+    "passkey_user_verification": "preferred",
+    "price": 7.3,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://llm.wokushop.com",
+    "setup": true,
+    "start_time": 1781584518,
+    "stripe_unit_price": 8,
+    "system_name": "Woku Shop API",
+    "telegram_bot_name": "wokullmbot",
+    "telegram_oauth": false,
+    "top_up_link": "",
+    "turnstile_check": false,
+    "turnstile_site_key": "0x4AAAAAACgLg4paDpA2LoId",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": false,
+    "version": "v0.0.0",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

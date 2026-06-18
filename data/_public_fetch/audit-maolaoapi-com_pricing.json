@@ -1,0 +1,856 @@
+{
+  "auto_groups": [
+    "CC-MAX-特价",
+    "Codex-Plus",
+    "Codex-Pro",
+    "Image2",
+    "X-福利组",
+    "Deepseek官转"
+  ],
+  "data": [
+    {
+      "model_name": "deepseek-v4-flash",
+      "description": "DeepSeek V4 Flash 快速模型，适合低延迟对话、批量任务与高性价比文本生成场景。",
+      "icon": "DeepSeek.Color",
+      "tags": "deepseek,v4,flash,快速,低延迟,文本生成",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.02,
+      "enable_groups": [
+        "Deepseek官转"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "description": "Anthropic 轻量高性价比模型，适合快速响应、批量任务与低成本文本处理场景。",
+      "icon": "Claude.Color",
+      "tags": "anthropic,claude,haiku,轻量,低成本,快速响应",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "CC-测试组",
+        "CC-反重力",
+        "Deepseek转Anthropic",
+        "CC-官转",
+        "CC-Max",
+        "CC-MAX-特价",
+        "CC-power"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "description": "OpenAI 图像生成模型，适合高质量图片生成场景，4K同价。",
+      "icon": "OpenAI",
+      "tags": "openai,image,绘图,生成",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "Image2"
+      ],
+      "supported_endpoint_types": [
+        "openai-image",
+        "openai-image-edit"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "description": "DeepSeek V4 Pro 高性能模型，适合复杂推理、代码与高质量文本生成场景。",
+      "icon": "DeepSeek.Color",
+      "tags": "deepseek,v4,pro,推理,代码,文本生成",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.008333333333,
+      "enable_groups": [
+        "Deepseek官转"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "description": "OpenAI 面向编程与代码任务的轻快型 Codex 模型，适合代码补全、代理执行与工程场景。",
+      "icon": "OpenAI",
+      "tags": "openai,codex,代码,编程",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.097142857143,
+      "enable_groups": [
+        "Codex-Pro",
+        "Codex-Hack",
+        "Codex-Plus"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "description": "OpenAI 新一代旗舰通用大模型，适合复杂推理、长上下文、多场景高质量文本生成。",
+      "icon": "OpenAI",
+      "tags": "openai,旗舰,通用,推理",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Codex-Pro",
+        "Codex-Hack",
+        "Codex-Plus"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "description": "Anthropic 通用高性能模型，适合稳定对话、代码协作与中高复杂度推理场景。",
+      "icon": "Claude.Color",
+      "tags": "anthropic,claude,sonnet,通用,代码,推理",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "CC-官转",
+        "CC-Max",
+        "CC-MAX-特价",
+        "CC-power",
+        "CC-测试组",
+        "CC-反重力",
+        "Deepseek转Anthropic"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5",
+      "description": "Anthropic 轻量高性价比模型，适合快速响应、批量任务与低成本文本处理场景。",
+      "icon": "Claude.Color",
+      "tags": "anthropic,claude,haiku,轻量,低成本,快速响应",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "CC-反重力",
+        "CC-官转",
+        "CC-Max",
+        "CC-MAX-特价",
+        "CC-power",
+        "CC-测试组"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "description": "OpenAI 轻量通用模型，适合低成本高频调用、基础推理与常规文本生成场景。",
+      "icon": "OpenAI",
+      "tags": "openai,mini,轻量,通用",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.093333333333,
+      "enable_groups": [
+        "Codex-Hack",
+        "Codex-Pro",
+        "Codex-Plus"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "description": "OpenAI 最新旗舰通用大模型，适合复杂推理、长上下文、多场景高质量文本生成。",
+      "icon": "OpenAI",
+      "tags": "openai,旗舰,通用,推理",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Codex-Hack",
+        "Codex-Pro",
+        "Codex-Plus"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "description": "适配 Codex 自动审批功能的模型别名，实际请求会映射到 gpt-5.5。",
+      "icon": "OpenAI",
+      "tags": "openai,codex,自动审批,模型映射",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 30,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Codex-Pro",
+        "Codex-Hack",
+        "Codex-Plus"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "description": "Anthropic 旗舰推理模型，适合复杂分析、长上下文推理与高质量内容生成场景。",
+      "icon": "Claude.Color",
+      "tags": "anthropic,claude,opus,旗舰,推理",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "CC-官转",
+        "CC-Max",
+        "CC-MAX-特价",
+        "CC-power",
+        "CC-测试组",
+        "CC-反重力",
+        "Deepseek转Anthropic"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "description": "Anthropic 旗舰推理模型，适合复杂分析、长上下文推理与高质量内容生成场景。",
+      "icon": "Claude.Color",
+      "tags": "anthropic,claude,opus,旗舰,推理",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "CC-反重力",
+        "CC-官转",
+        "CC-Max",
+        "CC-MAX-特价",
+        "CC-power",
+        "CC-测试组"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "description": "Anthropic 旗舰推理模型，适合复杂分析、长上下文推理与高质量内容生成场景。",
+      "icon": "Claude.Color",
+      "tags": "anthropic,claude,opus,旗舰,推理",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "CC-MAX-特价",
+        "CC-测试组",
+        "CC-官转",
+        "CC-Max"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "CC-MAX-特价": 0.8,
+    "CC-Max": 2,
+    "CC-Windsurf逆向": 0.3,
+    "CC-power": 1.2,
+    "CC-反重力": 0.5,
+    "CC-测试组": 0.8,
+    "Codex-Hack": 0.25,
+    "Codex-Plus": 0.1,
+    "Codex-Pro": 0.2,
+    "Deepseek官转": 1.2,
+    "Deepseek转Anthropic": 1.2,
+    "Image2": 0.5,
+    "X-福利组": 0.01,
+    "auto": 0.1,
+    "测试分组": 0.8
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "gemini": {
+      "path": "/v1beta/models/{model}:generateContent",
+      "method": "POST"
+    },
+    "image-generation": {
+      "path": "/v1/images/generations",
+      "method": "POST"
+    },
+    "jina-rerank": {
+      "path": "/v1/rerank",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    },
+    "openai-image": {
+      "path": "/v1/images/generations",
+      "method": "POST"
+    },
+    "openai-image-edit": {
+      "path": "/v1/images/edits",
+      "method": "POST"
+    },
+    "openai-response": {
+      "path": "/v1/responses",
+      "method": "POST"
+    },
+    "openai-response-compact": {
+      "path": "/v1/responses/compact",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "CC-MAX-特价": "Claudecode专用、外接可能缓存不是很正常",
+    "CC-Max": "暂时关闭",
+    "CC-Windsurf逆向": "无缓存，但是综合性价比高",
+    "CC-power": "Kiro高质量/高缓存命中率/带思考/稳定高可用",
+    "CC-反重力": "可用hermres，龙虾/支持1M上下文 Antigravity ultra 号池反代",
+    "CC-测试组": "测试分组，请勿使用",
+    "Codex-Hack": "纯Pro渠道，破限制用这个分组",
+    "Codex-Plus": "Plus号池，稳定性比Pro低/鱼与熊掌不可兼得",
+    "Codex-Pro": "纯Pro号池，稳定性高/禁止逆向等高风险操作！！",
+    "Deepseek官转": "量大建议去用官方的，官key非逆向渠道",
+    "Deepseek转Anthropic": "量大建议去用官方的，官key非逆向渠道",
+    "Image2": "0.1元/次 4K同价  纯Pro号池稳定性高",
+    "X-福利组": "适合聊天色色当搜索引擎",
+    "auto": "自动分组/最终倍率是实际使用的分组倍率。",
+    "测试分组": "0"
+  },
+  "vendors": [
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 2,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 4,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 5,
+      "name": "xAI",
+      "icon": "Grok"
+    },
+    {
+      "id": 6,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":false}",
+      "SidebarModulesAdmin": "{\"admin\":{\"affiliate_admin\":true,\"channel\":true,\"deployment\":false,\"enabled\":true,\"game_management\":false,\"models\":true,\"redemption\":true,\"setting\":true,\"subscription\":true,\"user\":true},\"chat\":{\"canvas\":true,\"chat\":false,\"enabled\":true,\"playground\":true},\"console\":{\"detail\":true,\"enabled\":true,\"game_center\":false,\"log\":true,\"midjourney\":false,\"task\":false,\"token\":true},\"personal\":{\"affiliate\":true,\"enabled\":true,\"personal\":true,\"topup\":true}}",
+      "announcements": [
+        {
+          "content": "CC-MAX 暂时下架\nCC-MAX-特价 （Claudecode专用、外接可能缓存不是很正常）\n说明一下，外接有可能会缓存不是很正常，另外如果用的是Openai的接口那就是百分百不会有缓存。",
+          "extra": "",
+          "id": 40,
+          "publishDate": "2026-06-18T02:39:04.483Z",
+          "type": "warning"
+        },
+        {
+          "content": "CC-官转 即将下架，请尽情奔放满血CC-MAX 可外接！",
+          "extra": "",
+          "id": 39,
+          "publishDate": "2026-06-08T05:51:44.713Z",
+          "type": "success"
+        },
+        {
+          "content": "CC-MAX-特价 分组上新 倍率0.8",
+          "extra": "",
+          "id": 38,
+          "publishDate": "2026-06-06T10:21:11.522Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "请大家生成图片用无限画布哈，生成速度超快，4K基本都在一分钟以内。",
+          "extra": "",
+          "id": 37,
+          "publishDate": "2026-06-05T12:51:08.790Z",
+          "type": "success"
+        },
+        {
+          "content": "Openai下架了两个模型：gpt 5.3codex、gpt5.2 ，已同步下架这两个模型",
+          "extra": "",
+          "id": 35,
+          "publishDate": "2026-06-02T02:17:50.423Z",
+          "type": "default"
+        },
+        {
+          "content": "CC-MAX、CC-官转 已上opus-4-8",
+          "extra": "",
+          "id": 34,
+          "publishDate": "2026-05-28T17:50:17.092Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "CC-AWS特价 分组不稳定，关闭了",
+          "extra": "",
+          "id": 33,
+          "publishDate": "2026-05-26T11:37:01.622Z",
+          "type": "error"
+        },
+        {
+          "content": "Codex-福利分组  0.05 上线",
+          "extra": "",
+          "id": 31,
+          "publishDate": "2026-05-25T01:28:28.864Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "Anthropic上了Deepseek官转映射分组方便玩破限，纯官KEY，比官方贵已应对收款手续费以及套餐用户，量大建议官方",
+          "extra": "",
+          "id": 32,
+          "publishDate": "2026-05-24T13:58:46.180Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "Codex-福利分组下午两点恢复0.05，另外说一下，从昨晚开始降智非常严重，主要体现在上下文大砍，感觉只有128K左右，纯Pro渠道目前感知正常。\n其实就是不想有些新用户看到便宜的福利组就猛干回来说我掺水豆包😭",
+          "extra": "",
+          "id": 30,
+          "publishDate": "2026-05-21T03:57:19.661Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "Codex新增Codex-Hack 分组，没有经过过滤，没有500拦截错误。\n用的第三方渠道，成本会比自建号池高，倍率为0.2 。\n破限的可以直接切换这个分组，就不会经过自建号池拦截切换第三方渠道增加延迟时间.\n\nCodex-福利分组、Codex-PP、Codex-Pro 都有拦截敏感词，如果有敏感词就会拦截切换导致时间比较久，建议直接用Hack分组，如果是干那个的",
+          "extra": "",
+          "id": 29,
+          "publishDate": "2026-05-20T06:37:19.956Z",
+          "type": "default"
+        },
+        {
+          "content": "Claude 新上官key限时特惠分组，倍率1",
+          "extra": "",
+          "id": 28,
+          "publishDate": "2026-05-16T12:26:10.880Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "Grok上架了  可以对接llm玩玩电子女友没问题，做事情就算了，或者拿来当搜索引擎",
+          "extra": "",
+          "id": 27,
+          "publishDate": "2026-05-13T17:22:32.576Z",
+          "type": "success"
+        },
+        {
+          "content": "Codex专用 分组即将下架，上线Codex-Pro、Codex-PP（Pro+plus混合）\n原来的Codex专用 分组会以Codex-Pro命名，让分组更清晰。\n\nCodex专用 分组会在明天中午12点前禁止使用，扛不住了扛不住了\n\n具体倍率可以在模型广场把倍率打开即可查看。。",
+          "extra": "",
+          "id": 26,
+          "publishDate": "2026-05-13T13:30:00.548Z",
+          "type": "success"
+        },
+        {
+          "content": "今天下午 5.5崩掉了，是官方问题 不要私聊了不要私聊了，官方崩掉了，5.5不太稳，包括pro渠道。",
+          "extra": "",
+          "id": 25,
+          "publishDate": "2026-05-13T09:28:28.903Z",
+          "type": "default"
+        },
+        {
+          "content": "gpt-image模型暂时要调整模型价格为0.1一次了，然后当前旧的两个分组还能用，那两个分组今晚过了十二点会停用，请使用最新的image2分组，当然使用auto也可以。",
+          "extra": "",
+          "id": 24,
+          "publishDate": "2026-05-11T08:25:04.346Z",
+          "type": "success"
+        },
+        {
+          "content": "Anthropic新增 CC-kiro渠道分组 0.2倍率 1M上下文/高缓存，已添加到auto分组最前面。",
+          "extra": "",
+          "id": 23,
+          "publishDate": "2026-05-10T06:31:56.043Z",
+          "type": "success"
+        },
+        {
+          "content": "Codex-Plus分组降至0.1倍率 ，立即生效。\n\n生图模型价格会固定价格每次消耗0.1，并且分组会独立出来，目前在codex分组里面不方便调价。\n\n生图模型更改下午5点后生效",
+          "extra": "",
+          "id": 22,
+          "publishDate": "2026-05-10T02:31:04.263Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "CC-ultra 以及CC-Aws逆向 分组缓存太低体验差下架",
+          "extra": "",
+          "id": 21,
+          "publishDate": "2026-05-08T07:35:07.482Z",
+          "type": "error"
+        },
+        {
+          "content": "新增Codex-福利分组 0.05倍率，不保证xh思考，5.5稳定性。\n需要单独创建Codex-福利分组的key，没加入auto\n",
+          "extra": "",
+          "id": 20,
+          "publishDate": "2026-05-07T15:16:32.835Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "Anthropic 新增官Key 分组，倍率3.5，纯key原生api调用，非max套壳，无限制支持外部调用。",
+          "extra": "",
+          "id": 19,
+          "publishDate": "2026-05-06T11:43:53.433Z",
+          "type": "success"
+        },
+        {
+          "content": "Anthropic 新增CC-Windsurf逆向分组，倍率0.5，支持1M上下文",
+          "extra": "",
+          "id": 18,
+          "publishDate": "2026-05-06T08:58:36.883Z",
+          "type": "success"
+        },
+        {
+          "content": "Codex专用分组（纯 Pro 号池）倍率已下调至 0.2。\n\n同时新增多个月卡套餐：\n- 轻享月卡：每周刷新 30刀，连续 4周\n- 专业月卡：每周刷新 60刀，连续 4周\n- 旗舰月卡：每周刷新 120刀，连续 4周\n\n月卡额度按周刷新，未使用额度不累计；长期稳定使用更划算。",
+          "extra": "",
+          "id": 17,
+          "publishDate": "2026-05-04T14:46:35Z",
+          "type": "success"
+        },
+        {
+          "content": "free用的人太多了限流厉害，下掉了",
+          "extra": "",
+          "id": 16,
+          "publishDate": "2026-05-01T07:07:15.899Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "生图超时的可以换上这个域名:\nhttps://image.maolaoapi.com",
+          "extra": "",
+          "id": 15,
+          "publishDate": "2026-04-30T15:27:46.423Z",
+          "type": "success"
+        },
+        {
+          "content": "plus号池稳定性好很多了，所以加入auto了，使用auto分组的就可以直接自动使用plus分组，失败才熔断到pro号池分组。\n\n想要单独使用pro号池分组的可以单独创建codex分组的sk",
+          "extra": "",
+          "id": 14,
+          "publishDate": "2026-04-29T16:12:26.035Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "新增了codex-plus分组，倍率更低，但稳定性也会随着降低。\n想要玩破限的可以用plus分组的试试看看",
+          "extra": "",
+          "id": 13,
+          "publishDate": "2026-04-27T14:38:49.555Z",
+          "type": "default"
+        },
+        {
+          "content": "公告：暂时关闭 GPT-5.5\n\n近期有多位用户反馈，GPT-5.5 模型的知识库截止时间显示为 2024 年 6 月，我方实测结果也一致。\n\n为避免造成更多误解，GPT-5.5 将于今晚 12 点后暂时关闭。后续待确认知识库时间更新，或确认当前表现是否为官方设定后，再决定是否恢复上线。\n\n感谢理解与支持。",
+          "extra": "",
+          "id": 12,
+          "publishDate": "2026-04-27T10:55:13.216Z",
+          "type": "warning"
+        },
+        {
+          "content": "🪧 Claude 几个渠道价格已调整\n此前部分渠道定价偏低，之前处于亏本状态，现在已恢复正常价格。\n\n✨ CC-反重力价格不变\n但已切换到更好的渠道。\n\n🚀 新增 CC-Max 渠道\n主打企业级稳定性。",
+          "extra": "",
+          "id": 11,
+          "publishDate": "2026-04-25T17:48:35Z",
+          "type": "success"
+        },
+        {
+          "content": "新上claude 反重力分组，满缓存命中非常好用节省成本！",
+          "extra": "",
+          "id": 10,
+          "publishDate": "2026-04-24T18:42:56.351Z",
+          "type": "default"
+        },
+        {
+          "content": "现在创建auto分组已经支持所有渠道模型使用啦~\n比如cc有两个分组，价格不一样，我这边默认会把更便宜的aws分组放前面，如果aws出问题这样就会自动切换到其他能使用的分组，也就是智能熔断。\n可以无视auto的1倍率，最终倍率是实际使用的分组倍率。",
+          "extra": "",
+          "id": 9,
+          "publishDate": "2026-04-24T11:49:51.940Z",
+          "type": "success"
+        },
+        {
+          "content": "gpt-5.5价格已修复",
+          "extra": "",
+          "id": 8,
+          "publishDate": "2026-04-24T09:39:20.641Z",
+          "type": "success"
+        },
+        {
+          "content": "gpt-5.5 新模型已上",
+          "extra": "",
+          "id": 7,
+          "publishDate": "2026-04-23T19:04:11.270Z",
+          "type": "default"
+        },
+        {
+          "content": "今天下午的gpt-5.4 是有点问题，是官方的问题~我查了几个小时问题，才在论坛看到也有在说官方有问题。\n只要不是我的问题这就放心了~",
+          "extra": "",
+          "id": 6,
+          "publishDate": "2026-04-22T09:31:28.830Z",
+          "type": "error"
+        },
+        {
+          "content": "修复了Codex 提示：分组 codex 下模型 gpt-5.4-openai-compact 无可用渠道 问题。\n",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2026-04-22T01:54:02.290Z",
+          "type": "success"
+        },
+        {
+          "content": "频道大家订阅下噢，偶尔会发下兑换码",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2026-04-21T11:05:01.472Z",
+          "type": "default"
+        },
+        {
+          "content": "这几天会上Claude ",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-04-21T10:32:47.967Z",
+          "type": "default"
+        },
+        {
+          "content": "Codex分组倍率已下降到0.2",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-04-21T05:23:13.014Z",
+          "type": "default"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "blue",
+          "description": "cloudflare默认线路，不支持长连接",
+          "id": 1,
+          "route": "Cloudflare 全球API节点",
+          "url": "https://maolaoapi.com/v1"
+        },
+        {
+          "color": "blue",
+          "description": "支持长连接，国外服务器或者梯子用户可以用这个",
+          "id": 4,
+          "route": "非cloudflare节点 | 直连API节点",
+          "url": "https://api.maolaoapi.com/v1"
+        },
+        {
+          "color": "green",
+          "description": "适合国内用户直连使用,如果是国外服务器对接就没必要用这个。",
+          "id": 5,
+          "route": "大陆优化API节点",
+          "url": "https://cnapi.maolaoapi.com/v1"
+        },
+        {
+          "color": "green",
+          "description": "无限画布，非常推荐生图，请从控制台侧栏免登录进入",
+          "id": 6,
+          "route": "Canvas",
+          "url": "https://canvas.maolaoapi.com/"
+        },
+        {
+          "color": "blue",
+          "description": "需要填写api和key",
+          "id": 7,
+          "route": "生图前端",
+          "url": "https://canvas.best/"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "custom_oauth_providers": [
+        {
+          "id": 1,
+          "name": "妖火网",
+          "slug": "yaohuo",
+          "icon": "https://www.yaohuo.me/NetCSS/IMG/TuPian/2xLOGO.png",
+          "client_id": "BBD68528A4E44920A85F53B8AC84D91A",
+          "authorization_endpoint": "https://yaohuo.me/OAuth/Authorize.aspx",
+          "scopes": "profile "
+        }
+      ],
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://docs.newapi.pro",
+      "email_verification": false,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq": [
+        {
+          "answer": "<div style=\"max-width:340px;margin:0 auto;padding:18px 16px;border-radius:22px;background:rgba(255,255,255,0.78);border:1px solid rgba(255,255,255,0.65);box-shadow:0 8px 30px rgba(0,0,0,0.08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);text-align:center;\">\n  <div style=\"width:52px;height:52px;margin:0 auto 12px;border-radius:16px;background:linear-gradient(135deg,#2AABEE,#007AFF);color:#fff;font-size:24px;line-height:52px;font-weight:700;\">✈️</div>\n  <div style=\"font-size:18px;font-weight:700;color:#111827;\">MaoLaoAPI / 猫佬API</div>\n  <div style=\"margin-top:8px;font-size:14px;line-height:1.6;color:#6b7280;\">Telegram 频道入口，获取最新公告与更新</div>\n  <a href=\"https://t.me/MaoLaoAPI\" target=\"_blank\" style=\"display:inline-block;margin-top:14px;padding:10px 18px;border-radius:999px;background:#007AFF;color:#fff;text-decoration:none;font-size:14px;font-weight:600;\">立即加入</a>\n</div>",
+          "id": 1,
+          "question": "MaoLaoAPI通知频道/偶尔发福利"
+        },
+        {
+          "answer": "<div style=\"max-width:340px;margin:0 auto;padding:18px 16px;border-radius:20px;background:#fff;border:1px solid #e5e7eb;box-shadow:0 8px 24px rgba(0,0,0,.08);text-align:center;\">\n  <div style=\"font-size:18px;font-weight:700;color:#111827;\">USDT充值？</div>\n  <div style=\"margin-top:8px;font-size:14px;line-height:1.7;color:#6b7280;\">可以请通过TG联系：</div>\n  <a href=\"https://t.me/MaoLaoAPI?direct\" target=\"_blank\" style=\"display:inline-block;margin-top:12px;padding:10px 18px;border-radius:999px;background:#24A1DE;color:#fff;text-decoration:none;font-size:14px;font-weight:600;\">立即联系</a>\n</div>",
+          "id": 2,
+          "question": "需要充值但是没有支付宝微信？"
+        },
+        {
+          "answer": "常见原因包括使用破限、越狱等高风险提示词，或上游服务临时繁忙，进而出现连续失败、重试，或类似 Reconnecting... / high demand 的提示。请尽量按正常用途使用，避免发送高风险提示内容。",
+          "id": 3,
+          "question": "为什么会出现频繁失败或重试提示？"
+        },
+        {
+          "answer": "非订阅套餐可以分发，订阅套餐禁止分发。",
+          "id": 5,
+          "question": "能分发吗？"
+        },
+        {
+          "answer": "不要不要不要拒绝达咩，翻译并发太猛了容易封号的。",
+          "id": 6,
+          "question": "能不能用沉浸式翻译？"
+        },
+        {
+          "answer": "使用Anthropic 端点，一些客户端不兼容Openai 端点去缓存。",
+          "id": 7,
+          "question": "为什么Anthropic 的模型在一些客户端使用没缓存？"
+        }
+      ],
+      "faq_enabled": true,
+      "footer_html": "",
+      "github_client_id": "Ov23liEQ8K6oL0qYnsK8",
+      "github_oauth": true,
+      "linuxdo_client_id": "pxSxCOCeCMdgt8YWoAhBZzkgZQgxsaXP",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": true,
+      "logo": "https://i3.ipix.ink/yh/2026/04/20/NgletX.png",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "MaoLaoAPI",
+      "passkey_login": true,
+      "passkey_origins": "https://maolaoapi.com/",
+      "passkey_rp_id": "maolaoapi.com",
+      "passkey_user_verification": "preferred",
+      "password_login_enabled": true,
+      "password_register_enabled": true,
+      "price": 1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "USD",
+      "quota_per_unit": 500000,
+      "register_enabled": true,
+      "self_use_mode_enabled": false,
+      "server_address": "https://maolaoapi.com",
+      "setup": true,
+      "start_time": 1781767983,
+      "stripe_unit_price": 1,
+      "system_name": "MaoLao API",
+      "telegram_bot_name": "TokenMao_bot",
+      "telegram_oauth": false,
+      "theme": "classic",
+      "turnstile_check": false,
+      "turnstile_site_key": "0x4AAAAAADC9zrctrq23se7n",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 1,
+      "user_agreement_enabled": false,
+      "version": "v1.0.0-rc.10.1.10.61",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://maolaoapi.com/api/pricing"
+}

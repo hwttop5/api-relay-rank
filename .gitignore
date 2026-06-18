@@ -74,6 +74,13 @@ docs/temp/
 
 # Temporary scripts
 screenshot.js
+temp_*.py
+temp_*.txt
+quick_check_*.py
+check_*_tv.py
+suspicious_pricing.json
+scripts/batch_recheck_failed_stations.py
+scripts/manual_station_check.py
 
 # Data directories
 data/_audit_runs/

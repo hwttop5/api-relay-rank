@@ -1,0 +1,125 @@
+{
+  "data": {
+    "HeaderNavModules": "",
+    "SidebarModulesAdmin": "",
+    "announcements": [
+      {
+        "content": "2026/06/03 16:00后将会调整价格，倍率调整到0.2",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-06-03T07:31:24.444Z",
+        "type": "default"
+      },
+      {
+        "content": "2026/5/29 20:00后将恢复原价",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-05-29T10:55:51.066Z",
+        "type": "default"
+      },
+      {
+        "content": "服务器扩容，预计停机20分钟左右。",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-05-26T04:23:51.602Z",
+        "type": "default"
+      },
+      {
+        "content": "us线路有故障，如果遇到首字差的优先用主站线路，开启新会话可以解决。",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-05-25T09:35:19.393Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://docs.newapi.pro",
+    "email_verification": true,
+    "enable_batch_update": false,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "New API",
+    "passkey_login": false,
+    "passkey_origins": "https://api.luccc.uk",
+    "passkey_rp_id": "api.luccc.uk",
+    "passkey_user_verification": "preferred",
+    "price": 1,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://api.luccc.uk",
+    "setup": true,
+    "start_time": 1781755167,
+    "stripe_unit_price": 8,
+    "system_name": "Luccc API",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "default",
+    "top_up_link": "",
+    "turnstile_check": true,
+    "turnstile_site_key": "0x4AAAAAADJn37xlr47rbwob",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": false,
+    "version": "",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

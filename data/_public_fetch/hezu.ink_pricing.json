@@ -1,0 +1,546 @@
+{
+  "auto_groups": [],
+  "data": [
+    {
+      "model_name": "gpt-5.2-2025-12-11",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "Go日卡",
+        "codex-pro分组",
+        "Plus周卡",
+        "Max超大杯月卡",
+        "Max月卡"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.2-pro-2025-12-11",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "Go日卡",
+        "codex-pro分组",
+        "Plus周卡",
+        "Max超大杯月卡",
+        "Max月卡"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.09999999999999999,
+      "enable_groups": [
+        "Max月卡",
+        "cocoyo专属-plus",
+        "codex-补贴分组",
+        "Ultra大杯月卡",
+        "cocoyo专属",
+        "Go日卡",
+        "Max超大杯月卡",
+        "Plus周卡",
+        "codex-pro分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "icon": "Openai",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.08,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "Max月卡",
+        "Go日卡",
+        "生图分组",
+        "codex-pro分组",
+        "Plus周卡",
+        "Max超大杯月卡"
+      ],
+      "supported_endpoint_types": [
+        "image-generation",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.07142857142857142,
+      "enable_groups": [
+        "codex-pro分组",
+        "Plus周卡",
+        "Max超大杯月卡",
+        "Max月卡",
+        "Go日卡"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Go日卡",
+        "Ultra大杯月卡",
+        "Max月卡",
+        "cocoyo专属",
+        "cocoyo专属-plus",
+        "codex-补贴分组",
+        "codex-pro分组",
+        "Plus周卡",
+        "Max超大杯月卡"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Max月卡",
+        "cocoyo专属-plus",
+        "codex-补贴分组",
+        "Ultra大杯月卡",
+        "codex-pro分组",
+        "Plus周卡",
+        "Max超大杯月卡",
+        "Go日卡",
+        "cocoyo专属"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.09999999999999999,
+      "enable_groups": [
+        "codex-pro分组",
+        "Plus周卡",
+        "Max超大杯月卡",
+        "Max月卡",
+        "Go日卡"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-audio-preview",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "audio_ratio": 16,
+      "enable_groups": [
+        "Max超大杯月卡",
+        "Max月卡",
+        "Go日卡",
+        "codex-pro分组",
+        "Plus周卡"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-chat-latest",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.09999999999999999,
+      "enable_groups": [
+        "Max超大杯月卡",
+        "Max月卡",
+        "Go日卡",
+        "codex-pro分组",
+        "Plus周卡"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2-pro",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 9.45,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "Plus周卡",
+        "Max超大杯月卡",
+        "Max月卡",
+        "Go日卡",
+        "codex-pro分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-2026-03-05",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "codex-pro分组",
+        "Plus周卡",
+        "Max超大杯月卡",
+        "Max月卡",
+        "Go日卡"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "icon": "Openai",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex-pro分组",
+        "Plus周卡",
+        "Max超大杯月卡",
+        "Max月卡",
+        "Go日卡"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "codex-pro分组",
+        "Plus周卡",
+        "Max超大杯月卡",
+        "Max月卡",
+        "Go日卡"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-1",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.01,
+      "image_ratio": 2,
+      "enable_groups": [
+        "codex-pro分组",
+        "Plus周卡",
+        "Max超大杯月卡",
+        "Max月卡",
+        "Go日卡"
+      ],
+      "supported_endpoint_types": [
+        "image-generation",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-1.5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "Go日卡",
+        "codex-pro分组",
+        "Plus周卡",
+        "Max超大杯月卡",
+        "Max月卡"
+      ],
+      "supported_endpoint_types": [
+        "image-generation",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-4o-realtime-preview",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.5,
+      "audio_ratio": 8,
+      "enable_groups": [
+        "codex-pro分组",
+        "Plus周卡",
+        "Max超大杯月卡",
+        "Max月卡",
+        "Go日卡"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "codex-pro分组": 0.3,
+    "codex-补贴分组": 0.12,
+    "生图分组": 1
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "image-generation": {
+      "path": "/v1/images/generations",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "codex-pro分组": "",
+    "codex-补贴分组": "",
+    "生图分组": ""
+  },
+  "vendors": [
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 2,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 3,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"monitoring\":true,\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":false,\"about\":false}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":true,\"monitoring\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"affiliate\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"affiliate_management\":true,\"setting\":true,\"subscription\":true,\"conversation_audit\":true,\"invoice_management\":true}}",
+      "announcements": [
+        {
+          "content": "补贴分组0.07倍率不定时上下架，根据渠道情况进行变动。其他分组不受影响",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2026-06-03T12:33:10.244Z",
+          "type": "warning"
+        },
+        {
+          "content": "codex-特惠分组为活动分组，为了保证不轻易修改倍率，特惠分组不定期上线，以渠道实际情况为准",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-05-25T04:24:55.535Z",
+          "type": "warning"
+        },
+        {
+          "content": "Codex上线0.15x倍率补贴分组，使用时请选择Codex-plus补贴分组",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-05-20T13:35:00.000Z",
+          "type": "ongoing"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "blue",
+          "description": "亚太地区",
+          "id": 1,
+          "route": "亚太优化",
+          "url": "https://hezu.ink"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://docs.newapi.pro",
+      "email_verification": true,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": false,
+      "enable_task": true,
+      "faq_enabled": false,
+      "floating_ad": {
+        "buttonText": "前往钱包购买",
+        "content": "日卡19.9元即可体验88刀纯血pro号池，更有仅需688元即可享受3300刀超大杯月卡套餐在售",
+        "dismissMode": "always",
+        "image": "",
+        "link": "https://www.hezu.ink/wallet",
+        "title": "纯Pro订阅套餐上架"
+      },
+      "floating_ad_enabled": true,
+      "footer_html": "",
+      "github_client_id": "",
+      "github_oauth": false,
+      "home_popup": {
+        "buttonText": "去买订阅套餐",
+        "content": "<div style=\"background:#1a2332; border-radius:12px; border:1px solid #2d3a4f; font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif; color:#d4dcec; max-width:100%; box-sizing:border-box; overflow:hidden;\">\n  <!-- 图片区：宽度撑满 -->\n  <img src=\"https://pic.sl.al/gdrive/pic/2026-06-16/fileid_1_jxSMfUgh0GbiHLvsRG_ihqnbA4cYgG6_task-<redacted>.png\" style=\"width:100%; display:block; border-radius:12px 12px 0 0; margin:0; padding:0;\" alt=\"banner\">\n  <!-- 内容区：左右两列布局 -->\n  <div style=\"display:flex; align-items:center; justify-content:space-between; padding:12px 14px 14px; gap:10px; flex-wrap:nowrap;\">\n    <!-- 左侧：文字信息 -->\n    <div style=\"flex:1; min-width:0;\">\n      <div style=\"display:flex; align-items:center; gap:6px; flex-wrap:wrap;\">\n        <span style=\"background:#fbbf24; padding:1px 10px; border-radius:4px; font-weight:700; font-size:13px; color:#0f1729; white-space:nowrap;\">+5元</span>\n        <span style=\"font-weight:500; color:#e8edf5; font-size:13px; white-space:nowrap;\">Codex 补贴</span>\n        <span style=\"background:#2d8cff; padding:0 8px; border-radius:3px; font-size:10px; color:#fff; font-weight:600; white-space:nowrap;\">新用户</span>\n      </div>\n      <div style=\"font-size:12px; color:#8b9bb5; margin-top:3px;\">\n        发送 <span style=\"background:#252f3f; padding:0 8px; border-radius:3px; border:1px solid #354153; font-weight:500; color:#c8d2e0;\">用户名/ID</span> 领取\n      </div>\n    </div>\n    <!-- 右侧：按钮 -->\n    <a href=\"https://qm.qq.com/q/3ROdbPUQXS\" target=\"_blank\" style=\"display:flex; align-items:center; gap:4px; background:#2d8cff; padding:6px 12px; border-radius:6px; text-decoration:none; font-size:12px; font-weight:600; color:#fff; transition:0.15s; white-space:nowrap; flex-shrink:0;\">\n      <span>🐧</span> 加群 <span style=\"background:rgba(255,255,255,0.15); padding:0 6px; border-radius:3px; font-weight:700;\">920985815</span>\n    </a>\n  </div>\n</div>",
+        "dismissMode": "always",
+        "image": "",
+        "link": "https://hezu.ink/wallet",
+        "title": "巴士通知"
+      },
+      "home_popup_enabled": true,
+      "linuxdo_client_id": "LVorFoC8it17xmi0ypIS4xDtKzvWAEhh",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": true,
+      "logo": "https://yk.jsdu.cn/20260517/00be661b46c90425e4a898cf00811b3e.png",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "New API",
+      "passkey_login": false,
+      "passkey_origins": "https://hezu.ink",
+      "passkey_rp_id": "hezu.ink",
+      "passkey_user_verification": "preferred",
+      "password_login_enabled": true,
+      "password_register_enabled": true,
+      "price": 1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "CNY",
+      "quota_per_unit": 500000,
+      "register_enabled": true,
+      "self_use_mode_enabled": false,
+      "server_address": "https://hezu.ink",
+      "setup": true,
+      "start_time": 1781694300,
+      "stripe_unit_price": 8,
+      "system_name": "合租巴士",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "default",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": false,
+      "usd_exchange_rate": 1,
+      "user_agreement_enabled": false,
+      "version": "",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://hezu.ink/api/pricing"
+}

@@ -1,0 +1,1145 @@
+{
+  "auto_groups": [],
+  "data": [
+    {
+      "model_name": "grok-4.20-0309-reasoning",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.16,
+      "enable_groups": [
+        "default",
+        "grok",
+        "grok-vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-openai-compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex-超哥专用",
+        "default",
+        "测试",
+        "codex",
+        "codex-vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "codex-vip",
+        "codex-超哥专用",
+        "default",
+        "测试"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "anti-cc-normal-vip",
+        "Claude-anthropic",
+        "Claude-Kiro-sale",
+        "Claude-kiro-福利",
+        "Claude-kiro-福利-vip",
+        "Claude-kiro-超哥专用",
+        "Claude-Kiro-超哥稳定专用",
+        "Claude-Max-可外接",
+        "Claude-anthropic-vip",
+        "Claude-Aws",
+        "Claude-Aws-vip",
+        "Claude-Kiro-VIP",
+        "Claude-Max",
+        "claude-windsurf-vip",
+        "claudecode-stable",
+        "default",
+        "anti-cc-normal",
+        "Claude-Kiro",
+        "Claude-Kiro-福利-sale",
+        "Claude-Max-vip",
+        "Claude-Max-半外接",
+        "Claude-Max-超哥专用",
+        "Claude-AWS-福利",
+        "Claude-Max-可外接-vip",
+        "claude-mix",
+        "claude-windsurf"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-thinking-tt",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "Claude-anti-按次",
+        "Claude-anti-按次-vip",
+        "Claude-anti-按次-超哥专用"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex-超哥专用",
+        "codex全系列福利-vip",
+        "无限制Pro",
+        "测试",
+        "codex",
+        "codex-pro-超哥专用",
+        "codex-vip",
+        "codex全系列福利",
+        "default",
+        "codex-pro",
+        "codex-pro-vip",
+        "codex-pro-无审-vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini",
+        "gemini-vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash-high",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "gemini",
+        "gemini-vip"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-non-reasoning",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.16,
+      "enable_groups": [
+        "default",
+        "grok",
+        "grok-vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "omni_flash-10s",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "omni"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-thinking",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "anti-cc-normal",
+        "anti-cc-normal-vip",
+        "claude-windsurf",
+        "claude-windsurf-vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-Aws",
+        "Claude-Aws-vip",
+        "claudecode-stable",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "image-2-Pro",
+        "image-2-Pro-vip",
+        "default",
+        "gpt-image-2",
+        "gpt-image-2-vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-Kiro-VIP",
+        "Claude-kiro-福利",
+        "Claude-kiro-福利-vip",
+        "Claude-AWS-福利",
+        "Claude-Kiro-sale",
+        "Claude-Max-vip",
+        "default",
+        "Claude-anthropic-vip",
+        "Claude-kiro-超哥专用",
+        "Claude-Kiro-超哥稳定专用",
+        "Claude-Max",
+        "Claude-Max-半外接",
+        "claude-windsurf",
+        "Claude-anthropic",
+        "Claude-Kiro",
+        "Claude-Kiro-福利-sale",
+        "Claude-Max-超哥专用",
+        "claude-mix",
+        "claude-windsurf-vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6-t",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "Claude-anti-按次",
+        "Claude-anti-按次-vip",
+        "Claude-anti-按次-超哥专用"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6-thinking",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "default",
+        "Claude-Kiro",
+        "Claude-Kiro-VIP",
+        "Claude-Kiro-超哥稳定专用",
+        "claude-windsurf",
+        "claude-windsurf-vip"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "grok",
+        "grok-vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-video",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "grok-视频模型"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"per_second\", param(\"duration\") * 0.2)"
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex-pro",
+        "codex-pro-无审-vip",
+        "codex-vip",
+        "codex全系列福利",
+        "codex全系列福利-vip",
+        "default",
+        "测试",
+        "codex",
+        "codex-pro-vip",
+        "codex-pro-超哥专用",
+        "codex-超哥专用",
+        "无限制Pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333333334,
+      "enable_groups": [
+        "default",
+        "gemini",
+        "gemini-vip"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-Aws",
+        "Claude-AWS-福利",
+        "Claude-Kiro-VIP",
+        "Claude-Max-可外接-vip",
+        "claude-mix",
+        "claude-windsurf",
+        "claude-windsurf-vip",
+        "claudecode-stable",
+        "Claude-anthropic",
+        "Claude-anthropic-vip",
+        "Claude-kiro-福利",
+        "Claude-kiro-福利-vip",
+        "Claude-kiro-超哥专用",
+        "Claude-Aws-vip",
+        "Claude-Kiro",
+        "default",
+        "Claude-Max",
+        "Claude-Kiro-sale",
+        "Claude-Kiro-福利-sale",
+        "Claude-Kiro-超哥稳定专用",
+        "Claude-Max-vip",
+        "Claude-Max-半外接",
+        "Claude-Max-可外接",
+        "Claude-Max-超哥专用"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-non-reasoning-super",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "grok",
+        "grok-vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-reasoning-super",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.16,
+      "enable_groups": [
+        "default",
+        "grok",
+        "grok-vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex-pro-vip",
+        "codex-pro-无审-vip",
+        "codex-vip",
+        "codex全系列福利-vip",
+        "default",
+        "codex-pro-超哥专用",
+        "codex-超哥专用",
+        "codex全系列福利",
+        "codex福利",
+        "codex福利-vip",
+        "无限制Pro",
+        "测试",
+        "codex",
+        "codex-pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "default",
+        "gemini",
+        "gemini-vip"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-image-lite",
+      "vendor_id": 4,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "grok",
+        "grok-vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-image",
+      "vendor_id": 4,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.02,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "grok-vip",
+        "default",
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-image-preview",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 120,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "gemini",
+        "gemini-vip"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini",
+        "gemini-vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash-low",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "gemini",
+        "gemini-vip"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-fast",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "grok",
+        "grok-vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-image-edit",
+      "vendor_id": 4,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "grok",
+        "grok-vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-image-pro",
+      "vendor_id": 4,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "default",
+        "grok",
+        "grok-vip"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-Kiro-超哥稳定专用",
+        "Claude-Max",
+        "Claude-Max-半外接",
+        "Claude-Max-可外接-vip",
+        "claude-windsurf",
+        "Claude-Kiro-sale",
+        "Claude-Kiro-VIP",
+        "Claude-kiro-福利-vip",
+        "default",
+        "Claude-Max-可外接",
+        "Claude-Max-超哥专用",
+        "claude-windsurf-vip",
+        "Claude-anthropic",
+        "Claude-Kiro",
+        "Claude-kiro-超哥专用",
+        "Claude-Max-vip",
+        "Claude-anthropic-vip",
+        "Claude-kiro-福利",
+        "Claude-Kiro-福利-sale"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "veo_3_1-fl",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.6,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "omni"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-super",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "grok",
+        "grok-vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "grok-imagine-video-1.5-preview",
+      "vendor_id": 4,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "grok-视频模型"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"per_second\", param(\"duration\") * 0.3)"
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex-pro",
+        "codex-pro-vip",
+        "codex-pro-无审-vip",
+        "codex-pro-超哥专用",
+        "default",
+        "无限制Pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "anti-cc-normal",
+        "Claude-Kiro",
+        "Claude-Kiro-sale",
+        "Claude-kiro-超哥专用",
+        "Claude-Max-超哥专用",
+        "anti-cc-normal-vip",
+        "Claude-anthropic-vip",
+        "Claude-kiro-福利",
+        "Claude-Kiro-福利-sale",
+        "Claude-kiro-福利-vip",
+        "Claude-Kiro-超哥稳定专用",
+        "Claude-Max-vip",
+        "Claude-Max-可外接",
+        "Claude-Aws",
+        "Claude-Kiro-VIP",
+        "Claude-Max-半外接",
+        "Claude-Max-可外接-vip",
+        "claude-mix",
+        "claude-windsurf",
+        "default",
+        "Claude-anthropic",
+        "Claude-Aws-vip",
+        "Claude-AWS-福利",
+        "Claude-Max",
+        "claude-windsurf-vip",
+        "claudecode-stable"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6-t",
+      "vendor_id": 2,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "Claude-anti-按次",
+        "Claude-anti-按次-vip",
+        "Claude-anti-按次-超哥专用"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "gemini",
+        "gemini-vip"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "Claude-Aws": 4,
+    "Claude-Kiro": 0.16,
+    "Claude-Max": 1.4,
+    "Claude-Max-半外接": 1.3,
+    "Claude-Max-可外接": 1.6,
+    "Claude-anthropic": 5,
+    "Claude-anti-按次": 0.2,
+    "Claude-kiro-福利": 0.09,
+    "anti-cc-normal": 0.75,
+    "claude-mix": 0.4,
+    "codex": 0.18,
+    "codex-pro": 0.25,
+    "gemini": 0.4,
+    "gpt-image-2": 0.04,
+    "grok": 0.8,
+    "grok-视频模型": 0.2,
+    "omni": 1.3,
+    "无限制Pro": 0.25
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "gemini": {
+      "path": "/v1beta/models/{model}:generateContent",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    },
+    "openai-response": {
+      "path": "/v1/responses",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "Claude-Aws": "Claude-Aws",
+    "Claude-Kiro": "ClaudeKiroPower反代分组(尽量别用1M) 8090缓",
+    "Claude-Max": "Claude Max20x/5x号池/仅限claudecode官方使用",
+    "Claude-Max-半外接": "ClaudeMax号池，半外接，稳定性不如Claudemax限制",
+    "Claude-Max-可外接": "Claude-Max-号池-支持外接-稳定性不如claudemax限制",
+    "Claude-anthropic": "Claude-anthropic-官api-原厂key",
+    "Claude-anti-按次": "按此计费，一次请求算一次，老板记得最大化利用一次请求",
+    "Claude-kiro-福利": "kiro福利70%以上缓存",
+    "anti-cc-normal": "Claude反重力反代",
+    "claude-mix": "Claude混合，主kiro，缓存表现优异",
+    "codex": "codex常规分组",
+    "codex-pro": "codexpro号池，支持spark，支持fast",
+    "gemini": "Gemini反重力",
+    "gpt-image-2": "gpt-image-2-生图",
+    "grok": "grok",
+    "grok-视频模型": "grok视频模型-无限制",
+    "omni": "omni视频模型",
+    "无限制Pro": "gpt-pro"
+  },
+  "vendors": [
+    {
+      "id": 5,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 2,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 3,
+      "name": "Google",
+      "icon": "Gemini.Color"
+    },
+    {
+      "id": 4,
+      "name": "xAI",
+      "icon": "XAI"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":false}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+      "announcements": [
+        {
+          "content": "选了default分组的兄弟麻烦看下请求日志自己是不是这个default，不要选default！！！这是默认1x分组，看基础价用的！！！比如0.18x的codex选成default很亏的！！！",
+          "extra": "",
+          "id": 14,
+          "publishDate": "2026-05-30T16:15:39.483Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "🎁 新用户注册送 2 元额度，够跑 100次对话\n直接联系站长领取---> 卫星：H1x1211\n小白进群，站长亲自手把手教学一切！！！",
+          "extra": "",
+          "id": 13,
+          "publishDate": "2026-05-26T17:44:21.352Z",
+          "type": "default"
+        },
+        {
+          "content": "微信支付通道暂时下架，如需微信充值可直接联系站长！",
+          "extra": "",
+          "id": 12,
+          "publishDate": "2026-05-15T11:44:31.333Z",
+          "type": "default"
+        },
+        {
+          "content": "售后与退款说明\n\nQQ交流群：1064649632\n本平台提供AI API接入、额度充值服务。\n遇充值异常、额度未到账、接口故障、账单问题或退款需求，可联系售后：\n微信：H1x1211\nQQ：1850812101",
+          "extra": "",
+          "id": 5,
+          "publishDate": "2026-04-26T14:59:07.472Z",
+          "type": "default"
+        },
+        {
+          "content": "退款政策：\n\n1. 用户个人原因退款：退款金额=实付金额-已用额度费用-支付手续费，赠送额度不予退款。\n\n2. 平台责任退款：系统异常、重复扣费、充值未到账等平台问题，核实后可全额或按情况退款。\n\n3. 不予退款情况：已正常消耗的额度；用户自身操作失误、违规使用造成的问题；超售后时效的历史订单。\n\n常规售后24小时内回复，充值、退款问题1个工作日内处理完成。",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2026-04-25T12:30:47.272Z",
+          "type": "default"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "blue",
+          "description": "境界排行榜",
+          "id": 1,
+          "route": "排行榜",
+          "url": "https://api.ethancode.xyz/leaderboard"
+        },
+        {
+          "color": "red",
+          "description": "新手小白配置看这里",
+          "id": 2,
+          "route": "小白配置教程文档",
+          "url": "https://bcnea2z9c0k4.feishu.cn/wiki/YRsfwd1cgi9i4IkQQAqcNcufngf?from=from_copylink"
+        },
+        {
+          "color": "green",
+          "description": "日/周/月套餐站",
+          "id": 3,
+          "route": "日/周/月套餐站",
+          "url": "https://sub2api.ethancode.xyz/"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://api.ethancode.xyz/docs/",
+      "email_verification": true,
+      "enable_batch_update": false,
+      "enable_data_export": true,
+      "enable_drawing": false,
+      "enable_task": true,
+      "faq": [],
+      "faq_enabled": true,
+      "footer_html": "",
+      "github_client_id": "",
+      "github_oauth": false,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "https://api.ethancode.xyz/docs/brand-avatar.jpg",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "New API",
+      "passkey_login": false,
+      "passkey_origins": "https://api.ethancode.xyz",
+      "passkey_rp_id": "api.ethancode.xyz",
+      "passkey_user_verification": "preferred",
+      "price": 1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "USD",
+      "quota_per_unit": 500000,
+      "self_use_mode_enabled": false,
+      "server_address": "https://api.ethancode.xyz",
+      "setup": true,
+      "start_time": 1781634256,
+      "stripe_unit_price": 8,
+      "system_name": "EthanCode",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "top_up_link": "",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 7.3,
+      "user_agreement_enabled": false,
+      "version": "",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://api.ethancode.xyz/api/pricing"
+}

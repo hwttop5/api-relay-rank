@@ -1,0 +1,125 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":false,\"requireAuth\":true},\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":false,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":false,\"user\":true,\"subscription\":false,\"setting\":true,\"community_monitor\":true}}",
+    "announcements": [
+      {
+        "content": "- 邀请送双向30刀+社区每天领鸡蛋30-100刀+0.1倍分组+无充值\n- 专用社区聊天室：https://dc.hhhl.cc/chat/room/anb7h6tszn\n- 2026/6/19 21:15:22以前不会拉闸!",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-06-12T18:40:13.805Z",
+        "type": "success"
+      },
+      {
+        "content": "增加了排行榜功能：\nhttp://ai.twgom.com/check",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-05-28T13:34:51.968Z",
+        "type": "success"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info_enabled": false,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "custom_oauth_providers": [
+      {
+        "id": 1,
+        "name": "dc.hhhl.cc",
+        "slug": "dc",
+        "icon": "",
+        "client_id": "placeholder",
+        "authorization_endpoint": "https://api.twgom.com/dc-oauth/authorize",
+        "scopes": "openid profile email"
+      }
+    ],
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": true,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://docs.newapi.pro",
+    "email_verification": false,
+    "enable_batch_update": false,
+    "enable_data_export": true,
+    "enable_drawing": false,
+    "enable_task": true,
+    "faq_enabled": false,
+    "footer_html": "",
+    "github_client_id": "Ov23liJunvaQ3zS9w8cM",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "New API",
+    "passkey_login": false,
+    "passkey_origins": "https://api.twgom.com",
+    "passkey_rp_id": "api.twgom.com",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": false,
+    "password_register_enabled": false,
+    "price": 7.3,
+    "privacy_policy_enabled": true,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "register_enabled": false,
+    "self_use_mode_enabled": false,
+    "server_address": "https://api.twgom.com",
+    "setup": true,
+    "start_time": 1781718040,
+    "stripe_unit_price": 8,
+    "system_name": "老刀API中转站",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "default",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": false,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": true,
+    "version": "v0.0.0",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

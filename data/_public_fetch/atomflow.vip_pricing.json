@@ -13,9 +13,9 @@
       "completion_ratio": 5,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "claude-aws",
         "claude-special",
-        "test"
+        "test",
+        "claude-aws"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -24,22 +24,84 @@
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
-      "model_name": "claude-opus-4-7",
-      "vendor_id": 5,
+      "model_name": "gemini-3-flash-preview",
+      "vendor_id": 6,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 0.25,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
+      "completion_ratio": 6,
       "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "claude-special",
-        "test",
-        "claude-aws"
+        "gemini",
+        "test"
       ],
       "supported_endpoint_types": [
-        "anthropic",
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.4,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "codex",
+        "default",
+        "test",
+        "codex-welfare"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.7-plus",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "common-official"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M2.7",
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.75,
+      "enable_groups": [
+        "common-official"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.01,
+      "enable_groups": [
+        "common-official"
+      ],
+      "supported_endpoint_types": [
         "openai"
       ]
     },
@@ -54,9 +116,9 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
+        "test",
         "claude-aws",
-        "claude-special",
-        "test"
+        "claude-special"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -64,21 +126,88 @@
       ]
     },
     {
-      "model_name": "claude-haiku-4-5",
-      "vendor_id": 5,
+      "model_name": "gemini-3.5-flash",
+      "vendor_id": 6,
       "quota_type": 0,
-      "model_ratio": 0.5,
+      "model_ratio": 0.75,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
+      "completion_ratio": 6,
       "cache_ratio": 0.1,
+      "create_cache_ratio": 0.055553333333,
       "enable_groups": [
-        "claude-aws",
-        "claude-special",
+        "gemini",
         "test"
       ],
       "supported_endpoint_types": [
-        "anthropic",
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "test",
+        "codex-welfare"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.7-max",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "common-official"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3.2",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1.5,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "common-official"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5.2",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 4,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.5,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "common-official"
+      ],
+      "supported_endpoint_types": [
         "openai"
       ]
     },
@@ -96,6 +225,124 @@
         "claude-aws",
         "claude-special",
         "test"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.02,
+      "enable_groups": [
+        "free",
+        "common-official"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.6",
+      "vendor_id": 8,
+      "quota_type": 0,
+      "model_ratio": 3.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.153846153846,
+      "cache_ratio": 0.169230769231,
+      "enable_groups": [
+        "common-official"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M3",
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.6,
+      "enable_groups": [
+        "common-official"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.5,
+      "cache_ratio": 0.2,
+      "enable_groups": [
+        "common-official"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5.1",
+      "vendor_id": 10,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.333333333333,
+      "enable_groups": [
+        "common-official"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "claude-special",
+        "test",
+        "claude-aws"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-special",
+        "test",
+        "claude-aws"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -121,110 +368,15 @@
       ]
     },
     {
-      "model_name": "gpt-5.4-mini",
-      "vendor_id": 1,
+      "model_name": "kimi-k2.5",
+      "vendor_id": 8,
       "quota_type": 0,
-      "model_ratio": 0.375,
+      "model_ratio": 2,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
+      "completion_ratio": 5.25,
       "enable_groups": [
-        "codex-welfare",
-        "default",
-        "codex",
-        "test"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex-welfare",
-        "default",
-        "codex",
-        "test"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "codex-auto-review",
-      "quota_type": 0,
-      "model_ratio": 0.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.166666666667,
-      "enable_groups": [
-        "default",
-        "codex",
-        "test",
-        "codex-welfare"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-flash-preview",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 0.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini",
-        "test"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.5-flash",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 0.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 0.055553333333,
-      "enable_groups": [
-        "gemini",
-        "test"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-image-2",
-      "vendor_id": 1,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.4,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "default",
-        "codex",
-        "test"
+        "common-official"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -240,9 +392,46 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
+        "codex",
+        "default",
+        "test",
+        "codex-welfare"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex",
+        "default",
+        "test",
+        "codex-welfare"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.166666666667,
+      "enable_groups": [
+        "default",
         "test",
         "codex-welfare",
-        "default",
         "codex"
       ],
       "supported_endpoint_types": [
@@ -250,7 +439,7 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-6",
+      "model_name": "claude-opus-4-7",
       "vendor_id": 5,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -260,9 +449,9 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "claude-aws",
         "claude-special",
-        "test"
+        "test",
+        "claude-aws"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -274,8 +463,10 @@
     "claude-aws": 2.5,
     "claude-special": 0.5,
     "codex": 0.25,
-    "codex-welfare": 0.12,
+    "codex-welfare": 0.2,
+    "common-official": 0.85,
     "default": 0.25,
+    "free1": 0.01,
     "gemini": 1.5
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
@@ -297,9 +488,11 @@
   "usable_group": {
     "claude-aws": "claude aws 渠道",
     "claude-special": "claude 逆向渠道",
-    "codex": "codex-pro，自建渠道",
-    "codex-welfare": "codex 优惠分组",
+    "codex": "codex自建渠道",
+    "codex-welfare": "codex 优惠分组，稳定性不高",
+    "common-official": "国产分组",
     "default": "不要用默认分组",
+    "free1": "福利免费分组，体验流程用",
     "gemini": "gemini"
   },
   "vendors": [
@@ -317,6 +510,26 @@
       "id": 6,
       "name": "Google",
       "icon": "Gemini.Color"
+    },
+    {
+      "id": 7,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 8,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 9,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 10,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
     }
   ],
   "status_payload": {
@@ -438,7 +651,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://atomflow.vip",
       "setup": true,
-      "start_time": 1779896920,
+      "start_time": 1781541753,
       "stripe_unit_price": 1,
       "system_name": "原子流动",
       "telegram_bot_name": "",
@@ -449,7 +662,7 @@
       "uptime_kuma_enabled": false,
       "usd_exchange_rate": 1,
       "user_agreement_enabled": true,
-      "version": "v1.0.0-rc.10",
+      "version": "v1.0.0-rc.11",
       "wechat_login": false,
       "wechat_qrcode": ""
     },

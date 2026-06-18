@@ -1,0 +1,197 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":false,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "Anthropic已下线claude-fable-5模型，请勿继续调用，详见下发官网公告链接",
+        "extra": "https://www.anthropic.com/news/fable-mythos-access",
+        "id": 102,
+        "publishDate": "2026-06-13T02:35:24.000Z",
+        "type": "default"
+      },
+      {
+        "content": "价格调整：codex分组倍率上调至0.4，gemini分组下调至0.8",
+        "extra": "",
+        "id": 101,
+        "publishDate": "2026-06-13T01:02:13.136Z",
+        "type": "default"
+      },
+      {
+        "content": "价格调整：codex分组倍率下调至0.3",
+        "extra": "",
+        "id": 100,
+        "publishDate": "2026-06-11T14:31:10.700Z",
+        "type": "default"
+      },
+      {
+        "content": "价格调整：受openai风控影响，为保障持续可用，codex分组倍率上调至0.55",
+        "extra": "",
+        "id": 99,
+        "publishDate": "2026-06-11T05:19:28.000Z",
+        "type": "default"
+      },
+      {
+        "content": "价格调整：自6/6 0点起，gpt-image-2模型更改计费策略为按次计费，0.08/次。\n",
+        "extra": "",
+        "id": 98,
+        "publishDate": "2026-06-06T08:04:16.000Z",
+        "type": "default"
+      },
+      {
+        "content": "codex分组：官方已下线gpt-5.3-codex、gpt-5.2相关模型，不再支持调用，请切换至gpt-5.4、gpt-5.5",
+        "extra": "",
+        "id": 97,
+        "publishDate": "2026-06-02T03:22:26.929Z",
+        "type": "default"
+      },
+      {
+        "content": "价格调整：gemini分组倍率下调至1.0",
+        "extra": "",
+        "id": 96,
+        "publishDate": "2026-05-25T14:51:20.224Z",
+        "type": "default"
+      },
+      {
+        "content": "价格调整：claude分组倍率下调至0.6，codex分组倍率下调至0.3",
+        "extra": "",
+        "id": 95,
+        "publishDate": "2026-05-24T02:04:27.230Z",
+        "type": "default"
+      },
+      {
+        "content": "Global AI × 国内大模型：8折直连，Claude Code一站式接入指南，点击下方链接查看",
+        "extra": "https://ccn7c4qmjtrb.feishu.cn/wiki/CgeRwLMeXiHLfak1ZrRcE2j3nGe",
+        "id": 94,
+        "publishDate": "2026-05-14T15:38:47.546Z",
+        "type": "default"
+      },
+      {
+        "content": "五大主流国产大模型全面焕新升级接入：Qwen、DeepSeek、GLM、MiniMax、Kimi。官方签约，统一8折，高并发稳定保障，可开发票，欢迎体验。",
+        "extra": "",
+        "id": 93,
+        "publishDate": "2026-05-09T03:45:16.708Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "10GB大带宽，支持批量图片/文件上传",
+        "id": 1,
+        "route": "us(无需🪜)",
+        "url": "https://globalai.vip"
+      },
+      {
+        "color": "green",
+        "description": "codeing优化专线，禁大文件上传",
+        "id": 2,
+        "route": "us(无需🪜)",
+        "url": "https://api.globalai.chat"
+      },
+      {
+        "color": "cyan",
+        "description": "香港节点,备用",
+        "id": 3,
+        "route": "hk(无需🪜)",
+        "url": "https://hk.globalai.vip"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "💬 聊天": "https://cwmp.globalai.vip/#/?settings={\"key\":\"{key}\",\"url\":\"{address}\"}"
+      },
+      {
+        "🍌 绘画": "https://static.globalai.vip/gpt-image-2/?settings={\"key\":\"{key}\"}"
+      },
+      {
+        "🍒 Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "CC Switch": "ccswitch"
+      }
+    ],
+    "checkin_enabled": true,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": true,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://docs.globalai.vip",
+    "email_verification": false,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "可能原因包括：\nAPI密钥未正确填写（检查密钥是否完整且无空格）\n密钥已过期或被撤销（重新生成密钥）\n请求头（Header）中认证格式错误（I需Bearer [API_KEY]格式）",
+        "id": 1,
+        "question": "调用API时返回401 Unauthorized错误怎么办？"
+      },
+      {
+        "answer": "排查方向：\n检查输入的Prompt是否清晰明确（尝试添加示例或细化指令）\n调整温度（temperature）等参数控制随机性\n确认模型版本是否匹配（如gpt-3.5-turbo和gpt-4差异）",
+        "id": 2,
+        "question": "API返回内容不符合预期（如无关回答或格式错误）？​"
+      },
+      {
+        "answer": "优化建议：\n使用更小的模型（如gpt-3.5-turbo比gpt-4成本更低）\n限制返回结果长度（通过max_tokens参数控制）\n缓存频繁请求的相似内容（如FAQ类回答）\n利用免费额度或按需计费模式（避免持续高并发调用）",
+        "id": 3,
+        "question": "如何降低API调用成本？"
+      },
+      {
+        "answer": "- 400 Bad Request：请求格式错误或无效。这通常意味着你的请求参数有误，需要你检查并修正请求参数。\n- 401 Unauthorized：请求格式错误或无效。这通常意味着你的请求参数有误，需要你检查并修正请求参数。\n- 403 Forbidden：一般是余额不足。\n- 404 Not Found：请求的资源未找到。你可能正在试图访问一个不存在的端点。\n- 413 Request Entity Too Large：请求体太大。你可能需要减少你的请求数据量。\n- 429 Too Many Requests：由于短时间内发送过多的请求，你已经超过了你的速率限制。\n- 500 Internal Server Error：服务器内部错误。这可能是OpenAI服务器的问题，不是你的问题。\n- 503 Service Unavailable：服务暂时不可用。这可能是由于OpenAI正在进行维护或者服务器过载。",
+        "id": 4,
+        "question": "常见错误代码"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "    <p style=\"font-size:12px;text-align:center\">This service is offered globally and is not specifically directed to residents of any particular jurisdiction. Users are responsible for ensuring their use of the service complies with applicable local laws.</p> <p style=\"font-size:12px;text-align:center\">Global AI Copyright ©2023-2026 GLOBALAI.VIP</p>",
+    "github_client_id": "Ov23lii4hylFHscUMF6l",
+    "github_oauth": true,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://static.globalai.vip/logo/logo_20260429.png",
+    "mj_notify_enabled": true,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "全球AI",
+    "passkey_login": true,
+    "passkey_origins": "https://globalai.vip",
+    "passkey_rp_id": "globalai.vip",
+    "passkey_user_verification": "preferred",
+    "price": 1,
+    "privacy_policy_enabled": true,
+    "quota_display_type": "CNY",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://globalai.vip",
+    "setup": true,
+    "start_time": 1781539789,
+    "stripe_unit_price": 0,
+    "system_name": "Global AI",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "top_up_link": "https://item.taobao.com/item.htm?ft=t&id=1057367795100",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": true,
+    "version": "v0.0.0",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

@@ -4,21 +4,71 @@
   ],
   "data": [
     {
-      "model_name": "gpt-image-2",
+      "model_name": "gpt-5.4-mini",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
       "vendor_id": 3,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.1,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 0,
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
       "enable_groups": [
         "default",
+        "pro",
         "vip"
       ],
       "supported_endpoint_types": [
-        "image-generation"
+        "openai"
       ],
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.5",
+      "tags": "Reasoning,Tools,Files,Vision,1.1M",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "pro",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "icon": "Claude.Color",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws",
+        "aws-kiro",
+        "cc"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "group_pricing_overrides": {
+        "aws-kiro": {
+          "billing_mode": "price",
+          "model_price": 0.1
+        }
+      }
     },
     {
       "model_name": "claude-sonnet-4-6",
@@ -48,9 +98,9 @@
       }
     },
     {
-      "model_name": "claude-opus-4-6",
+      "model_name": "claude-opus-4-8",
       "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "tags": "Reasoning,Tools,1m",
       "vendor_id": 7,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -76,6 +126,105 @@
       }
     },
     {
+      "model_name": "claude-sonnet-4-5-20250929",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws",
+        "aws-kiro"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "pro",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "icon": "OpenAI",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "default",
+        "pro",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws",
+        "aws-kiro",
+        "cc"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "group_pricing_overrides": {
+        "aws-kiro": {
+          "billing_mode": "price",
+          "model_price": 0.08
+        }
+      }
+    },
+    {
+      "model_name": "gpt-image-2",
+      "vendor_id": 3,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.4,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "生图"
+      ],
+      "supported_endpoint_types": [
+        "image-generation"
+      ]
+    },
+    {
       "model_name": "claude-fable-5",
       "vendor_id": 7,
       "quota_type": 0,
@@ -94,47 +243,7 @@
       ]
     },
     {
-      "model_name": "gpt-5.4-mini",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-5-20250929",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "aws",
-        "aws-kiro",
-        "cc"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "model_name": "claude-opus-4-6-thinking",
       "vendor_id": 7,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -144,12 +253,18 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "cc"
+        "aws-kiro"
       ],
       "supported_endpoint_types": [
         "anthropic",
         "openai"
-      ]
+      ],
+      "group_pricing_overrides": {
+        "aws-kiro": {
+          "billing_mode": "price",
+          "model_price": 0.1
+        }
+      }
     },
     {
       "model_name": "claude-opus-4-7-thinking",
@@ -202,7 +317,7 @@
       }
     },
     {
-      "model_name": "claude-opus-4-7",
+      "model_name": "claude-opus-4-6",
       "icon": "Claude.Color",
       "tags": "Reasoning,Tools,Files,Vision,1M",
       "vendor_id": 7,
@@ -230,157 +345,6 @@
       }
     },
     {
-      "model_name": "claude-opus-4-8",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,1m",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "aws",
-        "aws-kiro",
-        "cc"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ],
-      "group_pricing_overrides": {
-        "aws-kiro": {
-          "billing_mode": "price",
-          "model_price": 0.1
-        }
-      }
-    },
-    {
-      "model_name": "claude-haiku-4-5",
-      "icon": "Claude.Color",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "codex-auto-review",
-      "icon": "OpenAI",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6-thinking",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "aws-kiro"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ],
-      "group_pricing_overrides": {
-        "aws-kiro": {
-          "billing_mode": "price",
-          "model_price": 0.1
-        }
-      }
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 7,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "aws",
-        "aws-kiro",
-        "cc"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ],
-      "group_pricing_overrides": {
-        "aws-kiro": {
-          "billing_mode": "price",
-          "model_price": 0.08
-        }
-      }
-    },
-    {
-      "model_name": "gpt-5.4",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "tags": "Reasoning,Tools,Files,Vision,1.1M",
-      "vendor_id": 3,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
       "model_name": "claude-haiku-4-5-20251001-thinking",
       "vendor_id": 7,
       "quota_type": 0,
@@ -395,7 +359,34 @@
         "aws-kiro",
         "cc",
         "default",
-        "vip"
+        "pro",
+        "vip",
+        "生图"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 7,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws",
+        "aws-kiro",
+        "cc",
+        "default",
+        "pro",
+        "vip",
+        "生图"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -417,7 +408,9 @@
         "aws-kiro",
         "cc",
         "default",
-        "vip"
+        "pro",
+        "vip",
+        "生图"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -439,7 +432,9 @@
         "aws-kiro",
         "cc",
         "default",
-        "vip"
+        "pro",
+        "vip",
+        "生图"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -460,7 +455,9 @@
         "aws-kiro",
         "cc",
         "default",
-        "vip"
+        "pro",
+        "vip",
+        "生图"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -472,8 +469,10 @@
     "aws": 0.5,
     "aws-kiro": 1,
     "cc": 1.5,
-    "default": 0.15,
-    "vip": 0.15
+    "default": 0.2,
+    "pro": 0.5,
+    "vip": 0.2,
+    "生图": 1
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
@@ -496,7 +495,9 @@
     "aws-kiro": "kiro渠道claude按次计费，请不要自动test测活，请求是按次收费的",
     "cc": "ccmax号池，仅能在claudecode中使用",
     "default": "默认分组",
-    "vip": "vip分组"
+    "pro": "gpt-pro分组，禁止进行逆向，网络安全相关用途",
+    "vip": "vip分组",
+    "生图": "生图专用分组，0.4每次"
   },
   "vendors": [
     {
@@ -515,6 +516,90 @@
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
       "announcements": [
+        {
+          "content": "Due to cost factors, the gpt basic group multiplier has been increased from 0.15 to 0.20. After the subscription discount, the actual multiplier is approximately 0.13.",
+          "extra": "",
+          "id": 42,
+          "publishDate": "2026-06-14T16:51:57.596Z",
+          "type": "default"
+        },
+        {
+          "content": "Regarding the current multiplier and pricing issues for the pro group, we have not yet adjusted subscriptions, so the current pro at a 0.5 multiplier works out to roughly 0.33 after converting the subscription. As for the specific price, after a trial run for a period of time, if the costs are manageable, we will make the corresponding price reduction. However, in the end it should not be lower than the current subscription price, and both the original multiplier and the subscription discount may be adjusted.",
+          "extra": "",
+          "id": 41,
+          "publishDate": "2026-06-14T12:09:23.722Z",
+          "type": "default"
+        },
+        {
+          "content": "We have officially launched the Pro group (multiplier temporarily set at 0.5). After launch, we will dynamically adjust the multiplier based on costs and service quality. At the same time, in order to respond to the constantly changing cost structure, we may make corresponding optimizations to the calculation rules for subscription quotas in the near future. Please rest assured that this adjustment will only take effect for new subscriptions. The subscription benefits and quota you have already purchased will not be affected in any way, so please feel free to continue using them.",
+          "extra": "",
+          "id": 40,
+          "publishDate": "2026-06-14T06:02:07.556Z",
+          "type": "default"
+        },
+        {
+          "content": "Due to ongoing crackdowns by OpenAI, it has become difficult for us to provide a stable service at our current pricing. As a result, we may soon increase the multiplier for the basic GPT group to an estimated 0.2. Additionally, we are planning to launch a Pro group with a multiplier tentatively set at 0.5. Please note that these rates are subject to change depending on the strictness of OpenAI's detection and banning mechanisms, and the Pro group might not launch at all if the risk control measures become too severe. For users who cannot accept the price increase, please apply for a refund by following the refund instructions in the announcement history below.",
+          "extra": "",
+          "id": 39,
+          "publishDate": "2026-06-13T18:31:56.947Z",
+          "type": "default"
+        },
+        {
+          "content": "Regarding subscription issues, if your subscription quota expired before being fully used due to instability in our service, please rest assured that we will subsequently compensate you with the corresponding quota.",
+          "extra": "",
+          "id": 38,
+          "publishDate": "2026-06-13T13:36:15.045Z",
+          "type": "default"
+        },
+        {
+          "content": "At present, it seems that the gpt channel may still be unable to provide a stable supply in the near term. It is recommended to prioritize using cc. For those who cannot wait, please apply for a refund according to the instructions in the historical announcements below.",
+          "extra": "",
+          "id": 37,
+          "publishDate": "2026-06-13T13:21:11.391Z",
+          "type": "default"
+        },
+        {
+          "content": "It will probably still crash, and it likely won’t be long now. We will continue looking for a solution.",
+          "extra": "",
+          "id": 36,
+          "publishDate": "2026-06-12T18:35:22.359Z",
+          "type": "default"
+        },
+        {
+          "content": "Our GPT channel supply capacity is steadily recovering. Once stability is confirmed, we will carry out a compensation package distribution plan (if it can remain stable).",
+          "extra": "",
+          "id": 35,
+          "publishDate": "2026-06-12T17:33:59.744Z",
+          "type": "default"
+        },
+        {
+          "content": "We are still continuing to resolve the gpt supply issue, and some load has now been restored.",
+          "extra": "",
+          "id": 34,
+          "publishDate": "2026-06-12T09:03:25.307Z",
+          "type": "default"
+        },
+        {
+          "content": "Due to the impact of openai's ban policy, we are currently unable to provide gpt at this price. We will work hard to find a solution, but it may take some time. If you cannot wait, or if you previously topped up due to factors such as the price, we are willing to provide a corresponding refund based on your usage. However, the refund processing period cannot be guaranteed and is expected to take about one month. If you need to apply for a refund, please send an email directly to xxx, and we will register it. At the same time, please provide your preferred payment method and the corresponding payment QR code, and also provide your site ID. During the refund process, your account will be frozen for statistical purposes.",
+          "extra": "",
+          "id": 33,
+          "publishDate": "2026-06-12T05:18:10.529Z",
+          "type": "default"
+        },
+        {
+          "content": "gpt渠道仍在抢救中，待供应稳定后，我们会公布补偿事宜，很抱歉为您带来不便",
+          "extra": "",
+          "id": 32,
+          "publishDate": "2026-06-12T04:44:10.259Z",
+          "type": "default"
+        },
+        {
+          "content": "The gpt channel is currently under excessive pressure, and we are doing our best to resolve it. We apologize for the inconvenience. Before we can ensure a stable and sufficient supply, we have temporarily taken gpt-image-2 offline.",
+          "extra": "",
+          "id": 31,
+          "publishDate": "2026-06-11T18:29:56.397Z",
+          "type": "default"
+        },
         {
           "content": "The aws-kiro pay-as-you-go channel has been restored. Due to cost impacts, the multiplier has been increased from 0.3 to 0.5.",
           "extra": "",
@@ -719,7 +804,7 @@
           "type": "default"
         },
         {
-          "content": "Contact Information\xxx Abuse\xxx Support Tickets\xxx Business Cooperation",
+          "content": "Contact Information\\xxx Abuse\\xxx Support Tickets\\xxx Business Cooperation",
           "extra": "",
           "id": 1,
           "publishDate": "2026-05-10T01:19:48.305Z",
@@ -795,7 +880,7 @@
           }
         }
       ],
-      "checkin_enabled": true,
+      "checkin_enabled": false,
       "custom_currency_exchange_rate": 1,
       "custom_currency_symbol": "¤",
       "data_export_default_time": "hour",
@@ -848,7 +933,7 @@
           "question": "Invoice Issues"
         },
         {
-          "answer": "Contact information\xxx Abuse\xxx Support tickets\xxx Business cooperation\nIf you need an electronic special VAT invoice, please contact xxx in advance and recharge via corporate bank transfer",
+          "answer": "Contact information\\xxx Abuse\\xxx Support tickets\\xxx Business cooperation\nIf you need an electronic special VAT invoice, please contact xxx in advance and recharge via corporate bank transfer",
           "id": 7,
           "question": "Have more questions?"
         },
@@ -887,7 +972,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://api.avemujica.moe",
       "setup": true,
-      "start_time": 1781074651,
+      "start_time": 1781711096,
       "stripe_unit_price": 1,
       "system_name": "AveMujica API",
       "telegram_bot_name": "",

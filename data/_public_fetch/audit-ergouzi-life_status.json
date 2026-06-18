@@ -3,14 +3,70 @@
     "HeaderNavModules": "",
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"billing_analysis\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"system_log\":true,\"setting\":true}}",
     "aff_quota_transfer_min": 0.1,
-    "after_sales_link": "https://discord.gg/TpnqmYnKY",
+    "after_sales_link": "https://discord.gg/NwnZuUXYM",
     "after_sales_qrcode": "",
     "announcements": [
       {
-        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n   限时0.1折优惠组开启\n  </div>\n  <div style=\"color:#334155;\">\n    今天有金主，开启 <strong>限时0.1折优惠</strong>，已包含所有 <strong>当终端报错不能用时，可能是优惠额度用完了</strong>，手动把令牌换回0.2折组就行\n  </div>\n</div>",
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    套餐低价组优惠通知\n  </div>\n  <div style=\"color:#334155;\">\n   套餐低价组，已调整倍率为1.46，和端午限时优惠组的0.02倍等效\n\n   当套餐低价组的倍率为1时，和狂欢组的0.01倍率等效\n\n   价格透明，大家用的时候，有顾虑可以用日志算算哈\n  </div>\n</div>",
+        "extra": "",
+        "id": 27,
+        "publishDate": "2026-06-18T05:22:20.925Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    特价狂欢组开启通知\n  </div>\n  <div style=\"color:#334155;\">\n    已上架特价优惠组，不知道什么时候结束，大家赶紧蹬，0.01倍率，比端午限时特惠组，便宜一倍\n  </div>\n</div>",
+        "extra": "",
+        "id": 26,
+        "publishDate": "2026-06-17T18:32:20.877Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    重大通知公告\n  </div>\n  <div style=\"color:#334155;\">\n<img src=\"https://res.cloudinary.com/dufnuhipy/image/upload/v1781721015/ChatGPT_Image_2026%E5%B9%B46%E6%9C%8817%E6%97%A5_22_32_43_compressed_hsffe2.png\" />\n  </div>\n</div>",
+        "extra": "",
+        "id": 25,
+        "publishDate": "2026-06-17T14:30:06.514Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    gpt-image-2 通知\n  </div>\n  <div style=\"color:#334155;\">\n    为保障服务质量，下架了很消耗内存的 gpt-image-2 模型，大家去 codex 使用 Image Gen 来做图吧，每天有大概20张免费图片生成\n  </div>\n</div>",
+        "extra": "",
+        "id": 24,
+        "publishDate": "2026-06-14T14:08:11.003Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    调整命名分组通知\n  </div>\n  <div style=\"color:#334155;\">\n    为了优化服务质量，现在做一个分组命名调整，如果遇到不能使用的情况，请编辑令牌的分组为对应的：<strong>【低价组】【稳定组】【极速组】</strong>，倍率计算会显示在分组说明里面。\n  </div>\n</div>",
+        "extra": "",
+        "id": 23,
+        "publishDate": "2026-06-13T10:21:30.467Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    上架“自部署gpt”\n  </div>\n  <div style=\"color:#334155;\">\n    自部署gpt模型上架，支持模型 gpt-5.5,gpt-5.5-pro,gpt-5.4,gpt-5.4-pro,gpt-5.4-mini,gpt-5.4-nano,所有模型保持和官方api完全一样，其中gpt-5.5支持1M上下文，价格为官网的6折，支持企业大规模采购。\n  </div>\n</div>",
+        "extra": "",
+        "id": 22,
+        "publishDate": "2026-06-12T05:49:07.327Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    上架“余额低价组”和“套餐低价组”\n  </div>\n  <div style=\"color:#334155;\">\n    分别对应余额消耗和套餐消耗，目前倍率为0.03\n  </div>\n</div>",
+        "extra": "",
+        "id": 21,
+        "publishDate": "2026-06-11T16:33:59.494Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    自部署deepseek v4 flash上线\n  </div>\n  <div style=\"color:#334155;\">\n    自部署deepseek v4 flash上线，比原gpt 0.2折还要便宜，建议openclaw这样的机器人长时间使用\n  </div>\n</div>",
+        "extra": "",
+        "id": 20,
+        "publishDate": "2026-06-11T15:24:33.363Z",
+        "type": "default"
+      },
+      {
+        "content": "<div style=\"font-size:16px;line-height:1.9;\">\n  <div style=\"font-size:18px;font-weight:800;color:#166534;margin-bottom:6px;\">\n    plus全网大面积封，大家可以换到0.7使用Pro池\n  </div>\n  <div style=\"color:#334155;\">\n    正在紧急处理，可以先用Pro池 <strong>0.7折极速组</strong>顶一下，已包含所有 <strong>GPT模型</strong>，套餐订阅用户可以切换到<strong>套餐极速组</strong> 使用。\n  </div>\n</div>",
         "extra": "",
         "id": 19,
-        "publishDate": "2026-06-08T12:27:44.270Z",
+        "publishDate": "2026-06-11T02:15:43.219Z",
         "type": "default"
       },
       {
@@ -157,6 +213,9 @@
         "CC Switch": "ccswitch"
       },
       {
+        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+      },
+      {
         "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
       },
       {
@@ -205,18 +264,22 @@
     "passkey_origins": "https://ergouzi.life",
     "passkey_rp_id": "ergouzi.life",
     "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
     "price": 7.3,
     "privacy_policy_enabled": true,
     "quota_display_type": "USD",
     "quota_per_unit": 500000,
+    "register_enabled": true,
     "self_use_mode_enabled": false,
     "server_address": "https://ergouzi.life",
     "setup": true,
-    "start_time": 1781069466,
+    "start_time": 1781451828,
     "stripe_unit_price": 8,
     "system_name": "二狗子",
     "telegram_bot_name": "",
     "telegram_oauth": false,
+    "theme": "classic",
     "top_up_link": "https://pay.ldxp.cn/shop/8C30CIW6",
     "turnstile_check": false,
     "turnstile_site_key": "",
@@ -224,7 +287,7 @@
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 7.3,
     "user_agreement_enabled": true,
-    "version": "0.17.0",
+    "version": "1.0.0",
     "wechat_login": false,
     "wechat_qrcode": "https://res.cloudinary.com/dufnuhipy/image/upload/f_auto,q_auto/949c45322c322b62ce031da0f2e88c98_cs91cx"
   },

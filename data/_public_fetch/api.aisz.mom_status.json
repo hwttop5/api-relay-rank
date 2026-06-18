@@ -4,6 +4,27 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "目前全站良好",
+        "extra": "",
+        "id": 22,
+        "publishDate": "2026-06-12T16:03:23.222Z",
+        "type": "success"
+      },
+      {
+        "content": "紧急通知，plus全网拉闸，请移步pro和Claude",
+        "extra": "",
+        "id": 21,
+        "publishDate": "2026-06-12T03:17:11.489Z",
+        "type": "warning"
+      },
+      {
+        "content": "记得进群看通知，比如现在0.04的got狂欢分组，暂时就用不了",
+        "extra": "",
+        "id": 20,
+        "publishDate": "2026-06-10T16:27:39.709Z",
+        "type": "warning"
+      },
+      {
         "content": "0.04和0.08 0.1 应该是没问题的，\npro池子和image生图现在访问有问题\n排查下来应该是机房网络出问题了，只能明天了\n今晚的话可以通过    魔...--法 ，跳转香港来访问  ",
         "extra": "",
         "id": 19,
@@ -201,7 +222,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://api.aisz.mom",
     "setup": true,
-    "start_time": 1781068163,
+    "start_time": 1781725308,
     "stripe_unit_price": 8,
     "system_name": "词元枢阁 Token Nexus",
     "telegram_bot_name": "",

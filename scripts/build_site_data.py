@@ -143,7 +143,9 @@ def read_existing_site_data() -> dict[str, Any]:
 
 
 def parse_float(value: Any) -> float | None:
-    text = str(value or "").strip()
+    if value is None:
+        return None
+    text = str(value).strip()
     if not text:
         return None
     try:

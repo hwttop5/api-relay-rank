@@ -1,8 +1,22 @@
 {
   "data": {
     "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":true,\"about\":false}",
-    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
     "announcements": [
+      {
+        "content": "应急分组目前可用",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2026-06-11T01:14:55.188Z",
+        "type": "default"
+      },
+      {
+        "content": "codex-vip暂时涨至 0.119，其他分组不变",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-06-10T11:08:25.667Z",
+        "type": "default"
+      },
       {
         "content": "\n这两天频繁出现断流/超时/502 思考过久之类的情况\n\n基本上都是OpenAI官方导致的\n\n说是要出5.6了 之前出5.5的时候也是有这种情况\n\n我们这边尽量维稳号池不影响大家的使用体验\n\n谢谢各位理解与支持",
         "extra": "",
@@ -59,31 +73,7 @@
     "api_info_enabled": true,
     "chats": [
       {
-        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
-      },
-      {
-        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
-      },
-      {
-        "流畅阅读": "fluentread"
-      },
-      {
         "CC Switch": "ccswitch"
-      },
-      {
-        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
-      },
-      {
-        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
-      },
-      {
-        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
-      },
-      {
-        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
-      },
-      {
-        "OpenCat": "opencat://team/join?domain={address}&token={key}"
       }
     ],
     "checkin_enabled": false,
@@ -91,7 +81,7 @@
     "custom_currency_symbol": "¤",
     "data_export_default_time": "hour",
     "default_collapse_sidebar": false,
-    "default_use_auto_group": false,
+    "default_use_auto_group": true,
     "demo_site_enabled": false,
     "discord_client_id": "",
     "discord_oauth": false,
@@ -100,7 +90,7 @@
     "email_verification": true,
     "enable_batch_update": true,
     "enable_data_export": true,
-    "enable_drawing": true,
+    "enable_drawing": false,
     "enable_task": true,
     "faq": [
       {
@@ -138,13 +128,13 @@
     "self_use_mode_enabled": false,
     "server_address": "https://shunfen6.win",
     "setup": true,
-    "start_time": 1780532083,
+    "start_time": 1781237135,
     "stripe_unit_price": 8,
     "system_name": "Shunfen6.win",
     "telegram_bot_name": "",
     "telegram_oauth": false,
     "theme": "classic",
-    "turnstile_check": true,
+    "turnstile_check": false,
     "turnstile_site_key": "0x4AAAAAADUrasmPfkumDKiu",
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 1,
@@ -158,8 +148,22 @@
   "status_payload": {
     "data": {
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"rankings\":{\"enabled\":false,\"requireAuth\":false},\"docs\":true,\"about\":false}",
-      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true,\"subscription\":true}}",
       "announcements": [
+        {
+          "content": "应急分组目前可用",
+          "extra": "",
+          "id": 15,
+          "publishDate": "2026-06-11T01:14:55.188Z",
+          "type": "default"
+        },
+        {
+          "content": "codex-vip暂时涨至 0.119，其他分组不变",
+          "extra": "",
+          "id": 14,
+          "publishDate": "2026-06-10T11:08:25.667Z",
+          "type": "default"
+        },
         {
           "content": "\n这两天频繁出现断流/超时/502 思考过久之类的情况\n\n基本上都是OpenAI官方导致的\n\n说是要出5.6了 之前出5.5的时候也是有这种情况\n\n我们这边尽量维稳号池不影响大家的使用体验\n\n谢谢各位理解与支持",
           "extra": "",
@@ -216,31 +220,7 @@
       "api_info_enabled": true,
       "chats": [
         {
-          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
-        },
-        {
-          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
-        },
-        {
-          "流畅阅读": "fluentread"
-        },
-        {
           "CC Switch": "ccswitch"
-        },
-        {
-          "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
-        },
-        {
-          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
-        },
-        {
-          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
-        },
-        {
-          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
-        },
-        {
-          "OpenCat": "opencat://team/join?domain={address}&token={key}"
         }
       ],
       "checkin_enabled": false,
@@ -248,7 +228,7 @@
       "custom_currency_symbol": "¤",
       "data_export_default_time": "hour",
       "default_collapse_sidebar": false,
-      "default_use_auto_group": false,
+      "default_use_auto_group": true,
       "demo_site_enabled": false,
       "discord_client_id": "",
       "discord_oauth": false,
@@ -257,7 +237,7 @@
       "email_verification": true,
       "enable_batch_update": true,
       "enable_data_export": true,
-      "enable_drawing": true,
+      "enable_drawing": false,
       "enable_task": true,
       "faq": [
         {
@@ -295,13 +275,13 @@
       "self_use_mode_enabled": false,
       "server_address": "https://shunfen6.win",
       "setup": true,
-      "start_time": 1780532083,
+      "start_time": 1781237135,
       "stripe_unit_price": 8,
       "system_name": "Shunfen6.win",
       "telegram_bot_name": "",
       "telegram_oauth": false,
       "theme": "classic",
-      "turnstile_check": true,
+      "turnstile_check": false,
       "turnstile_site_key": "0x4AAAAAADUrasmPfkumDKiu",
       "uptime_kuma_enabled": true,
       "usd_exchange_rate": 1,

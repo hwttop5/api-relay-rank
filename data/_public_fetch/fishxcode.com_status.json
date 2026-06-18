@@ -1,18 +1,53 @@
 {
   "data": {
-    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"package\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true,\"contact\":true}",
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"package\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
     "SelfServiceSubscriptionConversionCampaign": "{\n  \"enabled\": true,\n  \"key\": \"default-self-service-subscription-conversion\",\n  \"title\": \"套餐自助折算活动\",\n  \"subtitle\": \"提交申请后先禁用原套餐，审核通过后折算为账户余额\",\n  \"description\": \"管理员可在这里维护可参与退款/折算的套餐活动规则、截止时间与展示文案。\",\n  \"deadline\": 0,\n  \"timezone\": \"Asia/Shanghai\",\n  \"require_disabled_plan\": true,\n  \"eligible_plan_ids\": [],\n  \"eligible_upgrade_groups\": [\n    \"claude_sub\"\n  ],\n  \"eligible_title_keywords\": [\n    \"Claude\",\n    \"claude\"\n  ],\n  \"conversion_rule\": \"返还余额 = 套餐折算基价 - 套餐折算基价 / 周期天数 × 计费天数；其中计费天数 = 已使用整天数 + 0.5 天。\",\n  \"billing_rules\": [],\n  \"charge_rules\": []\n}",
-    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"package\":true,\"token\":true,\"log\":true,\"checkinLottery\":false,\"activityLottery\":false,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"invoice\":true,\"refund\":false,\"commission\":true,\"personal\":true,\"siteNotifications\":true,\"invite\":true},\"public\":{\"enabled\":true,\"pricing\":true,\"docs\":true,\"about\":true,\"contact\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"discountCode\":true,\"tokenAdmin\":true,\"ecomagent\":true,\"user\":true,\"subscription\":true,\"setting\":true,\"riskControl\":true,\"invoiceAdmin\":false,\"financeAdmin\":true,\"checkinAdmin\":true,\"r2Storage\":false}}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"package\":true,\"token\":true,\"claudeMax\":true,\"log\":true,\"checkinLottery\":false,\"activityLottery\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"invoice\":true,\"refund\":false,\"commission\":true,\"personal\":true,\"siteNotifications\":true,\"invite\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":false,\"deployment\":false,\"redemption\":true,\"discountCode\":false,\"tokenAdmin\":true,\"ecomagent\":true,\"user\":true,\"subscription\":true,\"claudeMaxBindings\":true,\"setting\":true,\"riskControl\":false,\"invoiceAdmin\":false,\"financeAdmin\":true,\"checkinAdmin\":true,\"r2Storage\":false},\"public\":{\"enabled\":true,\"pricing\":true,\"docs\":true,\"about\":true,\"contact\":true}}",
     "SubscriptionRefundSettings": "{\n  \"page_enabled\": true,\n  \"enabled\": true,\n  \"allow_balance_refund\": true,\n  \"allow_original_payment_refund\": true,\n  \"settlement_mode\": \"duration_ratio\",\n  \"currency\": \"USD\",\n  \"codex_input_price_per_million\": 3,\n  \"codex_output_price_per_million\": 15,\n  \"codex_cache_read_price_per_million\": 0.3,\n  \"codex_cache_write_price_per_million\": 3.75,\n  \"notes\": \"Codex 套餐如需按 token 用量折算退款，请维护每 100 万 token 的标准单价；当前也可先作为审核参考。\"\n}",
     "_qn": "new-api",
     "activity_lottery_auto_draw_enabled": false,
     "activity_lottery_default_min_participants": 200,
     "activity_lottery_default_winner_count": 3,
-    "activity_lottery_enabled": false,
+    "activity_lottery_enabled": true,
     "activity_lottery_join_daily_consume_min_money": 0,
     "activity_lottery_join_sources": "manual",
     "activity_lottery_join_topup_min_money": 0,
     "announcements": [
+      {
+        "content": "🎉 6.18 狂欢\n\n🔥 CCMax 20号池​ → 0.9/刀 fishx_claude_618\n\n🔥 Codex Pro 号池​ → 0.1/刀 fishx_codex_618",
+        "extra": "",
+        "id": 20,
+        "publishDate": "2026-06-17T17:30:30.207Z",
+        "type": "default"
+      },
+      {
+        "content": "fishxcode 成立4个月 618大促，福利回馈！\n### 🎁 福利\n\n**1. 模型外接不限RPM**：Claude 1.0 / Codex 0.25 支持外接\n\n**2. 按次套餐年度冰点价**：最高直降50%，月包280元起\n\n**3. 邀请返利最高10%**\n\n**4. 站内抽奖**：100/50美元兑换码、Claude/Codex日卡\n👉 [/console/activity-lottery](/console/activity-lottery)\n\n\n---\n\n### 💥 六月专属分组（618大降价）\n- `claude_june`：1.0倍率，官方满血渠道\n- `codex_june`：0.15倍率，官方Pro/Plus号池\n\n### 📦 按次套餐月包618价\nMini Plus 280元 | Mini Max 550元 | Premium 820元 | Premium Plus 1000元 | Premium Max 1200元（降50%）\n\n> 天卡升级月卡，天卡费全额抵扣\n",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-06-15T00:34:47.356Z",
+        "type": "default"
+      },
+      {
+        "content": "【模型下架通知】\n\n接上游合作供应商 Claude（Anthropic）​ 侧变动影响，平台 Fable 5​ 即日起 已下架，不再可用。\n如果您当前有正在使用 claude-fable-5 的模型，需切换到该分组的其他模型例如claude-opus-4-8使用。为不影响已有用户的正常使用。claude-fable-5 已重定向到claude-opus-4-8。价格调整于claude-opus-4-8 一致",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-06-13T02:30:19.261Z",
+        "type": "default"
+      },
+      {
+        "content": "GPT 订阅系列分组已恢复正常，您可以继续使用。当前已调整相关倍率。\n\n同时，OpenRouter 分组​ 依然保持开放，支持按量使用 Claude Codex 及 Claude 系列模型，供您多一种选择。",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-06-12T02:35:14.247Z",
+        "type": "default"
+      },
+      {
+        "content": "【重要通知】\n\n各位用户您好，\n\n由于上游合作商 OpenAI 服务出现波动，导致我们平台的 GPT 订阅系列分组​ 暂时无法正常使用。目前我们正在积极协调，具体恢复时间将另行通知，给您带来的不便敬请谅解。\n\n在此期间，您可以使用以下替代方案：\n\n我们的 OpenRouter 分组​ 仍保持稳定运行，支持按量付费使用 Claude Codex，同时该分组也兼容 Claude 系列​ 其他模型。\n\n👉 立即前往：https://fishxcode.com/pricing?currency=CNY&group=OpenRouter\n\n感谢您的理解与支持！",
+        "extra": "",
+        "id": 16,
+        "publishDate": "2026-06-12T02:13:03.884Z",
+        "type": "default"
+      },
       {
         "content": "每天注册前20位送天卡。qq群内可领额度福利。\n当前起始id：13372\n所有套餐8折优惠码FXCDISC2606RSJ5截止0610有效。",
         "extra": "",
@@ -147,6 +182,23 @@
       }
     },
     "ccswitch_group_defaults": {
+      "OpenRouter": {
+        "apps": [
+          "claude",
+          "claude-desktop",
+          "codex",
+          "gemini",
+          "opencode",
+          "openclaw",
+          "hermes"
+        ],
+        "defaultModels": {
+          "model": "claude-opus-4-8"
+        },
+        "test": {
+          "model": "claude-opus-4-8"
+        }
+      },
       "auto": {
         "apps": [
           "claude",
@@ -310,6 +362,23 @@
           "protocol": "anthropic"
         }
       },
+      "claude-awsq": {
+        "apps": [
+          "claude-desktop",
+          "claude",
+          "gemini",
+          "opencode",
+          "hermes",
+          "openclaw"
+        ],
+        "defaultModels": {
+          "model": "claude-opus-4-8"
+        },
+        "test": {
+          "model": "claude-opus-4-8",
+          "protocol": "anthropic"
+        }
+      },
       "claude-max-特价-满血": {
         "apps": [
           "claude",
@@ -323,6 +392,22 @@
         },
         "test": {
           "model": "claude-opus-4-7",
+          "protocol": "anthropic"
+        }
+      },
+      "claude_june": {
+        "apps": [
+          "claude",
+          "claude-desktop",
+          "openclaw",
+          "opencode",
+          "hermes"
+        ],
+        "defaultModels": {
+          "model": "claude-opus-4-8"
+        },
+        "test": {
+          "model": "claude-opus-4-8",
           "protocol": "anthropic"
         }
       },
@@ -342,7 +427,38 @@
           "protocol": "anthropic"
         }
       },
+      "claudemax_x5": {
+        "apps": [
+          "claude",
+          "claude-desktop",
+          "opencode",
+          "openclaw",
+          "hermes"
+        ],
+        "defaultModels": {
+          "model": "claude-opus-4-8"
+        },
+        "test": {
+          "model": "claude-opus-4-8",
+          "protocol": "anthropic"
+        }
+      },
       "codex": {
+        "apps": [
+          "codex",
+          "opencode",
+          "openclaw",
+          "hermes"
+        ],
+        "defaultModels": {
+          "model": "gpt-5.5"
+        },
+        "test": {
+          "model": "gpt-5.5",
+          "protocol": "openai"
+        }
+      },
+      "codex_june": {
         "apps": [
           "codex",
           "opencode",
@@ -417,7 +533,7 @@
           "protocol": "openai"
         }
       },
-      "codex_team": {
+      "codex_sub_june": {
         "apps": [
           "codex",
           "opencode",
@@ -432,7 +548,7 @@
           "protocol": "openai"
         }
       },
-      "codex包月": {
+      "codex_team": {
         "apps": [
           "codex",
           "opencode",
@@ -510,6 +626,29 @@
         "test": {
           "model": "deepseek-v4-flash",
           "protocol": "anthropic"
+        }
+      },
+      "fishx_claude_618": {
+        "apps": [
+          "codex",
+          "opencode",
+          "openclaw",
+          "hermes"
+        ],
+        "test": {
+          "protocol": "anthropic"
+        }
+      },
+      "fishx_codex_618": {
+        "apps": [
+          "claude",
+          "claude-desktop",
+          "opencode",
+          "openclaw",
+          "hermes"
+        ],
+        "test": {
+          "protocol": "openai"
         }
       },
       "gemini": {
@@ -837,108 +976,108 @@
     "contact_channels": [
       {
         "actionHref": "https://qm.qq.com/q/Ce2PaYrbmo",
-        "actionLabel": "加入QQ群",
+        "actionLabel": "加入售后群",
         "copyValue": "373865837",
         "i18n": {
           "en": {
-            "actionLabel": "Join QQ Group",
-            "subtitle": "Community support, discussions, and experience sharing",
-            "title": "QQ Group",
-            "tone": "Popular Community"
+            "actionLabel": "Join Support Group",
+            "subtitle": "For orders, fulfillment, replenishment, and after-sales support",
+            "title": "QQ Support Group",
+            "tone": "After-sales Support"
           },
           "fr": {
-            "actionLabel": "Rejoindre le groupe QQ",
-            "subtitle": "Pour l'entraide, les discussions en groupe et le partage d'experience",
-            "title": "Groupe QQ",
-            "tone": "Communaute populaire"
+            "actionLabel": "Rejoindre le groupe",
+            "subtitle": "Pour les commandes, la livraison, les compensations et le service après-vente",
+            "title": "Groupe de support QQ",
+            "tone": "Support après-vente"
           },
           "ja": {
-            "actionLabel": "QQグループに参加",
-            "subtitle": "質問対応、グループ交流、ノウハウ共有に適しています",
-            "title": "QQグループ",
-            "tone": "人気コミュニティ"
+            "actionLabel": "サポートグループに参加",
+            "subtitle": "注文、提供、補填、アフターサポートに利用します",
+            "title": "QQ サポートグループ",
+            "tone": "アフターサポート"
           },
           "ru": {
-            "actionLabel": "Вступить в группу QQ",
-            "subtitle": "Для ответов на вопросы, общения в сообществе и обмена опытом",
-            "title": "Группа QQ",
-            "tone": "Популярное сообщество"
+            "actionLabel": "Вступить в группу",
+            "subtitle": "Для заказов, выдачи, компенсаций и послепродажной поддержки",
+            "title": "Группа поддержки QQ",
+            "tone": "Поддержка"
           },
           "vi": {
-            "actionLabel": "Tham gia nhom QQ",
-            "subtitle": "Dung de giai dap, trao doi trong nhom va chia se kinh nghiem",
-            "title": "Nhom QQ",
-            "tone": "Cong dong noi bat"
-          },
-          "zh-CN": {
-            "actionLabel": "加入QQ群",
-            "subtitle": "用于问题答疑解决，适合群内交流与经验分享",
-            "title": "QQ群",
-            "tone": "热门社区"
+            "actionLabel": "Tham gia nhom ho tro",
+            "subtitle": "Dung cho don hang, giao hang, bo sung va ho tro sau ban hang",
+            "title": "Nhom ho tro QQ",
+            "tone": "Ho tro sau ban hang"
           },
           "zh-TW": {
-            "actionLabel": "加入QQ群",
-            "subtitle": "用於問題答疑與交流，適合群內互動和經驗分享",
-            "title": "QQ群",
-            "tone": "熱門社群"
+            "actionLabel": "加入售後群",
+            "subtitle": "用於訂單、發放、補單與售後問題處理，建議優先加入",
+            "title": "QQ 售後群",
+            "tone": "售後支援"
           }
         },
-        "imageSrc": "https://fishxcode.com/qq_group.jpg",
-        "key": "qq-group",
-        "subtitle": "用于问题答疑解决，适合群内交流与经验分享",
-        "title": "QQ群",
-        "tone": "热门社区",
-        "value": "373865837"
+        "imageSrc": "/qq_group.jpg",
+        "key": "qq-support-group",
+        "subtitle": "用于订单、发放、补单与售后问题处理，建议优先加入",
+        "title": "QQ售后群",
+        "tone": "售后支持",
+        "value": "fishxcode 售后群"
       },
       {
+        "actionHref": "https://qm.qq.com/q/Ce2PaYrbmo",
+        "actionLabel": "加入售后群",
+        "copyValue": "373865837",
         "i18n": {
           "en": {
-            "subtitle": "For Q&A, group announcements, and important notices",
-            "title": "WeChat Group",
-            "tone": "Announcements"
+            "actionLabel": "Join Support Group",
+            "subtitle": "For orders, fulfillment, replenishment, and after-sales support",
+            "title": "QQ Support Group",
+            "tone": "After-sales Support"
           },
           "fr": {
-            "subtitle": "Pour les questions-reponses, les annonces du groupe et les notifications importantes",
-            "title": "Groupe WeChat",
-            "tone": "Annonces"
+            "actionLabel": "Rejoindre le groupe",
+            "subtitle": "Pour les commandes, la livraison, les compensations et le service après-vente",
+            "title": "Groupe de support QQ",
+            "tone": "Support après-vente"
           },
           "ja": {
-            "subtitle": "質問対応、グループ告知、重要なお知らせの受け取りに適しています",
-            "title": "WeChatグループ",
-            "tone": "お知らせ"
+            "actionLabel": "サポートグループに参加",
+            "subtitle": "注文、提供、補填、アフターサポートに利用します",
+            "title": "QQ サポートグループ",
+            "tone": "アフターサポート"
           },
           "ru": {
-            "subtitle": "Для ответов на вопросы, объявлений группы и важных уведомлений",
-            "title": "Группа WeChat",
-            "tone": "Уведомления"
+            "actionLabel": "Вступить в группу",
+            "subtitle": "Для заказов, выдачи, компенсаций и послепродажной поддержки",
+            "title": "Группа поддержки QQ",
+            "tone": "Поддержка"
           },
           "vi": {
-            "subtitle": "Dung de hoi dap, nhan thong bao nhom va cac thong tin quan trong",
-            "title": "Nhom WeChat",
-            "tone": "Thong bao"
-          },
-          "zh-CN": {
-            "subtitle": "用于问题答疑解决，适合接收群内公告与通知",
-            "title": "微信群",
-            "tone": "活动通知"
+            "actionLabel": "Tham gia nhom ho tro",
+            "subtitle": "Dung cho don hang, giao hang, bo sung va ho tro sau ban hang",
+            "title": "Nhom ho tro QQ",
+            "tone": "Ho tro sau ban hang"
           },
           "zh-TW": {
-            "subtitle": "用於問題答疑與通知接收，適合查看群內公告",
-            "title": "微信群",
-            "tone": "活動通知"
+            "actionLabel": "加入售後群",
+            "subtitle": "用於訂單、發放、補單與售後問題處理，建議優先加入",
+            "title": "QQ 售後群",
+            "tone": "售後支援"
           }
         },
-        "imageSrc": "https://fishxcode.com/wechat_group.jpg",
-        "key": "wechat-group",
-        "subtitle": "用于问题答疑解决，适合接收群内公告与通知",
-        "title": "微信群",
-        "tone": "活动通知"
+        "imageSrc": "/qq_group.jpg",
+        "key": "qq-support",
+        "subtitle": "用于订单、发放、补单与售后问题处理，建议优先加入",
+        "title": "QQ售后群",
+        "tone": "售后支持",
+        "value": "fishxcode 售后群"
       }
     ],
     "custom_currency_exchange_rate": 1,
     "custom_currency_symbol": "¤",
     "data_export_default_time": "day",
     "default_collapse_sidebar": false,
+    "default_language": "en",
     "default_use_auto_group": true,
     "demo_site_enabled": false,
     "discord_client_id": "",
@@ -950,8 +1089,17 @@
     "enable_batch_update": true,
     "enable_data_export": true,
     "enable_drawing": false,
-    "enable_log_export": false,
+    "enable_log_export": true,
     "enable_task": true,
+    "enabled_languages": [
+      "en",
+      "fr",
+      "ja",
+      "vi",
+      "ru",
+      "zh-TW",
+      "zh-CN"
+    ],
     "faq": [
       {
         "answer": "开票起点：账单金额累计达到 50元​ 起可申请开票。\n发票类型：本次申请开具 增值税普通发票（电子）。\n发票内容：人工技术服务费\n抬头类型：对公（企业单位）\n开票形式：电子普票，开具完成后将发送至您指定的邮箱。同时可在发票管理页面进行下载查看。\n",
@@ -1003,6 +1151,12 @@
     "password_login_enabled": true,
     "password_register_enabled": true,
     "price": 1,
+    "pricing_region": "JP",
+    "pricing_region_cn_groups": "china,deepseek,ds_api,ds_api_pro,zhipu",
+    "pricing_region_filter_enabled": true,
+    "pricing_region_global_groups": "fishx_codex_618, fishx_claude_618,china,deepseek,ds_api,ds_api_pro,zhipu,auto,aws_api,aws-enterprise,cc_export,cc-max,cc_max,cc-max-cheap,claude-4.8,claude-awsq,claude_june,claudemax_x20,claudemax_x5,codex,codex_june,codex_plus,codex_pro,codex_sale,codex_sub,codex_sub_june,codex包月,default,gemini,gemini-特价,gpt_image,grok,kiro_cheap,kiro_svip,OpenRouter,reverse,reverse_anti_new,reverse_new,reverse_wf,sub_plan_claude_lite,sub_plan_claude_mini_max,sub_plan_claude_mini_plus,sub_plan_claude_nano_day,sub_plan_claude_premium,sub_plan_claude_premium_max,sub_plan_claude_premium_plus,sub_plan_claude_ultimate,音视频",
+    "pricing_region_strategy": "global",
+    "pricing_region_unknown_strategy": "cn",
     "privacy_policy_enabled": true,
     "quota_display_type": "CNY",
     "quota_per_unit": 500000,
@@ -1010,7 +1164,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://api.fishxcode.com",
     "setup": true,
-    "start_time": 1781081098,
+    "start_time": 1781766421,
     "stripe_unit_price": 8,
     "subscription_promo_badge_left": "",
     "subscription_promo_badge_right": "",
@@ -1101,7 +1255,7 @@
       }
     },
     "top_up_link": "https://fishxcode.com/",
-    "turnstile_check": true,
+    "turnstile_check": false,
     "turnstile_site_key": "0x4AAAAAACadZ8PR4Pg02IdV",
     "uptime_kuma_enabled": true,
     "usd_exchange_rate": 1,

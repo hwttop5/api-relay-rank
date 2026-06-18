@@ -1,0 +1,219 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":true}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "连续夜班发现深夜国产token表现更佳，glm-5.1凌晨速度飙升。现推夜猫子套餐：23点至次日9点高并发畅用，极速响应，覆盖所有VIP模型，价格亲民，欢迎抢购！",
+        "extra": "本站推出夜猫子套餐，可以在夜间23点到第二天九点畅享token",
+        "id": 17,
+        "publishDate": "2026-06-15T16:21:17.127Z",
+        "type": "default"
+      },
+      {
+        "content": "紧急通知！！！请不要再使用glm-5.2了，非常非常抱歉，因为近期glm-5.2爆火，本站也是立即抢购到四个max套餐，和三个pro套餐，但是由于智谱官方封控非常严重，并且用量太少，本站glm-5.2一直处于429状态，我们很抱歉只能让大家接下来去使用glm-5.1，我们将全力供应glm-5.1模型，到后期如果智谱开源5.2，我将第一时间上线，还请谅解",
+        "extra": "紧急通知！！！请不要再使用glm-5.2了，同时建议喜欢用glm5.1系列模型店可以下载z code 官方agents，适配glm非常的强，很强大！！",
+        "id": 16,
+        "publishDate": "2026-06-15T08:33:15.064Z",
+        "type": "default"
+      },
+      {
+        "content": "您好，很多人反馈免费用户把余额用完了，这里我建议你可以签到一下，因为签到给的余额非常多，或者你可以邀请一下人，邀请人送2k刀。",
+        "extra": "免费用户余额用完了怎么办？？？",
+        "id": 15,
+        "publishDate": "2026-06-08T17:03:12.285Z",
+        "type": "default"
+      },
+      {
+        "content": "为了彻底让大家白嫖到爽站长又给大家找到几十个能白嫖gpt5.5和claude opus和gemmea的商家了 建议挨个白嫖，别嫌弃麻烦，必须把这些商家好秃噜皮\n这里是可以白嫖的中转站的全集：https://link.hcnsec.cn/",
+        "extra": "为了彻底让大家白嫖到爽，站长找到几十个可以白嫖的中转站，给大家放一块了，来看看，挨个白嫖吧https://link.hcnsec.cn/",
+        "id": 12,
+        "publishDate": "2026-06-07T10:03:10.000Z",
+        "type": "default"
+      },
+      {
+        "content": "我们推出了vibe coding无脑编程课程，不用带脑子，直接免费学 \nhttps://space.bilibili.com/1133254597/lists/8265922?type=season",
+        "extra": "喜报！！！新疆幻城网安科技最新推出vibe coding  ai无脑编程课程",
+        "id": 14,
+        "publishDate": "2026-06-03T17:04:18.670Z",
+        "type": "default"
+      },
+      {
+        "content": "本站已对违规滥用行为开展专项打击，累计封禁违规账号17.06万个，若有误封，请及时联系站长处理",
+        "extra": "本站已对违规滥用行为开展专项打击，累计封禁违规账号17.06万个",
+        "id": 13,
+        "publishDate": "2026-05-30T16:50:29.749Z",
+        "type": "default"
+      },
+      {
+        "content": "我们最新增加了讯飞和阶跃星辰还有deepseek-v4-pro快手多个接口供应给免费用户使用，模型为Qwen3-Coder-Next ，Qwen3.6-35B-A3B  step-3.5-flash-2603、step-3.5-flash、stepaudio-2.5-tts、stepaudio-2.5-asr、step-router-v1、step-image-edit-2\n还有minimaxi的全系列包括2.7 2.5的所有模型\n速度超快，大家可以来体验下了\n然后快手模型kat-coder-pro-v2 目前全球排行榜仅次于glm5.1 前端能力甚至超过glm和kimi2.6，欢迎体验",
+        "extra": "公布免费用户最新增加多个超快速高质量模型！！！",
+        "id": 7,
+        "publishDate": "2026-05-21T05:41:15.000Z",
+        "type": "warning"
+      },
+      {
+        "content": "来这里注册也可以白嫖扣子额度五千https://www.coze.cn/overview?invite_code=007ada15c94d4ef4bb209b6028c2e61e",
+        "extra": "来这里注册也可以白嫖扣子额度五千",
+        "id": 10,
+        "publishDate": "2026-05-10T14:05:13.894Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "https://hcnote.cn/2026/04/30/12763.html",
+        "extra": "关于模型中转站不同价格套餐区别及其支持模型列表公开以及对于不同场景下如何选择最优解最适合模型选择建议",
+        "id": 5,
+        "publishDate": "2026-05-08T15:08:19.000Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "为了彻底彻底解决幻城网安公益api站点，免费用户速度太慢的问题，我们推出了全自动路由模型，自动为你选择当前最好用速度最快的模型，只需要把模型ID设置为auto，根据我们的算法，自动帮你匹配最好用的模型，彻底解决免费用户速度太慢的问题，欢迎大家来体验",
+        "extra": "免费用户如何体验到极致的速度？快来看看这里！！！",
+        "id": 9,
+        "publishDate": "2026-05-07T11:20:27.272Z",
+        "type": "success"
+      },
+      {
+        "content": "由于日卡和周卡套餐，价格便宜，购买人数较多，为防止本站超开，采用限量供应，不定时放出这两个套餐，卖完停止",
+        "extra": "日卡和周卡套餐，每天限量供应",
+        "id": 6,
+        "publishDate": "2026-05-06T05:37:09.043Z",
+        "type": "warning"
+      },
+      {
+        "content": "中转站使用教程\n不会使用请看使用教程：https://hcnote.cn/2026/04/18/12740.html",
+        "extra": "中转站使用教程",
+        "id": 1,
+        "publishDate": "2026-04-18T07:35:54.397Z",
+        "type": "ongoing"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "国内大宽带线路",
+        "id": 1,
+        "route": "国内线路",
+        "url": "https://api.iamhc.cn"
+      },
+      {
+        "color": "green",
+        "description": "尊敬的用户：鉴于合规性要求，本站将启动相关许可证的申请流程，并同步进行官方域名的变更工作。为确保您的正常使用，请您提前保存新域名",
+        "id": 2,
+        "route": "本站最新公司备案域名（即将迁移）",
+        "url": "https://api.hcnsec.cn/"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [],
+    "checkin_enabled": true,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://hcnote.cn/",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "不会使用请看使用教程：https://hcnote.cn/2026/04/18/12740.html\n新手建议你安装CC switch，只建议使用claude code工具，这个方便新手去配置\n\n一定要注意！！！无论你购买任何套餐，你都需要新建一个密钥，并且选择你对应的分组，对接的时候选择你对应的密钥，否则无法享受对应权益！！！",
+        "id": 1,
+        "question": "中转站如何使用？如何对接各类主流编码工具？"
+      },
+      {
+        "answer": "亲爱的顾客你们好，由于我的中转站出现了多次别人二次分发，三次中转、4次中转的情况，虽然我们已经想尽办法加入了各种限速策略，但是依旧挡不住大批量注册用户和大量中转的情况，所以我们决定减少新用户默认给的余额，但是新用户默认享受的余额已经够你随便用半年没问题，并且我们每天签到起码要送1000以上的额度。1000的额度一天之内几乎不可能用完，并且我们邀请一个人会赠送200万到2,000万的额度，这些都不可能用完，所以新用户原则上还是免费长期随便用。",
+        "id": 5,
+        "question": "你不会是骗子中转站吧？根本不是免费！！余额不足怎么办？你不是说公益随便用吗？"
+      },
+      {
+        "answer": "本站仅支持主流AI编码工具，推荐使用GitHub Copilot、Cursor、Claude Code（兼容性最佳）、OpenAI Codex CLI、Gemini CLI、Windsurf、Devin、Antigravity、Goose、Tabnine、Amazon CodeWhisperer、Aider、Cline、Continue、OpenCode、Trae、通义灵码、文心快码（Comate）、CodeGeeX、代码小浣熊、iFlyCode、豆包MarsCode、火山方舟Coding Plan、阿里云百炼Coding Plan、Alaya Code、CodeBuddy、Replit、Kimi（编程模块）、通义晓蜜（编码辅助）、Qoder HOT、HappyHorse等常用工具。严禁使用龙虾养马类工具（如大量消耗token的模型），上游限制导致无法支持，建议改用minmax等小模型。若坚持使用非主流或龙虾工具，后果自负，本站不承担任何责任。请优先选用适配的编码工具，确保稳定使用与合规性\n\n",
+        "id": 7,
+        "question": "本api站支持对接那些工具？是否支持养龙虾和养马？"
+      },
+      {
+        "answer": "刚购买的付费套餐，这时候你需要在令牌管理里面新建一个令牌，选择对应分组（例如你买的vip就选择vip）然后直接在模型广场里面选择对应分组找到想用的模型，然后在编码工具里面进行使用，不要在操练场里面测试，另外不同套餐支持的模型列表如下：https://hcnote.cn/2026/04/30/12763.html",
+        "id": 9,
+        "question": "新购买付费套餐的用户，但是无法正常使用怎么办？"
+      },
+      {
+        "answer": "你可以把模型id设置为auto 自动路由模型，给你自动路由到速度最快的模型上面",
+        "id": 10,
+        "question": "免费用户使用起来特别特别的慢，到底怎么办如何彻底解决？"
+      },
+      {
+        "answer": "您好，首先您先确定一下是否自己没有新建一个密钥选择对应付费套餐的分组，然后再去调用\n我们可以看这个排行榜https://coding.15o.cc/ 通过这个排行榜，我们可以看出来，很多的旗舰模型，所有的厂商，包括他们官方的厂商，速度都不是特别的快（快的定义是每秒钟token输出达到80以上才能肉眼觉得快）这不光是我们中转站的这么一个问题，我只能建议高峰期请调用次旗舰模型，例如minmax，qwen，glm5系列，auto系列，阶跃星辰系列，目前的情况是全国性质的缺少算力导致的，尤其是高峰期，这个我真的无能为力，并且可以看到，那么多的厂商，我们的价格连他们的一半都不到，我们已经尽力去优化，速度太慢我真没办法，如果介意的话，还请勿购买，已购买用户，非常抱歉，不支持退款",
+        "id": 12,
+        "question": "付费用户用起来特别慢，到底为什么？怎么办"
+      },
+      {
+        "answer": "打开钱包管理就能购买，一份价格一分货，十份价格买不错，不同套餐支持的模型列表如下也许会有改动但是大差不差：https://hcnote.cn/2026/04/30/12763.html 所有套餐均不限量，限速策略如下：\ndefault（默认用户）限速 20次/分钟，vip 限速 45次/分钟，svip 限速 600次/分钟，glm 限速 55次/分钟，pub 限速 30次/分钟。",
+        "id": 13,
+        "question": "怎么购买付费套餐享受更好体验？不同付费套餐有什么区别？"
+      },
+      {
+        "answer": "不管你是免费还是付费，都有图片模型，还有tts语音模型具体可以模型广场搜索image就能搜索出来好几个图片模型，搜索tts就能搜索出来音频和语音模型接口调用格式遵循openai格式",
+        "id": 15,
+        "question": "有没有图片生成或者tts音频模型?免费用户有没有图片和音频模型接口？"
+      },
+      {
+        "answer": "顾客您好，我司与讯飞星辰签订大量企业采购合同，采购大批量讯飞企业套餐，我们有很多渠道为讯飞企业套餐，讯飞星辰平台的模型都是使用模型uid来命名，所有我们这里也是把模型实际请求映射到对应模型，这些模型均为讯飞大厂签合同后直接中转，无任何问题",
+        "id": 16,
+        "question": "部分模型为什么看日志实际模型请求会被映射到一些奇奇怪怪的模型上？是不是掺假了？"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "<style> /* 底部容器样式 */ .website-footer {   width: 100%;   padding: 30px 0;   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);   border-top: 1px solid #dee2e6;   font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif; }  /* 内容容器 */ .footer-container {   max-width: 1200px;   margin: 0 auto;   padding: 0 20px;   text-align: center; }  /* 服务器推广横幅 */ .server-promo-banner {   background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);   color: white;   padding: 15px 20px;   margin-bottom: 20px;   border-radius: 8px;   box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);   animation: glow 2s infinite alternate; }  @keyframes glow {   from { box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2); }   to { box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4); } }  .server-promo-banner p {   margin: 0;   font-size: 14px;   font-weight: 500; }  .server-promo-banner a {   color: #ffd700;   text-decoration: none;   font-weight: bold;   margin-left: 5px;   transition: all 0.3s ease;   border-bottom: 1px dashed #ffd700; }  .server-promo-banner a:hover {   color: #ffed4e;   border-bottom-style: solid;   transform: scale(1.05); }  /* 大模型备案声明 */ .footer-ai-filing {   font-size: 13px;   color: #6c757d;   margin-bottom: 12px;   line-height: 1.6; }  .footer-ai-filing a {   color: #4f46e5;   text-decoration: none;   font-weight: 500;   transition: color 0.2s ease-in-out; }  .footer-ai-filing a:hover {   color: #3730a3;   text-decoration: underline; }  /* 快捷链接区域 */ .footer-links {   font-size: 13px;   color: #6c757d;   margin-bottom: 12px; }  .footer-links a {   color: #6c757d;   text-decoration: none;   transition: color 0.2s ease-in-out; }  .footer-links a:hover {   color: #343a40;   text-decoration: underline; }  /* 备案号内容区域 */ .footer-beian {   font-size: 13px;   color: #6c757d;   margin-bottom: 10px; }  .footer-beian a {   color: #6c757d;   text-decoration: none;   transition: color 0.2s ease-in-out; }  .footer-beian a:hover {   color: #343a40;   text-decoration: underline; }  /* 分隔符间距 */ .separator {   margin: 0 10px;   color: #dee2e6; }  /* 版权信息 */ .footer-copyright {   font-size: 14px;   color: #495057;   font-weight: 500; }  /* 移动端响应式适配 */ @media (max-width: 768px) {   .website-footer {     padding: 20px 0;   }      .server-promo-banner {     padding: 12px 15px;   }      .server-promo-banner p {     font-size: 13px;   }      .footer-ai-filing {     font-size: 12px;     margin-bottom: 10px;   }      .footer-links {     margin-bottom: 10px;   }      .footer-copyright {     font-size: 13px;   }      .footer-beian {     font-size: 12px;   }      .separator {     display: none;   }      .footer-links a,   .footer-beian a {     display: block;     margin: 4px 0;   } } </style>  <footer class=\"website-footer\">   <div class=\"footer-container\">     <!-- 服务器推广横幅 -->     <div class=\"server-promo-banner\">       <p>🔥 <strong>特惠高配置服务器</strong> - 本站同款高防服务器提供商 <a href=\"https://www.synidc.cn/aff/OPZRUVMG\" target=\"_blank\" rel=\"nofollow noopener\">双翼鸟数据</a> 🔥</p>     </div>          <!-- 大模型备案信息声明 -->     <div class=\"footer-ai-filing\">       本平台所提供的生成式人工智能服务均基于已通过国家网信办备案的大模型，详见       <a href=\"https://api.hcnsec.cn/about\" target=\"_blank\">《大模型备案信息公示》</a>     </div>          <!-- 快捷链接 -->     <div class=\"footer-links\">       <a href=\"https://api.hcnsec.cn/about\" target=\"_blank\">营业执照</a>       <span class=\"separator\">|</span>       <a href=\"https://api.hcnsec.cn/user-agreement\" target=\"_blank\">用户协议</a>       <span class=\"separator\">|</span>       <a href=\"https://api.hcnsec.cn/privacy-policy\" target=\"_blank\">隐私政策</a>     </div>          <!-- 备案号 -->     <div class=\"footer-beian\">       <a href=\"https://beian.miit.gov.cn/\" target=\"_blank\" rel=\"nofollow noopener\">新ICP备2026002340号-1</a>       <span class=\"separator\">|</span>       <a href=\"http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=66120102000167\" target=\"_blank\" rel=\"nofollow noopener\">兵公网安备66120102000167号</a>     </div>          <!-- 版权信息 -->     <div class=\"footer-copyright\">       © 2026 新疆幻城网安科技有限责任公司     </div>   </div> </footer>",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://hcnote.cn/ailogo.png",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "新疆幻城网安科技公益api",
+    "passkey_login": true,
+    "passkey_origins": "https://api.iamhc.cn",
+    "passkey_rp_id": "iamhc.cn",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
+    "price": 7.3,
+    "privacy_policy_enabled": true,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "register_enabled": true,
+    "self_use_mode_enabled": false,
+    "server_address": "https://api.iamhc.cn",
+    "setup": true,
+    "start_time": 1781630503,
+    "stripe_unit_price": 8,
+    "system_name": "新疆幻城网安科技公益大模型api",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "berry",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": true,
+    "version": "v1.0.0-rc.11-lb",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

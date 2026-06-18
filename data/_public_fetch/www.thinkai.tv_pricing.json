@@ -1,43 +1,25 @@
 {
   "auto_groups": [
-    "default"
+    "default",
+    "Gemini"
   ],
   "data": [
     {
-      "model_name": "claude-opus-4-6",
-      "vendor_id": 2,
+      "model_name": "deepseek-v4-pro",
+      "vendor_id": 12,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 0.2175,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
+      "completion_ratio": 2,
+      "cache_ratio": 0.008333333333,
       "enable_groups": [
-        "Claude Lite",
-        "Claude Max（仅限VIP用户使用）"
+        "Deepseek-官方"
       ],
       "supported_endpoint_types": [
-        "anthropic",
         "openai"
       ],
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "claude-sonnet-4-6-thinking",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "Claude Lite"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
     },
     {
       "model_name": "claude-fable-5",
@@ -47,45 +29,9 @@
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
-      "cache_ratio": 0.05,
-      "create_cache_ratio": 0.625,
-      "enable_groups": [
-        "Claude Max（仅限VIP用户使用）"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-8",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "enable_groups": [
-        "Claude Lite",
-        "Claude Max（仅限VIP用户使用）"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "Claude Lite",
         "Claude Max（仅限VIP用户使用）"
       ],
       "supported_endpoint_types": [
@@ -111,6 +57,107 @@
       ]
     },
     {
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "Codex（推荐）"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Max（仅限VIP用户使用）"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Max（仅限VIP用户使用）"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "Codex（推荐）"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Max（仅限VIP用户使用）"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "ch1-sd-9img-full-face",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 48,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "Seedance（勿用，测试中）"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
       "model_name": "gpt-5.4",
       "vendor_id": 1,
       "quota_type": 0,
@@ -120,47 +167,10 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "Codex（推荐）",
-        "default"
+        "default",
+        "Codex（推荐）"
       ],
       "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude Lite"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude Lite",
-        "Claude Max（仅限VIP用户使用）"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
         "openai"
       ]
     },
@@ -180,17 +190,95 @@
       ]
     },
     {
-      "model_name": "gpt-5.4-mini",
-      "vendor_id": 1,
+      "model_name": "deepseek-v4-flash",
+      "vendor_id": 12,
       "quota_type": 0,
-      "model_ratio": 0.375,
+      "model_ratio": 0.07,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
+      "completion_ratio": 2,
+      "cache_ratio": 0.02,
       "enable_groups": [
-        "default",
-        "Codex（推荐）"
+        "Deepseek-官方"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude Max（仅限VIP用户使用）"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "ch1-sd-9img-full-1080",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 32,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "Seedance（勿用，测试中）"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2-lite",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "OpenAI-image2 4K图专用（仅限VIP用户使用）"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.7-plus",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "Qwen-阿里"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len > 256000 ? tier(\"short\", p * 0.83 + c * 3.33 + cr * 0.24 + cc * 1.5) : tier(\"mid\", p * 0.28 + c * 1.11)"
+    },
+    {
+      "model_name": "qwen3.7-max",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.835,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2.994011976048,
+      "enable_groups": [
+        "Qwen-阿里"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -199,9 +287,14 @@
   ],
   "group_ratio": {
     "Claude Lite": 0.9,
-    "Claude Max（仅限VIP用户使用）": 3.5,
+    "Claude Max（仅限VIP用户使用）": 4.8,
     "Codex（推荐）": 1.2,
+    "Deepseek-官方": 12.5,
+    "Gemini": 1.2,
+    "OpenAI-image2 4K图专用（仅限VIP用户使用）": 1,
     "OpenAI-image2生图专用": 1.35,
+    "Qwen-阿里": 1.25,
+    "Seedance（勿用，测试中）": 13.5,
     "default": 1.2
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
@@ -220,18 +313,18 @@
     "Claude Lite": "Claude 第三方渠道，养龙虾首选",
     "Claude Max（仅限VIP用户使用）": "Claude 直连渠道，满血官方 Max，支持 Opus 4.8 等模型",
     "Codex（推荐）": "纯GPT Pro号池",
-    "OpenAI-image2生图专用": "支持生成1K/2K/4K图",
+    "Deepseek-官方": "Deepseek官方直连",
+    "Gemini": "Gemini 第三方渠道",
+    "OpenAI-image2 4K图专用（仅限VIP用户使用）": "4K图专用组",
+    "OpenAI-image2生图专用": "支持生成1K/2K",
+    "Qwen-阿里": "Qwen官方直连",
+    "Seedance（勿用，测试中）": "Seedance超分",
     "default": "支持GPT、Gemini等主流模型"
   },
   "vendors": [
     {
       "id": 5,
       "name": "302.AI"
-    },
-    {
-      "id": 6,
-      "name": "OpenCode Zen",
-      "icon": "OpenCode"
     },
     {
       "id": 7,
@@ -246,14 +339,19 @@
       "name": "Qiniu"
     },
     {
-      "id": 1,
-      "name": "OpenAI",
-      "icon": "OpenAI"
+      "id": 13,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
     },
     {
-      "id": 3,
-      "name": "Google",
-      "icon": "Gemini.Color"
+      "id": 2,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 6,
+      "name": "OpenCode Zen",
+      "icon": "OpenCode"
     },
     {
       "id": 8,
@@ -270,9 +368,14 @@
       "icon": "DeepSeek.Color"
     },
     {
-      "id": 2,
-      "name": "Anthropic",
-      "icon": "Claude.Color"
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 3,
+      "name": "Google",
+      "icon": "Gemini.Color"
     },
     {
       "id": 4,
@@ -285,6 +388,13 @@
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":false}",
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
       "announcements": [
+        {
+          "content": "laude-Fable-5模型价格调整，昨日价格为官方的1/4，即2.2折，实际测试下来亏本，现在调整为官方价格的1/3，即3折左右，有点利润但不多，感谢理解",
+          "extra": "",
+          "id": 5,
+          "publishDate": "2026-06-11T07:58:24.212Z",
+          "type": "default"
+        },
         {
           "content": "GPT文字模型相关分组降至1.2倍率（之前为1.35倍）",
           "extra": "",
@@ -353,7 +463,7 @@
       "discord_client_id": "",
       "discord_oauth": false,
       "display_in_currency": true,
-      "docs_link": "https://www.thinkai.tv/docs",
+      "docs_link": "https://vcn1kz8avx7n.feishu.cn/wiki/MlmGwULXuicTZCka2fhcSDLLnWc",
       "email_verification": true,
       "enable_batch_update": true,
       "enable_data_export": true,
@@ -382,14 +492,14 @@
       "passkey_origins": "https://www.thinkai.tv",
       "passkey_rp_id": "www.thinkai.tv",
       "passkey_user_verification": "preferred",
-      "price": 0.46,
+      "price": 0.5,
       "privacy_policy_enabled": false,
       "quota_display_type": "USD",
       "quota_per_unit": 500000,
       "self_use_mode_enabled": false,
       "server_address": "https://www.thinkai.tv",
       "setup": true,
-      "start_time": 1781081412,
+      "start_time": 1781756291,
       "stripe_unit_price": 8,
       "system_name": "THINK-AI",
       "telegram_bot_name": "",

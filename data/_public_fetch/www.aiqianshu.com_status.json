@@ -1,0 +1,128 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "# 由于分组调整，导致原有key无法使用，生成新的key重新替换一下即可，具体表现：HTTP 401\n\n依旧稳定，欢迎接入使用",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-06-18T05:20:19.608Z",
+        "type": "default"
+      },
+      {
+        "content": "# Model Differentiation\n\n### Base: `deepseek-v4-pro` / `deepseek-v4-flash`\n- **Specs**: Official DeepSeek models. Compatible with OpenAI & Anthropic APIs.\n- **Note**: Web search is NOT supported.\n\n### Enhanced: `deepseek-v4-pro-260425` / `deepseek-v4-flash-260425`\n- **Specs**: Fully optimized for faster performance. Web search enabled.\n- **Note**: OpenAI API only.",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-06-17T09:13:36.127Z",
+        "type": "error"
+      },
+      {
+        "content": "# 模型区分说明\n\n### 基础版：`deepseek-v4-pro` / `deepseek-v4-flash`\n- **特性**：DeepSeek官方模型，兼容 OpenAI 与 Anthropic 接口。\n- **注意**：官方原生不支持联网搜索。\n\n### 加强版：`deepseek-v4-pro-260425` / `deepseek-v4-flash-260425`\n- **特性**：大厂优化的满血版，推理更快，支持联网搜索。\n- **注意**：仅支持 OpenAI 接口。",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-06-17T09:12:00.000Z",
+        "type": "error"
+      },
+      {
+        "content": "Anthropic 接口协议工具模型支持：deepseek-v4-pro、deepseek-v4-flash。\nOpenAI 接口协议工具模型支持：全部模型。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTool model support for the Anthropic API protocol: deepseek-v4-pro, deepseek-v4-flash.\nTool model support for the OpenAI API protocol: all models.",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-06-03T12:43:27.273Z",
+        "type": "warning"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info_enabled": false,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": true,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": true,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://docs.newapi.pro",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq_enabled": false,
+    "footer_html": "<span style=\"font-size:14px;color:inherit;opacity:0.6;\">© 2026 QianShu AI ·   </span><a href=\"/privacy-policy\" target=\"_blank\"   style=\"font-size:14px;color:#3b82f6;opacity:0.6;text-decoration:none;\">Privacy   Policy</a><span style=\"font-size:14px;color:inherit;opacity:0.3;\"> ·   </span><a href=\"/user-agreement\" target=\"_blank\"   style=\"font-size:14px;color:#3b82f6;opacity:0.6;text-decoration:none;\">Terms   of Service</a><span style=\"font-size:14px;color:inherit;opacity:0.3;\"> ·   </span><span   style=\"font-size:14px;color:inherit;opacity:0.6;\">xxx</span>",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://qianshu.tos-ap-southeast-3.volces.com/logo.png",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "千枢平台",
+    "passkey_login": false,
+    "passkey_origins": "https://www.aiqianshu.com",
+    "passkey_rp_id": "www.aiqianshu.com",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
+    "price": 6.8,
+    "privacy_policy_enabled": true,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "register_enabled": true,
+    "self_use_mode_enabled": false,
+    "server_address": "https://www.aiqianshu.com",
+    "setup": true,
+    "start_time": 1781755374,
+    "stripe_unit_price": 8,
+    "system_name": "千枢平台",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "default",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": false,
+    "usd_exchange_rate": 6.8,
+    "user_agreement_enabled": true,
+    "version": "v1.0.0-rc.11",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

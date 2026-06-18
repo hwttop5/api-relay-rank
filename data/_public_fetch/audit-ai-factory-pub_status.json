@@ -1,0 +1,134 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":true,\"image\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "再次增加GPT PRO 渠道 0.35x",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-06-15T15:44:06.759Z",
+        "type": "default"
+      },
+      {
+        "content": "鉴于各项成本持续上涨，为确保站点长期运营，本次调整倍率。\nGPT模型倍率 从0.15  调整到 0.2",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-06-14T06:46:53.489Z",
+        "type": "default"
+      },
+      {
+        "content": "gpt-image2生图模型价格下调通知\n1k 图 0.075 -> 0.06\n2k/4k 图 0.15 -> 0.12",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-06-08T15:00:41.911Z",
+        "type": "default"
+      },
+      {
+        "content": "GPT在逐步下架gpt5.4 模型， 大家做好切换到5.5 模型的准备",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-05-27T20:38:56.690Z",
+        "type": "default"
+      },
+      {
+        "content": "套餐已经重新调整价格并上架。",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-05-26T14:11:45.225Z",
+        "type": "default"
+      },
+      {
+        "content": "由于资源有限并且对倍率做出了调整， 早期送出的用户额度统一调整为3刀， 虽然额度降低了但是算上倍率等效于早期的20-200刀之间",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-05-02T13:10:41.957Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": true,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": true,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": false,
+    "enable_task": true,
+    "faq": [],
+    "faq_enabled": true,
+    "footer_html": "Token能量站",
+    "github_client_id": "Ov23liYpDvO0unvs30hv",
+    "github_oauth": true,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://factory.pub/logo1.png",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "Token能量站",
+    "passkey_login": false,
+    "passkey_origins": "https://factory.pub",
+    "passkey_rp_id": "factory.pub",
+    "passkey_user_verification": "preferred",
+    "price": 1,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "CNY",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://factory.pub",
+    "setup": true,
+    "start_time": 1781364210,
+    "stripe_unit_price": 8,
+    "system_name": "Token能量站",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "top_up_link": "https://ai.dnomad.cn",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": false,
+    "version": "",
+    "wechat_login": false,
+    "wechat_qrcode": "",
+    "yaohuo_client_id": "57FE1037678B4D55899DE0331590AD69",
+    "yaohuo_oauth": true
+  },
+  "message": "",
+  "success": true
+}

@@ -9,8 +9,154 @@
   ],
   "data": [
     {
-      "model_name": "claude-opus-4-8",
-      "description": "Anthropic Claude Opus 4.8 最新旗舰模型",
+      "model_name": "gemini-flash-lite-latest",
+      "description": "Google Gemini Flash Lite Latest 轻量高速版",
+      "tags": "flash,gemini,latest,lite",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "veo-3.1-fast-generate-preview",
+      "description": "Google Veo 3.1 Fast Generate Preview 视频生成",
+      "tags": "fast,preview,veo,video",
+      "vendor_id": 19,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.05,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-preview-tts",
+      "description": "Google Gemini 2.5 Flash Preview TTS 语音合成",
+      "tags": "flash,gemini,preview,tts",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 20,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "image-大香蕉",
+        "Gemini-Vertex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-pro-latest-thinking-*",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-robotics-er-1.5-preview",
+      "description": "Google Gemini Robotics ER 1.5 Preview 具身推理预览",
+      "tags": "gemini,preview",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 10,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.7-max",
+      "description": "通义 Qwen3.7 Max 旗舰版",
+      "icon": "Qwen.Color",
+      "tags": "Flagship",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "国模分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro-thinking-*",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "image-大香蕉",
+        "Gemini-Vertex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-image-preview-t",
+      "description": "Google Gemini 3.1 Flash Image Preview T 图像生成",
+      "tags": "flash,gemini,image,preview",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 120,
+      "enable_groups": [
+        "image-大香蕉",
+        "Gemini-Vertex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "description": "Anthropic Claude Opus 4.6 旗舰版",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
       "vendor_id": 6,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -22,9 +168,9 @@
       "enable_groups": [
         "Claude-AWS",
         "Claude-Azure",
+        "Claude-Kiro",
         "Claude-CC-MAX",
-        "Claude-AWS-Platform",
-        "Claude-Kiro"
+        "Claude-AWS-Platform"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -32,65 +178,185 @@
       ]
     },
     {
-      "model_name": "claude-sonnet-4-5-20250929",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude-CC-MAX",
-        "Claude-Azure",
-        "Claude-AWS-Platform",
-        "Claude-AWS",
-        "Claude-Kiro"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001",
-      "description": "Anthropic Claude Haiku 4.5 (2025-10-01) 高速版",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 6,
+      "model_name": "gemini-2.5-pro-preview-tts",
+      "description": "Google Gemini 2.5 Pro Preview TTS 语音合成",
+      "tags": "gemini,preview,pro,tts",
+      "vendor_id": 19,
       "quota_type": 0,
       "model_ratio": 0.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
+      "completion_ratio": 20,
       "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "Claude-CC-MAX",
-        "Claude-Azure",
-        "Claude-AWS-Platform",
-        "Claude-AWS",
-        "Claude-Kiro"
+        "Gemini-Vertex",
+        "image-大香蕉"
       ],
       "supported_endpoint_types": [
-        "anthropic",
         "openai"
       ]
     },
     {
-      "model_name": "mimo-v2.5-pro",
-      "description": "小米 MiMo V2.5 Pro 旗舰版",
-      "tags": "Reasoning,Tools,Flagship",
-      "vendor_id": 12,
+      "model_name": "gemini-3-flash-preview-thinking-*",
+      "vendor_id": 19,
       "quota_type": 0,
-      "model_ratio": 1.5,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-thinking",
+      "description": "Google Gemini 2.5 Flash Thinking 高速版",
+      "tags": "flash,gemini,thinking",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-flash-latest-thinking-*",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-flash-lite-latest-thinking",
+      "description": "Google Gemini Flash Lite Latest Thinking 轻量高速版",
+      "tags": "flash,gemini,latest,lite,thinking",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.6-flash",
+      "description": "通义 Qwen3.6 Flash 高速版",
+      "icon": "Qwen.Color",
+      "tags": "Fast",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 0.6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "国模分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-lite",
+      "description": "Google Gemini 2.5 Flash Lite 轻量高速版",
+      "tags": "gemini,flash,lite",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.05,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 10,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "description": "DeepSeek-V4-Pro 旗舰版",
+      "icon": "DeepSeek.Color",
+      "tags": "Reasoning,Tools,Flagship",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 6,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 2,
-      "cache_ratio": 0.008333333,
-      "create_cache_ratio": 0.875,
       "enable_groups": [
-        "MiMo"
+        "国模分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5.1",
+      "description": "智谱 GLM-5.1 旗舰版",
+      "icon": "Zhipu.Color",
+      "tags": "Reasoning,Tools,Flagship",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "国模分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview",
+      "description": "Google Gemini 3 Flash Preview 高速版",
+      "tags": "gemini,flash,preview",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 2,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -116,20 +382,480 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-5-20251101",
-      "vendor_id": 6,
+      "model_name": "lyria-3-clip-preview",
+      "description": "Google Lyria 3 Clip Preview 音乐生成",
+      "tags": "audio,lyria,preview",
+      "vendor_id": 19,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.04,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-flash-latest-nothinking",
+      "description": "Google Gemini Flash Latest No-Thinking 高速版",
+      "tags": "flash,gemini,latest",
+      "vendor_id": 19,
       "quota_type": 0,
       "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "image-大香蕉",
+        "Gemini-Vertex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-flash-lite-latest-nothinking",
+      "description": "Google Gemini Flash Lite Latest No-Thinking 轻量高速版",
+      "tags": "flash,gemini,latest,lite",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-image",
+      "description": "Google Gemini 3 Pro Image 图像生成",
+      "tags": "gemini,image,pro",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 60,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "lyria-3-pro-preview",
+      "description": "Google Lyria 3 Pro Preview 音乐生成",
+      "tags": "audio,lyria,preview,pro",
+      "vendor_id": 19,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.08,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "description": "DeepSeek-V4-Flash 高速版（128K）",
+      "icon": "DeepSeek.Color",
+      "tags": "Reasoning,Tools,Fast",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "国模分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-lite-preview",
+      "description": "Google Gemini 3.1 Flash Lite Preview 轻量高速版",
+      "tags": "flash,gemini,lite,preview",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-pro-latest-thinking",
+      "description": "Google Gemini Pro Latest Thinking 旗舰版",
+      "tags": "gemini,latest,pro,thinking",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "suno_music",
+      "description": "Suno 音乐生成（最新 V5.5 模型）",
+      "icon": "Suno.Color",
+      "tags": "suno,music,audio",
+      "vendor_id": 24,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "Suno-音乐生成"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "description": "Anthropic Claude Opus 4.8 最新旗舰模型",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "Claude-CC-MAX",
-        "Claude-Azure",
+        "Claude-Kiro",
         "Claude-AWS-Platform",
+        "Claude-CC-MAX",
         "Claude-AWS",
+        "Claude-Azure"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-tts-preview",
+      "description": "Google Gemini 3.1 Flash TTS Preview 语音合成",
+      "tags": "flash,gemini,preview,tts",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "image-大香蕉",
+        "Gemini-Vertex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview-customtools",
+      "description": "Google Gemini 3.1 Pro Preview Custom-Tools 旗舰版",
+      "tags": "gemini,preview,pro",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash",
+      "description": "Google Gemini 3.5 Flash 高速版",
+      "tags": "gemini,flash",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 0.666666666667,
+      "enable_groups": [
+        "image-大香蕉",
+        "Gemini-Vertex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-pro-latest",
+      "description": "Google Gemini Pro Latest 旗舰版",
+      "tags": "gemini,latest,pro",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "mimo-v2.5-pro",
+      "description": "小米 MiMo V2.5 Pro 旗舰版",
+      "tags": "Reasoning,Tools,Flagship",
+      "vendor_id": 12,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.008333333,
+      "create_cache_ratio": 0.875,
+      "enable_groups": [
+        "MiMo"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5",
+      "description": "智谱 GLM-5 通用大模型",
+      "icon": "Zhipu.Color",
+      "tags": "Reasoning,Tools",
+      "vendor_id": 20,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.5,
+      "enable_groups": [
+        "国模分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-thinking-*",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-image-preview-t",
+      "description": "Google Gemini 3 Pro Image Preview T 图像生成",
+      "tags": "gemini,image,preview,pro",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 60,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-lite",
+      "description": "Google Gemini 3.1 Flash Lite 轻量高速版",
+      "tags": "gemini,flash,lite",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 4,
+      "enable_groups": [
+        "image-大香蕉",
+        "Gemini-Vertex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "description": "Anthropic Claude Sonnet 4.6",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 1.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-Azure",
+        "Claude-Kiro",
+        "Claude-AWS-Platform",
+        "Claude-CC-MAX",
+        "Claude-AWS"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-flash-preview-thinking",
+      "description": "Google Gemini 3 Flash Preview Thinking 高速版",
+      "tags": "flash,gemini,preview,thinking",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-preview",
+      "description": "Google Gemini 3 Pro Preview 旗舰版",
+      "tags": "gemini,pro,preview",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len > 200000 ? tier(\"上下文＞20万token\", p * 4 + c * 18 + cr * 0.4 + cc * 4.5) : tier(\"上下文＜20万token\", p * 2 + c * 12 + cr * 0.2 + cc * 4.5)"
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview-low",
+      "description": "Google Gemini 3.1 Pro Preview (Low) 旗舰版",
+      "tags": "gemini,preview,pro",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-flash-latest",
+      "description": "Google Gemini Flash Latest 高速版",
+      "tags": "flash,gemini,latest",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "description": "Anthropic Claude Opus 4.7 旗舰版",
+      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-AWS-Platform",
+        "Claude-CC-MAX",
+        "Claude-AWS",
+        "Claude-Azure",
         "Claude-Kiro"
       ],
       "supported_endpoint_types": [
@@ -138,23 +864,94 @@
       ]
     },
     {
-      "model_name": "claude-fable-5",
-      "vendor_id": 6,
+      "model_name": "gemini-2.5-pro-thinking",
+      "description": "Google Gemini 2.5 Pro Thinking 旗舰版",
+      "tags": "gemini,pro,thinking",
+      "vendor_id": 19,
       "quota_type": 0,
-      "model_ratio": 5,
+      "model_ratio": 37.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
+      "completion_ratio": 8,
       "enable_groups": [
-        "Claude-AWS-Platform",
-        "Claude-AWS",
-        "Claude-CC-MAX",
-        "Claude-Azure"
+        "Gemini-Vertex",
+        "image-大香蕉"
       ],
       "supported_endpoint_types": [
-        "anthropic",
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len > 200000 ? tier(\"上下文＞20万Token\", p * 2.5 + c * 15 + cr * 0.25 + cc * 4.5) : tier(\"上下文＜20万Token\", p * 1.25 + c * 10 + cr * 0.125 + cc * 4.5)"
+    },
+    {
+      "model_name": "gemini-embedding-001",
+      "description": "Google Gemini Embedding 001 文本向量",
+      "tags": "embedding,gemini",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.075,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-image",
+      "description": "Google Gemini 3.1 Flash Image 图像生成",
+      "tags": "flash,gemini,image",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 120,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-image-preview",
+      "description": "Google Gemini 3.1 Flash Image Preview 图像生成",
+      "tags": "flash,gemini,image,preview",
+      "vendor_id": 19,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "veo-3.1-generate-preview",
+      "description": "Google Veo 3.1 Generate Preview 视频生成",
+      "tags": "preview,veo,video",
+      "vendor_id": 19,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
         "openai"
       ]
     },
@@ -178,93 +975,192 @@
       ]
     },
     {
-      "model_name": "claude-sonnet-4-6",
-      "description": "Anthropic Claude Sonnet 4.6",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 6,
+      "model_name": "qwen3.6-max-preview",
+      "description": "通义 Qwen3.6 Max（预览版）",
+      "icon": "Qwen.Color",
+      "tags": "Flagship,Preview",
+      "vendor_id": 22,
       "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude-Azure",
-        "Claude-CC-MAX",
-        "Claude-AWS-Platform",
-        "Claude-Kiro",
-        "Claude-AWS"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "description": "Anthropic Claude Opus 4.7 旗舰版",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude-AWS",
-        "Claude-Azure",
-        "Claude-CC-MAX",
-        "Claude-AWS-Platform",
-        "Claude-Kiro"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-6",
-      "description": "Anthropic Claude Opus 4.6 旗舰版",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 6,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "Claude-Azure",
-        "Claude-CC-MAX",
-        "Claude-AWS-Platform",
-        "Claude-Kiro",
-        "Claude-AWS"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "description": "OpenAI GPT-5.4 通用大模型",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.25,
+      "model_ratio": 4.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
-      "cache_ratio": 0,
-      "create_cache_ratio": 0.1,
       "enable_groups": [
-        "Codex"
+        "国模分组"
       ],
       "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-Azure",
+        "Claude-AWS"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash",
+      "description": "Google Gemini 2.5 Flash 高速版",
+      "tags": "gemini,flash",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 3.333333333333,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro",
+      "description": "Google Gemini 2.5 Pro 旗舰版",
+      "tags": "gemini,pro",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "image-大香蕉",
+        "Gemini-Vertex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len > 200000 ? tier(\"上下文＞20万Token\", p * 2.5 + c * 15 + cr * 0.25 + cc * 4.5) : tier(\"上下文＜20万Token\", p * 1.25 + c * 10 + cr * 0.125 + cc * 4.5)"
+    },
+    {
+      "model_name": "gemini-3-pro-preview-thinking-*",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-flash-latest-thinking",
+      "description": "Google Gemini Flash Latest Thinking 高速版",
+      "tags": "flash,gemini,latest,thinking",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-flash-lite-latest-thinking-*",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-image",
+      "description": "Google Gemini 2.5 Flash Image 图像生成",
+      "tags": "flash,gemini,image",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 100,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.6",
+      "description": "月之暗面 Kimi K2.6 旗舰（256K）",
+      "icon": "Moonshot",
+      "tags": "Reasoning,Tools,Long-Context,Flagship",
+      "vendor_id": 21,
+      "quota_type": 0,
+      "model_ratio": 3.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.153846153846,
+      "enable_groups": [
+        "国模分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "description": "Anthropic Claude Haiku 4.5 (2025-10-01) 高速版",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-Azure",
+        "Claude-Kiro",
+        "Claude-AWS-Platform",
+        "Claude-CC-MAX",
+        "Claude-AWS"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     },
@@ -275,15 +1171,201 @@
       "vendor_id": 1,
       "quota_type": 1,
       "model_ratio": 0,
-      "model_price": 0.3,
+      "model_price": 0.4,
       "owner_by": "",
       "completion_ratio": 0,
       "enable_groups": [
-        "Codex",
         "image"
       ],
       "supported_endpoint_types": [
         "image-generation",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro-nothinking",
+      "description": "Google Gemini 2.5 Pro No-Thinking 旗舰版",
+      "tags": "gemini,pro",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-preview-thinking",
+      "description": "Google Gemini 3 Pro Preview Thinking 旗舰版",
+      "tags": "gemini,pro,preview,thinking",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len > 200000 ? tier(\"上下文＞20万token\", p * 4 + c * 18 + cr * 0.4 + cc * 4.5) : tier(\"上下文＜20万token\", p * 2 + c * 12 + cr * 0.2 + cc * 4.5)"
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview",
+      "description": "Google Gemini 3.1 Pro Preview 旗舰版",
+      "tags": "gemini,pro,preview",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len > 200000 ? tier(\"上下文＞20万token\", p * 2 + c * 12 + cr * 0.2 + cc * 4.5) : tier(\"上下文＜20万token\", p * 4 + c * 18 + cr * 0.4 + cc * 4.5)"
+    },
+    {
+      "model_name": "gemini-3-pro-image-preview",
+      "description": "Google Gemini 3 Pro Image Preview 图像生成",
+      "tags": "gemini,pro,image,preview",
+      "vendor_id": 19,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kimi-k2.5",
+      "description": "月之暗面 Kimi K2.5（256K）",
+      "icon": "Moonshot",
+      "tags": "Reasoning,Tools,Long-Context",
+      "vendor_id": 21,
+      "quota_type": 0,
+      "model_ratio": 2,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5.25,
+      "enable_groups": [
+        "国模分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview-medium",
+      "description": "Google Gemini 3.1 Pro Preview (Medium) 旗舰版",
+      "tags": "gemini,preview,pro",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "image-大香蕉",
+        "Gemini-Vertex"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-embedding-2-preview",
+      "description": "Google Gemini Embedding 2 Preview 文本向量",
+      "tags": "embedding,gemini,preview",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen3.6-plus",
+      "description": "通义 Qwen3.6 Plus 平衡版",
+      "icon": "Qwen.Color",
+      "tags": "Balanced",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "enable_groups": [
+        "国模分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-nothinking",
+      "description": "Google Gemini 2.5 Flash No-Thinking 高速版",
+      "tags": "flash,gemini",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview-high",
+      "description": "Google Gemini 3.1 Pro Preview (High) 旗舰版",
+      "tags": "gemini,preview,pro",
+      "vendor_id": 19,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Gemini-Vertex",
+        "image-大香蕉"
+      ],
+      "supported_endpoint_types": [
         "openai"
       ]
     }
@@ -295,9 +1377,14 @@
     "Claude-CC-MAX": 2.5,
     "Claude-Kiro": 0.5,
     "Codex": 1,
-    "Gemini-Vertex": 2,
+    "Gemini-Vertex": 2.5,
+    "Gemini-逆向": 1.2,
+    "Gemini-逆向cli": 1.2,
     "MiMo": 0.4,
-    "image": 1
+    "Suno-音乐生成": 1.2,
+    "image": 1,
+    "image-大香蕉": 1.5,
+    "国模分组": 1
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
@@ -322,9 +1409,14 @@
     "Claude-CC-MAX": "自建官转MAX号池（原生模型）",
     "Claude-Kiro": "AWS-Kiro逆向（价格低-量大管饱）",
     "Codex": "自建Pro号池（稳定-适合编码场景）",
-    "Gemini-Vertex": "Google-Vertex直连渠道（测试中，可能不稳定）",
+    "Gemini-Vertex": "Google-Vertex直连渠道",
+    "Gemini-逆向": "反重力逆向分组",
+    "Gemini-逆向cli": "Gemini-Cli逆向分组",
     "MiMo": "Xiaomi MiMo API",
-    "image": "图片模型分组"
+    "Suno-音乐生成": "Suno Music-逆向",
+    "image": "图片模型分组-GPT",
+    "image-大香蕉": "图片模型分组-Banana",
+    "国模分组": "国产模型"
   },
   "vendors": [
     {
@@ -338,6 +1430,15 @@
       "icon": "Gemini.Color"
     },
     {
+      "id": 22,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 12,
+      "name": "Xiaomi Token Plan (Singapore)"
+    },
+    {
       "id": 20,
       "name": "智谱",
       "icon": "Zhipu.Color"
@@ -348,6 +1449,17 @@
       "icon": "Moonshot"
     },
     {
+      "id": 23,
+      "name": "火山引擎",
+      "description": "字节跳动旗下火山引擎 AI 模型服务，提供豆包大模型、Seed 系列与 Seedance 视频生成等多模态能力。",
+      "icon": "Volcengine.Color"
+    },
+    {
+      "id": 24,
+      "name": "Suno",
+      "icon": "Suno.Color"
+    },
+    {
       "id": 1,
       "name": "OpenAI",
       "icon": "OpenAI"
@@ -356,20 +1468,6 @@
       "id": 6,
       "name": "Anthropic",
       "icon": "Claude.Color"
-    },
-    {
-      "id": 12,
-      "name": "Xiaomi Token Plan (Singapore)"
-    },
-    {
-      "id": 18,
-      "name": "OpenCode Zen",
-      "icon": "OpenCode"
-    },
-    {
-      "id": 22,
-      "name": "阿里巴巴",
-      "icon": "Qwen.Color"
     }
   ],
   "status_payload": {
@@ -525,7 +1623,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://claude360.xyz",
       "setup": true,
-      "start_time": 1780895197,
+      "start_time": 1781748647,
       "stripe_unit_price": 8,
       "system_name": "Claude 360",
       "telegram_bot_name": "",
@@ -533,11 +1631,11 @@
       "theme": "classic",
       "top_up_link": "",
       "turnstile_check": false,
-      "turnstile_site_key": "",
+      "turnstile_site_key": "0x4AAAAAADiBEgiNv3Jm79do",
       "uptime_kuma_enabled": false,
       "usd_exchange_rate": 1,
       "user_agreement_enabled": false,
-      "version": "",
+      "version": "local-0.0.29",
       "wechat_login": false,
       "wechat_qrcode": ""
     },

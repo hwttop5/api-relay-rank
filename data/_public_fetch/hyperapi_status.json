@@ -4,45 +4,17 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "announcements": [
       {
-        "content": "HyperAPI文档： https://hyperapi.cc/docs\n\n  1. 新增gpt-image-2模型的使用说明",
+        "content": "额度充值的用户，找群主加到svip分组，svip分组倍率0.35\n",
         "extra": "",
-        "id": 7,
-        "publishDate": "2026-05-27T18:25:53.191Z",
+        "id": 2,
+        "publishDate": "2026-06-13T03:48:58.772Z",
         "type": "default"
       },
       {
-        "content": "模型状态监控：https://check.hyperapi.cc",
-        "extra": "",
-        "id": 6,
-        "publishDate": "2026-05-27T16:32:47.652Z",
-        "type": "default"
-      },
-      {
-        "content": "QQ 群：`1095326876`\n",
-        "extra": "",
-        "id": 5,
-        "publishDate": "2026-05-21T17:42:54.301Z",
-        "type": "default"
-      },
-      {
-        "content": "新套餐上线🎺🎺\n\n每日$30 月卡：¥39.9\n\n每日$50 月卡：¥59.9\n\n每日$150 月卡：¥169.9\n\n每日$300 月卡： ¥299.9\n",
-        "extra": "",
-        "id": 4,
-        "publishDate": "2026-05-21T17:24:30.161Z",
-        "type": "default"
-      },
-      {
-        "content": "邀请用户和被邀请用户都可以增加 2 刀额度，每天签到领取最大 10 万 token 。\n",
-        "extra": "",
-        "id": 3,
-        "publishDate": "2026-05-14T15:22:26.005Z",
-        "type": "default"
-      },
-      {
-        "content": "月卡套餐 Plus：69.90元\n\n有效期：1 个月\n\n总额度：$480.00\n\n- \n\n\n月卡套餐 Lite：39.90元\n\n有效期：1 个月\n\n总额度：$240.00\n\n\n- \n\n\n周卡套餐：15.90元\n\n有效期:：7 天\n\n总额度：$120.00\n\n\n- \n\n\n日卡套餐：2.90元\n\n有效期：1天\n\n总额度: $20.00\n",
+        "content": "倍率可能会根据市场行情有所调整，如果介意请勿购买。",
         "extra": "",
         "id": 1,
-        "publishDate": "2026-04-30T16:59:30.000Z",
+        "publishDate": "2026-06-12T14:08:20.305Z",
         "type": "default"
       }
     ],
@@ -75,7 +47,7 @@
         "OpenCat": "opencat://team/join?domain={address}&token={key}"
       }
     ],
-    "checkin_enabled": true,
+    "checkin_enabled": false,
     "custom_currency_exchange_rate": 1,
     "custom_currency_symbol": "¤",
     "data_export_default_time": "hour",
@@ -118,7 +90,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://hyperapi.cc",
     "setup": true,
-    "start_time": 1780233716,
+    "start_time": 1781630780,
     "stripe_unit_price": 8,
     "system_name": "Hyper API",
     "telegram_bot_name": "",

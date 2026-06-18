@@ -1,0 +1,346 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "🚀 GPT-5.4 / GPT-5.5 再次优化 客户反馈 超12H未中断\n 欢迎大家测体验！\n🔥 更稳 · 更快 · 更便宜 · 适合生产级API\n\n✔ 企业级稳定优化\n✔ 长时间调用不中断\n✔ 高并发支持\n✔ 流式输出更顺滑\n✔ 实测 24H+ 稳定运行\n\n💰 超高性价比\nGPT-5.4：¥0.5 / 100万 tokens\nGPT-5.5：¥1 / 100万 tokens\n\n🌐 访问入口：\nkuaipao.ai\nkuaipao.pro",
+        "extra": "",
+        "id": 28,
+        "publishDate": "2026-06-17T02:33:26.389Z",
+        "type": "default"
+      },
+      {
+        "content": "🚀 最新上架 | Gork 系列\n\n纯文本模型\n\n型号：grok-4.20-multi-agent-xhigh\n价格：0.25 元 / 100万 token\n亮点：16 个 Agents 并发工作，处理速度超爽，效率飞起！\n\n图片模型\n\n型号：grok-image\n价格：0.05 元 / 张\n亮点：尺度可大，可多张调用，画面高清细腻\n使用方式：可在快跑画布在线操作 → img.kuaipao.pro\n\n✅ 分组：default\n直接切换即可使用，无需额外设置",
+        "extra": "",
+        "id": 27,
+        "publishDate": "2026-06-11T03:40:34.642Z",
+        "type": "default"
+      },
+      {
+        "content": "公告：\ngpt-team\n号池已被官方修复，当前暂时不可用；\ndefault_特价\n分组正在维护中。\n\n请大家暂时切换至\ndefault\n分组使用。后续如有类似免费 Token 资源，会继续提供给大家，感谢理解与支持。",
+        "extra": "",
+        "id": 26,
+        "publishDate": "2026-06-11T02:03:52.410Z",
+        "type": "default"
+      },
+      {
+        "content": "快跑API最新上线 画布平台 啦！创作更快一步！\n专业做图，轻松做视频。\n简单操作，高效出图，快速生成视觉内容。\n适合企业宣传、内容运营、电商推广、短视频制作等场景。\n立即访问：img.kuaipao.pro",
+        "extra": "",
+        "id": 25,
+        "publishDate": "2026-06-10T12:03:31.160Z",
+        "type": "default"
+      },
+      {
+        "content": "公告\ndefault_特价\n号池分组。\n\ngpt-5.4：5 分 100w token\ngpt-5.5：1 毛  100w token\n价格约比平常低 10 倍，属于限时福利资源，具体下架时间不确定。\n提醒： 该渠道存在不确定性，可能受官方风控影响出现不可用或下架。平台原有常规分组、优质分组不受影响，仍长期稳定运行，核心业务可放心选择。\n",
+        "extra": "",
+        "id": 24,
+        "publishDate": "2026-06-07T12:52:27.543Z",
+        "type": "default"
+      },
+      {
+        "content": "端午感恩回馈-全站充值限时9折，逆势让利稳享流畅服务\n尊敬的快跑（kuaipao.ai）平台用户：\n近期全网AI风控升级，多数中转平台卡顿、响应异常，且行业普遍涨价，用户使用体验较差。\n为回馈广大用户，平台开启端午限时福利活动，逆势让利，以优惠价格提供稳定、低延迟的AI中转服务。",
+        "extra": "",
+        "id": 23,
+        "publishDate": "2026-06-03T03:25:53.025Z",
+        "type": "default"
+      },
+      {
+        "content": "一、活动福利\n活动期间全站充值全场9折，全员可参与、无门槛。\n二、活动时间\n2026年6月3日—6月23日，限时20天，活动结束即刻恢复原价。",
+        "extra": "",
+        "id": 22,
+        "publishDate": "2026-06-03T03:25:29.581Z",
+        "type": "default"
+      },
+      {
+        "content": "三、平台服务保障\n快跑AI持续优化线路，有效规避风控，解决卡顿、延迟等问题。行业涨价潮下，我们坚持稳服务、保性价比，为用户提供高效流畅的中转体验。\n预祝全体用户端午安康！\n我们将持续优化服务，感谢您的支持与信赖！\n快跑运营团队 客服：kokolo779 加客服入群 享受更多福利通知\n2026年6月3日",
+        "extra": "",
+        "id": 21,
+        "publishDate": "2026-06-03T03:22:27.521Z",
+        "type": "default"
+      },
+      {
+        "content": "快跑 AI 六一限时福利通知\n活动时间：6.1-6.2，每日 15:00、20:00 两场抽奖，每日奖池全额重置\n100 美金兑换券 ×1 份\n50 美金兑换券 ×3 份\n2.5 美金兑换券 ×400 份\n参与方式：全体注册用户，每日最多 2 次抽奖机会\n重要规则：中奖额度实时到账，兑换券仅限平台使用，不可折现、转让；严禁作弊刷奖，奖品抽完即止，如有问题请咨询客服微信：kokolo779",
+        "extra": "",
+        "id": 20,
+        "publishDate": "2026-06-01T06:51:44.720Z",
+        "type": "default"
+      },
+      {
+        "content": "国内加速地址 ：kuaipao.pro\n国际加速地址 ：kuaipao.ai\n两种域名都可以访问网址 如果接口卡顿域名切换试试 只更换后缀 .ai .pro 其他不需要任何改变",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-05-26T09:04:43.490Z",
+        "type": "default"
+      },
+      {
+        "content": "通知：DeepSeek 模型价格已下调\nDeepSeek 相关模型价格已完成调整，并已与官网价格同步。\n\ndeepseek-v4-pro\n输入价格：¥3 / 百万 Tokens\n补全价格：¥6 / 百万 Tokens\n缓存读取价格：¥0.025 / 百万 Tokens\ndeepseek-v4-flash\n输入价格：¥1 / 百万 Tokens\n补全价格：¥2 / 百万 Tokens\n缓存读取价格：¥0.2 / 百万 Tokens\n\n请各位老板知悉，后续如有价格变动，将继续同步更新",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-05-24T15:53:21.382Z",
+        "type": "default"
+      },
+      {
+        "content": "快跑现已上线 邀请奖励 功能。\n\n入口位置：\n\n钱包管理 → 邀请奖励 -> 复制邀请链接\n奖励规则\n邀请好友注册后，若好友完成充值，您即可获得相应奖励。\n\n好友前 3 次充值，您均可获得奖励；\n奖励比例为好友充值金额的 5.0%；\n奖励额度可通过「划转」功能转入您的账户余额；\n邀请好友越多，获得的奖励越多。",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-05-23T02:01:56.724Z",
+        "type": "default"
+      },
+      {
+        "content": "各位老板您好：\n\n本站现已正式上线 China 国产模型专属分组，整合全量优质国产大模型资源，具备运行稳定、推理高效、低延迟、适配国内网络、合规性强等核心优势，适配日常办公、代码开发、批量调用、业务部署等多场景使用。\n\n原 dp guochan glm 分组现已正式取缔，统一切换至 China 国产模型分组使用。\n\n限时福利：官方渠道直享 5.5 折特惠，欢迎各位接入体验。",
+        "extra": "",
+        "id": 16,
+        "publishDate": "2026-05-21T15:30:02.677Z",
+        "type": "default"
+      },
+      {
+        "content": "📢 通知\n\n国内加速节点已上线：\nhttps://kuaipao.pro\n\n如访问 kuaipao.ai 有问题，可将域名替换为 kuaipao.pro 访问。\n\n快跑会持续维护模型稳定，给大家带来不便深感抱歉，感谢理解与支持。",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2026-05-16T02:29:18.439Z",
+        "type": "default"
+      },
+      {
+        "content": "快跑 AI 下午受2次DDOS恶意攻击，服务临时波动，深表歉意！\n现在已全面恢复，并更换高仿服务器。\n账号数据全程安全，无泄露风险\n感恩回馈抽奖开启价值1000元 兑换码，福利加码致谢客户\n联系微信 kokolo779 \n中奖后前往 kuaipao.ai 控制台 - 钱包管理，输入兑换码即可充值到账",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-05-15T11:37:52.090Z",
+        "type": "default"
+      },
+      {
+        "content": "目前网站已恢复正常访问。\n\n因 DDoS 攻击导致服务受影响，影响时间：\n2026-05-15 11:26 - 12:05\n\n我们已完成处理并恢复服务，稍后将切换至高防服务器，进一步提升稳定性与抗攻击能力。\n\n快跑 API 将持续保障稳定服务，坚持提供高性价比低价 Token。\n感谢理解与支持，我们会继续用心做好服务。\n\n可添加微信拉您进交流群：kokolo779",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2026-05-15T04:45:09.454Z",
+        "type": "default"
+      },
+      {
+        "content": "各位老板好，本站现已上线 codex_vip 分组，由高质量 GPT Pro 账号资源组成，主打稳定、高效，适合日常工作与开发场景使用。\n当前价格优惠：\n\ngpt-5.4：低至 1.5 元/百万 tokens\ngpt-5.5：低至 3 元/百万 tokens\n欢迎各位老板体验使用！",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-05-12T14:52:28.631Z",
+        "type": "default"
+      },
+      {
+        "content": "各位老板您好：\n\n原技术人员 Snake（kuaipao.ai） 已离职，后续不再负责相关技术支持与业务对接。\n\n如您此前添加的是其私人微信，请及时转至官方群组或联系官方客服处理相关问题  官方微信: kokolo779。\n\n我们会一如既往保障服务稳定运行，感谢各位老板的理解与支持。\n\n快跑 AI 中转站",
+        "extra": "",
+        "id": 11,
+        "publishDate": "2026-05-10T09:40:54.673Z",
+        "type": "default"
+      },
+      {
+        "content": "各位老板，本站新上krio_claude分组，claude-opus-4-7价格低至2元/百万tokens，欢迎各位老板体验！",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-05-08T10:54:13.674Z",
+        "type": "default"
+      },
+      {
+        "content": "我们已正式上线阿里千问、智谱GLM、Kimi、MiniMax、DeepSeek等国产顶尖大模型，价格亲民，性价比拉满！\n核心特惠价格（输入/百万tokens）及折扣：阿里千问3.6 Plus 0.91元（官方4.6折）；智谱GLM-5.1 3.52元（官方约3.9折）；Kimi 2.6 2.66元（官方4.1折）；MiniMax 2.7 0.84元（官方约3.4折）；DeepSeek-v4-pro 2.71元（官方限时活动价9.0折）。",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-05-07T05:39:14.102Z",
+        "type": "default"
+      },
+      {
+        "content": "使用说明：DeepSeek调用指定「dp」分组，其他国产模型调用时指定「guochan」分组，即可自动路由至前四款特惠模型；低延迟高并发的稳定服务，无隐藏消费。\n后续将持续新增顶级模型，敬请期待！",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-05-07T05:33:59.542Z",
+        "type": "default"
+      },
+      {
+        "content": "## 一、平台重大调整\n\n1. **计价方式调整**：平台将由人民币计价改为美金计价，充值标准为0.4元人民币可兑换1美元。  \n2. **老用户余额调整**：为了保障老用户的权益，所有账户余额将按2.5倍进行调整，确保计价方式更改不会影响现有余额。",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-05-01T00:23:13.863Z",
+        "type": "default"
+      },
+      {
+        "content": "3. **GPT价格下调**：为降低使用成本，GPT-5.4的价格将调整为人民币0.5元/百万tokens，GPT-5.5调整为人民币1元/百万tokens。  \n4. **新增发票功能**：用户可在【钱包管理】板块轻松申请发票，满足个人及企业需求，操作便捷高效。",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-05-01T00:22:37.405Z",
+        "type": "default"
+      },
+      {
+        "content": "## 二、五一专属活动（5月1日更新后—5月5日晚24点）\n\n1. **折扣充值**：活动期间，所有用户充值均可享受9折优惠。充值越多，优惠越大，帮助用户更高效地使用平台。  \n2. **每日抽奖**：每天将抽取500个中奖名额，中奖福利限时发放。请密切关注官网和官方群消息，届时将发布抽奖二维码，千万不要错过。\n",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-04-30T23:32:42.412Z",
+        "type": "default"
+      },
+      {
+        "content": "## 三、分站长代理功能通知\n\n快跑AI现已全面上线分站长代理功能，代理费用仅需88元。如有咨询或申请需求，请联系对接人：kokolo779（备注：代理），了解详细代理政策和合作流程。\n\n感谢各位用户一直以来的支持与信任。我们将继续优化平台服务，为您提供更便捷、高性价比的AI体验！\n\n**快跑AI运营团队**",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-04-30T23:32:17.054Z",
+        "type": "default"
+      },
+      {
+        "content": "因近期市场原因，账号批量封禁，成本大幅上涨，无奈之下只能小幅调整价格，实在抱歉各位老板。\n原价格：0.35元=100w token\n现价格：0.7元=100w token\n我们一直秉承稳定、低价、快速的服务理念，也始终不忘初心。本次调价只为保障更稳定、更高质量的服务，还望各位老板多多理解与支持。",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-04-20T03:06:12.602Z",
+        "type": "default"
+      },
+      {
+        "content": "各位快跑API的用户好，claude价格打下来了！1元充值1$，3.5倍率 相当于官方5折！分组选择claude_code，目前只支持claude官方工具调用，如：claude code cli。其他第三方工具如openalw还是使用claude_管转分组，价格不变",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-04-15T04:01:46.152Z",
+        "type": "default"
+      },
+      {
+        "content": "# 系统定价调整说明\nGPT系列原定价涉及美元兑人民币，核算不便，现已统一改为人民币计价，计费公式为：\n**充值金额 × 汇率倍数 = 0.35元/百万Token**\n\n同时系统单价由0.7元调整为1元，举例：充值1元、汇率倍数为1时，实际计费0.35元。\n本次下调GPT倍率与单价，额度保持不变，老用户可额外获赠30% Token。",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-04-01T11:59:35.010Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": true,
+    "contact_email": "",
+    "contact_phone": "",
+    "contact_qr_code_url": "https://s1.imagehub.cc/images/2026/05/02/51080feda8fd602f8e535935376ead3e.png",
+    "contact_wechat_id": "Kokolo779",
+    "contact_working_hours": "周一至周日 10:00-24:00",
+    "custom_currency_exchange_rate": 0.4,
+    "custom_currency_symbol": "$",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://kuaipao.apifox.cn",
+    "email_verification": true,
+    "enable_batch_update": false,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "快跑中转 API 平台，实质上是在用户与各大模型服务商之间搭建了一个智能分发系统。虽然您调用的依然是模型服务商的 API，但我们通过统一的接口完成了用户认证、令牌分发、计费管理、数据查询等全流程服务。\n这一方案的核心价值在于：\n• 高效接入：一个接口即可无缝调用超过 1000 个主流模型，无需处理繁琐的对接与协议差异；\n• 极致性价比：通过我们的平台，用户可以以远低于常规成本的方式使用多家模型服务；\n• 共享算力池：基于我们庞大的用户体量，您的调用能力等同于接入了千万级别的 API 调用频次，就像享受一套共享云服务的资源调度体系。\n\n简而言之，我们降低了技术和成本门槛，让每一个用户都能轻松、安全、高效地使用强大的 AI 模型服务。",
+        "id": 1,
+        "question": "什么是中转API？为什么要使用中转API？"
+      },
+      {
+        "answer": "我们服务全球用户，通过整合平台上所有用户的 API 调用量，向模型供应商争取独享折扣。借助我们的集体购买力，我们能够确保为您提供个人或企业用户无法直接获得的最低价格，最终将这些优惠直接传递给每一位用户。",
+        "id": 2,
+        "question": "为什么中转API对比自己购买有折扣"
+      },
+      {
+        "answer": "没有任何区别，我们本质都是请求官方的接口，并且通过全球加速网络的部署，我们能够显著提升 API 请求的响应速度和稳定性，确保比您独立调用时更为高效和快速。",
+        "id": 3,
+        "question": "和自己调用官方的接口在质量和速度上有区别吗？"
+      },
+      {
+        "answer": "例如文字类模型基本都是按照tokens计算，1K tokens消耗xx美金，此类计费方式和官方相同；我们的优惠：官方渠道的美金需要实时汇率购买（大约1:7），在我们平台直接折扣购买美金（具体汇率查询充值页）",
+        "id": 4,
+        "question": "费用怎么计算，和官方比有优惠吗"
+      },
+      {
+        "answer": "大部分情况是，你发送的文本内容有过滤违禁词，所以被拦截了。",
+        "id": 5,
+        "question": "为什么有时候补全回复是空的"
+      },
+      {
+        "answer": "唯一官方QQ群（其他均为骗子请勿上当）：1028383944",
+        "id": 6,
+        "question": "如何联系我们"
+      },
+      {
+        "answer": "额度计算公式如下：\n\n额度 = 分组倍率 * 模型倍率 * （提示 token 数 + 补全 token 数 * 补全倍率）",
+        "id": 7,
+        "question": "额度是什么？怎么计算的？"
+      },
+      {
+        "answer": "模型名称错误，或者使用了已经过期的模型名称，请在定价页面复制完整模型名称进行调用，需要区分大小写！",
+        "id": 8,
+        "question": "提示模型无可用渠道"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "icp_beian": "粤ICP备2026055939号-1",
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://pc.i6d.cn/favicon.svg",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "快跑API",
+    "passkey_login": false,
+    "passkey_origins": "https://kuaipao.ai",
+    "passkey_rp_id": "kuaipao.ai",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
+    "price": 0.4,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "CUSTOM",
+    "quota_per_unit": 500000,
+    "register_enabled": true,
+    "self_use_mode_enabled": false,
+    "server_address": "https://kuaipao.ai",
+    "setup": true,
+    "start_time": 1781738669,
+    "stripe_unit_price": 8,
+    "system_name": "快跑API",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "classic",
+    "topup_commission_rate": 0.05,
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": false,
+    "version": "v0.0.0",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

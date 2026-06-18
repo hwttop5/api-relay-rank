@@ -1,0 +1,610 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":false}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "kiro今晚上一直大开杀戒，有些不稳定见谅~",
+        "extra": "",
+        "id": 60,
+        "publishDate": "2026-06-16T19:00:23.508Z",
+        "type": "default"
+      },
+      {
+        "content": "唉~发个状态证明艰难活着",
+        "extra": "",
+        "id": 59,
+        "publishDate": "2026-06-16T01:02:16.666Z",
+        "type": "default"
+      },
+      {
+        "content": "GPT，2026年6月14日 23:00 ，进行调整混入pro号，以保证稳定运行。价格会进行调整，请见谅，plus已经到头了，pro成本很高，如果中途封号的话基本是血亏。 预计调整幅度50%。",
+        "extra": "",
+        "id": 58,
+        "publishDate": "2026-06-14T12:24:59.079Z",
+        "type": "default"
+      },
+      {
+        "content": "下线demo-claude了，根本逆不了一点，放弃~没见过强制注入提示词这么多的渠道（看来狂欢不了一点）",
+        "extra": "",
+        "id": 57,
+        "publishDate": "2026-06-14T07:46:32.772Z",
+        "type": "default"
+      },
+      {
+        "content": "上线的，demo-claude系列模型是新渠道逆向的，经过测试下来他的系统提示词魔改实在是太多太多，无法写代码，望知悉。",
+        "extra": "",
+        "id": 56,
+        "publishDate": "2026-06-14T04:47:43.922Z",
+        "type": "default"
+      },
+      {
+        "content": "team BUG 分组成本有所提升，调到0.5倍率。",
+        "extra": "",
+        "id": 55,
+        "publishDate": "2026-06-12T06:15:57.604Z",
+        "type": "default"
+      },
+      {
+        "content": "team BUG 已恢复，已上浅梦促销分组，这次有成本，故定价为，当前模型价格的0.2倍率。\n速蹬，价格还是很实惠的。\n\nGPT5.5，1.5站内余额计算，再算上群内折扣6折充值，1.5*0.2=0.3*0.6=0.18人民币 百万输入，不计缓存。",
+        "extra": "",
+        "id": 54,
+        "publishDate": "2026-06-11T07:35:55.891Z",
+        "type": "default"
+      },
+      {
+        "content": "回退，降价~",
+        "extra": "",
+        "id": 53,
+        "publishDate": "2026-06-11T03:41:18.463Z",
+        "type": "default"
+      },
+      {
+        "content": "gpt同行都在炸，我的还活着😊😊😊",
+        "extra": "",
+        "id": 52,
+        "publishDate": "2026-06-11T03:23:06.344Z",
+        "type": "default"
+      },
+      {
+        "content": "GPT现在扛不住了，渠道全部拉闸，自己号池的GPT调整价格+50%，目前站内六折充值的话就是：1.5*0.6=0.9人民币百万5.5GPT计算。这就是前两天team狂欢的代价吗（—）",
+        "extra": "",
+        "id": 51,
+        "publishDate": "2026-06-10T04:51:03.835Z",
+        "type": "default"
+      },
+      {
+        "content": "再说一下，老东家不要测活！！！他那边有保底扣费！特别是claude模型，这个模型吃不起测活！",
+        "extra": "",
+        "id": 50,
+        "publishDate": "2026-06-09T16:03:10.414Z",
+        "type": "default"
+      },
+      {
+        "content": "team渠道似乎死了，等待通知，复活的话群里会通知~！",
+        "extra": "",
+        "id": 49,
+        "publishDate": "2026-06-09T15:36:31.170Z",
+        "type": "default"
+      },
+      {
+        "content": "渠道没死，促销GPT继续-90%，价格已调整，请大家切到分组，账户死了即终止~希望大家拉拉人~",
+        "extra": "",
+        "id": 48,
+        "publishDate": "2026-06-08T05:08:20.035Z",
+        "type": "default"
+      },
+      {
+        "content": "账号已拉闸，请大家及时切换分组，价格已回调。",
+        "extra": "",
+        "id": 47,
+        "publishDate": "2026-06-07T19:46:17.130Z",
+        "type": "default"
+      },
+      {
+        "content": "特供：【Team BUG套餐】记得在新建 Key 时，选择「浅梦促销」分组\n直降 90% OFF，现在加入群聊，更可享充值 6 折特惠！\n折后百万输入仅需 0.06元。算上下文缓存，四舍五入根本就是白嫖（不要钱）！\n特别提醒：本次福利极其特殊，本批次账号封号即停，绝版不再补存。且用且珍惜，上车请速速！希望大家多拉拉人~",
+        "extra": "",
+        "id": 46,
+        "publishDate": "2026-06-07T09:26:32.482Z",
+        "type": "default"
+      },
+      {
+        "content": "星光不问赶路人，祝各位学子金榜题名！\n在这个特别的日子里，浅梦为大家准备了 GPT限时祈愿特惠！\n",
+        "extra": "",
+        "id": 45,
+        "publishDate": "2026-06-07T09:19:49.219Z",
+        "type": "default"
+      },
+      {
+        "content": "祝各位考生金榜题名~",
+        "extra": "",
+        "id": 44,
+        "publishDate": "2026-06-07T01:02:01.163Z",
+        "type": "default"
+      },
+      {
+        "content": "team渠道已无，狂欢已结束，感谢大家支持，请及时更换分组，晚点促销分组下线模型～预算有限的朋友们可以等待下一次狂欢记得加群会通知",
+        "extra": "",
+        "id": 43,
+        "publishDate": "2026-06-06T17:48:59.962Z",
+        "type": "default"
+      },
+      {
+        "content": "team狂欢准备结束了~朋友们，已经开不出号了~",
+        "extra": "",
+        "id": 42,
+        "publishDate": "2026-06-06T15:15:21.811Z",
+        "type": "default"
+      },
+      {
+        "content": "自由号池谷歌反重力克劳德模型因成本问题价格上调，又补了22个号，撑不住了。fzl-claude-opus-4-6：0.4、fzl-claude-sonnet-4-6，0.32，1次。谷歌模型暂不调控。反重力出来的opus默认是思考模型。",
+        "extra": "",
+        "id": 41,
+        "publishDate": "2026-06-06T09:46:57.803Z",
+        "type": "default"
+      },
+      {
+        "content": "GPT限时开启促销，BUG母号，team套餐，记得新建key选择浅梦促销分组~\n六折充值（加群享受充值），即约等于，0.2*0.6=0.12人民币百万输入，算上缓存越等不要钱~GPT5.5定价。\n- 80%off~~ 渠道封号即停止。",
+        "extra": "",
+        "id": 40,
+        "publishDate": "2026-06-06T05:27:25.468Z",
+        "type": "default"
+      },
+      {
+        "content": "GPT限时开启促销，记得新建key选择浅梦促销分组~\n- 30%off~~",
+        "extra": "",
+        "id": 39,
+        "publishDate": "2026-06-05T09:56:33.568Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro号池恢复了，都是官方缓存。",
+        "extra": "",
+        "id": 38,
+        "publishDate": "2026-06-05T04:54:03.648Z",
+        "type": "default"
+      },
+      {
+        "content": "自有号池的kiro断货了，拉闸了，我先下了~",
+        "extra": "",
+        "id": 37,
+        "publishDate": "2026-06-04T03:07:42.197Z",
+        "type": "default"
+      },
+      {
+        "content": "GPT成本持续上涨，可能价格要上调一点了。后台缓存概率高达85%，预估可能会涨个0.5站点余额吧。",
+        "extra": "",
+        "id": 36,
+        "publishDate": "2026-06-03T19:02:22.948Z",
+        "type": "default"
+      },
+      {
+        "content": "GPT系列模型，codex官方现在有点问题，等官方修复好就行了。",
+        "extra": "",
+        "id": 35,
+        "publishDate": "2026-06-03T05:18:55.076Z",
+        "type": "default"
+      },
+      {
+        "content": "目前自有号池的：fzl-claude-opus-4-6，因谷歌限流加上无法补号，成本过高，已不适合用于写代码了。尽管反重力出来的智商还算不错，但也实属无奈之举。\nkiro这个月成本也是直线往上升，写代码的可以切过来这个用用~",
+        "extra": "",
+        "id": 34,
+        "publishDate": "2026-06-02T12:03:16.146Z",
+        "type": "default"
+      },
+      {
+        "content": " 奥特曼移除了codex的5.2，5.3模型的权限，当前我自动映射到了5.4，大家知悉。",
+        "extra": "",
+        "id": 33,
+        "publishDate": "2026-06-02T01:25:30.198Z",
+        "type": "default"
+      },
+      {
+        "content": "呜呜呜，谷歌大人好无情21个号！！21个号啊！！！一个都上不了号！！！！！",
+        "extra": "",
+        "id": 32,
+        "publishDate": "2026-06-01T14:31:20.297Z",
+        "type": "default"
+      },
+      {
+        "content": "老东家分组的claude禁止刷接口即单次消费小于0.1站点余额的token输入输出。\n（即多次小于5000输入）请见谅，老东家那边设置了保底扣费，按量付费（魔改版newapi）同步过来有很严重的价格BUG。",
+        "extra": "",
+        "id": 31,
+        "publishDate": "2026-05-30T18:41:17.704Z",
+        "type": "default"
+      },
+      {
+        "content": "GPT的paypal渠道死掉了，且用且珍惜，先不涨价，如果后面成本持续上升的话可能还是得涨一点，望见谅。\n\n今天有用户反应在线充值的有概率掉单，掉单的联系我：95201872，根据情况会适当补偿感谢支持~\n\n网站在线直充的均支持开票（技术服务类）开票公司与您支付收单公司一致，有需求的老板可以联系我。",
+        "extra": "",
+        "id": 30,
+        "publishDate": "2026-05-26T05:01:58.018Z",
+        "type": "default"
+      },
+      {
+        "content": "GPT折扣暂时恢复原价，拉闸导致成本直线上升。",
+        "extra": "",
+        "id": 29,
+        "publishDate": "2026-05-25T10:28:16.148Z",
+        "type": "default"
+      },
+      {
+        "content": "当前GPT改变了AT刷新策略，紧急采购了3个贵的替补，若后续无法恢复，衡量成本后可能会进行GPT调价。",
+        "extra": "",
+        "id": 28,
+        "publishDate": "2026-05-25T00:26:41.303Z",
+        "type": "default"
+      },
+      {
+        "content": "好了，S渠道已经移到三方渠道去了，一点都不稳定再见。",
+        "extra": "",
+        "id": 27,
+        "publishDate": "2026-05-23T14:43:08.414Z",
+        "type": "default"
+      },
+      {
+        "content": "又有群友反馈说S开头的池子前缀还行，不算掺水……待评估中……",
+        "extra": "",
+        "id": 26,
+        "publishDate": "2026-05-23T01:02:20.073Z",
+        "type": "default"
+      },
+      {
+        "content": "s开头渠道的模型涉嫌掺水，将于5月23日移动到三方分组。",
+        "extra": "",
+        "id": 25,
+        "publishDate": "2026-05-22T14:45:26.419Z",
+        "type": "default"
+      },
+      {
+        "content": "kiro要完蛋了，GPT开启活动-50%~",
+        "extra": "",
+        "id": 24,
+        "publishDate": "2026-05-21T19:06:21.642Z",
+        "type": "default"
+      },
+      {
+        "content": "三方对接渠道，不保证数据是否会被用于训练，二次出售，对接的都是小商家，所以请勿使用在隐私环境！！！",
+        "extra": "",
+        "id": 23,
+        "publishDate": "2026-05-19T09:00:42.236Z",
+        "type": "default"
+      },
+      {
+        "content": "当前和老东家对价格方面有一些分歧，今天晚上等收购好一些官转账号后会进行分组的一个调整。因为近期反重力，CLI额度共享，导致额度频繁不够用。",
+        "extra": "",
+        "id": 22,
+        "publishDate": "2026-05-17T02:38:54.628Z",
+        "type": "default"
+      },
+      {
+        "content": "2026年5月13日号18:00各种谷歌反重力模型还有CLI各种炸，目前官转是正常的慢了点，但还是给配的，想要提高体验的可以切一下官转，说实在官转咱这定价，只要不是站点直充的都不算贵了老板。",
+        "extra": "",
+        "id": 21,
+        "publishDate": "2026-05-13T17:01:25.734Z",
+        "type": "default"
+      },
+      {
+        "content": "vertex官转的谷歌模型已上线，会比CLI的gemini稳定很多，除了贵没有任何毛病。",
+        "extra": "",
+        "id": 20,
+        "publishDate": "2026-05-12T00:59:40.220Z",
+        "type": "default"
+      },
+      {
+        "content": "vip，默认分组的ds模型余额准备没了，没了就下线啦。这个模型本身就是官key活动～感谢大家支持喵～",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-05-07T09:45:39.244Z",
+        "type": "default"
+      },
+      {
+        "content": "CLI的谷歌模型已经上线：\ngemini-2.5-flash\ngemini-2.5-pro\ngemini-3-pro-preview\ngemini-3-flash-preview\ngemini-3.1-pro-preview\n目前先按次CLI封号严重，反重力出来的谷歌模型按量。",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-05-02T09:56:58.777Z",
+        "type": "default"
+      },
+      {
+        "content": "cli模型再等一等吧，尽量快一点。",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-05-01T06:03:48.141Z",
+        "type": "default"
+      },
+      {
+        "content": "反重力出来的gemini-3.1-flash-image/gemini-3.1-pro-high/gemini-3-flash/gemini-3.1-pro-low，这四个模型因成本问题进行价格调整，略有涨幅。",
+        "extra": "",
+        "id": 16,
+        "publishDate": "2026-05-01T06:02:27.475Z",
+        "type": "default"
+      },
+      {
+        "content": "反重力4.30日今天彻底改了规则，一个号所有额度共享，彻底跑不了了。\n目前反重力短暂恢复，现在纯跑ai积分， 一个母号只有2.5w，所以成本能不能包得住我还不清楚，先按这个价格跑，跑完这几个号我核算后再看是否调整\n\ngemini的反重力接口已经打开，能不能用不太清楚现在成本太高了",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2026-04-30T09:58:18.682Z",
+        "type": "default"
+      },
+      {
+        "content": "CLI的模型明天恢复，上线了绘图网页：https://huitu.qianqianye.com/\n部分地区需要魔法访问，后端请求不断流。",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-04-28T15:25:08.650Z",
+        "type": "default"
+      },
+      {
+        "content": "今天newapi漏洞报得有点多……先开启邮箱白名单了",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2026-04-16T17:22:01.053Z",
+        "type": "default"
+      },
+      {
+        "content": "国内线路分流一点去上海或北京，怎么都在广州，被限速了我曹！！！",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-04-13T14:16:39.808Z",
+        "type": "default"
+      },
+      {
+        "content": "日本优化线路因邻居问题一直挨打，久久不得恢复。\n目前香港线路似乎还行，可以切一下",
+        "extra": "",
+        "id": 11,
+        "publishDate": "2026-04-13T12:14:22.048Z",
+        "type": "default"
+      },
+      {
+        "content": "这几天扫墓外地出差一直没空，国内+海外优化线路因邻居问题频繁受到牵连，有条件的多尝试切换api路径，这里说一下本站域名不能作为api使用，请到数据面板获取api。\n\n等我空闲了会多加几条备用线路进来……",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-04-07T15:56:07.691Z",
+        "type": "default"
+      },
+      {
+        "content": "计费调整通知：Claude 模型改为按次计费\n\n各位用户，因官方调整为计次收费（Ultra账号限制极严）以及近期遭遇大量低输入恶意刷单，自有号池（vip, default）的两个反重力 Claude 模型将于 2026年4月1日 0:00 起调整为按次计费：\n\nClaude Opus 4.6：$0.25 / 次\n\nClaude Sonnet 4.6：$0.20 / 次\n\n注：低频/轻度使用的用户，建议切换至其他按量计费模型。非常抱歉带来不便，感谢大家的理解与支持！",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-03-31T12:09:59.744Z",
+        "type": "default"
+      },
+      {
+        "content": "国内线路已经恢复",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-03-31T11:05:22.000Z",
+        "type": "default"
+      },
+      {
+        "content": "国内线路的API，IDC发通知，瘫痪了，具体恢复等待上游通知，大家有需要的先用优化线路吧。",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-03-30T17:55:40.887Z",
+        "type": "default"
+      },
+      {
+        "content": "为了确保SLA可用率，对接了一些同行，价格都挺贵的……如果发现掺水及时和我联系，马上下架补偿，感谢支持~我的QQ：95201872",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-03-29T09:30:58.777Z",
+        "type": "default"
+      },
+      {
+        "content": "我靠，eo欠费一分钱给我站点全停了，呜呜呜",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-03-27T18:25:01.923Z",
+        "type": "default"
+      },
+      {
+        "content": "由于晚上额度减半，成本太高入导致一直断额，也没有充足预算补号，现对claude模型在17:00-21:00进行动态调价1.5倍，其他时间段不变，从2026年3月28日开始，望周知",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-03-27T14:31:22.559Z",
+        "type": "default"
+      },
+      {
+        "content": "不建议直充~有需求的老板加群分销/BOSS直充更便宜哦",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-03-26T13:30:08.169Z",
+        "type": "default"
+      },
+      {
+        "content": "QQ群：1013106587",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-03-26T13:27:09.916Z",
+        "type": "default"
+      },
+      {
+        "content": "AUG站点余额和浅夜站点余额不互通喵~\n\n若不再使用旧站点的可以在下面登录本站点的账户，输入AUG站点的key把余额转过来哦~\n\n网页地址：https://newapi-py.qianye.host/\n\n这个还支持用户之间自行转账，欢迎体验喵~\n",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-03-26T13:24:52.277Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "yellow",
+        "description": "大宽带，有魔法推荐，不推荐直连，海外机器推荐。这个api使用生图模型的时候容易出现524。",
+        "id": 2,
+        "route": "CF国际线路(有的客户端需要手动加/v1请注意）",
+        "url": "https://newapi.qianqianye.com"
+      },
+      {
+        "color": "orange",
+        "description": "优化线路很贵，有魔法的请选择国际线路，把机会留给需要的人~感谢支持。选择优化线路则不要开启魔法，避免减速带效果~",
+        "id": 6,
+        "route": "香港优化线路(有的客户端需要手动加/v1请注意）",
+        "url": "https://newapi-hk.qianye.host"
+      },
+      {
+        "color": "blue",
+        "description": "优化线路很贵，有魔法的请选择国际线路，把机会留给需要的人~感谢支持。选择优化线路则不要开启魔法，避免减速带效果~",
+        "id": 10,
+        "route": "美国优化线路(有的客户端需要手动加/v1请注意）",
+        "url": "https://newapi-us-la-1.qianye.host"
+      },
+      {
+        "color": "blue",
+        "description": "优化线路很贵，有魔法的请选择国际线路，把机会留给需要的人~感谢支持。选择优化线路则不要开启魔法，避免减速带效果~",
+        "id": 12,
+        "route": "日本优化线路(有的客户端需要手动加/v1请注意）",
+        "url": "https://newapi-jp.qianye.host"
+      },
+      {
+        "color": "blue",
+        "description": "优化线路很贵，有魔法的请选择国际线路，把机会留给需要的人~感谢支持。选择优化线路则不要开启魔法，避免减速带效果~",
+        "id": 13,
+        "route": "新加坡优化线路(有的客户端需要手动加/v1请注意）",
+        "url": "https://newapi-sg.qianye.host"
+      },
+      {
+        "color": "blue",
+        "description": "广州线路，不可以生图使用，随机限速，非敏感地区不建议使用。",
+        "id": 14,
+        "route": "广州线路",
+        "url": "https://newapi-guangzhou.qianye.host"
+      },
+      {
+        "color": "blue",
+        "description": "上海线路，不可以生图使用，随机限速，非敏感地区不建议使用。",
+        "id": 15,
+        "route": "上海线路",
+        "url": "https://newapi-shanghai.qianye.host"
+      },
+      {
+        "color": "blue",
+        "description": "北京线路，不可以生图使用，随机限速，非敏感地区不建议使用。",
+        "id": 16,
+        "route": "北京线路",
+        "url": "https://newapi-beijing.qianye.host"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      }
+    ],
+    "checkin_enabled": false,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "custom_oauth_providers": [
+      {
+        "id": 1,
+        "name": "微信登录",
+        "slug": "wx",
+        "icon": "",
+        "client_id": "qianye",
+        "authorization_endpoint": "https://oauth2.microgg.cn/api/oauth/authorize",
+        "scopes": "login_type:wx"
+      },
+      {
+        "id": 2,
+        "name": "QQ登录",
+        "slug": "qq",
+        "icon": "",
+        "client_id": "qianyeqq",
+        "authorization_endpoint": "https://oauth2.microgg.cn/api/oauth/authorize",
+        "scopes": "login_type:qq"
+      },
+      {
+        "id": 3,
+        "name": "支付宝登录",
+        "slug": "alipay",
+        "icon": "",
+        "client_id": "qianyezfb",
+        "authorization_endpoint": "https://oauth2.microgg.cn/api/oauth/authorize",
+        "scopes": "login_type:alipay"
+      }
+    ],
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": true,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://docs.newapi.pro",
+    "email_verification": true,
+    "enable_batch_update": false,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": " 🔄 余额自由划转指南\n如果您近期不再需要使用 VS 的 AUG 编程工具，可以将余额一键划转至新站点；反之，当您再次需要使用 AUG 时，也可以随时把余额划转回去。\n一切都是自由且无限制的（但请不要恶意滥用哦~）\n\n👉 划转传送门：https://newapi-py.qianye.host/\n 🎁 支持用户间转账 (PY)\n\n如果您需要和其他小伙伴进行“PY”交易或赠送，同样可以通过上述站点，将您的余额安全地划转给其他用户~\n⚠️ 必须注意的高危事项：\n无论是跨站划转还是用户间转账，该操作都是绝对不可逆的！\n在按下确认键之前，请务必、务必、务必核对好目标用户名！",
+        "id": 1,
+        "question": "浅夜の梦站点与AUG站点余额互转传送门"
+      },
+      {
+        "answer": "不建议直充老板，除非您有正规业务需要开票的。",
+        "id": 2,
+        "question": "老板充值加群或联系管理QQ：95201872，可享折扣充值~"
+      },
+      {
+        "answer": "加群享受特惠充值~",
+        "id": 3,
+        "question": "QQ群：1013106587"
+      },
+      {
+        "answer": "https://huitu.qianqianye.com/\n\n登录newapi站点还可享受多端绘图缓存~",
+        "id": 4,
+        "question": "绘图网页输入key即可使用"
+      },
+      {
+        "answer": "【腾讯文档】浅夜の梦API使用教程\nhttps://docs.qq.com/aio/DUWpsa2pKRUtRbXRQ",
+        "id": 5,
+        "question": "使用教程文档"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "https://tuchuang.qyxc.org/xq/2026/03/27/69c57882746ae.png",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "New API",
+    "passkey_login": false,
+    "passkey_origins": "https://newapi.qianqianye.com",
+    "passkey_rp_id": "newapi.qianqianye.com",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
+    "price": 1,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "register_enabled": true,
+    "self_use_mode_enabled": false,
+    "server_address": "https://newapi.qianqianye.com",
+    "setup": true,
+    "start_time": 1781731410,
+    "stripe_unit_price": 1,
+    "system_name": "浅夜の梦",
+    "telegram_bot_name": "qianye_meng_bot",
+    "telegram_oauth": true,
+    "theme": "default",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": false,
+    "usd_exchange_rate": 1,
+    "user_agreement_enabled": true,
+    "version": "v1.0.0-rc.11",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

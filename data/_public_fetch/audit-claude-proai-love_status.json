@@ -1,0 +1,251 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":false,\"requireAuth\":false},\"docs\":true,\"about\":true}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":false,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":false,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":false,\"setting\":true,\"package_management\":true}}",
+    "_qn": "new-api",
+    "announcements": [
+      {
+        "content": "由于风控严重成本剧增,站内高额度套餐已提价(已提前10天通知) . 外部分销商存量库存,请于三天内完成提价🌹 另月卡升级到120次,老套餐实时生效.  Max/Ultra/混合动力月卡限时回归。",
+        "extra": "",
+        "id": 11,
+        "publishDate": "2026-06-08T03:00:00.000Z",
+        "type": "default"
+      },
+      {
+        "content": "claude-opus-4-8已支持，文档已更新🌹",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-06-08T01:00:00.000Z",
+        "type": "default"
+      },
+      {
+        "content": "📢由于外部风控增强导致成本剧增. 为了本站的长期稳定运营并保障长期用户利益,6月会对套餐进行调整,并对部分高额度套餐进行调价,预计上浮30% . 已购买/已续期的用户套餐不受影响,感谢支持! 🌹 🌹 另外限时销售套餐即将下架,最后五天! 已购买/已续期用户只限个人使用,请勿转售滥用~",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-05-25T16:00:00.508Z",
+        "type": "warning"
+      },
+      {
+        "content": "📢Ultra 月卡提速 ,临时调整为80路并发! 5月底套餐商店/各平台下架,已购买/已续期用户不影响使用!",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-05-22T15:00:00.817Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "闲鱼最近审核力度加强,如闲鱼链接不可用,请使用站内支付宝充值. 入口钱包管理中,最高8折优惠,永久售后 !🌹",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-05-20T05:00:00.301Z",
+        "type": "default"
+      },
+      {
+        "content": "🌹 Plus Max Ultra月卡已提速，临时提至50路并发，更适合复杂项目。",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-05-15T05:00:00.000Z",
+        "type": "default"
+      },
+      {
+        "content": "🔥 克劳德超级弹药库 限时回归！《Claude Ultra 月卡，3小时300次》，仅售468.88 !",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-05-11T14:23:53.380Z",
+        "type": "default"
+      },
+      {
+        "content": "🔥经过这两天的优化，缓存率已覆盖额度卡的所有协议路径，经测试缓存率最高可达95%，用户token成本大幅降低🌹",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-05-08T16:00:00.000Z",
+        "type": "success"
+      },
+      {
+        "content": "🌹五一快乐，返佣功能已上线。 邀请好友，注册充值持续返佣15%，奖励超过1刀即可转为站内余额。",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-04-30T16:00:00.000Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "Claude 额度卡、控制台与用量查询当前可用。",
+        "extra": "支持 Claude Code、Codex、OpenCode、Cherry Studio 和兼容 SDK。",
+        "id": 1,
+        "publishDate": "2026-04-07T00:00:00Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "欢迎加入  克劳德AI交流 QQ群：929995758",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-03-10T16:00:24.000Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "blue",
+        "description": "Claude Code 直接填根域，不追加 /v1。",
+        "route": "Claude Code",
+        "url": "https://claude.proai.love"
+      },
+      {
+        "color": "green",
+        "description": "Codex、OpenCode、Cherry Studio 和兼容 SDK 统一填 /v1。",
+        "route": "兼容接口",
+        "url": "https://claude.proai.love/v1"
+      },
+      {
+        "color": "pink",
+        "description": "购买后在这里拿 API Key，也能看到商店和兑换入口。",
+        "route": "控制台",
+        "url": "https://claude.proai.love/console"
+      },
+      {
+        "color": "amber",
+        "description": "查询剩余额度、已用量和最近消耗。",
+        "route": "用量与账单",
+        "url": "https://claude.proai.love/balance"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": false,
+    "contact_qq": "",
+    "contact_qq_group": "929995758",
+    "contact_qq_group_enabled": false,
+    "contact_qq_groups": [
+      {
+        "full": false,
+        "group_id": "929995758",
+        "join_url": "https://qm.qq.com/q/w8WybkTPq2",
+        "name": "克劳德AI交流 8群"
+      }
+    ],
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_purchase_link": "",
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://claude.proai.love/docs-template.html#guide",
+    "email_verification": false,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "Claude Code 直接使用 https://claude.proai.love，不追加 /v1。",
+        "id": 1,
+        "question": "Claude Code 用哪个地址？"
+      },
+      {
+        "answer": "兼容工具统一使用 https://claude.proai.love/v1。",
+        "id": 2,
+        "question": "Codex / OpenCode / Cherry Studio 用哪个地址？"
+      },
+      {
+        "answer": "站内购买完成后进入控制台->我的套餐 查看套餐对应API Key,以及套餐详细用量.",
+        "id": 3,
+        "question": "站内买完套餐之后去哪看 API Key和用量？"
+      },
+      {
+        "answer": "到我的套餐->查看详情 即可查看剩余额度、已用量和最近消耗。也可以到balance 页面查询详细信息.",
+        "id": 4,
+        "question": "怎么查剩余额度和最近消耗？"
+      },
+      {
+        "answer": "先确认 Key 是否复制完整，再确认地址是否填错；Claude Code 不带 /v1，兼容工具要带 /v1。如果在 codex 出现这个错误,请清理下auth.json,重新配置即可. ",
+        "id": 5,
+        "question": "出现 401 / Invalid token 怎么办？"
+      },
+      {
+        "answer": "先确认控制台或 文档页模型目录里当前开放的 模型 ID，再逐字检查模型名。",
+        "id": 6,
+        "question": "报 Model not found 怎么办？"
+      },
+      {
+        "answer": "目录短暂延迟时，以控制台当前展示的可用 Claude 模型为准。",
+        "id": 7,
+        "question": "模型目录暂时没显示怎么办？"
+      },
+      {
+        "answer": "兑换码统一走钱包管理中的兑换入口 .",
+        "id": 8,
+        "question": "兑换码在哪里用？"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "",
+    "github_oauth": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "/claude-logo.svg",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "package_claim_link": "",
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "克劳德 AI",
+    "passkey_login": false,
+    "passkey_origins": "https://claude.proai.love",
+    "passkey_rp_id": "claude.proai.love",
+    "passkey_user_verification": "preferred",
+    "price": 7.3,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "CNY",
+    "quota_per_unit": 500000,
+    "request_audit_enabled": true,
+    "request_audit_export_enabled": false,
+    "request_audit_lookup_enabled": false,
+    "request_audit_storage_mode": "object_storage",
+    "self_use_mode_enabled": false,
+    "server_address": "https://claude.proai.love",
+    "setup": true,
+    "start_time": 1781761430,
+    "stripe_unit_price": 8,
+    "system_name": "克劳德 AI",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "top_up_link": "",
+    "turnstile_check": false,
+    "turnstile_site_key": "",
+    "uptime_kuma_enabled": false,
+    "usd_exchange_rate": 7.3,
+    "user_agreement_enabled": false,
+    "version": "",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

@@ -1,22 +1,15 @@
 {
   "data": {
     "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":true}",
-    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":false,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":false,\"deployment\":false,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
     "_qn": "AI Rocket - ai.kisekiremi.moe",
     "announcements": [
       {
-        "content": "支持opus4.7",
-        "extra": "",
-        "id": 2,
-        "publishDate": "2026-04-17T06:26:26.752Z",
-        "type": "default"
-      },
-      {
-        "content": "A.极简用法：左侧操练场可直接选择进行对话。注意选择codex-或claude-开头的分组。\n\nB.基础用法：\n1. [令牌管理] - 选择[添加令牌]\n2. 名称随意，分组选择codex-default，模型限制列表选择gpt-5.4 确认\n3. 复制 sk-xxx 令牌 至 您的电脑的配置中（IDE或者CLI）\n【不要选择default分组！】",
+        "content": "A.使用模型前请注意：所选择的分组、需要和模型的类别一致（Codex-开头 / Claude-开头）\n\nB.基础用法：\n1. [令牌管理] - 选择[添加令牌]\n2. 名称随意，分组选择codex-default，模型限制列表选择gpt-5.4 确认\n3. 复制 sk-xxx 令牌 至 您的电脑的配置中（IDE或者CLI）\n【不要选择default分组！】",
         "extra": "",
         "id": 1,
-        "publishDate": "2026-04-08T14:14:18.335Z",
-        "type": "default"
+        "publishDate": "2026-06-01T03:11:11.000Z",
+        "type": "warning"
       }
     ],
     "announcements_enabled": true,
@@ -55,7 +48,7 @@
     "custom_currency_symbol": "¤",
     "data_export_default_time": "hour",
     "default_collapse_sidebar": false,
-    "default_use_auto_group": false,
+    "default_use_auto_group": true,
     "demo_site_enabled": false,
     "discord_client_id": "",
     "discord_oauth": false,
@@ -114,8 +107,8 @@
     "self_use_mode_enabled": false,
     "server_address": "https://ai.kisekiremi.moe",
     "setup": true,
-    "start_time": 1780741765,
-    "stripe_unit_price": 8,
+    "start_time": 1781414061,
+    "stripe_unit_price": 7,
     "system_name": "AI Rocket - ai.kisekiremi.moe",
     "telegram_bot_name": "ai_rocket_nyabot",
     "telegram_oauth": false,

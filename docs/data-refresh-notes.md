@@ -295,6 +295,7 @@ Codex Manager 新日志增量更新：
 | `www.haoyongai.xyz` | 用户确认充值档位为 `1 RMB = 10 USD`；正式采用稳定 OpenAI/Codex 分组 `GPT` 倍率 `1`。公告里的临时福利价或临时福利分组不作为长期正式充值档位。 | 用户人工确认、登录态页面、`config/station_pricing_overrides.json` 权威覆盖。 | 不能把公告里的临时福利价当长期档位；不能用临时福利分组替代稳定 OpenAI/Codex 分组。 | 后续刷新继续优先采用稳定分组；若充值比例变化，先更新人工覆盖再重建派生数据。 |
 | `api.wanlai.ai` | 官网入口为 `https://wanlai.ai`，API base 为 `https://api.wanlai.ai`。`/api/v1/payment/*` 返回 `404 page not found` 不阻断入榜，因为用户截图确认 `https://wanlai.ai/purchase` 充值页费用事实：正式采用 `OpenAi-官方订阅稳定渠道` 倍率 `1`，充值比例 `1 RMB ≈ 1 USD`，有效倍率 `1.0`。 | 用户截图确认的充值页、官网/API base 覆盖、`config/station_pricing_overrides.json` 权威覆盖。 | 不能因 payment API probe 404 判定无费用证据；不能采用横幅“低至 0.15”作为正式倍率，除非定位到具体长期正式渠道。 | 后续优先修正真实 API 探测；如页面正式渠道或充值比例变化，先更新人工覆盖再重建 CSV 与 `site-data.json`。 |
 | `www.thinkai.tv` | 用户截图确认 `Codex（推荐）` 分组倍率 `1.2`，充值档位为 `25/50/100/200/500 USD` 分别实付 `12.5/25/50/100/250 RMB`，正式倍率为 `1.2 * 12.5 / 25 = 0.6`。 | 用户截图确认的分组倍率和充值页、`config/station_pricing_overrides.json` 权威覆盖。 | 不能用自动 `/api/user/amount` 采样返回值覆盖本轮权威口径；不能把截图之外的账号或浏览器状态写入公开数据。 | 后续若站内充值页或分组倍率变化，重新登录核验并更新人工覆盖。 |
+| `ai.nexahub.one` | 用户截图确认 API 密钥页分组为 `Codex 余额计费 0.065x`、`ccmax满血（测试通过）0.7x`；充值页可见快捷金额 `10/20/50/100/200/500/1000/2000/5000`。本轮正式采用 `Codex 余额计费` 与 `NexaHub wallet topup 10 USD`，按页面可见 `1:1` 口径，采用倍率 `0.065`。 | 用户截图确认的 `/keys` 分组下拉和 `/purchase` 充值页、`config/station_pricing_overrides.json` 权威覆盖。 | 不能继续采用旧 `Team 团队订阅`；不能把登录态接口里的 `Codex 余额计费 0.8` 或 `balance_recharge_multiplier=15` 覆盖到本轮正式口径。 | 后续如要恢复接口倍率口径，必须先在页面支付确认区核实实付金额，不提交订单、不保存账号或付款信息。 |
 | `laodog/dogcoding` | v1 支付配置关闭时使用官方外部店铺兑换码商品作为证据。 | 官方菜单指向的外部店铺商品。 | 不能在 `payment/config.enabled=false` 时生成默认钱包档位。 | 核对兑换码商品金额和到账美元额度，不按站内快捷充值处理。 |
 | `zhishu.dev` | 登录态 v1 接口可补齐 `codex-自建` 分组和公告；站内支付配置关闭，但左侧“充值”嵌入的官方链动小铺已核验 5 个 Codex 商品，可生成充值/套餐档位。 | 登录态 `/api/v1/groups/available`、`/api/v1/payment/config`、`/api/v1/payment/checkout-info`、`/api/v1/announcements`、官方外部店铺 `pay.ldxp.cn/shop/CFUOS364/ek8gty`。 | 不能只凭 `balance_recharge_multiplier` 生成站内钱包档位；不能保存店铺签名 URL 参数、用户邮箱或 token。 | 用户协助登录后脚本仍抓不到时，可用浏览器直接识别官方店铺和页面内容，再反哺脚本/配置。外部店铺顶层登录态可见 10/20/50 USD 不限时额度和 Plus/Pro 包月商品；headless 直接访问可能 403 `http_bot_simple`。 |
 | `x2app.top` | 站内“帮助和下单”指向官方链动小铺 `pay.ldxp.cn/shop/IU6GNW6R`；小铺公告写明 `x2app.top` 和全店 `x1`，商品包含不限时额度、日卡、周卡和 Pro 月卡。 | 公开配置 `custom_menu_items`、教程页 `https://x2app.top/jiaocheng.html`、链动小铺 `goodsList`、登录态 `/api/v1/groups/available`。 | 不能只因站内 `payment/config.enabled=false` 判定无充值；不能保存登录态凭据；Pro 月卡只作为可见套餐，采用倍率仍必须结合登录态 OpenAI 分组。 | 当前正式配置写入 `config/station_pricing_overrides.json`：Plus x1、Pro x1.5，最低采用 `2.8 RMB -> 35 USD` 日卡。 |
@@ -327,12 +328,14 @@ Codex Manager 新日志增量更新：
 | `api.nerverun.com` | 登录态 v1 probe 已补齐分组、永久余额档位、10 天订阅套餐和公告；同时存在永久余额与订阅套餐，类型为混合型。当前费用证据已具备，但请求样本为 0，所以未入榜原因应为缺请求样本。 | 登录态 `/api/v1/groups/available`、`/api/v1/payment/config`、`/api/v1/payment/checkout-info`、`/api/v1/payment/plans`、`/api/v1/announcements`。 | 不能因为费用证据齐全就绕过请求样本门槛；不能把明确 Claude/Kiro 的分组当 Codex 采用分组；不能把新用户 `0.3` 专属权益泛化到普通分组。 | 余额档位按 `1 RMB = 1 USD`；订阅为 `20 RMB -> 80 USD`、专属倍率 `0.3`、有效期 10 天；公告时间为 `2026-05-10 22:09:43`，内容提到首充 20 元以上领取 `gptPro号池专属 0.3倍率`。 |
 | `relayai.asia` | 登录态 v1 接口可补齐 `ChatGPT` 分组、钱包充值档位和公告；当前钱包换算 `1 RMB = 1 USD`，最低充值 `10 RMB`。 | 登录态 `/api/v1/groups/available`、`/api/v1/payment/config`、`/api/v1/payment/checkout-info`、`/api/v1/announcements`。 | 不能把模型 token 价格当充值档位；没有订阅套餐时只生成钱包快捷金额档位。 | 外部 Playwright 抓到 1 个分组、2 条公告，`/api/v1/payment/plans` 为空。 |
 | `api.baobu.xyz` | 登录态 v1 支付 API 已恢复，可补齐 4 个分组和钱包充值档位；当前 `1 RMB = 1 USD`，充值手续费 `1%`，公告接口为空列表。 | 登录态 `/api/v1/groups/available`、`/api/v1/payment/config`、`/api/v1/payment/checkout-info`、`/api/v1/payment/plans`、`/api/v1/announcements`。 | 不能沿用旧支付关闭 probe；不能只凭旧空结果覆盖新成功证据。 | 当前分组为 `codex`、`闲鱼`、`Claude code-20x`、`Claude code-pro`；`quick_amounts` 生成 10 个钱包档位，实付人民币需计入 1% 手续费。 |
+| `zhima` | 前 20 复核确认详情页必须展示正式排名采用的钱包充值口径；当前保留正式采用 `cx_free | wallet topup 10 RMB`，详情页补齐 `10/20/50/100/200/500/1000 RMB -> 同额 USD` 钱包档位。 | 正式排名采用项、登录态 v1 支付配置和详情页一致性复核、`config/station_pricing_overrides.json` 详情覆盖。 | 不能让详情页只展示订阅套餐而缺失正式排名采用的钱包充值档位。 | 若后续登录态页面显示不同钱包金额或充值比例，先更新详情覆盖，再重建 CSV 与 `site-data.json`。 |
 
 ### 特殊平台 / 特殊入口
 
 | 站点 | 当前结论 | 可用证据来源 | 不能做什么 | 下次刷新注意点 |
 | --- | --- | --- | --- | --- |
 | `ICodex` | 用户确认 `icodex.pro` 是公益站；若日志样本满足正式榜单门槛，以免费额度成本 `0` 参与正式综合榜单。 | 用户人工确认、真实页公开状态、日志样本、旧 probe 归档。 | 不能用请求样本、维护页、公告状态或登录页倒推收费费用行；不能反复触发价格/充值页补抓。 | 若后续站点不再公益或提供收费充值页，先更新公益规则和人工覆盖，再重建榜单。 |
+| `MuyuanDo` | 用户确认 `muyuan.do` 是公益站；详情页应展示 `Codex 免费公益线路` 和 `签到免费额度`，与正式排名免费口径一致。 | 用户人工确认、公益站规则、`config/station_pricing_overrides.json` 详情覆盖。 | 不能用公开 `/api/status` 的 `0.05 RMB = 1 USD` 付费换算覆盖公益免费详情；不能反复作为充值页补抓目标。 | 若后续站点不再公益或开放收费充值页，先更新公益规则和人工覆盖，再重建榜单。 |
 | `code.pndot.com` | 用户确认 `https://code.pndot.com` 当前打不开；继续作为不可用站点处理，不再作为自动或人工补抓目标。历史日志和旧 probe 只保留为归档证据。 | 2026-06-10 人工确认、历史日志、旧 probe。 | 不能用旧 probe、历史公告或请求样本生成新的费用行；不能让自动补抓把该站重新带入缺口队列。 | 若站点恢复并重新开放页面，再按新站点恢复流程补公开快照、登录态 probe 和费用证据。 |
 | `lpgpt.us` | 用户确认账号被封禁，无法登录抓取；不使用封禁登录态推断新费用证据，保留既有公开/归档证据。 | 用户人工确认、既有公开/归档证据。 | 不能用封禁账号状态伪造登录态分组、充值或公告证据。 | 后续只有账号恢复或公开证据更新时再刷新费用证据。 |
 | `freemodel` | 特殊平台，已抓取登录态账单、用量、充值和日志接口的脱敏结构化摘要；未发现公告接口。正式榜中 all/work/off 均正常显示。 | 登录态 dashboard API：auth/me、billing、billing invoices、usage、logs；线上 `/stations/freemodel` 核对。 | 不能把用户资料、账单敏感字段、token、Cookie 或邮箱写入 probe；不能伪造公告。 | 公告状态保留为 `public_missing`；费用证据以 Pro/Max 月卡和自定义余额充值结构化摘要为准。 |
@@ -401,3 +404,32 @@ rg -n "codex-log-refresh-state|full-log-rebuild|request_log_station_candidates|m
 - `icodex.pro`：2026-06-10 用户进一步确认是公益站；可按免费额度参与正式榜单，但不再作为价格/充值页补抓目标。
 - `code.pndot.com`：2026-06-10 用户确认 `https://code.pndot.com` 当前打不开，继续不作为自动或人工补抓目标。
 
+
+### aiapi1.cc.cd / dc API
+
+- 2026-06-18 用户截图确认：`https://aiapi1.cc.cd` 是 `dc API` 公益站，令牌分组 `free` 倍率 `0.1x`。
+- 详情页采用 `签到免费额度`，正式采用有效倍率为 `0`；不要把免费额度写成付费充值档位。
+- 公告截图事实：邀请一人送 30 刀、永久不收费，并特别标注邀请/受邀金额有效期只有一周且每周金额重置为 0。
+- 证据来源为用户截图确认的 `/console` 系统公告和 `/console/token` 令牌分组、公开 pricing 快照 `group_ratio.free=0.1`、Codex Manager 日志样本；不能保存账号、token、Cookie、余额、密钥或付款信息，不能伪造公告接口数据。
+- 若后续站点不再公益或开放收费充值页，先更新公益规则和人工覆盖，再重建 CSV 与 `site-data.json`。
+
+### freeapi.514179.xyz / Free API
+
+- 2026-06-18 用户截图确认：`https://freeapi.514179.xyz` 是公益站，无充值档位和页面可见倍率。
+- 详情页采用 `免费公益额度`，正式采用有效倍率为 `0`；结构化 `免费公益线路` 分组只用于让公益免费额度进入正式排名，不代表页面存在付费倍率。
+- 本轮请求样本来自 `data/codex-log-refresh-state.json` 的旧样本状态，不使用 `--full-log-rebuild`，避免当前 SQLite 已查不到的 3 个旧样本被清空。
+- 若后续站点开放付费充值页或展示真实分组倍率，先更新人工覆盖，再重建 CSV 与 `site-data.json`。
+
+### api.feng.cx / Feng API
+
+- 2026-06-18 用户截图确认：`api.feng.cx` 分组包含 `codex 0.08x`、`codex纯血PRO池 0.15x`、`default 1x`、`claude max 1.3x`、`image2分组 1x`。
+- 正式费用按平时 `1:1` 充值口径，记录为 `wallet topup sample 10 RMB -> 10 USD`；页面未列固定商品金额，不伪造成固定充值档位。
+- 618 活动公告中的 `0.9r 一刀`、满额折扣和活动截止时间只作为公告事实保留，不进入正式费用计算。
+- 正式采用 `codex | wallet topup sample 10 RMB`，采用倍率 `0.08`。
+
+### api.bluesminds.com / Bluesminds
+
+- 2026-06-18 用户截图确认：`api.bluesminds.com` topup 页展示 `10 Days Plan $25`、`20 days $50`、`unlimted plan $60`、`60 days $120`、`3 day claude paid $24 / $800` 等套餐；分组页显示 `default 1x`，通知指向 Telegram。
+- 本轮只采用截图套餐事实，不回退到旧公开 status 的 `1 RMB = 2 USD credit` 口径。
+- 用户确认正式采用 `10 Days Plan $25`；截图未给独立额度字段，本轮按价格型订阅 `25 -> 25` 口径计算。
+- `$0` 试用/赠送套餐和 `claude-paid` 套餐不得作为 Codex 正式采用项。

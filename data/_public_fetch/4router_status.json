@@ -5,7 +5,14 @@
     "_qn": "4router-core",
     "announcements": [
       {
-        "content": "加群1094738104 可以领取2刀额度",
+        "content": "因财务流程调整，开票申请可随时提交，但发票将统一于每周五开具并处理，敬请知悉，感谢理解。",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-06-12T10:18:14.905Z",
+        "type": "warning"
+      },
+      {
+        "content": "加群929658224可以领取2刀额度",
         "extra": "",
         "id": 6,
         "publishDate": "2026-05-18T09:39:47.672Z",
@@ -98,7 +105,7 @@
     "enable_task": true,
     "faq": [
       {
-        "answer": "请加群1094738104（加群有福利！），如有任何问题请咨询客服（包括开票）。退款原则上可扣除充值优惠后按比例返还。",
+        "answer": "请加群929658224（加群有福利！），如有任何问题请咨询客服（包括开票）。退款原则上可扣除充值优惠后按比例返还。",
         "id": 1,
         "question": "关于售后与交流"
       },
@@ -134,7 +141,7 @@
     "self_use_mode_enabled": false,
     "server_address": "https://4router.net",
     "setup": true,
-    "start_time": 1780823618,
+    "start_time": 1781769646,
     "stripe_unit_price": 1,
     "system_name": "4Router",
     "top_up_link": "",

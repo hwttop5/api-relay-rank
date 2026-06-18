@@ -1,0 +1,287 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true}}",
+    "aff_rebate_rate": 10,
+    "after_sales_groups": [
+      {
+        "name": "官方QQ群",
+        "link": "https://qm.qq.com/q/LoFwW7Oagq",
+        "type": "qq"
+      },
+      {
+        "name": "官方TG群",
+        "link": "https://t.me/Packycode",
+        "type": "telegram"
+      }
+    ],
+    "announcements": [
+      {
+        "_en_locked": true,
+        "category": "group",
+        "content": "各位用户：\n\n为进一步丰富模型选择，我们正式上线 sora 分组，现已开放使用。\n- 计费倍率：1.0\n- 包含模型：gpt-image-2\n\nsize参数 只支持1024x1024 / 1024x1536 / 1536x1024 / auto\n\n如需使用，请在创建令牌或调用时选择 sora 分组。\n\n感谢大家一直以来的理解与支持！\n\nPackyAPI 团队\n\n\n",
+        "content_en": "Dear Users,\n\nTo expand our model lineup, we are officially launching the Sora group, which is now open for immediate use.\n\n- Billing multiplier: 1.0\n- Included model: gpt-image-2\n\nThe size parameter only supports the following values: 1024x1024, 1024x1536, 1536x1024, auto\n\nTo utilize this service, please select the Sora group when generating API tokens or sending requests.\n\nThank you for your continuous understanding and support.\n\nPackyAPI Team",
+        "extra": "",
+        "extra_en": "",
+        "id": 23,
+        "publishDate": "2026-06-17T06:01:02.252Z",
+        "title": "【新分组上线】sora 分组现已开放",
+        "title_en": "New Group Release: Sora Group Now Available",
+        "type": "default"
+      },
+      {
+        "_en_locked": true,
+        "category": "model",
+        "content": "GLM-5.2是最新的旗舰级长周期任务模型。与前代产品 GLM-5.1 相比，GLM-5.2 在长周期任务处理能力方面实现了显著提升，并且首次在100 万个令牌的稳定环境下实现了这一功能。\n\nPackyCode 已完成适配，现已在 zai-officially 分组上线，可直接使用。",
+        "content_en": "GLM-5.2 is our latest flagship model for long-duration tasks. Compared with its predecessor GLM-5.1, GLM-5.2 delivers significant improvements in long-duration task processing capabilities, and for the first time delivers stable performance under a 1-million-token context window.\n\nPackyCode has completed compatibility adaptation. The model is now available in the zai-officially group for immediate use.",
+        "extra": "",
+        "extra_en": "",
+        "id": 22,
+        "publishDate": "2026-06-17T05:08:22.409Z",
+        "title": "新模型发布：GLM-5.2",
+        "title_en": "New Model Release: GLM-5.2",
+        "type": "default"
+      },
+      {
+        "_en_locked": true,
+        "category": "group",
+        "content": "各位用户：\n\n现已将**claude-sale** 分组计费倍率调整为 **1.0**，平台其他分组计费标准保持原有设置，无变动。\n\n感谢大家的理解与支持！\n\nPackyAPI 团队",
+        "content_en": "To all users,\n\nThe billing multiplier for the claude-sale group has been adjusted to 1.0. All other group billing standards on the platform remain unchanged.\nThank you for your understanding and support.\n\nPackyAPI Team",
+        "content_en_src": "7053fcc2cdb494b1",
+        "extra": "",
+        "extra_en": "",
+        "id": 21,
+        "publishDate": "2026-06-15T04:53:09.368Z",
+        "title": "计费规则调整通知",
+        "title_en": "Billing Rule Adjustment Notice",
+        "title_en_src": "0a9087f67f841f35",
+        "type": "default"
+      },
+      {
+        "_en_locked": true,
+        "content": "**各位用户：**\n\n根据此前发票政策调整，现做最后提醒：\n\n* **5月份大陆发票补开截止时间为 6月15日 23:59（明天晚23:59）**。逾期后平台将不再受理任何补开请求，请需要开票的用户务必在此之前登录个人中心完成申请。\n* **6月起发票政策调整：**个人支付仅支持开具海外 invoice，不再支持大陆发票；企业对公支付可正常申请大陆发票。\n* **7月1日起**，平台将正式关闭发票管理功能。\n\n感谢大家的理解与支持！\n\n**PackyAPI 团队**\n*2026 年 6 月 14 日*",
+        "content_en": "Notice to All Users\n\nFollowing the previous adjustment to our invoicing policy, we are issuing this final reminder:\n\n• Deadline for reissuing May mainland China invoices: 23:59 on June 15 (tomorrow). No reissuance requests will be accepted by our platform past this deadline. Users requiring invoices must submit applications via the Personal Center before the cutoff time.\n\n• Revised invoicing policy effective June 1: Personal payments will only be issued overseas invoices; mainland China invoices will no longer be available for personal orders. Corporate payments via official corporate accounts may still apply for mainland China invoices as usual.\n\n• Starting July 1, the dedicated invoice management feature on the platform will be permanently shut down.\n\nThank you for your understanding and support.\n\nPackyAPI Team\nJune 14, 2026",
+        "content_en_src": "c9e95f17123af5a4",
+        "extra": "",
+        "extra_en": "",
+        "id": 20,
+        "publishDate": "2026-06-14T14:47:34.594Z",
+        "title": "大陆发票补开即将关闭",
+        "title_en": "Mainland invoice reissue will be closed soon",
+        "title_en_src": "dd5e4d73301a84b9",
+        "type": "default"
+      },
+      {
+        "category": "model",
+        "content": "Kimi K2.7 Code 是一个以编码为中心的智能体模型，构建于 Kimi K2.6 之上。它在现实世界的长期编码任务方面有了显著改进，增强了复杂软件工程工作流程中的端到端任务完成能力，同时提高了令牌效率，与 Kimi K2.6 相比，减少了约 30% 的思考令牌使用量。\n\nPackyCode 已完成适配，现已在 kimi-officially 分组上线，可直接使用。",
+        "content_en": "Kimi K2.7 Code is a coding-centric agentic model built on top of Kimi K2.6. It has seen significant improvements in real-world long-horizon coding tasks, enhancing end-to-end task completion capabilities in complex software engineering workflows while improving token efficiency, reducing thinking token usage by about 30% compared with Kimi K2.6.\n\nPackyCode has been fully adapted and is now live in the kimi-officially group, ready to use directly.",
+        "content_en_src": "803ab609ffe2369d",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-06-12T11:16:46.743Z",
+        "title": "新模型发布：Kimi-K2.7-Code",
+        "title_en": "New model released: Kimi-K2.7-Code",
+        "title_en_src": "8bc8fbfb76af82b7",
+        "type": "default"
+      },
+      {
+        "category": "group",
+        "content": "【公告】Codex 分组维护状态通知\n\n为了进一步提升服务稳定性与整体性能，Codex 分组目前处于维护状态。\n\n当前状态：\nCodex 分组正在进行系统维护与优化升级，预计于周一恢复正常运行。\n\n维护期间影响：\n维护期间可能出现断连、高延迟、响应超时、服务不可用等现象，相关功能体验可能受到影响。\n\n建议措施：\n维护期间建议使用 ClaudeCode，并选择 Claude-Sale 分组。目前 Claude-Sale 分组执行 1.5X 倍率计费。\n\n后续进展：\n我们将持续推进维护工作，并在恢复后第一时间同步相关通知。\n\n感谢各位用户的理解与支持。如有任何问题，欢迎随时联系我们。\n\nPackyAPI 团队\n2026 年 6 月 12 日",
+        "content_en": "[Announcement] Codex Group Maintenance Status Notice\n\nTo further improve service stability and overall performance, the Codex group is currently under maintenance.\n\nCurrent Status:\nThe Codex group is undergoing system maintenance and optimization upgrades, and is expected to return to normal operation on Monday.\n\nImpact During Maintenance:\nDuring the maintenance period, issues such as disconnections, high latency, response timeouts, and service unavailability may occur, and the user experience of related features may be affected.\n\nRecommended Action:\nDuring maintenance, we recommend using ClaudeCode and selecting the Claude-Sale group. The Claude-Sale group is currently billed at 1.5X the normal rate.\n\nFollow-up Progress:\nWe will continue to carry out the maintenance work and share the relevant notice as soon as service is restored.\n\nThank you for your understanding and support. If you have any questions, please feel free to contact us at any time.\n\nPackyAPI Team\nJune 12, 2026",
+        "content_en_src": "4728598644f28363",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-06-12T04:31:58.922Z",
+        "type": "default"
+      },
+      {
+        "content": "【运营调整】\n当前我们的开票类型有：海外invoice、大陆发票\n因运营策略调整：\n6月份开始，所有新购个人支付将无法开具大陆发票，只支持海外invoice\n6月份开始，只支持企业对公支付开具大陆发票\n所有用户5月份的支付订单仍能在6月份补开大陆发票，截止至6月15号\n——PackyTeam",
+        "content_en": "[Operational Adjustment]\nOur current invoicing types are: overseas invoice and Mainland China invoice.\n\nDue to an adjustment in our operational strategy:\nStarting in June, all newly purchased individual payments will no longer be eligible for Mainland China invoices; only overseas invoices will be supported.\nStarting in June, Mainland China invoices will only be available for corporate bank-to-bank payments.\nAll users’ payment orders from May can still be reissued with Mainland China invoices in June, with the deadline being June 15.\n— PackyTeam",
+        "content_en_src": "25153937a6680753",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-05-21T11:33:07.922Z",
+        "type": "default"
+      },
+      {
+        "content": "【公告】新增异常缓存补偿机制\n\n为了进一步提升服务稳定性和用户体验，我们上线了异常缓存补偿机制。\n\n补偿规则：\n当系统检测到连续创建异常缓存时，将对该部分异常缓存产生的费用只收取原费用 20% 的扣费。\n\n当前生效范围：\n目前仅在 Claude 渠道 开启 Beta 测试。\n\n后续计划：\n该机制将逐步覆盖 PackyAPI 全部渠道。\n此机制主要用于减少高峰期因异常缓存导致的不必要扣费情况，保护用户利益。\n感谢各位用户一直以来的支持与反馈。如在使用过程中遇到任何问题，欢迎随时联系我们。\n\nPackyAPI 团队\n2026 年 5 月",
+        "content_en": "[Announcement] New Exception Cache Compensation Mechanism\n\nTo further improve service stability and user experience, we have launched an exception cache compensation mechanism.\n\nCompensation rules:\nWhen the system detects consecutive abnormal cache creations, only 20% of the original fee will be charged for the fees generated by those abnormal caches.\n\nCurrent scope:\nAt present, it is only enabled for Beta testing on the Claude channel.\n\nFuture plans:\nThis mechanism will be gradually expanded to all PackyAPI channels.\nIt is mainly intended to reduce unnecessary charges caused by abnormal caches during peak periods and protect users’ interests.\nThank you all for your continued support and feedback. If you encounter any issues while using the service, please feel free to contact us at any time.\n\nPackyAPI Team\nMay 2026",
+        "content_en_src": "de8377c42741ad78",
+        "extra": "",
+        "id": 16,
+        "publishDate": "2026-05-11T11:33:12.926Z",
+        "type": "default"
+      },
+      {
+        "content": "【重要公告】Claude价格与服务调整通知\n近期受 A 社封控策略和额度降低造成的成本影响，服务可用性有所下降。为保障使用的稳定与连续性，我们将于 2026年 4 月 1 日12:00起，暂时将 CC 分组倍率由 1.5 上调至 2.5。\n我们将持续关注封控政策变化——若 A 社进一步加强风控，倍率可能再次涨幅；若情况缓解，我们也将第一时间恢复至 1.5 倍率，以回馈各位长期支持的用户。作为建议，当前可以选择使用 codex 或者 cc-sale 分组。其他分组不受此影响。\n同时我们的退款始终保持开放，售后退款邮箱：xxx。\nPacky 始终以“高可用与稳定服务”为首要目标。对于此次临时调整可能带来的不便，我们深表歉意，并感谢各位的理解与支持！\nPacky Team\n2026 年 3月 30 日",
+        "content_en": "[Important Notice] Claude Pricing and Service Adjustment Notice\n\nRecently, due to the cost impact caused by A Inc.’s restrictions and reduced quotas, service availability has declined somewhat. To ensure stable and continuous usage, we will temporarily raise the CC group multiplier from 1.5 to 2.5 starting at 12:00 on April 1, 2026.\n\nWe will continue to monitor changes in the restriction policy — if A Inc. further tightens risk controls, the multiplier may increase again; if the situation eases, we will restore the 1.5x multiplier at the first opportunity to thank our long-term users for their support. As a recommendation, you may currently choose to use the codex or cc-sale groups. Other groups are not affected by this change.\n\nAt the same time, refunds remain available at all times. For after-sales refund inquiries, please email: xxx.\n\nPacky has always made “high availability and stable service” our top priority. We sincerely apologize for any inconvenience this temporary adjustment may cause, and thank you for your understanding and support!\n\nPacky Team  \nMarch 30, 2026",
+        "content_en_src": "11355e1737f639d2",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2026-03-30T03:54:36.000Z",
+        "type": "default"
+      },
+      {
+        "content": "codex将在 3 月 23 日 18:00 恢复 0.5 倍率（限时活动原定于 3 月 3 日恢复，已延期 20 天）",
+        "content_en": "Codex will resume at 0.5x rate on March 23 at 18:00 (the limited-time event was originally scheduled to resume on March 3 and has been delayed by 20 days)",
+        "content_en_src": "597a9670c412a0d1",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-03-23T10:01:11.235Z",
+        "type": "default"
+      },
+      {
+        "content": "推送 cc-claw 分组，原生 claude api，倍率 2x，养殖户专用～\n",
+        "content_en": "Push the cc-claw group, native Claude API, 2x multiplier, for farm accounts only~",
+        "content_en_src": "23f52a3690d54583",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-03-13T04:14:47.125Z",
+        "type": "default"
+      },
+      {
+        "content": "已经推送阿里百炼官方分组，包含以下模型：qwen3-max、qwen3.5-plus、glm-5、kimi-k2.5、minimax-m2.5，此分组为官方 5 折",
+        "content_en": "The official Alibaba Bailian group has been rolled out, including the following models: qwen3-max, qwen3.5-plus, glm-5, kimi-k2.5, and minimax-m2.5. This group is the official 50% off offer.",
+        "content_en_src": "d04a247b52cf33ba",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-02-25T10:02:10.372Z",
+        "type": "default"
+      },
+      {
+        "content": "gemini-slb 已推送 gemini-3.1-pro，分组倍率变更为 3.0",
+        "content_en": "gemini-slb has pushed gemini-3.1-pro, and the group multiplier has been changed to 3.0",
+        "content_en_src": "24253c5a1170b43c",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-02-20T05:29:39.964Z",
+        "type": "default"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "_en_locked": true,
+        "color": "blue",
+        "description": "稳定可靠，适合生产环境",
+        "description_en": "Stable and reliable, suitable for production environments",
+        "description_en_src": "473d75123f856074",
+        "id": 1,
+        "route": "主站Endpoint",
+        "route_en": "Main Site Endpoint",
+        "route_en_attempts": 4,
+        "url": "https://www.packyapi.com"
+      },
+      {
+        "color": "blue",
+        "description": "优化线路，适合对延迟敏感的场景",
+        "description_en": "Optimized routes, suitable for latency-sensitive scenarios",
+        "description_en_src": "22c561ee500f0a1c",
+        "id": 2,
+        "route": "优化线路Endpoint",
+        "route_en": "Optimize the line endpoint",
+        "route_en_src": "141d62a74c79097c",
+        "url": "https://api-slb.packyapi.com"
+      }
+    ],
+    "api_info_enabled": true,
+    "business_cooperation_link": "https://packymellc.feishu.cn/share/base/form/shrcn0MQ2rxSWdr2N9WKT5cyQ3n",
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "custom_currency_exchange_rate": 7,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_language": "en",
+    "default_use_auto_group": false,
+    "delayed_rebate_days": 30,
+    "demo_site_enabled": false,
+    "discord_client_id": "",
+    "discord_oauth": false,
+    "display_in_currency": true,
+    "docs_link": "https://docs.packyapi.com",
+    "domestic_invoice_enabled": false,
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": true,
+    "enable_task": true,
+    "faq": [],
+    "faq_enabled": true,
+    "footer_html": "",
+    "gemini_image_upload_extra_fee": 0.1,
+    "github_client_id": "",
+    "github_oauth": false,
+    "gpt_image_proxy_enabled": true,
+    "gpt_image_proxy_replace_prefix": "https://external-resources-2.packyapi.com/files",
+    "invoice_apply_enabled": false,
+    "invoice_conversion_enabled": false,
+    "invoice_conversion_window_end": "2026-05-31",
+    "invoice_conversion_window_start": "2026-05-01",
+    "invoice_min_amount": 0,
+    "invoice_pause_date": "",
+    "invoice_pause_message": "",
+    "invoice_paused": false,
+    "linuxdo_client_id": "",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": false,
+    "logo": "",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+    "oidc_client_id": "510558153964-64k5cbveetjotemdrslsdevfbs9umi6m.apps.googleusercontent.com",
+    "oidc_enabled": true,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "PackyAPI",
+    "passkey_login": false,
+    "passkey_origins": "https://www.packyapi.com",
+    "passkey_rp_id": "www.packyapi.com",
+    "passkey_user_verification": "preferred",
+    "price": 1,
+    "privacy_policy_enabled": false,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "self_use_mode_enabled": false,
+    "server_address": "https://www.packyapi.com",
+    "setup": true,
+    "start_time": 1781670294,
+    "stripe_unit_price": 1,
+    "system_name": "PackyAPI",
+    "tax_rate": 0.06,
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "tencent_captcha_aid_expire_seconds": 600,
+    "tencent_captcha_app_id": "193603541",
+    "tencent_captcha_check": true,
+    "top_up_link": "",
+    "turnstile_check": false,
+    "turnstile_site_key": "0x4AAAAAAB8YsBKpYG2bnNR3",
+    "uptime_kuma_enabled": false,
+    "usd_exchange_rate": 7,
+    "user_agreement_enabled": false,
+    "version": "v1.0.88",
+    "wechat_login": false,
+    "wechat_qrcode": "",
+    "withdrawal_min_amount": 100000000
+  },
+  "message": "",
+  "success": true
+}

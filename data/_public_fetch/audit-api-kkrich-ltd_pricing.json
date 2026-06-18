@@ -1,0 +1,804 @@
+{
+  "auto_groups": [
+    "default"
+  ],
+  "data": [
+    {
+      "model_name": "claude-sonnet-4-6",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 10.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.249206349206,
+      "enable_groups": [
+        "claudecode-满血可测",
+        "claudecode-kiro 带缓存"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 8.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 17.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip",
+        "codex-plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "vip",
+        "codex-plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 17.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.250476190476,
+      "enable_groups": [
+        "claudecode-满血可测",
+        "claudecode-kiro 带缓存"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "image-1k",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "image"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-openai-compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 8.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip",
+        "codex-plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-fast",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 43.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 17.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 2,
+      "enable_groups": [
+        "claudecode-满血可测",
+        "claudecode-kiro 带缓存"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-fable-5",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 35,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claudecode-满血可测"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2-4k",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 6,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "image"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "image-2k",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "image"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark-fast",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 17.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-fast",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 17.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip",
+        "codex-plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 17.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip",
+        "codex-plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "vendor_id": 3,
+      "quota_type": 0,
+      "model_ratio": 17.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.250476190476,
+      "enable_groups": [
+        "claudecode-kiro 带缓存",
+        "claudecode-满血可测"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2-1k",
+      "description": "GPT-Image-2 image generation, 1K resolution tier. Billed per image request.",
+      "icon": "openai",
+      "tags": "image,generation,openai,1k",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 1.5,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "image"
+      ],
+      "supported_endpoint_types": [
+        "image"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2-2k",
+      "description": "GPT-Image-2 image generation, 2K resolution tier. Billed per image request.",
+      "icon": "openai",
+      "tags": "image,generation,openai,2k",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "image"
+      ],
+      "supported_endpoint_types": [
+        "image"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 8.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "vip",
+        "codex-plus",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini-fast",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 5.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "vip"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "claudecode-kiro 带缓存": 0.4,
+    "claudecode-满血可测": 2.4,
+    "codex-plus": 0.2,
+    "default": 0.3,
+    "image": 0.4
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "image": {
+      "path": "/v1/images/generations",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "claudecode-kiro 带缓存": "kiro 带缓存的,性价比高!",
+    "claudecode-满血可测": "ccMax,满血可测!",
+    "codex-plus": "特价 plus 分组, 抢不到号了,蹬干就是没了!",
+    "default": "codex - 纯 pro 号池，稳定选手和老板优选",
+    "image": "生图分组"
+  },
+  "vendors": [
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 2,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 3,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"invitations\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"invitationsAdmin\":true,\"user\":true,\"subscription\":false,\"setting\":true}}",
+      "announcements": [
+        {
+          "content": "今天股票收红!!!  端午活动: \n\n\npro 分组倍率降为 0.3,实际倍率为 0.15!\n\n\nplus 分组倍率降为 0.2 , 实际倍率为 0.1!\n\n\n倍率公式在首页 !",
+          "extra": "",
+          "id": 41,
+          "publishDate": "2026-06-17T07:46:45.190Z",
+          "type": "default"
+        },
+        {
+          "content": "求到了一点 plus 库存号 !!! \n\n\nplus 分组调整为 0.3,  实际倍率 0.15  成本价给你们扛一扛 ,蹬完为止 !!! \n\npro 分组临时下调到 0.5,实际倍率为 0.25, 今天股票涨了,再扛一会儿吧!\n\n\n倍率计算公式在首页,可以学一下",
+          "extra": "",
+          "id": 40,
+          "publishDate": "2026-06-15T05:46:00.717Z",
+          "type": "default"
+        },
+        {
+          "content": "注意⚠️\n\n本站是免费协助了很多新手 ,导致很多人不会切分组,为了方便新手使用, 我只能先把 plus 分组也改成和 default 分组同号池同倍率了, 大家注意使用吧!",
+          "extra": "",
+          "id": 39,
+          "publishDate": "2026-06-15T03:24:15.984Z",
+          "type": "default"
+        },
+        {
+          "content": "扛了三天了, 扛不住了,目前形势没有一点好转的迹象,今天周日的 rpm 都干到 250 了, 号池根本循环不过来的,明天就是周一了, pro 分组倍率涨到 0.55- 结合充值倍率实际倍率为 0.28 !!!  不着急用的先古法编程或者别家或者国产模型各显神通吧, 着急用的用一下!",
+          "extra": "",
+          "id": 38,
+          "publishDate": "2026-06-14T09:29:04.714Z",
+          "type": "default"
+        },
+        {
+          "content": "plus 分组复活 !",
+          "extra": "",
+          "id": 37,
+          "publishDate": "2026-06-13T10:50:54.486Z",
+          "type": "default"
+        },
+        {
+          "content": "claudecode-ccmax满血可测分组降为 2.4 倍率 ,结合充值倍率 -实际倍率为 1.2 倍率 ,  不限制外接,号池直出,速度和模型可测!",
+          "extra": "",
+          "id": 36,
+          "publishDate": "2026-06-13T07:19:00.358Z",
+          "type": "default"
+        },
+        {
+          "content": "📢KKAI小站破500人啦\n感谢大家支持🫶🏻\n\n500人奖励将于明晚8点发放\n1️⃣明天消耗排行榜前十，每人发放100额度奖励（不与日常前三奖励叠加）\n2️⃣100个群红包🧧\n抢到即送50额度～\n\nps：后续有新朋友要进群可以推2群二维码哦～",
+          "extra": "",
+          "id": 35,
+          "publishDate": "2026-06-12T14:25:20.518Z",
+          "type": "default"
+        },
+        {
+          "content": "default 分组恢复 0.4 倍率,结合充值优惠实际倍率为 0.2 !!!\n\n\nplus 分组复活,结合充值 实际倍率为 0.1  !!!",
+          "extra": "",
+          "id": 34,
+          "publishDate": "2026-06-12T08:36:07.359Z",
+          "type": "default"
+        },
+        {
+          "content": "default 分组临时调价到 0.5 倍率 结合充值优惠, 实际倍率为 0.255  !!!       \n\n\ndefault 分组临时调价到 0.5 倍率 结合充值优惠, 实际倍率为 0.255  !!!       \n\n\ndefault 分组临时调价到 0.5 倍率 结合充值优惠, 实际倍率为 0.255  !!!       \n\n先临时上涨了, 因为自己的号池真不够用了, 接了个很贵的渠道,求了半天给了点并发, 等等党可以先古法编程,等过两天应该就会降价了!!!",
+          "extra": "",
+          "id": 33,
+          "publishDate": "2026-06-12T05:14:33.602Z",
+          "type": "default"
+        },
+        {
+          "content": "plus 全网拉闸了!!!\n\n\n之前在 plus 分组的,切换到 default分组, pro 号池冷却出来了,速蹬!",
+          "extra": "",
+          "id": 32,
+          "publishDate": "2026-06-11T04:50:26.735Z",
+          "type": "default"
+        },
+        {
+          "content": "claudecode-kiro 高缓存分组  降为 0.4 倍率, 结合充值倍率为 0.2 倍率!!!",
+          "extra": "",
+          "id": 31,
+          "publishDate": "2026-06-10T11:33:27.648Z",
+          "type": "success"
+        },
+        {
+          "content": "没加群的小伙伴们抓紧加群,今晚群里发券, 客服 V:\nduomimii_",
+          "extra": "",
+          "id": 30,
+          "publishDate": "2026-06-10T06:25:34.892Z",
+          "type": "default"
+        },
+        {
+          "content": " team 结束了 ,pro 和 plus 恢复了, 大家别蹬过头了, 早点睡吧! ! ! ",
+          "extra": "",
+          "id": 29,
+          "publishDate": "2026-06-08T15:15:22.689Z",
+          "type": "default"
+        },
+        {
+          "content": "plus 分组免费,蹬到你们不想蹬!",
+          "extra": "",
+          "id": 28,
+          "publishDate": "2026-06-08T13:22:47.006Z",
+          "type": "default"
+        },
+        {
+          "content": "plus分组倍率0.01  结合充值倍率 0.005, 不要钱了!\n",
+          "extra": "",
+          "id": 27,
+          "publishDate": "2026-06-08T07:23:44.216Z",
+          "type": "default"
+        },
+        {
+          "content": "teambug 结束了, 分组倍率恢复,大家别蹬过头了!",
+          "extra": "",
+          "id": 26,
+          "publishDate": "2026-06-06T13:14:49.420Z",
+          "type": "default"
+        },
+        {
+          "content": "周六六点起, plus 分组倍率 0, 免费蹬到号尽 ! pro 分组 0.1 倍率保证稳定性, 免费体验的小伙伴们去 plus 分组!",
+          "extra": "",
+          "id": 25,
+          "publishDate": "2026-06-06T10:47:05.925Z",
+          "type": "default"
+        },
+        {
+          "content": "邀请返利已上线：进入控制台「邀请」页复制专属链接。好友通过链接注册，并使用兑换券充值后，你可获得充值额度5%的返利。例如好友兑换1000额度，你可得50额度。返利记录和领取状态以邀请页面为准。",
+          "extra": "",
+          "id": 24,
+          "publishDate": "2026-06-06T00:18:28.143Z",
+          "type": "success"
+        },
+        {
+          "content": "📌plus 分组下调为0.1 倍率\n\n\n结合充值优惠实际倍率为 0.05 ！\n\n\n大家周末快乐！！！",
+          "extra": "",
+          "id": 23,
+          "publishDate": "2026-06-05T10:59:00.179Z",
+          "type": "default"
+        },
+        {
+          "content": "claudecode-kiro 带缓存分组倍率降为0.6，结合充值倍率下来实际倍率为0.3",
+          "extra": "",
+          "id": 22,
+          "publishDate": "2026-06-05T02:58:27.199Z",
+          "type": "default"
+        },
+        {
+          "content": "今夜无事，部分倍率下调⬇️\n\n\n给明天早起的大家一个惊喜✨\n\n\n\n📌plus 分组下调为0.2 倍率\n\n\n📌pro 分组保持不变\n\n\n\n结合充值倍率 : \n\n\n👉plus为 0.1 倍率  \n\n\n👉pro为 0.21倍率",
+          "extra": "",
+          "id": 21,
+          "publishDate": "2026-06-04T17:15:48.159Z",
+          "type": "default"
+        },
+        {
+          "content": "没加群的小伙伴们快加一下 V : duomimii_   进群!\n\n\n  群里马上红包雨了!!! ",
+          "extra": "",
+          "id": 20,
+          "publishDate": "2026-06-03T02:43:52.539Z",
+          "type": "default"
+        },
+        {
+          "content": "🥳六一活动:\n\n\npro 分组倍率降为👉 0.35    \n\n\nplus 分组倍率降为👉0.1\n\n\n\nplus 分组的缓存也优化了✅\n\n\n大家可以体验一下,不过这个 plus 渠道估计也该受到官方打击了,大家且用且珍惜!🥹",
+          "extra": "",
+          "id": 19,
+          "publishDate": "2026-06-01T06:19:01.456Z",
+          "type": "default"
+        },
+        {
+          "content": "大家没加群的快来加群,经常会有惊喜红包雨和每日排行红包哦! 小伙伴们都在等你!",
+          "extra": "",
+          "id": 18,
+          "publishDate": "2026-05-31T15:55:42.756Z",
+          "type": "success"
+        },
+        {
+          "content": "数据库迁移完成, 可以继续使用了,大家周末快乐!",
+          "extra": "",
+          "id": 17,
+          "publishDate": "2026-05-30T17:55:27.681Z",
+          "type": "success"
+        },
+        {
+          "content": "31 日凌晨 0 点开始迁移数据库!  还有一个小时,大家提前做好准备!  没加群的尽快加群哈 !",
+          "extra": "",
+          "id": 16,
+          "publishDate": "2026-05-30T15:02:30.921Z",
+          "type": "warning"
+        },
+        {
+          "content": "Plus 分组下调到 0.25 倍率,形式有点好转! \n\n\nTips: 算倍率不要忘记充值倍率 0.075! ",
+          "extra": "",
+          "id": 15,
+          "publishDate": "2026-05-30T05:24:49.973Z",
+          "type": "default"
+        },
+        {
+          "content": "!!!发现有很多新来的小伙伴延迟很高,   大家最好关一下代理或者在 clash 规则中将我们小站的域名直连  ,或者就是用香港节点!   正常首 token 是在   2s   左右,大家检查一下自己的网络哦!",
+          "extra": "",
+          "id": 14,
+          "publishDate": "2026-05-29T12:36:06.109Z",
+          "type": "warning"
+        },
+        {
+          "content": "claudecode 分组调整了一下, 在用 claudecode 的小伙伴调整一下分组---令牌里重新选一下就行!\n\n\n新增 kiro 带缓存分组,高性价比!",
+          "extra": "",
+          "id": 13,
+          "publishDate": "2026-05-29T12:34:50.897Z",
+          "type": "default"
+        },
+        {
+          "content": "KKAI 小站预计于本周日凌晨 0:00-2:00 进行数据库迁移,期间会停机无法使用,请大家提前做好准备!到时候数据库和服务器都在 D3 了,体验会更稳定!\n\n没加群的小伙伴,尽快加群哈!",
+          "extra": "",
+          "id": 12,
+          "publishDate": "2026-05-29T11:36:22.287Z",
+          "type": "warning"
+        },
+        {
+          "content": "Plus 复活！！！\n\n\n由于成本暴增，小站跟随微涨，大家求稳的可以继续留守默认的 pro 分组！",
+          "extra": "",
+          "id": 11,
+          "publishDate": "2026-05-28T17:44:30.671Z",
+          "type": "default"
+        },
+        {
+          "content": "全网的 Plus 渠道又拉闸了， 小站的 pro 依旧稳健，还在 plus 分组的小伙伴记得切换分组使用哦！",
+          "extra": "",
+          "id": 10,
+          "publishDate": "2026-05-28T08:46:41.966Z",
+          "type": "error"
+        },
+        {
+          "content": "没加群的小伙伴加一下： payinbaby\n\n\n四点半群里发红包了，恭喜售后小群突破 200 人！",
+          "extra": "",
+          "id": 9,
+          "publishDate": "2026-05-28T08:18:06.612Z",
+          "type": "success"
+        },
+        {
+          "content": "1. plus 号池分组降至 0.2， 0.075x7x0.2 = 0.105 倍率，此分组缓存不保证，稳定不保证。\n\n2. 新增 claudecode 满血分组",
+          "extra": "",
+          "id": 8,
+          "publishDate": "2026-05-28T02:36:27.128Z",
+          "type": "success"
+        },
+        {
+          "content": "1. 生图问题已经修复，之前有 60s 限制问题导致失败。\n\n\n2. 链动小铺的手续费已改为商家自己承担\n\n\n3. 小站售后群破 200 即将开始红包抽奖，还没进群的抓紧进群了！",
+          "extra": "",
+          "id": 7,
+          "publishDate": "2026-05-27T08:20:35.064Z",
+          "type": "success"
+        },
+        {
+          "content": "为方便大家在平台充值使用，已在钱包管理中新增——自助下单+兑换功能，大家可以直接通过下单兑换码，兑换额度，自动发货的哦 ～",
+          "extra": "",
+          "id": 6,
+          "publishDate": "2026-05-26T16:47:55.599Z",
+          "type": "success"
+        },
+        {
+          "content": "默认分组是 pro 号池！👇👇👇\n\n新增 codex-plus 分组，plus 号这个不知道能撑多久，给大家体验一下吧！\n\n可以直接切换分组，也可以新建 plus分组的 key，ccswitch 导入后重启 codex 即可！",
+          "extra": "",
+          "id": 5,
+          "publishDate": "2026-05-26T05:09:30.150Z",
+          "type": "success"
+        },
+        {
+          "content": "小站的在线充值暂时关闭，问就是渠道商携款跑路了，正在收集证据追债中😭\n\n建议大家可以移步咸鱼充值哦， 群里有充值链接，好评还送额度哦！！感谢大家理解，小站包稳的！\n\n\n还没进群的小伙伴们快来！ 群里的猫会后空翻！\n\n",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2026-05-25T05:17:19.088Z",
+          "type": "ongoing"
+        },
+        {
+          "content": "好消息： \n\n外面现在的日抛 plus 渠道已经完全被官方封禁，但是小站毫无影响！ 可见小站 pro 号池真假！\n\n\n坏消息：\n\n小站的在线支付商家跑路了，损失惨重，大家需要充值的话请移步之前的咸鱼商家，给好评送额度哦 ，谢谢大家理解！",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2026-05-25T02:32:45.629Z",
+          "type": "warning"
+        },
+        {
+          "content": "小多米的号被风控了，大家有急事儿可以先找群主哦！\n",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-05-24T15:21:58.528Z",
+          "type": "warning"
+        },
+        {
+          "content": "小站已经适配好了龙虾和爱马仕，养虾养马的小伙伴们 ccswitch 配好 key 和 baseurl 就可以直接用了哦！",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-05-23T08:11:57.702Z",
+          "type": "success"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info": [
+        {
+          "color": "blue",
+          "description": "小站地址",
+          "id": 1,
+          "route": "小站地址",
+          "url": "https://api.kkrich.ltd"
+        },
+        {
+          "color": "green",
+          "description": "baseurl-请求地址",
+          "id": 2,
+          "route": "baseurl",
+          "url": "https://api.kkrich.ltd/v1"
+        }
+      ],
+      "api_info_enabled": true,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¥",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://api.kkrich.ltd/docs/",
+      "email_verification": true,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": false,
+      "enable_task": true,
+      "faq": [],
+      "faq_enabled": true,
+      "footer_html": "",
+      "github_client_id": "",
+      "github_oauth": false,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "https://api.kkrich.ltd/assets/kikai-logo.png?v=202605132215",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "KKAI",
+      "passkey_login": false,
+      "passkey_origins": "https://api.kkrich.ltd",
+      "passkey_rp_id": "api.kkrich.ltd",
+      "passkey_user_verification": "preferred",
+      "password_login_enabled": true,
+      "password_register_enabled": true,
+      "price": 0.075,
+      "privacy_policy_enabled": true,
+      "quota_display_type": "CNY",
+      "quota_per_unit": 500000,
+      "register_enabled": true,
+      "self_use_mode_enabled": false,
+      "server_address": "https://api.kkrich.ltd",
+      "setup": true,
+      "start_time": 1781722925,
+      "stripe_unit_price": 8,
+      "system_name": "KKAI",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "default",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 1,
+      "user_agreement_enabled": true,
+      "version": "kkai-20260618-rc11-invitations-ccswitch-ccswitchfix-d3eb42cf",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://api.kkrich.ltd/api/pricing"
+}

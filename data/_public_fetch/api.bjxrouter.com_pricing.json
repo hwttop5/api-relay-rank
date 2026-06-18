@@ -4,6 +4,48 @@
     "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true}}",
     "announcements": [
       {
+        "content": "各位用户：由于在线支付渠道还在维护，临时上架链动小铺充值额度卡密购买渠道，店铺地址：https://pay.ldxp.cn/shop/BLBH3VRJ\n充值方法：购买卡密后-钱包管理-额度充值-兑换码充值",
+        "extra": "",
+        "id": 22,
+        "publishDate": "2026-06-17T03:22:59.967Z",
+        "type": "default"
+      },
+      {
+        "content": "各位用户：在线充值渠道临时维护，需要充值联系TG群组https://t.me/polaris0222",
+        "extra": "",
+        "id": 21,
+        "publishDate": "2026-06-16T06:27:20.515Z",
+        "type": "default"
+      },
+      {
+        "content": "各位用户：在线充值渠道恢复，因gpt风控再次加强导致成本上升，gpt相关分组倍率调整至0.3。",
+        "extra": "",
+        "id": 20,
+        "publishDate": "2026-06-15T03:47:32.191Z",
+        "type": "default"
+      },
+      {
+        "content": "各位用户：在线充值渠道暂时关闭，暂停新用户注册，已注册用户及余额不受影响。",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-06-13T07:43:09.426Z",
+        "type": "default"
+      },
+      {
+        "content": "各位用户：gpt活动分组暂时下线",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-06-12T01:09:28.046Z",
+        "type": "default"
+      },
+      {
+        "content": "各位用户：因最近openai风控加强导致号池出现不稳定情况，为补偿平台用户，统一下调gpt模型相关倍率，gpt/default分组由0.2->0.15，gpt-pro分组由0.3->0.25，codex订阅套餐消费倍率由1->0.8。",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-06-11T15:26:29.791Z",
+        "type": "default"
+      },
+      {
         "content": "各位用户：claude分组渠道号池成本上升，调整claude分组倍率至0.7",
         "extra": "",
         "id": 16,
@@ -206,7 +248,7 @@
     "passkey_allow_insecure": false,
     "passkey_attachment": "",
     "passkey_display_name": "北极星",
-    "passkey_login": false,
+    "passkey_login": true,
     "passkey_origins": "https://api.bjxrouter.com",
     "passkey_rp_id": "api.bjxrouter.com",
     "passkey_user_verification": "preferred",
@@ -242,6 +284,48 @@
       "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"rankings\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":false}",
       "SidebarModulesAdmin": "{\"chat\":{\"enabled\":false,\"playground\":true,\"chat\":true},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"redemption\":true,\"user\":true,\"setting\":true}}",
       "announcements": [
+        {
+          "content": "各位用户：由于在线支付渠道还在维护，临时上架链动小铺充值额度卡密购买渠道，店铺地址：https://pay.ldxp.cn/shop/BLBH3VRJ\n充值方法：购买卡密后-钱包管理-额度充值-兑换码充值",
+          "extra": "",
+          "id": 22,
+          "publishDate": "2026-06-17T03:22:59.967Z",
+          "type": "default"
+        },
+        {
+          "content": "各位用户：在线充值渠道临时维护，需要充值联系TG群组https://t.me/polaris0222",
+          "extra": "",
+          "id": 21,
+          "publishDate": "2026-06-16T06:27:20.515Z",
+          "type": "default"
+        },
+        {
+          "content": "各位用户：在线充值渠道恢复，因gpt风控再次加强导致成本上升，gpt相关分组倍率调整至0.3。",
+          "extra": "",
+          "id": 20,
+          "publishDate": "2026-06-15T03:47:32.191Z",
+          "type": "default"
+        },
+        {
+          "content": "各位用户：在线充值渠道暂时关闭，暂停新用户注册，已注册用户及余额不受影响。",
+          "extra": "",
+          "id": 19,
+          "publishDate": "2026-06-13T07:43:09.426Z",
+          "type": "default"
+        },
+        {
+          "content": "各位用户：gpt活动分组暂时下线",
+          "extra": "",
+          "id": 18,
+          "publishDate": "2026-06-12T01:09:28.046Z",
+          "type": "default"
+        },
+        {
+          "content": "各位用户：因最近openai风控加强导致号池出现不稳定情况，为补偿平台用户，统一下调gpt模型相关倍率，gpt/default分组由0.2->0.15，gpt-pro分组由0.3->0.25，codex订阅套餐消费倍率由1->0.8。",
+          "extra": "",
+          "id": 17,
+          "publishDate": "2026-06-11T15:26:29.791Z",
+          "type": "default"
+        },
         {
           "content": "各位用户：claude分组渠道号池成本上升，调整claude分组倍率至0.7",
           "extra": "",
@@ -445,7 +529,7 @@
       "passkey_allow_insecure": false,
       "passkey_attachment": "",
       "passkey_display_name": "北极星",
-      "passkey_login": false,
+      "passkey_login": true,
       "passkey_origins": "https://api.bjxrouter.com",
       "passkey_rp_id": "api.bjxrouter.com",
       "passkey_user_verification": "preferred",

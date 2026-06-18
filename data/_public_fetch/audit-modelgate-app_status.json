@@ -1,0 +1,323 @@
+{
+  "data": {
+    "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":true},\"docs\":true,\"about\":true}",
+    "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+    "announcements": [
+      {
+        "content": "[Data Security Notice]\n\nModelGate is built on the official open-source New API and has not customized user request processing. We do not actively collect, analyze, sell, or misuse users’ prompts, conversations, or business data.\n\nWe do not store prompts for model training, sell user data, tamper with requests, inject hidden prompts, poison outputs, or intentionally replace selected models.\n\nWe are improving security controls toward SOC 2 Type II and will share updates after the audit.\n",
+        "extra": "",
+        "id": 26,
+        "publishDate": "2026-06-16T13:14:17.222Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "[Payment Update]\n\nHello everyone, ModelGate now supports **Stripe payments**. You can choose Stripe on the recharge page to complete your payment.\n\nDue to Stripe’s minimum payment amount requirement, the minimum Stripe recharge is currently **RMB 10** — about **USD $1.48**.\n\nAfter payment is completed, the balance should usually be credited automatically. If not, please contact the admin with your user ID and payment screenshot, and we will check it as soon as possible.\n",
+        "extra": "",
+        "id": 25,
+        "publishDate": "2026-06-16T13:08:57.599Z",
+        "type": "default"
+      },
+      {
+        "content": "【支付功能更新】\nModelGate 已正式支持 **Stripe 支付**。用户可通过网站充值页面选择 Stripe 渠道完成支付。\n由于 Stripe 官方存在最小支付金额限制，目前 Stripe 渠道最低充值额度为 **10 元人民币**\n感谢大家的支持与理解！",
+        "extra": "",
+        "id": 24,
+        "publishDate": "2026-06-16T13:07:30.825Z",
+        "type": "success"
+      },
+      {
+        "content": "【数据安全说明】\nModelGate 基于 New API 官方开源版本搭建，未对请求内容处理逻辑进行二次修改。我们承诺：不会保存用户 Prompt 用于训练，不会售卖或共享用户数据，不会篡改用户请求、注入额外提示词或进行“投毒”，也不会进行模型替换。团队已完成 SOC 2 Type II Readiness，第三方机构正在进行约 6 个月的实际运行验证。",
+        "extra": "",
+        "id": 23,
+        "publishDate": "2026-06-15T15:46:34.981Z",
+        "type": "default"
+      },
+      {
+        "content": "【邀请推广功能说明】\n感谢大家一直以来对平台的支持与积极推广。所有邀请关系及邀请记录都会持续保留。对于大家带来的真实用户，以及受邀用户后续产生的充值和使用，我们承诺在相关机制完善后给予合理回馈。\n目前 New API 现有的邀请返利机制暂不完善，尚无法自动完成邀请充值奖励的核算与发放。我们正在与 New API 官方开发者积极沟通。",
+        "extra": "",
+        "id": 22,
+        "publishDate": "2026-06-15T12:19:46.063Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "【订阅套餐用量查看说明】\n已购买订阅套餐的用户，可前往 New API 控制台：\n「钱包管理」→「订阅套餐」\n查看套餐总额度、已用额度及剩余用量。\n关于在 CC Switch 中直接显示套餐剩余额度的需求，技术人员正在研究和适配中。如有进一步进展，我们将及时通知大家。",
+        "extra": "",
+        "id": 21,
+        "publishDate": "2026-06-15T12:09:29.541Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "【模型价格公示通知】\n\n模型广场现已开放，用户可在模型广场中查看不同分组下各模型的输入、输出及缓存等计费价格。\n\n模型价格会根据所选分组有所不同，调用前请确认对应分组及模型价格。实际调用产生的 Token 用量与扣费金额，请以「使用日志」中的记录为准。\n",
+        "extra": "",
+        "id": 20,
+        "publishDate": "2026-06-15T09:50:27.312Z",
+        "type": "success"
+      },
+      {
+        "content": "【计费更正通知】\n北京时间今日上午 8:20 左右，由于运营配置失误，`claude-opus-4-8` 的缓存读取价格被误设为 **$1.5 / 1M Tokens**，目前已更正。如您在此期间调用了该模型并发现扣费异常，请联系管理员并提供用户 ID，我们将及时核查，并对多扣费用进行补偿。\n本次配置错误给您带来的不便，我们深感抱歉，感谢您的理解与支持。\n",
+        "extra": "",
+        "id": 19,
+        "publishDate": "2026-06-15T02:30:09.952Z",
+        "type": "default"
+      },
+      {
+        "content": "【新套餐上线】\nModelGate 已上线两款订阅套餐：\n🎁 首购体验包：¥9.9得15站内额度，约66折，30天有效，每位用户限购一次。\n🚀 开发者月度包：¥29.9得35站内额度，约85折，30天有效，支持重复购买。\n套餐支持全部模型与线路，不同线路按对应分组倍率扣费。套餐到期后未使用额度失效。\n原有余额充值继续保留，充值余额长期有效并享受阶梯优惠。\n",
+        "extra": "",
+        "id": 18,
+        "publishDate": "2026-06-14T23:01:27.141Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "【模型上新】default 分组新增 GPT-5.4、GPT-5、GPT-5 Mini、o3、Gemini 3.5 Flash、Gemini 2.5 Pro、Gemini 2.5 Flash，按官方价格计费，分组倍率 1.0。原 default Key 无需重建，直接修改模型名称即可调用。以上模型已同步开放至 claude-trial 供试用。claude-max、claude-aws 为 Claude 专属分组，暂不支持 GPT、Gemini、o3。",
+        "extra": "",
+        "id": 17,
+        "publishDate": "2026-06-14T22:03:15.918Z",
+        "type": "success"
+      },
+      {
+        "content": "【服务恢复通知】\n\nClaude Max 账号池已完成新增，AWS Bedrock 渠道也已恢复正常。目前所有渠道均已完成测试，模型服务已恢复可用。",
+        "extra": "",
+        "id": 16,
+        "publishDate": "2026-06-12T02:21:13.082Z",
+        "type": "success"
+      },
+      {
+        "content": "【活动调整通知】\n2.Default 分组倍率将由目前的 0.8 倍恢复为 1 倍。\n3.每日签到活动继续保留，签到额度调整为随机 0.5–1.5 美元站内额度。",
+        "extra": "",
+        "id": 15,
+        "publishDate": "2026-06-12T02:03:11.637Z",
+        "type": "default"
+      },
+      {
+        "content": "【活动调整通知】\n为减少脚本批量注册、恶意刷号等行为造成的资源浪费，并将更多资源用于保障真实用户的使用体验，我们将进行以下调整：\n1. 取消新注册用户自动发放的 $5 免费试用额度。新用户注册后，可加入官方 Telegram 群并提交站内用户 ID，经管理员人工审核后，将手动发放试用额度。\n\n\n\n感谢大家的理解与支持。",
+        "extra": "",
+        "id": 14,
+        "publishDate": "2026-06-12T01:59:27.048Z",
+        "type": "default"
+      },
+      {
+        "content": "【服务恢复】\n目前系统服务正在逐步恢复中，部分渠道仍可能出现请求延迟、失败或短暂不可用的情况。运营人员正在持续补充渠道资源并优化路由，感谢大家的耐心等待。",
+        "extra": "",
+        "id": 13,
+        "publishDate": "2026-06-12T01:53:06.236Z",
+        "type": "success"
+      },
+      {
+        "content": "【系统故障说明】\n北京时间今日上午 8 点左右，Claude Max 账号池遭遇 Anthropic 批量封禁，导致 ModelGate 将大部分请求临时切换至 AWS Bedrock 渠道。由于短时间内请求量集中，AWS Bedrock 账户余额于上午 9:11 左右耗尽，部分模型服务因此出现请求失败或暂时不可用的情况。目前运营人员正在紧急处理, 故障恢复后，我们会第一时间通过群公告和系统公告通知大家。",
+        "extra": "",
+        "id": 12,
+        "publishDate": "2026-06-12T01:37:17.074Z",
+        "type": "error"
+      },
+      {
+        "content": "运营人员正在处理Insufficient Balance报错",
+        "extra": "",
+        "id": 11,
+        "publishDate": "2026-06-12T01:21:17.393Z",
+        "type": "error"
+      },
+      {
+        "content": "【服务通知】\n\n邮件验证码服务已恢复正常，用户现在可以正常通过邮箱完成账号注册、找回密码等操作。\n\n如果您在今天下午约 2 点至 6 点期间遇到未收到验证码的情况，可以重新尝试操作。\n\n给大家带来的不便，我们深感抱歉。感谢大家的理解与支持。",
+        "extra": "",
+        "id": 10,
+        "publishDate": "2026-06-11T11:35:43.082Z",
+        "type": "success"
+      },
+      {
+        "content": "为提升服务稳定性，本站已完成新增 Claude Max 号池及 AWS 渠道接入。系统将根据渠道负载与可用性进行调度，尽全力减少高峰期拥塞、超时等异常情况。感谢大家的支持，我们会持续优化服务质量。\n",
+        "extra": "",
+        "id": 9,
+        "publishDate": "2026-06-10T22:53:56.831Z",
+        "type": "success"
+      },
+      {
+        "content": "感谢大家对六月份福利活动的热烈支持，目前本期活动已圆满结束。\n即日起，本站将保留新注册用户 $5 试用额度福利；邀请注册双方各得 $10、V2EX 留言赠送 $20 额度活动取消；每日签到额度将适当下调。\n后续福利活动将通过网站首页公告及官方群公告通知。已发放额度不受影响，可正常使用。感谢大家的理解与支持。",
+        "extra": "",
+        "id": 8,
+        "publishDate": "2026-06-10T22:51:30.950Z",
+        "type": "success"
+      },
+      {
+        "content": "ModelGate.app 现已上线注册邮箱验证功能，并已完成测试，注册验证邮件可正常接收。\n本次调整仅针对新用户通过用户名/密码注册：注册时需完成有效邮箱验证后方可创建账号。已注册用户不受影响，仍可使用原有用户名和密码正常登录，账号余额、额度、密钥和使用记录均不受影响。",
+        "extra": "",
+        "id": 7,
+        "publishDate": "2026-06-10T19:07:12.333Z",
+        "type": "success"
+      },
+      {
+        "content": "1. 正在继续增加新的 Claude Max 账号池，以提升高峰期稳定性和可用性。\n2.如果大家在使用过程中遇到任何报错、请求失败、扣费异常或其他问题，欢迎到 Telegram 群反馈，我们会尽快安排技术人员排查和解答。\nTelegram 反馈群：https://t.me/+qYf_D73vnBs1Nzkx \n再次感谢大家的支持与理解，我们会继续优化服务。",
+        "extra": "",
+        "id": 6,
+        "publishDate": "2026-06-10T15:31:24.544Z",
+        "type": "ongoing"
+      },
+      {
+        "content": "感谢大家近期的支持和反馈！随着用户量逐步增加，我们也在持续排查报错日志和异常请求，尽力提升整体服务稳定性。\n目前我们已经完成以下优化：\n1. 针对部分用户遇到的 **429 请求频率限制报错**，已放宽模型请求速率限制。单个用户请求频率已从每分钟最多 **60 次** 提升到 **100 次**。同时，trial、default、max、aws 等所有分组的单独速率限制已移除。",
+        "extra": "",
+        "id": 5,
+        "publishDate": "2026-06-10T15:27:32.301Z",
+        "type": "success"
+      },
+      {
+        "content": "ModelGate 已开放 Telegram 用户反馈群，欢迎加入交流 API 调用、模型可用性、接入问题、服务状态和功能建议。\n\nTelegram 反馈群：https://t.me/+qYf_D73vnBs1Nzkx\n官方支持账号：@ModelGateApp\n\n为保护您的隐私，请勿在公开群内发送 API Key、Token、订单号、邮箱、付款截图、后台截图或包含密钥的代码内容。\n\n如涉及充值、扣费、账号、订单、密钥或补偿问题，请私聊官方支持账号处理。",
+        "extra": "",
+        "id": 4,
+        "publishDate": "2026-06-10T09:36:08.181Z",
+        "type": "success"
+      },
+      {
+        "content": "为了让用户更放心地使用 ModelGate，我们承诺：\n\n* 不做隐藏模型替换\n* 不保存用户 Prompt 内容\n* 不保存模型返回内容\n* 仅保留必要调用元数据用于计费、统计和异常处理\n\n用户可在调用记录中查看模型、渠道、倍率、消耗额度和请求状态。",
+        "extra": "",
+        "id": 3,
+        "publishDate": "2026-06-10T02:22:08.748Z",
+        "type": "default"
+      },
+      {
+        "content": "公开服务状态页已上线\n\nModelGate 已接入公开服务状态页：\n\nhttps://status.modelgate.app/\n\n状态页会展示 API 网关、用户面板、模型路由等核心服务的可用性。\n\n如遇上游模型波动、临时维护或服务异常，我们会尽量在状态页同步更新说明，方便用户及时了解服务运行情况。\n\n说明：部分上游模型供应商异常可能只影响特定模型或渠道，不一定代表 API 网关整体不可用。\n",
+        "extra": "",
+        "id": 2,
+        "publishDate": "2026-06-10T02:19:51.365Z",
+        "type": "success"
+      },
+      {
+        "content": "ModelGate 已正式上线运营。\n\n目前已支持：\n\n* OpenAI SDK 兼容接口\n* Anthropic API 兼容接入\n* 多渠道分组\n* 按量计费\n* 支付宝支付\n* 每日签到\n* 邀请奖励机制\n\n感谢大家的支持，欢迎在使用过程中反馈模型可用性、调用速度、计费准确性和希望新增的模型或渠道。\n",
+        "extra": "",
+        "id": 1,
+        "publishDate": "2026-06-10T02:18:42.661Z",
+        "type": "success"
+      }
+    ],
+    "announcements_enabled": true,
+    "api_info": [
+      {
+        "color": "green",
+        "description": "带宽稳定",
+        "id": 1,
+        "route": "默认api地址",
+        "url": "https://modelgate.app/"
+      }
+    ],
+    "api_info_enabled": true,
+    "chats": [
+      {
+        "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+      },
+      {
+        "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+      },
+      {
+        "流畅阅读": "fluentread"
+      },
+      {
+        "CC Switch": "ccswitch"
+      },
+      {
+        "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+      },
+      {
+        "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+      },
+      {
+        "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+      },
+      {
+        "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+      },
+      {
+        "OpenCat": "opencat://team/join?domain={address}&token={key}"
+      }
+    ],
+    "checkin_enabled": true,
+    "custom_currency_exchange_rate": 1,
+    "custom_currency_symbol": "¤",
+    "data_export_default_time": "hour",
+    "default_collapse_sidebar": false,
+    "default_use_auto_group": false,
+    "demo_site_enabled": false,
+    "discord_client_id": "1512207701440991483",
+    "discord_oauth": true,
+    "display_in_currency": true,
+    "docs_link": "https://doc.modelgate.app",
+    "email_verification": true,
+    "enable_batch_update": true,
+    "enable_data_export": true,
+    "enable_drawing": false,
+    "enable_task": true,
+    "faq": [
+      {
+        "answer": "ModelGate 不会为了降低成本，故意将用户选择的 GPT 替换成 DeepSeek，也不会通过模型“掺水”获取额外利润。\n\n需要说明的是，模型在回答“你是什么模型”时给出的身份并不可靠。大语言模型只能根据当前提示词、历史对话和上下文生成回答，因此可能错误地自称 DeepSeek、GPT、Claude，甚至给出并不存在的版本名称。\n\n出现这种情况，常见原因包括：\n\n1. 模型自我识别错误\n模型可能根据语言风格、历史对话或提示词猜测身份。\n2. 历史对话内容影响\nnew-api 操练场保留了之前的对话记录，其中可能出现过 DeepSeek、身份设定或相关系统提示，导致后续回答延续旧上下文。",
+        "id": 3,
+        "question": "为什么在操练场选择了 GPT，回答中却自称 DeepSeek？"
+      },
+      {
+        "answer": "请不要仅通过询问模型“你是谁”来判断模型来源。 大语言模型可能受到上下文、历史对话或提示词影响，对自身身份作出错误回答，因此模型的自我描述不能作为准确依据。\n\n更可靠的核实方式包括：\n1. 调用日志中记录的请求模型；\n2. 接口响应返回的 model 字段；\n\n如发现模型显示或回答存在异常，请将用户ID、调用时间、所选模型及相关截图发送给管理员。我们会核查请求、渠道路由及上游响应等完整调用链路。\n\n如确认存在路由、模型映射或渠道配置错误，我们将及时修复，并对由此产生的异常扣费进行退还或补偿。\n\nModelGate 坚持透明计费与真实路由，不会主动使用其他模型冒充用户所选择的模型。",
+        "id": 4,
+        "question": "如何准确核实实际调用的模型？"
+      },
+      {
+        "answer": "您可以在模型广场中查看不同分组下各模型的输入、输出及缓存等计费价格。实际调用后，也可以在「使用日志」中查看模型名称、分组、Token 用量和实际扣费明细。",
+        "id": 5,
+        "question": "如何查看模型价格和计费策略？"
+      },
+      {
+        "answer": "不是。default 分组的 Claude 对接的是上游 Claude 渠道，并非 Kiro。目前仅试用分组使用 Kiro 渠道。不同分组在价格、稳定性和适用场景上可能有所区别，请根据需求选择。",
+        "id": 6,
+        "question": "default 默认分组的 Claude 是 Kiro 反代吗？"
+      },
+      {
+        "answer": "已购买订阅套餐的用户，可前往 New API 控制台：\n\n「钱包管理」→「订阅套餐」\n\n在该页面查看套餐总额度、已用额度及剩余用量。",
+        "id": 7,
+        "question": "订阅套餐的额度和使用情况在哪里查看？"
+      },
+      {
+        "answer": "ModelGate 基于 New API 官方开源版本搭建，未对请求内容处理逻辑进行任何二次修改，也不会主动保存、分析、售卖用户的 Prompt、对话内容或其他业务数据。\n我们郑重承诺：\n* 不保存用户 Prompt 用于训练任何模型；\n* 不售卖、共享或提供用户数据给第三方；\n* 不对用户请求内容进行篡改、插入额外提示词（Prompt Injection）或所谓“投毒”操作；\n* 不进行模型替换或返回与用户所选模型不符的结果。\n我们相信，透明、合规和可信赖的服务，是 AI 平台长期运营的基础。感谢大家对 ModelGate 的信任与支持。\n",
+        "id": 8,
+        "question": "ModelGate 是否会保存用户 Prompt、修改内容或对模型进行“投毒”？"
+      }
+    ],
+    "faq_enabled": true,
+    "footer_html": "",
+    "github_client_id": "Ov23liJlBTBvIhs424X9",
+    "github_oauth": true,
+    "linuxdo_client_id": "M7fivZ5nUEZrFHjQNumfVScZwWBzexHo",
+    "linuxdo_minimum_trust_level": 0,
+    "linuxdo_oauth": true,
+    "logo": "https://assets.modelgate.app/logo/modelgate-tele.png",
+    "mj_notify_enabled": false,
+    "oidc_authorization_endpoint": "",
+    "oidc_client_id": "",
+    "oidc_enabled": false,
+    "passkey_allow_insecure": false,
+    "passkey_attachment": "",
+    "passkey_display_name": "Model Gate",
+    "passkey_login": false,
+    "passkey_origins": "https://modelgate.app",
+    "passkey_rp_id": "modelgate.app",
+    "passkey_user_verification": "preferred",
+    "password_login_enabled": true,
+    "password_register_enabled": true,
+    "price": 1,
+    "privacy_policy_enabled": true,
+    "quota_display_type": "USD",
+    "quota_per_unit": 500000,
+    "register_enabled": true,
+    "self_use_mode_enabled": false,
+    "server_address": "https://modelgate.app",
+    "setup": true,
+    "start_time": 1780533009,
+    "stripe_unit_price": 1,
+    "system_name": "Model Gate",
+    "telegram_bot_name": "",
+    "telegram_oauth": false,
+    "theme": "classic",
+    "turnstile_check": true,
+    "turnstile_site_key": "0x4AAAAAADgeWs3ppdYjDB2c",
+    "uptime_kuma_enabled": true,
+    "usd_exchange_rate": 7,
+    "user_agreement_enabled": true,
+    "version": "v1.0.0-rc.10",
+    "wechat_login": false,
+    "wechat_qrcode": ""
+  },
+  "message": "",
+  "success": true
+}

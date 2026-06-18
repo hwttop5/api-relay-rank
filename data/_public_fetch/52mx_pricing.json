@@ -6,6 +6,7 @@
     {
       "model_name": "free/deepseek-v4-flash",
       "description": "免费模型系列",
+      "icon": "DeepSeek",
       "vendor_id": 24,
       "quota_type": 0,
       "model_ratio": 5e-07,
@@ -24,89 +25,15 @@
       "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
     },
     {
-      "model_name": "free/gpt-oss-120b",
-      "description": "免费模型系列",
-      "vendor_id": 24,
-      "quota_type": 0,
-      "model_ratio": 5e-07,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "cache_ratio": 1,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "free/qwen3.5-397b-a17b",
-      "description": "免费模型系列",
-      "vendor_id": 24,
-      "quota_type": 0,
-      "model_ratio": 5e-07,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "cache_ratio": 1,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex",
-      "description": "GPT-5.3 Codex is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Vision,400K",
-      "vendor_id": 12,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "floor"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "vendor_id": 12,
-      "quota_type": 0,
-      "model_ratio": 0.3,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "floor",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
       "model_name": "claude-opus-4-6",
       "vendor_id": 22,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 1.25,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
+      "cache_ratio": 0.2,
+      "create_cache_ratio": 2.5,
       "enable_groups": [
         "default",
         "plus",
@@ -117,119 +44,9 @@
       ]
     },
     {
-      "model_name": "claude-opus-4-8",
-      "vendor_id": 22,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "pro",
-        "default",
-        "plus"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "vendor_id": 22,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "codex-auto-review",
-      "vendor_id": 12,
-      "quota_type": 0,
-      "model_ratio": 0.075,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "enable_groups": [
-        "pro",
-        "default",
-        "floor",
-        "plus"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "free/glm-5.1",
+      "model_name": "free/gpt-oss-120b",
       "description": "免费模型系列",
-      "vendor_id": 24,
-      "quota_type": 0,
-      "model_ratio": 5e-07,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "cache_ratio": 1,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "vendor_id": 22,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "pro",
-        "default",
-        "plus"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "free/deepseek-v4-pro",
-      "description": "免费模型系列",
-      "vendor_id": 24,
-      "quota_type": 0,
-      "model_ratio": 5e-07,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 1,
-      "cache_ratio": 1,
-      "enable_groups": [
-        "default",
-        "plus",
-        "pro"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "free/kimi-k2.6",
-      "description": "免费模型系列",
+      "icon": "OpenAI",
       "vendor_id": 24,
       "quota_type": 0,
       "model_ratio": 5e-07,
@@ -249,6 +66,7 @@
     {
       "model_name": "free/minimax-m2.7",
       "description": "免费模型系列",
+      "icon": "Minimax",
       "vendor_id": 24,
       "quota_type": 0,
       "model_ratio": 5e-07,
@@ -266,18 +84,137 @@
       ]
     },
     {
-      "model_name": "gpt-5.2",
-      "description": "GPT-5.2 is an AI model provided by qihang-ai.",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "model_name": "codex-auto-review",
       "vendor_id": 12,
       "quota_type": 0,
       "model_ratio": 0.125,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.071428571428,
+      "completion_ratio": 1,
       "enable_groups": [
-        "floor"
+        "plus",
+        "pro",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "free/deepseek-v4-pro",
+      "description": "免费模型系列",
+      "icon": "DeepSeek",
+      "vendor_id": 24,
+      "quota_type": 0,
+      "model_ratio": 5e-07,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "cache_ratio": 1,
+      "enable_groups": [
+        "plus",
+        "pro",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "free/qwen3.5-397b-a17b",
+      "description": "免费模型系列",
+      "icon": "Qwen",
+      "vendor_id": 24,
+      "quota_type": 0,
+      "model_ratio": 5e-07,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "cache_ratio": 1,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "free/Qwen3.6",
+      "description": "Qwen3.6-35B-A3B，以稳定性与实用性为核心，在智能体编码、思维上下文保留上显著升级，为 350 亿参数、30 亿激活参数的因果视觉语言模型，编码开发体验更高效流畅。",
+      "icon": "Qwen",
+      "tags": "多模态,多语言,128k",
+      "vendor_id": 24,
+      "quota_type": 0,
+      "model_ratio": 5e-07,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "pro",
+        "default",
+        "plus"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "vendor_id": 22,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.2,
+      "create_cache_ratio": 2.5,
+      "enable_groups": [
+        "default",
+        "plus",
+        "pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "free/glm-5.1",
+      "description": "免费模型系列",
+      "icon": "ChatGLM",
+      "vendor_id": 24,
+      "quota_type": 0,
+      "model_ratio": 5e-07,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "cache_ratio": 1,
+      "enable_groups": [
+        "pro",
+        "default",
+        "plus"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "free/kimi-k2.6",
+      "description": "免费模型系列",
+      "icon": "Moonshot",
+      "vendor_id": 24,
+      "quota_type": 0,
+      "model_ratio": 5e-07,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "cache_ratio": 1,
+      "enable_groups": [
+        "pro",
+        "default",
+        "plus"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -286,6 +223,7 @@
     {
       "model_name": "free/llama-3.3-70b-instruct",
       "description": "免费模型系列",
+      "icon": "Meta",
       "vendor_id": 24,
       "quota_type": 0,
       "model_ratio": 5e-07,
@@ -294,9 +232,9 @@
       "completion_ratio": 1,
       "cache_ratio": 1,
       "enable_groups": [
+        "pro",
         "default",
-        "plus",
-        "pro"
+        "plus"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -308,16 +246,15 @@
       "tags": "Reasoning,Tools,Files,Vision,400K",
       "vendor_id": 12,
       "quota_type": 0,
-      "model_ratio": 0.15,
+      "model_ratio": 0.25,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "floor",
+        "default",
         "plus",
-        "pro",
-        "default"
+        "pro"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -325,33 +262,24 @@
     }
   ],
   "group_ratio": {
-    "default": 1,
-    "floor": 0.001
+    "default": 1
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
   "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
     "openai": {
       "path": "/v1/chat/completions",
       "method": "POST"
     }
   },
   "usable_group": {
-    "default": "",
-    "floor": "team号池低价"
+    "default": ""
   },
   "vendors": [
-    {
-      "id": 16,
-      "name": "DeepSeek",
-      "icon": "DeepSeek.Color"
-    },
-    {
-      "id": 18,
-      "name": "MiniMax",
-      "description": "MiniMax",
-      "icon": "Minimax.Avatar.type={'platform'}"
-    },
     {
       "id": 21,
       "name": "Anthropic",
@@ -364,28 +292,9 @@
       "icon": "Claude.Avatar.type={'platform'}"
     },
     {
-      "id": 23,
-      "name": "Cloudflare",
-      "icon": "Cloudflare.Color"
-    },
-    {
-      "id": 24,
-      "name": "52mx"
-    },
-    {
       "id": 5,
       "name": "Google",
       "icon": "Gemini.Color"
-    },
-    {
-      "id": 12,
-      "name": "OpenAI",
-      "icon": "OpenAI"
-    },
-    {
-      "id": 13,
-      "name": "智谱",
-      "icon": "Zhipu.Color"
     },
     {
       "id": 14,
@@ -396,6 +305,11 @@
       "id": 15,
       "name": "Meta",
       "icon": "Ollama"
+    },
+    {
+      "id": 16,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
     },
     {
       "id": 17,
@@ -409,6 +323,31 @@
       "icon": "Nvidia.Avatar.type={'platform'}"
     },
     {
+      "id": 23,
+      "name": "Cloudflare",
+      "icon": "Cloudflare.Color"
+    },
+    {
+      "id": 24,
+      "name": "52mx"
+    },
+    {
+      "id": 12,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 13,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 18,
+      "name": "MiniMax",
+      "description": "MiniMax",
+      "icon": "Minimax.Avatar.type={'platform'}"
+    },
+    {
       "id": 20,
       "name": "Mistral",
       "icon": "Mistral.Color"
@@ -416,9 +355,23 @@
   ],
   "status_payload": {
     "data": {
-      "HeaderNavModules": "",
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":true}",
       "SidebarModulesAdmin": "",
       "announcements": [
+        {
+          "content": "预通知一下：\n今晚（2026年6月18日0时）会再次封禁用户，\n没有过1元及以上充值记录的用户会被封禁，\n如需保号使用的请及时购买1元保号订阅套餐。\n后续解封请QQ499586090私信。",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2026-06-17T12:34:02.861Z",
+          "type": "warning"
+        },
+        {
+          "content": "⚠️52模型网声明：本站所有部署服务均不在中国大陆，所有服务不对中国大陆用户开放使用⚠️",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-06-14T17:52:04.411Z",
+          "type": "warning"
+        },
         {
           "content": "为了防止注册机，52模型网只开放了QQ邮箱注册，请使用QQ邮箱注册。",
           "extra": "",
@@ -513,7 +466,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://52mx.net",
       "setup": true,
-      "start_time": 1780379825,
+      "start_time": 1781457659,
       "stripe_unit_price": 8,
       "system_name": "52模型|52mx.net",
       "telegram_bot_name": "",
@@ -524,7 +477,7 @@
       "uptime_kuma_enabled": true,
       "usd_exchange_rate": 1,
       "user_agreement_enabled": true,
-      "version": "v1.0.0-rc.10",
+      "version": "v1.0.0-rc.11",
       "wechat_login": false,
       "wechat_qrcode": ""
     },

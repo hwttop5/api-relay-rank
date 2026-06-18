@@ -7,31 +7,11 @@
   ],
   "data": [
     {
-      "model_name": "gpt-image-2",
-      "description": "An advanced AI model for generating images from textual descriptions.",
-      "icon": "OpenAI",
-      "tags": "Tools,Files,Vision,1K",
-      "vendor_id": 13,
+      "model_name": "seedance2.0-10s",
+      "vendor_id": 43,
       "quota_type": 1,
       "model_ratio": 0,
-      "model_price": 0.08,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "gpt_image"
-      ],
-      "supported_endpoint_types": [
-        "image-edits",
-        "openai-response-compact",
-        "image-generation"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
-    },
-    {
-      "model_name": "sora-2-pro",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.51,
+      "model_price": 0.2,
       "owner_by": "",
       "completion_ratio": 0,
       "enable_groups": [
@@ -39,22 +19,39 @@
       ],
       "supported_endpoint_types": [
         "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "grok-build-console",
+      "description": "xAI Grok Build Console 模型，面向工程构建与控制台工作流，适合代码生成、问题定位、任务规划和工具调用。",
+      "tags": "推理,工具调用,代码,长上下文",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
       ]
     },
     {
-      "model_name": "gemini-3.1-pro-preview",
-      "description": "Gemini 3.1 Pro Preview is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 50,
+      "model_name": "gemini-2.5-flash-lite",
+      "description": "Google Gemini 2.5 Flash Lite 轻量多模态模型，适合低成本对话、视觉理解、音频输入、工具调用和大批量任务。",
+      "tags": "推理,工具调用,文件,视觉,音频,超长上下文,快速,经济",
+      "vendor_id": 30,
       "quota_type": 0,
-      "model_ratio": 1,
+      "model_ratio": 0.05,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
+      "completion_ratio": 4,
+      "cache_ratio": 0.25,
       "enable_groups": [
-        "gemini-特价",
-        "default",
         "gemini"
       ],
       "supported_endpoint_types": [
@@ -63,7 +60,72 @@
       ]
     },
     {
-      "model_name": "flux-2-pro",
+      "model_name": "glm-5.1",
+      "description": "Zhipu GLM-5.1 代码与推理模型，适合工程开发、工具调用、长上下文理解和日常智能体任务。",
+      "icon": "Zhipu.Color",
+      "tags": "推理,工具调用,代码,长上下文",
+      "vendor_id": 31,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.666666666667,
+      "cache_ratio": 0.333333333333,
+      "enable_groups": [
+        "default",
+        "zhipu"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-pro-preview",
+      "description": "Google Gemini 3.1 Pro Preview 高性能预览模型，适合复杂推理、代码、多模态理解、音频输入、工具调用和超长上下文分析。",
+      "tags": "推理,工具调用,文件,视觉,音频,超长上下文,旗舰,预览",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini",
+        "gemini-特价",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-fable-5",
+      "description": "Anthropic Claude 系列超长上下文模型，适合高质量写作、复杂推理、长文档分析、代码辅助和多模态理解。",
+      "icon": "VeniceAI",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,旗舰",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.5,
+      "enable_groups": [
+        "claudemax_x5",
+        "claudemax_x20"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "nano-banana-pro",
+      "vendor_id": 30,
       "quota_type": 1,
       "model_ratio": 0,
       "model_price": 0.12,
@@ -73,12 +135,142 @@
         "音视频"
       ],
       "supported_endpoint_types": [
-        "image-generation",
         "openai"
       ]
     },
     {
-      "model_name": "seedance2.0-5s",
+      "model_name": "sora-2",
+      "vendor_id": 13,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.3,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-multi-agent-medium",
+      "description": "xAI Grok 4.20 多智能体 Medium 模型，适合平衡成本与效果的任务拆解、代码分析和工具调用。",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,多智能体,代码",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-openai-compact",
+      "description": "OpenAI GPT-5.4 Responses Compact 上下文压缩模型，适合长对话摘要、上下文整理、会话压缩和代码会话续写前的状态压缩。",
+      "icon": "OpenAI",
+      "tags": "响应压缩,长上下文,上下文整理,代码,工具调用",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "codex_sub",
+        "codex包月",
+        "codex_pro",
+        "codex_sale",
+        "OpenRouter",
+        "codex_plus",
+        "auto",
+        "codex"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response-compact"
+      ]
+    },
+    {
+      "model_name": "gemini-flash-lite-latest",
+      "description": "Google Gemini Flash Lite 最新轻量模型，适合低成本对话、批量处理、视觉理解、音频输入和工具调用。",
+      "icon": "VertexAI.Color",
+      "tags": "推理,工具调用,文件,视觉,音频,超长上下文,快速,经济",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-image",
+      "description": "Google Gemini 2.5 Flash Image 图像理解与生成模型，适合图片分析、图像编辑、视觉创作和多模态工作流。",
+      "tags": "文件,视觉,图像生成,长上下文",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 100,
+      "cache_ratio": 0.25,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "google-imagen-4",
+      "vendor_id": 30,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "byte-plus-seedream-4-5",
+      "vendor_id": 43,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.06,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "seedance1.5-10s",
+      "vendor_id": 43,
       "quota_type": 1,
       "model_ratio": 0,
       "model_price": 0.2,
@@ -92,48 +284,90 @@
       ]
     },
     {
-      "model_name": "flux-2-max",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.12,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "image-generation",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-imagine",
-      "vendor_id": 45,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.12,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001-thinking",
-      "vendor_id": 1,
+      "model_name": "Doubao-Seed-2.0-lite",
+      "description": "豆包 Seed 2.0 Lite 是 Seed2.0 系列轻量通用模型，在生成质量、速度和成本之间取得平衡，适合日常对话、摘要和通用 Agent 场景。",
+      "tags": "通用,高速,低成本,多模态,工具调用,轻量",
+      "vendor_id": 43,
       "quota_type": 0,
       "model_ratio": 37.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
+      "completion_ratio": 1,
       "enable_groups": [
-        "cc_export",
-        "cc-max",
-        "default"
+        "china"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.2",
+      "description": "OpenAI GPT-5.2 高性能推理模型，适合复杂代码、长上下文分析、多步骤工具调用、文件处理和多模态理解。",
+      "icon": "OpenAI",
+      "tags": "推理,工具调用,文件,视觉,长上下文,旗舰,代码",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "OpenRouter",
+        "codex_plus",
+        "auto",
+        "default",
+        "codex",
+        "codex_sub",
+        "codex包月",
+        "codex_pro"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-openai-compact",
+      "description": "OpenAI GPT-5.3 Codex Responses Compact 上下文压缩模型，适合代码会话压缩、大型代码库上下文整理、自动化编程状态归纳和测试重构上下文保留。",
+      "icon": "OpenAI.Color",
+      "tags": "响应压缩,工具调用,代码,长上下文,上下文整理",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 1.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "codex_plus",
+        "codex包月",
+        "codex_pro",
+        "default",
+        "codex",
+        "codex_sub"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response-compact"
+      ]
+    },
+    {
+      "model_name": "glm-5",
+      "description": "Zhipu GLM-5 通用推理模型，适合复杂问答、代码生成、工具调用和通用智能体场景。",
+      "icon": "Zhipu.Color",
+      "tags": "推理,工具调用,开放权重,超长上下文",
+      "vendor_id": 31,
+      "quota_type": 0,
+      "model_ratio": 3,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3.666666666667,
+      "cache_ratio": 0.333333333333,
+      "enable_groups": [
+        "default",
+        "zhipu"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -141,20 +375,53 @@
       ]
     },
     {
-      "model_name": "claude-jupiter-v1-p",
-      "vendor_id": 1,
+      "model_name": "gpt-5.4",
+      "description": "OpenAI GPT-5.4 旗舰推理模型，适合复杂代码、长上下文分析、多步骤工具调用、文件处理和多模态任务。",
+      "icon": "OpenAI",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,旗舰,代码",
+      "vendor_id": 13,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 1.25,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
+      "completion_ratio": 6,
       "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
+      "create_cache_ratio": 1,
       "enable_groups": [
-        "claude-4.8"
+        "codex_sub_june",
+        "fishx_codex_618",
+        "OpenRouter",
+        "codex_sale",
+        "codex_june",
+        "codex_plus",
+        "codex_sub",
+        "codex包月",
+        "default",
+        "auto",
+        "codex",
+        "codex_pro"
       ],
       "supported_endpoint_types": [
-        "anthropic",
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-lite",
+      "description": "Google Gemini 3.1 Flash Lite 轻量多模态模型，适合低成本对话、视觉理解、音频输入、工具调用和超长上下文处理。",
+      "tags": "推理,工具调用,文件,视觉,音频,超长上下文,快速,经济",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
         "openai"
       ]
     },
@@ -174,315 +441,92 @@
       ]
     },
     {
-      "model_name": "byte-plus-seedream-4-5",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.06,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "nano-banana-2",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.16,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-fable-5",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.5,
-      "enable_groups": [
-        "cc_max"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "byte-plus-seedream-5-lite",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.06,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "veo-3.1",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.56,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-flash-lite-latest",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 0.125,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.25,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic",
-        "gemini"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-0309-non-reasoning",
-      "description": "Grok 4.20 (Non-Reasoning) is an AI model provided by xai.",
-      "icon": "XAI.Color",
-      "tags": "Tools,Files,Vision,2M",
+      "model_name": "grok-4.20-0309-reasoning-console",
+      "description": "xAI Grok 4.20 推理控制台模型，适合复杂代码分析、问题定位、多步骤推理和工具调用。",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,代码",
       "vendor_id": 45,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.08,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "veo-3.1-ref",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.56,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "byte-plus-seedream-4",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.06,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "sora-2",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.3,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "wan2-7-image",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.03,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash-nothinking",
-      "description": "Gemini 2.5 Flash (No Thinking) is an AI model provided by nano-gpt.",
-      "tags": "Files,Vision,1M",
-      "vendor_id": 60,
       "quota_type": 0,
-      "model_ratio": 0.15,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8.333333333333,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini",
-        "gemini-特价",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3.5-flash",
-      "description": "Gemini 3.5 Flash is an AI model provided by opencode.",
-      "icon": "OpenCode",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 49,
-      "quota_type": 0,
-      "model_ratio": 0.75,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 18,
-      "cache_ratio": 0.1,
-      "audio_ratio": 2,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "codex-auto-review",
-      "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 1,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 3,
       "enable_groups": [
-        "codex_sale"
+        "grok"
       ],
       "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     },
     {
-      "model_name": "gpt-5.3-codex",
-      "description": "GPT-5.3 Codex is an AI model provided by openai.",
-      "icon": "OpenAI.Color",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 13,
+      "model_name": "grok-4.20-multi-agent-console",
+      "description": "xAI Grok 4.20 多智能体控制台模型，适合复杂任务拆解、多角色协作、代码分析和工具调用。",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,多智能体,代码",
+      "vendor_id": 45,
       "quota_type": 0,
-      "model_ratio": 0.875,
+      "model_ratio": 1,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
+      "completion_ratio": 3,
       "enable_groups": [
-        "codex包月",
-        "auto",
-        "default",
-        "codex",
-        "codex_sub",
-        "codex_plus",
-        "codex_pro"
+        "grok"
       ],
       "supported_endpoint_types": [
         "openai",
-        "openai-response"
+        "anthropic"
       ]
     },
     {
-      "model_name": "kling-3.0",
-      "vendor_id": 72,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.14,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "seedance2.0-10s",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.2,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "description": "GPT-5.4 is an AI model provided by opencode.",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Tools,Files,Vision,1.1M",
-      "vendor_id": 13,
+      "model_name": "claude-opus-4-7",
+      "description": "Anthropic Claude Opus 4.7 旗舰模型，适合高难度推理、代码审查、长上下文知识处理、多步骤工具调用和多模态分析。",
+      "icon": "Claude.Color",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,旗舰",
+      "vendor_id": 1,
       "quota_type": 0,
-      "model_ratio": 1.25,
+      "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
+      "completion_ratio": 5,
       "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "codex_plus",
+        "sub_plan_claude_premium_plus",
+        "sub_plan_claude_lite",
+        "sub_plan_claude_mini_max",
         "auto",
-        "codex_sale",
+        "claudemax_x20",
+        "aws-enterprise",
+        "claude-awsq",
+        "kiro_svip",
+        "reverse",
+        "sub_plan_claude_mini_plus",
+        "sub_plan_claude_nano_day",
+        "sub_plan_claude_ultimate",
+        "kiro_cheap",
+        "reverse_new",
+        "sub_plan_claude_premium",
+        "reverse_wf",
+        "claudemax_x5",
+        "cc-max",
+        "cc_max",
+        "fishx_claude_618",
+        "claude_june",
+        "aws_api",
         "default",
-        "codex",
-        "codex_sub",
-        "codex_pro",
-        "codex包月"
+        "cc-max-cheap",
+        "cc_export",
+        "OpenRouter",
+        "sub_plan_claude_premium_max"
       ],
       "supported_endpoint_types": [
-        "openai",
-        "openai-response"
+        "anthropic",
+        "openai"
       ]
     },
     {
       "model_name": "gpt-5.4-mini",
-      "description": "GPT-5.4 Mini is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
+      "description": "OpenAI GPT-5.4 Mini 轻量推理模型，适合日常对话、代码辅助、文件处理、视觉理解和成本敏感任务。",
+      "tags": "推理,工具调用,文件,视觉,长上下文,快速,经济,代码",
       "vendor_id": 13,
       "quota_type": 0,
       "model_ratio": 0.375,
@@ -492,14 +536,18 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1,
       "enable_groups": [
-        "default",
-        "codex",
-        "codex_pro",
-        "auto",
         "codex_sale",
-        "codex_sub",
         "codex_plus",
-        "codex包月"
+        "codex_pro",
+        "codex_sub",
+        "codex_sub_june",
+        "fishx_codex_618",
+        "OpenRouter",
+        "codex",
+        "codex_june",
+        "codex包月",
+        "default",
+        "auto"
       ],
       "supported_endpoint_types": [
         "openai",
@@ -507,563 +555,9 @@
       ]
     },
     {
-      "model_name": "gemini-3-pro-image-preview",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 60,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai",
-        "anthropic"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-flash-image-preview",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 0.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 120,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic",
-        "gemini"
-      ]
-    },
-    {
-      "model_name": "gemini-3.1-flash-lite",
-      "vendor_id": 30,
-      "quota_type": 0,
-      "model_ratio": 0.125,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic",
-        "gemini"
-      ]
-    },
-    {
-      "model_name": "grok-4.3-low",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "nano-banana",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.12,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6",
-      "description": "Claude Sonnet 4.6 is an AI model provided by venice.",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "sub_plan_claude_premium",
-        "sub_plan_claude_premium_max",
-        "sub_plan_claude_premium_plus",
-        "default",
-        "cc-max",
-        "reverse_wf",
-        "sub_plan_claude_mini_max",
-        "sub_plan_claude_ultimate",
-        "sub_plan_claude_nano_day",
-        "reverse_anti_new",
-        "sub_plan_claude_lite",
-        "aws_api",
-        "cc-max-cheap",
-        "aws-enterprise",
-        "reverse",
-        "kiro_cheap",
-        "sub_plan_claude_mini_plus",
-        "kiro_svip",
-        "reverse_new",
-        "claude",
-        "cc_max",
-        "cc_export",
-        "auto"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-sonnet-4-6-thinking",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "cc_export",
-        "cc-max",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-multi-agent-console",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-multi-agent-high",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "deepseek-v4-flash",
-      "description": "DeepSeek V4 Flash is an AI model provided by venice.",
-      "icon": "VeniceAI",
-      "tags": "Reasoning,Tools,Open Weights,1M",
-      "vendor_id": 58,
-      "quota_type": 0,
-      "model_ratio": 0.6,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "cache_ratio": 0.02,
-      "enable_groups": [
-        "china",
-        "ds_api_pro",
-        "ds_api",
-        "deepseek"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "seedance1.5-5s",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.2,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "qwen-image-plus",
-      "vendor_id": 29,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.2,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash",
-      "description": "gemini-2.5-flash is an AI model provided by sap-ai-core.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 59,
-      "quota_type": 0,
-      "model_ratio": 0.15,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8.333333333333,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini-特价",
-        "default",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-build-console",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "deepseek-v4-pro",
-      "description": "DeepSeek V4 Pro is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Open Weights,1M",
-      "vendor_id": 50,
-      "quota_type": 0,
-      "model_ratio": 1.8,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2.125,
-      "cache_ratio": 0.008333333333,
-      "enable_groups": [
-        "ds_api_pro",
-        "ds_api",
-        "deepseek",
-        "china"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-haiku-4-5-20251001",
-      "description": "Claude Haiku 4.5 is an AI model provided by qihang-ai.",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 0.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc_export",
-        "sub_plan_claude_mini_plus",
-        "cc-max",
-        "cc_max",
-        "reverse_new",
-        "sub_plan_claude_premium",
-        "sub_plan_claude_premium_max",
-        "sub_plan_claude_nano_day",
-        "sub_plan_claude_lite",
-        "aws_api",
-        "auto",
-        "aws-enterprise",
-        "kiro_cheap",
-        "reverse",
-        "sub_plan_claude_premium_plus",
-        "default",
-        "reverse_wf",
-        "kiro_svip",
-        "reverse_anti_new",
-        "claude",
-        "sub_plan_claude_mini_max",
-        "sub_plan_claude_ultimate",
-        "cc-max-cheap"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-8",
-      "description": "Claude Opus 4.8 is an AI model provided by venice.",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "claude",
-        "sub_plan_claude_premium_max",
-        "sub_plan_claude_lite",
-        "sub_plan_claude_ultimate",
-        "cc-max",
-        "sub_plan_claude_premium",
-        "kiro_cheap",
-        "kiro_svip",
-        "default",
-        "sub_plan_claude_nano_day",
-        "sub_plan_claude_premium_plus",
-        "reverse_wf",
-        "cc_max",
-        "sub_plan_claude_mini_max",
-        "sub_plan_claude_mini_plus",
-        "reverse_new"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-flash-preview",
-      "description": "Gemini 3 Flash Preview is an AI model provided by venice.",
-      "icon": "VeniceAI",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,256K",
-      "vendor_id": 58,
-      "quota_type": 0,
-      "model_ratio": 0.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini-特价",
-        "default",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "google-imagen-4",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.12,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "kling-o3",
-      "vendor_id": 72,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.21,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7",
-      "description": "Claude Opus 4.7 is an AI model provided by venice.\n",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "aws_api",
-        "sub_plan_claude_ultimate",
-        "auto",
-        "cc_export",
-        "reverse_new",
-        "sub_plan_claude_premium_max",
-        "default",
-        "sub_plan_claude_lite",
-        "kiro_svip",
-        "claude",
-        "cc-max",
-        "cc-max-cheap",
-        "aws-enterprise",
-        "kiro_cheap",
-        "sub_plan_claude_nano_day",
-        "sub_plan_claude_premium_plus",
-        "reverse_wf",
-        "sub_plan_claude_mini_max",
-        "cc_max",
-        "reverse",
-        "sub_plan_claude_mini_plus",
-        "sub_plan_claude_premium"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101-thinking",
-      "description": "claude-opus-4-5-20251101-thinking is an AI model provided by 302ai.",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc_export",
-        "cc-max",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-0309-reasoning-console",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.3-console",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 0.625,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "nano-banana-pro",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.12,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "kling-10s",
-      "vendor_id": 72,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.12,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-7-thinking",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 37.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "cc-max",
-        "default",
-        "cc_export"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
       "model_name": "gpt-5.5",
-      "description": "GPT-5.5 is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,1.1M",
+      "description": "OpenAI GPT-5.5 旗舰推理模型，适合复杂工程任务、深度推理、超长上下文分析、多步骤工具调用和多模态理解。",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,旗舰,代码",
       "vendor_id": 13,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -1072,22 +566,26 @@
       "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "sub_plan_claude_lite",
-        "codex",
-        "codex_plus",
-        "sub_plan_claude_nano_day",
-        "sub_plan_claude_ultimate",
-        "default",
         "codex_sub",
-        "auto",
-        "codex_pro",
-        "sub_plan_claude_premium_max",
+        "sub_plan_claude_nano_day",
+        "sub_plan_claude_mini_max",
         "sub_plan_claude_mini_plus",
         "sub_plan_claude_premium_plus",
-        "sub_plan_claude_premium",
+        "codex",
+        "codex_plus",
+        "default",
+        "sub_plan_claude_lite",
+        "sub_plan_claude_ultimate",
+        "codex_sub_june",
+        "OpenRouter",
+        "auto",
+        "codex_june",
+        "codex_pro",
         "codex包月",
+        "fishx_codex_618",
+        "sub_plan_claude_premium_max",
         "codex_sale",
-        "sub_plan_claude_mini_max"
+        "sub_plan_claude_premium"
       ],
       "supported_endpoint_types": [
         "openai",
@@ -1096,89 +594,8 @@
       ]
     },
     {
-      "model_name": "gemini-3.1-flash-lite-preview",
-      "description": "Gemini 3.1 Flash Lite Preview is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 50,
-      "quota_type": 0,
-      "model_ratio": 0.125,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5-openai-compact",
-      "description": "gpt 5.5 openai compact is an OpenAI model for reasoning and multimodal generation.",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Vision,Tools,Files,1.1M",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex_sale",
-        "codex_plus",
-        "auto"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.2",
-      "description": "GPT-5.2 is an AI model provided by qihang-ai.",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1,
-      "enable_groups": [
-        "codex",
-        "codex_sub",
-        "codex_plus",
-        "codex_pro",
-        "codex包月",
-        "auto",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "openai-response"
-      ]
-    },
-    {
-      "model_name": "grok-4.3-medium",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 0.625,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "seedance1.5-10s",
+      "model_name": "seedance1.5-5s",
+      "vendor_id": 43,
       "quota_type": 1,
       "model_ratio": 0,
       "model_price": 0.2,
@@ -1193,9 +610,9 @@
     },
     {
       "model_name": "claude-opus-4-6",
-      "description": "Claude Opus 4.6 is an AI model provided by venice.",
+      "description": "Anthropic Claude Opus 4.6 旗舰模型，适合复杂代码、深度推理、超长文档分析、工具调用和高质量多模态理解。",
       "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,1M",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,旗舰",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 2.5,
@@ -1205,174 +622,33 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "reverse",
-        "reverse_new",
-        "reverse_anti_new",
-        "claude",
-        "reverse_wf",
-        "cc_export",
         "kiro_cheap",
         "sub_plan_claude_nano_day",
-        "kiro_svip",
-        "cc-max",
-        "sub_plan_claude_mini_plus",
-        "sub_plan_claude_premium",
-        "sub_plan_claude_premium_max",
-        "cc_max",
-        "aws_api",
-        "sub_plan_claude_ultimate",
-        "cc-max-cheap",
-        "sub_plan_claude_premium_plus",
-        "default",
-        "sub_plan_claude_lite",
-        "sub_plan_claude_mini_max",
-        "auto",
-        "aws-enterprise"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-pro",
-      "description": "gemini-2.5-pro is an AI model provided by sap-ai-core.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 59,
-      "quota_type": 0,
-      "model_ratio": 0.625,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini-特价",
-        "default",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-3-pro-preview",
-      "description": "Gemini 3 Pro Preview is an AI model provided by qihang-ai.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 51,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6.017544,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "gemini-特价",
-        "default",
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gemini-2.5-flash-lite",
-      "description": "gemini-2.5-flash-lite is an AI model provided by sap-ai-core.",
-      "tags": "Reasoning,Tools,Files,Vision,Audio,1M",
-      "vendor_id": 59,
-      "quota_type": 0,
-      "model_ratio": 0.05,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 4,
-      "cache_ratio": 0.25,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "gemini",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-0309-console",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 0.625,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 2,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.20-0309-non-reasoning-console",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 3,
-      "enable_groups": [
-        "grok"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "veo-3.1-fast",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.56,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "音视频"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101",
-      "description": "Claude Opus 4.5 is an AI model provided by qihang-ai.",
-      "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 1,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
         "reverse_wf",
-        "cc_max",
-        "auto",
-        "reverse",
-        "sub_plan_claude_premium",
-        "sub_plan_claude_premium_max",
-        "sub_plan_claude_premium_plus",
-        "cc-max",
-        "reverse_new",
-        "aws_api",
-        "sub_plan_claude_ultimate",
-        "default",
-        "sub_plan_claude_lite",
         "sub_plan_claude_mini_max",
+        "aws_api",
+        "default",
+        "cc-max-cheap",
+        "cc_export",
+        "reverse_new",
+        "sub_plan_claude_premium_plus",
+        "claude_june",
+        "auto",
+        "claudemax_x20",
+        "cc_max",
         "aws-enterprise",
-        "cc-max-cheap",
-        "kiro_cheap",
-        "cc_export",
+        "OpenRouter",
+        "sub_plan_claude_ultimate",
         "sub_plan_claude_mini_plus",
-        "sub_plan_claude_nano_day",
+        "sub_plan_claude_premium",
+        "reverse_anti_new",
+        "claudemax_x5",
+        "cc-max",
+        "claude-awsq",
+        "sub_plan_claude_premium_max",
+        "reverse",
+        "sub_plan_claude_lite",
+        "fishx_claude_618",
         "kiro_svip"
       ],
       "supported_endpoint_types": [
@@ -1381,9 +657,10 @@
       ]
     },
     {
-      "model_name": "claude-sonnet-4-5-20250929-thinking",
-      "description": "claude-sonnet-4-5-20250929-thinking is an AI model provided by 302ai.",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "model_name": "claude-sonnet-4-5-20250929",
+      "description": "Anthropic Claude Sonnet 4.5 指定版本，兼顾性能与成本，适合代码、推理、文档处理、工具调用和视觉理解。",
+      "icon": "Claude.Color",
+      "tags": "推理,工具调用,文件,视觉,长上下文,旗舰",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 1.5,
@@ -1393,7 +670,24 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "cc_export"
+        "reverse_wf",
+        "reverse",
+        "sub_plan_claude_nano_day",
+        "sub_plan_claude_premium_plus",
+        "sub_plan_claude_mini_max",
+        "claudemax_x5",
+        "claudemax_x20",
+        "sub_plan_claude_mini_plus",
+        "sub_plan_claude_lite",
+        "aws_api",
+        "sub_plan_claude_ultimate",
+        "aws-enterprise",
+        "OpenRouter",
+        "sub_plan_claude_premium_max",
+        "kiro_cheap",
+        "sub_plan_claude_premium",
+        "reverse_new",
+        "auto"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -1401,31 +695,12 @@
       ]
     },
     {
-      "model_name": "gpt-5.4-openai-compact",
-      "description": "gpt 5.4 openai compact is an OpenAI model for reasoning and multimodal generation.",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Vision,Tools,Files,1.1M",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "codex_sale",
-        "codex_plus",
-        "auto"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "grok-4.3-high",
+      "model_name": "grok-4.20-0309-console",
+      "description": "xAI Grok 4.20 Console 模型，适合控制台场景下的代码辅助、问题定位、工具调用和交互式推理。",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,代码",
       "vendor_id": 45,
       "quota_type": 0,
-      "model_ratio": 0.85,
+      "model_ratio": 0.625,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 2,
@@ -1433,29 +708,70 @@
         "grok"
       ],
       "supported_endpoint_types": [
-        "openai"
+        "openai",
+        "anthropic"
       ]
     },
     {
-      "model_name": "kling-5s",
-      "vendor_id": 72,
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.12,
+      "model_name": "MiniMax-M3",
+      "description": "MiniMax M3 是面向编程、智能体任务和多模态理解的前沿开源权重模型，支持最长 1M 上下文，适合长任务拆解、工具调用和代码场景。",
+      "tags": "编程,智能体,多模态,长上下文,1M上下文,工具调用,开源权重",
+      "vendor_id": 44,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 0,
+      "completion_ratio": 1,
       "enable_groups": [
-        "音视频"
+        "china"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "Doubao-Seed-2.0-pro",
+      "description": "豆包 Seed 2.0 Pro 是字节跳动 Seed2.0 系列高性能通用模型，强化推理、多模态理解和 Agent 任务能力，适合复杂任务与高质量生成。",
+      "tags": "通用,推理,智能体,多模态,工具调用,高性能",
+      "vendor_id": 43,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "china"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-pro",
+      "description": "OpenAI GPT-5.5 Pro 高阶推理模型，适合复杂工程任务、深度推理、超长上下文分析、多步骤工具调用和高可靠代码生成。",
+      "icon": "OpenAI",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,旗舰,代码",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 1,
+      "enable_groups": [
+        "OpenRouter"
       ],
       "supported_endpoint_types": [
         "openai"
       ]
     },
     {
-      "model_name": "claude-sonnet-4-5-20250929",
-      "description": "Claude Sonnet 4.5 is an AI model provided by qihang-ai.",
+      "model_name": "claude-sonnet-4-6",
+      "description": "Anthropic Claude Sonnet 4.6 高性能模型，适合复杂代码、长上下文分析、工具调用、多模态理解和稳定生产任务。",
       "icon": "Claude.Color",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,旗舰",
       "vendor_id": 1,
       "quota_type": 0,
       "model_ratio": 1.5,
@@ -1465,24 +781,34 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "sub_plan_claude_mini_plus",
-        "sub_plan_claude_mini_max",
-        "aws_api",
-        "reverse",
-        "sub_plan_claude_premium",
-        "sub_plan_claude_premium_plus",
-        "sub_plan_claude_lite",
         "cc_max",
-        "auto",
-        "sub_plan_claude_nano_day",
-        "reverse_wf",
-        "reverse_new",
-        "sub_plan_claude_ultimate",
-        "sub_plan_claude_premium_max",
-        "kiro_svip",
-        "cc-max-cheap",
         "aws-enterprise",
-        "kiro_cheap"
+        "cc-max",
+        "cc-max-cheap",
+        "sub_plan_claude_premium_max",
+        "fishx_claude_618",
+        "aws_api",
+        "sub_plan_claude_ultimate",
+        "reverse_wf",
+        "sub_plan_claude_lite",
+        "sub_plan_claude_mini_max",
+        "claudemax_x20",
+        "cc_export",
+        "claude-awsq",
+        "kiro_cheap",
+        "sub_plan_claude_premium",
+        "sub_plan_claude_nano_day",
+        "sub_plan_claude_premium_plus",
+        "auto",
+        "default",
+        "OpenRouter",
+        "kiro_svip",
+        "reverse",
+        "sub_plan_claude_mini_plus",
+        "reverse_new",
+        "reverse_anti_new",
+        "claude_june",
+        "claudemax_x5"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -1490,49 +816,61 @@
       ]
     },
     {
-      "model_name": "gemini-2.5-flash-image",
+      "model_name": "gemini-3-flash-preview",
+      "description": "Google Gemini 3 Flash Preview 快速预览模型，适合体验新一代 Gemini 的推理、工具调用、视觉、音频和多模态能力。",
+      "icon": "VeniceAI",
+      "tags": "推理,工具调用,文件,视觉,音频,长上下文,快速,预览",
       "vendor_id": 30,
       "quota_type": 0,
-      "model_ratio": 0.15,
+      "model_ratio": 0.25,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 100,
-      "cache_ratio": 0.25,
-      "enable_groups": [
-        "gemini"
-      ],
-      "supported_endpoint_types": [
-        "openai",
-        "anthropic",
-        "gemini"
-      ]
-    },
-    {
-      "model_name": "gpt-5.3-codex-spark",
-      "description": "GPT-5.3 Codex Spark is an AI model provided by opencode.",
-      "icon": "OpenAI",
-      "tags": "Reasoning,Tools,128K",
-      "vendor_id": 13,
-      "quota_type": 0,
-      "model_ratio": 0.875,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 8,
+      "completion_ratio": 6,
       "cache_ratio": 0.1,
       "enable_groups": [
-        "codex_plus",
-        "auto"
+        "gemini-特价",
+        "default",
+        "gemini"
       ],
       "supported_endpoint_types": [
-        "openai",
-        "openai-response"
+        "gemini",
+        "openai"
       ]
     },
     {
-      "model_name": "wan2-7-image-pro",
+      "model_name": "gpt-5.5-openai-compact",
+      "description": "OpenAI GPT-5.5 Responses Compact 上下文压缩模型，适合复杂工程会话压缩、长上下文整理、多步骤推理状态归纳和代码上下文保留。",
+      "icon": "OpenAI",
+      "tags": "响应压缩,长上下文,上下文整理,推理,代码",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "codex_sale",
+        "OpenRouter",
+        "codex_plus",
+        "codex",
+        "codex_sub",
+        "codex_pro",
+        "auto",
+        "default",
+        "codex包月"
+      ],
+      "supported_endpoint_types": [
+        "openai-response-compact",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kling-3.0",
+      "vendor_id": 72,
       "quota_type": 1,
       "model_ratio": 0,
-      "model_price": 0.05,
+      "model_price": 0.14,
       "owner_by": "",
       "completion_ratio": 0,
       "enable_groups": [
@@ -1558,43 +896,99 @@
       ]
     },
     {
-      "model_name": "grok-4.20-multi-agent-medium",
-      "vendor_id": 45,
-      "quota_type": 0,
-      "model_ratio": 1,
-      "model_price": 0,
+      "model_name": "byte-plus-seedream-5-lite",
+      "vendor_id": 43,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.06,
       "owner_by": "",
-      "completion_ratio": 3,
+      "completion_ratio": 0,
       "enable_groups": [
-        "grok"
+        "音视频"
       ],
       "supported_endpoint_types": [
         "openai"
       ]
     },
     {
-      "model_name": "claude-haiku-4-5",
-      "description": "Claude Haiku 4.5 is an AI model provided by opencode.",
-      "icon": "OpenCode",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 49,
+      "model_name": "Doubao-Seed-2.0-Code",
+      "description": "豆包 Seed 2.0 Code 是 Seed2.0 系列代码增强模型，面向长链路推理、复杂任务稳定性和 Agentic Coding，适合代码生成、调试与工程辅助。",
+      "tags": "编程,智能体,推理,工具调用,多模态,代码增强",
+      "vendor_id": 43,
       "quota_type": 0,
-      "model_ratio": 0.5,
+      "model_ratio": 37.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
+      "completion_ratio": 1,
       "enable_groups": [
-        "aws-enterprise"
+        "china"
       ],
       "supported_endpoint_types": [
-        "anthropic",
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "description": "OpenAI Codex 自动审查模型，面向代码评审、变更分析、缺陷定位、重构建议和工程上下文理解。",
+      "tags": "推理,工具调用,代码,快速",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "codex_plus",
+        "codex_pro",
+        "codex_sub",
+        "codex包月",
+        "codex",
+        "codex_sub_june",
+        "fishx_codex_618",
+        "default",
+        "codex_sale",
+        "codex_june"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "seedance2.0-5s",
+      "vendor_id": 43,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-imagine",
+      "vendor_id": 45,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
         "openai"
       ]
     },
     {
       "model_name": "grok-4.20-multi-agent-xhigh",
+      "description": "xAI Grok 4.20 多智能体 XHigh 模型，适合高难度推理、复杂工程协作、长上下文分析和密集工具调用。",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,多智能体,旗舰,代码",
       "vendor_id": 45,
       "quota_type": 0,
       "model_ratio": 1.5,
@@ -1605,27 +999,840 @@
         "grok"
       ],
       "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "MiniMax-M2.7",
+      "description": "MiniMax M2.7 是面向复杂 Agent、代码生成和生产力任务的大语言模型，具备较强推理、工具调用和长上下文能力，适合软件工程与自动化工作流。",
+      "tags": "推理,编程,智能体,工具调用,长上下文,204.8K上下文",
+      "vendor_id": 44,
+      "quota_type": 0,
+      "model_ratio": 1.05,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4,
+      "cache_ratio": 0.2,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "china"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-lite-preview",
+      "description": "Google Gemini 3.1 Flash Lite Preview 轻量预览模型，适合低成本试用新版多模态、工具调用、视觉和音频能力。",
+      "tags": "推理,工具调用,文件,视觉,音频,超长上下文,快速,经济,预览",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 0.125,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-5-20251101",
+      "description": "Anthropic Claude Opus 4.5 指定版本，适合复杂推理、代码开发、长文档分析、工具调用和高质量多模态任务。",
+      "icon": "Claude.Color",
+      "tags": "推理,工具调用,文件,视觉,长上下文,旗舰",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "aws_api",
+        "auto",
+        "sub_plan_claude_nano_day",
+        "sub_plan_claude_mini_max",
+        "aws-enterprise",
+        "reverse_wf",
+        "sub_plan_claude_ultimate",
+        "claudemax_x5",
+        "default",
+        "sub_plan_claude_premium_max",
+        "kiro_cheap",
+        "sub_plan_claude_mini_plus",
+        "sub_plan_claude_premium",
+        "sub_plan_claude_premium_plus",
+        "reverse_new",
+        "sub_plan_claude_lite",
+        "claudemax_x20",
+        "OpenRouter",
+        "reverse",
+        "claude-awsq"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "flux-2-pro",
+      "vendor_id": 74,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "image-generation",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "flux-2-max",
+      "vendor_id": 74,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "image-generation",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "nano-banana-2",
+      "vendor_id": 30,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.16,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.3-medium",
+      "description": "xAI Grok 4.3 Medium 模型，适合平衡成本与能力的推理、代码辅助、文件处理、视觉理解和工具调用。",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,代码",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-pro",
+      "description": "Google Gemini 2.5 Pro 高性能多模态模型，适合复杂推理、代码、长上下文分析、视觉理解、音频输入和工具调用。",
+      "tags": "推理,工具调用,文件,视觉,音频,超长上下文,旗舰",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini-特价",
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.1-flash-image-preview",
+      "description": "Google Gemini 3.1 Flash Image Preview 图像预览模型，适合快速图片理解、图像生成、图像编辑和视觉创作流程。",
+      "icon": "Gemini.Color",
+      "tags": "推理,文件,视觉,图像生成,长上下文,快速,预览",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 0.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 120,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-jupiter-v1-p",
+      "description": "Anthropic Claude Jupiter 预览模型，适合体验新版 Claude 推理、代码、长文本理解和工具调用能力。",
+      "tags": "推理,工具调用,文件,视觉,长上下文,预览",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claude-4.8"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "veo-3.1-fast",
+      "vendor_id": 30,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.56,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "byte-plus-seedream-4",
+      "vendor_id": 43,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.06,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "description": "OpenAI GPT Image 2 图像生成模型，适合文本生图、图片编辑、视觉创意生成和图像工作流自动化。",
+      "icon": "OpenAI",
+      "tags": "工具调用,文件,视觉,图像生成",
+      "vendor_id": 13,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.08,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "gpt_image"
+      ],
+      "supported_endpoint_types": [
+        "openai-response-compact",
+        "image-generation",
+        "image-edits"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash-nothinking",
+      "description": "Google Gemini 2.5 Flash 非思考模式模型，适合低延迟对话、文本处理、视觉理解和无需深度推理的任务。",
+      "tags": "文件,视觉,超长上下文,快速,非推理",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333333,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini",
+        "gemini-特价",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "nano-banana",
+      "vendor_id": 30,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.3-console",
+      "description": "xAI Grok 4.3 Console 模型，适合控制台交互、代码辅助、工具调用、文件处理和复杂问题分析。",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,代码",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 0.625,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "description": "DeepSeek V4 Flash 快速推理模型，适合高吞吐问答、代码辅助、工具调用、开源生态任务和长上下文处理。",
+      "icon": "VeniceAI",
+      "tags": "推理,工具调用,开源权重,超长上下文,快速",
+      "vendor_id": 34,
+      "quota_type": 0,
+      "model_ratio": 0.6,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "cache_ratio": 0.02,
+      "enable_groups": [
+        "china",
+        "ds_api_pro",
+        "ds_api",
+        "deepseek"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kling-5s",
+      "vendor_id": 72,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "sora-2-pro",
+      "vendor_id": 13,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.51,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "wan2-7-image",
+      "vendor_id": 29,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.03,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-preview",
+      "description": "Google Gemini 3 Pro Preview 高性能预览模型，适合复杂推理、代码、多模态理解、音频输入、工具调用和超长上下文任务。",
+      "tags": "推理,工具调用,文件,视觉,音频,超长上下文,旗舰,预览",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6.017544,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini-特价",
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3.5-flash",
+      "description": "Google Gemini 3.5 Flash 快速多模态模型，适合低延迟对话、视觉理解、音频输入、工具调用和超长上下文任务。",
+      "icon": "OpenCode",
+      "tags": "推理,工具调用,文件,视觉,音频,超长上下文,快速",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 0.75,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 18,
+      "cache_ratio": 0.1,
+      "audio_ratio": 2,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-3-pro-image-preview",
+      "description": "Google Gemini 3 Pro Image Preview 图像预览模型，适合高质量图片理解、图像生成、图像编辑和视觉创作。",
+      "tags": "文件,视觉,图像生成,超长上下文,预览",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 60,
+      "enable_groups": [
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5",
+      "description": "Anthropic Claude Haiku 4.5 轻量模型，响应速度快，适合日常对话、批量处理、工具调用和成本敏感的多模态任务。",
+      "icon": "Claude.Color",
+      "tags": "推理,工具调用,文件,视觉,长上下文,快速,经济",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "claudemax_x5",
+        "claudemax_x20",
+        "aws-enterprise"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kling-10s",
+      "vendor_id": 72,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.12,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-multi-agent-high",
+      "description": "xAI Grok 4.20 多智能体 High 模型，适合复杂推理、代码协作、任务规划和高强度工具调用。",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,多智能体,旗舰,代码",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "description": "OpenAI GPT-5.3 Codex 代码模型，适合大型代码库理解、自动化编程、重构、测试生成和工具调用。",
+      "icon": "OpenAI.Color",
+      "tags": "推理,工具调用,文件,视觉,长上下文,旗舰,代码",
+      "vendor_id": 13,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1,
+      "enable_groups": [
+        "default",
+        "codex",
+        "codex_sub",
+        "codex_plus",
+        "codex包月",
+        "codex_pro"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "openai-response"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "description": "Anthropic Claude Opus 4.8 旗舰模型，适合复杂工程任务、严谨推理、超长文档理解、工具调用和高质量多模态分析。",
+      "icon": "Claude.Color",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,旗舰",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "sub_plan_claude_nano_day",
+        "cc_max",
+        "fishx_claude_618",
+        "sub_plan_claude_mini_plus",
+        "sub_plan_claude_premium",
+        "sub_plan_claude_ultimate",
+        "claudemax_x5",
+        "cc-max-cheap",
+        "claude-awsq",
+        "kiro_svip",
+        "claude_june",
+        "reverse_wf",
+        "reverse_new",
+        "cc_export",
+        "sub_plan_claude_premium_max",
+        "sub_plan_claude_mini_max",
+        "sub_plan_claude_premium_plus",
+        "sub_plan_claude_lite",
+        "claudemax_x20",
+        "cc-max",
+        "default",
+        "OpenRouter",
+        "kiro_cheap"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gemini-2.5-flash",
+      "description": "Google Gemini 2.5 Flash 快速多模态模型，适合低延迟对话、视觉理解、音频输入、工具调用和大上下文任务。",
+      "tags": "推理,工具调用,文件,视觉,音频,超长上下文,快速",
+      "vendor_id": 30,
+      "quota_type": 0,
+      "model_ratio": 0.15,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8.333333333333,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "gemini-特价",
+        "default",
+        "gemini"
+      ],
+      "supported_endpoint_types": [
+        "gemini",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.20-0309-non-reasoning-console",
+      "description": "xAI Grok 4.20 非推理控制台模型，适合控制台问答、快速代码辅助、工具调用和低延迟交互。",
+      "tags": "工具调用,文件,视觉,超长上下文,快速,非推理,代码",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "glm-5-turbo",
+      "description": "Zhipu GLM-5 Turbo 快速推理模型，适合低延迟对话、代码辅助、工具调用和成本敏感任务。",
+      "icon": "Zhipu.Color",
+      "tags": "推理,工具调用,代码,快速,长上下文",
+      "vendor_id": 31,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 4.4,
+      "cache_ratio": 0.24,
+      "enable_groups": [
+        "default",
+        "zhipu"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "glm-5.2",
+      "description": "Zhipu GLM-5.2 高性能推理模型，适合复杂代码、长上下文分析、工具调用和生产级智能体工作流。",
+      "icon": "Zhipu.Color",
+      "tags": "推理,工具调用,代码,超长上下文,旗舰",
+      "vendor_id": 31,
+      "quota_type": 0,
+      "model_ratio": 4,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 3,
+      "cache_ratio": 0.125,
+      "enable_groups": [
+        "zhipu",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "kling-o3",
+      "vendor_id": 72,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.21,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "grok-4.3-high",
+      "description": "xAI Grok 4.3 High 模型，适合复杂推理、代码开发、文件处理、视觉理解和长上下文分析。",
+      "tags": "推理,工具调用,文件,视觉,超长上下文,旗舰,代码",
+      "vendor_id": 45,
+      "quota_type": 0,
+      "model_ratio": 0.85,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2,
+      "enable_groups": [
+        "grok"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "description": "Anthropic Claude Haiku 4.5 指定版本，适合稳定复现的快速问答、文档处理、工具调用和视觉理解任务。",
+      "tags": "推理,工具调用,文件,视觉,长上下文,快速,经济",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "reverse",
+        "sub_plan_claude_nano_day",
+        "sub_plan_claude_premium_plus",
+        "sub_plan_claude_lite",
+        "aws_api",
+        "auto",
+        "claudemax_x20",
+        "cc-max-cheap",
+        "sub_plan_claude_mini_max",
+        "claudemax_x5",
+        "cc-max",
+        "sub_plan_claude_mini_plus",
+        "reverse_new",
+        "sub_plan_claude_premium",
+        "claude_june",
+        "reverse_wf",
+        "cc_export",
+        "cc_max",
+        "claude-awsq",
+        "kiro_cheap",
+        "reverse_anti_new",
+        "sub_plan_claude_ultimate",
+        "default",
+        "aws-enterprise",
+        "OpenRouter",
+        "sub_plan_claude_premium_max",
+        "fishx_claude_618"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "description": "DeepSeek V4 Pro 高性能推理模型，适合复杂代码、数学推理、长上下文分析、工具调用和专业场景。",
+      "tags": "推理,工具调用,开源权重,超长上下文,旗舰",
+      "vendor_id": 34,
+      "quota_type": 0,
+      "model_ratio": 1.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 2.125,
+      "cache_ratio": 0.008333333333,
+      "enable_groups": [
+        "ds_api_pro",
+        "ds_api",
+        "deepseek",
+        "china"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "veo-3.1-ref",
+      "vendor_id": 30,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.56,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "veo-3.1",
+      "vendor_id": 30,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.56,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "wan2-7-image-pro",
+      "vendor_id": 29,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.05,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "qwen-image-plus",
+      "description": "qwen-image-plus is an AI model provided by aliyun-bailian.",
+      "vendor_id": 29,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.2,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "音视频"
+      ],
+      "supported_endpoint_types": [
         "openai"
       ]
     }
   ],
   "group_ratio": {
-    "aws-enterprise": 3.2,
+    "OpenRouter": 10,
     "cc-max": 2.8,
-    "cc-max-cheap": 99,
     "cc_export": 1.8,
     "cc_max": 1.8,
-    "claude-max-特价-满血": 0.91,
-    "codex": 1,
-    "codex_plus": 0.4,
+    "china": 1,
+    "claude-awsq": 0.6,
+    "claude_june": 1,
+    "claudemax_x20": 7,
+    "claudemax_x5": 7,
+    "codex_june": 0.15,
+    "codex_plus": 0.35,
     "codex_pro": 0.5,
-    "codex_sub": 0.5,
-    "deepseek": 0.5,
-    "default": 1.7,
+    "codex_sub": 1,
+    "codex_sub_june": 1,
+    "deepseek": 0.8,
+    "default": 2,
+    "fishx_claude_618": 0.9,
+    "fishx_codex_618": 0.1,
     "gemini": 1.8,
-    "gpt_image": 1.2,
-    "grok": 1
+    "grok": 1,
+    "kiro_svip": 0.35,
+    "zhipu": 0.8
   },
+  "pricing_region": "JP",
+  "pricing_region_strategy": "global",
   "success": true,
   "supported_endpoint": {
     "anthropic": {
@@ -1658,97 +1865,139 @@
     }
   },
   "usable_group": {
-    "aws-enterprise": "aws-enterprise",
-    "cc-max": "claude 官方 api 优先号池缓存可达90%，awsapi进行兜底",
-    "cc-max-cheap": "cc-max-cheap ⚠️ 上游为20apixa",
-    "cc_export": "cc_export外接专用分组",
-    "cc_max": "Claude MAX 自建号池, 假一赔十 (限制 Claude Code 或官方插件中使用)",
-    "claude-max-特价-满血": "claude-max-特价-满血 ⚠️ 上游为20apixa",
-    "codex": "codex分组 codex 专用分组缓存可达90%",
-    "codex_plus": "codex_plus",
-    "codex_pro": "codex_pro号池",
-    "codex_sub": "codex_sub分组 codex plus pro team 号池专用分组缓存可达95%",
-    "deepseek": "deepseek",
-    "default": "⚠️ ⚠️⚠️⚠️⚠️默认通用分组：可调用全站所有模型，但所有模型统一按 1.7 倍率计费",
-    "gemini": "gemini",
-    "gpt_image": "gpt_image",
-    "grok": "grok ⚠️ 上游为20apixa"
+    "OpenRouter": "【聚合官方｜OpenRouter】OpenRouter 官方聚合渠道；支持 Claude、Codex 等多系列模型，适合统一入口调用。",
+    "cc-max": "【Claude Code｜官方 API】Claude Code 官方 API 渠道；稳定性优先，适合长期生产使用。",
+    "cc_export": "【Claude Code｜外接】Claude Code 外接专用分组；不限制客户端，适合自有工具或第三方客户端接入。",
+    "cc_max": "【Claude MAX｜自建池】Claude MAX 自建号池分组；建议在 Claude Code 或官方插件中使用。",
+    "china": "china",
+    "claude-awsq": "【稳定性⭐⭐⭐⭐⭐】官方aws-awsq 渠道 【95% 高缓存】",
+    "claude_june": "【限时】六月专属活动。【稳定性⭐⭐⭐⭐⭐】官方满血 20x 渠道，可外接",
+    "claudemax_x20": "【ClaudeMax｜x20 官方订阅】ClaudeMax x20 官方订阅账号分组；详情见 claudemax.fishxcode.com。",
+    "claudemax_x5": "【ClaudeMax｜x5 官方订阅】ClaudeMax x5 官方订阅账号分组；详情见 claudemax.fishxcode.com。",
+    "codex_june": "【限时】六月专属活动。【最稳定性⭐⭐⭐⭐⭐】Codex 官方 Pro 和 plus 号池 仅限codex客户端使用",
+    "codex_plus": "【Codex Plus｜外接】Codex Plus 系列号池分组；支持外接使用，适合高频代码与工具调用任务。",
+    "codex_pro": "【Codex Pro｜外接】Codex Pro 系列号池分组；支持外接使用，适合高频代码与工具调用任务。",
+    "codex_sub": "【Codex 订阅｜标准池】Codex 订阅系列分组；适合 Codex Plus / Pro / Team 号池，支持高缓存命中场景。",
+    "codex_sub_june": "【Codex 订阅｜新版池】Codex 新版订阅系列分组；适合 GPT-5.x / Codex 系列模型，支持高缓存命中场景。 仅限codex客户端使用",
+    "deepseek": "【官方 API｜DeepSeek】DeepSeek 官方渠道；适合 DeepSeek 系列模型的稳定调用。",
+    "default": "【通用｜全站模型】默认按量分组，可调用站内开放模型；适合日常测试与普通请求。",
+    "fishx_claude_618": "【限时】六月十八专属倍率。ccmax20号池 有上限",
+    "fishx_codex_618": "【限时】六月十八专属倍率。无上限。",
+    "gemini": "【官方/高稳｜Gemini】Gemini 系列模型分组；适合多模态、长上下文与日常高频调用。",
+    "grok": "【专线｜Grok】Grok 系列模型分组；适合 xAI Grok 对话、推理与视觉任务。",
+    "kiro_svip": "【稳定性⭐⭐⭐⭐】支持 Claude 系列，Kiro 高缓存渠道中转",
+    "zhipu": "【官方 API｜智普】智普 官方渠道；适合智普系列模型的稳定调用。"
   },
   "usable_group_meta": {
-    "aws-enterprise": {
+    "OpenRouter": {
       "billing_label": "通用",
       "billing_type": "public",
-      "desc": "aws-enterprise"
+      "desc": "【聚合官方｜OpenRouter】OpenRouter 官方聚合渠道；支持 Claude、Codex 等多系列模型，适合统一入口调用。"
     },
     "cc-max": {
       "billing_label": "通用",
       "billing_type": "public",
-      "desc": "claude 官方 api 优先号池缓存可达90%，awsapi进行兜底"
-    },
-    "cc-max-cheap": {
-      "billing_label": "订阅",
-      "billing_type": "subscription",
-      "desc": "cc-max-cheap ⚠️ 上游为20apixa"
+      "desc": "【Claude Code｜官方 API】Claude Code 官方 API 渠道；稳定性优先，适合长期生产使用。"
     },
     "cc_export": {
       "billing_label": "通用",
       "billing_type": "public",
-      "desc": "cc_export外接专用分组"
+      "desc": "【Claude Code｜外接】Claude Code 外接专用分组；不限制客户端，适合自有工具或第三方客户端接入。"
     },
     "cc_max": {
       "billing_label": "通用",
       "billing_type": "public",
-      "desc": "Claude MAX 自建号池, 假一赔十 (限制 Claude Code 或官方插件中使用)"
+      "desc": "【Claude MAX｜自建池】Claude MAX 自建号池分组；建议在 Claude Code 或官方插件中使用。"
     },
-    "claude-max-特价-满血": {
-      "billing_label": "订阅",
-      "billing_type": "subscription",
-      "desc": "claude-max-特价-满血 ⚠️ 上游为20apixa"
-    },
-    "codex": {
+    "china": {
       "billing_label": "通用",
       "billing_type": "public",
-      "desc": "codex分组 codex 专用分组缓存可达90%"
+      "desc": "china"
+    },
+    "claude-awsq": {
+      "billing_label": "通用",
+      "billing_type": "public",
+      "desc": "【稳定性⭐⭐⭐⭐⭐】官方aws-awsq 渠道 【95% 高缓存】"
+    },
+    "claude_june": {
+      "billing_label": "通用",
+      "billing_type": "public",
+      "desc": "【限时】六月专属活动。【稳定性⭐⭐⭐⭐⭐】官方满血 20x 渠道，可外接"
+    },
+    "claudemax_x20": {
+      "billing_label": "通用",
+      "billing_type": "public",
+      "desc": "【ClaudeMax｜x20 官方订阅】ClaudeMax x20 官方订阅账号分组；详情见 claudemax.fishxcode.com。"
+    },
+    "claudemax_x5": {
+      "billing_label": "通用",
+      "billing_type": "public",
+      "desc": "【ClaudeMax｜x5 官方订阅】ClaudeMax x5 官方订阅账号分组；详情见 claudemax.fishxcode.com。"
+    },
+    "codex_june": {
+      "billing_label": "通用",
+      "billing_type": "public",
+      "desc": "【限时】六月专属活动。【最稳定性⭐⭐⭐⭐⭐】Codex 官方 Pro 和 plus 号池 仅限codex客户端使用"
     },
     "codex_plus": {
       "billing_label": "通用",
       "billing_type": "public",
-      "desc": "codex_plus"
+      "desc": "【Codex Plus｜外接】Codex Plus 系列号池分组；支持外接使用，适合高频代码与工具调用任务。"
     },
     "codex_pro": {
       "billing_label": "通用",
       "billing_type": "public",
-      "desc": "codex_pro号池"
+      "desc": "【Codex Pro｜外接】Codex Pro 系列号池分组；支持外接使用，适合高频代码与工具调用任务。"
     },
     "codex_sub": {
       "billing_label": "通用",
       "billing_type": "public",
-      "desc": "codex_sub分组 codex plus pro team 号池专用分组缓存可达95%"
+      "desc": "【Codex 订阅｜标准池】Codex 订阅系列分组；适合 Codex Plus / Pro / Team 号池，支持高缓存命中场景。"
+    },
+    "codex_sub_june": {
+      "billing_label": "通用",
+      "billing_type": "public",
+      "desc": "【Codex 订阅｜新版池】Codex 新版订阅系列分组；适合 GPT-5.x / Codex 系列模型，支持高缓存命中场景。 仅限codex客户端使用"
     },
     "deepseek": {
       "billing_label": "通用",
       "billing_type": "public",
-      "desc": "deepseek"
+      "desc": "【官方 API｜DeepSeek】DeepSeek 官方渠道；适合 DeepSeek 系列模型的稳定调用。"
     },
     "default": {
       "billing_label": "通用",
       "billing_type": "public",
-      "desc": "⚠️ ⚠️⚠️⚠️⚠️默认通用分组：可调用全站所有模型，但所有模型统一按 1.7 倍率计费"
+      "desc": "【通用｜全站模型】默认按量分组，可调用站内开放模型；适合日常测试与普通请求。"
+    },
+    "fishx_claude_618": {
+      "billing_label": "通用",
+      "billing_type": "public",
+      "desc": "【限时】六月十八专属倍率。ccmax20号池 有上限"
+    },
+    "fishx_codex_618": {
+      "billing_label": "通用",
+      "billing_type": "public",
+      "desc": "【限时】六月十八专属倍率。无上限。"
     },
     "gemini": {
       "billing_label": "通用",
       "billing_type": "public",
-      "desc": "gemini"
-    },
-    "gpt_image": {
-      "billing_label": "通用",
-      "billing_type": "public",
-      "desc": "gpt_image"
+      "desc": "【官方/高稳｜Gemini】Gemini 系列模型分组；适合多模态、长上下文与日常高频调用。"
     },
     "grok": {
       "billing_label": "通用",
       "billing_type": "public",
-      "desc": "grok ⚠️ 上游为20apixa"
+      "desc": "【专线｜Grok】Grok 系列模型分组；适合 xAI Grok 对话、推理与视觉任务。"
+    },
+    "kiro_svip": {
+      "billing_label": "通用",
+      "billing_type": "public",
+      "desc": "【稳定性⭐⭐⭐⭐】支持 Claude 系列，Kiro 高缓存渠道中转"
+    },
+    "zhipu": {
+      "billing_label": "通用",
+      "billing_type": "public",
+      "desc": "【官方 API｜智普】智普 官方渠道；适合智普系列模型的稳定调用。"
     }
   },
   "vendors": [
@@ -1759,70 +2008,10 @@
       "icon": "Claude.Color"
     },
     {
-      "id": 40,
-      "name": "讯飞",
-      "description": "iFlytek provides Spark models for Chinese-language reasoning, generation, and multimodal AI workflows.",
-      "icon": "Spark.Color"
-    },
-    {
-      "id": 56,
-      "name": "Zhipu AI",
-      "icon": "Zhipu.Color"
-    },
-    {
-      "id": 63,
-      "name": "Alibaba",
-      "icon": "Qwen.Color"
-    },
-    {
       "id": 34,
       "name": "DeepSeek",
       "description": "DeepSeek provides models for coding, reasoning, and general text generation.",
       "icon": "DeepSeek.Color"
-    },
-    {
-      "id": 43,
-      "name": "字节跳动",
-      "description": "ByteDance provides Doubao models for reasoning, generation, multimodal, image, and video workflows.",
-      "icon": "Doubao.Color"
-    },
-    {
-      "id": 41,
-      "name": "Jina",
-      "description": "Jina AI provides embedding, reranking, and retrieval models for search and RAG workflows.",
-      "icon": "Jina"
-    },
-    {
-      "id": 51,
-      "name": "QiHang"
-    },
-    {
-      "id": 52,
-      "name": "Xiaomi Token Plan (Singapore)"
-    },
-    {
-      "id": 68,
-      "name": "Cortecs"
-    },
-    {
-      "id": 69,
-      "name": "Scaleway"
-    },
-    {
-      "id": 71,
-      "name": "Regolo AI"
-    },
-    {
-      "id": 13,
-      "name": "OpenAI",
-      "description": "OpenAI provides GPT and multimodal models for reasoning, coding, image generation, and general AI workflows.",
-      "icon": "OpenAI"
-    },
-    {
-      "id": 30,
-      "name": "Google",
-      "description": "Google provides Gemini models for multimodal reasoning, generation, and long-context AI workflows.",
-      "icon": "Gemini.Color"
     },
     {
       "id": 31,
@@ -1831,109 +2020,10 @@
       "icon": "Zhipu.Color"
     },
     {
-      "id": 42,
-      "name": "Cloudflare",
-      "description": "Cloudflare provides hosted AI models through Workers AI for text, image, and embedding workloads.",
-      "icon": "Cloudflare.Color"
-    },
-    {
-      "id": 38,
-      "name": "腾讯",
-      "description": "Tencent provides Hunyuan models for reasoning, generation, and multimodal AI workflows.",
-      "icon": "Hunyuan.Color"
-    },
-    {
-      "id": 50,
-      "name": "Vivgrid"
-    },
-    {
-      "id": 66,
-      "name": "Alibaba (China)"
-    },
-    {
-      "id": 72,
-      "name": "快手",
-      "icon": "Kling.Color"
-    },
-    {
-      "id": 33,
-      "name": "Mistral",
-      "description": "Mistral AI provides open and commercial models for reasoning, coding, and multilingual generation.",
-      "icon": "Mistral.Color"
-    },
-    {
-      "id": 47,
-      "name": "360",
-      "description": "360 provides AI models for reasoning, coding, and general assistant workflows.",
-      "icon": "Ai360.Color"
-    },
-    {
-      "id": 37,
-      "name": "零一万物",
-      "description": "01.AI provides Yi models for reasoning, coding, and general assistant workflows.",
-      "icon": "Yi.Color"
-    },
-    {
-      "id": 49,
-      "name": "OpenCode Zen",
-      "icon": "OpenCode"
-    },
-    {
-      "id": 54,
-      "name": "MiniMax Token Plan (minimax.io)"
-    },
-    {
-      "id": 67,
-      "name": "Alibaba Coding Plan (China)"
-    },
-    {
-      "id": 36,
-      "name": "百度",
-      "description": "Baidu provides ERNIE and related AI models for reasoning, generation, and multimodal workflows.",
-      "icon": "Wenxin.Color"
-    },
-    {
-      "id": 46,
-      "name": "即梦",
-      "description": "Jimeng provides image and video generation models for creative multimodal workflows.",
-      "icon": "Jimeng.Color"
-    },
-    {
-      "id": 35,
-      "name": "Meta",
-      "description": "Meta provides Llama models for reasoning, coding, and general text generation.",
-      "icon": "Ollama"
-    },
-    {
-      "id": 58,
-      "name": "Venice AI",
-      "icon": "VeniceAI"
-    },
-    {
-      "id": 62,
-      "name": "LLM Gateway"
-    },
-    {
-      "id": 32,
-      "name": "Moonshot",
-      "description": "Moonshot AI provides Kimi models for long-context reasoning and general AI workflows.",
-      "icon": "Moonshot"
-    },
-    {
-      "id": 39,
-      "name": "Cohere",
-      "description": "Cohere provides models for enterprise search, embeddings, reranking, and text generation.",
-      "icon": "Cohere.Color"
-    },
-    {
-      "id": 29,
-      "name": "阿里巴巴",
-      "description": "Alibaba provides Qwen models for reasoning, coding, multilingual generation, and multimodal workflows.",
-      "icon": "Qwen.Color"
-    },
-    {
-      "id": 60,
-      "name": "NanoGPT"
+      "id": 30,
+      "name": "Google",
+      "description": "Google provides Gemini models for multimodal reasoning, generation, and long-context AI workflows.",
+      "icon": "Gemini.Color"
     },
     {
       "id": 45,
@@ -1942,30 +2032,25 @@
       "icon": "XAI"
     },
     {
-      "id": 48,
+      "id": 43,
+      "name": "字节跳动",
+      "description": "ByteDance provides Doubao models for reasoning, generation, multimodal, image, and video workflows.",
+      "icon": "Doubao.Color"
+    },
+    {
+      "id": 72,
+      "name": "快手",
+      "icon": "Kling.Color"
+    },
+    {
+      "id": 74,
+      "name": "Black Forest Labs"
+    },
+    {
+      "id": 13,
       "name": "OpenAI",
       "description": "OpenAI provides GPT and multimodal models for reasoning, coding, image generation, and general AI workflows.",
       "icon": "OpenAI"
-    },
-    {
-      "id": 53,
-      "name": "OpenCode Go"
-    },
-    {
-      "id": 55,
-      "name": "Zhipu AI Coding Plan"
-    },
-    {
-      "id": 57,
-      "name": "Tencent Coding Plan (China)"
-    },
-    {
-      "id": 64,
-      "name": "CrofAI"
-    },
-    {
-      "id": 65,
-      "name": "Qiniu"
     },
     {
       "id": 44,
@@ -1974,33 +2059,62 @@
       "icon": "Minimax.Color"
     },
     {
-      "id": 59,
-      "name": "SAP AI Core"
-    },
-    {
-      "id": 61,
-      "name": "aliyun-bailian"
-    },
-    {
-      "id": 70,
-      "name": "Moark"
+      "id": 29,
+      "name": "阿里巴巴",
+      "description": "Alibaba provides Qwen models for reasoning, coding, multilingual generation, and multimodal workflows.",
+      "icon": "Qwen.Color"
     }
   ],
   "status_payload": {
     "data": {
-      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"package\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true,\"contact\":true}",
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"package\":{\"enabled\":true,\"requireAuth\":false},\"docs\":true,\"about\":true}",
       "SelfServiceSubscriptionConversionCampaign": "{\n  \"enabled\": true,\n  \"key\": \"default-self-service-subscription-conversion\",\n  \"title\": \"套餐自助折算活动\",\n  \"subtitle\": \"提交申请后先禁用原套餐，审核通过后折算为账户余额\",\n  \"description\": \"管理员可在这里维护可参与退款/折算的套餐活动规则、截止时间与展示文案。\",\n  \"deadline\": 0,\n  \"timezone\": \"Asia/Shanghai\",\n  \"require_disabled_plan\": true,\n  \"eligible_plan_ids\": [],\n  \"eligible_upgrade_groups\": [\n    \"claude_sub\"\n  ],\n  \"eligible_title_keywords\": [\n    \"Claude\",\n    \"claude\"\n  ],\n  \"conversion_rule\": \"返还余额 = 套餐折算基价 - 套餐折算基价 / 周期天数 × 计费天数；其中计费天数 = 已使用整天数 + 0.5 天。\",\n  \"billing_rules\": [],\n  \"charge_rules\": []\n}",
-      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"package\":true,\"token\":true,\"log\":true,\"checkinLottery\":false,\"activityLottery\":false,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"invoice\":true,\"refund\":false,\"commission\":true,\"personal\":true,\"siteNotifications\":true,\"invite\":true},\"public\":{\"enabled\":true,\"pricing\":true,\"docs\":true,\"about\":true,\"contact\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":false,\"redemption\":true,\"discountCode\":true,\"tokenAdmin\":true,\"ecomagent\":true,\"user\":true,\"subscription\":true,\"setting\":true,\"riskControl\":true,\"invoiceAdmin\":false,\"financeAdmin\":true,\"checkinAdmin\":true,\"r2Storage\":false}}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"package\":true,\"token\":true,\"claudeMax\":true,\"log\":true,\"checkinLottery\":false,\"activityLottery\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"invoice\":true,\"refund\":false,\"commission\":true,\"personal\":true,\"siteNotifications\":true,\"invite\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":false,\"deployment\":false,\"redemption\":true,\"discountCode\":false,\"tokenAdmin\":true,\"ecomagent\":true,\"user\":true,\"subscription\":true,\"claudeMaxBindings\":true,\"setting\":true,\"riskControl\":false,\"invoiceAdmin\":false,\"financeAdmin\":true,\"checkinAdmin\":true,\"r2Storage\":false},\"public\":{\"enabled\":true,\"pricing\":true,\"docs\":true,\"about\":true,\"contact\":true}}",
       "SubscriptionRefundSettings": "{\n  \"page_enabled\": true,\n  \"enabled\": true,\n  \"allow_balance_refund\": true,\n  \"allow_original_payment_refund\": true,\n  \"settlement_mode\": \"duration_ratio\",\n  \"currency\": \"USD\",\n  \"codex_input_price_per_million\": 3,\n  \"codex_output_price_per_million\": 15,\n  \"codex_cache_read_price_per_million\": 0.3,\n  \"codex_cache_write_price_per_million\": 3.75,\n  \"notes\": \"Codex 套餐如需按 token 用量折算退款，请维护每 100 万 token 的标准单价；当前也可先作为审核参考。\"\n}",
       "_qn": "new-api",
       "activity_lottery_auto_draw_enabled": false,
       "activity_lottery_default_min_participants": 200,
       "activity_lottery_default_winner_count": 3,
-      "activity_lottery_enabled": false,
+      "activity_lottery_enabled": true,
       "activity_lottery_join_daily_consume_min_money": 0,
       "activity_lottery_join_sources": "manual",
       "activity_lottery_join_topup_min_money": 0,
       "announcements": [
+        {
+          "content": "🎉 6.18 狂欢\n\n🔥 CCMax 20号池​ → 0.9/刀 fishx_claude_618\n\n🔥 Codex Pro 号池​ → 0.1/刀 fishx_codex_618",
+          "extra": "",
+          "id": 20,
+          "publishDate": "2026-06-17T17:30:30.207Z",
+          "type": "default"
+        },
+        {
+          "content": "fishxcode 成立4个月 618大促，福利回馈！\n### 🎁 福利\n\n**1. 模型外接不限RPM**：Claude 1.0 / Codex 0.25 支持外接\n\n**2. 按次套餐年度冰点价**：最高直降50%，月包280元起\n\n**3. 邀请返利最高10%**\n\n**4. 站内抽奖**：100/50美元兑换码、Claude/Codex日卡\n👉 [/console/activity-lottery](/console/activity-lottery)\n\n\n---\n\n### 💥 六月专属分组（618大降价）\n- `claude_june`：1.0倍率，官方满血渠道\n- `codex_june`：0.15倍率，官方Pro/Plus号池\n\n### 📦 按次套餐月包618价\nMini Plus 280元 | Mini Max 550元 | Premium 820元 | Premium Plus 1000元 | Premium Max 1200元（降50%）\n\n> 天卡升级月卡，天卡费全额抵扣\n",
+          "extra": "",
+          "id": 19,
+          "publishDate": "2026-06-15T00:34:47.356Z",
+          "type": "default"
+        },
+        {
+          "content": "【模型下架通知】\n\n接上游合作供应商 Claude（Anthropic）​ 侧变动影响，平台 Fable 5​ 即日起 已下架，不再可用。\n如果您当前有正在使用 claude-fable-5 的模型，需切换到该分组的其他模型例如claude-opus-4-8使用。为不影响已有用户的正常使用。claude-fable-5 已重定向到claude-opus-4-8。价格调整于claude-opus-4-8 一致",
+          "extra": "",
+          "id": 18,
+          "publishDate": "2026-06-13T02:30:19.261Z",
+          "type": "default"
+        },
+        {
+          "content": "GPT 订阅系列分组已恢复正常，您可以继续使用。当前已调整相关倍率。\n\n同时，OpenRouter 分组​ 依然保持开放，支持按量使用 Claude Codex 及 Claude 系列模型，供您多一种选择。",
+          "extra": "",
+          "id": 17,
+          "publishDate": "2026-06-12T02:35:14.247Z",
+          "type": "default"
+        },
+        {
+          "content": "【重要通知】\n\n各位用户您好，\n\n由于上游合作商 OpenAI 服务出现波动，导致我们平台的 GPT 订阅系列分组​ 暂时无法正常使用。目前我们正在积极协调，具体恢复时间将另行通知，给您带来的不便敬请谅解。\n\n在此期间，您可以使用以下替代方案：\n\n我们的 OpenRouter 分组​ 仍保持稳定运行，支持按量付费使用 Claude Codex，同时该分组也兼容 Claude 系列​ 其他模型。\n\n👉 立即前往：https://fishxcode.com/pricing?currency=CNY&group=OpenRouter\n\n感谢您的理解与支持！",
+          "extra": "",
+          "id": 16,
+          "publishDate": "2026-06-12T02:13:03.884Z",
+          "type": "default"
+        },
         {
           "content": "每天注册前20位送天卡。qq群内可领额度福利。\n当前起始id：13372\n所有套餐8折优惠码FXCDISC2606RSJ5截止0610有效。",
           "extra": "",
@@ -2135,6 +2249,23 @@
         }
       },
       "ccswitch_group_defaults": {
+        "OpenRouter": {
+          "apps": [
+            "claude",
+            "claude-desktop",
+            "codex",
+            "gemini",
+            "opencode",
+            "openclaw",
+            "hermes"
+          ],
+          "defaultModels": {
+            "model": "claude-opus-4-8"
+          },
+          "test": {
+            "model": "claude-opus-4-8"
+          }
+        },
         "auto": {
           "apps": [
             "claude",
@@ -2298,6 +2429,23 @@
             "protocol": "anthropic"
           }
         },
+        "claude-awsq": {
+          "apps": [
+            "claude-desktop",
+            "claude",
+            "gemini",
+            "opencode",
+            "hermes",
+            "openclaw"
+          ],
+          "defaultModels": {
+            "model": "claude-opus-4-8"
+          },
+          "test": {
+            "model": "claude-opus-4-8",
+            "protocol": "anthropic"
+          }
+        },
         "claude-max-特价-满血": {
           "apps": [
             "claude",
@@ -2311,6 +2459,22 @@
           },
           "test": {
             "model": "claude-opus-4-7",
+            "protocol": "anthropic"
+          }
+        },
+        "claude_june": {
+          "apps": [
+            "claude",
+            "claude-desktop",
+            "openclaw",
+            "opencode",
+            "hermes"
+          ],
+          "defaultModels": {
+            "model": "claude-opus-4-8"
+          },
+          "test": {
+            "model": "claude-opus-4-8",
             "protocol": "anthropic"
           }
         },
@@ -2330,7 +2494,38 @@
             "protocol": "anthropic"
           }
         },
+        "claudemax_x5": {
+          "apps": [
+            "claude",
+            "claude-desktop",
+            "opencode",
+            "openclaw",
+            "hermes"
+          ],
+          "defaultModels": {
+            "model": "claude-opus-4-8"
+          },
+          "test": {
+            "model": "claude-opus-4-8",
+            "protocol": "anthropic"
+          }
+        },
         "codex": {
+          "apps": [
+            "codex",
+            "opencode",
+            "openclaw",
+            "hermes"
+          ],
+          "defaultModels": {
+            "model": "gpt-5.5"
+          },
+          "test": {
+            "model": "gpt-5.5",
+            "protocol": "openai"
+          }
+        },
+        "codex_june": {
           "apps": [
             "codex",
             "opencode",
@@ -2405,7 +2600,7 @@
             "protocol": "openai"
           }
         },
-        "codex_team": {
+        "codex_sub_june": {
           "apps": [
             "codex",
             "opencode",
@@ -2420,7 +2615,7 @@
             "protocol": "openai"
           }
         },
-        "codex包月": {
+        "codex_team": {
           "apps": [
             "codex",
             "opencode",
@@ -2498,6 +2693,29 @@
           "test": {
             "model": "deepseek-v4-flash",
             "protocol": "anthropic"
+          }
+        },
+        "fishx_claude_618": {
+          "apps": [
+            "codex",
+            "opencode",
+            "openclaw",
+            "hermes"
+          ],
+          "test": {
+            "protocol": "anthropic"
+          }
+        },
+        "fishx_codex_618": {
+          "apps": [
+            "claude",
+            "claude-desktop",
+            "opencode",
+            "openclaw",
+            "hermes"
+          ],
+          "test": {
+            "protocol": "openai"
           }
         },
         "gemini": {
@@ -2825,108 +3043,108 @@
       "contact_channels": [
         {
           "actionHref": "https://qm.qq.com/q/Ce2PaYrbmo",
-          "actionLabel": "加入QQ群",
+          "actionLabel": "加入售后群",
           "copyValue": "373865837",
           "i18n": {
             "en": {
-              "actionLabel": "Join QQ Group",
-              "subtitle": "Community support, discussions, and experience sharing",
-              "title": "QQ Group",
-              "tone": "Popular Community"
+              "actionLabel": "Join Support Group",
+              "subtitle": "For orders, fulfillment, replenishment, and after-sales support",
+              "title": "QQ Support Group",
+              "tone": "After-sales Support"
             },
             "fr": {
-              "actionLabel": "Rejoindre le groupe QQ",
-              "subtitle": "Pour l'entraide, les discussions en groupe et le partage d'experience",
-              "title": "Groupe QQ",
-              "tone": "Communaute populaire"
+              "actionLabel": "Rejoindre le groupe",
+              "subtitle": "Pour les commandes, la livraison, les compensations et le service après-vente",
+              "title": "Groupe de support QQ",
+              "tone": "Support après-vente"
             },
             "ja": {
-              "actionLabel": "QQグループに参加",
-              "subtitle": "質問対応、グループ交流、ノウハウ共有に適しています",
-              "title": "QQグループ",
-              "tone": "人気コミュニティ"
+              "actionLabel": "サポートグループに参加",
+              "subtitle": "注文、提供、補填、アフターサポートに利用します",
+              "title": "QQ サポートグループ",
+              "tone": "アフターサポート"
             },
             "ru": {
-              "actionLabel": "Вступить в группу QQ",
-              "subtitle": "Для ответов на вопросы, общения в сообществе и обмена опытом",
-              "title": "Группа QQ",
-              "tone": "Популярное сообщество"
+              "actionLabel": "Вступить в группу",
+              "subtitle": "Для заказов, выдачи, компенсаций и послепродажной поддержки",
+              "title": "Группа поддержки QQ",
+              "tone": "Поддержка"
             },
             "vi": {
-              "actionLabel": "Tham gia nhom QQ",
-              "subtitle": "Dung de giai dap, trao doi trong nhom va chia se kinh nghiem",
-              "title": "Nhom QQ",
-              "tone": "Cong dong noi bat"
-            },
-            "zh-CN": {
-              "actionLabel": "加入QQ群",
-              "subtitle": "用于问题答疑解决，适合群内交流与经验分享",
-              "title": "QQ群",
-              "tone": "热门社区"
+              "actionLabel": "Tham gia nhom ho tro",
+              "subtitle": "Dung cho don hang, giao hang, bo sung va ho tro sau ban hang",
+              "title": "Nhom ho tro QQ",
+              "tone": "Ho tro sau ban hang"
             },
             "zh-TW": {
-              "actionLabel": "加入QQ群",
-              "subtitle": "用於問題答疑與交流，適合群內互動和經驗分享",
-              "title": "QQ群",
-              "tone": "熱門社群"
+              "actionLabel": "加入售後群",
+              "subtitle": "用於訂單、發放、補單與售後問題處理，建議優先加入",
+              "title": "QQ 售後群",
+              "tone": "售後支援"
             }
           },
-          "imageSrc": "https://fishxcode.com/qq_group.jpg",
-          "key": "qq-group",
-          "subtitle": "用于问题答疑解决，适合群内交流与经验分享",
-          "title": "QQ群",
-          "tone": "热门社区",
-          "value": "373865837"
+          "imageSrc": "/qq_group.jpg",
+          "key": "qq-support-group",
+          "subtitle": "用于订单、发放、补单与售后问题处理，建议优先加入",
+          "title": "QQ售后群",
+          "tone": "售后支持",
+          "value": "fishxcode 售后群"
         },
         {
+          "actionHref": "https://qm.qq.com/q/Ce2PaYrbmo",
+          "actionLabel": "加入售后群",
+          "copyValue": "373865837",
           "i18n": {
             "en": {
-              "subtitle": "For Q&A, group announcements, and important notices",
-              "title": "WeChat Group",
-              "tone": "Announcements"
+              "actionLabel": "Join Support Group",
+              "subtitle": "For orders, fulfillment, replenishment, and after-sales support",
+              "title": "QQ Support Group",
+              "tone": "After-sales Support"
             },
             "fr": {
-              "subtitle": "Pour les questions-reponses, les annonces du groupe et les notifications importantes",
-              "title": "Groupe WeChat",
-              "tone": "Annonces"
+              "actionLabel": "Rejoindre le groupe",
+              "subtitle": "Pour les commandes, la livraison, les compensations et le service après-vente",
+              "title": "Groupe de support QQ",
+              "tone": "Support après-vente"
             },
             "ja": {
-              "subtitle": "質問対応、グループ告知、重要なお知らせの受け取りに適しています",
-              "title": "WeChatグループ",
-              "tone": "お知らせ"
+              "actionLabel": "サポートグループに参加",
+              "subtitle": "注文、提供、補填、アフターサポートに利用します",
+              "title": "QQ サポートグループ",
+              "tone": "アフターサポート"
             },
             "ru": {
-              "subtitle": "Для ответов на вопросы, объявлений группы и важных уведомлений",
-              "title": "Группа WeChat",
-              "tone": "Уведомления"
+              "actionLabel": "Вступить в группу",
+              "subtitle": "Для заказов, выдачи, компенсаций и послепродажной поддержки",
+              "title": "Группа поддержки QQ",
+              "tone": "Поддержка"
             },
             "vi": {
-              "subtitle": "Dung de hoi dap, nhan thong bao nhom va cac thong tin quan trong",
-              "title": "Nhom WeChat",
-              "tone": "Thong bao"
-            },
-            "zh-CN": {
-              "subtitle": "用于问题答疑解决，适合接收群内公告与通知",
-              "title": "微信群",
-              "tone": "活动通知"
+              "actionLabel": "Tham gia nhom ho tro",
+              "subtitle": "Dung cho don hang, giao hang, bo sung va ho tro sau ban hang",
+              "title": "Nhom ho tro QQ",
+              "tone": "Ho tro sau ban hang"
             },
             "zh-TW": {
-              "subtitle": "用於問題答疑與通知接收，適合查看群內公告",
-              "title": "微信群",
-              "tone": "活動通知"
+              "actionLabel": "加入售後群",
+              "subtitle": "用於訂單、發放、補單與售後問題處理，建議優先加入",
+              "title": "QQ 售後群",
+              "tone": "售後支援"
             }
           },
-          "imageSrc": "https://fishxcode.com/wechat_group.jpg",
-          "key": "wechat-group",
-          "subtitle": "用于问题答疑解决，适合接收群内公告与通知",
-          "title": "微信群",
-          "tone": "活动通知"
+          "imageSrc": "/qq_group.jpg",
+          "key": "qq-support",
+          "subtitle": "用于订单、发放、补单与售后问题处理，建议优先加入",
+          "title": "QQ售后群",
+          "tone": "售后支持",
+          "value": "fishxcode 售后群"
         }
       ],
       "custom_currency_exchange_rate": 1,
       "custom_currency_symbol": "¤",
       "data_export_default_time": "day",
       "default_collapse_sidebar": false,
+      "default_language": "en",
       "default_use_auto_group": true,
       "demo_site_enabled": false,
       "discord_client_id": "",
@@ -2938,8 +3156,17 @@
       "enable_batch_update": true,
       "enable_data_export": true,
       "enable_drawing": false,
-      "enable_log_export": false,
+      "enable_log_export": true,
       "enable_task": true,
+      "enabled_languages": [
+        "en",
+        "fr",
+        "ja",
+        "vi",
+        "ru",
+        "zh-TW",
+        "zh-CN"
+      ],
       "faq": [
         {
           "answer": "开票起点：账单金额累计达到 50元​ 起可申请开票。\n发票类型：本次申请开具 增值税普通发票（电子）。\n发票内容：人工技术服务费\n抬头类型：对公（企业单位）\n开票形式：电子普票，开具完成后将发送至您指定的邮箱。同时可在发票管理页面进行下载查看。\n",
@@ -2991,6 +3218,12 @@
       "password_login_enabled": true,
       "password_register_enabled": true,
       "price": 1,
+      "pricing_region": "JP",
+      "pricing_region_cn_groups": "china,deepseek,ds_api,ds_api_pro,zhipu",
+      "pricing_region_filter_enabled": true,
+      "pricing_region_global_groups": "fishx_codex_618, fishx_claude_618,china,deepseek,ds_api,ds_api_pro,zhipu,auto,aws_api,aws-enterprise,cc_export,cc-max,cc_max,cc-max-cheap,claude-4.8,claude-awsq,claude_june,claudemax_x20,claudemax_x5,codex,codex_june,codex_plus,codex_pro,codex_sale,codex_sub,codex_sub_june,codex包月,default,gemini,gemini-特价,gpt_image,grok,kiro_cheap,kiro_svip,OpenRouter,reverse,reverse_anti_new,reverse_new,reverse_wf,sub_plan_claude_lite,sub_plan_claude_mini_max,sub_plan_claude_mini_plus,sub_plan_claude_nano_day,sub_plan_claude_premium,sub_plan_claude_premium_max,sub_plan_claude_premium_plus,sub_plan_claude_ultimate,音视频",
+      "pricing_region_strategy": "global",
+      "pricing_region_unknown_strategy": "cn",
       "privacy_policy_enabled": true,
       "quota_display_type": "CNY",
       "quota_per_unit": 500000,
@@ -2998,7 +3231,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://api.fishxcode.com",
       "setup": true,
-      "start_time": 1781081098,
+      "start_time": 1781766421,
       "stripe_unit_price": 8,
       "subscription_promo_badge_left": "",
       "subscription_promo_badge_right": "",
@@ -3089,7 +3322,7 @@
         }
       },
       "top_up_link": "https://fishxcode.com/",
-      "turnstile_check": true,
+      "turnstile_check": false,
       "turnstile_site_key": "0x4AAAAAACadZ8PR4Pg02IdV",
       "uptime_kuma_enabled": true,
       "usd_exchange_rate": 1,
@@ -3106,27 +3339,30 @@
     "data": [
       {
         "plan": {
-          "id": 22,
-          "title": "Claude Premium",
-          "subtitle": "1500次/天，月共45000次，每月重置【单次成本 ¥0.0289】",
-          "price_amount": 1299,
+          "id": 33,
+          "title": "ClaudeMax x20 官方账号",
+          "subtitle": "【x20系列】质保封号掉会员",
+          "price_amount": 1599,
           "discount_price_amount": 0,
           "discount_deadline": 0,
           "currency": "USD",
-          "effective_price_amount": 1299,
+          "effective_price_amount": 1599,
           "has_active_discount": false,
           "duration_unit": "month",
           "duration_value": 1,
           "custom_seconds": 0,
           "enabled": true,
-          "sort_order": 80,
+          "sort_order": 130,
           "stripe_price_id": "",
           "creem_product_id": "",
           "max_purchase_per_user": 1,
+          "renew_enabled": true,
+          "renew_window_days": 3,
+          "renew_allow_exhausted": false,
           "purchase_gift_quota": 0,
           "purchase_gift_quota_delay_days": 0,
           "sale_limit_count": 0,
-          "sold_count": 24,
+          "sold_count": 39,
           "remaining_sale_count": 0,
           "sold_out": false,
           "purchase_window": {
@@ -3148,6 +3384,397 @@
           "purchase_window_enabled": true,
           "purchase_window_open": true,
           "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "upgrade_group": "claudemax_x20",
+          "total_amount": 799500000,
+          "resource_type": "quota",
+          "request_count_total": 0,
+          "request_count_period_total": 0,
+          "quota_reset_period": "never",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": false,
+          "quota_reset_fixed_seconds": 0,
+          "delivery_mode": "auto_activate",
+          "allowed_groups": [
+            "claudemax_x20"
+          ],
+          "created_at": 1781095533,
+          "updated_at": 1781741975
+        },
+        "group_meta": {
+          "claudemax_x20": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "【ClaudeMax｜x20 官方订阅】ClaudeMax x20 官方订阅账号分组；详情见 claudemax.fishxcode.com。",
+            "ratio": 7
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 32,
+          "title": "ClaudeMax x5 官方账号",
+          "subtitle": "【x5系列】质保封号掉会员",
+          "price_amount": 899,
+          "discount_price_amount": 0,
+          "discount_deadline": 0,
+          "currency": "USD",
+          "effective_price_amount": 899,
+          "has_active_discount": false,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 120,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "renew_enabled": true,
+          "renew_window_days": 3,
+          "renew_allow_exhausted": false,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 0,
+          "sold_count": 57,
+          "remaining_sale_count": 0,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": true,
+          "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "upgrade_group": "claudemax_x5",
+          "total_amount": 449500000,
+          "resource_type": "quota",
+          "request_count_total": 0,
+          "request_count_period_total": 0,
+          "quota_reset_period": "never",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": false,
+          "quota_reset_fixed_seconds": 0,
+          "delivery_mode": "auto_activate",
+          "allowed_groups": [
+            "claudemax_x5"
+          ],
+          "allowed_models": [
+            "claude-fable-5",
+            "claude-",
+            "claude-opus-4-8"
+          ],
+          "created_at": 1781095533,
+          "updated_at": 1781500658
+        },
+        "group_meta": {
+          "claudemax_x5": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "【ClaudeMax｜x5 官方订阅】ClaudeMax x5 官方订阅账号分组；详情见 claudemax.fishxcode.com。",
+            "ratio": 7
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 25,
+          "title": "Claude Premium Max [限量80份]",
+          "subtitle": "3000次/天，月共90000次，每日重置天数上限【单次成本 ¥0.0267】，限量80份，售完即止",
+          "price_amount": 2399,
+          "discount_price_amount": 1200,
+          "discount_deadline": 1782801981,
+          "currency": "USD",
+          "effective_price_amount": 1200,
+          "has_active_discount": true,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 100,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "renew_enabled": false,
+          "renew_window_days": 10,
+          "renew_allow_exhausted": false,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 80,
+          "sold_count": 60,
+          "remaining_sale_count": 20,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": false,
+          "purchase_window_text": "每周一、周二、周三 09:00-18:00",
+          "upgrade_group": "sub_plan_claude_premium_max",
+          "total_amount": 0,
+          "resource_type": "request_count",
+          "request_count_total": 90000,
+          "request_count_period_total": 3000,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": true,
+          "quota_reset_fixed_seconds": 28800,
+          "delivery_mode": "manual_delivery",
+          "allowed_groups": [
+            "sub_plan_claude_premium_max"
+          ],
+          "allowed_models": [
+            "claude-haiku-4-5-20251001",
+            "claude-opus-4-5-20251101",
+            "claude-opus-4-6",
+            "claude-opus-4-7",
+            "claude-opus-4-8",
+            "claude-sonnet-4-5-20250929",
+            "claude-sonnet-4-6",
+            "gpt-5.5",
+            "claude-"
+          ],
+          "allowed_vendor_ids": [
+            1,
+            13
+          ],
+          "allowed_vendor_names": [
+            "Anthropic",
+            "OpenAI"
+          ],
+          "delivery_field_schema": [
+            {
+              "key": "base_url",
+              "label": "Base URL",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 1,
+              "placeholder": "例如：https://你的站点地址"
+            },
+            {
+              "key": "api_key",
+              "label": "API Key",
+              "type": "password",
+              "required": true,
+              "masked": true,
+              "copyable": true,
+              "sort_order": 2,
+              "placeholder": "请输入要发放给用户的 API Key"
+            },
+            {
+              "key": "usage_query_url",
+              "label": "额度使用查询地址",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 3,
+              "placeholder": "https://api-key-tool.fishxcode.com/",
+              "default_value": "https://api-key-tool.fishxcode.com/"
+            }
+          ],
+          "created_at": 1775666425,
+          "updated_at": 1781759639
+        },
+        "group_meta": {
+          "sub_plan_claude_premium_max": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "sub_plan_claude_premium_max",
+            "ratio": 1
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 23,
+          "title": "Claude Premium Plus [限量100份]",
+          "subtitle": "2000次/天，月共60000次，每日重置天数上限【单次成本 ¥0.0281】，限量100份，售完即止",
+          "price_amount": 1688,
+          "discount_price_amount": 1000,
+          "discount_deadline": 1782801953,
+          "currency": "USD",
+          "effective_price_amount": 1000,
+          "has_active_discount": true,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 90,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "renew_enabled": false,
+          "renew_window_days": 10,
+          "renew_allow_exhausted": false,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 100,
+          "sold_count": 72,
+          "remaining_sale_count": 28,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": false,
+          "purchase_window_text": "每周一、周二、周三 09:00-18:00",
+          "upgrade_group": "sub_plan_claude_premium_plus",
+          "total_amount": 0,
+          "resource_type": "request_count",
+          "request_count_total": 60000,
+          "request_count_period_total": 2000,
+          "quota_reset_period": "daily",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": true,
+          "quota_reset_fixed_seconds": 28800,
+          "delivery_mode": "manual_delivery",
+          "allowed_groups": [
+            "sub_plan_claude_premium_plus"
+          ],
+          "allowed_models": [
+            "claude-haiku-4-5-20251001",
+            "claude-opus-4-5-20251101",
+            "claude-opus-4-6",
+            "claude-opus-4-7",
+            "claude-opus-4-8",
+            "claude-sonnet-4-5-20250929",
+            "claude-sonnet-4-6",
+            "gpt-5.5",
+            "claude-"
+          ],
+          "allowed_vendor_ids": [
+            1,
+            13
+          ],
+          "allowed_vendor_names": [
+            "Anthropic",
+            "OpenAI"
+          ],
+          "delivery_field_schema": [
+            {
+              "key": "base_url",
+              "label": "Base URL",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 1,
+              "placeholder": "例如：https://你的站点地址"
+            },
+            {
+              "key": "api_key",
+              "label": "API Key",
+              "type": "password",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 2,
+              "placeholder": "请输入要发放给用户的 API Key"
+            },
+            {
+              "key": "usage_query_url",
+              "label": "额度使用查询地址",
+              "type": "url",
+              "required": true,
+              "masked": false,
+              "copyable": true,
+              "sort_order": 3,
+              "placeholder": "https://api-key-tool.fishxcode.com/",
+              "default_value": "https://api-key-tool.fishxcode.com/"
+            }
+          ],
+          "created_at": 1775638727,
+          "updated_at": 1781759639
+        },
+        "group_meta": {
+          "sub_plan_claude_premium_plus": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "sub_plan_claude_premium_plus",
+            "ratio": 1
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 22,
+          "title": "Claude Premium [限量130份]",
+          "subtitle": "1500次/天，月共45000次，每日重置天数上限【单次成本 ¥0.0289】，限量130份，售完即止",
+          "price_amount": 1299,
+          "discount_price_amount": 820,
+          "discount_deadline": 1782801867,
+          "currency": "USD",
+          "effective_price_amount": 820,
+          "has_active_discount": true,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 80,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 1,
+          "renew_enabled": false,
+          "renew_window_days": 10,
+          "renew_allow_exhausted": false,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 130,
+          "sold_count": 94,
+          "remaining_sale_count": 36,
+          "sold_out": false,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  1,
+                  2,
+                  3
+                ],
+                "start": "09:00",
+                "end": "18:00"
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": false,
+          "purchase_window_text": "每周一、周二、周三 09:00-18:00",
           "upgrade_group": "sub_plan_claude_premium",
           "total_amount": 0,
           "resource_type": "request_count",
@@ -3169,7 +3796,8 @@
             "claude-opus-4-8",
             "claude-sonnet-4-5-20250929",
             "claude-sonnet-4-6",
-            "gpt-5.5"
+            "gpt-5.5",
+            "claude-"
           ],
           "allowed_vendor_ids": [
             1,
@@ -3214,7 +3842,7 @@
             }
           ],
           "created_at": 1775638727,
-          "updated_at": 1781055516
+          "updated_at": 1781759639
         },
         "group_meta": {
           "sub_plan_claude_premium": {
@@ -3228,14 +3856,14 @@
       {
         "plan": {
           "id": 21,
-          "title": "Claude Mini Max",
-          "subtitle": "1000次/天，月共30000次，每月重置【单次成本 ¥0.0265】",
+          "title": "Claude Mini Max [限量160份]",
+          "subtitle": "1000次/天，月共30000次，每日重置天数上限【单次成本 ¥0.0265】，限量160份，售完即止",
           "price_amount": 795,
-          "discount_price_amount": 0,
-          "discount_deadline": 0,
+          "discount_price_amount": 550,
+          "discount_deadline": 1782801830,
           "currency": "USD",
-          "effective_price_amount": 795,
-          "has_active_discount": false,
+          "effective_price_amount": 550,
+          "has_active_discount": true,
           "duration_unit": "month",
           "duration_value": 1,
           "custom_seconds": 0,
@@ -3244,11 +3872,14 @@
           "stripe_price_id": "",
           "creem_product_id": "",
           "max_purchase_per_user": 1,
+          "renew_enabled": false,
+          "renew_window_days": 10,
+          "renew_allow_exhausted": false,
           "purchase_gift_quota": 0,
           "purchase_gift_quota_delay_days": 0,
-          "sale_limit_count": 0,
-          "sold_count": 25,
-          "remaining_sale_count": 0,
+          "sale_limit_count": 160,
+          "sold_count": 117,
+          "remaining_sale_count": 43,
           "sold_out": false,
           "purchase_window": {
             "enabled": true,
@@ -3257,9 +3888,7 @@
                 "days": [
                   1,
                   2,
-                  3,
-                  4,
-                  5
+                  3
                 ],
                 "start": "09:00",
                 "end": "18:00"
@@ -3267,8 +3896,8 @@
             ]
           },
           "purchase_window_enabled": true,
-          "purchase_window_open": true,
-          "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "purchase_window_open": false,
+          "purchase_window_text": "每周一、周二、周三 09:00-18:00",
           "upgrade_group": "sub_plan_claude_mini_max",
           "total_amount": 0,
           "resource_type": "request_count",
@@ -3290,7 +3919,8 @@
             "claude-opus-4-8",
             "claude-sonnet-4-5-20250929",
             "claude-sonnet-4-6",
-            "gpt-5.5"
+            "gpt-5.5",
+            "claude-"
           ],
           "allowed_vendor_ids": [
             1,
@@ -3334,7 +3964,7 @@
             }
           ],
           "created_at": 1775638727,
-          "updated_at": 1781055513
+          "updated_at": 1781759639
         },
         "group_meta": {
           "sub_plan_claude_mini_max": {
@@ -3348,14 +3978,14 @@
       {
         "plan": {
           "id": 20,
-          "title": "Claude Mini Plus",
-          "subtitle": "500次/天，月共15000次，每月重置【单次成本 ¥0.0224】",
+          "title": "Claude Mini Plus [限量200份]",
+          "subtitle": "500次/天，月共15000次，每日重置天数上限【单次成本 ¥0.0224】，限量200份，售完即止",
           "price_amount": 336,
-          "discount_price_amount": 0,
-          "discount_deadline": 0,
+          "discount_price_amount": 280,
+          "discount_deadline": 1782785081,
           "currency": "USD",
-          "effective_price_amount": 336,
-          "has_active_discount": false,
+          "effective_price_amount": 280,
+          "has_active_discount": true,
           "duration_unit": "month",
           "duration_value": 1,
           "custom_seconds": 0,
@@ -3363,12 +3993,15 @@
           "sort_order": 60,
           "stripe_price_id": "",
           "creem_product_id": "",
-          "max_purchase_per_user": 0,
+          "max_purchase_per_user": 1,
+          "renew_enabled": false,
+          "renew_window_days": 10,
+          "renew_allow_exhausted": false,
           "purchase_gift_quota": 0,
           "purchase_gift_quota_delay_days": 0,
-          "sale_limit_count": 0,
-          "sold_count": 33,
-          "remaining_sale_count": 0,
+          "sale_limit_count": 200,
+          "sold_count": 144,
+          "remaining_sale_count": 56,
           "sold_out": false,
           "purchase_window": {
             "enabled": true,
@@ -3377,9 +4010,7 @@
                 "days": [
                   1,
                   2,
-                  3,
-                  4,
-                  5
+                  3
                 ],
                 "start": "09:00",
                 "end": "18:00"
@@ -3387,8 +4018,8 @@
             ]
           },
           "purchase_window_enabled": true,
-          "purchase_window_open": true,
-          "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "purchase_window_open": false,
+          "purchase_window_text": "每周一、周二、周三 09:00-18:00",
           "upgrade_group": "sub_plan_claude_mini_plus",
           "total_amount": 0,
           "resource_type": "request_count",
@@ -3410,7 +4041,8 @@
             "claude-opus-4-8",
             "claude-sonnet-4-5-20250929",
             "claude-sonnet-4-6",
-            "gpt-5.5"
+            "gpt-5.5",
+            "claude-"
           ],
           "allowed_vendor_ids": [
             1,
@@ -3454,7 +4086,7 @@
             }
           ],
           "created_at": 1775638727,
-          "updated_at": 1781055509
+          "updated_at": 1781759639
         },
         "group_meta": {
           "sub_plan_claude_mini_plus": {
@@ -3468,14 +4100,14 @@
       {
         "plan": {
           "id": 24,
-          "title": "Claude Nano Day",
-          "subtitle": "购买后至次日 08:00:00 前有效，共 50 次【单次成本 ¥0.1000】该套餐升级到高级套餐可抵扣天卡费用",
+          "title": "Claude Nano Day [限量360份]",
+          "subtitle": "购买后至次日 08:00:00 前有效，共 50 次【单次成本 ¥0.1000】该套餐升级到高级套餐可抵扣天卡费用，限量360份，售完即止",
           "price_amount": 5,
-          "discount_price_amount": 4,
-          "discount_deadline": 1779292799,
+          "discount_price_amount": 3,
+          "discount_deadline": 1782230399,
           "currency": "USD",
-          "effective_price_amount": 5,
-          "has_active_discount": false,
+          "effective_price_amount": 3,
+          "has_active_discount": true,
           "duration_unit": "day",
           "duration_value": 1,
           "custom_seconds": 0,
@@ -3483,12 +4115,15 @@
           "sort_order": 40,
           "stripe_price_id": "",
           "creem_product_id": "",
-          "max_purchase_per_user": 0,
+          "max_purchase_per_user": 1,
+          "renew_enabled": false,
+          "renew_window_days": 10,
+          "renew_allow_exhausted": false,
           "purchase_gift_quota": 0,
           "purchase_gift_quota_delay_days": 0,
-          "sale_limit_count": 0,
-          "sold_count": 148,
-          "remaining_sale_count": 0,
+          "sale_limit_count": 360,
+          "sold_count": 275,
+          "remaining_sale_count": 85,
           "sold_out": false,
           "purchase_window": {
             "enabled": true,
@@ -3497,9 +4132,7 @@
                 "days": [
                   1,
                   2,
-                  3,
-                  4,
-                  5
+                  3
                 ],
                 "start": "09:00",
                 "end": "18:00"
@@ -3507,8 +4140,8 @@
             ]
           },
           "purchase_window_enabled": true,
-          "purchase_window_open": true,
-          "purchase_window_text": "每周一、周二、周三、周四、周五 09:00-18:00",
+          "purchase_window_open": false,
+          "purchase_window_text": "每周一、周二、周三 09:00-18:00",
           "upgrade_group": "sub_plan_claude_nano_day",
           "total_amount": 0,
           "resource_type": "request_count",
@@ -3530,7 +4163,8 @@
             "claude-opus-4-8",
             "claude-sonnet-4-5-20250929",
             "claude-sonnet-4-6",
-            "gpt-5.5"
+            "gpt-5.5",
+            "claude-"
           ],
           "allowed_vendor_ids": [
             1,
@@ -3574,7 +4208,7 @@
             }
           ],
           "created_at": 1775661862,
-          "updated_at": 1781055506
+          "updated_at": 1781759639
         },
         "group_meta": {
           "sub_plan_claude_nano_day": {
@@ -3587,244 +4221,54 @@
       },
       {
         "plan": {
-          "id": 5,
-          "title": "Codex Plus 套餐",
-          "subtitle": "月累计 2700 美金额度 0.5倍率消耗",
-          "price_amount": 999,
-          "discount_price_amount": 270,
-          "discount_deadline": 1777564800,
+          "id": 35,
+          "title": "Codex 200 美金额度周卡限量包 [限量320份 仅限codex客户端使用]",
+          "subtitle": "Codex 200 美金额度，7天有效，续费同价，限量320份，售完即止",
+          "price_amount": 100,
+          "discount_price_amount": 38,
+          "discount_deadline": 1781890075,
           "currency": "USD",
-          "effective_price_amount": 999,
-          "has_active_discount": false,
-          "duration_unit": "month",
+          "effective_price_amount": 38,
+          "has_active_discount": true,
+          "duration_unit": "week",
           "duration_value": 1,
           "custom_seconds": 0,
           "enabled": true,
-          "sort_order": 0,
+          "sort_order": 6,
           "stripe_price_id": "",
           "creem_product_id": "",
           "max_purchase_per_user": 0,
+          "renew_enabled": true,
+          "renew_window_days": 20,
+          "renew_allow_exhausted": true,
           "purchase_gift_quota": 0,
           "purchase_gift_quota_delay_days": 0,
-          "sale_limit_count": 0,
-          "sold_count": 24,
-          "remaining_sale_count": 0,
+          "sale_limit_count": 320,
+          "sold_count": 284,
+          "remaining_sale_count": 36,
           "sold_out": false,
           "purchase_window": {
-            "enabled": false
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "all_day": true
+              }
+            ]
           },
-          "purchase_window_enabled": false,
+          "purchase_window_enabled": true,
           "purchase_window_open": true,
-          "purchase_window_text": "",
-          "upgrade_group": "codex_sub",
-          "total_amount": 45000000,
-          "resource_type": "quota",
-          "request_count_total": 0,
-          "request_count_period_total": 0,
-          "quota_reset_period": "daily",
-          "quota_reset_custom_seconds": 0,
-          "quota_reset_use_fixed_clock": false,
-          "quota_reset_fixed_seconds": 0,
-          "delivery_mode": "auto_activate",
-          "allowed_groups": [
-            "codex_sub"
-          ],
-          "allowed_models": [
-            "gpt-5.4",
-            "gpt-5.3-codex",
-            "gpt-5.4-mini",
-            "gpt-5.2",
-            "gpt-5.5"
-          ],
-          "allowed_vendor_ids": [
-            13
-          ],
-          "allowed_vendor_names": [
-            "OpenAI"
-          ],
-          "created_at": 1773746686,
-          "updated_at": 1781054666
-        },
-        "group_meta": {
-          "codex_sub": {
-            "billing_label": "通用",
-            "billing_type": "public",
-            "desc": "codex_sub分组 codex plus pro team 号池专用分组缓存可达95%",
-            "ratio": 0.5
-          }
-        }
-      },
-      {
-        "plan": {
-          "id": 4,
-          "title": "Codex Basic 套餐",
-          "subtitle": "月 900 美金额度 0.3倍率消耗",
-          "price_amount": 512,
-          "discount_price_amount": 180,
-          "discount_deadline": 1777564800,
-          "currency": "USD",
-          "effective_price_amount": 512,
-          "has_active_discount": false,
-          "duration_unit": "month",
-          "duration_value": 1,
-          "custom_seconds": 0,
-          "enabled": true,
-          "sort_order": 0,
-          "stripe_price_id": "",
-          "creem_product_id": "",
-          "max_purchase_per_user": 0,
-          "purchase_gift_quota": 0,
-          "purchase_gift_quota_delay_days": 0,
-          "sale_limit_count": 0,
-          "sold_count": 62,
-          "remaining_sale_count": 0,
-          "sold_out": false,
-          "purchase_window": {
-            "enabled": false
-          },
-          "purchase_window_enabled": false,
-          "purchase_window_open": true,
-          "purchase_window_text": "",
-          "upgrade_group": "codex_sub",
-          "total_amount": 15000000,
-          "resource_type": "quota",
-          "request_count_total": 0,
-          "request_count_period_total": 0,
-          "quota_reset_period": "daily",
-          "quota_reset_custom_seconds": 0,
-          "quota_reset_use_fixed_clock": false,
-          "quota_reset_fixed_seconds": 0,
-          "delivery_mode": "auto_activate",
-          "allowed_groups": [
-            "codex_sub"
-          ],
-          "allowed_models": [
-            "gpt-5.4",
-            "gpt-5.3-codex",
-            "gpt-5.4-mini",
-            "gpt-5.2",
-            "gpt-5.5"
-          ],
-          "allowed_vendor_ids": [
-            13
-          ],
-          "allowed_vendor_names": [
-            "OpenAI"
-          ],
-          "created_at": 1773746632,
-          "updated_at": 1781057811
-        },
-        "group_meta": {
-          "codex_sub": {
-            "billing_label": "通用",
-            "billing_type": "public",
-            "desc": "codex_sub分组 codex plus pro team 号池专用分组缓存可达95%",
-            "ratio": 0.5
-          }
-        }
-      },
-      {
-        "plan": {
-          "id": 3,
-          "title": "Codex Mini 套餐",
-          "subtitle": "累计约 300 美金额度 0.5倍率消耗",
-          "price_amount": 128,
-          "discount_price_amount": 9,
-          "discount_deadline": 1777564800,
-          "currency": "USD",
-          "effective_price_amount": 128,
-          "has_active_discount": false,
-          "duration_unit": "month",
-          "duration_value": 1,
-          "custom_seconds": 0,
-          "enabled": true,
-          "sort_order": 0,
-          "stripe_price_id": "",
-          "creem_product_id": "",
-          "max_purchase_per_user": 1,
-          "purchase_gift_quota": 0,
-          "purchase_gift_quota_delay_days": 0,
-          "sale_limit_count": 0,
-          "sold_count": 127,
-          "remaining_sale_count": 0,
-          "sold_out": false,
-          "purchase_window": {
-            "enabled": false
-          },
-          "purchase_window_enabled": false,
-          "purchase_window_open": true,
-          "purchase_window_text": "",
-          "upgrade_group": "codex_sub",
-          "total_amount": 5000000,
-          "resource_type": "quota",
-          "request_count_total": 0,
-          "request_count_period_total": 0,
-          "quota_reset_period": "daily",
-          "quota_reset_custom_seconds": 0,
-          "quota_reset_use_fixed_clock": false,
-          "quota_reset_fixed_seconds": 0,
-          "delivery_mode": "auto_activate",
-          "allowed_groups": [
-            "codex_sub"
-          ],
-          "allowed_models": [
-            "gpt-5.4",
-            "gpt-5.3-codex",
-            "gpt-5.4-mini",
-            "gpt-5.2",
-            "gpt-5.5"
-          ],
-          "allowed_vendor_ids": [
-            13
-          ],
-          "allowed_vendor_names": [
-            "OpenAI"
-          ],
-          "created_at": 1773746508,
-          "updated_at": 1781054671
-        },
-        "group_meta": {
-          "codex_sub": {
-            "billing_label": "通用",
-            "billing_type": "public",
-            "desc": "codex_sub分组 codex plus pro team 号池专用分组缓存可达95%",
-            "ratio": 0.5
-          }
-        }
-      },
-      {
-        "plan": {
-          "id": 2,
-          "title": "Codex 周卡",
-          "subtitle": "100 美金额度 0.5倍率消耗 7天内有效",
-          "price_amount": 60,
-          "discount_price_amount": 0,
-          "discount_deadline": 0,
-          "currency": "USD",
-          "effective_price_amount": 60,
-          "has_active_discount": false,
-          "duration_unit": "day",
-          "duration_value": 7,
-          "custom_seconds": 0,
-          "enabled": true,
-          "sort_order": 0,
-          "stripe_price_id": "",
-          "creem_product_id": "",
-          "max_purchase_per_user": 0,
-          "purchase_gift_quota": 0,
-          "purchase_gift_quota_delay_days": 0,
-          "sale_limit_count": 0,
-          "sold_count": 200,
-          "remaining_sale_count": 0,
-          "sold_out": false,
-          "purchase_window": {
-            "enabled": false
-          },
-          "purchase_window_enabled": false,
-          "purchase_window_open": true,
-          "purchase_window_text": "",
-          "upgrade_group": "codex_sub",
-          "total_amount": 50000000,
+          "purchase_window_text": "每天 全天",
+          "upgrade_group": "codex_sub_june",
+          "total_amount": 100000000,
           "resource_type": "quota",
           "request_count_total": 0,
           "request_count_period_total": 0,
@@ -3834,14 +4278,16 @@
           "quota_reset_fixed_seconds": 0,
           "delivery_mode": "auto_activate",
           "allowed_groups": [
-            "codex_sub"
+            "codex_sub_june"
           ],
           "allowed_models": [
-            "gpt-5.4",
-            "gpt-5.3-codex",
-            "gpt-5.4-mini",
             "gpt-5.2",
-            "gpt-5.5"
+            "gpt-5.3-codex",
+            "gpt-5.4",
+            "gpt-5.4-mini",
+            "gpt-5.4-openai-compact",
+            "gpt-5.5",
+            "gpt-5.5-openai-compact"
           ],
           "allowed_vendor_ids": [
             13
@@ -3849,51 +4295,68 @@
           "allowed_vendor_names": [
             "OpenAI"
           ],
-          "created_at": 1773746300,
-          "updated_at": 1780851508
+          "created_at": 1781224433,
+          "updated_at": 1781757934
         },
         "group_meta": {
-          "codex_sub": {
+          "codex_sub_june": {
             "billing_label": "通用",
             "billing_type": "public",
-            "desc": "codex_sub分组 codex plus pro team 号池专用分组缓存可达95%",
-            "ratio": 0.5
+            "desc": "【Codex 订阅｜新版池】Codex 新版订阅系列分组；适合 GPT-5.x / Codex 系列模型，支持高缓存命中场景。 仅限codex客户端使用",
+            "ratio": 1
           }
         }
       },
       {
         "plan": {
-          "id": 1,
-          "title": "Codex 10 美金额度天卡",
-          "subtitle": "10 美金额度，1日有效 0.5倍率消耗 ",
+          "id": 34,
+          "title": "Codex 20 美金额度限量包 [限量360份 仅限codex客户端使用]",
+          "subtitle": "Codex 20 美金额度，1天有效，限量360份，售完即止",
           "price_amount": 10,
-          "discount_price_amount": 0,
-          "discount_deadline": 0,
+          "discount_price_amount": 4,
+          "discount_deadline": 1781919262,
           "currency": "USD",
-          "effective_price_amount": 10,
-          "has_active_discount": false,
+          "effective_price_amount": 4,
+          "has_active_discount": true,
           "duration_unit": "day",
           "duration_value": 1,
           "custom_seconds": 0,
           "enabled": true,
-          "sort_order": 0,
+          "sort_order": 6,
           "stripe_price_id": "",
           "creem_product_id": "",
           "max_purchase_per_user": 0,
+          "renew_enabled": true,
+          "renew_window_days": 99999,
+          "renew_allow_exhausted": true,
           "purchase_gift_quota": 0,
           "purchase_gift_quota_delay_days": 0,
-          "sale_limit_count": 0,
-          "sold_count": 1093,
-          "remaining_sale_count": 0,
+          "sale_limit_count": 360,
+          "sold_count": 353,
+          "remaining_sale_count": 7,
           "sold_out": false,
           "purchase_window": {
-            "enabled": false
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "all_day": true
+              }
+            ]
           },
-          "purchase_window_enabled": false,
+          "purchase_window_enabled": true,
           "purchase_window_open": true,
-          "purchase_window_text": "",
-          "upgrade_group": "codex_sub",
-          "total_amount": 5000000,
+          "purchase_window_text": "每天 全天",
+          "upgrade_group": "codex_sub_june",
+          "total_amount": 10000000,
           "resource_type": "quota",
           "request_count_total": 0,
           "request_count_period_total": 0,
@@ -3903,14 +4366,17 @@
           "quota_reset_fixed_seconds": 0,
           "delivery_mode": "auto_activate",
           "allowed_groups": [
-            "codex_sub"
+            "codex_sub_june"
           ],
           "allowed_models": [
-            "gpt-5.4",
-            "gpt-5.3-codex",
-            "gpt-5.4-mini",
             "gpt-5.2",
-            "gpt-5.5"
+            "gpt-5.3-codex",
+            "gpt-5.4",
+            "gpt-5.4-mini",
+            "gpt-5.4-openai-compact",
+            "gpt-5.5",
+            "gpt-5.5-openai-compact",
+            "codex-auto-review"
           ],
           "allowed_vendor_ids": [
             13
@@ -3918,15 +4384,104 @@
           "allowed_vendor_names": [
             "OpenAI"
           ],
-          "created_at": 1773746164,
-          "updated_at": 1781079594
+          "created_at": 1781180801,
+          "updated_at": 1781768726
         },
         "group_meta": {
-          "codex_sub": {
+          "codex_sub_june": {
             "billing_label": "通用",
             "billing_type": "public",
-            "desc": "codex_sub分组 codex plus pro team 号池专用分组缓存可达95%",
-            "ratio": 0.5
+            "desc": "【Codex 订阅｜新版池】Codex 新版订阅系列分组；适合 GPT-5.x / Codex 系列模型，支持高缓存命中场景。 仅限codex客户端使用",
+            "ratio": 1
+          }
+        }
+      },
+      {
+        "plan": {
+          "id": 36,
+          "title": "Codex 1000 美金额度月卡限量包 [限量120份 仅限codex客户端使用]",
+          "subtitle": "Codex 1000 美金额度，1个月有效，限量120份，售完即止",
+          "price_amount": 500,
+          "discount_price_amount": 150,
+          "discount_deadline": 1782802510,
+          "currency": "USD",
+          "effective_price_amount": 150,
+          "has_active_discount": true,
+          "duration_unit": "month",
+          "duration_value": 1,
+          "custom_seconds": 0,
+          "enabled": true,
+          "sort_order": 4,
+          "stripe_price_id": "",
+          "creem_product_id": "",
+          "max_purchase_per_user": 0,
+          "renew_enabled": true,
+          "renew_window_days": 3,
+          "renew_allow_exhausted": true,
+          "purchase_gift_quota": 0,
+          "purchase_gift_quota_delay_days": 0,
+          "sale_limit_count": 120,
+          "sold_count": 120,
+          "remaining_sale_count": 0,
+          "sold_out": true,
+          "purchase_window": {
+            "enabled": true,
+            "windows": [
+              {
+                "days": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "all_day": true
+              }
+            ]
+          },
+          "purchase_window_enabled": true,
+          "purchase_window_open": true,
+          "purchase_window_text": "每天 全天",
+          "upgrade_group": "codex_sub_june",
+          "total_amount": 500000000,
+          "resource_type": "quota",
+          "request_count_total": 0,
+          "request_count_period_total": 0,
+          "quota_reset_period": "never",
+          "quota_reset_custom_seconds": 0,
+          "quota_reset_use_fixed_clock": false,
+          "quota_reset_fixed_seconds": 0,
+          "delivery_mode": "auto_activate",
+          "allowed_groups": [
+            "codex_sub_june"
+          ],
+          "allowed_models": [
+            "gpt-5.2",
+            "gpt-5.3-codex",
+            "gpt-5.4",
+            "gpt-5.4-mini",
+            "gpt-5.4-openai-compact",
+            "gpt-5.5",
+            "gpt-5.5-openai-compact",
+            "codex-auto-review"
+          ],
+          "allowed_vendor_ids": [
+            13
+          ],
+          "allowed_vendor_names": [
+            "OpenAI"
+          ],
+          "created_at": 1781224433,
+          "updated_at": 1781578126
+        },
+        "group_meta": {
+          "codex_sub_june": {
+            "billing_label": "通用",
+            "billing_type": "public",
+            "desc": "【Codex 订阅｜新版池】Codex 新版订阅系列分组；适合 GPT-5.x / Codex 系列模型，支持高缓存命中场景。 仅限codex客户端使用",
+            "ratio": 1
           }
         }
       }

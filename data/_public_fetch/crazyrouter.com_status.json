@@ -5,6 +5,45 @@
     "announcements": [
       {
         "content": {
+          "en": "GPT Image 2 currently has a lower success rate. Please switch to another image model for now.",
+          "zh": "GPT Image 2 目前成功率较低，请暂时更换其他图片模型使用。"
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 29,
+        "publishDate": "2026-06-14T13:57:36.57Z",
+        "type": "warning"
+      },
+      {
+        "content": {
+          "en": "claude-fable-5 is currently unavailable. Please use another model for now.",
+          "zh": ""
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 28,
+        "publishDate": "2026-06-13T03:43:50.701Z",
+        "type": "default"
+      },
+      {
+        "content": {
+          "en": "",
+          "zh": "claude-fable-5 目前不可用，请暂时使用其他模型"
+        },
+        "extra": {
+          "en": "",
+          "zh": ""
+        },
+        "id": 27,
+        "publishDate": "2026-06-13T03:43:39.787Z",
+        "type": "default"
+      },
+      {
+        "content": {
           "en": "",
           "zh": "Claude Fable 5 已上线。模型名称：`claude-fable-5`。"
         },
@@ -13,7 +52,7 @@
           "zh": ""
         },
         "id": 26,
-        "publishDate": "2026-06-10T03:30:39.880Z",
+        "publishDate": "2026-06-10T03:30:39.88Z",
         "type": "success"
       },
       {
@@ -314,10 +353,17 @@
       },
       {
         "color": "blue",
-        "description": "Gloabal",
-        "id": 2,
-        "route": "【Backup】Gloabal",
-        "url": "https://crazyrouter.com"
+        "description": "Global",
+        "id": 3,
+        "route": "【Default】New route",
+        "url": "https://api.crazyrouter.com"
+      },
+      {
+        "color": "blue",
+        "description": "Global",
+        "id": 4,
+        "route": "【West】Test route",
+        "url": "https://eu.crazyrouter.com"
       }
     ],
     "api_info_enabled": true,
@@ -357,7 +403,7 @@
     "google_client_id": "76601814396-ejnr9fkner8qkau2mlcf5ud7dn1d1bf4.apps.googleusercontent.com",
     "google_oauth": true,
     "instance": {
-      "hostname": "new-api-slave-6d6cc5964b-jkgvj",
+      "hostname": "new-api-slave-7d98778959-4rnmx",
       "is_master_node": false,
       "node_name": "",
       "node_type": "slave",
@@ -380,7 +426,7 @@
     "passkey_origins": "https://crazyrouter.com",
     "passkey_rp_id": "https://lsky.zhongzhuan.chat/i/2025/12/09/6937e5cbd29f7.png",
     "passkey_user_verification": "preferred",
-    "price": 7,
+    "price": 6.8,
     "privacy_policy_enabled": true,
     "qq_group_link": "",
     "quota_display_type": "USD",
@@ -395,7 +441,7 @@
     "seo_title_zh": "Crazyrouter - AI API 聚合平台 | 300+ 模型，统一接口",
     "server_address": "https://crazyrouter.com",
     "setup": true,
-    "start_time": 1781061555,
+    "start_time": 1781617728,
     "stripe_unit_price": 7,
     "system_name": "Crazyrouter",
     "telegram_bot_name": "crazyrouter_bot",

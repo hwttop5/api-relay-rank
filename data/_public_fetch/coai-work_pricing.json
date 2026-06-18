@@ -4,6 +4,25 @@
   ],
   "data": [
     {
+      "model_name": "gpt-5.4",
+      "icon": "OpenAI",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "default",
+        "official"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
       "model_name": "gpt-5.4-mini",
       "icon": "OpenAI",
       "vendor_id": 2,
@@ -19,8 +38,7 @@
       ],
       "supported_endpoint_types": [
         "openai"
-      ],
-      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+      ]
     },
     {
       "model_name": "gpt-5.5",
@@ -97,24 +115,6 @@
       "supported_endpoint_types": [
         "openai",
         "anthropic"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4",
-      "icon": "OpenAI",
-      "vendor_id": 2,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "default",
-        "official"
-      ],
-      "supported_endpoint_types": [
-        "openai"
       ]
     }
   ],
@@ -232,7 +232,7 @@
       "self_use_mode_enabled": false,
       "server_address": "https://coaiwork.com",
       "setup": true,
-      "start_time": 1779968393,
+      "start_time": 1781755541,
       "stripe_unit_price": 7,
       "system_name": "CoAI Work",
       "telegram_bot_name": "",

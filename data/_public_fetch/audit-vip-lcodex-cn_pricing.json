@@ -1,0 +1,528 @@
+{
+  "auto_groups": [
+    "GPT-PLUS号池",
+    "GPT-PRO纯享号池"
+  ],
+  "data": [
+    {
+      "model_name": "claude-haiku-4-5-20251001",
+      "description": "Claude Haiku 4.5 is an AI model provided by qihang-ai.",
+      "tags": "Reasoning,Tools,Files,Vision,200K",
+      "vendor_id": 9,
+      "quota_type": 0,
+      "model_ratio": 0.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-MAX外接版",
+        "Claude-MAX号池"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "gpt-5.2",
+      "description": "OpenAI 新一代通用模型，适合高质量文本生成、复杂指令跟随与日常对话场景。",
+      "icon": "OpenAI",
+      "tags": "openai,通用,对话,推理",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.95,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "GPT-PRO纯享号池"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-6",
+      "description": "Anthropic Claude Opus 系列模型，适合复杂推理与高质量生成。",
+      "icon": "Anthropic",
+      "tags": "anthropic,claude,opus,旗舰,推理",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 2.8,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-MAX号池",
+        "Claude-MAX外接版"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-7",
+      "description": "Anthropic Claude Opus 系列模型，适合复杂推理与高质量生成。",
+      "icon": "Anthropic",
+      "tags": "anthropic,claude,opus,旗舰,推理",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.112,
+      "create_cache_ratio": 1.4,
+      "enable_groups": [
+        "Claude-MAX号池",
+        "Claude-MAX外接版"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-gpt-image-2",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.06,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "生图专用分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5-openai-compact",
+      "description": "OpenAI 紧凑版通用模型，适合更低成本的高频文本生成与常规推理场景。",
+      "icon": "OpenAI",
+      "tags": "openai,compact,轻量,通用",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "free高缓存",
+        "GPT-PLUS号池",
+        "对接倍率",
+        "专享福利",
+        "123",
+        "优质-pro",
+        "GPT-PRO纯享号池"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "codex-auto-review",
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "专享福利",
+        "123",
+        "GPT-PRO纯享号池",
+        "free高缓存",
+        "优质-pro",
+        "GPT-PLUS号池",
+        "对接倍率"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-opus-4-8",
+      "description": "Claude Opus 4.8. Pricing: input CNY 5/MTok, output CNY 25/MTok.",
+      "tags": "claude,opus,code",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
+      "enable_groups": [
+        "Claude-MAX号池",
+        "Claude-MAX外接版"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.5",
+      "description": "OpenAI 新一代旗舰通用大模型，适合复杂推理、长上下文、多场景高质量文本生成。",
+      "icon": "OpenAI",
+      "tags": "openai,旗舰,通用,推理",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 2.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "123",
+        "优质-pro",
+        "GPT-PRO纯享号池",
+        "free高缓存",
+        "GPT-PLUS号池",
+        "对接倍率",
+        "专享福利"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini",
+      "description": "OpenAI 轻量通用模型，适合低成本高频调用、基础推理与常规文本生成场景。",
+      "icon": "OpenAI",
+      "tags": "openai,mini,轻量,通用",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "优质-pro",
+        "GPT-PRO纯享号池",
+        "free高缓存",
+        "GPT-PLUS号池",
+        "对接倍率",
+        "专享福利",
+        "123"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4",
+      "description": "OpenAI 最新旗舰通用大模型，适合复杂推理、长上下文、多场景高质量文本生成。",
+      "icon": "OpenAI",
+      "tags": "openai,旗舰,通用,推理",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "专享福利",
+        "123",
+        "GPT-PRO纯享号池",
+        "free高缓存",
+        "优质-pro",
+        "GPT-PLUS号池",
+        "对接倍率"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-mini-openai-compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.375,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "GPT-PRO纯享号池",
+        "free高缓存",
+        "GPT-PLUS号池",
+        "对接倍率",
+        "专享福利",
+        "123"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex",
+      "description": "OpenAI 面向代码补全、代码编辑与工程任务的 Codex 系列模型，适合编程代理与代码生成。",
+      "icon": "OpenAI",
+      "tags": "openai,codex,代码,编程",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "enable_groups": [
+        "GPT-PRO纯享号池"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-sonnet-4-6",
+      "description": "Anthropic Claude Sonnet 系列模型，适合通用对话、代码与推理。",
+      "icon": "Anthropic",
+      "tags": "anthropic,claude,sonnet,通用,推理",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 1.4,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 5,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "Claude-MAX号池",
+        "Claude-MAX外接版"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-image-2",
+      "vendor_id": 1,
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.04,
+      "owner_by": "",
+      "completion_ratio": 0,
+      "enable_groups": [
+        "生图专用分组"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.4-openai-compact",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 1.25,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 6,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "优质-pro",
+        "GPT-PRO纯享号池",
+        "free高缓存",
+        "GPT-PLUS号池",
+        "对接倍率",
+        "专享福利",
+        "123"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "gpt-5.3-codex-spark",
+      "vendor_id": 6,
+      "quota_type": 0,
+      "model_ratio": 0.875,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 8,
+      "cache_ratio": 0.1,
+      "enable_groups": [
+        "GPT-PLUS号池",
+        "对接倍率",
+        "专享福利",
+        "123",
+        "GPT-PRO纯享号池",
+        "free高缓存",
+        "优质-pro"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "claude-fable-5",
+      "vendor_id": 5,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "Claude-MAX号池",
+        "Claude-MAX外接版"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ]
+    }
+  ],
+  "group_ratio": {
+    "Claude-MAX号池": 1.2,
+    "Claude-MAX外接版": 1.2,
+    "GPT-PLUS号池": 0.06,
+    "GPT-PRO纯享号池": 0.1,
+    "free高缓存": 0.04,
+    "专享福利": 0.075,
+    "生图专用分组": 1
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "Claude-MAX号池": "cc max 限制外接版，禁止探针，否则会封禁渠道",
+    "Claude-MAX外接版": "Claude code可外接（纯度自测）",
+    "GPT-PLUS号池": "plus号池（最近open ai杀的厉害，稳定性我也没招）",
+    "GPT-PRO纯享号池": "pro号池，应急使用",
+    "free高缓存": "free高缓存渠道",
+    "专享福利": "",
+    "生图专用分组": "生图专用"
+  },
+  "vendors": [
+    {
+      "id": 9,
+      "name": "QiHang"
+    },
+    {
+      "id": 10,
+      "name": "Helicone"
+    },
+    {
+      "id": 11,
+      "name": "302.AI"
+    },
+    {
+      "id": 1,
+      "name": "OpenAI",
+      "icon": "OpenAI"
+    },
+    {
+      "id": 5,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 6,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 7,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 8,
+      "name": "NanoGPT"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "57376{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},docs:true,about:true}57376",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":false,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":true,\"task\":true},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+      "announcements_enabled": false,
+      "api_info_enabled": false,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        }
+      ],
+      "checkin_enabled": false,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "$",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": false,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://vip.lcodex.cn/junche-api-guide/index.html",
+      "email_verification": true,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": false,
+      "enable_task": true,
+      "faq_enabled": false,
+      "footer_html": "© 2026 钧澈API",
+      "github_client_id": "",
+      "github_oauth": false,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "钧澈API",
+      "passkey_login": false,
+      "passkey_origins": "https://vip.lcodex.cn",
+      "passkey_rp_id": "vip.lcodex.cn",
+      "passkey_user_verification": "preferred",
+      "password_login_enabled": true,
+      "password_register_enabled": true,
+      "price": 1,
+      "privacy_policy_enabled": false,
+      "quota_display_type": "CNY",
+      "quota_per_unit": 500000,
+      "register_enabled": true,
+      "self_use_mode_enabled": false,
+      "server_address": "https://vip.lcodex.cn",
+      "setup": true,
+      "start_time": 1781749638,
+      "stripe_unit_price": 8,
+      "system_name": "钧澈API",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "classic",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": true,
+      "usd_exchange_rate": 1,
+      "user_agreement_enabled": false,
+      "version": "",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://vip.lcodex.cn/api/pricing"
+}

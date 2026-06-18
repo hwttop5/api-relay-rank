@@ -1,0 +1,403 @@
+{
+  "auto_groups": [
+    "default"
+  ],
+  "data": [
+    {
+      "model_name": "doubao-seed-2-0-lite-260428",
+      "description": "Doubao-Seed-2.0-lite-260428 新版本，支持视频、图像、音频、文本原生统一理解，是豆包大模型家族首款全模态理解模型，同时升级Agent、Coding与GUI能力。在同等算力成本下，是企业大规模、批量化部署全模态推理任务的更优性价比选择。",
+      "icon": "Doubao.Color",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "Max",
+        "Ultra",
+        "Starter",
+        "Plus",
+        "Pro",
+        "Free"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "len <= 32000 ? tier(\"base\", p * 0.089 + c * 0.5311 + cr * 0.0177 + ai * 1.3278) : len > 32000 && len <= 128000 ? tier(\"第2档\", p * 0.132 + c * 0.7967 + cr * 0.0266 + ai * 1.9916) : tier(\"第3档\", p * 0.2656 + c * 1.5933 + cr * 0.0531 + ai * 3.9833)",
+      "pricing_version": "5a90f2b86c08bd983a9a2e6d66c255f4eaef9c4bc934386d2b6ae84ef0ff1f1f"
+    },
+    {
+      "model_name": "doubao-seed-2-0-code-preview-260215",
+      "description": "Doubao-Seed-2.0-Code 面向企业级编程需求优化，在 Seed 2.0 优秀的 Agent、VLM 能力基础上，特别增强了代码能力，不仅前端能力表现出众，也对企业常见的多语言编码需求做了特别优化，适合接入各种 AI 编程工具使用。",
+      "icon": "Doubao.Color",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 0.34,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "Free",
+        "default",
+        "Plus",
+        "Starter",
+        "Pro",
+        "Ultra",
+        "Max"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "model_name": "deepseek-v3-2-251201",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 0.0735,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "Max",
+        "Ultra",
+        "Pro",
+        "Plus",
+        "Starter",
+        "default",
+        "Free"
+      ],
+      "supported_endpoint_types": [
+        "openai"
+      ]
+    },
+    {
+      "model_name": "doubao-seed-2-0-pro-260215",
+      "description": "Doubao-Seed-2.0-pro是旗舰级全能通用模型，面向 Agent 时代的复杂推理与长链路任务执行场景。强调多模态理解、长上下文推理、结构化生成与工具增强执行。复杂指令与多约束执行能力突出，可稳定应对多步复杂规划、复杂图文推理、视频内容理解与高难度分析等场景。",
+      "icon": "Doubao.Color",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "Plus",
+        "Starter",
+        "Pro",
+        "Ultra",
+        "Max",
+        "Free",
+        "default"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "p <= 32000 ? tier(\"base1\", p * 0.48 + c * 2.4 + cr * 0.095) : len <= 128000 && len > 32000 ? tier(\"第2档\", p * 0.71 + c * 3.55 + cr * 0.142) : tier(\"第3档\", p * 1.41 + c * 7.08 + cr * 0.2833)"
+    },
+    {
+      "model_name": "deepseek-v4-flash-260425",
+      "description": "DeepSeek V4 Flash是 DeepSeek的轻量高性价比旗舰模型。以不到Pro版十分之一的成本，完整提供V4 pro的核心能力栈，原生支持100万超长上下文，为高并发、低成本Agent场景而生。",
+      "icon": "DeepSeek.Color",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "Free",
+        "default",
+        "Max",
+        "Starter",
+        "Plus",
+        "Pro",
+        "Ultra"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 0.174 + c * 0.348 + cr * 0.037)"
+    },
+    {
+      "model_name": "deepseek-v4-pro-260425",
+      "description": "DeepSeek V4 Pro 是 DeepSeek的旗舰开源模型，采用1.6T总参数 / 49B激活参数的MoE架构，原生支持100万超长上下文，可在企业级场景中直接驱动生产级agentic coding 工作流，为复杂 Agent 场景而生。",
+      "icon": "DeepSeek.Color",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "Max",
+        "Starter",
+        "Plus",
+        "Pro",
+        "Ultra",
+        "default",
+        "Free"
+      ],
+      "supported_endpoint_types": [
+        "openai",
+        "anthropic"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 1.74 + c * 3.48 + cr * 0.174)"
+    },
+    {
+      "model_name": "deepseek-v4-pro",
+      "description": "DeepSeek V4 Pro 是 DeepSeek的旗舰开源模型，采用1.6T总参数 / 49B激活参数的MoE架构，原生支持100万超长上下文，可在企业级场景中直接驱动生产级agentic coding 工作流，为复杂 Agent 场景而生。",
+      "icon": "DeepSeek.Color",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "cache_ratio": 1,
+      "enable_groups": [
+        "default",
+        "Starter",
+        "Plus",
+        "Pro",
+        "Ultra",
+        "Max"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 0.4435 + c * 0.8869 + cr * 0.014)"
+    },
+    {
+      "model_name": "deepseek-v4-flash",
+      "description": "DeepSeek V4 Flash是 DeepSeek的轻量高性价比旗舰模型。以不到Pro版十分之一的成本，完整提供V4 pro的核心能力栈，原生支持100万超长上下文，为高并发、低成本Agent场景而生。",
+      "icon": "DeepSeek.Color",
+      "vendor_id": 1,
+      "quota_type": 0,
+      "model_ratio": 37.5,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "Plus",
+        "Pro",
+        "Ultra",
+        "Max",
+        "default",
+        "Starter"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "tier(\"base\", p * 0.174 + c * 0.348 + cr * 0.037)"
+    },
+    {
+      "model_name": "doubao-seed-2-0-mini-260428",
+      "description": "作为首款全模态理解模型，Doubao-Seed-2.0-mini-260428 能够同时输入并理解视频、图片、语音和文本四种模态，并进行跨模态联合推理，直接处理必须“音画结合”才能做出判断的复杂业务需求",
+      "icon": "Doubao.Color",
+      "vendor_id": 2,
+      "quota_type": 0,
+      "model_ratio": 1,
+      "model_price": 0,
+      "owner_by": "",
+      "completion_ratio": 1,
+      "enable_groups": [
+        "default",
+        "Max",
+        "Ultra",
+        "Starter",
+        "Plus",
+        "Pro",
+        "Free"
+      ],
+      "supported_endpoint_types": [
+        "anthropic",
+        "openai"
+      ],
+      "billing_mode": "tiered_expr",
+      "billing_expr": "p <= 32000 ? tier(\"base1\", p * 0.001 + c * 0.02 + cr * 0.095) : len <= 128000 && len > 32000 ? tier(\"第2档\", p * 0.001 + c * 0.02 + cr * 0.142) : tier(\"第3档\", p * 0.002 + c * 0.04 + cr * 0.2833)"
+    }
+  ],
+  "group_ratio": {
+    "default": 1.3
+  },
+  "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
+  "success": true,
+  "supported_endpoint": {
+    "anthropic": {
+      "path": "/v1/messages",
+      "method": "POST"
+    },
+    "openai": {
+      "path": "/v1/chat/completions",
+      "method": "POST"
+    }
+  },
+  "usable_group": {
+    "default": "Free"
+  },
+  "vendors": [
+    {
+      "id": 1,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 2,
+      "name": "字节跳动",
+      "icon": "Doubao.Color"
+    },
+    {
+      "id": 3,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 4,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    }
+  ],
+  "status_payload": {
+    "data": {
+      "HeaderNavModules": "{\"home\":true,\"console\":true,\"pricing\":{\"enabled\":true,\"requireAuth\":false},\"rankings\":{\"enabled\":true,\"requireAuth\":false},\"docs\":false,\"about\":false}",
+      "SidebarModulesAdmin": "{\"chat\":{\"enabled\":true,\"playground\":true,\"chat\":false},\"console\":{\"enabled\":true,\"detail\":true,\"token\":true,\"log\":true,\"midjourney\":false,\"task\":false},\"personal\":{\"enabled\":true,\"topup\":true,\"personal\":true},\"admin\":{\"enabled\":true,\"channel\":true,\"models\":true,\"deployment\":true,\"redemption\":true,\"user\":true,\"subscription\":true,\"setting\":true}}",
+      "announcements": [
+        {
+          "content": "# 由于分组调整，导致原有key无法使用，生成新的key重新替换一下即可，具体表现：HTTP 401\n\n依旧稳定，欢迎接入使用",
+          "extra": "",
+          "id": 4,
+          "publishDate": "2026-06-18T05:20:19.608Z",
+          "type": "default"
+        },
+        {
+          "content": "# Model Differentiation\n\n### Base: `deepseek-v4-pro` / `deepseek-v4-flash`\n- **Specs**: Official DeepSeek models. Compatible with OpenAI & Anthropic APIs.\n- **Note**: Web search is NOT supported.\n\n### Enhanced: `deepseek-v4-pro-260425` / `deepseek-v4-flash-260425`\n- **Specs**: Fully optimized for faster performance. Web search enabled.\n- **Note**: OpenAI API only.",
+          "extra": "",
+          "id": 3,
+          "publishDate": "2026-06-17T09:13:36.127Z",
+          "type": "error"
+        },
+        {
+          "content": "# 模型区分说明\n\n### 基础版：`deepseek-v4-pro` / `deepseek-v4-flash`\n- **特性**：DeepSeek官方模型，兼容 OpenAI 与 Anthropic 接口。\n- **注意**：官方原生不支持联网搜索。\n\n### 加强版：`deepseek-v4-pro-260425` / `deepseek-v4-flash-260425`\n- **特性**：大厂优化的满血版，推理更快，支持联网搜索。\n- **注意**：仅支持 OpenAI 接口。",
+          "extra": "",
+          "id": 2,
+          "publishDate": "2026-06-17T09:12:00.000Z",
+          "type": "error"
+        },
+        {
+          "content": "Anthropic 接口协议工具模型支持：deepseek-v4-pro、deepseek-v4-flash。\nOpenAI 接口协议工具模型支持：全部模型。\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTool model support for the Anthropic API protocol: deepseek-v4-pro, deepseek-v4-flash.\nTool model support for the OpenAI API protocol: all models.",
+          "extra": "",
+          "id": 1,
+          "publishDate": "2026-06-03T12:43:27.273Z",
+          "type": "warning"
+        }
+      ],
+      "announcements_enabled": true,
+      "api_info_enabled": false,
+      "chats": [
+        {
+          "Cherry Studio": "cherrystudio://providers/api-keys?v=1&data={cherryConfig}"
+        },
+        {
+          "AionUI": "aionui://provider/add?v=1&data={aionuiConfig}"
+        },
+        {
+          "流畅阅读": "fluentread"
+        },
+        {
+          "CC Switch": "ccswitch"
+        },
+        {
+          "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}"
+        },
+        {
+          "Lobe Chat 官方示例": "https://chat-preview.lobehub.com/?settings={\"keyVaults\":{\"openai\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\"}}}"
+        },
+        {
+          "AI as Workspace": "https://aiaw.app/set-provider?provider={\"type\":\"openai\",\"settings\":{\"apiKey\":\"{key}\",\"baseURL\":\"{address}/v1\",\"compatibility\":\"strict\"}}"
+        },
+        {
+          "AMA 问天": "ama://set-api-key?server={address}&key={key}"
+        },
+        {
+          "OpenCat": "opencat://team/join?domain={address}&token={key}"
+        }
+      ],
+      "checkin_enabled": true,
+      "custom_currency_exchange_rate": 1,
+      "custom_currency_symbol": "¤",
+      "data_export_default_time": "hour",
+      "default_collapse_sidebar": false,
+      "default_use_auto_group": true,
+      "demo_site_enabled": false,
+      "discord_client_id": "",
+      "discord_oauth": false,
+      "display_in_currency": true,
+      "docs_link": "https://docs.newapi.pro",
+      "email_verification": true,
+      "enable_batch_update": true,
+      "enable_data_export": true,
+      "enable_drawing": true,
+      "enable_task": true,
+      "faq_enabled": false,
+      "footer_html": "<span style=\"font-size:14px;color:inherit;opacity:0.6;\">© 2026 QianShu AI ·   </span><a href=\"/privacy-policy\" target=\"_blank\"   style=\"font-size:14px;color:#3b82f6;opacity:0.6;text-decoration:none;\">Privacy   Policy</a><span style=\"font-size:14px;color:inherit;opacity:0.3;\"> ·   </span><a href=\"/user-agreement\" target=\"_blank\"   style=\"font-size:14px;color:#3b82f6;opacity:0.6;text-decoration:none;\">Terms   of Service</a><span style=\"font-size:14px;color:inherit;opacity:0.3;\"> ·   </span><span   style=\"font-size:14px;color:inherit;opacity:0.6;\">xxx</span>",
+      "github_client_id": "",
+      "github_oauth": false,
+      "linuxdo_client_id": "",
+      "linuxdo_minimum_trust_level": 0,
+      "linuxdo_oauth": false,
+      "logo": "https://qianshu.tos-ap-southeast-3.volces.com/logo.png",
+      "mj_notify_enabled": false,
+      "oidc_authorization_endpoint": "",
+      "oidc_client_id": "",
+      "oidc_enabled": false,
+      "passkey_allow_insecure": false,
+      "passkey_attachment": "",
+      "passkey_display_name": "千枢平台",
+      "passkey_login": false,
+      "passkey_origins": "https://www.aiqianshu.com",
+      "passkey_rp_id": "www.aiqianshu.com",
+      "passkey_user_verification": "preferred",
+      "password_login_enabled": true,
+      "password_register_enabled": true,
+      "price": 6.8,
+      "privacy_policy_enabled": true,
+      "quota_display_type": "USD",
+      "quota_per_unit": 500000,
+      "register_enabled": true,
+      "self_use_mode_enabled": false,
+      "server_address": "https://www.aiqianshu.com",
+      "setup": true,
+      "start_time": 1781755374,
+      "stripe_unit_price": 8,
+      "system_name": "千枢平台",
+      "telegram_bot_name": "",
+      "telegram_oauth": false,
+      "theme": "default",
+      "turnstile_check": false,
+      "turnstile_site_key": "",
+      "uptime_kuma_enabled": false,
+      "usd_exchange_rate": 6.8,
+      "user_agreement_enabled": true,
+      "version": "v1.0.0-rc.11",
+      "wechat_login": false,
+      "wechat_qrcode": ""
+    },
+    "message": "",
+    "success": true
+  },
+  "source_url": "https://www.aiqianshu.com/api/pricing"
+}

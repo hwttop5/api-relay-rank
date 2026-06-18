@@ -18,6 +18,7 @@ from unittest import mock
 
 from scripts import database as database
 from scripts import build_site_data as build_site_data
+from scripts import audit_proxy_multipliers as audit_proxy_multipliers_module
 from scripts import fetch_public_content as fetch_public_content
 from scripts import import_page_views as import_page_views
 from scripts import run_station_audit as run_station_audit
@@ -30,7 +31,18 @@ from scripts import validate_refresh_outputs as validate_refresh_outputs
 from scripts.database import SnapshotValidationError, validate_site_data_snapshot
 
 
-AUDIT_SCRIPT_PATH = Path(__file__).resolve().parents[1] / "audit_proxy_multipliers.py"
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+AUDIT_SCRIPT_PATH = next(
+    (
+        candidate
+        for candidate in (
+            _REPO_ROOT / "scripts" / "audit_proxy_multipliers.py",
+            _REPO_ROOT / "audit_proxy_multipliers.py",
+        )
+        if candidate.exists()
+    ),
+    _REPO_ROOT / "audit_proxy_multipliers.py",
+)
 if AUDIT_SCRIPT_PATH.exists():
     AUDIT_SPEC = importlib.util.spec_from_file_location("audit_proxy_multipliers", AUDIT_SCRIPT_PATH)
     assert AUDIT_SPEC and AUDIT_SPEC.loader
@@ -609,6 +621,42 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(chosen["charity"].effective_multiplier, 0.0)
         self.assertNotIn("normal-zero", chosen)
         self.assertNotIn("normal-cheap", chosen)
+
+    def test_authoritative_charity_free_override_generates_zero_cost_tier(self) -> None:
+        override_payload = {
+            "aiapi1.cc.cd": {
+                "stationTypeHint": "charity",
+                "groupMultipliers": [
+                    {"groupName": "free", "groupMultiplier": 0.1, "codexEligible": True, "usageLabel": "Codex"}
+                ],
+                "rechargeTiers": [
+                    {"rechargeName": "签到免费额度", "billingType": "free", "rmbAmount": 0, "usdAmount": 1}
+                ],
+                "authoritative": True,
+            },
+            "paid-zero.example": {
+                "stationTypeHint": "non_subscription",
+                "groupMultipliers": [{"groupName": "default", "groupMultiplier": 1}],
+                "rechargeTiers": [
+                    {"rechargeName": "bad zero tier", "billingType": "permanent", "rmbAmount": 0, "usdAmount": 1}
+                ],
+                "authoritative": True,
+            },
+        }
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            override_path = Path(tmp_dir) / "overrides.json"
+            override_path.write_text(json.dumps(override_payload), encoding="utf-8")
+            with mock.patch.object(audit_proxy_multipliers_module, "STATION_PRICING_OVERRIDES_PATH", override_path):
+                rows = audit_proxy_multipliers_module.apply_station_pricing_overrides_to_tiers([])
+
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0].station, "aiapi1.cc.cd")
+        self.assertEqual(rows[0].station_type, "charity")
+        self.assertEqual(rows[0].group_name, "free")
+        self.assertEqual(rows[0].billing_type, "free")
+        self.assertEqual(rows[0].rmb_amount, 0.0)
+        self.assertEqual(rows[0].effective_multiplier, 0.0)
 
     def test_choose_verified_fee_uses_group_name_when_notes_mention_other_routes(self) -> None:
         tiers = [
@@ -3169,6 +3217,52 @@ class BuildSiteDataTests(unittest.TestCase):
         self.assertEqual(chosen["prod.bbroot.com"].group_name, "openai")
         self.assertEqual(chosen["prod.bbroot.com"].recharge_name, "API额度$500")
         self.assertAlmostEqual(chosen["prod.bbroot.com"].effective_multiplier, 0.04)
+
+    def test_station_pricing_override_can_mark_recharge_row_detail_only(self) -> None:
+        if audit_proxy_multipliers is None:
+            self.skipTest(f"Missing external audit helper: {AUDIT_SCRIPT_PATH}")
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            override_path = Path(tmp_dir) / "station_pricing_overrides.json"
+            override_path.write_text(
+                json.dumps(
+                    {
+                        "demo": {
+                            "authoritative": True,
+                            "stationTypeHint": "subscription",
+                            "groupMultipliers": [
+                                {"groupName": "vip", "groupMultiplier": 1, "codexEligible": True},
+                            ],
+                            "rechargeTiers": [
+                                {
+                                    "rechargeName": "10 Days Plan $25",
+                                    "billingType": "weekly",
+                                    "rmbAmount": 25,
+                                    "usdAmount": 25,
+                                },
+                                {
+                                    "rechargeName": "3 day claude paid $24",
+                                    "billingType": "daily",
+                                    "rmbAmount": 24,
+                                    "usdAmount": 800,
+                                    "participatesInVerifiedRanking": False,
+                                },
+                            ],
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with mock.patch.object(audit_proxy_multipliers, "STATION_PRICING_OVERRIDES_PATH", override_path):
+                rows = audit_proxy_multipliers.apply_station_pricing_overrides_to_tiers([])
+                chosen = audit_proxy_multipliers.choose_verified_fee(rows, allow_low_confidence=False)
+
+        by_name = {row.recharge_name: row for row in rows}
+        self.assertIn("3 day claude paid $24", by_name)
+        self.assertFalse(by_name["3 day claude paid $24"].participates_in_verified_ranking)
+        self.assertIn("demo", chosen)
+        self.assertEqual(chosen["demo"].recharge_name, "10 Days Plan $25")
+        self.assertAlmostEqual(chosen["demo"].effective_multiplier, 1.0)
 
     def test_scrape_station_rows_include_request_log_candidates_without_site_data(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:

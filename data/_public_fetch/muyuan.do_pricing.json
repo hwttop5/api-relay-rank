@@ -4,16 +4,15 @@
   ],
   "data": [
     {
-      "model_name": "gpt-5.4-openai-compact",
-      "vendor_id": 4,
-      "quota_type": 0,
-      "model_ratio": 1.25,
-      "model_price": 0,
+      "model_name": "MiniMax-M3",
+      "quota_type": 1,
+      "model_ratio": 0,
+      "model_price": 0.1,
       "owner_by": "",
-      "completion_ratio": 6,
+      "completion_ratio": 0,
       "enable_groups": [
-        "vip",
-        "default"
+        "default",
+        "vip"
       ],
       "supported_endpoint_types": [
         "openai"
@@ -35,8 +34,7 @@
       "create_cache_ratio": 1.25,
       "enable_groups": [
         "ccmax",
-        "default",
-        "vip"
+        "测试分组1"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -44,96 +42,26 @@
       ]
     },
     {
-      "model_name": "gpt-5.4",
-      "description": "GPT-5.4 is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 22,
-      "quota_type": 0,
-      "model_ratio": 37.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "vip",
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ],
-      "billing_mode": "tiered_expr",
-      "billing_expr": "(len <= 272000 ? tier(\"standard\", p * 2.5 + c * 15 + cr * 0.25) : tier(\"long_context\", p * 5 + c * 22.5 + cr * 0.5)) * (param(\"service_tier\") == \"fast\" ? 5 : 1)"
-    },
-    {
-      "model_name": "codex-auto-review",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.1,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "default"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-8",
-      "description": "Claude Opus 4.8 is an AI model provided by venice.",
+      "model_name": "claude-sonnet-4-6",
+      "description": "Claude Sonnet 4.6 is an AI model provided by venice.",
       "icon": "VeniceAI",
       "tags": "Reasoning,Tools,Files,Vision,1M",
       "vendor_id": 23,
       "quota_type": 0,
-      "model_ratio": 2.5,
+      "model_ratio": 1.5,
       "model_price": 0,
       "owner_by": "",
       "completion_ratio": 5,
-      "cache_ratio": 0.1,
+      "cache_ratio": 0.6,
       "create_cache_ratio": 1.25,
       "enable_groups": [
         "ccmax",
-        "default",
-        "vip"
+        "测试分组1"
       ],
       "supported_endpoint_types": [
         "anthropic",
         "openai"
       ]
-    },
-    {
-      "model_name": "MiniMax-M3",
-      "quota_type": 1,
-      "model_ratio": 0,
-      "model_price": 0.1,
-      "owner_by": "",
-      "completion_ratio": 0,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5",
-      "description": "GPT-5.5 is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,1.1M",
-      "vendor_id": 22,
-      "quota_type": 0,
-      "model_ratio": 37.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "enable_groups": [
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "openai"
-      ],
-      "billing_mode": "tiered_expr",
-      "billing_expr": "(len <= 272000 ? tier(\"standard\", p * 5 + c * 25 + cr * 0.25) : tier(\"long_context\", p * 10 + c * 60 + cr * 0.5)) * (param(\"service_tier\") == \"fast\" ? 5 : 1)"
     },
     {
       "model_name": "claude-haiku-4-5-20251001",
@@ -149,30 +77,7 @@
       "create_cache_ratio": 4,
       "enable_groups": [
         "ccmax",
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "claude-opus-4-5-20251101",
-      "description": "Claude Opus 4.5 is an AI model provided by qihang-ai.",
-      "tags": "Reasoning,Tools,Files,Vision,200K",
-      "vendor_id": 24,
-      "quota_type": 0,
-      "model_ratio": 2.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.1,
-      "create_cache_ratio": 1.25,
-      "enable_groups": [
-        "vip",
-        "ccmax",
-        "default"
+        "测试分组1"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -193,9 +98,8 @@
       "cache_ratio": 0.1,
       "create_cache_ratio": 1.25,
       "enable_groups": [
-        "ccmax",
-        "default",
-        "vip"
+        "测试分组1",
+        "ccmax"
       ],
       "supported_endpoint_types": [
         "anthropic",
@@ -203,68 +107,32 @@
       ]
     },
     {
-      "model_name": "claude-sonnet-4-6",
-      "description": "Claude Sonnet 4.6 is an AI model provided by venice.",
+      "model_name": "claude-opus-4-8",
+      "description": "Claude Opus 4.8 is an AI model provided by venice.",
       "icon": "VeniceAI",
       "tags": "Reasoning,Tools,Files,Vision,1M",
       "vendor_id": 23,
       "quota_type": 0,
-      "model_ratio": 1.5,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 5,
-      "cache_ratio": 0.6,
-      "create_cache_ratio": 12,
-      "enable_groups": [
-        "ccmax",
-        "default",
-        "vip"
-      ],
-      "supported_endpoint_types": [
-        "anthropic",
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.5-openai-compact",
-      "vendor_id": 4,
-      "quota_type": 0,
       "model_ratio": 2.5,
       "model_price": 0,
       "owner_by": "",
-      "completion_ratio": 6,
+      "completion_ratio": 5,
       "cache_ratio": 0.1,
+      "create_cache_ratio": 1.25,
       "enable_groups": [
-        "vip",
-        "default"
+        "ccmax",
+        "测试分组1"
       ],
       "supported_endpoint_types": [
-        "openai"
-      ]
-    },
-    {
-      "model_name": "gpt-5.4-mini",
-      "description": "GPT-5.4 Mini is an AI model provided by vivgrid.",
-      "tags": "Reasoning,Tools,Files,Vision,400K",
-      "vendor_id": 22,
-      "quota_type": 0,
-      "model_ratio": 0.375,
-      "model_price": 0,
-      "owner_by": "",
-      "completion_ratio": 6,
-      "cache_ratio": 0.1,
-      "enable_groups": [
-        "vip",
-        "default"
-      ],
-      "supported_endpoint_types": [
+        "anthropic",
         "openai"
       ]
     }
   ],
   "group_ratio": {
     "default": 1,
-    "其他模型": 1
+    "其他模型": 1,
+    "测试分组1": 100
   },
   "pricing_version": "a42d372ccf0b5dd13ecf71203521f9d2",
   "success": true,
@@ -280,107 +148,18 @@
   },
   "usable_group": {
     "default": "默认分组",
-    "其他模型": "尝鲜分组"
+    "其他模型": "尝鲜分组",
+    "测试分组1": ""
   },
   "vendors": [
-    {
-      "id": 1,
-      "name": "Moonshot",
-      "icon": "Moonshot"
-    },
-    {
-      "id": 2,
-      "name": "Anthropic",
-      "icon": "Claude.Color"
-    },
-    {
-      "id": 11,
-      "name": "即梦",
-      "icon": "Jimeng.Color"
-    },
-    {
-      "id": 14,
-      "name": "百度",
-      "icon": "Wenxin.Color"
-    },
-    {
-      "id": 15,
-      "name": "Mistral",
-      "icon": "Mistral.Color"
-    },
-    {
-      "id": 21,
-      "name": "腾讯",
-      "icon": "Hunyuan.Color"
-    },
-    {
-      "id": 23,
-      "name": "Venice AI",
-      "icon": "VeniceAI"
-    },
-    {
-      "id": 25,
-      "name": "NanoGPT"
-    },
-    {
-      "id": 5,
-      "name": "360",
-      "icon": "Ai360.Color"
-    },
-    {
-      "id": 7,
-      "name": "MiniMax",
-      "icon": "Minimax.Color"
-    },
-    {
-      "id": 8,
-      "name": "DeepSeek",
-      "icon": "DeepSeek.Color"
-    },
-    {
-      "id": 9,
-      "name": "智谱",
-      "icon": "Zhipu.Color"
-    },
-    {
-      "id": 10,
-      "name": "阿里巴巴",
-      "icon": "Qwen.Color"
-    },
-    {
-      "id": 16,
-      "name": "Meta",
-      "icon": "Ollama"
-    },
-    {
-      "id": 18,
-      "name": "Jina",
-      "icon": "Jina"
-    },
-    {
-      "id": 3,
-      "name": "零一万物",
-      "icon": "Yi.Color"
-    },
-    {
-      "id": 6,
-      "name": "讯飞",
-      "icon": "Spark.Color"
-    },
-    {
-      "id": 13,
-      "name": "xAI",
-      "icon": "XAI"
-    },
-    {
-      "id": 17,
-      "name": "Cloudflare",
-      "icon": "Cloudflare.Color"
-    },
     {
       "id": 20,
       "name": "Google",
       "icon": "Gemini.Color"
+    },
+    {
+      "id": 24,
+      "name": "QiHang"
     },
     {
       "id": 4,
@@ -388,9 +167,53 @@
       "icon": "OpenAI"
     },
     {
-      "id": 12,
-      "name": "字节跳动",
-      "icon": "Doubao.Color"
+      "id": 8,
+      "name": "DeepSeek",
+      "icon": "DeepSeek.Color"
+    },
+    {
+      "id": 14,
+      "name": "百度",
+      "icon": "Wenxin.Color"
+    },
+    {
+      "id": 18,
+      "name": "Jina",
+      "icon": "Jina"
+    },
+    {
+      "id": 21,
+      "name": "腾讯",
+      "icon": "Hunyuan.Color"
+    },
+    {
+      "id": 25,
+      "name": "NanoGPT"
+    },
+    {
+      "id": 2,
+      "name": "Anthropic",
+      "icon": "Claude.Color"
+    },
+    {
+      "id": 5,
+      "name": "360",
+      "icon": "Ai360.Color"
+    },
+    {
+      "id": 6,
+      "name": "讯飞",
+      "icon": "Spark.Color"
+    },
+    {
+      "id": 9,
+      "name": "智谱",
+      "icon": "Zhipu.Color"
+    },
+    {
+      "id": 16,
+      "name": "Meta",
+      "icon": "Ollama"
     },
     {
       "id": 19,
@@ -402,8 +225,54 @@
       "name": "Vivgrid"
     },
     {
-      "id": 24,
-      "name": "QiHang"
+      "id": 23,
+      "name": "Venice AI",
+      "icon": "VeniceAI"
+    },
+    {
+      "id": 3,
+      "name": "零一万物",
+      "icon": "Yi.Color"
+    },
+    {
+      "id": 10,
+      "name": "阿里巴巴",
+      "icon": "Qwen.Color"
+    },
+    {
+      "id": 15,
+      "name": "Mistral",
+      "icon": "Mistral.Color"
+    },
+    {
+      "id": 1,
+      "name": "Moonshot",
+      "icon": "Moonshot"
+    },
+    {
+      "id": 7,
+      "name": "MiniMax",
+      "icon": "Minimax.Color"
+    },
+    {
+      "id": 11,
+      "name": "即梦",
+      "icon": "Jimeng.Color"
+    },
+    {
+      "id": 12,
+      "name": "字节跳动",
+      "icon": "Doubao.Color"
+    },
+    {
+      "id": 13,
+      "name": "xAI",
+      "icon": "XAI"
+    },
+    {
+      "id": 17,
+      "name": "Cloudflare",
+      "icon": "Cloudflare.Color"
     }
   ],
   "status_payload": {
@@ -495,9 +364,9 @@
       "self_use_mode_enabled": false,
       "server_address": "https://muyuan.do",
       "setup": true,
-      "start_time": 1781081329,
+      "start_time": 1781746337,
       "stripe_unit_price": 8,
-      "system_name": "君の的公益",
+      "system_name": "君の公益",
       "telegram_bot_name": "",
       "telegram_oauth": false,
       "theme": "classic",
@@ -506,7 +375,7 @@
       "uptime_kuma_enabled": true,
       "usd_exchange_rate": 7.3,
       "user_agreement_enabled": true,
-      "version": "dev-84a29b0",
+      "version": "dev-2f324f2",
       "wechat_login": false,
       "wechat_qrcode": ""
     },
