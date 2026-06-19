@@ -1,6 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 
+import { cleanLegacyAuditSummary } from "./audit-compat";
 import {
   hasDatabaseUrl,
   readStationAuditRunFilterValues,
@@ -191,7 +192,7 @@ function normalizeAuditSummary(payload: unknown): StationAuditSummary | null {
   if (criticalFindings.length > 0) {
     summary.criticalFindings = criticalFindings;
   }
-  return summary;
+  return cleanLegacyAuditSummary(summary);
 }
 
 function auditSortTime(value: string) {

@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 
+import { cleanLegacyAuditReportMarkdown } from "@/lib/audit-compat";
 import { resolveArchivedReportPath, resolveAuditRunReportPath } from "@/lib/audit-history";
 import { getSiteData } from "@/lib/site-data";
 
@@ -33,7 +34,7 @@ export async function GET(request: Request) {
     if (!body) {
       return new Response("Audit report not found.", { status: 404, headers: NOINDEX_HEADERS });
     }
-    return new Response(body, {
+    return new Response(cleanLegacyAuditReportMarkdown(body, model), {
       headers: {
         "content-type": "text/markdown; charset=utf-8",
         "cache-control": "no-store",
@@ -63,7 +64,7 @@ export async function GET(request: Request) {
     return new Response("Audit report not found.", { status: 404, headers: NOINDEX_HEADERS });
   }
 
-  return new Response(body, {
+  return new Response(cleanLegacyAuditReportMarkdown(body, model), {
     headers: {
       "content-type": "text/markdown; charset=utf-8",
       "cache-control": "no-store",

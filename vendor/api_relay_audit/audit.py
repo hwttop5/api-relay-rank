@@ -275,6 +275,36 @@ def _parse_sse_stream(byte_iterator, signals):
 # -- Stream verdict analysis (Sub-PR 2, v1.7) -------------------------------
 
 MAX_UNKNOWN_EVENTS_REPORTED = 6
+MODEL_FAMILY_LABELS = {
+    "anthropic": "Claude/Anthropic",
+    "openai": "OpenAI/GPT",
+    "gemini": "Gemini",
+    "unknown": "unknown",
+}
+
+
+def model_family(model_name):
+    """Classify common chat model names into broad provider families."""
+    value = str(model_name or "").strip().lower()
+    if not value:
+        return "unknown"
+    normalized = value.removeprefix("models/")
+    if normalized.startswith("claude-") or normalized == "claude":
+        return "anthropic"
+    if (
+        normalized.startswith("gpt-")
+        or normalized.startswith("chatgpt-")
+        or re.match(r"^o[1345](?:-|$)", normalized)
+        or normalized.startswith("codex-")
+        or normalized.startswith("computer-use-")
+        or normalized.startswith("text-")
+        or normalized.startswith("davinci")
+        or normalized.startswith("babbage")
+    ):
+        return "openai"
+    if normalized.startswith("gemini-"):
+        return "gemini"
+    return "unknown"
 
 
 def _check_usage_monotonic(signals):
@@ -300,19 +330,32 @@ def _check_usage_consistent(signals):
     )
 
 
-def _check_stream_model(signals):
-    """message_start.message.model should contain 'claude'.
+def _check_stream_model(signals, expected_model=None):
+    """Return whether stream model identity matches the requested family."""
+    expected_family = model_family(expected_model)
+    actual_family = model_family(signals.message_start_model)
+    missing_is_suspicious = expected_family == "anthropic" or expected_family == "unknown"
 
-    Missing model identity is also suspicious once the relay has emitted
-    substantive stream events: a middleware can hide a downgrade by
-    stripping the field instead of exposing the non-Claude upstream.
-    """
     if not signals.message_start_model:
-        return False
-    return "claude" in signals.message_start_model.lower()
+        return {
+            "matches": not missing_is_suspicious,
+            "expected_family": expected_family,
+            "actual_family": "unknown",
+        }
+    if expected_family == "unknown" or actual_family == "unknown":
+        return {
+            "matches": True,
+            "expected_family": expected_family,
+            "actual_family": actual_family,
+        }
+    return {
+        "matches": expected_family == actual_family,
+        "expected_family": expected_family,
+        "actual_family": actual_family,
+    }
 
 
-def analyze_stream(signals):
+def analyze_stream(signals, expected_model=None):
     """Analyze a StreamSignals for integrity anomalies.
 
     Verdict priority: inconclusive > anomaly > clean. Pure function.
@@ -358,7 +401,11 @@ def analyze_stream(signals):
     usage_monotonic = _check_usage_monotonic(signals)
     usage_consistent = _check_usage_consistent(signals)
     signature_valid = signals.empty_signature_delta_count == 0
-    stream_model_is_claude = _check_stream_model(signals)
+    stream_model_check = _check_stream_model(signals, expected_model)
+    stream_model_matches_expected = stream_model_check["matches"]
+    stream_model_expected_family = stream_model_check["expected_family"]
+    stream_model_actual_family = stream_model_check["actual_family"]
+    stream_model_is_claude = stream_model_actual_family == "anthropic"
 
     findings = []
     if unknown_events:
@@ -383,25 +430,26 @@ def analyze_stream(signals):
             f"{signals.empty_signature_delta_count} signature_delta event(s) "
             "had empty signatures — thinking block downgrade or rewriter"
         )
-    if not stream_model_is_claude:
+    if not stream_model_matches_expected:
+        expected_label = MODEL_FAMILY_LABELS[stream_model_expected_family]
         if signals.message_start_model:
             findings.append(
                 f"Stream's message_start.message.model = "
-                f"{signals.message_start_model!r} does not contain 'claude' — "
-                "relay may be routing to a substitute model"
+                f"{signals.message_start_model!r} does not match requested "
+                f"model family {expected_label} - relay may be routing "
+                "to a substitute model"
             )
         else:
             findings.append(
-                "Stream omitted message_start.message.model entirely — "
+                "Stream omitted message_start.message.model entirely - "
                 "relay may be stripping model identity to hide a downgrade"
             )
-
     anomaly = bool(
         unknown_events
         or not usage_monotonic
         or not usage_consistent
         or not signature_valid
-        or not stream_model_is_claude
+        or not stream_model_matches_expected
     )
 
     shape_flags_seen = sum([
@@ -427,6 +475,9 @@ def analyze_stream(signals):
         "signature_valid": signature_valid,
         "stream_model_name": signals.message_start_model,
         "stream_model_is_claude": stream_model_is_claude,
+        "stream_model_expected_family": stream_model_expected_family,
+        "stream_model_actual_family": stream_model_actual_family,
+        "stream_model_matches_expected": stream_model_matches_expected,
         "findings": findings,
     }
 
@@ -2925,7 +2976,7 @@ def test_stream_integrity(client, report):
         max_tokens=100,
         with_thinking=True,
     )
-    analysis = analyze_stream(signals)
+    analysis = analyze_stream(signals, expected_model=client.model)
     verdict = analysis["verdict"]
 
     report.p("| Check | Result |")
@@ -2939,9 +2990,15 @@ def test_stream_integrity(client, report):
     report.p(f"| Usage monotonic | {'yes' if analysis['usage_monotonic'] else 'NO'} |")
     report.p(f"| Usage consistent | {'yes' if analysis['usage_consistent'] else 'NO'} |")
     report.p(f"| Signature valid | {'yes' if analysis['signature_valid'] else 'NO'} |")
+    stream_model_label = MODEL_FAMILY_LABELS[analysis["stream_model_actual_family"]]
+    expected_model_label = MODEL_FAMILY_LABELS[analysis["stream_model_expected_family"]]
+    if analysis["stream_model_matches_expected"]:
+        stream_model_result = f"matches {stream_model_label}"
+    else:
+        stream_model_result = f"unexpected; expected {expected_model_label}"
     report.p(
         f"| Stream model | {analysis['stream_model_name'] or '—'} "
-        f"({'claude' if analysis['stream_model_is_claude'] else 'NOT claude'}) |"
+        f"({stream_model_result}) |"
     )
     report.p(f"| Total events seen | {signals.raw_event_count} |")
     if signals.total_duration_seconds is not None:
@@ -3524,7 +3581,7 @@ def main():
                 "The relay's streaming response fails one or more structural "
                 "invariants: unknown SSE event types, non-monotonic usage fields, "
                 "rewritten input_tokens, empty thinking signatures, or a "
-                "non-Claude stream model name."
+                "unexpected stream model family/name."
             )
         if d6:
             reasons.append(

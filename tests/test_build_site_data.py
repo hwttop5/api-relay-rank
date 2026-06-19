@@ -29,6 +29,7 @@ from scripts import scrape_missing_announcements as scrape_missing_announcements
 from scripts import seed_runtime_data as seed_runtime_data
 from scripts import validate_refresh_outputs as validate_refresh_outputs
 from scripts.database import SnapshotValidationError, validate_site_data_snapshot
+from vendor.api_relay_audit import audit as audit_engine
 
 
 _REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -6110,6 +6111,136 @@ One or more audit steps **crashed**.
         ).to_payload()
 
         self.assertEqual(summary["overallVerdict"], "inconclusive")
+
+    def stream_signals(self, *, stream_model: str, input_tokens: int = 124, delta_tokens: list[int] | None = None):
+        signals = audit_engine.StreamSignals()
+        signals.raw_event_count = 5
+        signals.event_types = [
+            "message_start",
+            "content_block_start",
+            "content_block_delta",
+            "message_delta",
+            "message_stop",
+        ]
+        signals.has_message_start = True
+        signals.has_content_block_start = True
+        signals.has_content_block_delta = True
+        signals.has_message_delta = True
+        signals.has_message_stop = True
+        signals.has_text_delta = True
+        signals.message_start_model = stream_model
+        signals.input_tokens = input_tokens
+        signals.message_delta_input_tokens_samples = delta_tokens if delta_tokens is not None else [input_tokens]
+        return signals
+
+    def test_stream_integrity_accepts_matching_openai_family_model(self) -> None:
+        analysis = audit_engine.analyze_stream(
+            self.stream_signals(stream_model="gpt-5.5"),
+            expected_model="gpt-5.5",
+        )
+
+        self.assertEqual(analysis["verdict"], "clean")
+        self.assertEqual(analysis["stream_model_expected_family"], "openai")
+        self.assertEqual(analysis["stream_model_actual_family"], "openai")
+        self.assertTrue(analysis["stream_model_matches_expected"])
+        self.assertEqual(analysis["findings"], [])
+
+    def test_stream_integrity_keeps_usage_rewrite_for_openai_family_model(self) -> None:
+        analysis = audit_engine.analyze_stream(
+            self.stream_signals(stream_model="gpt-5.5", input_tokens=0, delta_tokens=[124]),
+            expected_model="gpt-5.5",
+        )
+
+        self.assertEqual(analysis["verdict"], "anomaly")
+        self.assertTrue(any("usage rewrite" in finding for finding in analysis["findings"]))
+        self.assertFalse(any("claude" in finding.lower() for finding in analysis["findings"]))
+
+    def test_stream_integrity_flags_claude_request_routed_to_openai_family_model(self) -> None:
+        analysis = audit_engine.analyze_stream(
+            self.stream_signals(stream_model="gpt-5.5"),
+            expected_model="claude-opus-4-7",
+        )
+
+        self.assertEqual(analysis["verdict"], "anomaly")
+        self.assertFalse(analysis["stream_model_matches_expected"])
+        self.assertTrue(any("does not match requested model family" in finding for finding in analysis["findings"]))
+
+    def test_build_summary_cleans_legacy_claude_false_positive_for_openai_model(self) -> None:
+        report = """
+# API Relay Security Audit Report
+
+## Risk Summary
+
+- 🔴 Stream integrity anomaly detected (AC-1 SSE-level): Stream's message_start.message.model = 'gpt-5.5' does not contain 'claude' — relay may be routing to a substitute model
+
+## 10. Stream Integrity (AC-1 SSE-level)
+
+| Check | Result |
+|-------|--------|
+| Stream model | gpt-5.5 (NOT claude) |
+
+🔴 **Stream integrity anomaly detected (AC-1 SSE-level): Stream's message_start.message.model = 'gpt-5.5' does not contain 'claude' — relay may be routing to a substitute model**
+
+## 14. Overall Rating
+
+### LOW RISK
+
+No significant injection detected.
+"""
+        summary = run_station_audit.build_summary(
+            report,
+            profile="general",
+            model="gpt-5.5",
+            audited_base_url="https://relay.example/v1",
+            executed_at="2026-01-02T00:00:00Z",
+            report_path=run_station_audit.APP_ROOT / "data" / "_audit_runs" / "demo" / "gpt-5.5" / "run" / "report.md",
+            effective_options=run_station_audit.AuditRunOptions().to_payload(),
+        ).to_payload()
+
+        serialized = json.dumps(summary, ensure_ascii=False)
+        self.assertEqual(summary["overallVerdict"], "low")
+        self.assertEqual(summary["protocolVerdict"], "pass")
+        self.assertNotIn("does not contain 'claude'", serialized)
+        self.assertNotIn("NOT claude", serialized)
+
+    def test_build_summary_preserves_usage_rewrite_after_legacy_claude_cleanup(self) -> None:
+        report = """
+# API Relay Security Audit Report
+
+## Risk Summary
+
+- 🔴 Stream integrity anomaly detected (AC-1 SSE-level): input_tokens at message_start (0) disagrees with message_delta samples ([124]) — usage rewrite; Stream's message_start.message.model = 'gpt-5.5' does not contain 'claude' — relay may be routing to a substitute model
+
+## 10. Stream Integrity (AC-1 SSE-level)
+
+| Check | Result |
+|-------|--------|
+| Stream model | gpt-5.5 (NOT claude) |
+
+🔴 **Stream integrity anomaly detected (AC-1 SSE-level): input_tokens at message_start (0) disagrees with message_delta samples ([124]) — usage rewrite; Stream's message_start.message.model = 'gpt-5.5' does not contain 'claude' — relay may be routing to a substitute model**
+
+## 14. Overall Rating
+
+### LOW RISK
+
+No significant injection detected.
+"""
+        summary = run_station_audit.build_summary(
+            report,
+            profile="general",
+            model="gpt-5.5",
+            audited_base_url="https://relay.example/v1",
+            executed_at="2026-01-02T00:00:00Z",
+            report_path=run_station_audit.APP_ROOT / "data" / "_audit_runs" / "demo" / "gpt-5.5" / "run" / "report.md",
+            effective_options=run_station_audit.AuditRunOptions().to_payload(),
+        ).to_payload()
+
+        serialized = json.dumps(summary, ensure_ascii=False)
+        self.assertEqual(summary["overallVerdict"], "high")
+        self.assertEqual(summary["protocolVerdict"], "fail")
+        self.assertIn("usage rewrite", serialized)
+        self.assertNotIn("does not contain 'claude'", serialized)
+        self.assertNotIn("NOT claude", serialized)
 
     def test_normalize_audit_summary_preserves_enhanced_fields_and_legacy_compatibility(self) -> None:
         legacy = {

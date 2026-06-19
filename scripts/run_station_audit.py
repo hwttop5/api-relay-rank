@@ -49,6 +49,14 @@ MAX_LATENCY_PROBE_COUNT = 50
 AUDIT_PROFILE = "general"
 DEFAULT_RETENTION_DAYS = 30
 DEFAULT_RETENTION_MAX_PER_TARGET = 20
+OPENAI_AUDIT_FAMILY = "openai"
+ANTHROPIC_AUDIT_FAMILY = "anthropic"
+GEMINI_AUDIT_FAMILY = "gemini"
+UNKNOWN_AUDIT_FAMILY = "unknown"
+LEGACY_CLAUDE_FALSE_POSITIVE_RE = re.compile(
+    r"(?:^|;\s*)Stream's message_start\.message\.model = '[^']+' does not contain 'claude'\s*[-\u2013\u2014\u2015\u2026\uFF0D\uFE58\uFE63\uFF0D\uFFFD?]*\s*relay may be routing to a substitute model",
+    flags=re.IGNORECASE,
+)
 
 OPTION_BOOL_FIELDS = {
     "skipInfra",
@@ -355,6 +363,78 @@ def sanitized_command(command: list[str], secrets: list[str]) -> list[str]:
 
 def strip_heading_number(title: str) -> str:
     return re.sub(r"^\d+\.\s*", "", title.strip()).strip()
+
+
+def audit_model_family(model: str) -> str:
+    value = str(model or "").strip().lower()
+    if not value:
+        return UNKNOWN_AUDIT_FAMILY
+    normalized = value.removeprefix("models/")
+    if normalized.startswith("claude-") or normalized == "claude":
+        return ANTHROPIC_AUDIT_FAMILY
+    if (
+        normalized.startswith("gpt-")
+        or normalized.startswith("chatgpt-")
+        or re.match(r"^o[1345](?:-|$)", normalized)
+        or normalized.startswith("codex-")
+        or normalized.startswith("computer-use-")
+        or normalized.startswith("text-")
+        or normalized.startswith("davinci")
+        or normalized.startswith("babbage")
+    ):
+        return OPENAI_AUDIT_FAMILY
+    if normalized.startswith("gemini-"):
+        return GEMINI_AUDIT_FAMILY
+    return UNKNOWN_AUDIT_FAMILY
+
+
+def remove_legacy_claude_stream_false_positive(text: str, model: str) -> str:
+    if audit_model_family(model) != OPENAI_AUDIT_FAMILY or not text:
+        return text
+    cleaned = text.replace("non-Claude stream model name", "unexpected stream model family/name")
+    if "does not contain 'claude'" not in cleaned.lower():
+        return cleaned.strip()
+    cleaned = LEGACY_CLAUDE_FALSE_POSITIVE_RE.sub("", cleaned)
+    cleaned = re.sub(r"\s*;\s*([.;])", r"\1", cleaned)
+    cleaned = re.sub(r":\s*;", ":", cleaned)
+    cleaned = re.sub(r"\s{2,}", " ", cleaned)
+    return cleaned.strip()
+
+
+def legacy_line_has_real_stream_anomaly(line: str) -> bool:
+    lowered = line.lower()
+    return any(
+        marker in lowered
+        for marker in [
+            "input_tokens",
+            "output_tokens",
+            "usage rewrite",
+            "unknown sse",
+            "non-monotonic",
+            "signature_delta",
+            "empty signature",
+        ]
+    )
+
+
+def clean_legacy_audit_report_for_model(report_text: str, model: str) -> str:
+    if audit_model_family(model) != OPENAI_AUDIT_FAMILY:
+        return report_text
+    cleaned_lines: list[str] = []
+    for raw_line in report_text.splitlines():
+        line = remove_legacy_claude_stream_false_positive(raw_line, model)
+        lowered = line.lower()
+        if raw_line.lower().strip().startswith("- stream's message_start.message.model") and "does not contain 'claude'" in raw_line.lower():
+            continue
+        if (
+            "stream integrity anomaly detected" in lowered
+            and "does not contain 'claude'" in raw_line.lower()
+            and not legacy_line_has_real_stream_anomaly(line)
+        ):
+            continue
+        line = re.sub(r"\(NOT claude\)", "(matches OpenAI/GPT)", line, flags=re.IGNORECASE)
+        cleaned_lines.append(line)
+    return "\n".join(cleaned_lines)
 
 
 def report_sections(report_text: str) -> list[tuple[str, str]]:
@@ -945,6 +1025,7 @@ def build_summary(
     duration_ms: int = 0,
     effective_options: dict[str, Any] | None = None,
 ) -> StationAuditSummary:
+    report_text = clean_legacy_audit_report_for_model(report_text, model)
     overall_verdict, overall_summary = parse_overall_verdict(report_text)
     enhanced = build_enhanced_audit_fields(
         report_text,

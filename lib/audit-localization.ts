@@ -1,8 +1,9 @@
+import { cleanLegacyAuditHistoryItem, cleanLegacyAuditSummary } from "./audit-compat";
 import type { SiteData, StationAuditHistoryItem, StationAuditSummary, StationRecord } from "./types";
 
 const EXACT_TRANSLATIONS: Record<string, string> = {
-  "Stream integrity anomaly detected (AC-1 SSE-level). The relay's streaming response fails one or more structural invariants: unknown SSE event types, non-monotonic usage fields, rewritten input_tokens, empty thinking signatures, or a non-Claude stream model name. Do not use.":
-    "检测到流式响应完整性异常（AC-1 SSE 层）。该中转站的流式响应不满足一个或多个结构性约束：出现未知 SSE 事件类型、usage 字段非单调、input_tokens 被改写、thinking 签名为空，或流式模型名不是 Claude。建议不要使用。",
+  "Stream integrity anomaly detected (AC-1 SSE-level). The relay's streaming response fails one or more structural invariants: unknown SSE event types, non-monotonic usage fields, rewritten input_tokens, empty thinking signatures, or unexpected stream model family/name. Do not use.":
+    "检测到流式响应完整性异常（AC-1 SSE 层）。该中转站的流式响应不满足一个或多个结构性约束：出现未知 SSE 事件类型、usage 字段非单调、input_tokens 被改写、thinking 签名为空，或流式模型家族/名称与请求不一致。建议不要使用。",
   "Hidden injection detected but instructions may partially work. OK for simple Q&A, not recommended for complex applications.":
     "检测到隐藏提示词注入，但用户指令仍可能部分生效。简单问答可以勉强使用，不建议用于复杂应用或代理任务。",
   "Audit report did not contain a supported overall verdict section.": "审计报告未包含可识别的总体评级段落。",
@@ -67,7 +68,7 @@ const PATTERN_TRANSLATIONS: Array<[RegExp, (match: RegExpMatchArray) => string]>
   [
     /^Stream integrity anomaly detected \(AC-1 SSE-level\): input_tokens at message_start \(([^)]+)\) disagrees with message_delta samples \(([^)]+)\) -+ usage rewrite; Stream's message_start\.message\.model = '([^']+)' does not contain 'claude' -+ relay may be routing to a substitute model$/i,
     (match) =>
-      `检测到流式响应完整性异常（AC-1 SSE 层）：message_start 中的 input_tokens（${match[1]}）与 message_delta 样本（${match[2]}）不一致，疑似 usage 被改写；流式返回的模型名为 ${match[3]}，不包含 claude，可能被路由到替代模型。`,
+      `检测到流式响应完整性异常（AC-1 SSE 层）：message_start 中的 input_tokens（${match[1]}）与 message_delta 样本（${match[2]}）不一致，疑似 usage 被改写。`,
   ],
   [
     /^Ask the model to echo exact package-install commands and verify character-level integrity on the return path\./i,
@@ -219,27 +220,28 @@ export function localizeAuditText(value: string) {
 }
 
 export function localizeAuditSummaryText<T extends StationAuditSummary>(summary: T): T {
+  const cleaned = cleanLegacyAuditSummary(summary);
   return {
-    ...summary,
-    overallSummary: localizeAuditText(summary.overallSummary),
-    auditVerdictReason: summary.auditVerdictReason ? localizeAuditText(summary.auditVerdictReason) : summary.auditVerdictReason,
-    costNotice: summary.costNotice ? localizeAuditText(summary.costNotice) : summary.costNotice,
-    highlights: summary.highlights.map(localizeAuditText),
-    stepSummaries: summary.stepSummaries.map((step) => ({
+    ...cleaned,
+    overallSummary: localizeAuditText(cleaned.overallSummary),
+    auditVerdictReason: cleaned.auditVerdictReason ? localizeAuditText(cleaned.auditVerdictReason) : cleaned.auditVerdictReason,
+    costNotice: cleaned.costNotice ? localizeAuditText(cleaned.costNotice) : cleaned.costNotice,
+    highlights: cleaned.highlights.map(localizeAuditText),
+    stepSummaries: cleaned.stepSummaries.map((step) => ({
       title: localizeAuditText(step.title),
       summary: localizeAuditText(step.summary),
     })),
-    detectorResults: summary.detectorResults?.map((detector) => ({
+    detectorResults: cleaned.detectorResults?.map((detector) => ({
       ...detector,
       summary: localizeAuditText(detector.summary),
       evidence: detector.evidence?.map(localizeAuditText),
     })),
-    criticalFindings: summary.criticalFindings?.map(localizeAuditText),
+    criticalFindings: cleaned.criticalFindings?.map(localizeAuditText),
   };
 }
 
 export function localizeAuditHistoryItemText<T extends StationAuditHistoryItem>(item: T): T {
-  return localizeAuditSummaryText(item);
+  return localizeAuditSummaryText(cleanLegacyAuditHistoryItem(item));
 }
 
 export function localizeStationAuditText<T extends StationRecord>(station: T): T {
