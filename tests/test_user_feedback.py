@@ -152,17 +152,26 @@ class StationSubmissionDigestTests(unittest.TestCase):
         self.assertEqual(payload["submissionCount"], 1)
         self.assertEqual(payload["submissions"][0]["paymentTypeLabel"], "非包月型（余额消费）")
         self.assertEqual(payload["submissions"][0]["platformLabel"], "new-api")
+        self.assertEqual(payload["submissions"][0]["testApiKey"], "sk-live-secret-123456")
         self.assertEqual(payload["submissions"][0]["maskedTestApiKey"], "sk-l*************3456")
         self.assertEqual(payload["submissions"][0]["attachments"][0]["url"], f"https://rank.example.com/api/station-submission-attachments/{'b' * 64}")
 
-    def test_submission_email_body_does_not_contain_full_key(self) -> None:
+    def test_submission_email_body_contains_full_key(self) -> None:
         payload = submission_digest.build_digest_payload([self.make_submission()], since=None, until=None, base_url="https://rank.example.com")
         body = submission_digest.build_email_body(payload)
 
         self.assertIn("Demo Relay", body)
-        self.assertIn("测试 API Key：sk-l*************3456", body)
+        self.assertIn("测试 API Key：sk-live-secret-123456", body)
         self.assertIn("/api/station-submission-attachments/", body)
-        self.assertNotIn("sk-live-secret-123456", body)
+
+    def test_stored_payload_redacts_plaintext_key(self) -> None:
+        payload = submission_digest.build_digest_payload([self.make_submission()], since=None, until=None, base_url="https://rank.example.com")
+        stored = submission_digest.redact_payload_for_storage(payload)
+
+        self.assertNotIn("testApiKey", stored["submissions"][0])
+        self.assertEqual(stored["submissions"][0]["maskedTestApiKey"], "sk-l*************3456")
+        # original payload is untouched
+        self.assertEqual(payload["submissions"][0]["testApiKey"], "sk-live-secret-123456")
 
     def test_submission_dry_run_does_not_send_or_mark(self) -> None:
         submission = self.make_submission()

@@ -235,6 +235,7 @@ def build_digest_payload(
                 "rechargeMultiplier": submission.recharge_multiplier,
                 "contactEmail": submission.contact_email,
                 "testBaseUrl": submission.test_base_url,
+                "testApiKey": submission.test_api_key,
                 "maskedTestApiKey": mask_test_api_key(submission.test_api_key),
                 "notes": submission.notes,
                 "githubLogin": submission.github_login,
@@ -275,7 +276,7 @@ def build_email_body(payload: dict[str, Any]) -> str:
                 f"提交时间：{submission['createdAt']}",
                 f"提交页面：{submission['currentUrl'] or '-'}",
                 f"测试 BaseURL：{submission['testBaseUrl']}",
-                f"测试 API Key：{submission['maskedTestApiKey']}",
+                f"测试 API Key：{submission['testApiKey']}",
             ]
         )
         if submission["platformNote"]:
@@ -327,6 +328,20 @@ def send_email(*, subject: str, body: str, recipient: str) -> None:
         smtp.send_message(message)
 
 
+def redact_payload_for_storage(payload: dict[str, Any]) -> dict[str, Any]:
+    """Return a copy of the digest payload with plaintext API keys removed.
+
+    The email body intentionally includes the plaintext test API key, but we do
+    not want to persist that credential at rest in the digests table.
+    """
+    stored = dict(payload)
+    stored["submissions"] = [
+        {key: value for key, value in submission.items() if key != "testApiKey"}
+        for submission in payload.get("submissions", [])
+    ]
+    return stored
+
+
 def mark_sent(
     submission_ids: list[int],
     *,
@@ -339,6 +354,7 @@ def mark_sent(
     if not submission_ids:
         return 0
     ensure_database(dsn)
+    stored_payload = redact_payload_for_storage(payload)
     with connect(dsn) as con:
         with con.cursor() as cur:
             cur.execute(
@@ -349,7 +365,7 @@ def mark_sent(
                 values (%s, %s, %s, %s, 'sent', %s, now())
                 returning id
                 """,
-                (since, until, recipient, len(submission_ids), _jsonb(payload)),
+                (since, until, recipient, len(submission_ids), _jsonb(stored_payload)),
             )
             digest_id = cur.fetchone()[0]
             cur.execute(
