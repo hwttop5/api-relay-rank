@@ -90,6 +90,7 @@ export default async function StationPage({ params }: { params: Promise<{ statio
 
   const work = station.rankings.work_hours;
   const off = station.rankings.off_hours;
+  const all = station.rankings.all_hours;
   const bestRanking = findBestRanking(station);
   const latestAnnouncements = [...station.announcements].sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1)).slice(0, 5);
   const announcementEvidence = station.dataEvidence?.find((item) => item.key === "announcements");
@@ -242,12 +243,13 @@ export default async function StationPage({ params }: { params: Promise<{ statio
             <div className="section-head">
               <div>
                 <h2 className="section-title">排名快照</h2>
-                <p className="section-desc">展示该站点在两个核心时间窗口下的正式排名指标。</p>
+                <p className="section-desc">展示该站点在三个核心时间窗口下的正式排名指标。综合排名榜单默认展示全时段数据。</p>
               </div>
             </div>
             <div className="section-body">
               <div className="grid-2">
                 {([
+                  ["all_hours", all, "全时段（综合排名默认窗口，00:00:00-23:59:59）"],
                   ["work_hours", work, "工作时段（工作日09:00:00-18:00:00）"],
                   ["off_hours", off, "非工作时段（工作日18:00:01-次日08:59:59，周末全天）"],
                 ] as const).map(([key, row, title]) => (

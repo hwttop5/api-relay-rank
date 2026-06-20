@@ -838,7 +838,7 @@
       },
       {
         "groupName": "vip",
-        "groupMultiplier": 1,
+        "groupMultiplier": 1.1,
         "codexEligible": true,
         "usageLabel": "Codex"
       },
@@ -847,6 +847,12 @@
         "groupMultiplier": 1,
         "codexEligible": true,
         "usageLabel": "Codex"
+      },
+      {
+        "groupName": "claude",
+        "groupMultiplier": 1,
+        "codexEligible": false,
+        "usageLabel": "Claude"
       }
     ],
     "rechargeTiers": [
@@ -899,7 +905,15 @@
         "expiresRule": "30 天订阅；总额度池；不按周期重置；公告提示订阅 coding plan 可自动升级 VIP 分组"
       },
       {
-        "rechargeName": "Coding Plan Pro(Plus x5)",
+        "rechargeName": "Coding Plan Pro(Plus x3)",
+        "billingType": "monthly",
+        "rmbAmount": 220,
+        "usdAmount": 1200,
+        "rechargeLocation": "官网订阅页",
+        "expiresRule": "30 天订阅；总额度池；不按周期重置；截图可见升级 vip 分组；当前仅作为详情与证据展示"
+      },
+      {
+        "rechargeName": "Coding Plan Pro MAX(Plus x5)",
         "billingType": "monthly",
         "rmbAmount": 360,
         "usdAmount": 2000,
@@ -907,8 +921,8 @@
         "expiresRule": "30 天订阅；总额度池；不按周期重置；公告提示订阅 coding plan 可自动升级 VIP 分组"
       }
     ],
-    "forcedAdoptedTier": "codex | Coding Plan Pro(Plus x5)",
-    "assumptionText": "2026-06-14 用户截图确认：kapibala.asia 充值档位前 5 个为钱包充值，按 3 RMB = 10 USD 比例（实付人民币金额 / 美元额度之前识别反了）；后 2 个为 30 天订阅月卡（之前误识别为日卡）。codex 分组倍率 1x，可用于 Codex。",
+    "forcedAdoptedTier": "codex | Coding Plan Pro MAX(Plus x5)",
+    "assumptionText": "2026-06-20 用户补充截图确认：kapibala.asia 钱包充值仍为 3 RMB = 10 USD，订阅页可见 Coding Plan Plus ¥78->$400、Coding Plan Pro(Plus x3) ¥220->$1200、Coding Plan Pro MAX(Plus x5) ¥360->$2000；分组弹窗可见 vip 1.1x 与 claude 1x。正式排名按用户确认仍锁定 codex 1x + Pro MAX(Plus x5)，有效倍率保持 0.18，不切到 vip 1.1x 口径。",
     "confidence": "manual_verified",
     "source": "user_screenshot_verified_pricing_page",
     "evidenceUrl": "https://kapibala.asia",
@@ -1301,5 +1315,132 @@
     "confidence": "manual_verified",
     "source": "user_confirmed_charity_free_station",
     "evidenceUrl": "https://muyuan.do"
+  },
+  "codehub.qzz.io": {
+    "label": "CodeHub",
+    "stationTypeHint": "mixed",
+    "groupMultipliers": [
+      {
+        "groupName": "GPT超低倍率",
+        "groupMultiplier": 0.1,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "GPT Pro",
+        "groupMultiplier": 0.25,
+        "codexEligible": true,
+        "usageLabel": "Codex"
+      },
+      {
+        "groupName": "GPT生图(Image2)",
+        "groupMultiplier": 0.01,
+        "codexEligible": false,
+        "usageLabel": "Image"
+      },
+      {
+        "groupName": "GPT生图（Image2 4K）",
+        "groupMultiplier": 1,
+        "codexEligible": false,
+        "usageLabel": "Image"
+      },
+      {
+        "groupName": "Kiro Claude",
+        "groupMultiplier": 0.2,
+        "codexEligible": false,
+        "usageLabel": "Claude"
+      }
+    ],
+    "rechargeTiers": [
+      {
+        "rechargeName": "CodeHub wallet topup 1 USD",
+        "billingType": "permanent",
+        "rmbAmount": 1,
+        "usdAmount": 1,
+        "rechargeLocation": "CodeHub 账户充值页",
+        "expiresRule": "2026-06-19 周报截图可见余额充值商品；页面显示 $1 兑换码对应实付 ¥1；平台说明卡密充值按 1:1 到账；隐藏商品未补录"
+      },
+      {
+        "rechargeName": "CodeHub wallet topup 10 USD",
+        "billingType": "permanent",
+        "rmbAmount": 10,
+        "usdAmount": 10,
+        "rechargeLocation": "CodeHub 账户充值页",
+        "expiresRule": "2026-06-19 周报截图可见余额充值商品；页面显示 $10 兑换码对应实付 ¥10；平台说明卡密充值按 1:1 到账；隐藏商品未补录"
+      },
+      {
+        "rechargeName": "CodeHub wallet topup 20 USD",
+        "billingType": "permanent",
+        "rmbAmount": 20,
+        "usdAmount": 20,
+        "rechargeLocation": "CodeHub 账户充值页",
+        "expiresRule": "2026-06-19 周报截图可见余额充值商品；页面显示 $20 兑换码对应实付 ¥20；平台说明卡密充值按 1:1 到账；隐藏商品未补录"
+      },
+      {
+        "rechargeName": "CodeHub wallet topup 50 USD",
+        "billingType": "permanent",
+        "rmbAmount": 50,
+        "usdAmount": 50,
+        "rechargeLocation": "CodeHub 账户充值页",
+        "expiresRule": "2026-06-19 周报截图可见余额充值商品；页面显示 $50 兑换码对应实付 ¥50；平台说明卡密充值按 1:1 到账；隐藏商品未补录"
+      },
+      {
+        "rechargeName": "CodeHub wallet topup 100 USD",
+        "billingType": "permanent",
+        "rmbAmount": 100,
+        "usdAmount": 100,
+        "rechargeLocation": "CodeHub 账户充值页",
+        "expiresRule": "2026-06-19 周报截图可见余额充值商品；页面显示 $100 兑换码对应实付 ¥100；平台说明卡密充值按 1:1 到账；隐藏商品未补录"
+      },
+      {
+        "rechargeName": "CodeHub wallet topup 500 USD",
+        "billingType": "permanent",
+        "rmbAmount": 500,
+        "usdAmount": 500,
+        "rechargeLocation": "CodeHub 账户充值页",
+        "expiresRule": "2026-06-19 周报截图可见余额充值商品；页面显示 $500 兑换码对应实付 ¥500；平台说明卡密充值按 1:1 到账；隐藏商品未补录"
+      },
+      {
+        "rechargeName": "CodeHub wallet topup 1000 USD",
+        "billingType": "permanent",
+        "rmbAmount": 1000,
+        "usdAmount": 1000,
+        "rechargeLocation": "CodeHub 账户充值页",
+        "expiresRule": "2026-06-19 周报截图可见余额充值商品；页面显示 $1000 兑换码对应实付 ¥1000；平台说明卡密充值按 1:1 到账；隐藏商品未补录"
+      },
+      {
+        "rechargeName": "CodeHub 1-day card",
+        "billingType": "daily",
+        "rmbAmount": 8.5,
+        "usdAmount": 10,
+        "rechargeLocation": "CodeHub 账户充值页",
+        "expiresRule": "2026-06-19 周报截图可见 1 天卡；页面标注 $10、有效期 1 天；仅作详情展示，不参与正式排名采用",
+        "participatesInVerifiedRanking": false
+      },
+      {
+        "rechargeName": "CodeHub 3-day card ($10/day)",
+        "billingType": "daily",
+        "rmbAmount": 25,
+        "usdAmount": 30,
+        "rechargeLocation": "CodeHub 账户充值页",
+        "expiresRule": "2026-06-19 周报截图可见 3 天卡；页面标注 $10/天、有效期 3 天；仅作详情展示，不参与正式排名采用",
+        "participatesInVerifiedRanking": false
+      },
+      {
+        "rechargeName": "CodeHub 7-day card ($10/day)",
+        "billingType": "weekly",
+        "rmbAmount": 50,
+        "usdAmount": 70,
+        "rechargeLocation": "CodeHub 账户充值页",
+        "expiresRule": "2026-06-19 周报截图可见 7 天卡；页面标注 $10/天、有效期 7 天；仅作详情展示，不参与正式排名采用",
+        "participatesInVerifiedRanking": false
+      }
+    ],
+    "forcedAdoptedTier": "GPT超低倍率 | CodeHub wallet topup 1 USD",
+    "assumptionText": "2026-06-20 用户确认周报截图口径：codehub.qzz.io 分组可见 GPT超低倍率 0.1x、GPT Pro 0.25x、GPT生图(Image2) 0.01x、GPT生图（Image2 4K）1x、Kiro Claude 0.2x；余额充值页面写明卡密充值按 1:1 到账，可见 $1/$10/$20/$50/$100/$500/$1000；1/3/7 天卡仅作详情展示，不参与正式 adopted tier。正式采用 GPT超低倍率 0.1x + CodeHub wallet topup 1 USD，有效倍率 0.1。",
+    "confidence": "manual_browser_verified",
+    "source": "weekly_error_report_screenshot_verified_purchase_page",
+    "evidenceUrl": "https://codehub.qzz.io",
+    "authoritative": true
   }
 }

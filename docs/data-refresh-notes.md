@@ -295,6 +295,8 @@ Codex Manager 新日志增量更新：
 | `www.haoyongai.xyz` | 用户确认充值档位为 `1 RMB = 10 USD`；正式采用稳定 OpenAI/Codex 分组 `GPT` 倍率 `1`。公告里的临时福利价或临时福利分组不作为长期正式充值档位。 | 用户人工确认、登录态页面、`config/station_pricing_overrides.json` 权威覆盖。 | 不能把公告里的临时福利价当长期档位；不能用临时福利分组替代稳定 OpenAI/Codex 分组。 | 后续刷新继续优先采用稳定分组；若充值比例变化，先更新人工覆盖再重建派生数据。 |
 | `api.wanlai.ai` | 官网入口为 `https://wanlai.ai`，API base 为 `https://api.wanlai.ai`。`/api/v1/payment/*` 返回 `404 page not found` 不阻断入榜，因为用户截图确认 `https://wanlai.ai/purchase` 充值页费用事实：正式采用 `OpenAi-官方订阅稳定渠道` 倍率 `1`，充值比例 `1 RMB ≈ 1 USD`，有效倍率 `1.0`。 | 用户截图确认的充值页、官网/API base 覆盖、`config/station_pricing_overrides.json` 权威覆盖。 | 不能因 payment API probe 404 判定无费用证据；不能采用横幅“低至 0.15”作为正式倍率，除非定位到具体长期正式渠道。 | 后续优先修正真实 API 探测；如页面正式渠道或充值比例变化，先更新人工覆盖再重建 CSV 与 `site-data.json`。 |
 | `www.thinkai.tv` | 用户截图确认 `Codex（推荐）` 分组倍率 `1.2`，充值档位为 `25/50/100/200/500 USD` 分别实付 `12.5/25/50/100/250 RMB`，正式倍率为 `1.2 * 12.5 / 25 = 0.6`。 | 用户截图确认的分组倍率和充值页、`config/station_pricing_overrides.json` 权威覆盖。 | 不能用自动 `/api/user/amount` 采样返回值覆盖本轮权威口径；不能把截图之外的账号或浏览器状态写入公开数据。 | 后续若站内充值页或分组倍率变化，重新登录核验并更新人工覆盖。 |
+| `codehub.qzz.io` | 2026-06-20 用户确认周报截图口径：分组可见 `GPT超低倍率 0.1x`、`GPT Pro 0.25x`、`GPT生图(Image2) 0.01x`、`GPT生图（Image2 4K） 1x`、`Kiro Claude 0.2x`；充值页可见余额充值 `$1/$10/$20/$50/$100/$500/$1000` 分别实付 `¥1/¥10/¥20/¥50/¥100/¥500/¥1000`，另有 `1天卡 ¥8.5`、`3天卡 ¥25`、`7天卡 ¥50`。本轮正式采用 `GPT超低倍率 | CodeHub wallet topup 1 USD`，有效倍率 `0.1`；天卡仅作详情展示。 | 用户周报截图确认的分组与充值页、`config/station_pricing_overrides.json` 权威覆盖。 | 不能猜测截图未完整展示的隐藏商品；不能把 `GPT生图(Image2)`、`GPT生图（Image2 4K）` 或 `Kiro Claude` 当作 Codex 正式采用分组；不能把天卡写入正式 adopted tier。 | 后续如页面展示出新的长期余额商品或分组倍率变化，先补截图或页面证据，再更新人工覆盖并重建数据。 |
+| `kapibala.asia` | 用户截图确认钱包充值为 `¥3/6/15/30/60 -> $10/20/50/100/200`；订阅页可见 `Coding Plan Plus ¥78 -> $400`、`Coding Plan Pro(Plus x3) ¥220 -> $1200`、`Coding Plan Pro MAX(Plus x5) ¥360 -> $2000`；分组弹窗可见 `vip 1.1x` 与 `claude 1x`。本轮正式采用仍按用户确认锁定 `codex | Coding Plan Pro MAX(Plus x5)`，有效倍率 `0.18`。 | 用户截图确认的 `/wallet`、订阅页和分组弹窗、`config/station_pricing_overrides.json` 权威覆盖。 | 不能把截图里的 `vip 1.1x` 自动切成正式采用 `0.198`；不能回退到旧错误金额或旧日卡口径。 | 后续若继续沿用 `vip` 口径入榜，需先由用户确认 adopted tier 是否切到 `vip 1.1x`；当前仍以 `codex 1x` 作为正式采用分组。 |
 | `ai.nexahub.one` | 用户截图确认 API 密钥页分组为 `Codex 余额计费 0.065x`、`ccmax满血（测试通过）0.7x`；充值页可见快捷金额 `10/20/50/100/200/500/1000/2000/5000`。本轮正式采用 `Codex 余额计费` 与 `NexaHub wallet topup 10 USD`，按页面可见 `1:1` 口径，采用倍率 `0.065`。 | 用户截图确认的 `/keys` 分组下拉和 `/purchase` 充值页、`config/station_pricing_overrides.json` 权威覆盖。 | 不能继续采用旧 `Team 团队订阅`；不能把登录态接口里的 `Codex 余额计费 0.8` 或 `balance_recharge_multiplier=15` 覆盖到本轮正式口径。 | 后续如要恢复接口倍率口径，必须先在页面支付确认区核实实付金额，不提交订单、不保存账号或付款信息。 |
 | `laodog/dogcoding` | v1 支付配置关闭时使用官方外部店铺兑换码商品作为证据。 | 官方菜单指向的外部店铺商品。 | 不能在 `payment/config.enabled=false` 时生成默认钱包档位。 | 核对兑换码商品金额和到账美元额度，不按站内快捷充值处理。 |
 | `zhishu.dev` | 登录态 v1 接口可补齐 `codex-自建` 分组和公告；站内支付配置关闭，但左侧“充值”嵌入的官方链动小铺已核验 5 个 Codex 商品，可生成充值/套餐档位。 | 登录态 `/api/v1/groups/available`、`/api/v1/payment/config`、`/api/v1/payment/checkout-info`、`/api/v1/announcements`、官方外部店铺 `pay.ldxp.cn/shop/CFUOS364/ek8gty`。 | 不能只凭 `balance_recharge_multiplier` 生成站内钱包档位；不能保存店铺签名 URL 参数、用户邮箱或 token。 | 用户协助登录后脚本仍抓不到时，可用浏览器直接识别官方店铺和页面内容，再反哺脚本/配置。外部店铺顶层登录态可见 10/20/50 USD 不限时额度和 Plus/Pro 包月商品；headless 直接访问可能 403 `http_bot_simple`。 |
@@ -404,6 +406,12 @@ rg -n "codex-log-refresh-state|full-log-rebuild|request_log_station_candidates|m
 - `icodex.pro`：2026-06-10 用户进一步确认是公益站；可按免费额度参与正式榜单，但不再作为价格/充值页补抓目标。
 - `code.pndot.com`：2026-06-10 用户确认 `https://code.pndot.com` 当前打不开，继续不作为自动或人工补抓目标。
 
+
+### 2026-06-20 错误上报处理
+
+- `codehub.qzz.io`：补充并修正本地权威费用覆盖。截图确认 5 个分组事实，其中 Codex 正式采用分组更新为 `GPT超低倍率 0.1x`；余额充值可见 `$1/$10/$20/$50/$100/$500/$1000` 对应实付 `¥1/¥10/¥20/¥50/¥100/¥500/¥1000`，另有 `1/3/7` 天卡只作详情展示。正式采用 `GPT超低倍率 0.1x + CodeHub wallet topup 1 USD`。
+- `kapibala.asia`：保持正式采用口径为 `0.18`。继续采用钱包 `¥3/6/15/30/60 -> $10/20/50/100/200`，补充月卡 `Coding Plan Pro(Plus x3) ¥220 -> $1200` 和 `Coding Plan Pro MAX(Plus x5) ¥360 -> $2000`，记录截图事实 `vip 1.1x`，但正式采用仍锁定 `codex | Coding Plan Pro MAX(Plus x5)`。
+- `ai.nexahub.one`：保持无订阅口径。截图显示“暂无可用订阅套餐”，继续采用页面可见 1:1 钱包充值与 `Codex 余额计费 0.065x`，不恢复 `Team 团队订阅` 或 `balance_recharge_multiplier=15` 旧口径。
 
 ### aiapi1.cc.cd / dc API
 
