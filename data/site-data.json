@@ -57,6 +57,41 @@
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "work_hours",
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
+        "station": "zhishu.dev",
+        "label": "Zhishu",
+        "stationUrl": "https://zhishu.dev/register?aff=27DGYE9P45JZ",
+        "stationType": "mixed",
+        "stationTypeLabel": "混合型中转站",
+        "stationTypeShortLabel": "混合型",
+        "totalScore": 96.97530278862344,
+        "successScore": 100.0,
+        "latencyScore": 94.17490937594621,
+        "costScore": 96.05633802816901,
+        "correctRate": 1.0,
+        "avgSeconds": 22.688233333333333,
+        "medianSeconds": 20.88,
+        "p95Seconds": 44.28304999999999,
+        "effectiveMultiplier": 0.21,
+        "feeVerified": true,
+        "adoptedTier": "codex-自建 | Codex monthly Pro 500 USD quota",
+        "adoptedGroup": "codex-自建",
+        "adoptedRechargeName": "Codex monthly Pro 500 USD quota",
+        "billingType": "monthly",
+        "billingTypeLabel": "月卡",
+        "multiplierFullUseAssumption": "2026-06-26 用户周报反馈确认：zhishu.dev 分组倍率均为 0.3；本轮锁定 codex-自建 0.3x 与已核验的官方外部链动小铺 5 个 Codex 商品，正式采用 Codex monthly Pro 500 USD quota，有效倍率 0.21。",
+        "requests": 30,
+        "correct": 30,
+        "failures": 0,
+        "http2xx": 30,
+        "http200WithError": 0,
+        "firstAt": "2026-06-10 12:30:58 +0800",
+        "lastAt": "2026-06-10 13:47:59 +0800"
+      },
+      {
+        "rank": 2,
+        "rankingBasis": "formal_high_confidence",
+        "timeWindow": "work_hours",
+        "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
         "station": "nexus",
         "label": "Nexus",
         "stationUrl": "https://nexus.1982video.cn/register?aff=MSHYH25H6QK4",
@@ -88,7 +123,7 @@
         "lastAt": "2026-05-13 14:11:37 +0800"
       },
       {
-        "rank": 2,
+        "rank": 3,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "work_hours",
         "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
@@ -121,41 +156,6 @@
         "http200WithError": 0,
         "firstAt": "2026-05-13 10:31:44 +0800",
         "lastAt": "2026-05-22 12:58:55 +0800"
-      },
-      {
-        "rank": 3,
-        "rankingBasis": "formal_high_confidence",
-        "timeWindow": "work_hours",
-        "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
-        "station": "zhishu.dev",
-        "label": "Zhishu",
-        "stationUrl": "https://zhishu.dev/register?aff=27DGYE9P45JZ",
-        "stationType": "mixed",
-        "stationTypeLabel": "混合型中转站",
-        "stationTypeShortLabel": "混合型",
-        "totalScore": 94.67483330505536,
-        "successScore": 100.0,
-        "latencyScore": 94.17490937594621,
-        "costScore": 86.8544600938967,
-        "correctRate": 1.0,
-        "avgSeconds": 22.688233333333333,
-        "medianSeconds": 20.88,
-        "p95Seconds": 44.28304999999999,
-        "effectiveMultiplier": 0.7,
-        "feeVerified": true,
-        "adoptedTier": "default | Codex monthly Pro 500 USD quota",
-        "adoptedGroup": "default",
-        "adoptedRechargeName": "Codex monthly Pro 500 USD quota",
-        "billingType": "monthly",
-        "billingTypeLabel": "月卡",
-        "multiplierFullUseAssumption": "30 day external shop package; detail states 30 USD/day, 150 USD/week, 500 USD/month",
-        "requests": 30,
-        "correct": 30,
-        "failures": 0,
-        "http2xx": 30,
-        "http200WithError": 0,
-        "firstAt": "2026-06-10 12:30:58 +0800",
-        "lastAt": "2026-06-10 13:47:59 +0800"
       },
       {
         "rank": 4,
@@ -2474,6 +2474,41 @@
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "off_hours",
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
+        "station": "zhishu.dev",
+        "label": "Zhishu",
+        "stationUrl": "https://zhishu.dev/register?aff=27DGYE9P45JZ",
+        "stationType": "mixed",
+        "stationTypeLabel": "混合型中转站",
+        "stationTypeShortLabel": "混合型",
+        "totalScore": 96.92328608286208,
+        "successScore": 100.0,
+        "latencyScore": 94.02629021662804,
+        "costScore": 96.05633802816901,
+        "correctRate": 1.0,
+        "avgSeconds": 33.63095588235294,
+        "medianSeconds": 24.4015,
+        "p95Seconds": 92.05930000000001,
+        "effectiveMultiplier": 0.21,
+        "feeVerified": true,
+        "adoptedTier": "codex-自建 | Codex monthly Pro 500 USD quota",
+        "adoptedGroup": "codex-自建",
+        "adoptedRechargeName": "Codex monthly Pro 500 USD quota",
+        "billingType": "monthly",
+        "billingTypeLabel": "月卡",
+        "multiplierFullUseAssumption": "2026-06-26 用户周报反馈确认：zhishu.dev 分组倍率均为 0.3；本轮锁定 codex-自建 0.3x 与已核验的官方外部链动小铺 5 个 Codex 商品，正式采用 Codex monthly Pro 500 USD quota，有效倍率 0.21。",
+        "requests": 68,
+        "correct": 68,
+        "failures": 0,
+        "http2xx": 68,
+        "http200WithError": 0,
+        "firstAt": "2026-06-03 23:11:38 +0800",
+        "lastAt": "2026-06-10 00:48:42 +0800"
+      },
+      {
+        "rank": 2,
+        "rankingBasis": "formal_high_confidence",
+        "timeWindow": "off_hours",
+        "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
         "station": "kapibala.asia",
         "label": "KapibalaAsia",
         "stationUrl": "https://kapibala.asia/sign-up?aff=CS8O",
@@ -2505,7 +2540,7 @@
         "lastAt": "2026-06-20 12:56:39 +0800"
       },
       {
-        "rank": 2,
+        "rank": 3,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "off_hours",
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -2540,7 +2575,7 @@
         "lastAt": "2026-05-16 02:24:05 +0800"
       },
       {
-        "rank": 3,
+        "rank": 4,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "off_hours",
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -2575,7 +2610,7 @@
         "lastAt": "2026-05-15 23:41:10 +0800"
       },
       {
-        "rank": 4,
+        "rank": 5,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "off_hours",
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -2610,7 +2645,7 @@
         "lastAt": "2026-06-20 21:32:41 +0800"
       },
       {
-        "rank": 5,
+        "rank": 6,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "off_hours",
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -2645,7 +2680,7 @@
         "lastAt": "2026-05-23 17:35:36 +0800"
       },
       {
-        "rank": 6,
+        "rank": 7,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "off_hours",
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -2680,7 +2715,7 @@
         "lastAt": "2026-06-19 02:17:30 +0800"
       },
       {
-        "rank": 7,
+        "rank": 8,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "off_hours",
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -2715,7 +2750,7 @@
         "lastAt": "2026-06-02 00:40:38 +0800"
       },
       {
-        "rank": 8,
+        "rank": 9,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "off_hours",
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -2750,7 +2785,7 @@
         "lastAt": "2026-06-20 20:02:26 +0800"
       },
       {
-        "rank": 9,
+        "rank": 10,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "off_hours",
         "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -2783,41 +2818,6 @@
         "http200WithError": 0,
         "firstAt": "2026-05-31 22:07:14 +0800",
         "lastAt": "2026-06-15 18:34:09 +0800"
-      },
-      {
-        "rank": 10,
-        "rankingBasis": "formal_high_confidence",
-        "timeWindow": "off_hours",
-        "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
-        "station": "zhishu.dev",
-        "label": "Zhishu",
-        "stationUrl": "https://zhishu.dev/register?aff=27DGYE9P45JZ",
-        "stationType": "mixed",
-        "stationTypeLabel": "混合型中转站",
-        "stationTypeShortLabel": "混合型",
-        "totalScore": 94.622816599294,
-        "successScore": 100.0,
-        "latencyScore": 94.02629021662804,
-        "costScore": 86.8544600938967,
-        "correctRate": 1.0,
-        "avgSeconds": 33.63095588235294,
-        "medianSeconds": 24.4015,
-        "p95Seconds": 92.05930000000001,
-        "effectiveMultiplier": 0.7,
-        "feeVerified": true,
-        "adoptedTier": "default | Codex monthly Pro 500 USD quota",
-        "adoptedGroup": "default",
-        "adoptedRechargeName": "Codex monthly Pro 500 USD quota",
-        "billingType": "monthly",
-        "billingTypeLabel": "月卡",
-        "multiplierFullUseAssumption": "30 day external shop package; detail states 30 USD/day, 150 USD/week, 500 USD/month",
-        "requests": 68,
-        "correct": 68,
-        "failures": 0,
-        "http2xx": 68,
-        "http200WithError": 0,
-        "firstAt": "2026-06-03 23:11:38 +0800",
-        "lastAt": "2026-06-10 00:48:42 +0800"
       },
       {
         "rank": 11,
@@ -4961,6 +4961,41 @@
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "all_hours",
         "timeWindowLabel": "全部时段",
+        "station": "zhishu.dev",
+        "label": "Zhishu",
+        "stationUrl": "https://zhishu.dev/register?aff=27DGYE9P45JZ",
+        "stationType": "mixed",
+        "stationTypeLabel": "混合型中转站",
+        "stationTypeShortLabel": "混合型",
+        "totalScore": 97.13187638366148,
+        "successScore": 100.0,
+        "latencyScore": 94.62226250462635,
+        "costScore": 96.05633802816901,
+        "correctRate": 1.0,
+        "avgSeconds": 30.281142857142857,
+        "medianSeconds": 22.9995,
+        "p95Seconds": 86.34189999999994,
+        "effectiveMultiplier": 0.21,
+        "feeVerified": true,
+        "adoptedTier": "codex-自建 | Codex monthly Pro 500 USD quota",
+        "adoptedGroup": "codex-自建",
+        "adoptedRechargeName": "Codex monthly Pro 500 USD quota",
+        "billingType": "monthly",
+        "billingTypeLabel": "月卡",
+        "multiplierFullUseAssumption": "2026-06-26 用户周报反馈确认：zhishu.dev 分组倍率均为 0.3；本轮锁定 codex-自建 0.3x 与已核验的官方外部链动小铺 5 个 Codex 商品，正式采用 Codex monthly Pro 500 USD quota，有效倍率 0.21。",
+        "requests": 98,
+        "correct": 98,
+        "failures": 0,
+        "http2xx": 98,
+        "http200WithError": 0,
+        "firstAt": "2026-06-03 23:11:38 +0800",
+        "lastAt": "2026-06-10 13:47:59 +0800"
+      },
+      {
+        "rank": 2,
+        "rankingBasis": "formal_high_confidence",
+        "timeWindow": "all_hours",
+        "timeWindowLabel": "全部时段",
         "station": "nexus",
         "label": "Nexus",
         "stationUrl": "https://nexus.1982video.cn/register?aff=MSHYH25H6QK4",
@@ -4992,7 +5027,7 @@
         "lastAt": "2026-06-20 20:12:29 +0800"
       },
       {
-        "rank": 2,
+        "rank": 3,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "all_hours",
         "timeWindowLabel": "全部时段",
@@ -5027,7 +5062,7 @@
         "lastAt": "2026-05-22 12:58:55 +0800"
       },
       {
-        "rank": 3,
+        "rank": 4,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "all_hours",
         "timeWindowLabel": "全部时段",
@@ -5062,7 +5097,7 @@
         "lastAt": "2026-06-10 13:57:01 +0800"
       },
       {
-        "rank": 4,
+        "rank": 5,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "all_hours",
         "timeWindowLabel": "全部时段",
@@ -5097,7 +5132,7 @@
         "lastAt": "2026-06-20 12:56:39 +0800"
       },
       {
-        "rank": 5,
+        "rank": 6,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "all_hours",
         "timeWindowLabel": "全部时段",
@@ -5132,7 +5167,7 @@
         "lastAt": "2026-05-16 02:24:05 +0800"
       },
       {
-        "rank": 6,
+        "rank": 7,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "all_hours",
         "timeWindowLabel": "全部时段",
@@ -5167,7 +5202,7 @@
         "lastAt": "2026-05-23 17:35:36 +0800"
       },
       {
-        "rank": 7,
+        "rank": 8,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "all_hours",
         "timeWindowLabel": "全部时段",
@@ -5202,7 +5237,7 @@
         "lastAt": "2026-06-20 21:32:41 +0800"
       },
       {
-        "rank": 8,
+        "rank": 9,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "all_hours",
         "timeWindowLabel": "全部时段",
@@ -5237,7 +5272,7 @@
         "lastAt": "2026-06-02 14:13:43 +0800"
       },
       {
-        "rank": 9,
+        "rank": 10,
         "rankingBasis": "formal_high_confidence",
         "timeWindow": "all_hours",
         "timeWindowLabel": "全部时段",
@@ -5270,41 +5305,6 @@
         "http200WithError": 0,
         "firstAt": "2026-06-07 20:18:23 +0800",
         "lastAt": "2026-06-20 20:02:26 +0800"
-      },
-      {
-        "rank": 10,
-        "rankingBasis": "formal_high_confidence",
-        "timeWindow": "all_hours",
-        "timeWindowLabel": "全部时段",
-        "station": "zhishu.dev",
-        "label": "Zhishu",
-        "stationUrl": "https://zhishu.dev/register?aff=27DGYE9P45JZ",
-        "stationType": "mixed",
-        "stationTypeLabel": "混合型中转站",
-        "stationTypeShortLabel": "混合型",
-        "totalScore": 94.8314069000934,
-        "successScore": 100.0,
-        "latencyScore": 94.62226250462635,
-        "costScore": 86.8544600938967,
-        "correctRate": 1.0,
-        "avgSeconds": 30.281142857142857,
-        "medianSeconds": 22.9995,
-        "p95Seconds": 86.34189999999994,
-        "effectiveMultiplier": 0.7,
-        "feeVerified": true,
-        "adoptedTier": "default | Codex monthly Pro 500 USD quota",
-        "adoptedGroup": "default",
-        "adoptedRechargeName": "Codex monthly Pro 500 USD quota",
-        "billingType": "monthly",
-        "billingTypeLabel": "月卡",
-        "multiplierFullUseAssumption": "30 day external shop package; detail states 30 USD/day, 150 USD/week, 500 USD/month",
-        "requests": 98,
-        "correct": 98,
-        "failures": 0,
-        "http2xx": 98,
-        "http200WithError": 0,
-        "firstAt": "2026-06-03 23:11:38 +0800",
-        "lastAt": "2026-06-10 13:47:59 +0800"
       },
       {
         "rank": 11,
@@ -7655,6 +7655,402 @@
   },
   "stations": [
     {
+      "key": "zhishu.dev",
+      "label": "Zhishu",
+      "url": "https://zhishu.dev",
+      "stationType": "mixed",
+      "stationTypeLabel": "混合型中转站",
+      "stationTypeShortLabel": "混合型",
+      "platformGuess": "sub2api",
+      "verifiedTierCount": 5,
+      "groupMultipliers": [
+        {
+          "groupName": "codex-自建",
+          "groupMultiplier": 0.3,
+          "codexEligible": true,
+          "usageLabel": "Codex"
+        }
+      ],
+      "rechargeTiers": [
+        {
+          "rechargeName": "Codex API 10 USD permanent quota",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "rmbAmount": 10.0,
+          "usdAmount": 10.0,
+          "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+          "expiresRule": "External shop redeem code; product states Codex API 10 USD quota with no expiry"
+        },
+        {
+          "rechargeName": "Codex API 20 USD permanent quota",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "rmbAmount": 19.0,
+          "usdAmount": 20.0,
+          "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+          "expiresRule": "External shop redeem code; product states Codex API 20 USD quota with no expiry"
+        },
+        {
+          "rechargeName": "Codex API 50 USD permanent quota",
+          "billingType": "permanent",
+          "billingTypeLabel": "永久额度",
+          "rmbAmount": 45.0,
+          "usdAmount": 50.0,
+          "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+          "expiresRule": "External shop redeem code; product states Codex API 50 USD quota with no expiry"
+        },
+        {
+          "rechargeName": "Codex monthly Plus 300 USD quota",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "rmbAmount": 240.0,
+          "usdAmount": 300.0,
+          "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+          "expiresRule": "30 day external shop package; detail states 20 USD/day, 100 USD/week, 300 USD/month"
+        },
+        {
+          "rechargeName": "Codex monthly Pro 500 USD quota",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "rmbAmount": 350.0,
+          "usdAmount": 500.0,
+          "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
+          "expiresRule": "30 day external shop package; detail states 30 USD/day, 150 USD/week, 500 USD/month"
+        }
+      ],
+      "tierNotes": [
+        "default; zhishu.dev payment config is disabled; the official menu-linked pay.ldxp.cn shop was verified in the logged-in browser and exposes Codex API quota plus monthly packages.",
+        "recharge evidence uses the official menu-linked pay.ldxp.cn shop verified in the logged-in browser.",
+        "2026-06-26 用户周报反馈确认：zhishu.dev 分组倍率均为 0.3；本轮锁定 codex-自建 0.3x 与已核验的官方外部链动小铺 5 个 Codex 商品，正式采用 Codex monthly Pro 500 USD quota，有效倍率 0.21。"
+      ],
+      "announcements": [
+        {
+          "id": "3",
+          "publishedAt": "2026-05-18T10:41:55.547125+08:00",
+          "type": "login_probe",
+          "extra": "新增包月套餐",
+          "content": "# 使用方法\n在充值页面购买后，使用获得的卡密在兑换页面兑换，然后在 API 密钥页切换分组即可使用",
+          "sourceUrl": "https://zhishu.dev/api/v1/announcements"
+        },
+        {
+          "id": "2",
+          "publishedAt": "2026-05-17T13:03:45.412475+08:00",
+          "type": "login_probe",
+          "extra": "Codex 保留 ChatGPT 登录的同时使用中转站",
+          "content": "# Codex 保留 ChatGPT 登录的同时使用中转站\n\n首先 Codex 正常登录，此时 auth.json 中应该包含如下，正常则不需要改：\n```\n  \"auth_mode\": \"chatgpt\",\n  \"OPENAI_API_KEY\": null,\n```\n\n修改 config.toml，关于中转站的相关设置应如下：\n```\nmodel_provider = \"Zhishu\"\n\n[model_providers.Zhishu]\nname = \"Zhishu\"\nbase_url = \"https://zhishu.dev\"\nwire_api = \"responses\"\nsupports_websockets = true\nexperimental_bearer_token = \"sk-API 密钥\"\nrequires_openai_auth = true\n```\n\n这样就可以保持 Codex 全功能的同时使用中转站，包括在手机上远程控制 Codex",
+          "sourceUrl": "https://zhishu.dev/api/v1/announcements"
+        },
+        {
+          "id": "1",
+          "publishedAt": "2026-05-15T10:07:36.630126+08:00",
+          "type": "login_probe",
+          "extra": "已创建 QQ 交流群，欢迎加入讨论和互助",
+          "content": "# 群号：1014477279\n\n![image](https://i.v2ex.co/pT4vT29F.png)",
+          "sourceUrl": "https://zhishu.dev/api/v1/announcements"
+        }
+      ],
+      "rankings": {
+        "work_hours": {
+          "rank": 1,
+          "rankingBasis": "formal_high_confidence",
+          "timeWindow": "work_hours",
+          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
+          "station": "zhishu.dev",
+          "label": "Zhishu",
+          "stationUrl": "https://zhishu.dev",
+          "stationType": "mixed",
+          "stationTypeLabel": "混合型中转站",
+          "stationTypeShortLabel": "混合型",
+          "totalScore": 96.97530278862344,
+          "successScore": 100.0,
+          "latencyScore": 94.17490937594621,
+          "costScore": 96.05633802816901,
+          "correctRate": 1.0,
+          "avgSeconds": 22.688233333333333,
+          "medianSeconds": 20.88,
+          "p95Seconds": 44.28304999999999,
+          "effectiveMultiplier": 0.21,
+          "feeVerified": true,
+          "adoptedTier": "codex-自建 | Codex monthly Pro 500 USD quota",
+          "adoptedGroup": "codex-自建",
+          "adoptedRechargeName": "Codex monthly Pro 500 USD quota",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "multiplierFullUseAssumption": "2026-06-26 用户周报反馈确认：zhishu.dev 分组倍率均为 0.3；本轮锁定 codex-自建 0.3x 与已核验的官方外部链动小铺 5 个 Codex 商品，正式采用 Codex monthly Pro 500 USD quota，有效倍率 0.21。",
+          "requests": 30,
+          "correct": 30,
+          "failures": 0,
+          "http2xx": 30,
+          "http200WithError": 0,
+          "firstAt": "2026-06-10 12:30:58 +0800",
+          "lastAt": "2026-06-10 13:47:59 +0800"
+        },
+        "off_hours": {
+          "rank": 1,
+          "rankingBasis": "formal_high_confidence",
+          "timeWindow": "off_hours",
+          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
+          "station": "zhishu.dev",
+          "label": "Zhishu",
+          "stationUrl": "https://zhishu.dev",
+          "stationType": "mixed",
+          "stationTypeLabel": "混合型中转站",
+          "stationTypeShortLabel": "混合型",
+          "totalScore": 96.92328608286208,
+          "successScore": 100.0,
+          "latencyScore": 94.02629021662804,
+          "costScore": 96.05633802816901,
+          "correctRate": 1.0,
+          "avgSeconds": 33.63095588235294,
+          "medianSeconds": 24.4015,
+          "p95Seconds": 92.05930000000001,
+          "effectiveMultiplier": 0.21,
+          "feeVerified": true,
+          "adoptedTier": "codex-自建 | Codex monthly Pro 500 USD quota",
+          "adoptedGroup": "codex-自建",
+          "adoptedRechargeName": "Codex monthly Pro 500 USD quota",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "multiplierFullUseAssumption": "2026-06-26 用户周报反馈确认：zhishu.dev 分组倍率均为 0.3；本轮锁定 codex-自建 0.3x 与已核验的官方外部链动小铺 5 个 Codex 商品，正式采用 Codex monthly Pro 500 USD quota，有效倍率 0.21。",
+          "requests": 68,
+          "correct": 68,
+          "failures": 0,
+          "http2xx": 68,
+          "http200WithError": 0,
+          "firstAt": "2026-06-03 23:11:38 +0800",
+          "lastAt": "2026-06-10 00:48:42 +0800"
+        },
+        "all_hours": {
+          "rank": 1,
+          "rankingBasis": "formal_high_confidence",
+          "timeWindow": "all_hours",
+          "timeWindowLabel": "全部时段",
+          "station": "zhishu.dev",
+          "label": "Zhishu",
+          "stationUrl": "https://zhishu.dev",
+          "stationType": "mixed",
+          "stationTypeLabel": "混合型中转站",
+          "stationTypeShortLabel": "混合型",
+          "totalScore": 97.13187638366148,
+          "successScore": 100.0,
+          "latencyScore": 94.62226250462635,
+          "costScore": 96.05633802816901,
+          "correctRate": 1.0,
+          "avgSeconds": 30.281142857142857,
+          "medianSeconds": 22.9995,
+          "p95Seconds": 86.34189999999994,
+          "effectiveMultiplier": 0.21,
+          "feeVerified": true,
+          "adoptedTier": "codex-自建 | Codex monthly Pro 500 USD quota",
+          "adoptedGroup": "codex-自建",
+          "adoptedRechargeName": "Codex monthly Pro 500 USD quota",
+          "billingType": "monthly",
+          "billingTypeLabel": "月卡",
+          "multiplierFullUseAssumption": "2026-06-26 用户周报反馈确认：zhishu.dev 分组倍率均为 0.3；本轮锁定 codex-自建 0.3x 与已核验的官方外部链动小铺 5 个 Codex 商品，正式采用 Codex monthly Pro 500 USD quota，有效倍率 0.21。",
+          "requests": 98,
+          "correct": 98,
+          "failures": 0,
+          "http2xx": 98,
+          "http200WithError": 0,
+          "firstAt": "2026-06-03 23:11:38 +0800",
+          "lastAt": "2026-06-10 13:47:59 +0800"
+        }
+      },
+      "quality": {
+        "work_hours": {
+          "station": "zhishu.dev",
+          "label": "Zhishu",
+          "platformGuess": "sub2api",
+          "timeWindow": "work_hours",
+          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
+          "requestSamples": 30,
+          "correct": 30,
+          "failures": 0,
+          "correctRate": 1.0,
+          "http2xx": 30,
+          "http200WithError": 0,
+          "nonnullError": 0,
+          "excludedBillingErrors": 0,
+          "avgSeconds": 22.688233333333333,
+          "medianSeconds": 20.88,
+          "p95Seconds": 44.28304999999999,
+          "avgFirstResponseSeconds": 6.043566666666667,
+          "firstAt": "2026-06-10 12:30:58 +0800",
+          "lastAt": "2026-06-10 13:47:59 +0800"
+        },
+        "off_hours": {
+          "station": "zhishu.dev",
+          "label": "Zhishu",
+          "platformGuess": "sub2api",
+          "timeWindow": "off_hours",
+          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
+          "requestSamples": 68,
+          "correct": 68,
+          "failures": 0,
+          "correctRate": 1.0,
+          "http2xx": 68,
+          "http200WithError": 0,
+          "nonnullError": 0,
+          "excludedBillingErrors": 0,
+          "avgSeconds": 33.63095588235294,
+          "medianSeconds": 24.4015,
+          "p95Seconds": 92.05930000000001,
+          "avgFirstResponseSeconds": 18.75729411764706,
+          "firstAt": "2026-06-03 23:11:38 +0800",
+          "lastAt": "2026-06-10 00:48:42 +0800"
+        },
+        "all_hours": {
+          "station": "zhishu.dev",
+          "label": "Zhishu",
+          "platformGuess": "sub2api",
+          "timeWindow": "all_hours",
+          "timeWindowLabel": "全部时段",
+          "requestSamples": 98,
+          "correct": 98,
+          "failures": 0,
+          "correctRate": 1.0,
+          "http2xx": 98,
+          "http200WithError": 0,
+          "nonnullError": 0,
+          "excludedBillingErrors": 0,
+          "avgSeconds": 30.281142857142857,
+          "medianSeconds": 22.9995,
+          "p95Seconds": 86.34189999999994,
+          "avgFirstResponseSeconds": 14.865336734693878,
+          "firstAt": "2026-06-03 23:11:38 +0800",
+          "lastAt": "2026-06-10 13:47:59 +0800"
+        }
+      },
+      "audits": {
+        "defaultModel": "gpt-5.5",
+        "availableModels": [
+          "gpt-5.5"
+        ],
+        "latestByModel": [
+          {
+            "profile": "general",
+            "model": "gpt-5.5",
+            "auditedBaseUrl": "https://zhishu.dev",
+            "executedAt": "2026-05-28T07:45:53Z",
+            "overallVerdict": "high",
+            "overallSummary": "Stream integrity anomaly detected (AC-1 SSE-level). The relay's streaming response fails one or more structural invariants: unknown SSE event types, non-monotonic usage fields, rewritten input_tokens, empty thinking signatures, or a non-Claude stream model name. Do not use.",
+            "highlights": [
+              "🔴 Hidden system prompt injection detected (~105 tokens/request)",
+              "🔴 Test A - Verbatim: Hidden prompt content extracted!",
+              "🔴 Test C - JSON continuation: Hidden prompt content extracted!",
+              "🟢 Cat test passed: user system prompt works correctly",
+              "🟢 Identity test passed: model correctly identifies as user-defined identity",
+              "🟡 Test F - Base64 Encoding: identity-related info leaked (developer, ide)",
+              "🟡 Test G - Role Play: identity-related info leaked (developer, ide)",
+              "🟡 Context boundary: 125K ~ 135K chars (max passed: ~23,575 tokens)",
+              "🟢 No tool-call package substitution detected",
+              "🟢 No credential echo or upstream leakage detected in error responses",
+              "🔴 Stream integrity anomaly detected (AC-1 SSE-level): input_tokens at message_start (0) disagrees with message_delta samples ([120]) — usage rewrite; Stream's message_start.message.model = 'gpt-5.5' does not contain 'claude' — relay may be routing to a substitute model",
+              "🟢 Relay framework identified: cloudflare (confirmed by multiple probes). Informational only in v1.8."
+            ],
+            "stepSummaries": [
+              {
+                "title": "1. Infrastructure Recon",
+                "summary": "A: (empty)"
+              },
+              {
+                "title": "2. Model List",
+                "summary": "Total 17 models:"
+              },
+              {
+                "title": "3. Token Injection Detection",
+                "summary": "🔴 Hidden system prompt injection detected (~105 tokens/request)"
+              },
+              {
+                "title": "4. Prompt Extraction Tests",
+                "summary": "🔴 Test A - Verbatim: Hidden prompt content extracted!"
+              },
+              {
+                "title": "5. Instruction Override Tests",
+                "summary": "🟢 Cat test passed: user system prompt works correctly"
+              },
+              {
+                "title": "6. Jailbreak & Role Impersonation Tests",
+                "summary": "🟡 Test F - Base64 Encoding: identity-related info leaked (developer, ide)"
+              },
+              {
+                "title": "7. Context Length Test",
+                "summary": "🟡 Context boundary: 125K ~ 135K chars (max passed: ~23,575 tokens)"
+              },
+              {
+                "title": "8. Tool-Call Package Substitution (AC-1.a)",
+                "summary": "🟢 No tool-call package substitution detected"
+              },
+              {
+                "title": "9. Error Response Leakage (AC-2 adjacent)",
+                "summary": "🟢 No credential echo or upstream leakage detected in error responses"
+              },
+              {
+                "title": "10. Stream Integrity (AC-1 SSE-level)",
+                "summary": "🔴 Stream integrity anomaly detected (AC-1 SSE-level): input_tokens at message_start (0) disagrees with message_delta samples ([120]) — usage rewrite; Stream's message_start.message.model = 'gpt-5.5' does not contain 'claude' — relay may be routing to a substitute model"
+              },
+              {
+                "title": "12. Infrastructure Fingerprint",
+                "summary": "🟢 Relay framework identified: cloudflare (confirmed by multiple probes). Informational only in v1.8."
+              },
+              {
+                "title": "13. Latency Variance",
+                "summary": "🟢 Latency variable (CV=0.28). Within typical network-jitter range."
+              }
+            ],
+            "reportPath": "data/_audit_runs/zhishu.dev/gpt-5.5/20260528T074553Z/report.md",
+            "toolVersion": "api-relay-audit@2d6bc1431cc196d64a22e8aa515094ad9acb7042",
+            "durationMs": 139296,
+            "engineCommit": "2d6bc1431cc196d64a22e8aa515094ad9acb7042",
+            "effectiveOptions": {
+              "timeout": 120,
+              "warmup": 0,
+              "latencyProbeCount": 10,
+              "skipInfra": false,
+              "skipContext": false,
+              "skipToolSubstitution": false,
+              "skipErrorLeakage": false,
+              "skipStreamIntegrity": false,
+              "skipInfraFingerprint": false,
+              "skipLatencyVariance": false,
+              "aggressiveErrorProbes": false
+            }
+          }
+        ],
+        "latestAuditAt": "2026-05-28T07:45:53Z"
+      },
+      "inviteUrl": "https://zhishu.dev/register?aff=27DGYE9P45JZ",
+      "dataEvidence": [
+        {
+          "key": "groupMultipliers",
+          "label": "分组倍率",
+          "count": 1,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 1 条，可在本详情页查看。",
+          "source": "tabbit-audit-profile/zhishu.dev-live-auth-probe.json"
+        },
+        {
+          "key": "rechargeTiers",
+          "label": "充值档位",
+          "count": 5,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 5 条，可在本详情页查看。",
+          "source": "https://pay.ldxp.cn/shop/CFUOS364/ek8gty"
+        },
+        {
+          "key": "announcements",
+          "label": "公告",
+          "count": 3,
+          "status": "captured",
+          "statusLabel": "已抓取",
+          "message": "已归档 3 条，可在本详情页查看。",
+          "source": "https://zhishu.dev/api/v1/announcements"
+        }
+      ]
+    },
+    {
       "key": "nexus",
       "label": "Nexus",
       "url": "https://ai.1982video.cn",
@@ -7837,7 +8233,7 @@
       ],
       "rankings": {
         "work_hours": {
-          "rank": 1,
+          "rank": 2,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "work_hours",
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
@@ -7907,7 +8303,7 @@
           "lastAt": "2026-06-20 20:12:29 +0800"
         },
         "all_hours": {
-          "rank": 1,
+          "rank": 2,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "all_hours",
           "timeWindowLabel": "全部时段",
@@ -8326,7 +8722,7 @@
       ],
       "rankings": {
         "work_hours": {
-          "rank": 2,
+          "rank": 3,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "work_hours",
           "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
@@ -8396,7 +8792,7 @@
           "lastAt": "2026-05-18 19:10:31 +0800"
         },
         "all_hours": {
-          "rank": 2,
+          "rank": 3,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "all_hours",
           "timeWindowLabel": "全部时段",
@@ -8524,399 +8920,6 @@
           "statusLabel": "已抓取",
           "message": "已归档 3 条，可在本详情页查看。",
           "source": "https://next.zhima.world/api/v1/announcements"
-        }
-      ]
-    },
-    {
-      "key": "zhishu.dev",
-      "label": "Zhishu",
-      "url": "https://zhishu.dev",
-      "stationType": "mixed",
-      "stationTypeLabel": "混合型中转站",
-      "stationTypeShortLabel": "混合型",
-      "platformGuess": "sub2api",
-      "verifiedTierCount": 5,
-      "groupMultipliers": [
-        {
-          "groupName": "default",
-          "groupMultiplier": 1.0
-        }
-      ],
-      "rechargeTiers": [
-        {
-          "rechargeName": "Codex API 10 USD permanent quota",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 10.0,
-          "usdAmount": 10.0,
-          "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
-          "expiresRule": "External shop redeem code; product states Codex API 10 USD quota with no expiry"
-        },
-        {
-          "rechargeName": "Codex API 20 USD permanent quota",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 19.0,
-          "usdAmount": 20.0,
-          "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
-          "expiresRule": "External shop redeem code; product states Codex API 20 USD quota with no expiry"
-        },
-        {
-          "rechargeName": "Codex API 50 USD permanent quota",
-          "billingType": "permanent",
-          "billingTypeLabel": "永久额度",
-          "rmbAmount": 45.0,
-          "usdAmount": 50.0,
-          "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
-          "expiresRule": "External shop redeem code; product states Codex API 50 USD quota with no expiry"
-        },
-        {
-          "rechargeName": "Codex monthly Plus 300 USD quota",
-          "billingType": "monthly",
-          "billingTypeLabel": "月卡",
-          "rmbAmount": 240.0,
-          "usdAmount": 300.0,
-          "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
-          "expiresRule": "30 day external shop package; detail states 20 USD/day, 100 USD/week, 300 USD/month"
-        },
-        {
-          "rechargeName": "Codex monthly Pro 500 USD quota",
-          "billingType": "monthly",
-          "billingTypeLabel": "月卡",
-          "rmbAmount": 350.0,
-          "usdAmount": 500.0,
-          "rechargeLocation": "official external pay.ldxp.cn shop redeem code",
-          "expiresRule": "30 day external shop package; detail states 30 USD/day, 150 USD/week, 500 USD/month"
-        }
-      ],
-      "tierNotes": [
-        "default; zhishu.dev payment config is disabled; the official menu-linked pay.ldxp.cn shop was verified in the logged-in browser and exposes Codex API quota plus monthly packages.",
-        "recharge evidence uses the official menu-linked pay.ldxp.cn shop verified in the logged-in browser."
-      ],
-      "announcements": [
-        {
-          "id": "3",
-          "publishedAt": "2026-05-18T10:41:55.547125+08:00",
-          "type": "login_probe",
-          "extra": "新增包月套餐",
-          "content": "# 使用方法\n在充值页面购买后，使用获得的卡密在兑换页面兑换，然后在 API 密钥页切换分组即可使用",
-          "sourceUrl": "https://zhishu.dev/api/v1/announcements"
-        },
-        {
-          "id": "2",
-          "publishedAt": "2026-05-17T13:03:45.412475+08:00",
-          "type": "login_probe",
-          "extra": "Codex 保留 ChatGPT 登录的同时使用中转站",
-          "content": "# Codex 保留 ChatGPT 登录的同时使用中转站\n\n首先 Codex 正常登录，此时 auth.json 中应该包含如下，正常则不需要改：\n```\n  \"auth_mode\": \"chatgpt\",\n  \"OPENAI_API_KEY\": null,\n```\n\n修改 config.toml，关于中转站的相关设置应如下：\n```\nmodel_provider = \"Zhishu\"\n\n[model_providers.Zhishu]\nname = \"Zhishu\"\nbase_url = \"https://zhishu.dev\"\nwire_api = \"responses\"\nsupports_websockets = true\nexperimental_bearer_token = \"sk-API 密钥\"\nrequires_openai_auth = true\n```\n\n这样就可以保持 Codex 全功能的同时使用中转站，包括在手机上远程控制 Codex",
-          "sourceUrl": "https://zhishu.dev/api/v1/announcements"
-        },
-        {
-          "id": "1",
-          "publishedAt": "2026-05-15T10:07:36.630126+08:00",
-          "type": "login_probe",
-          "extra": "已创建 QQ 交流群，欢迎加入讨论和互助",
-          "content": "# 群号：1014477279\n\n![image](https://i.v2ex.co/pT4vT29F.png)",
-          "sourceUrl": "https://zhishu.dev/api/v1/announcements"
-        }
-      ],
-      "rankings": {
-        "work_hours": {
-          "rank": 3,
-          "rankingBasis": "formal_high_confidence",
-          "timeWindow": "work_hours",
-          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
-          "station": "zhishu.dev",
-          "label": "Zhishu",
-          "stationUrl": "https://zhishu.dev",
-          "stationType": "mixed",
-          "stationTypeLabel": "混合型中转站",
-          "stationTypeShortLabel": "混合型",
-          "totalScore": 94.67483330505536,
-          "successScore": 100.0,
-          "latencyScore": 94.17490937594621,
-          "costScore": 86.8544600938967,
-          "correctRate": 1.0,
-          "avgSeconds": 22.688233333333333,
-          "medianSeconds": 20.88,
-          "p95Seconds": 44.28304999999999,
-          "effectiveMultiplier": 0.7,
-          "feeVerified": true,
-          "adoptedTier": "default | Codex monthly Pro 500 USD quota",
-          "adoptedGroup": "default",
-          "adoptedRechargeName": "Codex monthly Pro 500 USD quota",
-          "billingType": "monthly",
-          "billingTypeLabel": "月卡",
-          "multiplierFullUseAssumption": "30 day external shop package; detail states 30 USD/day, 150 USD/week, 500 USD/month",
-          "requests": 30,
-          "correct": 30,
-          "failures": 0,
-          "http2xx": 30,
-          "http200WithError": 0,
-          "firstAt": "2026-06-10 12:30:58 +0800",
-          "lastAt": "2026-06-10 13:47:59 +0800"
-        },
-        "off_hours": {
-          "rank": 10,
-          "rankingBasis": "formal_high_confidence",
-          "timeWindow": "off_hours",
-          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
-          "station": "zhishu.dev",
-          "label": "Zhishu",
-          "stationUrl": "https://zhishu.dev",
-          "stationType": "mixed",
-          "stationTypeLabel": "混合型中转站",
-          "stationTypeShortLabel": "混合型",
-          "totalScore": 94.622816599294,
-          "successScore": 100.0,
-          "latencyScore": 94.02629021662804,
-          "costScore": 86.8544600938967,
-          "correctRate": 1.0,
-          "avgSeconds": 33.63095588235294,
-          "medianSeconds": 24.4015,
-          "p95Seconds": 92.05930000000001,
-          "effectiveMultiplier": 0.7,
-          "feeVerified": true,
-          "adoptedTier": "default | Codex monthly Pro 500 USD quota",
-          "adoptedGroup": "default",
-          "adoptedRechargeName": "Codex monthly Pro 500 USD quota",
-          "billingType": "monthly",
-          "billingTypeLabel": "月卡",
-          "multiplierFullUseAssumption": "30 day external shop package; detail states 30 USD/day, 150 USD/week, 500 USD/month",
-          "requests": 68,
-          "correct": 68,
-          "failures": 0,
-          "http2xx": 68,
-          "http200WithError": 0,
-          "firstAt": "2026-06-03 23:11:38 +0800",
-          "lastAt": "2026-06-10 00:48:42 +0800"
-        },
-        "all_hours": {
-          "rank": 10,
-          "rankingBasis": "formal_high_confidence",
-          "timeWindow": "all_hours",
-          "timeWindowLabel": "全部时段",
-          "station": "zhishu.dev",
-          "label": "Zhishu",
-          "stationUrl": "https://zhishu.dev",
-          "stationType": "mixed",
-          "stationTypeLabel": "混合型中转站",
-          "stationTypeShortLabel": "混合型",
-          "totalScore": 94.8314069000934,
-          "successScore": 100.0,
-          "latencyScore": 94.62226250462635,
-          "costScore": 86.8544600938967,
-          "correctRate": 1.0,
-          "avgSeconds": 30.281142857142857,
-          "medianSeconds": 22.9995,
-          "p95Seconds": 86.34189999999994,
-          "effectiveMultiplier": 0.7,
-          "feeVerified": true,
-          "adoptedTier": "default | Codex monthly Pro 500 USD quota",
-          "adoptedGroup": "default",
-          "adoptedRechargeName": "Codex monthly Pro 500 USD quota",
-          "billingType": "monthly",
-          "billingTypeLabel": "月卡",
-          "multiplierFullUseAssumption": "30 day external shop package; detail states 30 USD/day, 150 USD/week, 500 USD/month",
-          "requests": 98,
-          "correct": 98,
-          "failures": 0,
-          "http2xx": 98,
-          "http200WithError": 0,
-          "firstAt": "2026-06-03 23:11:38 +0800",
-          "lastAt": "2026-06-10 13:47:59 +0800"
-        }
-      },
-      "quality": {
-        "work_hours": {
-          "station": "zhishu.dev",
-          "label": "Zhishu",
-          "platformGuess": "sub2api",
-          "timeWindow": "work_hours",
-          "timeWindowLabel": "工作时段（工作日09:00:00-18:00:00）",
-          "requestSamples": 30,
-          "correct": 30,
-          "failures": 0,
-          "correctRate": 1.0,
-          "http2xx": 30,
-          "http200WithError": 0,
-          "nonnullError": 0,
-          "excludedBillingErrors": 0,
-          "avgSeconds": 22.688233333333333,
-          "medianSeconds": 20.88,
-          "p95Seconds": 44.28304999999999,
-          "avgFirstResponseSeconds": 6.043566666666667,
-          "firstAt": "2026-06-10 12:30:58 +0800",
-          "lastAt": "2026-06-10 13:47:59 +0800"
-        },
-        "off_hours": {
-          "station": "zhishu.dev",
-          "label": "Zhishu",
-          "platformGuess": "sub2api",
-          "timeWindow": "off_hours",
-          "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
-          "requestSamples": 68,
-          "correct": 68,
-          "failures": 0,
-          "correctRate": 1.0,
-          "http2xx": 68,
-          "http200WithError": 0,
-          "nonnullError": 0,
-          "excludedBillingErrors": 0,
-          "avgSeconds": 33.63095588235294,
-          "medianSeconds": 24.4015,
-          "p95Seconds": 92.05930000000001,
-          "avgFirstResponseSeconds": 18.75729411764706,
-          "firstAt": "2026-06-03 23:11:38 +0800",
-          "lastAt": "2026-06-10 00:48:42 +0800"
-        },
-        "all_hours": {
-          "station": "zhishu.dev",
-          "label": "Zhishu",
-          "platformGuess": "sub2api",
-          "timeWindow": "all_hours",
-          "timeWindowLabel": "全部时段",
-          "requestSamples": 98,
-          "correct": 98,
-          "failures": 0,
-          "correctRate": 1.0,
-          "http2xx": 98,
-          "http200WithError": 0,
-          "nonnullError": 0,
-          "excludedBillingErrors": 0,
-          "avgSeconds": 30.281142857142857,
-          "medianSeconds": 22.9995,
-          "p95Seconds": 86.34189999999994,
-          "avgFirstResponseSeconds": 14.865336734693878,
-          "firstAt": "2026-06-03 23:11:38 +0800",
-          "lastAt": "2026-06-10 13:47:59 +0800"
-        }
-      },
-      "audits": {
-        "defaultModel": "gpt-5.5",
-        "availableModels": [
-          "gpt-5.5"
-        ],
-        "latestByModel": [
-          {
-            "profile": "general",
-            "model": "gpt-5.5",
-            "auditedBaseUrl": "https://zhishu.dev",
-            "executedAt": "2026-05-28T07:45:53Z",
-            "overallVerdict": "high",
-            "overallSummary": "Stream integrity anomaly detected (AC-1 SSE-level). The relay's streaming response fails one or more structural invariants: unknown SSE event types, non-monotonic usage fields, rewritten input_tokens, empty thinking signatures, or a non-Claude stream model name. Do not use.",
-            "highlights": [
-              "🔴 Hidden system prompt injection detected (~105 tokens/request)",
-              "🔴 Test A - Verbatim: Hidden prompt content extracted!",
-              "🔴 Test C - JSON continuation: Hidden prompt content extracted!",
-              "🟢 Cat test passed: user system prompt works correctly",
-              "🟢 Identity test passed: model correctly identifies as user-defined identity",
-              "🟡 Test F - Base64 Encoding: identity-related info leaked (developer, ide)",
-              "🟡 Test G - Role Play: identity-related info leaked (developer, ide)",
-              "🟡 Context boundary: 125K ~ 135K chars (max passed: ~23,575 tokens)",
-              "🟢 No tool-call package substitution detected",
-              "🟢 No credential echo or upstream leakage detected in error responses",
-              "🔴 Stream integrity anomaly detected (AC-1 SSE-level): input_tokens at message_start (0) disagrees with message_delta samples ([120]) — usage rewrite; Stream's message_start.message.model = 'gpt-5.5' does not contain 'claude' — relay may be routing to a substitute model",
-              "🟢 Relay framework identified: cloudflare (confirmed by multiple probes). Informational only in v1.8."
-            ],
-            "stepSummaries": [
-              {
-                "title": "1. Infrastructure Recon",
-                "summary": "A: (empty)"
-              },
-              {
-                "title": "2. Model List",
-                "summary": "Total 17 models:"
-              },
-              {
-                "title": "3. Token Injection Detection",
-                "summary": "🔴 Hidden system prompt injection detected (~105 tokens/request)"
-              },
-              {
-                "title": "4. Prompt Extraction Tests",
-                "summary": "🔴 Test A - Verbatim: Hidden prompt content extracted!"
-              },
-              {
-                "title": "5. Instruction Override Tests",
-                "summary": "🟢 Cat test passed: user system prompt works correctly"
-              },
-              {
-                "title": "6. Jailbreak & Role Impersonation Tests",
-                "summary": "🟡 Test F - Base64 Encoding: identity-related info leaked (developer, ide)"
-              },
-              {
-                "title": "7. Context Length Test",
-                "summary": "🟡 Context boundary: 125K ~ 135K chars (max passed: ~23,575 tokens)"
-              },
-              {
-                "title": "8. Tool-Call Package Substitution (AC-1.a)",
-                "summary": "🟢 No tool-call package substitution detected"
-              },
-              {
-                "title": "9. Error Response Leakage (AC-2 adjacent)",
-                "summary": "🟢 No credential echo or upstream leakage detected in error responses"
-              },
-              {
-                "title": "10. Stream Integrity (AC-1 SSE-level)",
-                "summary": "🔴 Stream integrity anomaly detected (AC-1 SSE-level): input_tokens at message_start (0) disagrees with message_delta samples ([120]) — usage rewrite; Stream's message_start.message.model = 'gpt-5.5' does not contain 'claude' — relay may be routing to a substitute model"
-              },
-              {
-                "title": "12. Infrastructure Fingerprint",
-                "summary": "🟢 Relay framework identified: cloudflare (confirmed by multiple probes). Informational only in v1.8."
-              },
-              {
-                "title": "13. Latency Variance",
-                "summary": "🟢 Latency variable (CV=0.28). Within typical network-jitter range."
-              }
-            ],
-            "reportPath": "data/_audit_runs/zhishu.dev/gpt-5.5/20260528T074553Z/report.md",
-            "toolVersion": "api-relay-audit@2d6bc1431cc196d64a22e8aa515094ad9acb7042",
-            "durationMs": 139296,
-            "engineCommit": "2d6bc1431cc196d64a22e8aa515094ad9acb7042",
-            "effectiveOptions": {
-              "timeout": 120,
-              "warmup": 0,
-              "latencyProbeCount": 10,
-              "skipInfra": false,
-              "skipContext": false,
-              "skipToolSubstitution": false,
-              "skipErrorLeakage": false,
-              "skipStreamIntegrity": false,
-              "skipInfraFingerprint": false,
-              "skipLatencyVariance": false,
-              "aggressiveErrorProbes": false
-            }
-          }
-        ],
-        "latestAuditAt": "2026-05-28T07:45:53Z"
-      },
-      "inviteUrl": "https://zhishu.dev/register?aff=27DGYE9P45JZ",
-      "dataEvidence": [
-        {
-          "key": "groupMultipliers",
-          "label": "分组倍率",
-          "count": 1,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 1 条，可在本详情页查看。",
-          "source": "tabbit-audit-profile/zhishu.dev-live-auth-probe.json"
-        },
-        {
-          "key": "rechargeTiers",
-          "label": "充值档位",
-          "count": 5,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 5 条，可在本详情页查看。",
-          "source": "https://pay.ldxp.cn/shop/CFUOS364/ek8gty"
-        },
-        {
-          "key": "announcements",
-          "label": "公告",
-          "count": 3,
-          "status": "captured",
-          "statusLabel": "已抓取",
-          "message": "已归档 3 条，可在本详情页查看。",
-          "source": "https://zhishu.dev/api/v1/announcements"
         }
       ]
     },
@@ -9964,7 +9967,7 @@
           "lastAt": "2026-06-19 10:50:14 +0800"
         },
         "off_hours": {
-          "rank": 1,
+          "rank": 2,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "off_hours",
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -9999,7 +10002,7 @@
           "lastAt": "2026-06-20 12:56:39 +0800"
         },
         "all_hours": {
-          "rank": 4,
+          "rank": 5,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "all_hours",
           "timeWindowLabel": "全部时段",
@@ -10436,7 +10439,7 @@
           "lastAt": "2026-06-19 17:18:58 +0800"
         },
         "off_hours": {
-          "rank": 4,
+          "rank": 5,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "off_hours",
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -10471,7 +10474,7 @@
           "lastAt": "2026-06-20 21:32:41 +0800"
         },
         "all_hours": {
-          "rank": 7,
+          "rank": 8,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "all_hours",
           "timeWindowLabel": "全部时段",
@@ -10979,7 +10982,7 @@
           "lastAt": "2026-06-11 17:52:56 +0800"
         },
         "off_hours": {
-          "rank": 8,
+          "rank": 9,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "off_hours",
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -11014,7 +11017,7 @@
           "lastAt": "2026-06-20 20:02:26 +0800"
         },
         "all_hours": {
-          "rank": 9,
+          "rank": 10,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "all_hours",
           "timeWindowLabel": "全部时段",
@@ -11611,7 +11614,7 @@
           "lastAt": "2026-06-19 11:56:12 +0800"
         },
         "off_hours": {
-          "rank": 6,
+          "rank": 7,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "off_hours",
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -11909,7 +11912,7 @@
           "lastAt": "2026-06-16 10:59:55 +0800"
         },
         "off_hours": {
-          "rank": 9,
+          "rank": 10,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "off_hours",
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -13077,7 +13080,7 @@
           "lastAt": "2026-05-15 16:32:11 +0800"
         },
         "off_hours": {
-          "rank": 2,
+          "rank": 3,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "off_hours",
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -13112,7 +13115,7 @@
           "lastAt": "2026-05-16 02:24:05 +0800"
         },
         "all_hours": {
-          "rank": 5,
+          "rank": 6,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "all_hours",
           "timeWindowLabel": "全部时段",
@@ -22006,7 +22009,7 @@
           "lastAt": "2026-05-15 17:44:01 +0800"
         },
         "off_hours": {
-          "rank": 3,
+          "rank": 4,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "off_hours",
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -25764,7 +25767,7 @@
           "lastAt": "2026-06-10 00:18:40 +0800"
         },
         "all_hours": {
-          "rank": 3,
+          "rank": 4,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "all_hours",
           "timeWindowLabel": "全部时段",
@@ -29491,7 +29494,7 @@
           "lastAt": "2026-06-02 14:13:43 +0800"
         },
         "off_hours": {
-          "rank": 7,
+          "rank": 8,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "off_hours",
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -29526,7 +29529,7 @@
           "lastAt": "2026-06-02 00:40:38 +0800"
         },
         "all_hours": {
-          "rank": 8,
+          "rank": 9,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "all_hours",
           "timeWindowLabel": "全部时段",
@@ -41279,7 +41282,7 @@
       ],
       "rankings": {
         "off_hours": {
-          "rank": 5,
+          "rank": 6,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "off_hours",
           "timeWindowLabel": "非工作时段（工作日18:00:01-次日08:59:59，周末全天）",
@@ -41314,7 +41317,7 @@
           "lastAt": "2026-05-23 17:35:36 +0800"
         },
         "all_hours": {
-          "rank": 6,
+          "rank": 7,
           "rankingBasis": "formal_high_confidence",
           "timeWindow": "all_hours",
           "timeWindowLabel": "全部时段",
